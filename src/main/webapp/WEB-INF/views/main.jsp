@@ -36,6 +36,25 @@ header {
     padding-left: 370px;
     font-size:150%;
 }
+footer{
+	width: 1200px;
+	height: 280px;
+	background-color: lightgray;
+	margin-top: 50px;
+}
+.footerImg img{
+	width: 70px;
+	height: auto;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.footerPanel{
+	font-size: 12px;
+	margin-top: 20px;
+	margin-left: 20px;
+	padding-bottom: 20px;
+	font-family: 'BinggraeSamanco-Bold';
+}
 </style>
 <!--부트스트랩 링크-->
 <link
@@ -71,7 +90,7 @@ header {
 		<article class="#">
 			<div class="active">
             	<video preload="auto" autoplay loop muted webkit-playsinline="true" playsinline="true" 
-            	src="./common/video/main_video.mp4" type="video/mp4" style="width:100%; height:500px;"></video>
+            	src="./common/video/mainvideo.mp4" type="video/mp4" style="width:100%; height:500px;"></video>
 			</div>
 			<div class="container">
 					<h6 class="display-4">아기<br>공룡</h6>
@@ -92,13 +111,13 @@ header {
   			</div>
   			<div class="carousel-inner">
     		<div class="carousel-item active">
-      			<img src="./common/img/사진1.jpg" class="d-block w-100" alt="사진예시1">
+      			<img src="./common/img/베이비위크.jpg" class="d-block w-100" alt="사진예시1">
     		</div>
     		<div class="carousel-item">
-      			<img src="./common/img/사진2.jpg" class="d-block w-100" alt="사진예시2">
+      			<img src="./common/img/어린이미래교육.jpg" class="d-block w-100" alt="사진예시2">
     		</div>
     		<div class="carousel-item">
-      			<img src="./common/img/사진3.jpg" class="d-block w-100" alt="사진예시3">
+      			<img src="./common/img/어린이박람회.jpg" class="d-block w-100" alt="사진예시3">
     		</div>
   			</div>
   			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -122,18 +141,17 @@ header {
 		</article>
 	</section>
 	<footer>
-		<div class="footerImg">
-			<img src="#" alt="하단로고" />
-		</div>
-		<p>
-			상호 : (주) 아기공룡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대표자 : 김이최<br> <br>
-			서울특별시 마포구 망원동 479-15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TEL : 1677 - 0707 /
-			+82 70 - 1234-
-			4567&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-Mail:babydino@dinosour.com<br>
-			<br> 사업자등록번호 : 404-0707-1215&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-			<br> <br> <br> <br> <br> &copy; BINZIP<br>
-		</p>
-	</footer>
+	<div class="footerImg">
+		<img src="#" alt="하단로고">
+	</div>
+	<p class="footerPanel">
+		상호 : (주) 아기공룡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대표자 :김이최<br><br>
+		서울특별시 마포구 망원동 123-12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TEL : 1677 - 0707 / +82 70 - 1234- 4567&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binzip@binzip.com<br><br>		
+		사업자등록번호 : 404-0707-1215&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;통신판매업신고 : 제2021-서울마포-0123[사업자정보확인]<br><br>
+		관광사업자등록 : 일반여행업 2021-000012(마포구청)<br><br><br><br>
+		&copy; BINZIP<br>
+	</p>
+</footer>
 </body>
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
