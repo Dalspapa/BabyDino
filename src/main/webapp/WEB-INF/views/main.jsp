@@ -169,13 +169,13 @@ header {
     			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   			</div>
   			<div class="carousel-inner">
-    		<div class="carousel-item active">
+    		<div class="carousel-item active" style="transition: transform .1s ease-in-out;">
       			<img src="./common/img/사진1.jpg" class="d-block w-100" alt="사진예시1">
     		</div>
-    		<div class="carousel-item">
+    		<div class="carousel-item" style="transition: transform .1s ease-in-out;">
       			<img src="./common/img/사진2.jpg" class="d-block w-100" alt="사진예시2">
     		</div>
-    		<div class="carousel-item">
+    		<div class="carousel-item" style="transition: transform .1s ease-in-out;">
       			<img src="./common/img/사진3.jpg" class="d-block w-100" alt="사진예시3">
     		</div>
   			</div>
