@@ -7,8 +7,8 @@
 	<!-- 1. dataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="scott"/>
+		<property name="url" value="jdbc:oracle:thin:@14.35.253.174:1521:xe"/>
+		<property name="username" value="hr"/>
 		<property name="password" value="1234"/>
 	</bean>
 	<!-- 2. transactionManager -->
@@ -28,6 +28,11 @@
 	<bean id="empDao" class="test.emp.model.EmpDAOImple">
 			<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
+	<bean id="commonopDao" class="dino.commonop.model.CommonOpDAOImple">
+		<constructor-arg ref="sqlSessionTemplate" />
+	</bean>
 <!-- Service Area -->
-
+	<bean id="commonOpService" class="dino.commonop.model.CommonOpServiceImple">
+		<property name="commonopDao" ref="commonopDao"></property>	
+	</bean>
 </beans>
