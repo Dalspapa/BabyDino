@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dino.findKids">
+
+	<insert id="t_makeCard" parameterType="dino.findkids.model.FindKidsDTO">
+		insert into
+			d_teacher
+		values(
+			d_teacher_idx.nextval,
+			22,
+			#{job},
+			'1',
+			#{kid_type},
+			#{t_care_type},
+			#{schedule_day},
+			#{schedule_time},
+			#{t_cost},
+			#{t_introduce},
+			#{bank},
+			#{acnum},
+			#{cctvagree},
+			'signclear',
+			#{career_experience}
+		)		
+	</insert>
+	<select id="kidsList" parameterType="Map" resultType="dino.findkids.model.FindKidsDTO">
+		select
+			*
+		from 
+			d_kid
+		order by idx desc
+	</select>	
+</mapper>
+	

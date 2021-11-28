@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,28 +27,39 @@
 <body>
 	<h1>아이찾기 페이지</h1>
 	<section>
-		<article>
-			<div class="container" style="width: 800px;">
-				<div class="row">
-					<div class="col-md-5">
-						<img alt="" src="#"> <img alt="" src="#"> <img alt=""
-							src="#"> <img alt="" src="#"><br> <input
-							type="checkbox" name="" value=""> <input type="checkbox"
-							name="" value=""><br> <input type="checkbox" name=""
-							value=""> <input type="checkbox" name="" value="">
+	<c:if test="${empty k_list}">
+		<h2>등록된 아이가 없습니다.</h2>
+	</c:if>
+		<div class="container">
+			<div class="row">
+				<c:forEach var="k_dto" items="${k_list}">
+					<div class="col-4 p-2">
+						<div class="row" style="border: 1px solid black; height:80px;">
+							<div class="col-4">
+								<img alt="kids_img" src="./common/img/bossbaby.png" style="width:35px; height:35px;">
+								${k_dto.k_name}
+							</div>
+							<div class="col-8">
+								<p>
+									<c:if test="${k_dto.k_gender == 0}">
+										여아
+									</c:if>
+									<c:if test="${k_dto.k_gender == 1}">
+										남아
+									</c:if>
+								</p>
+								<p>
+									${k_dto.k_introduce}
+								</p>
+								<p>
+									${k_dto.k_tendency}
+								</p>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-5">
-						<input type="date">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-						<button type="button" class="btn btn-secondary btn-sm">검색</button>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
-
-		</article>
+		</div>
 	</section>
 </body>
 </html>
