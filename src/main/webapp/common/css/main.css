@@ -1,0 +1,232 @@
+
+/* body section */
+#wrapper {
+    font-family: 'S-Air', sans-serif;
+}
+/* section01 영상 */
+#section01 .mainvideo {
+    width:100%;
+    height:100vh;
+ 	object-fit:cover;
+}
+
+/* section02 */
+#section02 {
+    text-align: center;
+    margin: 60px 0;
+}
+
+/* section03 (메인사진+안내문구 ) */
+hr.divider {
+    height: 0.2rem;
+    max-width: 3.25rem;
+    margin: 1.5rem auto;
+    background-color: black;
+    opacity: 1;
+}
+hr.divider-light {
+   background: #fff;
+}
+.mianimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#about.miantext {
+    background: #EADA22;
+    color: #000;
+    padding: 40px 0;
+}
+
+/* section04 */
+#section04 {
+    padding: 0;
+}
+
+/* section05 */
+#section05 .page-section-gal {
+    text-align: center;
+ }
+#section05 .nori-box {
+    display: block;
+    margin: 10px 10px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 20%;
+    box-shadow: 0px 3px 13px -4px #3c3b3b;
+    transition: .35s; 
+}
+#section05 .nori-box:hover {
+    object-fit: cover;
+    border-radius: 20%;
+    display: block;
+    z-index: 2;
+    box-shadow: 0px 10px 15px -5px #282828;
+    transform:scale(1.1); /* 마우스 오버시 이미지 크기를 1.1 배만큼 확대시킨다. */
+        -o-transform:scale(1.1); 
+        -moz-transform:scale(1.1);
+        -webkit-transform:scale(1.1);
+    transition: transform .35s;  
+        -o-transition: transform .35s;
+        -moz-transition: transform .35s;
+        -webkit-transition: transform .35s;
+}
+#section05 .nori-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#section05 .tag {
+    display: inline;
+    text-align: center;
+}
+#section05 .tag p {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #64a19d;
+}
+
+
+/* section06 */
+#section06 .faq-box {
+    display: block;
+}
+#section06 .faq-box img {
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* section07 (선생님 추천 ) */
+#section07 .page-section-recom {
+	text-align: center;
+}
+#section07 .teacher-proposal {
+    padding: 20px 0;
+}
+.flip-card {
+    background-color: transparent;
+    /* width: 300px;
+    max-width: 300px; */
+    height: 300px;
+    /* overflow: hidden; */
+    perspective: 1000px;
+    border-radius: 50px;
+    padding: 5px;
+}
+  
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    border: 10px solid #eee;
+    border-radius: 50px;
+}
+  
+.flip-card:hover 
+.flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, 
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 50px;
+    padding: 20px 10px;
+}
+
+.flip-card-front {
+    width: 100%;
+    height: 100%;
+    /* background: #eee; */
+    color: black;
+    border-radius: 50px;
+}
+.flip-card-front div img {
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+}
+
+.flip-card-back {
+    width: 100%;
+    height: 100%;
+    background: #64a19d;
+    color: black;
+    transform: rotateY(180deg);
+}
+.flip-card-back ul {
+    padding: 0;
+}
+
+
+
+
+
+/* section09(아기공룡 이용방법 ) */
+#section08 {
+    width: 100% !important;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0;
+    background: #f3f1f3;
+}
+#section08 .faq-mainImg {
+    width: 110px;
+    height: auto;
+    margin: 15px auto;
+}
+#section08 .faq-mainImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#section08 #faq-content .faq-box {
+    background: #fff;
+    width: 180px;
+    height: auto;
+    margin: 10px auto;
+    padding: 15px;
+}
+
+#section08 .guide-title {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 18px;
+}
+#section08 .guide-content {
+    text-align: center;
+    font-size: 14px;
+    padding: 0 20px;
+}
+#section08 .img-sarce { 
+	width: 100%;
+    text-align: center;
+}
+#section08 span a {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+/* 부모회원 */
+#faq-content #userParents {
+
+}
+/* 선생님 회원 */
+#faq-content #userTeacher {
+    display: none;
+}
