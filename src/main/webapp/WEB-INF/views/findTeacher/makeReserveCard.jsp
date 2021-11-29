@@ -19,7 +19,9 @@
 <style>
 .pignose-calendar-unit-disabled a{color:red !important}
 </style>
-<!--  -->
+<!-- wickedpicker  -->
+<link rel="stylesheet" href="css/wickedpicker.css">
+<script src="js/wickedpicker.js"></script>
 </head>
 <body>
 <h1>예약테이블 만들기</h1>
@@ -31,11 +33,26 @@
 				<div>원하는 날짜가 언제인가요 ?</div>
 				<div class="calendar"></div>
 			</div>
-			
+			<hr>
+			<div class="row">
+				<div class="col-md-6">
+					<div>시작시간</div>
+					<input type="text" name="timepicker1" class="timepicker1"/>
+				</div>
+				<div class="col-md-6">
+					<div>종료시간</div>
+					<input type="text" name="timepicker2" class="timepicker2"/>
+				</div>
+			</div>
 			<hr>
 			<div>
+				<div class="row">
+					<div >맘시터에게 지급할 희망 시급을 적어주세요.</div> 
+					<div class="col-md-8">
+						<input class="form-control" type="text" placeholder="희망시급" aria-label="default input example">
+					</div>
+				</div>
 			</div>
-			
 		</div>
 	</form>	
 </section>
@@ -46,6 +63,8 @@ $('.calendar').pignoseCalendar({
 	minDate: moment().format("YYYY-MM-DD"),
 	format: 'YYYY.MM.DD'
 	});
+	
+$('.timepicker1').wickedpicker();
+$('.timepicker2').wickedpicker();
 </script>
-
 </html>

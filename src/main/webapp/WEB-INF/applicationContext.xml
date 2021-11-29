@@ -28,6 +28,11 @@
 	<bean id="empDao" class="test.emp.model.EmpDAOImple">
 			<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
+	<bean id="commonopDao" class="dino.commonop.model.CommonOpDAOImple">
+			<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
 <!-- Service Area -->
-
+	<bean id="commonOpService" class="dino.commonop.model.CommonOpServiceImple">
+		<property name="commonopDao" ref="commonopDao"></property>
+	</bean>
 </beans>

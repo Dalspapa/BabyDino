@@ -5,5 +5,7 @@
 <configuration>
 	<mappers>
 		<mapper resource="sqlMap/empSQL.xml"/>
+		<mapper resource="sqlMap/commonOpSQL.xml"/>
+		<mapper resource="sqlMap/findTeacherSQL.xml"/>
 	</mappers>
 </configuration>

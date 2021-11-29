@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dino.commonop">
+   <select id="opList" parameterType="Map" resultType="dino.commonop.model.CommonOpDTO">
+      select 
+         * 
+      from
+         d_common_option
+      where
+         c_category = 11
+      order by idx desc
+         
+   </select>
+   <select id="k_tendency" parameterType="Map" resultType="dino.commonop.model.CommonOpDTO">
+			select 
+				* 
+			from 
+				d_common_option 
+			where 
+				c_category=9
+   </select>
+</mapper>
