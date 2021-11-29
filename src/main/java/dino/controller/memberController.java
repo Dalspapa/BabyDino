@@ -101,10 +101,31 @@ public class memberController {
 	
 	
 	
-	@RequestMapping("/icon.do")
-	public String login() {
-		return "";
+	@RequestMapping("/join.do")
+	public String goJoinPage() {
+		return "member/join";
 	}
+	
+	@RequestMapping(value = "/memberJoin.do", method = RequestMethod.POST)
+	public ModelAndView joinSubmit(MemberDto memberDto) {
+		
+		int result = memberService.memberJoin(memberDto);
+		
+		String msg = result > 0 ? "성공" : "실패";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("main");
+		
+		return mav;
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/memberJoin.do")
 	public String join() {
