@@ -14,16 +14,16 @@ public class FindKidsServiceImple implements FindKidsService {
 	}
 
 
-	public int makeTCard(FindKidsDTO dto) {
+	public int makeTCard(MakeTCardDTO dto) {
 		
 		int result = findkidsDao.makeTCard(dto);
 		return result;
 	}
 	
 	
-	public List<FindKidsDTO> kidsList() {
+	public List<MakeTCardDTO> kidsList() {
 
-		List<FindKidsDTO> k_list = findkidsDao.kidsList();
+		List<MakeTCardDTO> k_list = findkidsDao.kidsList();
 		return k_list;
 	}
 	

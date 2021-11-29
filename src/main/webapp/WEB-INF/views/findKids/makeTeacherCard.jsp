@@ -72,13 +72,14 @@
 				</c:forEach>
 			</div>
 			<div>
-				<select name="schedule_time" id="t_time" size="4" multiple>
+				<select name="schedule_time" id="t_time" size="6" multiple>
 					<option>시간 선택</option>
 						<c:forEach var="time_opdto" items="${t_list}">
 							<option value="${time_opdto.c_introduce}">${time_opdto.c_introduce}</option>
 						</c:forEach>
 				</select>
 			</div>
+			<input type="button" value="선택" onclick="show();">
 		</div>
 		<div>
 			<div>희망 시급을 입력해주세요.</div>
@@ -128,8 +129,20 @@
 	</form>
 </body>
 <script>
+	
+	function show(){
+		let time = document.getElementById('t_time');
+		let times = '';
+		for(let i = 0; i < time.length; i++){
+			if(time.options[i].selected){
+				times += time.options[i].textContent+"\n";
+			}
+		}
+		console.log(times);
+	}
 
 	function makeTsub(){
+		
 		document.make_t_Card.submit();
 	}
 </script>

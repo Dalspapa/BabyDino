@@ -4,6 +4,6 @@ import java.util.*;
 
 public interface FindKidsDAO {
 	
-	public int makeTCard(FindKidsDTO dto);
-	public List<FindKidsDTO> kidsList();
+	public int makeTCard(MakeTCardDTO dto);
+	public List<MakeTCardDTO> kidsList();
 }

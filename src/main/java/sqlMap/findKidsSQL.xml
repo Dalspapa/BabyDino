@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.findKids">
 
-	<insert id="t_makeCard" parameterType="dino.findkids.model.FindKidsDTO">
+	<insert id="t_makeCard" parameterType="dino.findkids.model.MakeTCardDTO">
 		insert into
 			d_teacher
 		values(
@@ -25,7 +25,7 @@
 			#{career_experience}
 		)		
 	</insert>
-	<select id="kidsList" parameterType="Map" resultType="dino.findkids.model.FindKidsDTO">
+	<select id="kidsList" parameterType="Map" resultType="dino.findkids.model.MakeTCardDTO">
 		select
 			*
 		from 

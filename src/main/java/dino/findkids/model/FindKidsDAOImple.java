@@ -13,16 +13,16 @@ public class FindKidsDAOImple implements FindKidsDAO {
 		this.sqlMap = sqlMap;
 	}
 
-	public int makeTCard(FindKidsDTO dto) {
+	public int makeTCard(MakeTCardDTO dto) {
 		
 		int result = sqlMap.insert("t_makeCard", dto);
 		return result;
 	};
 	
 	
-	public List<FindKidsDTO> kidsList() {
+	public List<MakeTCardDTO> kidsList() {
 
-		List<FindKidsDTO> k_list = sqlMap.selectList("kidsList");
+		List<MakeTCardDTO> k_list = sqlMap.selectList("kidsList");
 		return k_list;
 	}
 	

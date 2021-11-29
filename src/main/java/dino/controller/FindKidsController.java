@@ -23,7 +23,7 @@ public class FindKidsController {
 	@RequestMapping("/findKids.do")
 	public ModelAndView findKids() {
 		
-		List<FindKidsDTO> k_list = findKidsService.kidsList();
+		List<MakeTCardDTO> k_list = findKidsService.kidsList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("k_list", k_list);
 		mav.setViewName("findKids/findKids");		
@@ -31,7 +31,7 @@ public class FindKidsController {
 	}
 	
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
-	public ModelAndView makeTeacherCard(FindKidsDTO dto) {
+	public ModelAndView makeTeacherCard(MakeTCardDTO dto) {
 		
 		int result = findKidsService.makeTCard(dto);
 		
