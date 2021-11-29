@@ -22,6 +22,7 @@
 			</div>
 		</div>
 	</section>
+	<hr/>
 	<section>
 		<div class="container">
 			<div class="row">
