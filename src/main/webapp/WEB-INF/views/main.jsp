@@ -188,7 +188,10 @@ footer{
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">돌봄신청</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">아이찾기</a></li>
+                        <li class="nav-item"><a class="nav-link" href="findKids.do">아이찾기</a></li>
+                        <!-- make_t_card Test -->
+                        <li class="nav-item"><a class="nav-link" href="findKids.do">아이찾기</a></li>
+                        
                         <li class="nav-item"><a class="nav-link" href="#signup">궁금해요</a></li>
                         <li class="nav-item"><a class="nav-link" href="loginForm.do"><img class="mypage_icon" src="./common/img/icons/icons_main.png" /></a></li>
                     </ul>
