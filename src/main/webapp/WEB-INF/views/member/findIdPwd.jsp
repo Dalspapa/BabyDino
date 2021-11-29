@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +7,13 @@
 <title>ID / PWD 찾기</title>
 </head>
 <body>
-	<h1>계정 찾기</h1>
+   <h1>계정 찾기</h1>
    <section>
       <article>
          <form>
             <div>
-               <button type="button" onclick="div_find_id();">아이디 찾기</button>
-               <button type="button" onclick="div_find_pwd();">비밀번호 찾기</button>
+               <button type="button" onclick="find_id();">아이디 찾기</button>
+               <button type="button" onclick="find_pwd();">비밀번호 찾기</button>
                <!-- <button type="button" name="비밀번호찾기" value="비밀번호찾기" onclick="find_id()"> -->
             </div>
          </form>
@@ -76,20 +76,25 @@
       </article>
    </section>
 </body>
+<script src="./common/js/jquery-3.6.0.min.js"></script>
 <script>
-//아이디찾기 보이기숨기기
-	function div_find_id() {
-	      document.getElementById("find_pwd").style.display = 'none';
-	      if(document.getElementById("find_id").style.display == 'none'){
-	        document.getElementById("find_id").style.display = 'block';
-	      }
-	  
-	}
-//비밀번호 찾기 보이기 숨기기
-	function div_find_pwd() {
-	  
-	      document.getElementById("find_pwd").style.display = 'block';
-	      document.getElementById("find_id").style.display = 'none'
-	   }
+//아이디찾기 비밀번호 찾기 js
+let a = $('#find_id');
+let b = $('#find_pwd');
+$(document).ready(function() {               
+    a.show();
+    b.hide();   
+});
+function find_id(){        
+a.show();
+b.hide();
+
+}
+function find_pwd(){  
+a.hide();
+b.show();
+
+}
+
 </script>
 </html>
