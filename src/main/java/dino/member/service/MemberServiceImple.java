@@ -18,8 +18,8 @@ public class MemberServiceImple implements MemberService {
 	//Start
 	
 	public int memberJoin(MemberDto memberDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = memberDao.memberJoin(memberDto);
+		return result;
 	}
 
 	public boolean idCheck(String id) {

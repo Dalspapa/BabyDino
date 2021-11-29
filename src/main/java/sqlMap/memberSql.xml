@@ -20,4 +20,22 @@
 		WHERE 
 			ID = #{id}
 	</select>
+	<insert id="joinMember" parameterType="dino.Dto.MemberDto">
+		INSERT INTO 
+            d_member 
+        values (
+            D_MEMBER_IDX.NEXTVAL,
+            #{id}, 
+            #{pwd},
+            #{name},
+           	#{gender}, <!--gender -->
+            sysdate, <!-- date type으로 넣어야함 -->
+         	#{tel},
+            #{member_type}, <!-- memberType -->
+            sysdate,
+            #{addr1}, <!-- 주소  -->
+           	null,
+           	null
+        )
+	</insert>
 </mapper> 
