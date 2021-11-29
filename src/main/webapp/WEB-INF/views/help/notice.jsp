@@ -22,7 +22,7 @@
 			<tr>
 				<td colspan="3" align="center">
 				등록된 게시글이 없습니다.
-				</td>
+				</td>ㅈ;ㄴ
 			</tr>
 		</c:if>
 		<c:forEach var="dto" items="${list }">
@@ -37,16 +37,7 @@
 			</tr>
 		</c:forEach>
 	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="4" align="center">
-			${pageStr }
-			</td>
-			<td align="center">
-			<a href="bbsWrite.do">글쓰기</a>
-			</td>
-		</tr>
-	</tfoot>
+	ㅋㅋㅋㅋㅋ진ㅉ
 	</table>
 </body>
 </html>
