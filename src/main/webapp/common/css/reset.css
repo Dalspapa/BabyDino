@@ -1,0 +1,282 @@
+/*  
+  eot : IE 9 이상 버전 대응
+  eot?#iefix: IE 6 ~ 9 버전 대응
+  woff : 크롬, 사파리, 파이어폭스, 안드로이드 대응
+*/
+@font-face {
+    font-family: 'S-Air';
+    src: url('../../common/fonts/Cafe24SsurroundAir.eot');
+    src: url('../../common/fonts/Cafe24SsurroundAir.eot?#iefix') format('embedded-opentype'),
+         url('../../common/fonts/Cafe24SsurroundAir.woff') format('woff'),
+         url('../../common/fonts/Cafe24SsurroundAir.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Binggrae';
+    src: url('../../common/fonts/Binggrae-Bold.eot');
+    src: url('../../common/fonts/Binggrae-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../../common/fonts/Binggrae-Bold.woff') format('woff'),
+         url('../../common/fonts/Binggrae-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*-- 반응형 가로폭 992px 이상  --*/
+@media (min-width: 992px) {
+    #mainNav {
+      padding-top: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+      background-color: transparent;
+      transition: background-color 0.3s ease-in-out;
+    }
+    #mainNav .navbar-brand {
+      padding: 0.5rem 0;
+      color: rgba(255, 255, 255, 0.5);
+      font-size:200%;
+    }
+    #mainNav .nav-link {
+      transition: none;
+      padding: 2rem 1.5rem;
+      color: black
+    }
+    #mainNav .nav-link:hover {
+      color: #64a19d;
+    }
+    #mainNav .nav-link:active {
+      color: #fff;
+    }
+    #mainNav.navbar-shrink {
+      background-color: #eeeeee;
+    }
+    #mainNav.navbar-shrink .navbar-brand {
+      color: #000;
+    }
+    #mainNav.navbar-shrink .nav-link {
+      color: #000;
+      padding: 1.5rem 1.5rem 1.25rem;
+      border-bottom: 0.25rem solid transparent;
+    }
+    #mainNav.navbar-shrink .nav-link:hover {
+      color: #64a19d;
+    }
+    #mainNav.navbar-shrink .nav-link:active {
+      color: #467370;
+    }
+    #mainNav.navbar-shrink .nav-link.active {
+      color: #64a19d;
+      outline: none;
+      border-bottom: 0.25rem solid #64a19d;
+    }
+
+    /* section04 */
+    #section04 {
+        padding: 0 70px;
+    }
+}
+
+/* 가로폭 992px 이하가 되면 헤더 로고 크기 고정 */
+@media (max-width: 992px) {
+    #header-logo {
+        font-size: 1.5rem !important;
+    }
+    #header-logo span {
+        line-height: inherit !important;
+    }
+}
+
+/* 가로폭 576px 이하가 되면 텍스트 가운데 정렬 */
+@media (max-width: 576px) {
+    footer {
+        text-align: center !important;
+    }
+}
+
+
+* {
+    text-decoration: none;
+    list-style: none;
+}
+html {
+    overflow-x: hidden;
+}
+body {
+  cursor: url("../img/icons/cursor_custom01.png") 0 0, auto;
+  box-sizing: border-box;
+}
+.wrapper {
+    margin-top: -80px;
+}
+section {
+    margin: 50px 0;
+}
+
+/* 채팅 아이콘 */
+#chat {
+    z-index: 99999;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+}
+#chat #caht-cnt {
+    position: absolute;
+    left: 10px;
+    top: 3px;
+    background: #cf0000;
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 11px;
+    color: #fff;
+    font-weight: bold;
+    padding: 2px;
+}
+#chat i {
+    font-size: 40px;
+    /* color: ##64a19d; 초록컬러 */ 
+    color: #EADA22;
+}
+
+/* page top icon */
+#top-button {
+    z-index: 99999;
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    z-index: 9999;
+    right: 30px;
+    top: 50%;
+    background: #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transition: 1s;
+}
+#top-button.block {
+    opacity: 1;
+    transition: 1s;
+} 
+#top-button a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    color: black;
+}
+#top-button a i {
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+/* 로그인 modal */
+.login-input {
+    margin: 20px;
+}
+.login-input span {
+    display: block;
+}
+.login-buuton-box {
+    margin: 20px;
+    display: inline;
+}
+.login-buuton-box button a{
+    color: black;
+    text-decoration: none;
+}
+
+/* header */
+header {
+    font-family: 'S-Air', sans-serif;
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+#mainNav {
+    /* background-color: fff; */
+}
+#mainNav #header-logo {
+    color: black;
+}
+#mainNav #header-logo span {
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 1;
+}
+#mainNav .navbar-toggler {
+    font-size: 80%;
+    padding: 0.75rem;
+    color: #64a19d;
+    border: 1px solid #64a19d;
+}
+#mainNav .navbar-toggler:focus {
+    outline: none;
+}
+#mainNav .navbar-brand {
+    color: #000;
+    font-weight: 700;
+    padding: 0.9rem 0;
+}
+#mainNav .navbar-nav .nav-item:hover {
+    color: fade(#fff, 80%);
+    outline: none;
+    background-color: transparent;
+}
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+
+
+/* footer */
+footer {
+    color:#FAD846;
+    background: #68983b;
+    text-align: left;
+    padding: 30px 20px;
+}
+footer .footer-logo {
+    font-family: 'Binggrae';
+    margin-bottom: 50px;
+    display: block;
+    padding-left: 30px;
+}
+footer .footer-logo h5{
+    margin: 0;
+    letter-spacing: 10px;
+}
+footer .footer-address {
+    padding-left: 30px;
+    font-size: 11px;
+}
+footer .footer-copyright {
+    margin-top: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+footer .footer-address p,
+footer .footer-address span {
+    margin: 5px 0;
+}
+footer .footer-address address {
+    margin: 0;
+}
+footer .footer-about {
+    font-family: 'Binggrae';
+    margin: 10px 0 75px 0;
+    display: block;
+}
+footer .footer-about h5{
+    margin: 0;
+}
+footer .footer-menu{
+    font-size: 11px;
+}
+footer .footer-menu p{
+    margin: 5px 0;
+}

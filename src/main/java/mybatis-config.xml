@@ -8,8 +8,8 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<mappers>
-		<mapper resource="sqlMap/empSQL.xml"/>
-		<mapper resource="sqlMap/commonOpSQL.xml"/>
-		<mapper resource="sqlMap/findKidsSQL.xml"/>
+		<mapper resource="sqlMap/memberSql.xml"/>
+		<mapper resource="sqlMap/commonOpSql.xml"/>
+		<mapper resource="sqlMap/findKidsSql.xml"/>
 	</mappers>
 </configuration>

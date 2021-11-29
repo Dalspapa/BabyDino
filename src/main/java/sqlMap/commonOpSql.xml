@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dino.commonop">
+	<!-- Make a TeacherCard -->
+	<select id="t_job_opList" resultType="dino.Dto.CommonOpDto">
+		select 
+			idx, op, c_introduce 
+		from
+			d_common_option
+		where
+			c_category = 11
+		order by idx desc
+			
+	</select>
+	<select id="k_type_opList" resultType="dino.Dto.CommonOpDto">
+		select
+			idx, c_introduce
+		from 
+			d_common_option
+		where
+			c_category = 10
+		order by idx asc
+	</select>
+	<select id="t_care_opList" resultType="dino.Dto.CommonOpDto">
+		select
+			idx, c_introduce
+		from
+			d_common_option
+		where
+			c_category = 5
+		order by idx asc
+	</select>
+	<select id="t_date_opList" resultType="dino.Dto.CommonOpDto">
+		select 
+			idx, c_introduce 
+		from 
+			d_common_option 
+		where 
+			c_category = 2 
+		order by idx asc
+	</select>
+	<select id="t_time_opList" resultType="dino.Dto.CommonOpDto">
+		select 
+			idx, c_introduce 
+		from 
+			d_common_option 
+		where 
+			c_category = 1 
+		order by idx asc
+	</select>
+	<select id="t_bank_opList" resultType="dino.Dto.CommonOpDto">
+		select
+			idx, c_introduce 
+		from 
+			d_common_option 
+		where 
+			c_category = 4 
+		order by idx asc
+	</select>
+	<!-- Make a KidsCard -->
+	<select id="k_tendency" resultType="dino.Dto.CommonOpDto">
+         select 
+            * 
+         from 
+            d_common_option 
+         where 
+            c_category=9
+   </select>
+</mapper>

@@ -25,20 +25,24 @@
 	</bean>
 
 <!-- DAO Area -->
-	<bean id="empDao" class="test.emp.model.EmpDAOImple">
-			<constructor-arg ref="sqlSessionTemplate"/>
-	</bean>
-	<bean id="commonopDao" class="dino.commonop.model.CommonOpDAOImple">
+	<bean id="memberDao" class="dino.member.model.MemberDaoImple">
 		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
-	<bean id="findkidsDao" class="dino.findkids.model.FindKidsDAOImple">
-		<constructor-arg ref="sqlSessionTemplate"/>	
+	<bean id="commonopDao" class="dino.commonop.model.CommonOpDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
+	<bean id="findkidsDao" class="dino.findkids.model.FindKidsDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate" />	
+	</bean>
+	
 <!-- Service Area -->
-	<bean id="commonOpService" class="dino.commonop.model.CommonOpServiceImple">
-		<property name="commonopDao" ref="commonopDao"></property>	
+	<bean id="memberService" class="dino.member.service.MemberServiceImple">
+		<property name="memberDao" ref="memberDao" />
 	</bean>
-	<bean id="findKidsService" class="dino.findkids.model.FindKidsServiceImple">
-		<property name="findkidsDao" ref="findkidsDao"></property>
+	<bean id="commonOpService" class="dino.commonop.service.CommonOpServiceImple">
+		<property name="commonopDao" ref="commonopDao" />	
+	</bean>
+	<bean id="findKidsService" class="dino.findkids.service.FindKidsServiceImple">
+		<property name="findkidsDao" ref="findkidsDao" />
 	</bean>
 </beans>
