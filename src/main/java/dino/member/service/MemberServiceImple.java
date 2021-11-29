@@ -53,4 +53,11 @@ public class MemberServiceImple implements MemberService {
 		return memberDto;
 	}
 
+	//findId
+	public MemberDto findId(String name, String tel) {
+		MemberDto dto = memberDao.findId(name, tel);
+		return dto;
+		
+	}
+
 }

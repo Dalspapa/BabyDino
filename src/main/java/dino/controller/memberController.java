@@ -99,21 +99,27 @@ public class memberController {
 	}
 	
 	
-	
-	
-	@RequestMapping("/icon.do")
-	public String login() {
-		return "";
-	}
-	
 	@RequestMapping("/memberJoin.do")
 	public String join() {
 		return "member/memberJoin";
 	}
 	
+	//아이디 비밀번호 찾기
 	@RequestMapping("/findIdPwd.do")
 	public String findIdPwd() {
+		
 		return "member/findIdPwd";
+	}
+	
+	//아이디 찾기
+	@RequestMapping("/findIdCheck.do")
+	public ModelAndView findIdCheck(@RequestParam("name") String name,@RequestParam("tel") String tel) {
+		MemberDto dto = memberService.findId(name, tel);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto",dto);
+		mav.setViewName("member/findIdCheck");
+		return mav;
 	}
 
 }

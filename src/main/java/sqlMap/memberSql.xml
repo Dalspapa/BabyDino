@@ -20,4 +20,16 @@
 		WHERE 
 			ID = #{id}
 	</select>
+	
+	<select id="findId" parameterType="String" resultType="dino.Dto.MemberDto">
+		SELECT 
+		 	ID 
+		 FROM 
+		 	D_MEMBER  
+		 WHERE  
+		 	NAME = #{name} 
+		 AND 
+		 	TEL = #{tel} 
+
+	</select>
 </mapper> 

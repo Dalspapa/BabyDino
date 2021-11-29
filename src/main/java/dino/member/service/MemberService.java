@@ -11,5 +11,8 @@ public interface MemberService {
 	//login
 	public boolean loginCheck(String id, String pwd);
 	public MemberDto getUserInfo(String id);
+	
+	//FindId
+	public MemberDto findId(String name,String tel);
 
 }

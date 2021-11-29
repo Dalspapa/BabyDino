@@ -50,4 +50,12 @@ public class MemberDaoImple implements MemberDao {
 		return memberDto;
 	}
 
+	//findId
+	public MemberDto findId(String name, String tel) {
+		MemberDto dto = sqlMap.selectOne("findId");
+		return dto;
+	}
+
+
+
 }
