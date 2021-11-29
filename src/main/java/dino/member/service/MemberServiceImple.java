@@ -1,5 +1,9 @@
 package dino.member.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import dino.Dto.MemberDto;
 import dino.member.model.MemberDao;
 
@@ -51,6 +55,16 @@ public class MemberServiceImple implements MemberService {
 	public MemberDto getUserInfo(String id) {
 		MemberDto memberDto = memberDao.getUserInfo(id);
 		return memberDto;
+	}
+
+	//findId
+	public List<MemberDto> findId(String name, String tel) {
+		Map map=new HashMap();
+		map.put("name", name);
+		map.put("tel", tel);
+		List<MemberDto> list = memberDao.findId(map);
+		return list;
+		
 	}
 
 }

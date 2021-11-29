@@ -1,5 +1,7 @@
 package dino.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -132,9 +134,23 @@ public class memberController {
 		return "member/memberJoin";
 	}
 	
+	//아이디 비밀번호 찾기
 	@RequestMapping("/findIdPwd.do")
 	public String findIdPwd() {
+		
 		return "member/findIdPwd";
+	}
+	
+	//아이디 찾기
+	@RequestMapping("/findIdCheck.do")
+	public ModelAndView findIdCheck(@RequestParam("name") String name,@RequestParam("tel") String tel) {
+		
+		List<MemberDto> list = memberService.findId(name, tel);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list",list);
+		mav.setViewName("member/findIdCheck");
+		return mav;
 	}
 
 }

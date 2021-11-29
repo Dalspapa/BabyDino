@@ -1,5 +1,8 @@
 package dino.member.model;
 
+import java.util.List;
+import java.util.Map;
+
 import dino.Dto.MemberDto;
 
 public interface MemberDao {
@@ -11,4 +14,7 @@ public interface MemberDao {
 		//Login
 		public MemberDto loginCheck(String id);
 		public MemberDto getUserInfo(String id);
+		
+		//FindId
+		public List<MemberDto> findId(Map map);
 }
