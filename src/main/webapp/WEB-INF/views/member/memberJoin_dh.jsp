@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,65 +64,85 @@
 </style>
 </head>
 <body>
-
+<form name="memberJoinForm" action="memberJoin.do" method="post"> 
 	<div id="step1">
 		<h1>사용하실 아이디와 비밀번호를 입력해주세요.</h1>
-		<!--   <form name="memberJoinForm" action="memberJoin.do" method="post"> -->
-		<form name="memberJoinForm">
-			<!-- 회원가입 폼 -->
+		<!-- 회원가입 폼 -->
+		
 			<section>
 
 				<div>
 					<label for="id">아이디 </label>
-					<input id="id" type="text" class="form-control" name="id" placeholder="영문 또는 숫자 6~20자리를 입력해주세요." size="40">
+					<input id="id" type="text" class="form-control" name="id" 
+						placeholder="영문 또는 숫자 6~20자리를 입력해주세요." size="40"
+						autocomplete="off" />
 				</div>
 
 				<div>
 					<label for="pwd">비밀번호</label>
-					<input id="pwd" type="password" class="form-control" name="pwd" placeholder="6자리 이상 입력해주세요." minlength="6">
+					<input id="pwd" type="password" class="form-control" 
+						name="pwd" placeholder="6자리 이상 입력해주세요." minlength="6"
+						autocomplete="off" />
 				</div>
 
 				<div>
 					<label for="pwdok">비밀번호 확인</label>
-					<input id="pwdok" class="form-control" type="password" placeholder="비밀번호를 다시 입력해주세요." width="100">
+					<input id="pwdok" class="form-control" type="password" 
+						placeholder="비밀번호를 다시 입력해주세요." width="100" 
+						autocomplete="off" />
 				</div>
 
 				<div>
 					<label for="name">이름</label>
-					<input id="name" type="text" class="form-control" name="name" width="100">
+					<input id="name" type="text" class="form-control" name="name" 
+						width="100" autocomplete="off" />
 				</div>
 
 				<div>
 					<label>성별</label>
-					<input type="radio" name="gender" value="남" width="100" />남
-					<input type="radio" name="gender" value="여" width="100" />여
+					<input type="radio" name="gender" value="2" 
+						autocomplete="off" width="100" />남
+					<input type="radio" name="gender" value="1" 
+						autocomplete="off" width="100" />여
 				</div>
 
 				<div>
 					<label for="birth">생일</label>
-					<input id="birth" type="date" class="form-control" name="birth" width="100">
+					<input id="birth" type="date" class="form-control" 
+					 autocomplete="off" name="birth" width="100" />
 				</div>
 
 				<div>
 					<label for="tel">전화번호</label>
-					<input id="tel" type="tel" name="tel" class="form-control" width="100">
+					<input id="tel" type="tel" name="tel" class="form-control" 
+					autocomplete="off" width="100" />
 				</div>
 
 				<div>
 					<label for="address">주소</label>
-					<input id="address" type="text" class="form-control" name="address" readonly />
+					<input id="address" type="text" class="form-control" 
+						autocomplete="off" name="addr1" readonly />
 					<button type="button" onclick="kakaopost()">주소찾기</button>
 				</div>
-
+				
+				<!--TO DO : 상세주소 합친 벨류 히든에 넣어서 addr1컬럼에 넣는 코드로 바꿔야함 -->
 				<div>
 					<label for="detail">상세주소</label>
-					<input id="detail" type="text" class="form-control" name="detail" placeholder="상세주소 입력" />
+					<input id="detail" type="text" class="form-control" 
+					autocomplete="off" placeholder="상세주소 입력" />
 				</div>
+				<!-- Full Address -->
+				<!-- <input type="hidden" name="addr1" value="" /> -->
+				
+				<!-- TO Do List : Add Addr2,3 $ E-mail -->
+				
+				<!-- Member Type -->
+				<input type="hidden" name="member_type" value="${param.member_type }" />
 				<div>
 					<button type="button" onclick="goStep(2)">다음으로</button>
 				</div>
 			</section>
-		</form>
+		
 	</div>
 	
 	<div id="step2" class="d-none">
@@ -216,8 +238,9 @@
 			</div>
 			<div>휴대폰 번호</div>
 		</section>
-		<button>가입하기</button>
+		<button type="submit">가입하기</button>
 	</div>
+</form>
 </body>
 <!-- 카카오 주소 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -292,6 +315,8 @@
 		}
 	}
 
+	
+	/*full address 받아와야함.*/
 	function kakaopost() {
 		new daum.Postcode({
 			oncomplete : function(data) {
