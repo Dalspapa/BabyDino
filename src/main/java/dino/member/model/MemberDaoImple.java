@@ -15,9 +15,10 @@ public class MemberDaoImple implements MemberDao {
 
 	//Start
 	
+	//join
 	public int memberJoin(MemberDto memberDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlMap.insert("joinMember", memberDto);
+		return result;
 	}
 
 	public boolean idCheck(String id) {
@@ -26,7 +27,7 @@ public class MemberDaoImple implements MemberDao {
 	}
 
 	
-	
+	//login
 	public MemberDto loginCheck(String id) {
 		MemberDto memberDto = sqlMap.selectOne("loginCheck", id);
 		
