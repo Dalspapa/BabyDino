@@ -1,5 +1,7 @@
 package dino.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.MemberDto;
+import dino.Dto.memberDto;
 import dino.member.service.MemberService;
 
 @Controller
@@ -43,7 +45,7 @@ public class memberController {
 		mav.setViewName("main");
 		
 		if (result == true) {
-			MemberDto memberDto = memberService.getUserInfo(id);
+			memberDto memberDto = memberService.getUserInfo(id);
 			String userName = memberDto.getName();
 			int memberType = memberDto.getMember_type();
 			
@@ -107,7 +109,7 @@ public class memberController {
 	}
 	
 	@RequestMapping(value = "/memberJoin.do", method = RequestMethod.POST)
-	public ModelAndView joinSubmit(MemberDto memberDto) {
+	public ModelAndView joinSubmit(memberDto memberDto) {
 		
 		int result = memberService.memberJoin(memberDto);
 		
@@ -132,9 +134,23 @@ public class memberController {
 		return "member/memberJoin";
 	}
 	
+	//아이디 비밀번호 찾기
 	@RequestMapping("/findIdPwd.do")
 	public String findIdPwd() {
+		
 		return "member/findIdPwd";
+	}
+	
+	//아이디 찾기
+	@RequestMapping("/findIdCheck.do")
+	public ModelAndView findIdCheck(@RequestParam("name") String name,@RequestParam("tel") String tel) {
+		
+		List<memberDto> list = memberService.findId(name, tel);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list",list);
+		mav.setViewName("member/findIdCheck");
+		return mav;
 	}
 
 }

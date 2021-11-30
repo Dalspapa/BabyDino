@@ -1,8 +1,11 @@
 package dino.member.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.MemberDto;
+import dino.Dto.memberDto;
 
 public class MemberDaoImple implements MemberDao {
 	
@@ -16,7 +19,7 @@ public class MemberDaoImple implements MemberDao {
 	//Start
 	
 	//join
-	public int memberJoin(MemberDto memberDto) {
+	public int memberJoin(memberDto memberDto) {
 		int result = sqlMap.insert("joinMember", memberDto);
 		return result;
 	}
@@ -28,8 +31,8 @@ public class MemberDaoImple implements MemberDao {
 
 	
 	//login
-	public MemberDto loginCheck(String id) {
-		MemberDto memberDto = sqlMap.selectOne("loginCheck", id);
+	public memberDto loginCheck(String id) {
+		memberDto memberDto = sqlMap.selectOne("loginCheck", id);
 		
 		//TestCode
 		System.out.println("Dao.java memberDto : " + memberDto);
@@ -42,13 +45,21 @@ public class MemberDaoImple implements MemberDao {
 		
 	}
 
-	public MemberDto getUserInfo(String id) {
-		MemberDto memberDto = sqlMap.selectOne("getUserInfo", id);
+	public memberDto getUserInfo(String id) {
+		memberDto memberDto = sqlMap.selectOne("getUserInfo", id);
 		
 		//TestCode
 		System.out.println("Dao.java memberDto : " + memberDto);
 		
 		return memberDto;
 	}
+
+	//findId
+	public List<memberDto> findId(Map map) {
+		List<memberDto> list = sqlMap.selectList("findId", map);
+		return list;
+	}
+
+
 
 }

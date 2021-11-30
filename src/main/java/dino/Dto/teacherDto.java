@@ -1,6 +1,6 @@
 package dino.Dto;
 
-public class MakeTCardDto {
+public class teacherDto {
 
 	//Teacher Card Table
 	private int idx;
@@ -24,12 +24,12 @@ public class MakeTCardDto {
 	//Reserve Table
 	
 	//기본생성자
-	public MakeTCardDto() {
+	public teacherDto() {
 		super();
 	}
 	
 	//인자생성자
-	public MakeTCardDto(int idx, int d_member_idx, int job, String badge, String kid_type, String t_care_type,
+	public teacherDto(int idx, int d_member_idx, int job, String badge, String kid_type, String t_care_type,
 			String schedule_day, String schedule_time, int t_cost, String t_introduce, int bank, String acnum,
 			int cctvagree, String t_sexcrime, String career_experience) {
 		super();

@@ -38,4 +38,8 @@
            	null
         )
 	</insert>
+	
+	<select id="findId" parameterType="Map" resultType="dino.Dto.MemberDto">
+		select id from d_member where name=#{name} and tel=#{tel}
+	</select>
 </mapper> 
