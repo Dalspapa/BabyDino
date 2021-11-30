@@ -8,7 +8,7 @@ import dino.Dto.MemberDto;
 public interface MemberDao {
 
 		//Join
-		public int memberJoin(MemberDto MemberDto);
+		public int memberJoin(MemberDto memberDto);
 		public boolean idCheck(String id);
 		
 		//Login

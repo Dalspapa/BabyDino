@@ -7,7 +7,7 @@ import dino.Dto.MemberDto;
 public interface MemberService {
 
 	//join
-	public int memberJoin(MemberDto MemberDto);
+	public int memberJoin(MemberDto memberDto);
 	public boolean idCheck(String id);
 
 	//login

@@ -21,8 +21,8 @@ public class MemberServiceImple implements MemberService {
 
 	//Start
 	
-	public int memberJoin(MemberDto MemberDto) {
-		int result = memberDao.memberJoin(MemberDto);
+	public int memberJoin(MemberDto memberDto) {
+		int result = memberDao.memberJoin(memberDto);
 		return result;
 	}
 
@@ -32,10 +32,10 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	public boolean loginCheck(String id,String pwd) {
-		MemberDto MemberDto = memberDao.loginCheck(id);
+		MemberDto memberDto = memberDao.loginCheck(id);
 		
-		if (MemberDto != null) {
-			String dbPwd = MemberDto.getPwd();
+		if (memberDto != null) {
+			String dbPwd = memberDto.getPwd();
 			
 			//TestCode
 			System.out.println("Service.java dbPwd : " + dbPwd);
@@ -53,8 +53,8 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	public MemberDto getUserInfo(String id) {
-		MemberDto MemberDto = memberDao.getUserInfo(id);
-		return MemberDto;
+		MemberDto memberDto = memberDao.getUserInfo(id);
+		return memberDto;
 	}
 
 	//findId
