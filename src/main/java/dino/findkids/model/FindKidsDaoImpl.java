@@ -4,7 +4,7 @@ import java.util.*;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.MakeTCardDto;
+import dino.Dto.*;
 
 public class FindKidsDaoImpl implements FindKidsDao {
 	

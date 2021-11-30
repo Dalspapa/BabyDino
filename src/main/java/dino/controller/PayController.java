@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class payController {
+public class PayController {
 	
 	@RequestMapping("/kakaoPay.do")
 	public String kakayPay() {

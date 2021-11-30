@@ -133,5 +133,11 @@ public class MemberDto {
 	public void setAddr3(String addr3) {
 		this.addr3 = addr3;
 	}
-
+	
+	   @Override
+	   public String toString() {
+	     String str = "멤버타입" + member_type + "아이디 : " + id + "\n비밀번호 : " + pwd + "\n이름 : " + name + "\n성별 : " + gender + "\n전화번호 : " + tel + "\n주소 :" + addr1;
+	     System.out.println(str);
+	      return str;
+	   }
 }

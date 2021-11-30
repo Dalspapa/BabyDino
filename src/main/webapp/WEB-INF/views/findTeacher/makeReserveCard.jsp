@@ -31,7 +31,7 @@
 <h1>예약테이블 만들기</h1>
 <section>
 	<form>
-		<div class="container">
+		<div class="wrapper">
 			
 			<div>
 				<div>원하는 날짜가 언제인가요 ?</div>
@@ -48,6 +48,7 @@
 					<input type="text" name="timepicker2" class="timepicker2"/>
 				</div>
 			</div>
+			
 			<hr>
 			<div>
 				<div class="row">
@@ -57,6 +58,7 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</form>	
 </section>

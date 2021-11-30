@@ -2,7 +2,7 @@ package dino.findkids.service;
 
 import java.util.*;
 
-import dino.Dto.MakeTCardDto;
+import dino.Dto.*;
 
 public interface FindKidsService {
 

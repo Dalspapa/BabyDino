@@ -2,7 +2,7 @@ package dino.findkids.model;
 
 import java.util.*;
 
-import dino.Dto.MakeTCardDto;
+import dino.Dto.*;
 
 public interface FindKidsDao {
 	

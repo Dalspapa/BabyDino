@@ -17,6 +17,12 @@
 	<form>
 		<div class="container">
 		
+			<div>
+				<a>
+					<img alt="프로필사진" src="./common/img/faq-img.png">
+				</a>
+			</div>
+			
 			<div class="row">
 				<div >아이이름</div> 
 				<div class="col-md-2">

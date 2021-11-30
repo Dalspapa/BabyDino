@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.Dto.CommonOpDto;
-import dino.Dto.MakeTCardDto;
+import dino.Dto.*;
 import dino.commonop.service.CommonOpService;
 import dino.findkids.service.FindKidsService;
 
@@ -22,6 +22,7 @@ public class FindKidsController {
 	@Autowired
 	private FindKidsService findKidsService;
 
+	//findkids page 
 	@RequestMapping("/findKids.do")
 	public ModelAndView findKids() {
 		
@@ -32,6 +33,17 @@ public class FindKidsController {
 		return mav;
 	}
 	
+	//set img -> common_imgT
+	/*
+	 * @RequestMapping("/img.do") public ModelAndView setImg(common_ImgDto dto) {
+	 * 
+	 * 
+	 * ModelAndView mav = new ModelAndView();
+	 * 
+	 * 
+	 * return mav; }
+	 */
+	//make a teacher card
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
 	public ModelAndView makeTeacherCard(MakeTCardDto dto) {
 		
@@ -44,6 +56,7 @@ public class FindKidsController {
 		return mav;
 	}
 	
+	//makeTCard page get common_option
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.GET)
 	public ModelAndView makeTeacherCard() {
 		
@@ -64,6 +77,7 @@ public class FindKidsController {
 		return mav;
 	}
 	
+	//dino_compulsory page move
 	@RequestMapping("/compulsoryCheck.do")
 	public ModelAndView compulsoryCheck() {
 		ModelAndView mav = new ModelAndView();

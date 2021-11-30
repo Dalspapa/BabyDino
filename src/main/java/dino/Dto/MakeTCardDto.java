@@ -172,7 +172,6 @@ public class MakeTCardDto {
 		this.career_experience = career_experience;
 	}
 	
-	
 	//toString
 	@Override
 	public String toString() {
@@ -184,7 +183,5 @@ public class MakeTCardDto {
 		System.out.println(str);
 		return str;
 	}
-	
-	
 	
 }

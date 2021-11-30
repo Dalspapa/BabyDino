@@ -1,5 +1,7 @@
 package dino.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +18,7 @@ import dino.Dto.MemberDto;
 import dino.member.service.MemberService;
 
 @Controller
-public class memberController {
+public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
@@ -43,9 +45,9 @@ public class memberController {
 		mav.setViewName("main");
 		
 		if (result == true) {
-			MemberDto memberDto = memberService.getUserInfo(id);
-			String userName = memberDto.getName();
-			int memberType = memberDto.getMember_type();
+			MemberDto MemberDto = memberService.getUserInfo(id);
+			String userName = MemberDto.getName();
+			int memberType = MemberDto.getMember_type();
 			
 			//TestCode
 			System.out.println("Controller.java memberType : " + memberType);
@@ -101,19 +103,54 @@ public class memberController {
 	
 	
 	
-	@RequestMapping("/icon.do")
-	public String login() {
-		return "";
+	@RequestMapping("/join.do")
+	public String goJoinPage() {
+		return "member/join";
 	}
+	
+	@RequestMapping(value = "/memberJoin.do", method = RequestMethod.POST)
+	public ModelAndView joinSubmit(MemberDto MemberDto) {
+		
+		int result = memberService.memberJoin(MemberDto);
+		
+		String msg = result > 0 ? "성공" : "실패";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("main");
+		
+		return mav;
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/memberJoin.do")
 	public String join() {
 		return "member/memberJoin";
 	}
 	
+	//아이디 비밀번호 찾기
 	@RequestMapping("/findIdPwd.do")
 	public String findIdPwd() {
+		
 		return "member/findIdPwd";
+	}
+	
+	//아이디 찾기
+	@RequestMapping("/findIdCheck.do")
+	public ModelAndView findIdCheck(@RequestParam("name") String name,@RequestParam("tel") String tel) {
+		
+		List<MemberDto> list = memberService.findId(name, tel);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list",list);
+		mav.setViewName("member/findIdCheck");
+		return mav;
 	}
 
 }

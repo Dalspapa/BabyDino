@@ -1,5 +1,9 @@
 package dino.member.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import dino.Dto.MemberDto;
 import dino.member.model.MemberDao;
 
@@ -17,9 +21,9 @@ public class MemberServiceImple implements MemberService {
 
 	//Start
 	
-	public int memberJoin(MemberDto memberDto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int memberJoin(MemberDto MemberDto) {
+		int result = memberDao.memberJoin(MemberDto);
+		return result;
 	}
 
 	public boolean idCheck(String id) {
@@ -28,10 +32,10 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	public boolean loginCheck(String id,String pwd) {
-		MemberDto memberDto = memberDao.loginCheck(id);
+		MemberDto MemberDto = memberDao.loginCheck(id);
 		
-		if (memberDto != null) {
-			String dbPwd = memberDto.getPwd();
+		if (MemberDto != null) {
+			String dbPwd = MemberDto.getPwd();
 			
 			//TestCode
 			System.out.println("Service.java dbPwd : " + dbPwd);
@@ -49,8 +53,18 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	public MemberDto getUserInfo(String id) {
-		MemberDto memberDto = memberDao.getUserInfo(id);
-		return memberDto;
+		MemberDto MemberDto = memberDao.getUserInfo(id);
+		return MemberDto;
+	}
+
+	//findId
+	public List<MemberDto> findId(String name, String tel) {
+		Map map = new HashMap();
+		map.put("name", name);
+		map.put("tel", tel);
+		List<MemberDto> list = memberDao.findId(map);
+		return list;
+		
 	}
 
 }
