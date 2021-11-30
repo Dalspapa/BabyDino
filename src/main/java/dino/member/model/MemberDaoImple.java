@@ -19,8 +19,8 @@ public class MemberDaoImple implements MemberDao {
 	//Start
 	
 	//join
-	public int memberJoin(MemberDto MemberDto) {
-		int result = sqlMap.insert("joinMember", MemberDto);
+	public int memberJoin(MemberDto memberDto) {
+		int result = sqlMap.insert("joinMember", memberDto);
 		return result;
 	}
 
@@ -32,13 +32,13 @@ public class MemberDaoImple implements MemberDao {
 	
 	//login
 	public MemberDto loginCheck(String id) {
-		MemberDto MemberDto = sqlMap.selectOne("loginCheck", id);
+		MemberDto memberDto = sqlMap.selectOne("loginCheck", id);
 		
 		//TestCode
-		System.out.println("Dao.java memberDto : " + MemberDto);
+		System.out.println("Dao.java memberDto : " + memberDto);
 		
-		if (MemberDto != null) {
-			return MemberDto;
+		if (memberDto != null) {
+			return memberDto;
 		} else {
 			return null;
 		}
@@ -46,12 +46,12 @@ public class MemberDaoImple implements MemberDao {
 	}
 
 	public MemberDto getUserInfo(String id) {
-		MemberDto MemberDto = sqlMap.selectOne("getUserInfo", id);
+		MemberDto memberDto = sqlMap.selectOne("getUserInfo", id);
 		
 		//TestCode
-		System.out.println("Dao.java memberDto : " + MemberDto);
+		System.out.println("Dao.java memberDto : " + memberDto);
 		
-		return MemberDto;
+		return memberDto;
 	}
 
 	//findId
