@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.MemberDto;
+import dino.Dto.memberDto;
 import dino.member.service.MemberService;
 
 @Controller
@@ -45,7 +45,7 @@ public class memberController {
 		mav.setViewName("main");
 		
 		if (result == true) {
-			MemberDto memberDto = memberService.getUserInfo(id);
+			memberDto memberDto = memberService.getUserInfo(id);
 			String userName = memberDto.getName();
 			int memberType = memberDto.getMember_type();
 			
@@ -109,7 +109,7 @@ public class memberController {
 	}
 	
 	@RequestMapping(value = "/memberJoin.do", method = RequestMethod.POST)
-	public ModelAndView joinSubmit(MemberDto memberDto) {
+	public ModelAndView joinSubmit(memberDto memberDto) {
 		
 		int result = memberService.memberJoin(memberDto);
 		
@@ -145,7 +145,7 @@ public class memberController {
 	@RequestMapping("/findIdCheck.do")
 	public ModelAndView findIdCheck(@RequestParam("name") String name,@RequestParam("tel") String tel) {
 		
-		List<MemberDto> list = memberService.findId(name, tel);
+		List<memberDto> list = memberService.findId(name, tel);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);

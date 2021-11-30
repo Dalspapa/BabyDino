@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.CommonOpDto;
+import dino.Dto.common_OptionDto;
 import dino.commonop.service.CommonOpService;
 
 @Controller
@@ -29,7 +29,7 @@ public class FindTeacherController {
 	@RequestMapping("/makeKidsCard.do")
 	public ModelAndView makeKidsCard() {
 		
-		List<CommonOpDto> list = commonOpService.ktendency();
+		List<common_OptionDto> list = commonOpService.ktendency();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
 		mav.setViewName("findTeacher/makeKidsCard");

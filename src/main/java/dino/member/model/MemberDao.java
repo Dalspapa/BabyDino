@@ -3,18 +3,18 @@ package dino.member.model;
 import java.util.List;
 import java.util.Map;
 
-import dino.Dto.MemberDto;
+import dino.Dto.memberDto;
 
 public interface MemberDao {
 
 		//Join
-		public int memberJoin(MemberDto memberDto);
+		public int memberJoin(memberDto memberDto);
 		public boolean idCheck(String id);
 		
 		//Login
-		public MemberDto loginCheck(String id);
-		public MemberDto getUserInfo(String id);
+		public memberDto loginCheck(String id);
+		public memberDto getUserInfo(String id);
 		
 		//FindId
-		public List<MemberDto> findId(Map map);
+		public List<memberDto> findId(Map map);
 }

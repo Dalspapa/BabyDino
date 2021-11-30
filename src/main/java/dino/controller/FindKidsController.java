@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.CommonOpDto;
-import dino.Dto.MakeTCardDto;
+import dino.Dto.common_OptionDto;
+import dino.Dto.teacherDto;
 import dino.commonop.service.CommonOpService;
 import dino.findkids.service.FindKidsService;
 
@@ -25,7 +25,7 @@ public class FindKidsController {
 	@RequestMapping("/findKids.do")
 	public ModelAndView findKids() {
 		
-		List<MakeTCardDto> k_list = findKidsService.kidsList();
+		List<teacherDto> k_list = findKidsService.kidsList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("k_list", k_list);
 		mav.setViewName("findKids/findKids");		
@@ -33,7 +33,7 @@ public class FindKidsController {
 	}
 	
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
-	public ModelAndView makeTeacherCard(MakeTCardDto dto) {
+	public ModelAndView makeTeacherCard(teacherDto dto) {
 		
 		int result = findKidsService.makeTCard(dto);
 		
@@ -47,12 +47,12 @@ public class FindKidsController {
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.GET)
 	public ModelAndView makeTeacherCard() {
 		
-		List<CommonOpDto> list = commonOpService.t_job_opList();
-		List<CommonOpDto> k_list = commonOpService.k_type_opList();
-		List<CommonOpDto> c_list = commonOpService.t_care_opList();
-		List<CommonOpDto> d_list = commonOpService.t_date_opList();
-		List<CommonOpDto> t_list = commonOpService.t_time_opList();
-		List<CommonOpDto> b_list = commonOpService.t_bank_opList();
+		List<common_OptionDto> list = commonOpService.t_job_opList();
+		List<common_OptionDto> k_list = commonOpService.k_type_opList();
+		List<common_OptionDto> c_list = commonOpService.t_care_opList();
+		List<common_OptionDto> d_list = commonOpService.t_date_opList();
+		List<common_OptionDto> t_list = commonOpService.t_time_opList();
+		List<common_OptionDto> b_list = commonOpService.t_bank_opList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("k_list", k_list);
