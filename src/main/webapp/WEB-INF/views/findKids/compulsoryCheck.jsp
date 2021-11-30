@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="./common/css/bootstrap.min.css">
   <link rel="stylesheet" href="./common/css/reset.css">
   <link rel="stylesheet" href="./common/css/main.css">
-<script src="js/signature_draw.js"></script>
+
+<script src="common/js/signature_draw.js"></script>
+
 <style>
 .canvas-draw-box {
 	position: relative;

@@ -181,6 +181,7 @@ public class MakeTCardDto {
 				"\ncare_type : " + t_care_type + "\ns_day : " + schedule_day + "\ns_time : " + schedule_time + "\ncost : " + t_cost + 
 				"\nintro : " + t_introduce + "\nbank : " + bank + "\nacnum : " + acnum + "\ncctv : " + cctvagree + "\nsex : " + t_sexcrime +
 				"\ncareer : " + career_experience;
+		System.out.println(str);
 		return str;
 	}
 	
