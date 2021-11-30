@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.common_OptionDto;
-import dino.Dto.teacherDto;
+import dino.Dto.CommonOpDto;
+import dino.Dto.*;
 import dino.commonop.service.CommonOpService;
 import dino.findkids.service.FindKidsService;
 
@@ -22,18 +22,30 @@ public class FindKidsController {
 	@Autowired
 	private FindKidsService findKidsService;
 
+	//findkids page 
 	@RequestMapping("/findKids.do")
 	public ModelAndView findKids() {
 		
-		List<teacherDto> k_list = findKidsService.kidsList();
+		List<MakeTCardDto> k_list = findKidsService.kidsList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("k_list", k_list);
 		mav.setViewName("findKids/findKids");		
 		return mav;
 	}
 	
+	//set img -> common_imgT
+	/*
+	 * @RequestMapping("/img.do") public ModelAndView setImg(common_ImgDto dto) {
+	 * 
+	 * 
+	 * ModelAndView mav = new ModelAndView();
+	 * 
+	 * 
+	 * return mav; }
+	 */
+	//make a teacher card
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
-	public ModelAndView makeTeacherCard(teacherDto dto) {
+	public ModelAndView makeTeacherCard(MakeTCardDto dto) {
 		
 		int result = findKidsService.makeTCard(dto);
 		
@@ -44,15 +56,16 @@ public class FindKidsController {
 		return mav;
 	}
 	
+	//makeTCard page get common_option
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.GET)
 	public ModelAndView makeTeacherCard() {
 		
-		List<common_OptionDto> list = commonOpService.t_job_opList();
-		List<common_OptionDto> k_list = commonOpService.k_type_opList();
-		List<common_OptionDto> c_list = commonOpService.t_care_opList();
-		List<common_OptionDto> d_list = commonOpService.t_date_opList();
-		List<common_OptionDto> t_list = commonOpService.t_time_opList();
-		List<common_OptionDto> b_list = commonOpService.t_bank_opList();
+		List<CommonOpDto> list = commonOpService.t_job_opList();
+		List<CommonOpDto> k_list = commonOpService.k_type_opList();
+		List<CommonOpDto> c_list = commonOpService.t_care_opList();
+		List<CommonOpDto> d_list = commonOpService.t_date_opList();
+		List<CommonOpDto> t_list = commonOpService.t_time_opList();
+		List<CommonOpDto> b_list = commonOpService.t_bank_opList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("k_list", k_list);
@@ -64,6 +77,7 @@ public class FindKidsController {
 		return mav;
 	}
 	
+	//dino_compulsory page move
 	@RequestMapping("/compulsoryCheck.do")
 	public ModelAndView compulsoryCheck() {
 		ModelAndView mav = new ModelAndView();

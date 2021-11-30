@@ -2,7 +2,7 @@ package dino.findkids.service;
 
 import java.util.*;
 
-import dino.Dto.teacherDto;
+import dino.Dto.*;
 import dino.findkids.model.FindKidsDao;
 
 public class FindKidsServiceImple implements FindKidsService {
@@ -17,16 +17,16 @@ public class FindKidsServiceImple implements FindKidsService {
 	}
 
 
-	public int makeTCard(teacherDto dto) {
+	public int makeTCard(MakeTCardDto dto) {
 		
 		int result = findkidsDao.makeTCard(dto);
 		return result;
 	}
 	
 	
-	public List<teacherDto> kidsList() {
+	public List<MakeTCardDto> kidsList() {
 
-		List<teacherDto> k_list = findkidsDao.kidsList();
+		List<MakeTCardDto> k_list = findkidsDao.kidsList();
 		return k_list;
 	}
 	

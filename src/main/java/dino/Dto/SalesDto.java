@@ -2,7 +2,7 @@ package dino.Dto;
 
 import java.sql.*;
 
-public class salesDto {
+public class SalesDto {
 
 	private int idx;
 	private int s_status;
@@ -11,12 +11,12 @@ public class salesDto {
 	private int d_member_idx; //d_member_idx or d_advertisement
 	
 	
-	public salesDto() {
+	public SalesDto() {
 		super();
 	}
 
 
-	public salesDto(int idx, int s_status, int s_cost, Date s_date, int d_member_idx) {
+	public SalesDto(int idx, int s_status, int s_cost, Date s_date, int d_member_idx) {
 		super();
 		this.idx = idx;
 		this.s_status = s_status;

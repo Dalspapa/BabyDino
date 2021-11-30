@@ -1,14 +1,14 @@
 package dino.Dto;
 
-public class chatroomDto {
+public class ChatRoomDto {
 
 	private int idx;
 
-	public chatroomDto() {
+	public ChatRoomDto() {
 		super();
 	}
 
-	public chatroomDto(int idx) {
+	public ChatRoomDto(int idx) {
 		super();
 		this.idx = idx;
 	}

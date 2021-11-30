@@ -2,18 +2,18 @@ package dino.commonop.service;
 
 import java.util.*;
 
-import dino.Dto.common_OptionDto;
+import dino.Dto.CommonOpDto;
 
 public interface CommonOpService {
 
 	//Make a TeacherCard
-	public List<common_OptionDto> t_job_opList();
-	public List<common_OptionDto> k_type_opList();
-	public List<common_OptionDto> t_care_opList();
-	public List<common_OptionDto> t_date_opList();
-	public List<common_OptionDto> t_time_opList();
-	public List<common_OptionDto> t_bank_opList();
+	public List<CommonOpDto> t_job_opList();
+	public List<CommonOpDto> k_type_opList();
+	public List<CommonOpDto> t_care_opList();
+	public List<CommonOpDto> t_date_opList();
+	public List<CommonOpDto> t_time_opList();
+	public List<CommonOpDto> t_bank_opList();
 	
 	//Make a KidsCard
-	public List<common_OptionDto> ktendency();
+	public List<CommonOpDto> ktendency();
 }

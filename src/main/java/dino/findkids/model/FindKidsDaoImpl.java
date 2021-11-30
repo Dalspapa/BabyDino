@@ -4,7 +4,7 @@ import java.util.*;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.teacherDto;
+import dino.Dto.*;
 
 public class FindKidsDaoImpl implements FindKidsDao {
 	
@@ -15,16 +15,16 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		this.sqlMap = sqlMap;
 	}
 
-	public int makeTCard(teacherDto dto) {
+	public int makeTCard(MakeTCardDto dto) {
 		
 		int result = sqlMap.insert("t_makeCard", dto);
 		return result;
 	};
 	
 	
-	public List<teacherDto> kidsList() {
+	public List<MakeTCardDto> kidsList() {
 
-		List<teacherDto> k_list = sqlMap.selectList("kidsList");
+		List<MakeTCardDto> k_list = sqlMap.selectList("kidsList");
 		return k_list;
 	}
 	

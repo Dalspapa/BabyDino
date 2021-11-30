@@ -11,5 +11,6 @@
 		<mapper resource="sqlMap/memberSql.xml"/>
 		<mapper resource="sqlMap/commonOpSql.xml"/>
 		<mapper resource="sqlMap/findKidsSql.xml"/>
+		<mapper resource="sqlMap/commonImgSql.xml"/>
 	</mappers>
 </configuration>

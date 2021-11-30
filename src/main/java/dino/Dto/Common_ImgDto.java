@@ -1,22 +1,24 @@
 package dino.Dto;
 
-public class common_reviewDto {
+public class Common_ImgDto {
 
 	private int idx;
-	private String cr_content;
+	private String c_imgpath;
+	private int d_member_idx;
 	private int category_idx;
 	private int ref_idx;
 	
 	
-	public common_reviewDto() {
+	public Common_ImgDto() {
 		super();
 	}
 
 
-	public common_reviewDto(int idx, String cr_content, int category_idx, int ref_idx) {
+	public Common_ImgDto(int idx, String c_imgpath, int d_member_idx, int category_idx, int ref_idx) {
 		super();
 		this.idx = idx;
-		this.cr_content = cr_content;
+		this.c_imgpath = c_imgpath;
+		this.d_member_idx = d_member_idx;
 		this.category_idx = category_idx;
 		this.ref_idx = ref_idx;
 	}
@@ -32,13 +34,23 @@ public class common_reviewDto {
 	}
 
 
-	public String getCr_content() {
-		return cr_content;
+	public String getC_imgpath() {
+		return c_imgpath;
 	}
 
 
-	public void setCr_content(String cr_content) {
-		this.cr_content = cr_content;
+	public void setC_imgpath(String c_imgpath) {
+		this.c_imgpath = c_imgpath;
+	}
+
+
+	public int getD_member_idx() {
+		return d_member_idx;
+	}
+
+
+	public void setD_member_idx(int d_member_idx) {
+		this.d_member_idx = d_member_idx;
 	}
 
 
@@ -63,7 +75,7 @@ public class common_reviewDto {
 	
 	@Override
 	public String toString() {
-		String str = "댓글내용" + cr_content + "\n인덱스 상태값" + category_idx + "\n참고하는 인덱스" + ref_idx;
+		String str = "이미지 경로" + c_imgpath + "\n회원의 고유번호" + d_member_idx + "\n인덱스 상태값" + category_idx;
 		System.out.println(str);
 		return str; 
 	}

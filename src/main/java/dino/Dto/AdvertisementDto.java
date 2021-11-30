@@ -1,6 +1,6 @@
 package dino.Dto;
 
-public class advertisementDto {
+public class AdvertisementDto {
 	
 	private int idx;
 	private String a_imgpath;
@@ -11,12 +11,12 @@ public class advertisementDto {
 	private String a_cost;
 	
 	
-	public advertisementDto() {
+	public AdvertisementDto() {
 		super();
 	}
 
 
-	public advertisementDto(int idx, String a_imgpath, String a_linkpage, String corporate_name, String a_name,
+	public AdvertisementDto(int idx, String a_imgpath, String a_linkpage, String corporate_name, String a_name,
 			String a_date, String a_cost) {
 		super();
 		this.idx = idx;

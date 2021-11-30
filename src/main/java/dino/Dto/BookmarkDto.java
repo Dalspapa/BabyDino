@@ -1,6 +1,6 @@
 package dino.Dto;
 
-public class bookmarkDto {
+public class BookmarkDto {
 
 	private int idx;
 	private int b_status;
@@ -9,12 +9,12 @@ public class bookmarkDto {
 	private int d_kid_idx;
 	
 	
-	public bookmarkDto() {
+	public BookmarkDto() {
 		super();
 	}
 
 
-	public bookmarkDto(int idx, int b_status, int b_type, int d_teacher_idx, int d_kid_idx) {
+	public BookmarkDto(int idx, int b_status, int b_type, int d_teacher_idx, int d_kid_idx) {
 		super();
 		this.idx = idx;
 		this.b_status = b_status;

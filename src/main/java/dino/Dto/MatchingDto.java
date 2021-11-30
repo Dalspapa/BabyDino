@@ -1,18 +1,18 @@
 package dino.Dto;
 
-public class matchingDto {
+public class MatchingDto {
 	private int idx;
 	private int d_member_t_idx;
 	private int d_member_p_idx;
 	private int d_reserve_idx;
 	
 	
-	public matchingDto() {
+	public MatchingDto() {
 		super();
 	}
 
 
-	public matchingDto(int idx, int d_member_t_idx, int d_member_p_idx, int d_reserve_idx) {
+	public MatchingDto(int idx, int d_member_t_idx, int d_member_p_idx, int d_reserve_idx) {
 		super();
 		this.idx = idx;
 		this.d_member_t_idx = d_member_t_idx;

@@ -2,19 +2,19 @@ package dino.member.service;
 
 import java.util.List;
 
-import dino.Dto.memberDto;
+import dino.Dto.MemberDto;
 
 public interface MemberService {
 
 	//join
-	public int memberJoin(memberDto memberDto);
+	public int memberJoin(MemberDto MemberDto);
 	public boolean idCheck(String id);
 
 	//login
 	public boolean loginCheck(String id, String pwd);
-	public memberDto getUserInfo(String id);
+	public MemberDto getUserInfo(String id);
 	
 	//FindId
-	public List<memberDto> findId(String name,String tel);
+	public List<MemberDto> findId(String name,String tel);
 
 }

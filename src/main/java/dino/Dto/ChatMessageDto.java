@@ -1,20 +1,26 @@
 package dino.Dto;
 
-public class chatroomjoinDto {
-	
+import java.sql.*;
+
+public class ChatMessageDto {
+
 	private int idx;
+	private String message;
+	private Date time;
 	private int d_member_idx;
 	private int d_chatroom_idx;
 	
 	
-	public chatroomjoinDto() {
+	public ChatMessageDto() {
 		super();
 	}
 
 
-	public chatroomjoinDto(int idx, int d_member_idx, int d_chatroom_idx) {
+	public ChatMessageDto(int idx, String message, Date time, int d_member_idx, int d_chatroom_idx) {
 		super();
 		this.idx = idx;
+		this.message = message;
+		this.time = time;
 		this.d_member_idx = d_member_idx;
 		this.d_chatroom_idx = d_chatroom_idx;
 	}
@@ -27,6 +33,26 @@ public class chatroomjoinDto {
 
 	public void setIdx(int idx) {
 		this.idx = idx;
+	}
+
+
+	public String getMessage() {
+		return message;
+	}
+
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+
+	public Date getTime() {
+		return time;
+	}
+
+
+	public void setTime(Date time) {
+		this.time = time;
 	}
 
 
@@ -49,10 +75,12 @@ public class chatroomjoinDto {
 		this.d_chatroom_idx = d_chatroom_idx;
 	}
 	
+	
 	@Override
 	public String toString() {
-		String str = "채팅룸 가입 회원의 고유번호" + d_member_idx + "\n채팅룸 고유번호" + d_chatroom_idx;
+		String str = "메세지" + message + "\n작성시간" + time + "\n작성자의 고유번호" + d_member_idx + "채팅룸 고유번호" + d_chatroom_idx ;
 		System.out.println(str);
 		return str; 
 	}
+
 }

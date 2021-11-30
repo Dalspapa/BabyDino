@@ -1,6 +1,6 @@
 package dino.Dto;
 
-public class teacherDto {
+public class MakeTCardDto {
 
 	//Teacher Card Table
 	private int idx;
@@ -24,12 +24,12 @@ public class teacherDto {
 	//Reserve Table
 	
 	//기본생성자
-	public teacherDto() {
+	public MakeTCardDto() {
 		super();
 	}
 	
 	//인자생성자
-	public teacherDto(int idx, int d_member_idx, int job, String badge, String kid_type, String t_care_type,
+	public MakeTCardDto(int idx, int d_member_idx, int job, String badge, String kid_type, String t_care_type,
 			String schedule_day, String schedule_time, int t_cost, String t_introduce, int bank, String acnum,
 			int cctvagree, String t_sexcrime, String career_experience) {
 		super();
@@ -172,7 +172,6 @@ public class teacherDto {
 		this.career_experience = career_experience;
 	}
 	
-	
 	//toString
 	@Override
 	public String toString() {
@@ -181,9 +180,8 @@ public class teacherDto {
 				"\ncare_type : " + t_care_type + "\ns_day : " + schedule_day + "\ns_time : " + schedule_time + "\ncost : " + t_cost + 
 				"\nintro : " + t_introduce + "\nbank : " + bank + "\nacnum : " + acnum + "\ncctv : " + cctvagree + "\nsex : " + t_sexcrime +
 				"\ncareer : " + career_experience;
+		System.out.println(str);
 		return str;
 	}
-	
-	
 	
 }

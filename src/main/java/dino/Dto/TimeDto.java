@@ -1,18 +1,18 @@
 package dino.Dto;
 
-public class timeDto {
+public class TimeDto {
 
 	private int idx;
 	private int d_member_idx;
 	private String d_common_idx;
 	
 	
-	public timeDto() {
+	public TimeDto() {
 		super();
 	}
 
 
-	public timeDto(int idx, int d_member_idx, String d_common_idx) {
+	public TimeDto(int idx, int d_member_idx, String d_common_idx) {
 		super();
 		this.idx = idx;
 		this.d_member_idx = d_member_idx;

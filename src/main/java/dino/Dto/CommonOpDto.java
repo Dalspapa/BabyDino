@@ -1,17 +1,17 @@
 package dino.Dto;
 
-public class common_OptionDto {
+public class CommonOpDto {
 
 	private int idx;
 	private String op;
 	private String c_introduce;
 	private int c_category;
 	
-	public common_OptionDto() {
+	public CommonOpDto() {
 		super();
 	}	
 
-	public common_OptionDto(int idx, String op, String c_introduce, int c_category) {
+	public CommonOpDto(int idx, String op, String c_introduce, int c_category) {
 		super();
 		this.idx = idx;
 		this.op = op;

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class noticeController {
+public class NoticeController {
 
 	@RequestMapping("/noticeMain.do")
 	public String noticeMain() {

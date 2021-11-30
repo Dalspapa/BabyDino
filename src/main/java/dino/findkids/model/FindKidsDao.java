@@ -2,10 +2,10 @@ package dino.findkids.model;
 
 import java.util.*;
 
-import dino.Dto.teacherDto;
+import dino.Dto.*;
 
 public interface FindKidsDao {
 	
-	public int makeTCard(teacherDto dto);
-	public List<teacherDto> kidsList();
+	public int makeTCard(MakeTCardDto dto);
+	public List<MakeTCardDto> kidsList();
 }

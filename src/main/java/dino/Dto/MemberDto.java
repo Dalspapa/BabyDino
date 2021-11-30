@@ -2,7 +2,7 @@ package dino.Dto;
 
 import java.sql.Date;
 
-public class memberDto {
+public class MemberDto {
 
 	private int idx;
 	private String id;
@@ -17,11 +17,11 @@ public class memberDto {
 	private String addr2;
 	private String addr3;
 
-	public memberDto() {
+	public MemberDto() {
 		super();
 	}
 
-	public memberDto(int idx, String id, String pwd, String name, int gender, Date birth, String tel, int member_type,
+	public MemberDto(int idx, String id, String pwd, String name, int gender, Date birth, String tel, int member_type,
 			Date joinDate, String addr1, String addr2, String addr3) {
 		super();
 		this.idx = idx;

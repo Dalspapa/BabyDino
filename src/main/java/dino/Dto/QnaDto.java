@@ -2,7 +2,7 @@ package dino.Dto;
 
 import java.sql.*;
 
-public class qnaDto {
+public class QnaDto {
 	private int idx;
 	private int d_member_idx;
 	private int qna_type;
@@ -11,11 +11,11 @@ public class qnaDto {
 	private Date i_writedate;
 	private int i_status;
 	
-	public qnaDto() {
+	public QnaDto() {
 		super();
 	}
 
-	public qnaDto(int idx, int d_member_idx, int qna_type, String i_subject, String i_content, Date i_writedate,
+	public QnaDto(int idx, int d_member_idx, int qna_type, String i_subject, String i_content, Date i_writedate,
 			int i_status) {
 		super();
 		this.idx = idx;

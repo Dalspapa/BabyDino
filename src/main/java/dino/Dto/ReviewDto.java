@@ -2,7 +2,7 @@ package dino.Dto;
 
 import java.sql.*;
 
-public class reviewDto {
+public class ReviewDto {
 
 	private int idx;
 	private int d_reserve_idx;
@@ -12,12 +12,12 @@ public class reviewDto {
 	private String r_content;
 	
 	
-	public reviewDto() {
+	public ReviewDto() {
 		super();
 	}
 
 
-	public reviewDto(int idx, int d_reserve_idx, int d_member_idx, int star, Date r_writedate, String r_content) {
+	public ReviewDto(int idx, int d_reserve_idx, int d_member_idx, int star, Date r_writedate, String r_content) {
 		super();
 		this.idx = idx;
 		this.d_reserve_idx = d_reserve_idx;

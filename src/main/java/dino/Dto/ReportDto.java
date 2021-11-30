@@ -2,7 +2,7 @@ package dino.Dto;
 
 import java.sql.*;
 
-public class reportDto {
+public class ReportDto {
 
 	private int idx;
 	private int d_member_attack_idx;
@@ -12,12 +12,12 @@ public class reportDto {
 	private int rp_status;
 	
 	
-	public reportDto() {
+	public ReportDto() {
 		super();
 	}
 
 
-	public reportDto(int idx, int d_member_attack_idx, int d_member_shield_idx, int rp_type, Date rp_writedate,
+	public ReportDto(int idx, int d_member_attack_idx, int d_member_shield_idx, int rp_type, Date rp_writedate,
 			int rp_status) {
 		super();
 		this.idx = idx;

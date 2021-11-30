@@ -2,7 +2,7 @@ package dino.Dto;
 
 import java.sql.*;
 
-public class kidDto {
+public class KidDto {
 	
 	//Kid Card Table
 	private int idx;
@@ -16,12 +16,12 @@ public class kidDto {
 	private String k_require;
 	
 	
-	public kidDto() {
+	public KidDto() {
 		super();
 	}
 
 
-	public kidDto(int idx, int d_member_idx, String k_name, int k_gender, String k_tendency, Date k_birth,
+	public KidDto(int idx, int d_member_idx, String k_name, int k_gender, String k_tendency, Date k_birth,
 			String k_introduce, String k_care_type, String k_require) {
 		super();
 		this.idx = idx;

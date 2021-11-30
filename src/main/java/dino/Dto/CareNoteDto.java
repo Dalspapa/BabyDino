@@ -2,7 +2,7 @@ package dino.Dto;
 
 import java.sql.*;
 
-public class careNoteDto {
+public class CareNoteDto {
 
 	private int idx;
 	private int d_reserve_idx;
@@ -10,12 +10,12 @@ public class careNoteDto {
 	private Date c_writedate;
 	
 	
-	public careNoteDto() {
+	public CareNoteDto() {
 		super();
 	}
 
 
-	public careNoteDto(int idx, int d_reserve_idx, String c_content, Date c_writedate) {
+	public CareNoteDto(int idx, int d_reserve_idx, String c_content, Date c_writedate) {
 		super();
 		this.idx = idx;
 		this.d_reserve_idx = d_reserve_idx;
