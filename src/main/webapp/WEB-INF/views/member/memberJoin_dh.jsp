@@ -253,7 +253,7 @@
 	function goStep(step) {
 		if(step == 2) {
 			
-			document.getElementById('step1').classList.add('d-none');
+			document.getElementById('step1').classList.add('d-block');
 			document.getElementById('step2').classList.remove('d-none');
 			
 			

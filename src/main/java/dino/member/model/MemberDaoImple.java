@@ -15,17 +15,22 @@ public class MemberDaoImple implements MemberDao {
 
 	//Start
 	
-	//join
+	//회원가입
 	public int memberJoin(MemberDto memberDto) {
+		
 		int result = sqlMap.insert("joinMember", memberDto);
+		
 		return result;
 	}
-
-	public boolean idCheck(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	//아이디 중복체크
+	public int idCheck(String id) {
+		
+		int result = sqlMap.selectOne("idCheck", id);
+			
+		return result;
+		
 	}
-
 	
 	//login
 	public MemberDto loginCheck(String id) {
@@ -50,5 +55,6 @@ public class MemberDaoImple implements MemberDao {
 		
 		return memberDto;
 	}
+
 
 }
