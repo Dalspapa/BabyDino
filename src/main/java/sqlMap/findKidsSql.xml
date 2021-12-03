@@ -31,6 +31,20 @@
 		from 
 			d_kid
 		order by idx desc
-	</select>	
+	</select>
+	
+	<!-- 아이카드 상세내역 -->
+	<select id="kidInfo" parameterType="int" resultType="dino.kids.model.kidInfoDto">
+		<!-- SELECT 
+            dt.*, dm.name, dm.birth 
+		FROM 
+			d_teacher dt     
+        LEFT JOIN 
+        	d_member dm 
+        ON 
+        	dm.idx = dt.d_member_idx
+        WHERE 
+        	dm.idx = 41 -->		
+	</select>
 </mapper>
 	

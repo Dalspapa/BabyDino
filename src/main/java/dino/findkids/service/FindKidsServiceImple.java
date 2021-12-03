@@ -4,6 +4,8 @@ import java.util.*;
 
 import dino.Dto.MakeTCardDto;
 import dino.findkids.model.FindKidsDao;
+import dino.findkids.model.KidInfoDto;
+import dino.findteachers.model.TeacherInfoDto;
 
 public class FindKidsServiceImple implements FindKidsService {
 
@@ -30,5 +32,19 @@ public class FindKidsServiceImple implements FindKidsService {
 		return k_list;
 	}
 	
+	//아이카드 상세내역
+	public KidInfoDto kidInfo(int idx) {
+		
+		KidInfoDto k_dto = findkidsDao.kidInfo(idx);
+		
+		/*
+		 * if(k_dto != null) {
+		 * k_dto.setT_introduce(k_dto.getT_introduce().replaceAll("\n", "<br>"));
+		 * k_dto.setCareer_experience(k_dto.getCareer_experience().replaceAll("\n",
+		 * "<br>")); }
+		 */
+		return k_dto;
+		
+	}
 	
 }

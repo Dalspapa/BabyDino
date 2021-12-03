@@ -28,5 +28,12 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return k_list;
 	}
 	
+	//아이카드 상세내역
+	public KidInfoDto kidInfo(int idx) {
+		
+		KidInfoDto k_dto = sqlMap.selectOne("kidInfo", idx);
+		
+		return k_dto;
+	}
 	
 }
