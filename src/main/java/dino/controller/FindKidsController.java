@@ -2,6 +2,7 @@ package dino.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dino.Dto.CommonOpDto;
 import dino.Dto.MakeTCardDto;
 import dino.commonop.service.CommonOpService;
-import dino.findkids.model.KidInfoDto;
+//import dino.findkids.model.KidInfoDto;
 import dino.findkids.service.FindKidsService;
 
 import java.util.*;
@@ -74,23 +75,4 @@ public class FindKidsController {
 		return mav;
 	}
 	
-	//아이카드 상세내역
-	@RequestMapping("/kidInfo.do")
-	public ModelAndView kidInfo(
-			@RequestParam(value = "idx", defaultValue = "0")int idx) {
-		
-		KidInfoDto k_dto = findKidsService.kidInfo(idx);
-		
-		ModelAndView mav = new ModelAndView();
-		
-		if(k_dto == null) {
-			mav.addObject("msg", "잘못된 접근 또는 삭제된 게시글 입니다.");
-			mav.setViewName("findKids/kidsMsg");
-		}else {
-			mav.addObject("k_dto", k_dto);
-			mav.setViewName("findKids/kidInfo");
-		}
-	
-		return mav;
-	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -216,7 +217,7 @@ section{
     <section>
       <div class="topCont d-flex justify-content-between">
         <div>#뒤로가기버튼</div>
-        <div>#아이이름</div>
+        <div>${ k_dto.k_name }</div>
         <div>#좋아요버튼</div>
       </div>
       <div class="item1">
@@ -224,25 +225,25 @@ section{
         <div class="childInfo">
           #아이정보(k_name) / #성별(k_gender)
         </div>
+        <div>${ k_dto.k_name }</div>
+        <div>${ k_dto.k_gender }</div>
       </div>
       <ul class="item3">
         <li>
           <h3>신청내용(k_introduce)</h3>
           <div class="contentBox">
-            #끝나고 책 읽어줄 선생님 구해요 ~
+            <div>${ k_dto.k_introduce }</div>
           </div>
         </li>
         <li>
           <h3>원하는 시터 나이(teacher_type)</h3>
           <div class="contentBox ageWrap">
-            <div class="circle-div">#20대</div>
-            <div class="circle-div">#50대</div>
-            <div class="circle-div">#60대</div>
+            <div class="circle-div">${ k_dto.teacher_type }</div>
           </div>
         </li>
         <li>
           <h3>돌봄 지역</h3>
-          <div class="contentBox"><div>#주소정보(addr1)</div></div>
+          <div class="contentBox"><div>#주소정보(addr1) ${ k_dto.addr1 }</div></div>
         </li>
       </ul>
       <ul class="item3">
@@ -267,39 +268,22 @@ section{
             <div>
               <!--<img src=""/>-->
               #원하는활동명
-            </div>
+            </div> 
+          </div>
+        </li>
+		<li>
+          <h3>그 외 요청사항(k_require)</h3>
+          <div class="contentBox ativeList">
             <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
+              ${ k_dto.k_require }
+            </div> 
           </div>
         </li>
       </ul>
     </section>
+    <div>
+    	<button type="button">매칭요청</button>
+    </div>
   </div>
 </body>
 </html>

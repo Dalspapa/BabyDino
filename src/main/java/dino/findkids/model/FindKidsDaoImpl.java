@@ -2,6 +2,7 @@ package dino.findkids.model;
 
 import java.util.*;
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dino.Dto.MakeTCardDto;
@@ -26,14 +27,6 @@ public class FindKidsDaoImpl implements FindKidsDao {
 
 		List<MakeTCardDto> k_list = sqlMap.selectList("kidsList");
 		return k_list;
-	}
-	
-	//아이카드 상세내역
-	public KidInfoDto kidInfo(int idx) {
-		
-		KidInfoDto k_dto = sqlMap.selectOne("kidInfo", idx);
-		
-		return k_dto;
 	}
 	
 }
