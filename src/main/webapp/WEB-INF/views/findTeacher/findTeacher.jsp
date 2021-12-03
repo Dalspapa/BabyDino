@@ -115,6 +115,15 @@
          </div>
       </c:forEach>
       
+   <!--  img Test  -->
+   
+   <div class="result-images">
+   	<c:forEach var="imageFileName" items="${ map.fileList }">
+   		<img src="${ contextPath }/download?imageFileName=${ imageFileName }">
+   		<br>
+   	</c:forEach>
+   </div>
+   
    
    </div><!-- 하단 정보[START] -->
    

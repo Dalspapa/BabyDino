@@ -16,55 +16,161 @@
   <!-- css -->
   <link rel="stylesheet" href="./common/css/bootstrap.min.css">
   <link rel="stylesheet" href="./common/css/reset.css">
-  <link rel="stylesheet" href="./common/css/main.css">
+  <link rel="stylesheet" href="./common/css/main.css">  
 <style>
+
+	#cardImg{
+		width: 50px;
+		heitht: 50px;
+	}
+	.pignose-calendar-unit-disabled a{
+		color:red !important
+	}
+	.isTest {
+		background-color: red;
+	}
+	
 </style>
 </head>
 <body>
+	<form action="getImg.do" name="getimg">
+		<c:forEach var="imgs" items="${imgName}">
+			<img alt="teacherImg" src="/upload/${imgs}" id="cardImg">
+		</c:forEach>
+		<input type="hidden" name="d_member_idx" value="41">
+		<input type="submit" value="imgGetbtn">
+	</form>
 	<h1>아이찾기 페이지</h1>
-	<section>
-	<c:if test="${empty k_list}">
-		<h2>등록된 아이가 없습니다.</h2>
-	</c:if>
-		<div class="container">
-			<div class="row">
-			<form name="imgfm" action="img_do">
-				<input type="file" accept="image/*">
-			</form>
-				<%-- <c:forEach var="k_dto" items="${k_list}">
-					<div class="col-4 p-2">
-						<div class="row" style="border: 1px solid black; height:80px;">
-							<div class="col-4">
-								<img alt="kids_img" src="./common/img/bossbaby.png" style="width:35px; height:35px;">
-								${k_dto.k_name}
-							</div>
-							<div class="col-8">
-								<p>
-									<c:if test="${k_dto.k_gender == 0}">
-										여아
-									</c:if>
-									<c:if test="${k_dto.k_gender == 1}">
-										남아
-									</c:if>
-								</p>
-								<p>
-									${k_dto.k_introduce}
-								</p>
-								<p>
-									${k_dto.k_tendency}
-								</p>
-							</div>
-						</div>
-					</div>
-				</c:forEach> --%>
-			</div>
-		</div>
-	</section>
+<section>
+<div class="container">
+
+   <!-- 필터[START] -->
+            <div class="row">
+               <div class="col-6">
+                  <div class="row" style="justify-content: space-between;">
+                     <div style="width: 20%; border: 1px solid red; height: 30px;" name="cDiv" id="first" onclick="changeDiv('first')">1</div>
+                     <div style="width: 20%; border: 1px solid red; height: 30px;" name="cDiv" id="second" onclick="changeDiv('second')">2</div>
+                     <div style="width: 20%; border: 1px solid red; height: 30px;" name="cDiv" id="third" onclick="changeDiv('third')">3</div>
+                     <div style="width: 20%; border: 1px solid red; height: 30px;" name="cDiv" id="four" onclick="changeDiv('four')">4</div>
+                  </div>
+                  
+                  <button onclick="check()">check</button>
+                  
+                  
+                  <div class="row mt-4">
+                     <div class="form-check w-50">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1"/>
+                        <label class="form-check-label" for="flexCheckDefault1">등하원</label>
+                     </div>
+                     <div class="form-check w-50">
+                        <input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault2"/>
+                        <label class="form-check-label" for="flexCheckDefault2">놀이</label>
+                     </div>
+                     <div class="form-check w-50">
+                        <input class="form-check-input" type="checkbox" value="3" id="flexCheckDefault3"/>
+                        <label class="form-check-label" for="flexCheckDefault3">학습</label>
+                     </div>
+                     <div class="form-check w-50">
+                        <input class="form-check-input" type="checkbox" value="4" id="flexCheckDefault4"/>
+                        <label class="form-check-label" for="flexCheckDefault4">기타</label>
+                     </div>
+                  </div>
+               </div>
+
+               <!--  날짜 -->
+               <div class="col-6">
+                  
+               </div>
+            </div>
+         </div>
+         <!-- 필터[END] -->   
+  	 <hr/>
+         
+   <!-- 하단 정보[START] -->   
+   <div class="row">
+      <c:forEach begin="1" end="10">
+         <div class="col-4 p-2">
+           <!-- 카드정보[START] -->	            
+            <!-- filp01 -->
+              <div class="flip-card col-lg">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="mb-2">
+                      <img src="./common/img/faq-img.png" alt="선생님 사진" >
+                    </div>
+                    <div>
+                      <h6 class="text-warning">새로운 추천01</h6>
+                      <h4>선생님 이름</h4>
+                    </div>
+                  </div>
+                  <div class="flip-card-back ">
+                    <h1>선생님 이름</h1> 
+                    <p>선생님을 설명하는 부분입니다.</p> 
+                    <ul>
+                      <li>테스트01</li>
+                      <li>테스트02</li>
+                      <li>테스트03</li>
+                    </ul>
+                  </div>
+                </div>
+              <!-- ./ filp01 -->
+              </div> 
+              <!-- 카드정보[END] -->
+         </div>
+      </c:forEach>      
+   </div>
+  <!-- 하단 정보[START] -->   
+
+</section>
 </body>
   <!-- J-query -->
   <script src="./common/js/jquery-3.6.0.min.js"></script>
 
   <!-- custome js -->
   <script src="./common/js/bootstrap.min.js"></script>
+                  
+                  
+<script>
+
+	function changeDiv(val) {
+	   var a = document.getElementById(val);
+	   
+	   if(a.classList.contains('isTest')){
+	      a.classList.remove('isTest');
+	    } else {
+	       a.classList.add('isTest');
+	    }
+	}
+	
+	function check() {
+	   var a = document.getElementsByName('cDiv')
+	   var b = [];
+	   for(var i = 0; i < a.length; i++ ) {
+	      
+	      if(a[i].classList.contains('isTest')) b.push(a[i].id)
+	   };
+	   console.log("-- selected : ", b);
+	}
+	
+</script>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

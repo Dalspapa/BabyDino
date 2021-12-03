@@ -1,5 +1,9 @@
 package dino.Dto;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class MakeTCardDto {
 
 	//Teacher Card Table
@@ -19,6 +23,13 @@ public class MakeTCardDto {
 	private String t_sexcrime;
 	private String career_experience;
 	
+	
+	
+	
+	
+	private List<MultipartFile> tImg;
+	
+	
 	//Kids Card Table
 	
 	//Reserve Table
@@ -31,7 +42,7 @@ public class MakeTCardDto {
 	//인자생성자
 	public MakeTCardDto(int idx, int d_member_idx, int job, String badge, String kid_type, String t_care_type,
 			String schedule_day, String schedule_time, int t_cost, String t_introduce, int bank, String acnum,
-			int cctvagree, String t_sexcrime, String career_experience) {
+			int cctvagree, String t_sexcrime, String career_experience, List<MultipartFile> tImg) {
 		super();
 		this.idx = idx;
 		this.d_member_idx = d_member_idx;
@@ -48,10 +59,24 @@ public class MakeTCardDto {
 		this.cctvagree = cctvagree;
 		this.t_sexcrime = t_sexcrime;
 		this.career_experience = career_experience;
+		this.tImg = tImg;
 	}
 	
 	
 	//게터세터
+	
+	public List<MultipartFile> getTImg() {
+		return tImg;
+	}
+
+	public void setTImg(List<MultipartFile> tImg) {
+		this.tImg = tImg;
+	}
+	
+	
+	
+	
+	
 	public int getIdx() {
 		return idx;
 	}
