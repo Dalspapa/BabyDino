@@ -22,8 +22,9 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	// make kid card
 	public List<KidDto> formKidsCard(int idx) {
 		
-		List<KidDto> k_dto = sqlMap.selectList("formKidsCard", idx);
-		return k_dto;
+		List<KidDto> mkList = sqlMap.selectList("formKidsCard", idx);
+		System.out.println("=== dao idx : " + idx);
+		return mkList;
 	}
 	
 	public int makeKCard(KidDto dto) {

@@ -5,9 +5,9 @@
 
 <mapper namespace="dino.findTeachers">
 
-	<select id="formKidsCard" resultType="dino.Dto.KidDto">
-		SELECT 
-			idx, 
+	<select id="formKidsCard" parameterType="int" resultType="dino.Dto.KidDto">
+		SELECT
+			idx,
 			k_name, 
 			k_gender, 
 			k_birth 

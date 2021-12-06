@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.CommonOpDto;
 import dino.Dto.KidDto;
 import dino.commonop.service.CommonOpService;
 import dino.findteachers.model.FindTeacherJoinDto;
@@ -43,23 +42,27 @@ public class FindTeacherController {
 	}
 	
 	@RequestMapping("/formKidsCard.do")
-	public ModelAndView formKidsCard(
-			@RequestParam (value="idx") int idx) {
+	public ModelAndView formKidsCard(@RequestParam (value="idx",  defaultValue="0") int idx) {
 		
-		System.out.println("======진입======");
+		//test
+		System.out.println("======진입======" + idx);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		List<KidDto> k_dto = findTeachersService.formKidsCard(idx);
-		mav.addObject("k_dto", k_dto);
-		mav.setViewName("findTeacher/makeKidsCard");
+		List<KidDto> mkList = findTeachersService.formKidsCard(idx);
 		
+		//test
+		System.out.println("== name : " + mkList.get(0));
+		mav.addObject("k_dto", mkList.get(0)); 
+		mav.setViewName("findTeacher/makeKidsCard");
+		 
 		return mav;
 	}
 
 	@RequestMapping(value = "/makeKidsCard.do", method = RequestMethod.POST)
 	public ModelAndView makeKidCard(KidDto dto) {
 		
+		//test
 		System.out.println("====진입====="+ dto);
 		
 		int result = findTeachersService.makeKCard(dto);

@@ -1,7 +1,6 @@
 package dino.findteachers.service;
 
 import dino.findteachers.model.FindTeachersDao;
-
 import java.util.List;
 
 import dino.Dto.KidDto;
@@ -26,8 +25,9 @@ public class FindTeachersServiceImp implements FindTeachersService {
 	// make kid card
 	public List<KidDto> formKidsCard(int idx) {
 		
-		List<KidDto> k_dto = findTeachersDao.formKidsCard(idx);
-		return k_dto;
+		List<KidDto> mkList = findTeachersDao.formKidsCard(idx);
+		System.out.println("=====service"+ mkList.get(0));
+		return mkList;
 	}
 	
 	public int makeKCard(KidDto dto) {

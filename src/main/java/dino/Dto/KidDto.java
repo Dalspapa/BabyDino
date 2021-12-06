@@ -1,6 +1,7 @@
 package dino.Dto;
 
 import java.sql.*;
+import java.util.List;
 
 public class KidDto {
 	
@@ -15,31 +16,30 @@ public class KidDto {
 		private String k_care_type;
 		private String teacher_type;
 		private String k_require;
-	
 		
 		public KidDto() {
 			super();
 		}
-	
+		
 		public KidDto(int idx, int d_member_idx, String k_name, int k_gender, String k_tendency, Date k_birth,
-			String k_introduce, String k_care_type, String teacher_type, String k_require) {
-		super();
-		this.idx = idx;
-		this.d_member_idx = d_member_idx;
-		this.k_name = k_name;
-		this.k_gender = k_gender;
-		this.k_tendency = k_tendency;
-		this.k_birth = k_birth;
-		this.k_introduce = k_introduce;
-		this.k_care_type = k_care_type;
-		this.teacher_type = teacher_type;
-		this.k_require = k_require;
+				String k_introduce, String k_care_type, String teacher_type, String k_require ) {
+			super();
+			this.idx = idx;
+			this.d_member_idx = d_member_idx;
+			this.k_name = k_name;
+			this.k_gender = k_gender;
+			this.k_tendency = k_tendency;
+			this.k_birth = k_birth;
+			this.k_introduce = k_introduce;
+			this.k_care_type = k_care_type;
+			this.teacher_type = teacher_type;
+			this.k_require = k_require;
 		}
 
 		public int getIdx() {
 			return idx;
 		}
-
+		
 		public void setIdx(int idx) {
 			this.idx = idx;
 		}

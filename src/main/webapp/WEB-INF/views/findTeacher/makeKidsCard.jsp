@@ -22,6 +22,8 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+	<!-- --여기서 부터 아이 카드 -- -->
+
 	<h1>아이카드등록</h1>
 	<div>
 		<label>아이 정보</label>
@@ -30,13 +32,28 @@
 				아이 카드를 선택해주세요.<br> 아이카드가 없을 시에 추가 버튼을 눌러 추가해 주세요.
 			</p>
 		</div>
+
+		<c:if test="${ empty mkList }">
+			<h2 align="center">등록된 아이카드가 없습니다!</h2>
+		</c:if>
+		<c:forEach items="${ mkList }" var="k_dto">
+			<div style="width: 500px; height: 70px; border: 1px solid red;">
+				<div>이름: ${ k_dto.k_name }</div>
+				<div>
+					생일: ${ k_dto.k_birth } 나이: <span id="kidAge"></span> 성별:
+					<c:if test="${ k_dto.k_gender == 1 }">
+					여아
+					</c:if>
+					<c:if test="${ k_dto.k_gender == 2 }">
+					남아
+					</c:if>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
-	<div>
-		
-	</div>
-	<div>
-		<button onclick="check()">check</button>
-	</div>
+	<button type="button">추가하기</button>
+	<button type="button">등록하기</button>
+	<!-- --여기서 부터 아이 추가-- -->
 	<form name="make_k_Card" id="postForm" action="makeKidsCard.do"
 		method="post">
 		<div class="container">
@@ -183,27 +200,26 @@
 		</div>
 	</form>
 </body>
+
+<!-- JQuery 라이브러리 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
 <script>
-	
-	function changeDiv(val) {
-	    var a = document.getElementById(val);
-	    
-	    if(a.classList.contains('isTest')){
-	       a.classList.remove('isTest');
-	     } else {
-	        a.classList.add('isTest');
-	     }
-	 }
-	 
-	 function check() {
-	    var a = document.getElementsByName('cDiv')
-	    var b = [];
-	    for(var i = 0; i < a.length; i++ ) {
-	       
-	       if(a[i].classList.contains('isTest')) b.push(a[i].id)
-	    };
-	    console.log("-- selected : ", b);
-	 }
+	$(function() {
+
+		// 현재날짜 구하는거
+		var now = new Date();
+		// 현재 연도 구하는거
+		var year = now.getFullYear();
+		// 데이터 0~4자리까지 서브스트링친거 (ex : 1999)
+		var age = "${ k_dto.k_birth}".substring(0, 4);
+		console.log(age);
+		// 현재 연도 - age
+		var resultAge = year - age;
+		// 2021 - 1999 = 나이
+		$("#kidAge").text(resultAge + '세');
+	});
 
 	function goStep(step) {
 		if (step == 2) {

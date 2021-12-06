@@ -2,8 +2,8 @@ package dino.findteachers.service;
 
 import java.util.List;
 
+
 import dino.Dto.KidDto;
-import dino.Dto.MakeTCardDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 
 public interface FindTeachersService {

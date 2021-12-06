@@ -57,7 +57,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="#about">돌봄신청</a>
+                      <a class="nav-link" href="formKidsCard.do?idx=23">돌봄신청</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#projects">아이찾기</a>
