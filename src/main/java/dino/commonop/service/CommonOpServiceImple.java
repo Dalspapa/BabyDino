@@ -68,4 +68,32 @@ public class CommonOpServiceImple implements CommonOpService {
 		List<CommonOpDto> rp_list = commonopDao.reportType();
 		return rp_list;
 	}
+	
+	//공지사항
+	public List<CommonOpDto> noticeList() {
+		Map map = new HashMap();
+		List<CommonOpDto> list = commonopDao.noticeList(map);
+		return list;
+	}
+	
+	//자주묻는 질문(회원관련질문)
+	public List<CommonOpDto> qna() {
+		Map map = new HashMap();
+		List<CommonOpDto> m_list = commonopDao.qna(map);
+		return m_list;
+	}
+
+	public List<CommonOpDto> government() {
+		Map map = new HashMap();
+		List<CommonOpDto> g_list = commonopDao.government(map);
+		return g_list;
+	}
+
+	public List<CommonOpDto> pay() {
+		Map map = new HashMap();
+		List<CommonOpDto> p_list = commonopDao.pay(map);
+		return p_list;
+	}
+	
+	
 }

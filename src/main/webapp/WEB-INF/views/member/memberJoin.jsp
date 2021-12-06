@@ -5,129 +5,142 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+</head>
+<!-- css -->
+<link rel="stylesheet" href="./common/css/bootstrap.min.css">
+<link rel="stylesheet" href="./common/css/reset.css">
+<link rel="stylesheet" href="./common/css/main.css">
 <style>
-.UeASB {
-	padding: 15px 20px;
-	background-color: #f3f3f3;
-}
-
-.UjHkE .inputBlock {
-	display: flex;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-	-webkit-box-align: center;
-	align-items: center;
-	margin-top: 9px;
-	width: 100%;
-	height: 50px;
-	border-radius: 4px;
-	border: 1px solid rgb(221, 221, 221);
-	background-color: rgb(255, 255, 255);
-	padding: 13px;
-	font-size: 14px;
-	font-weight: 500;
-	font-style: normal;
-	color: rgb(0, 0, 0);
-}
-
-.UjHkE .inputBlock .birthday {
-	position: relative;
-	width: calc(50% - 20px);
-	height: 100%;
-}
-
-.UjHkE .inputBlock .birthday .dotBlock {
-	position: absolute;
-	top: 0px;
-	left: 7px;
-	display: flex;
-	-webkit-box-align: center;
-	align-items: center;
-	width: 112px;
-	height: 100%;
-}
-
-.kACyfJ {
-	width: 7px;
-	height: 7px;
-	background-color: rgb(223, 223, 223);
-	border-radius: 50%;
-	margin-right: 11px;
-	visibility: visible;
+table tr th {
+	vertical-align: middle;
 }
 </style>
-</head>
 <body>
 
 	<div id="step1">
 		<h1>사용하실 아이디와 비밀번호를 입력해주세요.</h1>
-		<!--   <form name="memberJoinForm" action="memberJoin.do" method="post"> -->
-		<form name="memberJoinForm">
-			<!-- 회원가입 폼 -->
-			<section>
-
-				<div>
-					<label for="id">아이디 </label>
-					<input id="id" type="text" class="form-control" name="id" placeholder="영문 또는 숫자 6~20자리를 입력해주세요." size="40">
+		<!-- 회원가입 폼 -->
+		<section>
+			<!-- <form name="memberJoinForm" action="joinMember.do" method="post" onsubmit="return checkAll()"> -->
+			<form name="memberJoinForm">
+				<div class="card" style="width: 80%; margin: 0 auto;">
+					<div class="card-body">
+						<h5 class="card-title">사용하실 아이디와 비밀번호를 입력해주세요.</h5>
+						<table class="table">
+							<colgroup width="20%"/>
+							<colgroup width="80%"/>
+							<thead></thead>
+							<tbody>
+								<tr>
+									<th>아이디</th>
+									<td>
+										<div class="d-flex">
+											<input id="id" name="id" type="text" class="input_id form-control form-control-sm w-50" style="margin-right: 4px;" placeholder="영문 또는 숫자 6~20자리를 입력해주세요." size="20" autocomplete="off" />
+											<button type="button" class="btn btn-sm btn-outline-success" style="margin-right: 4px" onclick="idCheck()">중복확인</button>
+											<span id="checkId" style="display: flex; align-item: center;"></span>
+										</div>
+										
+									</td>								
+								</tr>
+								<tr>
+									<th>비밀번호</th>
+									<td>
+										<input id="pwd" type="password" class="form-control form-control-sm w-50" name="pwd" placeholder="6자리 이상 입력해주세요." autocomplete="off" onkeyup="pwdEqual()" />
+									</td>
+								</tr>
+								<tr>
+									<th>비밀번호 확인</th>
+									<td>
+										<input id="pwdCheck" type="password" class="form-control form-control-sm w-50" placeholder="비밀번호를 다시 입력해주세요." width="100" autocomplete="off" onkeyup="pwdEqual()"/>
+										<span id="msg"></span>
+									</td>
+								</tr>
+								<tr>
+									<th>이름</th>
+									<td>
+										<input id="name" type="text" class="form-control form-control-sm w-50" name="name" width="100" autocomplete="off" />
+									</td>
+								</tr>	
+								<tr>
+									<th>성별</th>
+									<td>
+										<div class="d-flex" style="align-items: center;">
+											<input type="radio" name="gender" id="female" value="1" style="margin-right: 2px;" autocomplete="off" width="100" />
+											<label for="female" style="margin-right: 12px;">여성</label>
+											<input type="radio" name="gender" id="male" value="2" style="margin-right: 2px;" autocomplete="off" width="100" />
+											<label for="male">남성</label>
+											<span id="genderWarning" class="text-danger" style="margin-left: 12px;"></span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>생일</th>
+									<td>
+										<input id="birth" type="date" class="form-control form-control-sm w-50" autocomplete="off" name="birth" width="100" />
+									</td>
+								</tr>
+								<tr>
+									<th>주소</th>
+									<td>
+										<div class="d-flex">
+											<input id="address" type="text" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" name="addr1" readonly />
+											<button type="button" class="btn btn-sm btn-outline-primary" onclick="kakaopost()">주소찾기</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>상세주소</th>
+									<td>
+										<input id="detail" type="text" name="addrDetail" class="form-control form-control-sm w-50" autocomplete="off" placeholder="상세주소 입력" />
+									</td>
+								</tr>
+								<tr>
+									<th rowspan="2">전화번호</th>
+									<td>
+										<div class="d-flex">
+											<input id="tel" type="text" name="tel" class="form-control form-control-sm w-50" style="margin-right: 4px;" autocomplete="off" width="100" />
+											<!-- 문자인증하기 --> 
+								 			<button id="phoneChk" class="doubleChk btn btn-sm btn-outline-primary" type="button">인증번호 보내기</button>
+										</div>
+										
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="d-flex">
+											<input id="phone2" class="form-control form-control-sm w-50" style="margin-right: 4px;" type="text" name="phone2" title="인증번호 입력"/> 
+									 		<button id="phoneChk2" class="doubleChk btn btn-sm btn-outline-primary d-none" type="button">본인인증</button> 
+								 		</div>
+								 		<div>
+								 			<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>
+									 		<input type="hidden" id="phoneDoubleChk"/> 
+									 		<p class="tip"> 최초 가입 시에만 사용하고 있습니다. 따로 저장되지 않습니다.(번호만 입력해주세요.) </p>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-
+				
+						
+				<!-- 멤버타입 부모님(2), 선생님(4) -->
+				<input type="hidden" id="type" name="member_type" value="${param.member_type }" />
+				
 				<div>
-					<label for="pwd">비밀번호</label>
-					<input id="pwd" type="password" class="form-control" name="pwd" placeholder="6자리 이상 입력해주세요." minlength="6">
+					<button type="button" onclick="regMember()">다음으로</button>
 				</div>
-
-				<div>
-					<label for="pwdok">비밀번호 확인</label>
-					<input id="pwdok" class="form-control" type="password" placeholder="비밀번호를 다시 입력해주세요." width="100">
-				</div>
-
-				<div>
-					<label for="name">이름</label>
-					<input id="name" type="text" class="form-control" name="name" width="100">
-				</div>
-
-				<div>
-					<label>성별</label>
-					<input type="radio" name="gender" value="남" width="100" />남
-					<input type="radio" name="gender" value="여" width="100" />여
-				</div>
-
-				<div>
-					<label for="birth">생일</label>
-					<input id="birth" type="date" class="form-control" name="birth" width="100">
-				</div>
-
-				<div>
-					<label for="tel">전화번호</label>
-					<input id="tel" type="tel" name="tel" class="form-control" width="100">
-				</div>
-
-				<div>
-					<label for="address">주소</label>
-					<input id="address" type="text" class="form-control" name="address" readonly />
-					<button type="button" onclick="kakaopost()">주소찾기</button>
-				</div>
-
-				<div>
-					<label for="detail">상세주소</label>
-					<input id="detail" type="text" class="form-control" name="detail" placeholder="상세주소 입력" />
-				</div>
-				<div>
-					<button type="button" onclick="goStep(2)">다음으로</button>
-				</div>
-			</section>
-		</form>
+			</form>	
+		</section>
 	</div>
 	
-	<div id="step2" class="d-none">
-		<!-- 약관동의 -->
+	<!-- ----------------------------------------------------------------------------------------------------------------------------- -->
+	
+	<div id="step2">
+		<!-- 약관동의 폼-->
 		<section>
-			<div class="UeASB">
-				<h3>아기공룡 서비스 이용 동의</h3>
+			<div>
+				<h1>아기공룡 서비스 이용 동의</h1>
 				<div>
 					<h4>< 아기공룡 서비스 운영정책 ></h4>
 					<p>
@@ -138,7 +151,7 @@
 							책임이 없음을 알려드립니다.</span>
 					</p>
 				</div>
-	
+
 				<div>
 					<h4>< 맘시터 회원의 의무 ></h4>
 					<p>
@@ -147,151 +160,310 @@
 							내용을 사전 조율없이 일방적으로 해지 통보할 경우, 서비스 이용약관에 따라 강제 탈퇴조치 될 수 있음을 알려드립니다.</span>
 					</p>
 				</div>
-	
+
 				<div>
-					<input type="checkbox"> <strong>전체동의</strong>
+					<input id="check-all" type="checkbox" /> <strong>전체동의</strong>
 				</div>
-	
+
 				<div>
-					<div
-						style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-						<input type="checkbox" value="checkbox"> <span>서비스
-							운영정책 및 회원의 의무 동의 <span>(필수)</span>
-						</span>
+					<div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+						<input name="bt1" class="btn" type="checkbox" value="checkbox" /> 
+						<span> 서비스 운영정책 및 회원의 의무 동의 (필수)</span>
 					</div>
-	
-					<div
-						style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-						<input type="checkbox" value="checkbox"> <span>서비스
-							이용약관 동의 <span>(필수)</span>
-						</span>
+
+					<div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+						<input name="bt2" class="btn" type="checkbox" value="checkbox" /> 
+						<span> 서비스 이용약관 동의 (필수)</span>
 					</div>
-	
-					<div
-						style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-						<input type="checkbox" value="checkbox"> <span> 개인
-							정보 수집 및 이용에 관한 동의<span>(필수)</span>
-						</span>
+
+					<div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+						<input name="bt3" class="btn" type="checkbox" value="checkbox" /> 
+						<span> 개인정보 수집 및 이용에 관한 동의 (필수)</span>
 					</div>
-	
-					<div
-						style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-						<input type="checkbox" value="checkbox"> <span>개인정보
-							제3자 제공에 관한 동의 <span>(필수)</span>
-						</span>
-					</div>
-	
-					<div
-						style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-						<input type="checkbox" value="checkbox"> <span>마케팅,
-							프로모션, 광고 목적의 개인정보 이용 동의<span>(선택)</span>
-						</span>
+
+					<div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+						<input name="bt4" class="btn" type="checkbox" value="checkbox" /> 
+						<span> 개인정보 제3자 제공에 관한 동의 (필수)</span>
 					</div>
 				</div>
+
 				<div>
-					<button type="button" onclick="goStep(3)">다음으로</button>
+					<button type="submit">다음으로</button>
 				</div>
+
 			</div>
 		</section>
 	</div>
 
-	<div id="step3" class="d-none">
-		<h3>휴대폰 본인인증</h3>
-		<!-- 휴대폰 본인인증 -->
-		<section>
-			<div class="title">
-				<input type="checkbox" value="checkbox"> 약관 전체동의
-			</div>
-			<div>[필수] 개인정보 수집/이용 동의</div>
-			<div>[필수] 고유식별정보 처리 동의</div>
-			<div>[필수] 통신사 이용약관 동의</div>
-			<div>[필수] 서비스 이용약관 동의</div>
-			<div>[필수] 개인정보 제3자 제공 동의</div>
-			<br>
-			<div>
-				이름 <input type="text" width="300" placeholder="본인 실명(통신사 가입 이름)">
-			</div>
-			<div>
-				주민등록번호 앞 7자리 <input type="tel" maxlength="6">
-			</div>
-			<div>휴대폰 번호</div>
-		</section>
-		<button>가입하기</button>
-	</div>
-</body>
-<!-- 카카오 주소 -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<!-- 카카오 주소 API -->
 <script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-   integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-   crossorigin="anonymous"></script>
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- JQuery 라이브러리 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+
+<!-- 부트스트랩 -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+	crossorigin="anonymous"></script>
+
 <script>
-	function goStep(step) {
-		if(step == 2) {
-			
-			document.getElementById('step1').classList.add('d-none');
-			document.getElementById('step2').classList.remove('d-none');
-			
-			
-			// TODO 유효성검사 예시
-			var form = document.memberJoinForm;		// <form></form>정보들
-			
-			
-			var formName = form.name;				// 회원가입시 이름정보
-			var FORMNAME_VALID = false;				// 회원가입시 이름정보 유효성검사
-			
-			var formBirth = form.birth;				// 회원가입시 생년월일
-			var FORMBIRTH_VALID = false;			// 회원가입시 생년월일 유효성 검사
+
+	// 중복검사 버튼 누른지 확인
+	var idCheckBtn = false;
+
+	// 회원가입 api 호출
+	function regMember() {
 		
-			
-			var formtel = form.tel;					// 회원가입시 
-			var formtel = false;
-			
-			// 이름 유효성검사(시간되면 모듈로 만들어봐)
-			if(formName.value.trim().length == 0) {
-				formName.classList.remove("is-valid");
-				formName.classList.add('is-invalid');
-				FORMNAME_VALID = false;
-				formName.focus();
-			} else {
-				formName.classList.remove('is-invalid');
-				formName.classList.add("is-valid");
-				FORMNAME_VALID = true;
-			}
-			
-			// 연락처 유효성검사
-			if(formBirth.value == null || formBirth.value == '') {
-				formBirth.classList.remove("is-valid");
-				formBirth.classList.add('is-invalid');
-				FORMBIRTH_VALID = false;
-				formBirth.focus();
-			} else {
-				formBirth.classList.remove('is-invalid');
-				formBirth.classList.add("is-valid");
-				FORMBIRTH_VALID = true;
-			}
-			
-			
-			// 유효성검사 한개라도 false되면 return false처리 해주기
-			if(!FORMNAME_VALID || !FORMBIRTH_VALID) {
-				// return false;
-			}
-			
-			
-			// TODO 패스워드 일치 확인
-			
-			
+		var id 		 = $("#id");
+		var pwd 	 = $("#pwd");
+		var pwdCheck = $("#pwdCheck");
+		var name	 = $("#name");
+		var gender	 = $("input[name=gender]");
+		var birth	 = $("#birth");
+		var address	 = $("#address");
+		var detail	 = $("#detail");
+		var tel	 	 = $("#tel");
+		var phone2	 = $("#phone2");
+		
+		var ID_VALID 	   = false;
+		var PWD_VALID	   = false;
+		var PWDCHECK_VALID = false;
+		var NAME_VALID 	   = false;
+		var GENDER_VALID   = false;
+		var BIRTH_VALID    = false;
+		var ADDRESS_VALID  = false;
+		var DETAIL_VALID   = false;
+		var TEL_VALID      = false;
+		var PHONE2_VALID   = false;
+		
+		// id 유효성 검사
+		if(id.val().trim().length == 0) {
+				$("#id").addClass('is-invalid');
+				$("#id").removeClass('is-valid');
+				ID_VALID = false;
+		} else {
+				$("#id").removeClass('is-invalid');
+				$("#id").addClass('is-valid');
+				ID_VALID = true;
+		}
+		
+		// pwd 유효성검사
+		if(pwd.val().trim().length < 6) {
+				$("#pwd").addClass('is-invalid');
+				$("#pwd").removeClass('is-valid');
+				PWD_VALID = false;
+		} else {
+				$("#pwd").removeClass('is-invalid');
+				$("#pwd").addClass('is-valid');
+				PWD_VALID = true;
+		}
+		
+		// pwdCheck 유효성검사
+		if(pwdCheck.val() != pwd.val() || pwdCheck.val().trim().length == 0 ) {
+				$("#pwdCheck").addClass('is-invalid');
+				$("#pwdCheck").removeClass('is-valid');
+				PWDCHECK_VALID = false;
+		} else {
+				$("#pwdCheck").removeClass('is-invalid');
+				$("#pwdCheck").addClass('is-valid');
+				PWDCHECK_VALID = true;
+		}
+		
+		// name 유효성검사
+		if(name.val().trim().length < 6) {
+				$("#name").addClass('is-invalid');
+				$("#name").removeClass('is-valid');
+				NAME_VALID = false;
+		} else {
+				$("#name").removeClass('is-invalid');
+				$("#name").addClass('is-valid');
+				NAME_VALID = true;
+		}
+		
+		// name 유효성검사
+		if(name.val().trim().length == 0) {
+				$("#name").addClass('is-invalid');
+				$("#name").removeClass('is-valid');
+				NAME_VALID = false;
+		} else {
+				$("#name").removeClass('is-invalid');
+				$("#name").addClass('is-valid');
+				NAME_VALID = true;
+		}
+		
+		// 성별 유효성 검사
+		if($("input[name='gender']:checked").val() == undefined) {
+			$("#genderWarning").text('성별을 선택해주세요');
+			GENDER_VALID = false;
+		} else {
+			$("#genderWarning").text('');
+			GENDER_VALID = true;
+		}
+		
+		// 생일 유효성 검사
+		if( $("#birth").val() == '') {
+				$("#birth").addClass('is-invalid');
+				$("#birth").removeClass('is-valid');
+				BIRTH_VALID = false;
+		} else {
+				$("#birth").removeClass('is-invalid');
+				$("#birth").addClass('is-valid');
+				BIRTH_VALID = true;
+		}
+		
+		// 지번주소 유효성 검사
+		if( $("#address").val() == '') {
+				$("#address").addClass('is-invalid');
+				$("#address").removeClass('is-valid');
+				ADDRESS_VALID = false;
+		} else {
+				$("#address").removeClass('is-invalid');
+				$("#address").addClass('is-valid');
+				ADDRESS_VALID = true;
+		}
+		
+		// 상세주소 유효성검사
+		if(detail.val().trim().length == 0) {
+				$("#detail").addClass('is-invalid');
+				$("#detail").removeClass('is-valid');
+				DETAIL_VALID = false;
+		} else {
+				$("#detail").removeClass('is-invalid');
+				$("#detail").addClass('is-valid');
+				DETAIL_VALID = true;
+		}
+		
+		// 전화번호 유효성 검사
+		if(tel.val().trim().length == 0) {
+				$("#tel").addClass('is-invalid');
+				$("#tel").removeClass('is-valid');
+				TEL_VALID = false;
+		} else {
+				$("#tel").removeClass('is-invalid');
+				$("#tel").addClass('is-valid');
+				TEL_VALID = true;
+		}
+		
+		// 전화번호 본인인증 유효성 검사
+		if(phone2.val().trim().length == 0) {
+				$("#phone2").addClass('is-invalid');
+				$("#phone2").removeClass('is-valid');
+				PHONE2_VALID = false;
+		} else {
+				$("#phone2").removeClass('is-invalid');
+				$("#phone2").addClass('is-valid');
+				PHONE2_VALID = true;
+		}
+		
+		// 유효성 전체 검사 하나라도 false면 못넘어감
+		if(!ID_VALID || !PWD_VALID || !PWDCHECK_VALID || !NAME_VALID || !GENDER_VALID || !BIRTH_VALID
+				|| !ADDRESS_VALID || !DETAIL_VALID || !TEL_VALID || !PHONE2_VALID) {
 			return false;
-			
-			
-			
-		} else if (step == 3){
-			document.getElementById('step2').classList.add('d-none');
-			document.getElementById('step3').classList.remove('d-none');
+		}
+		
+		console.log("--- api 호출해야됨");
+		
+		
+		if(!idCheckBtn){
+			$("#checkId").html('중복버튼클릭X.');
+        	$("#checkId").css('color', '#ff0000');
+        	return false;
+		}
+		
+		var formData = new FormData();
+		
+		formData.set("id", $("#id").val());
+		formData.set("pwd", $("#pwd").val());
+		formData.set("name", $("#name").val());
+		formData.set("gender", $("input[name='gender']:checked").val());
+		formData.set("birth", $("#birth").val().replaceAll('-',''));
+		formData.set("addr1", $("#address").val());
+		formData.set("addrDetail", $("#detail").val());
+		formData.set("tel", $("#tel").val());
+		formData.set("memberType", $("#type").val());
+		
+		formData.forEach(function(value ,key) {
+			console.log(key, value);	
+		})
+		
+		$.ajax({
+            url : 'joinMember.do', 	//Controller에서 인식할 주소
+            type : 'post', 			//POST 방식으로 전달
+            data : formData, 		//id가 key userId가 밸류값
+            processData: false,
+            contentType: false,
+            success : function(r) {
+            	if(r.result > 0) {
+            		alert('회원가입이 완료되었습니다.');
+            		location.href= 'main.do';
+            	} else {
+            		alert("회원가입중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.");
+            	}
+            },
+            error:function(){
+                alert("회원가입중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.");
+            }
+        })
+		
+	}
+	
+	//아이디 중복 체크
+	function idCheck() {
+		let userId = $('.input_id').val(); //input 태그의 class 명의 value 값
+		
+		// 아이디 값 없을 시 이벤트
+		if(userId.length == 0) {		// input값 value의 길이가 0일때
+			$("#checkId").html('아이디를 입력해주세요.');
+        	$("#checkId").css('color', '#ff0000');
+        	
+        	return false;	// 해당 idCheck()함수 멈춤
+		};
+		
+		$.ajax({
+            url : 'idCheck.do', //Controller에서 인식할 주소
+            type : 'post', //POST 방식으로 전달
+            data : {id: userId}, //id가 key userId가 밸류값
+            dataType : 'json',
+            success : function(result){
+            	console.log('--- result : ', result);
+                if(result == 0){
+                	idCheckBtn = true;
+                	$("#checkId").html('사용할 수 있는 아이디 입니다.');
+                	$("#checkId").css('color', '#00ff00');
+                }else{
+                	$("#checkId").html('사용할 수 없는 아이디 입니다.');
+                	$("#checkId").css('color', '#ff0000');
+                }
+            },
+            error:function(){
+                alert("에러입니다");
+            }
+        })
+    };
+	
+	//비밀번호 일치 확인 체크
+	 function pwdEqual() {
+		
+		var pwd = document.getElementById('pwd');			// 비밀번호 
+		var pwdok = document.getElementById('pwdCheck');	// 비밀번호 확인 값
+		var msg = document.getElementById('msg');			// 확인 메세지
+		var okColor = "#00ff00";							// 맞았을 때 출력되는 색깔.
+		var noColor ="#ff0000";								// 틀렸을 때 출력되는 색깔
+		
+		if(pwd.value == pwdok.value){						// pwd 변수의 값과 pwdok 변수의 값과 동일하다.
+			msg.style.color = okColor;						// span 태그의 ID(msg) 사용 
+			msg.innerHTML ="비밀번호 일치";						// innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것.
+		}else {
+			msg.style.color = noColor;
+			msg.innerHTML ="비밀번호 불일치";
 		}
 	}
-
+  
+	//카카오 주소 api
 	function kakaopost() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -300,6 +472,69 @@
 			}
 		}).open();
 	}
-</script>
+	
+	//휴대폰 번호 인증 
+		var code2 = ""; 
+	
+		$("#phoneChk").click( function(){ 
+			if($("#tel").val().trim().length == 0) {
+				alert("핸드폰 번호를 입력해주세요.")
+				return false;
+			}
+			// alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오."); 
+	
+			$("#phoneChk2").removeClass('d-none');
+			
+			
+			var phone = $("#tel").val();
+			
+			$.ajax({ 
+			type:"GET", 
+			url:"phoneCheck.do?phone=" + phone, 
+			cache : false, 
+			
+			success : function(data){ 
+				
+				if(data == "error"){ 
+					alert("휴대폰 번호가 올바르지 않습니다.") 
+						$(".successPhoneChk").text("유효한 번호를 입력해주세요."); 
+						$(".successPhoneChk").css("color","red"); 
+						$("#phone").attr("autofocus",true); 
+				
+				}else{ 
+						$("#phone2").attr("disabled",false); 
+						$("#phoneChk2").css("display","inline-block"); 
+						$(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오."); 
+						$(".successPhoneChk").css("color","green"); 
+						$("#phone").attr("readonly",true); 
+						code2 = data; 
+					}
+		 		}
+		 	}); 
+		});
+		
+	//휴대폰 인증번호 대조 
+		$("#phoneChk2").click( function(){
+			
+			if($("#phone2").val() == code2){ 
+				$(".successPhoneChk").text("인증번호가 일치합니다."); 
+				$(".successPhoneChk").css("color","green"); 
+				$("#phoneDoubleChk").val("true"); 
+				$("#phone2").attr("disabled",true); 
+			
+			}else{ 
+				$(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다."); 
+				$(".successPhoneChk").css("color","red"); 
+				$("#phoneDoubleChk").val("false"); 
+				$(this).attr("autofocus",true); 
+			}
+		});
 
+	//전체 버튼 선택하기
+	$(document).ready( function(){
+		$('#check-all').click( function(){
+			$('.btn').prop('checked', this.checked);
+		})
+	})
+</script>
 </html>

@@ -1,6 +1,5 @@
 package dino.controller;
 
-import org.springframework.aop.framework.adapter.GlobalAdvisorAdapterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,8 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dino.Dto.*;
 import dino.findkids.model.*;
-import dino.commonop.service.*;
-import dino.findkids.service.*;
+import dino.Dto.CommonOpDto;
+import dino.Dto.MakeTCardDto;
+import dino.commonop.service.CommonOpService;
+
+import dino.findkids.service.FindKidsService;
+
 
 import java.util.*;
 
@@ -22,12 +25,11 @@ import javax.servlet.ServletContext;
 @Controller
 public class FindKidsController {
 
-	
 	//public static final String IMGPATH = "C:\\project_dooli\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BabyDino\\resources";
-	
+
 	@Autowired
 	private CommonOpService commonOpService;
-	
+
 	@Autowired
 	private FindKidsService findKidsService;
 	
@@ -39,15 +41,15 @@ public class FindKidsController {
 
 	//findkids page 
 	@RequestMapping(value = "/findKids.do")
-	public ModelAndView findKids() {
-		 
+	public ModelAndView findKids() {		
+	
 		List<FindKidsJoinDto> KidsList = findKidsService.kidsList();
-		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("KidsList", KidsList);
 		mav.setViewName("findKids/findKids");
 		return mav;
 	}
+
 	
 	// Test get imgpath
 	@RequestMapping("/getImg.do")
@@ -72,8 +74,7 @@ public class FindKidsController {
 		return mav;
 	}
 	
-	
-	
+
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
 	public ResponseEntity<?> makeTeacherCard(MakeTCardDto dto, Common_ImgDto imgDto) {
 		
@@ -112,14 +113,12 @@ public class FindKidsController {
 		
 		result.put("success", success);
 		return ResponseEntity.ok(result);		
-		
-		
 	}
 
 	//makeTCard page get common_option
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.GET)
 	public ModelAndView makeTeacherCard() {
-		
+
 		List<CommonOpDto> list = commonOpService.t_job_opList();
 		List<CommonOpDto> k_list = commonOpService.k_type_opList();
 		List<CommonOpDto> c_list = commonOpService.t_care_opList();
@@ -136,7 +135,7 @@ public class FindKidsController {
 		mav.setViewName("findKids/makeTeacherCard");
 		return mav;
 	}
-	
+
 	//dino_compulsory page move
 	@RequestMapping("/compulsoryCheck.do")
 	public ModelAndView compulsoryCheck() {
@@ -146,6 +145,7 @@ public class FindKidsController {
 		return mav;
 	}
 	
+
 	//KidsList -> KidsContent move
 	@RequestMapping("/kidsContent.do")
 	public ModelAndView kidsContent(@RequestParam("idx")int idx) {
@@ -155,6 +155,8 @@ public class FindKidsController {
 		mav.setViewName("findKids/kidsContent");
 		return mav;		
 	}
+	
+
 }
 
 

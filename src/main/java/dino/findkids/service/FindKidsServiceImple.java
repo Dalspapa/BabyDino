@@ -20,14 +20,15 @@ public class FindKidsServiceImple implements FindKidsService {
 	
 	//public static final String IMGPATH = "C:\\project_dooli\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BabyDino\\resources";
 	public static final String IMGPATH = "C:\\이주호\\upload\\";
-	
+
 	public FindKidsDao getFindkidsDao() {
 		return findkidsDao;
 	}
+
 	public void setFindkidsDao(FindKidsDao findkidsDao) {
 		this.findkidsDao = findkidsDao;
-	}
-	
+	}	
+
 
 	//make techer card -> d_teacher Table
 	@Transactional
@@ -53,6 +54,7 @@ public class FindKidsServiceImple implements FindKidsService {
 		
 		System.out.println("#########파일이름" + c_imgpath);
 		
+
 		int result = findkidsDao.makeTCard(dto);
 		if(result == 0) {
 			System.out.println("insert 에러남.");
@@ -78,6 +80,11 @@ public class FindKidsServiceImple implements FindKidsService {
 		
 	}
 	
+	public int makeTCard(MakeTCardDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	//img copy method
 	public void copyInto(MultipartFile imgFiles) {
 		try {
@@ -89,8 +96,7 @@ public class FindKidsServiceImple implements FindKidsService {
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}		
-	}
-	
+	}	
 	
 	//get kids list
 	public List<FindKidsJoinDto> kidsList() {
@@ -115,5 +121,6 @@ public class FindKidsServiceImple implements FindKidsService {
 		
 		return resultImg;
 	}
-	
+
+
 }

@@ -10,8 +10,8 @@ import dino.findkids.model.*;
 
 public class FindKidsDaoImpl implements FindKidsDao {
 	
-	private SqlSessionTemplate sqlMap;	
-	
+	private SqlSessionTemplate sqlMap;
+
 	public FindKidsDaoImpl(SqlSessionTemplate sqlMap) {
 		super();
 		this.sqlMap = sqlMap;
@@ -19,7 +19,7 @@ public class FindKidsDaoImpl implements FindKidsDao {
 	
 	//make techer card -> d_teacher Table 	
 	public int makeTCard(MakeTCardDto dto) {
-		
+
 		int result = sqlMap.insert("t_makeCard", dto);
 		return result;
 	};
@@ -30,8 +30,8 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		List<FindKidsJoinDto> k_list = sqlMap.selectList("kidsList");
 		System.out.println("--- k_list : " + k_list);
 		return k_list;
-	}
-	
+	}	
+
 	// set Teacher img 
 	public int tSetImg(Common_ImgDto imgDto) {
 
@@ -48,5 +48,11 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return resultDto;
 	}
 	
-	
+
 }
+
+
+
+
+
+

@@ -216,7 +216,7 @@
 		</div>
 		<div style="padding-top:200px;">
 			<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
-			<button type="button" class="btn btn-secondary" onclick="reqAgree();">인증요청</button>
+			<button type="button" class="btn btn-secondary" id="reqAgree">인증요청</button>
 		</div>
 		<input type="hidden" name="t_sexcrime">
 	</div>
@@ -227,125 +227,99 @@
 
   <!-- custome js -->
   <script src="./common/js/bootstrap.min.js"></script>
-  <script>
   
-  
- 	function reqAgree(){
- 		
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     `-
- 	 	let imgFile = $('#t_copy').val();
- 		let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif)$/;
- 		
- 		if( imgFile == ""){
- 			alert('이미지 첨부는 필수입니다.');
- 			$('#t_copy').focus();
- 			return false;
- 		}
- 		if(imgFile != "" && imgFile != null){
- 			if(!imgFile.match(fileForm)){
- 				alert('이미지 파일만 등록 가등합니다.');
- 				return false;
- 			}
- 		}
- 		console.log('11111');
+  	<script>  
 
- 		let canvasCheck = $('#canvas_name').getContext('2d');
- 		alert(canvasCheck);
- 		
-/*  		function isCanvas(canvas){
- 			return !canvas.getContext('2d')
- 			.getImageData(0, 0, canvas.width, canvas.height).data
- 			.some(channel => channel !== 0);
- 			console.log('wow');
- 		} */
- 	/* 	let cv = $('#canvas_name');
- 		if ( !cv.getContext ) return;
- 		
- 		console.log('11111');
- 		
- 		let ctx = cv.getContext('2d');
- 		let w = cv.width = cv.height = 100;
- 		let draw = null;
- 		let d = ctx.getImageData(0, 0, w, w);
- 		let leng = d.data.length;
- 		for ( let i = 0; i < leng; i++){
- 			if(!d.data[i]){
- 				draw = false;
- 			}else if(d.data[i]){
- 				draw = true; 				
- 			}
- 		}
- 		console.log('222222');
- 		if(!draw){
- 			alert('성범죄 조회 동의 서명을 해주셔야합니다.');
- 		} */
- 		console.log('333333');
- 		
- 		
- 		let count = 0;
- 		
- 		for(var i = 1; i < 11; i++) {
- 			if($("input[name='quiz" + i + "']:checked").val() == 1) {
- 				count++;
- 			}
- 		}
- 		
- 		console.log("-- count : ", count);
- 		
- 		if(count < 8){
- 			$('.makeTdiv').hide();
- 			$('#step_1').show();
- 			let name = 'step_';
-			let count = 1;
-			let dName = name + count;	
-			
-			$('.makeTdiv').hide();
-			
-			$('.nextbtn').click(function (){				
-				$('#'+dName).hide();
-				count++;
-				dName = name + count;				
-				$('#'+dName).show();
-				console.log(count);
-			});
-			
-			$('.prevbtn').click(function (){
-			
-				$('#'+dName).hide();
-				count--;
-				dName = name + count;				
-				$('#'+dName).show();
-			});
- 			console.log(count);
- 			return false;
- 		}
- 	}
  	
 	$(document).ready(function (){
-			
-			let name = 'step_';
-			let count = 1;
-			let dName = name + count;	
-			
-			$('.makeTdiv').hide();
-			
-			$('.nextbtn').click(function (){				
-				$('#'+dName).hide();
-				count++;
-				dName = name + count;				
-				$('#'+dName).show();
-				console.log(count);
-			});
-			
-			$('.prevbtn').click(function (){
-			
-				$('#'+dName).hide();
-				count--;
-				dName = name + count;				
-				$('#'+dName).show();
-			});
-			
+		
+		
+		let name = 'step_';
+		let count = 1;
+		let dName = name + count;
+		
+		this.count = count;
+		
+		$('.makeTdiv').hide();
+		
+		$('.nextbtn').click(function (){
+			$('#'+dName).hide();
+			count++;
+			dName = name + count;				
+			$('#'+dName).show();
+			console.log("화면 count "+count);
 		});
+		
+		$('.prevbtn').click(function (){
+		
+			$('#'+dName).hide();
+			count--;
+			dName = name + count;				
+			$('#'+dName).show();
+			console.log("이전화면count2=====" + count);
+		});
+		
+	 	$('#reqAgree').click (function (){
+
+	 	 	let imgFile = $('#t_copy').val();
+	 		let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif)$/;
+	 		
+	 		if( imgFile == ""){
+	 			alert('이미지 첨부는 필수입니다.');
+	 			$('#t_copy').focus();
+	 			return false;
+	 		}
+	 		if(imgFile != "" && imgFile != null){
+	 			if(!imgFile.match(fileForm)){
+	 				alert('이미지 파일만 등록 가등합니다.');
+	 				return false;
+	 			}
+	 		}
+
+	 	
+	 		let answer = 0;
+	 		
+	 		for(var i = 1; i < 11; i++) {
+	 			if($("input[name='quiz" + i + "']:checked").val() == 1) {
+	 				answer++;
+	 			}
+	 		}
+	 		
+	 		console.log("-- answer : ", answer);
+	 		
+	 		if(answer < 8){
+	 			$('.makeTdiv').hide();
+	 			$('#step_1').show();
+	 			name = 'step_';
+				count = 1;
+				dName = name + count;	
+				
+				$('.makeTdiv').hide();
+				
+/* 				$('.nextbtn').click(function (){
+					$('#'+dName).hide();
+					count++;
+					dName = name + count;				
+					$('#'+dName).show();
+					console.log("검증countB"+count);
+				});
+				
+				$('.prevbtn').click(function (){
+				
+					$('#'+dName).hide();
+					count--;
+					dName = name + count;				
+					$('#'+dName).show();
+				}); */
+	 			console.log("검증count2B"+count);
+	 			return false;
+	 		}
+	 	});
+		
+	});
+		
+
+
 	
 	
 	$(function(){
@@ -376,171 +350,9 @@
 		
 		//_SIGNATURE.setPreImage(_canvas);
 	});
-	
 
-	/* function showDiv1() {
-		if (!$('input[name=q_1]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_2");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_1");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv2() {
-		if (!$('input[name=q_2]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_3");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_2");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv3() {
-		if (!$('input[name=q_3]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_4");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_3");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv4() {
-		if (!$('input[name=q_4]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_5");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_4");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv5() {
-		if (!$('input[name=q_5]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_6");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_5");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv6() {
-		if (!$('input[name=q_6]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_7");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_6");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv7() {
-		if (!$('input[name=q_7]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_8");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_7");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv8() {
-		if (!$('input[name=q_8]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_9");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_8");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv9() {
-		if (!$('input[name=q_9]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step_10");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_9");
-			q_b.addClass('d-none');
-		}
-	}
-	function showDiv10() {	
-		if (!$('input[name=q_10]:checked').val()) {
-			window.alert('답을 골라주세요');
-		} else {
-			let q_a = $("#step2_1");
-			q_a.removeClass('d-none');
-			let q_b = $("#step_10");
-			q_b.addClass('d-none');			
-		}
-	}
-	
-	function preDiv10() {
-		let q_a = $("#step_10");
-		q_a.removeClass('d-none');
-		let q_b = $("#step2_1");
-		q_b.addClass('d-none');
-	}
-	function preDiv9() {
-		let q_a = $("#step_9");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_10");
-		q_b.addClass('d-none');
-	}
-	function preDiv8() {
-		let q_a = $("#step_8");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_9");
-		q_b.addClass('d-none');
-	}
-	function preDiv7() {
-		let q_a = $("#step_7");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_8");
-		q_b.addClass('d-none');
-	}
-	function preDiv6() {
-		let q_a = $("#step_6");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_7");
-		q_b.addClass('d-none');
-	}
-	function preDiv5() {
-		let q_a = $("#step_5");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_6");
-		q_b.addClass('d-none');
-	}
-	function preDiv4() {
-		let q_a = $("#step_4");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_5");
-		q_b.addClass('d-none');
-	}
-	function preDiv3() {
-		let q_a = $("#step_3");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_4");
-		q_b.addClass('d-none');
-	}
-	function preDiv2() {
-		let q_a = $("#step_2");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_3");
-		q_b.addClass('d-none');
-	}
-	function preDiv1() {
-		let q_a = $("#step_1");
-		q_a.removeClass('d-none');
-		let q_b = $("#step_2");
-		q_b.addClass('d-none');
-	} */
+	</script>
 
-</script>
 </html>
 
 

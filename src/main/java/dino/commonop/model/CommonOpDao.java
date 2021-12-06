@@ -2,7 +2,7 @@ package dino.commonop.model;
 
 import java.util.*;
 
-import dino.Dto.CommonOpDto;
+import dino.Dto.*;
 
 public interface CommonOpDao {
 
@@ -17,6 +17,20 @@ public interface CommonOpDao {
 	//Make a KidsCard
 	public List<CommonOpDto> ktendency(Map map);
 
-	//reportType  gk..하.. 복붙 하지 말라 햇 죠 ..
+	//reportType 
 	public List<CommonOpDto> reportType();
+	
+	//공지사항
+	public List<CommonOpDto> noticeList(Map map);
+	
+	//자주 묻는 질문(회원관련)
+	public List<CommonOpDto> qna(Map map);
+	
+	//자주 묻는 질문(정부지원관련)
+	public List<CommonOpDto> government(Map map);
+	
+	//자주 묻는 질문(정부지원관련)
+	public List<CommonOpDto> pay(Map map);
+	
+	
 }

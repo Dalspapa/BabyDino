@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dino.findTeachers">
+
+	<select id="formKidsCard" resultType="dino.Dto.KidDto">
+		SELECT 
+			idx, 
+			k_name, 
+			k_gender, 
+			k_birth 
+		FROM 
+			d_kid 
+		WHERE 
+			d_member_idx = 23
+	</select>
+
+	<!-- <insert id="k_makeCard" parameterType="dino.Dto.KidDto">
+	insert into
+                d_kid
+        values(
+                d_kid_idx.nextval,
+                24,
+                #{k_name},
+                2,
+                #{k_birth},
+                #{k_introduce},
+                #{k_care_type},
+                #{k_tendency},
+               	#{teacher_type},
+               	#{k_require}
+        )
+	</insert> -->
+		
+	<select id="teacherInfo"  resultType="dino.findteachers.model.FindTeacherJoinDto">
+		SELECT 
+			t.t_cost
+			, t.job
+			, t.badge
+			, t.t_introduce
+			, t.schedule_day
+			, t.schedule_time
+			, t.kid_type
+			, t.t_care_type
+			, t.career_experience
+			, t.cctvagree
+			, m.name
+			, m.birth
+			, m.gender
+			, m.addr1
+			, i.c_imgpath
+		FROM
+			d_teacher t
+		LEFT JOIN 
+			d_member m ON m.idx = t.d_member_idx
+		LEFT JOIN 
+			d_common_img i on i.ref_idx = t.idx
+		where 
+			t.idx = 41
+	</select>
+	
+	<select id="teacherReviewList" resultType="dino.Dto.ReviewDto">
+		select idx
+	     	 , d_reserve_idx
+	     	 , d_member_idx
+	     	 , star
+	     	 , r_writedate
+	     	 , r_content
+		from 
+			d_review 
+		where 
+			d_member_idx = 41
+	</select>
+	
+</mapper>

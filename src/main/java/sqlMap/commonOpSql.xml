@@ -82,6 +82,44 @@
    		where
    			c_category=14
    </select>
+   
+   <!-- 공지사항 -->
+	<select id="notice" resultType = "dino.Dto.CommonOpDto">
+		select 
+		 	* 
+		 from 
+		 	d_common_option 
+		 where 
+		 	c_category = 28
+	</select>
+	<!-- 자주 묻는 질문(회원관련) -->
+	<select id="qna" resultType = "dino.Dto.CommonOpDto">
+		select 
+		 	* 
+		 from 
+		 	d_common_option 
+		 where 
+		 	c_category = 29
+	</select>
+	<!-- 자주 묻는 질문(정부지원관련) -->
+	<select id="government" resultType = "dino.Dto.CommonOpDto">
+		select 
+		 	* 
+		 from 
+		 	d_common_option 
+		 where 
+		 	c_category = 30
+	</select>
+	<!-- 자주 묻는 질문(결제 환불관련) -->
+	<select id="pay" resultType = "dino.Dto.CommonOpDto">
+		select 
+		 	* 
+		 from 
+		 	d_common_option 
+		 where 
+		 	c_category = 31
+	</select>
+	
 </mapper>
 
 

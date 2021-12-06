@@ -1,11 +1,7 @@
 package dino.findkids.model;
 
 import java.util.*;
-
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import dino.Dto.*;
-import dino.findkids.model.*;
 
 public interface FindKidsDao {
 	

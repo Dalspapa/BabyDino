@@ -9,7 +9,7 @@ public interface MemberDao {
 
 		//Join
 		public int memberJoin(MemberDto memberDto);
-		public boolean idCheck(String id);
+		public int idCheck(String id);
 		
 		//Login
 		public MemberDto loginCheck(String id);

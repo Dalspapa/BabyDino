@@ -13,5 +13,6 @@
 		<mapper resource="sqlMap/findKidsSql.xml"/>
 		<mapper resource="sqlMap/commonImgSql.xml"/>
 		<mapper resource="sqlMap/reportSql.xml"/>
+		<mapper resource="sqlMap/findTeachersSql.xml"/>
 	</mappers>
 </configuration>
