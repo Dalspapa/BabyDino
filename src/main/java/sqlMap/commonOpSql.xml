@@ -68,4 +68,14 @@
          where 
             c_category=9
    </select>
+   <select id="reportOpList" resultType="dino.Dto.CommonOpDto">
+   		select
+   			*
+   		from
+   			d_common_option
+   		where
+   			c_category=14
+   </select>
+   
+   
 </mapper>

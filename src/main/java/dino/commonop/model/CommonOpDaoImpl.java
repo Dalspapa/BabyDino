@@ -60,5 +60,11 @@ public class CommonOpDaoImpl implements CommonOpDao {
 		List<CommonOpDto> list = sqlMap.selectList("k_tendency", map);
 		return list;
 	}
+	
+	//reportType
+	public List<CommonOpDto> reportType() {
 
+		List<CommonOpDto> rp_list = sqlMap.selectList("rp_typeList");
+		return rp_list;
+	}
 }

@@ -16,4 +16,7 @@ public interface CommonOpService {
 	
 	//Make a KidsCard
 	public List<CommonOpDto> ktendency();
+	
+	//reportType
+	public List<CommonOpDto> reportType();
 }
