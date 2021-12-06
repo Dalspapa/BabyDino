@@ -61,5 +61,11 @@ public class CommonOpServiceImple implements CommonOpService {
 		List<CommonOpDto> list = commonopDao.ktendency(map);
 		return list;
 	}
-
+ 
+	// reportType
+	public List<CommonOpDto> reportType() {
+		
+		List<CommonOpDto> rp_list = commonopDao.reportType();
+		return rp_list;
+	}
 }

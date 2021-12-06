@@ -1,17 +1,11 @@
 package dino.findkids.service;
 
-import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
-import javax.imageio.ImageIO;
-import javax.management.RuntimeErrorException;
-import javax.servlet.ServletContext;
-
-import org.springframework.aop.framework.adapter.GlobalAdvisorAdapterRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,9 +41,6 @@ public class FindKidsServiceImple implements FindKidsService {
 		}
 		System.out.println("파일 넣어주세요 제발");
 		System.out.println("=== serviceimpl 진입 =====");
-				
-		
-		
 		
 		// 파일경로에 파일저장
 		for(int i = 0; i < imgFiles.size(); i++) {

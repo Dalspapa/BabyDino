@@ -37,6 +37,7 @@
 	<bean id="reportDao" class="dino.report.model.ReportDaoImple">
 		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
+
 <!-- Service Area -->
 	<bean id="memberService" class="dino.member.service.MemberServiceImple">
 		<property name="memberDao" ref="memberDao" />

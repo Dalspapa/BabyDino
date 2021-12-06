@@ -63,8 +63,10 @@
                       <a class="nav-link" href="#projects">아이찾기</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="noticeMain.do">궁금해요
-                      </a>
+                      <a class="nav-link" href="reportList.do">궁금해요</a>
+                    </li>                   
+                    <li class="nav-item">
+                      <a class="nav-link" href="reportList.do" > 시시인고오</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">

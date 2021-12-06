@@ -6,6 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.btn {
+	float : right;
+	font-size: 5px;
+}
+a {
+	text-decoration: none;
+	color : black;
+}
+a:hover {
+	color : yellow;
+}
+</style>
 </head>
 <body>
 <h1>신고 내용 수정하기</h1>
@@ -30,20 +43,15 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" align="center">
-				<button>수정하기</button>
+			 <div class ="btn">
+				<button class="btn btn-success">수정하기</button>
 				<c:url var="reportUrl" value="reportContent.do">
 					<c:param name="idx">${dto.idx}</c:param>
 				</c:url>
-				<button value="뒤로가기" onclick="history.back(-1);">뒤로가기</button>
-			</td>
-		</tr>
+				<button class="btn btn-success" value="뒤로가기" onclick="history.back(-1);">뒤로가기</button>
+			</div>
+		</tr>	
 	</table>
 </form>
 </body>
-<script>
-	function goBack() {
-		window.history.back();
-	}
-</script>
 </html>

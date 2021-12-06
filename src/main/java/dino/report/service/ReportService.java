@@ -2,7 +2,8 @@ package dino.report.service;
 
 import java.util.List;
 
-import dino.Dto.*;
+import dino.Dto.CommonOpDto;
+import dino.Dto.ReportDto;
 
 public interface ReportService {
 	
@@ -25,3 +26,4 @@ public interface ReportService {
 	
 	public List<CommonOpDto> reportOpList();
 }
+

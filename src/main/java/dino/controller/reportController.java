@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.Dto.CommonOpDto;
@@ -21,7 +21,6 @@ public class reportController {
 	private ReportService reportService;
 	
 	String goUrl = "";
-
 	
 	@RequestMapping("/reportList.do")
 	public ModelAndView ReportForm() {
@@ -32,13 +31,8 @@ public class reportController {
 		System.out.println("+====="+reportlist);
 		mav.addObject("reportlist",reportlist);
 		mav.setViewName("report/reportList");
+				
 		return mav;
-	}
-	@RequestMapping(value = "/kyominAjax.do", method = RequestMethod.POST)
-	@ResponseBody
-	public List<ReportDto> kyominAjax() {
-		List<ReportDto> reportlist = reportService.reportList();
-		return reportlist;
 	}
 	
 	@RequestMapping(value = "/reportWrite.do", method = RequestMethod.GET)
@@ -63,7 +57,7 @@ public class reportController {
 		return mav;
 	}
 	
-	 @RequestMapping("/reportContent.do" ) 
+	 @RequestMapping("/reportContent.do") 
 	 public ModelAndView reportContent(@RequestParam(value = "idx",defaultValue = "0")int idx) { 
 		
 		 ReportDto dto = reportService.reportContent(idx); 
@@ -113,4 +107,4 @@ public class reportController {
 		 
 		 return mav;
 	 }
-}	 
+}

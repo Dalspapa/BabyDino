@@ -39,7 +39,7 @@
 function checkForm(){
 	/**카테고리 유효성 검사*/
 	if(rp_type.value==""||rp_type.value==null){
-		alert('품목을 선택해주세요.');
+		alert('신고유형을 선택해주세요.');
 		rp_type.select();
 		return false;
 	}

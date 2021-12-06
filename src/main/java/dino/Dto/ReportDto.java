@@ -71,3 +71,4 @@ public class ReportDto {
 	
 	
 }
+>>>>>>> branch 'SeongI' of https://github.com/Dalspapa/BabyDino.git

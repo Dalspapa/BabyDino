@@ -232,7 +232,7 @@
   
  	function reqAgree(){
  		
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     `-
  	 	let imgFile = $('#t_copy').val();
  		let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif)$/;
  		

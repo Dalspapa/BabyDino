@@ -57,5 +57,3 @@
 			idx = #{idx}
 	</update>
   </mapper>
-  
-  

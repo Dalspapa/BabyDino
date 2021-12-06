@@ -16,5 +16,7 @@ public interface CommonOpDao {
 	
 	//Make a KidsCard
 	public List<CommonOpDto> ktendency(Map map);
-	
+
+	//reportType  gk..하.. 복붙 하지 말라 햇 죠 ..
+	public List<CommonOpDto> reportType();
 }

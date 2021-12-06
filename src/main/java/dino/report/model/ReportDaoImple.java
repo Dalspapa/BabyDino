@@ -50,12 +50,3 @@ public class ReportDaoImple implements ReportDao {
 	
 	
 }
-
-
-
-
-
-
-
-
-
