@@ -1,16 +1,19 @@
 package dino.controller;
 
+import org.springframework.aop.framework.adapter.GlobalAdvisorAdapterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.Dto.*;
-import dino.commonop.service.CommonOpService;
-import dino.findkids.service.FindKidsService;
+import dino.findkids.model.*;
+import dino.commonop.service.*;
+import dino.findkids.service.*;
 
 import java.util.*;
 
@@ -35,20 +38,44 @@ public class FindKidsController {
 	String goUrl = "";
 
 	//findkids page 
-	@RequestMapping("/findKids.do")
+	@RequestMapping(value = "/findKids.do")
 	public ModelAndView findKids() {
 		 
-		List<MakeTCardDto> k_list = findKidsService.kidsList();
+		List<FindKidsJoinDto> KidsList = findKidsService.kidsList();
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("k_list", k_list);
+		mav.addObject("KidsList", KidsList);
 		mav.setViewName("findKids/findKids");
 		return mav;
 	}
 	
+	// Test get imgpath
+	@RequestMapping("/getImg.do")
+	public ModelAndView getImg(int d_member_idx) {
+		
+		List<Common_ImgDto> resultImg = findKidsService.imgpath(d_member_idx);
+		
+		String [] imgName = {};
+		for(int i = 0; i < resultImg.size(); i++) {
+			System.out.println("리스트로 가져온 이미지"+resultImg.get(i).getC_imgpath());
+			imgName = resultImg.get(i).getC_imgpath().split(",");
+		}
+		System.out.println(imgName+"22222222222222mg");
+		//String [] imgName = resultImg.getC_imgpath().split(",");
+		ModelAndView mav = new ModelAndView();
+//			for (int i = 0; i < imgName.length; i++) {
+//				System.out.println("가져온 이미지 네임" + imgName[i]);
+//			}
+		mav.addObject("imgName", imgName);
+		mav.setViewName("findKids/findKids");
+		
+		return mav;
+	}
+	
+	
 	
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
 	public ResponseEntity<?> makeTeacherCard(MakeTCardDto dto, Common_ImgDto imgDto) {
-		
 		
 		System.out.println("== 컨트롤러 진입.");
 		
@@ -57,6 +84,16 @@ public class FindKidsController {
 		
 		List<MultipartFile> imgFiles = new ArrayList<MultipartFile>();
 		imgFiles = dto.getTImg();
+		
+		if ( imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
+			imgDto.setC_imgpath("teacher.png");
+			
+		}
+//			else if ( dto.getTImg() == null || dto.getTImg().size() == 0) {
+//			dto.setTImg("teacher.png");
+//			imgFiles.set(0, (MultipartFile)"teacher.png");
+//		}
+		
 		String dirPath = servletContext.getRealPath("/resources");
 		
 		try {
@@ -65,6 +102,13 @@ public class FindKidsController {
 		} catch (Exception e) {
 			System.out.println("오류발생. " + e.getMessage());
 		};
+		
+		int setImg = findKidsService.tSetImg(imgDto);
+		if( setImg != 1 ) {
+			result.put("fail", false);
+		} else {
+			result.put("success", success);
+		}
 		
 		result.put("success", success);
 		return ResponseEntity.ok(result);		
@@ -101,23 +145,16 @@ public class FindKidsController {
 		
 		return mav;
 	}
-
-	// Test get imgpath
-	@RequestMapping("/getImg.do")
-	public ModelAndView getImg(int d_member_idx) {
-		
-		Common_ImgDto resultImg = findKidsService.imgpath(d_member_idx);
-		String [] imgName = resultImg.getC_imgpath().split(",");
-		ModelAndView mav = new ModelAndView();
-		for (int i = 0; i < imgName.length; i++) {
-			System.out.println("가져온 이미지 네임" + imgName[i]);
-		}
-		mav.addObject("imgName", imgName);
-		mav.setViewName("findKids/findKids");
-		
-		return mav;
-	}
 	
+	//KidsList -> KidsContent move
+	@RequestMapping("/kidsContent.do")
+	public ModelAndView kidsContent(@RequestParam("idx")int idx) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("findKids/kidsContent");
+		return mav;		
+	}
 }
 
 

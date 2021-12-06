@@ -102,7 +102,7 @@ var _SIGNATURE = new function(){
 	}
 	
 	this.doneCanvas = function(_canvas){
-		const drawCanvas = document.getElementById(_cansvas);
+		const drawCanvas = document.getElementById(_canvas);
 		var data = this.getCanvas(_canvas);
 		
 		this.clearCanvas(_canvas);

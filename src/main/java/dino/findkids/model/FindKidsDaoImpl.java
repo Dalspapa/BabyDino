@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.http.ResponseEntity;
 
 import dino.Dto.*;
+import dino.findkids.model.*;
 
 public class FindKidsDaoImpl implements FindKidsDao {
 	
@@ -24,9 +25,10 @@ public class FindKidsDaoImpl implements FindKidsDao {
 	};
 	
 	//get kids list 
-	public List<MakeTCardDto> kidsList() {
+	public List<FindKidsJoinDto> kidsList() {
 
-		List<MakeTCardDto> k_list = sqlMap.selectList("kidsList");
+		List<FindKidsJoinDto> k_list = sqlMap.selectList("kidsList");
+		System.out.println("--- k_list : " + k_list);
 		return k_list;
 	}
 	
@@ -40,9 +42,8 @@ public class FindKidsDaoImpl implements FindKidsDao {
 	}
 	
 	// Test get imgpath
-	public Common_ImgDto imgpath(int d_member_idx) {
-		
-		Common_ImgDto resultDto = sqlMap.selectOne("getImg", d_member_idx);
+	public List<Common_ImgDto> imgpath(int d_member_idx) {
+		List<Common_ImgDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
 				
 		return resultDto;
 	}

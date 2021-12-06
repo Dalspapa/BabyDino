@@ -1,19 +1,23 @@
 package dino.findkids.service;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
+import javax.imageio.ImageIO;
+import javax.management.RuntimeErrorException;
 import javax.servlet.ServletContext;
 
+import org.springframework.aop.framework.adapter.GlobalAdvisorAdapterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import dino.Dto.*;
-import dino.findkids.model.FindKidsDao;
+import dino.findkids.model.*;
 
 @Service
 public class FindKidsServiceImple implements FindKidsService {
@@ -35,23 +39,33 @@ public class FindKidsServiceImple implements FindKidsService {
 	@Transactional
 	public void makeTCard(MakeTCardDto dto, List<MultipartFile> imgFiles, String dirPath, Common_ImgDto imgDto) {
 		
-		System.out.println("=== serviceimpl 진입 =====");
-		
 		String c_imgpath = "";
+		if ( imgFiles == null || imgFiles.size() == 0) {
+			
+			c_imgpath = "teacher.png";
+			imgDto.setC_imgpath(c_imgpath);
+		}
+		System.out.println("파일 넣어주세요 제발");
+		System.out.println("=== serviceimpl 진입 =====");
+				
 		
+		
+		
+		// 파일경로에 파일저장
 		for(int i = 0; i < imgFiles.size(); i++) {
 			System.out.println("== filimgFileName : " + imgFiles.get(i).getOriginalFilename());
 			copyInto(imgFiles.get(i));
 			System.out.println("copyinto 성공 ");
 			c_imgpath += imgFiles.get(i).getOriginalFilename() + ",";
 		}
-		
+		System.out.println("이미지가 없나요? ㅡㅡ");
 		
 		System.out.println("#########파일이름" + c_imgpath);
+		
 		int result = findkidsDao.makeTCard(dto);
 		if(result == 0) {
 			System.out.println("insert 에러남.");
-		}
+		} 
 		
 		// inset된 data idx
 		int ref_idx = dto.getIdx();
@@ -88,10 +102,11 @@ public class FindKidsServiceImple implements FindKidsService {
 	
 	
 	//get kids list
-	public List<MakeTCardDto> kidsList() {
+	public List<FindKidsJoinDto> kidsList() {
 
-		List<MakeTCardDto> k_list = findkidsDao.kidsList();
+		List<FindKidsJoinDto> k_list = findkidsDao.kidsList();
 		return k_list;
+		
 	}
 		
 	//set Teacher img
@@ -103,9 +118,9 @@ public class FindKidsServiceImple implements FindKidsService {
 	}
 	
 	//Test imgpath 
-	public Common_ImgDto imgpath(int d_member_idx) {
+	public List<Common_ImgDto> imgpath(int d_member_idx) {
 		
-		Common_ImgDto resultImg = findkidsDao.imgpath(d_member_idx);
+		List<Common_ImgDto> resultImg = findkidsDao.imgpath(d_member_idx);
 		
 		return resultImg;
 	}

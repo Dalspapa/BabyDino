@@ -63,7 +63,7 @@
                       <a class="nav-link" href="#projects">아이찾기</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#signup">궁금해요
+                      <a class="nav-link" href="noticeMain.do">궁금해요
                       </a>
                     </li>
                     <li class="nav-item">
