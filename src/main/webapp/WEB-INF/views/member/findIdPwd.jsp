@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ID / PWD 찾기</title>
+<%@include file="../header.jsp" %>
 </head>
 <body>
 	<h1>계정 찾기</h1>
@@ -76,6 +77,7 @@
 		</article>
 	</section>
 </body>
+<%@include file="../footer.jsp" %>
 <script src="./common/js/jquery-3.6.0.min.js"></script>
 <script>
 	//아이디찾기 비밀번호 찾기 js

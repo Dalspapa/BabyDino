@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 </head>
 <body>
 <h1>공지사항</h1>
@@ -20,9 +22,9 @@
 	<tbody>
 		<c:if test="${empty list }">
 			<tr>
-				<td colspan="3" align="center">
+				<td colspan="4" align="center">
 				등록된 게시글이 없습니다.
-				</td>ㅈ;ㄴ
+				</td>
 			</tr>
 		</c:if>
 		<c:forEach var="dto" items="${list }">
@@ -37,7 +39,7 @@
 			</tr>
 		</c:forEach>
 	</tbody>
-	ㅋㅋㅋㅋㅋ진ㅉ
 	</table>
 </body>
+<%@include file="../footer.jsp" %>
 </html>

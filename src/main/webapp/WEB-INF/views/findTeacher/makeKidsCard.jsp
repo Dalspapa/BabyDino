@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 <!-- bootstrap -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -182,6 +183,7 @@
 		</div>
 	</form>
 </body>
+<%@include file="../footer.jsp" %>
 <script>
 	
 	function changeDiv(val) {

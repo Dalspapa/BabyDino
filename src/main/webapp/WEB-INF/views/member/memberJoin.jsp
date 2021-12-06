@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 </head>
 <!-- css -->
 <link rel="stylesheet" href="./common/css/bootstrap.min.css">
@@ -194,7 +195,8 @@ table tr th {
 			</div>
 		</section>
 	</div>
-
+</body>
+<%@include file="../footer.jsp" %>
 <!-- 카카오 주소 API -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

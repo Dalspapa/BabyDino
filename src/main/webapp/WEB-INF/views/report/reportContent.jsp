@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 <style>
 body {
     width: 952px;
@@ -82,6 +83,7 @@ a:hover {
 			<input type="hidden" name="idx" value="${ dto.idx }">
 		</div>
 </body>
+<%@include file="../footer.jsp" %>
 <script>
 	function goBack() {
 		window.history.back();

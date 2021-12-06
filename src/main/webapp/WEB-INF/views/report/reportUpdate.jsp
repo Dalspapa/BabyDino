@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 <style>
 .btn {
 	float : right;
@@ -54,4 +55,5 @@ a:hover {
 	</table>
 </form>
 </body>
+<%@include file="../footer.jsp" %>
 </html>

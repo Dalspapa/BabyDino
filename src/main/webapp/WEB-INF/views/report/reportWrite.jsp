@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 </head>
 <body>
 	<h1>신고하기</h1>
@@ -35,6 +36,7 @@
 		<input type="submit" value="신고하기">
 	</form>
 </body>
+<%@include file="../footer.jsp" %>
 <script>
 function checkForm(){
 	/**카테고리 유효성 검사*/

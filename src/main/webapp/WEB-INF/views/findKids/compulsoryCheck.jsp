@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
+
   <!-- 파비콘 -->
   <link rel="shortcut icon" href="./common/img/favicon/favicon.png" type="image/x-icon"> 
   <link rel="icon" href="./common/img/favicon/favicon.png" type="image/x-icon"> 
@@ -223,6 +225,7 @@
 </section>
 </form>
 </body>
+<%@include file="../footer.jsp" %>
   <script src="./common/js/jquery-3.6.0.min.js"></script>
 
   <!-- custome js -->

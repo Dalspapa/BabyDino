@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="./common/img/favicon/favicon.png"
 	type="image/x-icon">
@@ -193,6 +194,7 @@
 		<!-- 하단 정보[START] -->
 	</section>
 </body>
+<%@include file="../footer.jsp" %>
 <!-- J-query -->
 <script src="./common/js/jquery-3.6.0.min.js"></script>
 

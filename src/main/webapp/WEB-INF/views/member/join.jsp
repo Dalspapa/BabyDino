@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 </head>
 <body>
 	<h1>공룡 가족되기</h1>
@@ -31,4 +32,5 @@
 
 	</section>
 </body>
+<%@include file="../header.jsp" %>
 </html>

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 목록</title>
+<%@include file="../header.jsp" %>
 <style>
 body {
     width: 952px;
@@ -101,4 +102,5 @@ table th,td {
 	</div>
 </form>
 </body>
+<%@include file="../footer.jsp" %>
 </html>
