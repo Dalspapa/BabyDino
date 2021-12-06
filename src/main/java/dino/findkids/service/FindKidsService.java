@@ -4,6 +4,7 @@ import java.util.*;
 
 
 import dino.Dto.MakeTCardDto;
+import dino.findkids.model.KidInfoDto;
 
 public interface FindKidsService {
 

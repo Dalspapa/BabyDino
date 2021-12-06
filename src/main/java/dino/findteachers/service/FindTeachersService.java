@@ -1,8 +1,20 @@
 package dino.findteachers.service;
 
-import dino.findteachers.model.TeacherInfoDto;
+import java.util.List;
+
+import dino.Dto.KidDto;
+import dino.Dto.MakeTCardDto;
+import dino.findteachers.model.FindTeacherJoinDto;
 
 public interface FindTeachersService {
 	
-	public TeacherInfoDto teacherInfo(int idx);
+	//find teacher card list 
+	
+	//make kids card
+	public List<KidDto> formKidsCard(int idx);
+	public int makeKCard(KidDto dto);
+	
+	//teacher card content
+	public FindTeacherJoinDto teacherInfo(int idx);
+	
 }

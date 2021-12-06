@@ -217,33 +217,33 @@ section{
     <section>
       <div class="topCont d-flex justify-content-between">
         <div>#뒤로가기버튼</div>
-        <div>${ k_dto.k_name }</div>
+        <div>#아이 이름 데이터 들어갈 자리</div>
         <div>#좋아요버튼</div>
       </div>
       <div class="item1">
-        <div class="childImg">#아이이미지</div>
+        <div class="childImg">#아이이미지(c_imgpath)데이터 들어갈 자리</div>
         <div class="childInfo">
-          #아이정보(k_name) / #성별(k_gender)
+          #아이이름(k_name) 데이터 들어갈 자리 #(아이 나이(세)) 데이터 들어갈 자리 / #성별(k_gender) 데이터 들어갈 자리
         </div>
-        <div>${ k_dto.k_name }</div>
-        <div>${ k_dto.k_gender }</div>
       </div>
       <ul class="item3">
         <li>
-          <h3>신청내용(k_introduce)</h3>
+          <h3>아이소개(k_introduce)</h3>
           <div class="contentBox">
-            <div>${ k_dto.k_introduce }</div>
+            <div>#아이소개 데이터 들어갈 자리</div>
           </div>
         </li>
         <li>
           <h3>원하는 시터 나이(teacher_type)</h3>
           <div class="contentBox ageWrap">
-            <div class="circle-div">${ k_dto.teacher_type }</div>
+            <div> <!-- class="circle-div" 우선 빼둠-->
+            <div>원하는 시터 나이 데이터 들어갈 자리</div>
+            </div>
           </div>
         </li>
         <li>
-          <h3>돌봄 지역</h3>
-          <div class="contentBox"><div>#주소정보(addr1) ${ k_dto.addr1 }</div></div>
+          <h3>돌봄 지역(addr1)</h3>
+          <div class="contentBox"><div>주소 데이터 들어갈 자리</div></div>
         </li>
       </ul>
       <ul class="item3">
@@ -252,30 +252,42 @@ section{
           <div class="contentBox">
             <ul class="flex-list">
               <li>
-                <div>#아이유형이미지</div>
-                <div style="margin-left: 10px">#아이유형텍스트</div>
-              </li>
-              <li>
-                <div>#아이유형이미지</div>
-                <div style="margin-left: 10px">#아이유형텍스트</div>
+                <div>#아이유형이미지 데이터 들어갈 자리(c_imgpath)</div>
+                <div style="margin-left: 10px">#아이 이름 데이터 들어갈 자리 / #아이 나이 데이터 들어갈 자리 </div>
               </li>
             </ul>
           </div>
         </li>
         <li>
-          <h3>원하는 활동</h3>
+          <h3>#원하는 활동(k_care_type)</h3>
           <div class="contentBox ativeList">
             <div>
-              <!--<img src=""/>-->
-              #원하는활동명
+              <!--<img src=""/>활동에 대한 이미지 들어갈 자리 -->
+              #원하는 활동 데이터 들어갈 자리
+            </div> 
+          </div>
+        </li>
+        <li>
+          <h3>선호 시간때(r_time)</h3>
+          <div class="contentBox ativeList">
+            <div>
+              #선호 시간때 데이터 들어갈 자리
+            </div> 
+          </div>
+        </li>
+        <li>
+          <h3>희망급여(hope_cost)</h3>
+          <div class="contentBox ativeList">
+            <div>
+              #희망급여 데이터 들어갈 자리
             </div> 
           </div>
         </li>
 		<li>
-          <h3>그 외 요청사항(k_require)</h3>
+          <h3>그 외 요청사항(k_require) 데이터 명시</h3>
           <div class="contentBox ativeList">
             <div>
-              ${ k_dto.k_require }
+              #그 외 요청사항 데이터 들어갈 자리
             </div> 
           </div>
         </li>

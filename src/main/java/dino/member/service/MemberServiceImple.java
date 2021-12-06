@@ -64,12 +64,13 @@ public class MemberServiceImple implements MemberService {
 			return false;
 		}
 	}
-
+	
 	public MemberDto getUserInfo(String id) {
 		MemberDto memberDto = memberDao.getUserInfo(id);
 		return memberDto;
 	}
 	
+	//휴대폰 인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) { 
 		
 		String api_key = "NCSVVXWXHSO4YCEZ"; 
