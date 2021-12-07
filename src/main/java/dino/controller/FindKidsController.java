@@ -179,7 +179,7 @@ public class FindKidsController {
 
 	/**
 	 * 선생님 인증처리
-	 * author: 이명철
+	 * author: 이은사
 	 * return: ModelAndView
 	 * since: 2021. 12. 7.
 	 */
