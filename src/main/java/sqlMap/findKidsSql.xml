@@ -12,7 +12,7 @@
 			d_teacher
 		values(
 			#{idx},
-			42,
+			#{memberIdx},
 			#{job},
 			'1',
 			#{kid_type},

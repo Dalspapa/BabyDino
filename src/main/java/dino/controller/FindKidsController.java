@@ -81,7 +81,7 @@ public class FindKidsController {
 
 
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
-	public ResponseEntity<?> makeTeacherCard(MakeTCardDto dto, Common_ImgDto imgDto) {
+	public ResponseEntity<?> makeTeacherCard(MakeTCardDto dto, Common_ImgDto imgDto, HttpServletRequest request) {
 
 		System.out.println("== 컨트롤러 진입.");
 
@@ -103,6 +103,11 @@ public class FindKidsController {
 		String dirPath = servletContext.getRealPath("/resources");
 
 		try {
+			String saveIdx = String.valueOf(request.getSession().getAttribute("saveIdx"));
+			if(StringUtils.isEmpty(saveIdx)) {
+				throw new IllegalStateException("로그인상태가 아닙니다.");
+			}
+			dto.setMemberIdx(Integer.parseInt(saveIdx));
 			findKidsService.makeTCard(dto, imgFiles, dirPath, imgDto);
 			success = true;
 		} catch (Exception e) {
@@ -188,6 +193,7 @@ public class FindKidsController {
 		}
 		teacher.setIdx(Integer.parseInt(idx));
 
+		teacher.setMemberType(5);
 		int rst = findKidsService.updateTeacherGrade(teacher);
 		if(rst <= 0) {
 			throw new IllegalStateException("선생님 등급 수정시 오류가 발생하였습니다.");

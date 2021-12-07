@@ -64,17 +64,17 @@
 							<a class="nav-link" href="javascript:goCompulCheck(${ stype });">아이찾기</a>
 						<li class="nav-item"><a class="nav-link" href="noticeMain.do">궁금해요</a>
 
-						<c:if test="${ !empty sid && stype == 2 || !empty sid && stype == 3 }">
+						<c:if test="${ sid != null && (stype == 2 || stype == 3) }">
 							<li class="nav-item">
 		                    	${ sid } 부모님 환영합니다!&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
 		                    </li>
 	                    </c:if>
-	                    <c:if test="${ !empty sid && stype == 4 || !empty sid && stype == 5 }">
+	                    <c:if test="${ sid != null && (stype == 4 || stype == 5) }">
 							<li class="nav-item">
-		                    	${ sid } 선생님 환영합니다!&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
+		                    	${sid} 선생님 환영합니다!&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
 		                    </li>
 	                    </c:if>
-	                    <c:if test="${ empty sid }">
+	                    <c:if test="${ sid == null }">
 		                    <li class="nav-item">
 		                      <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">
 		                        <i class="fas fa-user"></i>
@@ -96,7 +96,7 @@
 
 <script>
 
-
+alert("${sid}:${stype}");
 
 
 	function goCompulCheck(stype) {

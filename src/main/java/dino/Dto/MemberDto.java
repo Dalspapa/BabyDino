@@ -11,7 +11,7 @@ public class MemberDto {
 	private int gender;
 	private String birth;
 	private String tel;
-	private int member_Type;
+	private int member_type;
 	private Date joinDate;
 	private String addr1;
 	private String addr2;
@@ -34,7 +34,7 @@ public class MemberDto {
 		this.gender = gender;
 		this.birth = birth;
 		this.tel = tel;
-		this.member_Type = member_Type;
+		this.member_type = member_Type;
 		this.joinDate = joinDate;
 		this.addr1 = addr1;
 		this.addr2 = addr2;
@@ -99,11 +99,11 @@ public class MemberDto {
 	}
 
 	public int getMemberType() {
-		return member_Type;
+		return member_type;
 	}
 
 	public void setMemberType(int member_Type) {
-		this.member_Type = member_Type;
+		this.member_type = member_Type;
 	}
 
 	public Date getJoinDate() {
@@ -148,11 +148,11 @@ public class MemberDto {
 
 
 	   public int getMember_Type() {
-		return member_Type;
+		return member_type;
 	}
 
 	public void setMember_Type(int member_Type) {
-		this.member_Type = member_Type;
+		this.member_type = member_Type;
 	}
 
 	public String getUpdId() {
@@ -173,7 +173,7 @@ public class MemberDto {
 
 	@Override
 	   public String toString() {
-	     String str = "멤버타입" + member_Type + "\n아이디 : " + id + "\n비밀번호 : " + pwd + "\n이름 : " + name + "\n성별 : " + gender + "생일" + birth + "\n전화번호 : " + tel + "\n주소 :" + addr1;
+	     String str = "멤버타입" + member_type + "\n아이디 : " + id + "\n비밀번호 : " + pwd + "\n이름 : " + name + "\n성별 : " + gender + "생일" + birth + "\n전화번호 : " + tel + "\n주소 :" + addr1;
 	     System.out.println(str);
 	      return str;
 	   }
