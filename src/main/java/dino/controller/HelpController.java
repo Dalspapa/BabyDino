@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class helpController {
+public class HelpController {
 
 	@RequestMapping(value="/notice.do",method=RequestMethod.GET)
 	public String noticeForm() {
