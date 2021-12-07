@@ -7,7 +7,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>BabyDino</name>
-	<dependencies>
+	<dependencies>		
+
+
 		<!-- websocket -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
 		<dependency>

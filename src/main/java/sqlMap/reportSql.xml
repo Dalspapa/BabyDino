@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="dino.report">
+  
+  	<!-- report Write -->
+	<insert id="reportInsert" parameterType="dino.Dto.ReportDto">
+	insert into
+		d_report
+	values 
+		(d_report_idx.nextval,
+		23,
+		24,
+		#{rp_type},
+		sysdate,
+		0,
+		#{rp_content}) 
+	</insert>
+
+	<!-- report Content -->
+	<select id="reportContent" parameterType="Integer" resultType="dino.Dto.ReportDto">
+		select
+			*
+		from
+			d_report
+		where
+			idx = #{idx} 
+	</select>
+	
+	<!-- report List -->
+	<select id="reportList" resultType="dino.Dto.ReportDto">
+		SELECT
+			*
+		FROM
+			d_report
+		ORDER BY 
+			idx desc
+	</select>
+	
+	<!-- report Delete-->
+	<delete id="reportDelete" parameterType="Integer">
+		delete from
+			d_report
+		where
+			idx = #{idx}
+	</delete>
+	
+	<!-- report Update -->
+	<update id="reportUpdate" parameterType="dino.Dto.ReportDto">
+		update 
+			d_report
+		set
+			rp_type = #{rp_type},
+			rp_content = #{rp_content}
+		where
+			idx = #{idx}
+	</update>
+  </mapper>

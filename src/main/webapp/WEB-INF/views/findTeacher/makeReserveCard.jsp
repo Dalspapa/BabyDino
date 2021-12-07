@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- bootstrap -->
@@ -63,6 +64,7 @@
 	</form>	
 </section>
 </body>
+<%@include file="../footer.jsp" %>
 <script>
 $('.calendar').pignoseCalendar({
 	lang: 'ko',

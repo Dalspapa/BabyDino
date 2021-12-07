@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.member">
+
 	<select id="loginCheck" parameterType="String" resultType="dino.Dto.MemberDto">
 		SELECT 
 			PWD 
@@ -20,26 +21,40 @@
 		WHERE 
 			ID = #{id}
 	</select>
+	
+	<!-- 회원가입 -->
 	<insert id="joinMember" parameterType="dino.Dto.MemberDto">
 		INSERT INTO 
-            d_member 
-        values (
-            D_MEMBER_IDX.NEXTVAL,
+            D_MEMBER 
+        VALUES (
+            d_member_idx.nextval,
             #{id}, 
             #{pwd},
             #{name},
            	#{gender}, <!--gender -->
-            sysdate, <!-- date type으로 넣어야함 -->
+            TO_DATE(#{birth}, 'YYYY-MM-DD'), <!-- date type으로 넣어야함 -->
          	#{tel},
-            #{member_type}, <!-- memberType -->
+            #{memberType}, <!-- memberType -->
             sysdate,
             #{addr1}, <!-- 주소  -->
            	null,
            	null
         )
 	</insert>
-	
+
 	<select id="findId" parameterType="Map" resultType="dino.Dto.MemberDto">
 		select id from d_member where name=#{name} and tel=#{tel}
 	</select>
+
+	<!-- 아이디 중복 체크 -->
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		SELECT 
+			COUNT(id)
+		FROM 
+			D_MEMBER 
+		WHERE 
+			ID = #{id}
+	</select>	
+		
+
 </mapper> 

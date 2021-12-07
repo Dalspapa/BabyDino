@@ -10,6 +10,7 @@
 			d_common_img_idx.nextval,
 			#{ c_imgpath },
 			2,
+			2,
 			1
 		)		
 	</insert>
