@@ -58,6 +58,7 @@
 		LEFT JOIN 	d_kid k ON k.idx = r.d_kid_idx
 		LEFT JOIN 	d_common_img i on i.ref_idx = k.idx
 		LEFT JOIN 	d_review rv on rv.d_reserve_idx = r.idx
+		
 	</select>
 	
 	<select id="getTIdx" parameterType="Integer" resultType="Integer">
@@ -94,6 +95,34 @@
 	        dt.d_member_idx = #{d_member_idx}
 	</select>
 	
+	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
+		SELECT  r.hope_cost
+		        , r.r_time
+		        , r.r_endday
+		        , r.r_cost
+		        , r.d_kid_idx
+		        , r.d_member_p_idx
+		        , m.addr1
+		        , m.addr2
+		        , m.addr3
+		        , k.k_name
+		        , k.k_gender
+		        , k.k_birth
+		        , k.k_tendency
+		        , k.k_care_type
+		        , k.k_require
+		        , k.k_introduce
+		        , i.c_imgpath
+		        , k.teacher_type
+		        , r.idx
+	    FROM
+		  		  d_reserve r
+			LEFT JOIN d_member m ON m.idx = r.d_member_p_idx
+			LEFT JOIN d_kid k ON k.idx = r.d_kid_idx
+			LEFT JOIN d_common_img i on i.ref_idx = k.idx
+		WHERE
+				r.idx = #{idx}
+	</select>
 	
 </mapper>
 

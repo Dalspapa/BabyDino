@@ -55,9 +55,9 @@ public class CommonOpDaoImpl implements CommonOpDao {
 
 	
 	// KidsCard
-	public List<CommonOpDto> ktendency(Map map) {
+	public List<CommonOpDto> ktendency() {
 
-		List<CommonOpDto> list = sqlMap.selectList("k_tendency", map);
+		List<CommonOpDto> list = sqlMap.selectList("k_tendency");
 		return list;
 	}
 	
@@ -69,24 +69,25 @@ public class CommonOpDaoImpl implements CommonOpDao {
 	}
 	
 	//공지사항
-	public List<CommonOpDto> noticeList(Map map) {
-		List<CommonOpDto> list = sqlMap.selectList("notice", map);
+	public List<CommonOpDto> noticeList() {
+		List<CommonOpDto> list = sqlMap.selectList("notice");
+		System.out.println("dao======= "+ list);
 		return list;
 	}
 	
 	//자주 묻는 질문(회원관련)
-	public List<CommonOpDto> qna(Map map) {
-		List<CommonOpDto> list = sqlMap.selectList("qna" ,map);
+	public List<CommonOpDto> qna() {
+		List<CommonOpDto> list = sqlMap.selectList("qna");
 		return list;
 	}
 	//정부지원관련
-	public List<CommonOpDto> government(Map map) {
-		List<CommonOpDto> g_list = sqlMap.selectList("government", map);
+	public List<CommonOpDto> government() {
+		List<CommonOpDto> g_list = sqlMap.selectList("government");
 		return g_list;
 	}
 	//결제환불관련
-	public List<CommonOpDto> pay(Map map) {
-		List<CommonOpDto> p_list = sqlMap.selectList("pay" , map);
+	public List<CommonOpDto> pay() {
+		List<CommonOpDto> p_list = sqlMap.selectList("pay");
 		return p_list;
 	}
 	

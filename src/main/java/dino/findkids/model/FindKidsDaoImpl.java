@@ -1,12 +1,9 @@
 package dino.findkids.model;
 
 import java.util.*;
-
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.http.ResponseEntity;
-
 import dino.Dto.*;
-import dino.findkids.model.*;
+
 
 public class FindKidsDaoImpl implements FindKidsDao {
 	
@@ -26,9 +23,7 @@ public class FindKidsDaoImpl implements FindKidsDao {
 	
 	//get kids list 
 	public List<FindKidsJoinDto> kidsList() {
-
 		List<FindKidsJoinDto> k_list = sqlMap.selectList("kidsList");
-		System.out.println("--- k_list : " + k_list);
 		return k_list;
 	}	
 
@@ -48,6 +43,18 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return resultDto;
 	}
 	
+	//get kid Info
+	public FindKidsJoinDto kidContent(int idx) {
+		
+		// 
+		FindKidsJoinDto kidInfoDto = sqlMap.selectOne("kidInfoContent", idx);
+		if(kidInfoDto == null) {
+			System.out.println("또 뭔데 ㅡㅡ dao / idx" + idx);
+		}
+		System.out.println("daoimple=====" + kidInfoDto.toString());
+		
+		return kidInfoDto;
+	}
 
 }
 

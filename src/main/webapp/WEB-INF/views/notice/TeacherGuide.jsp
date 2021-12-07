@@ -60,7 +60,7 @@
 	<!-- 선생님 가이드 본문 -->
 	<section id="guidesection">
 		<div>
-			<h3>부모님 이용 가이드</h3>
+			<h3>선생님 이용 가이드</h3>
 		</div>
 		<div class="pguide">
 			<span>아기 공룡은 어떤 서비스인가요?</span>

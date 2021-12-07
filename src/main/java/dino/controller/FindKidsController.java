@@ -1,11 +1,13 @@
 package dino.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -147,14 +149,27 @@ public class FindKidsController {
 	
 
 	//KidsList -> KidsContent move
-	@RequestMapping("/kidsContent.do")
+	@RequestMapping(value = "/kidsContent.do", method = RequestMethod.GET)
 	public ModelAndView kidsContent(@RequestParam("idx")int idx) {
 		
-		ModelAndView mav = new ModelAndView();
+		System.out.println("parameter====="+idx);
 		
-		mav.setViewName("findKids/kidsContent");
+		FindKidsJoinDto kidInfoDto = findKidsService.kidContent(idx);
+		System.out.println("controller=====" + kidInfoDto.toString());
+		ModelAndView mav = new ModelAndView();
+		System.out.println(kidInfoDto.getK_care_type());
+				
+		if (kidInfoDto != null) {
+			mav.addObject("kidInfoDto", kidInfoDto);
+			mav.setViewName("findKids/kidsContent");			
+		} 
+			mav.addObject("msg", "매칭된 게시물 또는 삭제된 게시물입니다.");
+			mav.setViewName("findKids/kidsContent");
+		
 		return mav;		
 	}
+
+	
 	
 
 }

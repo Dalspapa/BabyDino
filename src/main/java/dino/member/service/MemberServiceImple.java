@@ -11,7 +11,7 @@ import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class MemberServiceImple implements MemberService {
-
+	
 	private MemberDao memberDao;
 
 	public MemberDao getMemberDao() {
@@ -44,7 +44,8 @@ public class MemberServiceImple implements MemberService {
 		return result;
 		
 	}
-
+	
+	//로그인 
 	public boolean loginCheck(String id,String pwd) {
 		MemberDto memberDto = memberDao.loginCheck(id);
 		

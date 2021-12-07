@@ -57,8 +57,8 @@ public class CommonOpServiceImple implements CommonOpService {
 	// kidsCard
 	public List<CommonOpDto> ktendency() {
 
-		Map map = new HashMap();
-		List<CommonOpDto> list = commonopDao.ktendency(map);
+		
+		List<CommonOpDto> list = commonopDao.ktendency();
 		return list;
 	}
  
@@ -71,27 +71,29 @@ public class CommonOpServiceImple implements CommonOpService {
 	
 	//공지사항
 	public List<CommonOpDto> noticeList() {
-		Map map = new HashMap();
-		List<CommonOpDto> list = commonopDao.noticeList(map);
+		
+		List<CommonOpDto> list = commonopDao.noticeList();
+		
+		System.out.println("sevice =========="+ list);
 		return list;
 	}
 	
 	//자주묻는 질문(회원관련질문)
 	public List<CommonOpDto> qna() {
-		Map map = new HashMap();
-		List<CommonOpDto> m_list = commonopDao.qna(map);
+	
+		List<CommonOpDto> m_list = commonopDao.qna();
 		return m_list;
 	}
 
 	public List<CommonOpDto> government() {
-		Map map = new HashMap();
-		List<CommonOpDto> g_list = commonopDao.government(map);
+	
+		List<CommonOpDto> g_list = commonopDao.government();
 		return g_list;
 	}
 
 	public List<CommonOpDto> pay() {
-		Map map = new HashMap();
-		List<CommonOpDto> p_list = commonopDao.pay(map);
+	
+		List<CommonOpDto> p_list = commonopDao.pay();
 		return p_list;
 	}
 	

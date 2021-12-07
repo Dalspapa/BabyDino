@@ -16,5 +16,8 @@ public interface FindKidsDao {
 	
 	// Test get imgpath 
 	public List<Common_ImgDto> imgpath(int d_member_idx);
+	
+	//get kid Info
+	public FindKidsJoinDto kidContent(int idx);
 
 }

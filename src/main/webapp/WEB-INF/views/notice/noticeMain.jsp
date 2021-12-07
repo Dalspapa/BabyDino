@@ -38,7 +38,6 @@
 </style>
 </head>
   <!-- header -->
-	<%@include file="../header.jsp" %>
 <body>
 <section>
 	<div>

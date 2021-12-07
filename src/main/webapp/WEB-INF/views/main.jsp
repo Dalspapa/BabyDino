@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	  <!-- header -->
+<%@include file="./header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +11,6 @@
 <link rel="stylesheet" href="./common/css/main.css">
 </head>
 <body id="page-top">
-  <!-- header -->
-  <%@include file="./header.jsp" %>
-	
   <!-- wrapper -->
   <div class="wrapper">
     <!-- 영상부분 -->
@@ -43,10 +42,10 @@
                 <hr class="divider divider-light">
                 <p class="text-white-75 mb-4 fw-bold">우리는,</p>
                 <p>
-                    시대에 맞춰 아이돌봄서비스를 육아 가정에 제공하고</br>
-                    부모님의 육아를 함께합니다.</br>
-                    아이, 양육자, 교사 간의 시너지를 일으켜</br><strong class="text-white-75 mb-4 fw-bold">가장 큰 행복</strong>을 위해 노력합니다.</br></br>
-                    소통을 일순위로</br> 신뢰할 수 있는 서비스와 품격으로 다가갑니다.</br>
+		                    시대에 맞춰 아이돌봄서비스를 육아 가정에 제공하고</br>
+		                    부모님의 육아를 함께합니다.</br>
+		                    아이, 양육자, 교사 간의 시너지를 일으켜</br><strong class="text-white-75 mb-4 fw-bold">가장 큰 행복</strong>을 위해 노력합니다.</br></br>
+		                    소통을 일순위로</br> 신뢰할 수 있는 서비스와 품격으로 다가갑니다.</br>
                 </p>
               </div>
           </div>
@@ -508,12 +507,12 @@
 
 <!-- 선생님 부모님 이용가이드 관련 js -->
 <script>
-	function showDiv1() {
+/* 	function showDiv1() {
 		var a = document.getElementById('p_member');
 		a.classList.remove('d-none');
 		var b = document.getElementById('t_member');
 		b.classList.add('d-none');
-	}
+	} */
 </script>
 
 <!-- 부모님회원 선생님 회원 버튼 js -->

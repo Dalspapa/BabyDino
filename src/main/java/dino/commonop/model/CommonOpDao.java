@@ -15,22 +15,22 @@ public interface CommonOpDao {
 	public List<CommonOpDto> t_bank_opList();
 	
 	//Make a KidsCard
-	public List<CommonOpDto> ktendency(Map map);
+	public List<CommonOpDto> ktendency();
 
 	//reportType 
 	public List<CommonOpDto> reportType();
 	
 	//공지사항
-	public List<CommonOpDto> noticeList(Map map);
+	public List<CommonOpDto> noticeList();
 	
 	//자주 묻는 질문(회원관련)
-	public List<CommonOpDto> qna(Map map);
+	public List<CommonOpDto> qna();
 	
 	//자주 묻는 질문(정부지원관련)
-	public List<CommonOpDto> government(Map map);
+	public List<CommonOpDto> government();
 	
 	//자주 묻는 질문(정부지원관련)
-	public List<CommonOpDto> pay(Map map);
+	public List<CommonOpDto> pay();
 	
 	
 }

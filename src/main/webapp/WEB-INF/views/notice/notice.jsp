@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
 <style>
 /*옆에 메뉴바*/
 .question{
@@ -65,7 +64,7 @@
 				<table border="1">
 					<thead>
 						<tr>
-							<td>NO</td>
+							<td>NO.</td>
 							<td>${list[0].idx}</td>
 						</tr>
 						<tr>
@@ -75,8 +74,8 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>NO</td>
-							<td>${list[0].idx}</td>
+							<td>NO.</td>
+							<td>${list[1].idx}</td>
 						</tr>
 						<tr>
 							<td></td>

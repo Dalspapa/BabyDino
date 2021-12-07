@@ -121,6 +121,17 @@ public class FindKidsServiceImple implements FindKidsService {
 		
 		return resultImg;
 	}
+	
+	// get kid Info
+	public FindKidsJoinDto kidContent(int idx) {
+		
+		FindKidsJoinDto kidInfoDto = findkidsDao.kidContent(idx);
+		
+		System.out.println("service imple=====" + kidInfoDto.toString());
+		
+		return kidInfoDto;	
+		
+	}
 
 
 }

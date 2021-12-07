@@ -21,9 +21,11 @@ public class NoticeController {
 	}
 	
 	//공지사항
-	@RequestMapping("/notice.do")
+	@RequestMapping(value = "/notice.do")
 	public ModelAndView notice() {
+		System.out.println("컨트롤러 진입========");
 		List<CommonOpDto> list = commonopService.noticeList();
+		System.out.println("controller "+ list);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
 		mav.setViewName("notice/notice");
@@ -32,6 +34,7 @@ public class NoticeController {
 	
 	@RequestMapping("/mostQna.do")
 	public ModelAndView mostQna() {
+		System.out.println("qnaController");
 		List<CommonOpDto> list = commonopService.qna();
 		List<CommonOpDto> g_list = commonopService.government();
 		List<CommonOpDto> p_list= commonopService.pay();

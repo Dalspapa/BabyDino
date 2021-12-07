@@ -39,13 +39,6 @@
 </style>
 </head>
 <body>
-	<%-- 	<form action="getImg.do" name="getimg">
-		<c:forEach var="imgs" items="${imgName}">
-			<img alt="teacherImg" src="/upload/${imgs}" id="cardImg">
-		</c:forEach>
-		<input type="hidden" name="d_member_idx" value="41">
-		<input type="submit" value="imgGetbtn">
-	</form> --%>
 	<h1>아이찾기 페이지</h1>
 	<section>
 		<div class="container">
@@ -92,7 +85,6 @@
 		</div>
 		<!-- 필터[END] -->
 		<hr />
-
 		<!-- 하단 정보[START] -->
 		<div class="row" id="flipcard">
 			<c:if test="${empty KidsList }">
@@ -113,7 +105,7 @@
 								<div class="mb-2">
 									<img src="/upload/${kDto.c_imgpath}" alt="선생님 사진" ><br>
 									<input type="hidden" name="idx" value="${ kDto.idx }">
-									<h5 id="tendetcy">
+									<h5 id="tendetcy">									
 									<c:set  var="careType" value="${kDto.k_care_type}" />
 									<c:forEach items="${fn:split(careType, ',') }" var="item">
 										<c:if test="${item == '1'}">#등하원</c:if>
@@ -180,6 +172,7 @@
 											<c:if test="${item == '15'}">21~22시</c:if>
 											<c:if test="${item == '16'}">22~23시</c:if>
 										</c:forEach>
+										<script>console.log('dddd==='+${kDto.r_time})</script>
 									</li>
 									<li id="cost"><fmt:formatNumber value="${kDto.hope_cost}" pattern="#,###" />원 / 협의가능</li>
 								</ul>
