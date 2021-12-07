@@ -17,7 +17,9 @@ public class MemberDto {
 	private String addr2;
 	private String addr3;
 	private String addrDetail;
-	
+	private String updId;
+	private String updDt;
+
 	public MemberDto() {
 		super();
 	}
@@ -143,8 +145,33 @@ public class MemberDto {
 	public void setAddr3(String addr3) {
 		this.addr3 = addr3;
 	}
-	
-	   @Override
+
+
+	   public int getMember_Type() {
+		return member_Type;
+	}
+
+	public void setMember_Type(int member_Type) {
+		this.member_Type = member_Type;
+	}
+
+	public String getUpdId() {
+		return updId;
+	}
+
+	public void setUpdId(String updId) {
+		this.updId = updId;
+	}
+
+	public String getUpdDt() {
+		return updDt;
+	}
+
+	public void setUpdDt(String updDt) {
+		this.updDt = updDt;
+	}
+
+	@Override
 	   public String toString() {
 	     String str = "멤버타입" + member_Type + "\n아이디 : " + id + "\n비밀번호 : " + pwd + "\n이름 : " + name + "\n성별 : " + gender + "생일" + birth + "\n전화번호 : " + tel + "\n주소 :" + addr1;
 	     System.out.println(str);

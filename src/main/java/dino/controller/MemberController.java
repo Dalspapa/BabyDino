@@ -57,6 +57,7 @@ public class MemberController {
 			//TestCode
 			System.out.println("Controller.java userName : " + userName);
 
+			session.setAttribute("saveIdx", memberDto.getIdx());
 			session.setAttribute("saveId", id);
 			session.setAttribute("saveName", userName);
 			session.setAttribute("saveMemberType", memberType);

@@ -26,9 +26,9 @@
 			#{cctvagree},
 			'signclear',
 			#{career_experience}
-		)		
+		)
 	</insert>
-	
+
 	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT  r.hope_cost
 				, r.idx
@@ -52,24 +52,24 @@
 		        , rv.star
 		        , rv.r_writedate
 		        , rv.r_content
-		FROM 
+		FROM
 		    	d_reserve r
 		LEFT JOIN 	d_member m ON m.idx = r.d_member_p_idx
 		LEFT JOIN 	d_kid k ON k.idx = r.d_kid_idx
 		LEFT JOIN 	d_common_img i on i.ref_idx = k.idx
 		LEFT JOIN 	d_review rv on rv.d_reserve_idx = r.idx
-		
+
 	</select>
-	
+
 	<select id="getTIdx" parameterType="Integer" resultType="Integer">
-		select 
-			idx 
-		from 
-			(select * from d_teacher order by idx desc) 
-		where 
+		select
+			idx
+		from
+			(select * from d_teacher order by idx desc)
+		where
 			rownum = 1 and d_member_idx = #{d_member_idx};
 	</select>
-	
+
 	<insert id="tSetImg" parameterType="dino.Dto.Common_ImgDto">
 		INSERT INTO
 			d_common_img
@@ -81,20 +81,20 @@
 			#{ref_idx}
 		)
 	</insert>
-	
+
 	<select id="getImg" parameterType="Integer" resultType="dino.Dto.Common_ImgDto" >
-	    SELECT 
+	    SELECT
 	        dt.*, dci.c_imgpath
-	    FROM 
-	        d_teacher dt 
-	    LEFT JOIN 
-	        d_common_img dci 
-	    ON 
+	    FROM
+	        d_teacher dt
+	    LEFT JOIN
+	        d_common_img dci
+	    ON
 	        dt.d_member_idx = dci.d_member_idx
 	    WHERE
 	        dt.d_member_idx = #{d_member_idx}
 	</select>
-	
+
 	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT  r.hope_cost
 		        , r.r_time
@@ -123,7 +123,17 @@
 		WHERE
 				r.idx = #{idx}
 	</select>
-	
+
+	<!-- 선생님 등급 수정 -->
+	<update id="updateTeacherGrade" parameterType="dino.Dto.MemberDto">
+	   /* findKidsSql.updateTeacherGrade */
+	   UPDATE D_MEMBER
+	      SET MEMBER_TYPE = #{memberType}
+	        , UPD_DT      = SYSDATE
+	        , UPD_ID      = #{updId}
+	    WHERE IDX = #{idx}
+	</update>
+
 </mapper>
 
 

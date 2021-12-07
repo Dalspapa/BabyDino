@@ -1,23 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <%@include file="../header.jsp" %>
-
-  <!-- 파비콘 -->
-  <link rel="shortcut icon" href="./common/img/favicon/favicon.png" type="image/x-icon"> 
-  <link rel="icon" href="./common/img/favicon/favicon.png" type="image/x-icon"> 
-
-  <!-- fontasome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-  <!-- css -->
-  <link rel="stylesheet" href="./common/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./common/css/reset.css">
-  <link rel="stylesheet" href="./common/css/main.css">
 
 <script src="common/js/signature_draw.js"></script>
 
@@ -57,7 +42,7 @@
 </head>
 <body>
 <h2>필수인증</h2>
-<form name="t_compulsory">
+<form id="form" name="t_compulsory" action="/teacher/cert.do" method="post">
 <section>
 	<div id="h_Div">
 		<h2>S T E P 1</h2>
@@ -87,7 +72,7 @@
 				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
 			</div>
-		</div>		
+		</div>
 		<div id="step_3" class="makeTdiv" style="width: 100%;">
 			<h4>Q3. 아이가 갑자기 놀이터로 나가자고 하면 어떻게 해야할까요?</h4>
 				<p>
@@ -138,8 +123,8 @@
 			<div id="q_btn">
 				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
-			</div>		
-		</div>		
+			</div>
+		</div>
 		<div id="step_7" class="makeTdiv" style="width: 100%;">
 			<h4>Q7. 돌봄이 끝났는데 부모님이 안방에 계세요. 어떻게 해야할까요?</h4>
 				<p>
@@ -152,7 +137,7 @@
 				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
 			</div>
-		</div>		
+		</div>
 		<div id="step_8" class="makeTdiv" style="width: 100%;">
 			<h4>Q8. 아이가 스마트폰을 보여달라고 졸라요. 어떻게 해야할까요?</h4>
 				<p>
@@ -164,8 +149,8 @@
 			<div id="q_btn">
 				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
-			</div>		
-		</div>		
+			</div>
+		</div>
 		<div id="step_9" class="makeTdiv" style="width: 100%;">
 			<h4>Q9. 위생적인 돌봄 필수사항이 아닌 것은 무엇인가요?</h4>
 				<p>
@@ -177,9 +162,9 @@
 			<div id="q_btn">
 				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
-			</div>	
+			</div>
 		</div>
-			
+
 		<div id="step_10" class="makeTdiv" style="width: 100%;">
 			<h4>Q10. 아이가 갑자기 과자를 사달래요. 적절하지 않은 방법은 무엇일까요?</h4>
 			<p>
@@ -192,7 +177,7 @@
 			<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
 			<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
 		</div>
-		</div>		
+		</div>
 </section>
 <section id="step_11" class="makeTdiv" style="width: 100%;">
 	<div>
@@ -201,7 +186,7 @@
 			<h3>등본 등록</h3>
 			<input type="file" id="t_copy" name="t_copy" class="form-control"/>
 		</div>
-		<div>	
+		<div>
 			<h3>동의 서명</h3>
 			<div class="canvas-draw-box">
 				<div class="canvas-draw-base" data-id="canvas_name"></div>
@@ -226,105 +211,55 @@
 </form>
 </body>
 <%@include file="../footer.jsp" %>
-  <script src="./common/js/jquery-3.6.0.min.js"></script>
 
   <!-- custome js -->
   <script src="./common/js/bootstrap.min.js"></script>
-  
-  	<script>  
 
- 	
+  	<script>
+
+
 	$(document).ready(function (){
-		
-		
+
+
 		let name = 'step_';
 		let count = 1;
 		let dName = name + count;
-		
+
 		this.count = count;
-		
+
 		$('.makeTdiv').hide();
-		
+
 		$('.nextbtn').click(function (){
 			$('#'+dName).hide();
 			count++;
-			dName = name + count;				
+			dName = name + count;
 			$('#'+dName).show();
 			console.log("화면 count "+count);
 		});
-		
-		$('.prevbtn').click(function (){
-		
+
+		$('.prevbtn').click(function(){
+
 			$('#'+dName).hide();
 			count--;
-			dName = name + count;				
+			dName = name + count;
 			$('#'+dName).show();
 			console.log("이전화면count2=====" + count);
 		});
-		
-	 	$('#reqAgree').click (function (){
 
-	 	 	let imgFile = $('#t_copy').val();
-	 		let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif)$/;
-	 		
-	 		if( imgFile == ""){
-	 			alert('이미지 첨부는 필수입니다.');
-	 			$('#t_copy').focus();
-	 			return false;
-	 		}
-	 		if(imgFile != "" && imgFile != null){
-	 			if(!imgFile.match(fileForm)){
-	 				alert('이미지 파일만 등록 가등합니다.');
-	 				return false;
-	 			}
-	 		}
-
-	 	
-	 		let answer = 0;
-	 		
-	 		for(var i = 1; i < 11; i++) {
-	 			if($("input[name='quiz" + i + "']:checked").val() == 1) {
-	 				answer++;
-	 			}
-	 		}
-	 		
-	 		console.log("-- answer : ", answer);
-	 		
-	 		if(answer < 8){
-	 			$('.makeTdiv').hide();
-	 			$('#step_1').show();
-	 			name = 'step_';
-				count = 1;
-				dName = name + count;	
-				
-				$('.makeTdiv').hide();
-				
-/* 				$('.nextbtn').click(function (){
-					$('#'+dName).hide();
-					count++;
-					dName = name + count;				
-					$('#'+dName).show();
-					console.log("검증countB"+count);
-				});
-				
-				$('.prevbtn').click(function (){
-				
-					$('#'+dName).hide();
-					count--;
-					dName = name + count;				
-					$('#'+dName).show();
-				}); */
-	 			console.log("검증count2B"+count);
-	 			return false;
+		//인증요청 버튼 클릭
+	 	$('#reqAgree').click(function(){
+	 		var rst = fnCertValidation();
+	 		if(rst){
+    	 		fnCert();
 	 		}
 	 	});
-		
+
 	});
-		
 
 
-	
-	
+
+
+
 	$(function(){
 		_SIGNATURE.start("canvas_name", 300, 300)
 	});
@@ -334,7 +269,7 @@
 		console.log("data is : " + data);
 		$("input[name=t_sexcrime]").val(data);
 	} */
-	
+
 	function del (_canvas){
 		_SIGNATURE.clearCanvas(_canvas);
 	}
@@ -342,17 +277,66 @@
 	function down (_canvas){
 		_SIGNATURE.downCanvas(_canvas);
 	} */
-	
+
 	function done (_canvas){
-		_SIGNATURE.doneCanvas(_canvas);		
+		_SIGNATURE.doneCanvas(_canvas);
 	}
-	
+
 	$("body").delegate(".canvas-draw-base","click", function(){
 		var _canvas = $(this).data("id");
 		$("canvas#" + _canvas).parents(".canvas-draw-pad-box").show();
-		
+
 		//_SIGNATURE.setPreImage(_canvas);
 	});
+
+	function fnCertValidation(){
+
+		var rst = true;
+
+        let imgFile = $('#t_copy').val();
+        let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif|JPG|JPEG|PNG|GIF|BMP|PDF|JFIF)$/gi;
+
+        if( imgFile == ""){
+            alert('이미지 첨부는 필수입니다.');
+            $('#t_copy').focus();
+            rst = false;
+        }
+        if(imgFile != "" && imgFile != null){
+            if(!imgFile.match(fileForm)){
+                alert('이미지 파일만 등록 가등합니다.');
+                rst = false;
+            }
+        }
+
+        //정답:1 오답:0
+        let answer = 0;
+        for(var i = 1; i < 11; i++) {
+            if($("input[name='quiz" + i + "']:checked").val() == 1) {
+                answer++;
+            }
+        }
+
+//         if(answer < 8){
+//         	alert("인증점수가 미달되어 처음으로 돌아갑니다.");
+//             $('.makeTdiv').hide();
+//             $('#step_1').show();
+//             name = 'step_';
+//             count = 1;
+//             dName = name + count;
+
+//             $('.makeTdiv').hide();
+
+//             console.log("검증count2B"+count);
+//             rst = false;
+//         }
+
+
+        return rst;
+	}
+
+	function fnCert(){
+		$("#form").submit();
+	}
 
 	</script>
 

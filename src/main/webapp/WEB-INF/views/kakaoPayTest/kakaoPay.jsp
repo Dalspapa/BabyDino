@@ -12,57 +12,52 @@
 		<h1>결제 Api 테스트</h1>
 		<img src="${pageContext.request.contextPath }/common/img/kakaoPay1.png" style="cursor: pointer; width: 100px; heihgt: 40px;" onclick="requestPaymentApi('kakaopay')"/>
 	</div>
-	
+
 	<div id="map" style="width:500px;height:400px;"></div>
 
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="https://service.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script>
 <script>
-	
-	
+
 	/** 카카오 지도 api */
 	/* var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
 		center: new kakao.maps.LatLng(37.51795334189508, 126.89483972060654), //지도의 중심좌표.
 		level: 3 //지도의 레벨(확대, 축소 정도)
 	};
-	
+
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 	 */
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
         center: new kakao.maps.LatLng(37.51795334189508, 126.89483972060654), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	
-	// 마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(37.51795334189508, 126.89483972060654); 
-	
+
+	// 마커가 표시될 위치입니다
+	var markerPosition  = new kakao.maps.LatLng(37.51795334189508, 126.89483972060654);
+
 	// 마커를 생성합니다
 	var marker = new kakao.maps.Marker({
 	    position: markerPosition
 	});
-	
+
 	// 마커가 지도 위에 표시되도록 설정합니다
 	marker.setMap(map);
-	
+
 	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-	// marker.setMap(null);    
-	
+	// marker.setMap(null);
+
 	/** 카카오페이 결제 api */
 	var IMP = window.IMP;
 	IMP.init('imp65129698'); // 가맹점 식별코드
-	
+
 	function requestPaymentApi(type){
-		
+
 		IMP.request_pay({
 			pg : type,	 							// 결제방식
 			pay_method : 'card', 					// 결제 수단
@@ -86,10 +81,10 @@
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + res.error_msg;
 			}
-			
+
 			return false;
-			
-			
+
+
 			console.log('-- msg: ', msg);
 			location.href = 'kakaoPayOk.do?msg=' + msg;
 		});

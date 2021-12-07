@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -99,13 +98,13 @@
 							<c:url var = "contentUrl" value="kidsContent.do">
 								<c:param name="idx">${kDto.idx}</c:param>
 							</c:url>
-							
+
 						<div class="flip-card-inner" onclick="location.href='${ contentUrl }'">
 							<div class="flip-card-front">
 								<div class="mb-2">
 									<img src="/upload/${kDto.c_imgpath}" alt="선생님 사진" ><br>
 									<input type="hidden" name="idx" value="${ kDto.idx }">
-									<h5 id="tendetcy">									
+									<h5 id="tendetcy">
 									<c:set  var="careType" value="${kDto.k_care_type}" />
 									<c:forEach items="${fn:split(careType, ',') }" var="item">
 										<c:if test="${item == '1'}">#등하원</c:if>
@@ -125,7 +124,7 @@
 								</div>
 								<div>
 									<h6 class="text-warning" id="title">새로운 추천01</h6>
-									<h6 id="info">${kDto.addr1 } / ${kDto.k_name }  / 
+									<h6 id="info">${kDto.addr1 } / ${kDto.k_name }  /
 										<c:if test="${kDto.k_gender == 1 }">
 											여아
 										</c:if>
@@ -152,7 +151,7 @@
 									</c:forEach>
 								</p>
 								<ul>
-									<li id="palyday">${kDto.r_endday} / 
+									<li id="palyday">${kDto.r_endday} /
 										<c:set  var="time" value="${kDto.r_time}" />
 										<c:forEach items="${fn:split(intro, ',') }" var="item">
 											<c:if test="${item == '1'}">7~8시</c:if>
@@ -182,14 +181,12 @@
 					</div>
 					<!-- 카드정보[END] -->
 				</div>
-			</c:forEach>			
+			</c:forEach>
 		</div>
 		<!-- 하단 정보[START] -->
 	</section>
 </body>
 <%@include file="../footer.jsp" %>
-<!-- J-query -->
-<script src="./common/js/jquery-3.6.0.min.js"></script>
 
 <!-- custome js -->
 <script src="./common/js/bootstrap.min.js"></script>
@@ -200,27 +197,27 @@
 	function goUrl(){
 		location.href='${contentUrl}';
 	}
-	
+
 	function changeDiv(val) {
 	   var a = document.getElementById(val);
-	   
+
 	   if(a.classList.contains('isTest')){
 	      a.classList.remove('isTest');
 	    } else {
 	       a.classList.add('isTest');
 	    }
 	}
-	
+
 	function check() {
 	   var a = document.getElementsByName('cDiv')
 	   var b = [];
 	   for(var i = 0; i < a.length; i++ ) {
-	      
+
 	      if(a[i].classList.contains('isTest')) b.push(a[i].id)
 	   };
 	   console.log("-- selected : ", b);
 	}
-	
+
 </script>
 
 </html>

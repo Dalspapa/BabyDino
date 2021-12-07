@@ -142,7 +142,7 @@
 					<a href="#">다른 공룡선생님 자기소개 참고하기.</a>
 				</div>
 			</div>
-		
+
 			<button type="button" class="btn btn-secondary prevbtn">이전으로</button>
 			<button type="button" class="btn btn-secondary"
 				onclick="javascript:location.href='main.do'">포기하기</button>
@@ -152,19 +152,17 @@
 	</form>
 </body>
 <%@include file="../footer.jsp" %>
-<!-- J-query -->
-<script src="./common/js/jquery-3.6.0.min.js"></script>
 
 <!-- custome js -->
 <script src="./common/js/bootstrap.min.js"></script>
 
-<script>  
+<script>
 
   function isTest() {
-	  
+
 	  	let imgFile = $('#t_img1').val();
-	  	let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif)$/;
-	  	
+	  	let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif|JPG|JPEG|PNG|GIF|BMP|PDF|JFIF)$/gi;
+
 	  	if( imgFile == ""){
 	  		alert('이미지 첨부는 필수입니다.');
 	  		$('#t_img1').focus();
@@ -176,39 +174,39 @@
 	  			return;
 	  		}
 	  	}
-		
+
 		if ($('#t_introduce').val() == ""){
 			alert('자기소개를 작성해주세요.');
 			$('#t_introduce').focus();
 			return false;
 		}
-		
-		
+
+
 		let kid_type = [];
 		$('input[name=kid_type]:checked').each(function(i){
 			kid_type.push($(this).val());
 		});
-				
+
 		let t_care_type = [];
 		$('input[name=t_care_type]:checked').each(function(i){
 			t_care_type.push($(this).val());
 		});
-		
+
 		let schedule_day = [];
 		$('input[name=schedule_day]:checked').each(function(i){
 			schedule_day.push($(this).val());
 		});
 
-		
+
 	  var fileLength = $("input[name=c_imgpath]");
 	  var cctv = $("input[name=cctvagree]").val();
-	  
-	  
+
+
 	  // console.log('--- kidTYpe : ', $("#kidType").val());
-	  
-	  
+
+
 	  var formData = new FormData();
-	  
+
 	  formData.set("d_member_idx", 41)
 	  formData.set("job", $("#job").val())
 	  formData.set("kid_type", kid_type)
@@ -223,10 +221,10 @@
 	  } else {
 	  		formData.set("career_experience", $("#career_experience").val())
 	  }
-	  formData.set("t_introduce", $("#t_introduce").val())	  
+	  formData.set("t_introduce", $("#t_introduce").val())
 	  formData.set("cctvagree", cctv);
-	  
-	  
+
+
 	  // 이미지가 있으면 파일정보를 보내줘야하는데 지금 문자열을 보내줘서 에러나느거같아요.
 	  // 이미지 없으면 inputtype file display-none 으로 파일 하드코딩으로 박아버리고
 	  for(var i = 0; i < fileLength.length; i++) {
@@ -234,15 +232,15 @@
 			  formData.set('tImg[' + i + ']', fileLength[i].files[0]);
 		  } /* else {
 			  $('#step6').html('<input type="file" value="teacher.png" style="display:none;">');
-			  
+
 		  }  */
-	  };	  
-	  
+	  };
+
 	  formData.forEach(function(value, key) {
 		  console.log(key, value);
-	  });	  
-	  
-	  
+	  });
+
+
 	  $.ajax({
 		method: 'POST',
 		url: '${pageContext.request.contextPath}/makeTeacherCard.do',
@@ -260,24 +258,24 @@
 		}
 	  })
   }
-  		
+
   	$(document).ready(function (){
-  		
+
   		let name = 'step_'
   		let count = 1;
   		let dName = name + count;
 
-  		
+
   		$('.makeTdiv').hide();
-  	
+
   		$('.nextbtn').click(function (){
-  					
-  			$('#'+dName).hide();			
+
+  			$('#'+dName).hide();
   			count++;
-  		
+
   			if(count == 3){
   				let cnt = $('input[name=kid_type]:checkbox:checked').length;
-  			
+
   				if(cnt < 1){
   					alert('한 개 이상 선택해주세요');
   					count = 2;
@@ -285,19 +283,19 @@
   			}
   			if(count == 4){
   				let cnt = $('input[name=t_care_type]:checkbox:checked').length;
-  				
+
   				if(cnt < 1){
   					alert('한 개 이상 선택해주세요');
-  					count = 3;  					
+  					count = 3;
   				}
   			}
   			if(count == 5){
   				let cnt = $('input[name=schedule_day]:checkbox:checked').length;
-  			
+
   				let cnt2 = $('#scheduleTime').val();
   				if(cnt < 1){
   					alert('한 개 이상 선택해주세요');
-  					count = 4;  				
+  					count = 4;
   				} else if(cnt2 == 0){
   					alert('시간을 선택해주세요');
   					count = 4;
@@ -321,21 +319,21 @@
   					$('#acnum').focus();
   				}
   			}
-  			dName = name + count;			
+  			dName = name + count;
   			$('#'+dName).show();
-  			
+
   		});
-  		
+
   		$('.prevbtn').click(function (){
-  		
+
   			$('#'+dName).hide();
   			count--;
   			dName = name + count;
   			$('#'+dName).show();
   		});
-  		
+
   	});
-  	  	
+
 
   </script>
 
