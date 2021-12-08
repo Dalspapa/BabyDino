@@ -1,4 +1,4 @@
-package dino.controller;
+							package dino.controller;
 
 import java.util.HashMap;
 
@@ -32,59 +32,64 @@ public class memberController {
 //	}
 	
 	//Do Login
-	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ModelAndView loginSubmit(@RequestParam("id") String id, 
-			@RequestParam("pwd") String pwd, HttpSession session, 
-			@RequestParam(value = "saveId", required = false) String saveId, 
-			HttpServletResponse resp) {
-		
-		boolean result = memberService.loginCheck(id, pwd);
-		
-		//TestCode
-		System.out.println("Controller.java result : " + result);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
-		
-		if (result == true) {
-			MemberDto memberDto = memberService.getUserInfo(id);
-			String userName = memberDto.getName();
-			int memberType = memberDto.getMemberType();
-			
-			//TestCode
-			System.out.println("Controller.java memberType : " + memberType);
-			
-			//TestCode
-			System.out.println("Controller.java userName : " + userName);
-			
-			session.setAttribute("saveId", id);
-			session.setAttribute("saveName", userName);
-			session.setAttribute("saveMemberType", memberType);
-			
-			mav.addObject("msg", userName + "님 환영합니다 !");
-			
-			//TestCode
-			System.out.println("Controller.java memberType : " + memberType);
-			
-			if (saveId == null) {
-				Cookie ck = new Cookie("saveId", id);
-				ck.setMaxAge(0);
-				resp.addCookie(ck);
-			} else {
-				Cookie ck = new Cookie("saveId", id);
-				ck.setMaxAge(60*60*24*30);
-				resp.addCookie(ck);
-			}
-			
-		} else if (result == false) {
-			mav.addObject("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
-		}
-		
-		//TestCode
-		System.out.println("::: 로그인 컨트롤러 수행됨 :::");
-		
-		return mav;
-	}
+	 @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	   public ModelAndView doLogin(@RequestParam("id") String id, 
+	         @RequestParam("pwd") String pwd, HttpSession session, 
+	         @RequestParam(value = "saveId", required = false) String saveId, 
+	         HttpServletResponse resp) {
+	      
+	      boolean result = memberService.loginCheck(id, pwd);
+	      
+	      //TestCode
+	      System.out.println("Controller.java result : " + result);
+	      
+	      ModelAndView mav = new ModelAndView();
+	      mav.setViewName("main");
+	      
+	      if (result == true) {
+	         MemberDto memberDto = memberService.getUserInfo(id);
+	         String userId = memberDto.getId();
+	         String userName = memberDto.getName();
+	         int memberType = memberDto.getMemberType();
+	         int userIdx = memberDto.getIdx();
+	         
+	         //TestCode
+	        // System.out.println("Controller.java memberType : " + memberType);
+	         System.out.println("Controller.java userName : " + userName);
+	         System.out.println("Controller.java userId : " + userId);
+	         System.out.println("Controller.java userIdx : " + userIdx);
+	         System.out.println("Controller.java memberType : " + memberType);
+	         
+	         session.setAttribute("saveId", userId);
+	         session.setAttribute("saveName", userName);
+	         session.setAttribute("saveMemberType", memberType);
+	         session.setAttribute("saveIdx", userIdx);
+	         
+	         System.out.println("컨트롤러 진행중 dto 확인"+memberDto.toString());
+	         
+	         mav.addObject("msg", userName + "님 환영합니다 !");
+	         
+	         //TestCode
+	         
+	         if (saveId == null) {
+	            Cookie ck = new Cookie("saveId", id);
+	            ck.setMaxAge(0);
+	            resp.addCookie(ck);
+	         } else {
+	            Cookie ck = new Cookie("saveId", id);
+	            ck.setMaxAge(60*60*24*30);
+	            resp.addCookie(ck);
+	         }
+	         
+	      } else if (result == false) {
+	         mav.addObject("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
+	      }
+	      
+	      //TestCode
+	      System.out.println("::: 로그인 컨트롤러 수행됨 :::");
+	      
+	      return mav;
+	   }
 
 	//Do Logout
 	@RequestMapping("/logout.do")

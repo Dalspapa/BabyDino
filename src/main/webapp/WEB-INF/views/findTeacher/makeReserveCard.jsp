@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
+
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- bootstrap -->
@@ -27,13 +27,13 @@
 <!-- wickedpicker  -->
 <link rel="stylesheet" href="./common/css/wickedpicker.css">
 <script src="./common/js/wickedpicker.js"></script>
+<%@include file="../header.jsp" %>
 </head>
 <body>
-<h1>예약테이블 만들기</h1>
+<h1>예약테이블 만들기</h1><br><br><br><br><br><br><br>
 <section>
 	<form>
-		<div class="wrapper">
-			
+		<div class="wrapper">		
 			<div>
 				<div>원하는 날짜가 언제인가요 ?</div>
 				<div class="calendar"></div>

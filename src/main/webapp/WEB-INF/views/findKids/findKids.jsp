@@ -154,7 +154,7 @@
 								<ul>
 									<li id="palyday">${kDto.r_endday} / 
 										<c:set  var="time" value="${kDto.r_time}" />
-										<c:forEach items="${fn:split(intro, ',') }" var="item">
+										<c:forEach items="${fn:split(time, ',') }" var="item">
 											<c:if test="${item == '1'}">7~8시</c:if>
 											<c:if test="${item == '2'}">8~9시</c:if>
 											<c:if test="${item == '3'}">9~10시</c:if>
@@ -212,12 +212,12 @@
 	}
 	
 	function check() {
-	   var a = document.getElementsByName('cDiv')
+	   var a = document.getElementsByName('cDiv');
 	   var b = [];
 	   for(var i = 0; i < a.length; i++ ) {
 	      
-	      if(a[i].classList.contains('isTest')) b.push(a[i].id)
-	   };
+	      if(a[i].classList.contains('isTest')) b.push(a[i].id);
+	   }
 	   console.log("-- selected : ", b);
 	}
 	
