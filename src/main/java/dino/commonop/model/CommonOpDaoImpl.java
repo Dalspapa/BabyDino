@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.CommonOpDto;
+import dino.dto.CommonOpDto;
 
 public class CommonOpDaoImpl implements CommonOpDao {
 

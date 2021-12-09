@@ -1,7 +1,8 @@
 package dino.findkids.model;
 
 import java.util.*;
-import dino.Dto.*;
+
+import dino.dto.*;
 
 public interface FindKidsDao {
 	

@@ -2,8 +2,8 @@ package dino.findteachers.model;
 
 import java.util.List;
 
-import dino.Dto.KidDto;
-import dino.Dto.ReviewDto;
+import dino.dto.KidDto;
+import dino.dto.ReviewDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 
 public interface FindTeachersDao {

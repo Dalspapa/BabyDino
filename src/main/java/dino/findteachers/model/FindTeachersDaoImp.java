@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.KidDto;
-import dino.Dto.ReviewDto;
+import dino.dto.KidDto;
+import dino.dto.ReviewDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 
 public class FindTeachersDaoImp implements FindTeachersDao {

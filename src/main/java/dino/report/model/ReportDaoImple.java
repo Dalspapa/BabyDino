@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.CommonOpDto;
-import dino.Dto.ReportDto;
+import dino.dto.CommonOpDto;
+import dino.dto.ReportDto;
 
 public class ReportDaoImple implements ReportDao {
 

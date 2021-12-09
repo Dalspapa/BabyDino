@@ -2,7 +2,8 @@ package dino.findkids.model;
 
 import java.util.*;
 import org.mybatis.spring.SqlSessionTemplate;
-import dino.Dto.*;
+
+import dino.dto.*;
 
 
 public class FindKidsDaoImpl implements FindKidsDao {

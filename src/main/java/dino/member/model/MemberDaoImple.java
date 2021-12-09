@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.MemberDto;
+import dino.dto.MemberDto;
 
 public class MemberDaoImple implements MemberDao {
 	

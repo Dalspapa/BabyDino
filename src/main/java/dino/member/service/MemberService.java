@@ -2,7 +2,7 @@ package dino.member.service;
 
 import java.util.List;
 
-import dino.Dto.MemberDto;
+import dino.dto.MemberDto;
 
 public interface MemberService {
 

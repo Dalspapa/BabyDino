@@ -2,8 +2,8 @@ package dino.report.model;
 
 import java.util.List;
 
-import dino.Dto.CommonOpDto;
-import dino.Dto.ReportDto;
+import dino.dto.CommonOpDto;
+import dino.dto.ReportDto;
 
 public interface ReportDao {
 

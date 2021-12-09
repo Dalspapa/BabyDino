@@ -2,7 +2,7 @@ package dino.commonop.model;
 
 import java.util.*;
 
-import dino.Dto.*;
+import dino.dto.*;
 
 public interface CommonOpDao {
 

@@ -1,10 +1,12 @@
 package dino.findkids.service;
 
-import java.util.*;
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
-import dino.Dto.*;
-import dino.findkids.model.*;
-import dino.Dto.MakeTCardDto;
+
+import dino.dto.Common_ImgDto;
+import dino.dto.MakeTCardDto;
+import dino.findkids.model.FindKidsJoinDto;
 
 public interface FindKidsService {
 

@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.CommonOpDto;
-import dino.Dto.KidDto;
 import dino.commonop.service.CommonOpService;
+import dino.dto.CommonOpDto;
+import dino.dto.KidDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 import dino.findteachers.service.FindTeachersService;
 

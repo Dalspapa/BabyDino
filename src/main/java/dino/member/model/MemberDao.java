@@ -3,7 +3,7 @@ package dino.member.model;
 import java.util.List;
 import java.util.Map;
 
-import dino.Dto.MemberDto;
+import dino.dto.MemberDto;
 
 public interface MemberDao {
 

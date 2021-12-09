@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import dino.Dto.*;
+import dino.dto.*;
 import dino.findkids.model.*;
 
 @Service

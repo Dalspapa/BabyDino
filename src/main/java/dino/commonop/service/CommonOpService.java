@@ -2,7 +2,7 @@ package dino.commonop.service;
 
 import java.util.*;
 
-import dino.Dto.CommonOpDto;
+import dino.dto.CommonOpDto;
 
 public interface CommonOpService {
 
