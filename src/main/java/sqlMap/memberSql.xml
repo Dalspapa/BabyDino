@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.member">
+
 	<select id="loginCheck" parameterType="String" resultType="dino.Dto.MemberDto">
 		SELECT 
 			PWD 
@@ -35,14 +36,27 @@
          	#{tel},
             #{memberType}, <!-- memberType -->
             sysdate,
-            #{addr1}, <!-- 주소  -->
-           	null,
-           	null
+            #{addr1}, <!-- 시  -->
+           	#{addr2}, <!-- 도  -->
+           	#{addr3},  <!-- 동부터 상세주소 -->
+        	null,
+        	null
         )
 	</insert>
-	
+
+	<select id="findId" parameterType="Map" resultType="dino.Dto.MemberDto">
+		SELECT 
+			id 
+		FROM 
+			d_member 
+		WHERE 
+			name=#{name} 
+		AND 
+			tel=#{tel}
+	</select>
+
 	<!-- 아이디 중복 체크 -->
-	<select id="idCheck" parameterType="String" resultType="int">
+	<select id="idCheck" parameterType="String" resultType="Integer">
 		SELECT 
 			COUNT(id)
 		FROM 
@@ -51,4 +65,5 @@
 			ID = #{id}
 	</select>	
 		
+
 </mapper> 

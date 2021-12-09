@@ -54,11 +54,50 @@ public class CommonOpDaoImpl implements CommonOpDao {
 	}
 
 	
-	// KidsCard
-	public List<CommonOpDto> ktendency(Map map) {
-
-		List<CommonOpDto> list = sqlMap.selectList("k_tendency", map);
+	// Make KidsCard tendency list
+	public List<CommonOpDto> ktendency() {
+		List<CommonOpDto> list = sqlMap.selectList("k_tendency");
 		return list;
 	}
+	
+	// Make KidsCard care list
+	public List<CommonOpDto> k_care_type(){
+		
+		List<CommonOpDto> care_list = sqlMap.selectList("k_care_type");
+		//test code
+		System.out.println("careList==" + care_list);
+		return care_list;
+	}
+	
+	//reportType
+	public List<CommonOpDto> reportType() {
 
+		List<CommonOpDto> rp_list = sqlMap.selectList("rp_typeList");
+		return rp_list;
+	}
+	
+	//공지사항
+	public List<CommonOpDto> noticeList(Map map) {
+		List<CommonOpDto> list = sqlMap.selectList("notice", map);
+		return list;
+	}
+	
+	//자주 묻는 질문(회원관련)
+	public List<CommonOpDto> qna(Map map) {
+		List<CommonOpDto> list = sqlMap.selectList("qna" ,map);
+		return list;
+	}
+	//정부지원관련
+	public List<CommonOpDto> government(Map map) {
+		List<CommonOpDto> g_list = sqlMap.selectList("government", map);
+		return g_list;
+	}
+	//결제환불관련
+	public List<CommonOpDto> pay(Map map) {
+		List<CommonOpDto> p_list = sqlMap.selectList("pay" , map);
+		return p_list;
+	}
+	
+	
+	
 }

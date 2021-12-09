@@ -1,10 +1,11 @@
 package dino.member.service;
 
 import java.util.HashMap;
-
+import java.util.List;
+import java.util.Map;
 import org.json.simple.JSONObject;
-
 import dino.Dto.MemberDto;
+
 import dino.member.model.MemberDao;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -26,9 +27,9 @@ public class MemberServiceImple implements MemberService {
 	//회원가입
 	public int memberJoin(MemberDto memberDto) {
 		
-		//테스트 코드
-		System.out.println("내가받아온 addr1 + addrDetail" + memberDto.getAddr1() + memberDto.getAddrDetail());
-		memberDto.setAddr1(memberDto.getAddr1()+", "+memberDto.getAddrDetail());
+		
+		//test code
+		System.out.println(">>addr<<=" + memberDto.getAddr1() + memberDto.getAddr2() + memberDto.getAddr3());
 		
 		int result = memberDao.memberJoin(memberDto);
 		
@@ -69,6 +70,18 @@ public class MemberServiceImple implements MemberService {
 		MemberDto memberDto = memberDao.getUserInfo(id);
 		return memberDto;
 	}
+
+
+	//findId
+	public List<MemberDto> findId(String name, String tel) {
+		Map map = new HashMap();
+		map.put("name", name);
+		map.put("tel", tel);
+		List<MemberDto> list = memberDao.findId(map);
+		return list;		
+	}
+
+
 	
 	//휴대폰 인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) { 
@@ -95,3 +108,4 @@ public class MemberServiceImple implements MemberService {
 			} 
 		}
 }
+

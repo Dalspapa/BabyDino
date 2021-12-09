@@ -102,7 +102,7 @@ var _SIGNATURE = new function(){
 	}
 	
 	this.doneCanvas = function(_canvas){
-		const drawCanvas = document.getElementById(_cansvas);
+
 		var data = this.getCanvas(_canvas);
 		
 		this.clearCanvas(_canvas);
@@ -114,8 +114,7 @@ var _SIGNATURE = new function(){
 			drawCanvas.parentNode.previousElementSibling.style.backgroundImage = "url('" + baseSign +"')";
 		}
 		drawCanvas.parentElement.style.display = "none";
-	}
-	
+	}	
 
 	
 }

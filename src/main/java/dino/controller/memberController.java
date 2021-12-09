@@ -160,4 +160,14 @@ public class memberController {
 	public String findIdPwd() {
 		return "member/findIdPwd";
 	}
+	
+	
 }
+
+
+
+
+
+
+
+

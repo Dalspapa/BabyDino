@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 </head>
 <body>
    <section>
@@ -18,4 +19,5 @@
       </div>
    </section>
 </body>
+<%@include file="../footer.jsp" %>
 </html>

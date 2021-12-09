@@ -5,18 +5,33 @@
 
 <mapper namespace="dino.findTeachers">
 
-	<select id="formKidsCard" parameterType="int" resultType="dino.Dto.KidDto">
-		SELECT
-			idx,
-			k_name, 
-			k_gender, 
-			k_birth 
+	<select id="teacherList" resultType="dino.findteachers.model.FindTeacherJoinDto">
+		
+	</select>
+	
+	<!-- pick kid card -->
+	<select id="pickKidsCard" parameterType="int" resultType="dino.Dto.KidDto">
+	SELECT
+			a.idx,
+			a.k_name, 
+			a.k_gender, 
+			a.k_birth,
+            b.*
 		FROM 
-			d_kid 
-		WHERE 
-			d_member_idx = 23
+			d_kid a, 
+            (SELECT
+            idx as xidx,
+			(TO_CHAR(SYSDATE ,'yyyy') -
+            TO_CHAR (k_birth, 'yyyy')) as age
+            FROM 
+                d_kid
+            WHERE 
+                d_member_idx = 23) b
+    WHERE 
+        a.idx = b.xidx
 	</select>
 
+	<!-- make kid card --> 
 	<insert id="k_makeCard" parameterType="dino.Dto.KidDto">
 	insert into
                 d_kid
@@ -33,7 +48,33 @@
                	#{k_require}
         )
 	</insert>
-		
+	
+	<insert id="kSetImg" parameterType="dino.Dto.Common_ImgDto">
+		INSERT INTO
+			d_common_img
+		VALUES(
+			d_common_img_idx.nextval,
+			#{c_imgpath},
+			#{d_member_idx},
+			1,
+			#{ref_idx}
+		)
+	</insert>
+	
+	<select id="getImg" parameterType="Integer" resultType="dino.Dto.Common_ImgDto" >
+	    SELECT 
+	        dk.*, dci.c_imgpath
+	    FROM 
+	        d_kid dk 
+	    LEFT JOIN 
+	        d_common_img dci 
+	    ON 
+	        dk.d_member_idx = dci.d_member_idx
+	    WHERE
+	        dk.d_member_idx = #{d_member_idx}
+	</select>
+	
+	
 	<select id="teacherInfo"  resultType="dino.findteachers.model.FindTeacherJoinDto">
 		SELECT 
 			t.t_cost

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- bootstrap -->
@@ -31,7 +32,7 @@
 <h1>예약테이블 만들기</h1>
 <section>
 	<form>
-		<div class="container">
+		<div class="wrapper">
 			
 			<div>
 				<div>원하는 날짜가 언제인가요 ?</div>
@@ -48,6 +49,7 @@
 					<input type="text" name="timepicker2" class="timepicker2"/>
 				</div>
 			</div>
+			
 			<hr>
 			<div>
 				<div class="row">
@@ -57,10 +59,12 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</form>	
 </section>
 </body>
+<%@include file="../footer.jsp" %>
 <script>
 $('.calendar').pignoseCalendar({
 	lang: 'ko',

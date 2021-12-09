@@ -9,7 +9,7 @@
 
 	<mvc:annotation-driven/>
 	
-	<!-- Configuration Area -->
+		<!-- Configuration Area -->
 	<!-- Autowired -->
 	<bean
 		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
@@ -19,6 +19,11 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="104857600" />
 	</bean>
+	
+	<!-- 리소스 경로 매핑  
+	<resources mapping="/resources/**" location="/resources/" />
+	
+	<resources mapping="/images/**" location="file:///C:/이주호/upload/" /> -->
 
 	<!-- Controller Annotation -->
 	<context:component-scan base-package="dino" />

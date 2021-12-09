@@ -5,11 +5,14 @@
 <mapper namespace="dino.findKids">
 
 	<insert id="t_makeCard" parameterType="dino.Dto.MakeTCardDto">
+		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
+			SELECT  d_teacher_idx.NEXTVAL FROM DUAL
+		</selectKey>
 		insert into
 			d_teacher
 		values(
-			d_teacher_idx.nextval,
-			22,
+			#{idx},
+			42,
 			#{job},
 			'1',
 			#{kid_type},
@@ -25,12 +28,84 @@
 			#{career_experience}
 		)		
 	</insert>
-	<select id="kidsList" parameterType="Map" resultType="dino.Dto.MakeTCardDto">
-		select
-			*
-		from 
-			d_kid
-		order by idx desc
-	</select>
-</mapper>
 	
+	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
+		SELECT  r.hope_cost
+				, r.idx
+		        , r.r_time
+		        , r.r_endday
+		        , r.r_cost
+		        , r.d_kid_idx
+		        , r.d_member_p_idx
+		        , m.addr1
+		        , m.addr2
+		        , m.addr3
+		        , k.k_name
+		        , k.k_gender
+		        , k.k_birth
+		        , k.k_tendency
+		        , k.k_care_type
+		        , k.k_require
+		        , k.k_introduce
+		        , i.c_imgpath
+		        , k.teacher_type
+		        , rv.star
+		        , rv.r_writedate
+		        , rv.r_content
+		FROM 
+		    	d_reserve r
+		LEFT JOIN 	d_member m ON m.idx = r.d_member_p_idx
+		LEFT JOIN 	d_kid k ON k.idx = r.d_kid_idx
+		LEFT JOIN 	d_common_img i on i.ref_idx = k.idx
+		LEFT JOIN 	d_review rv on rv.d_reserve_idx = r.idx
+	</select>
+	
+	<select id="getTIdx" parameterType="Integer" resultType="Integer">
+		select 
+			idx 
+		from 
+			(select * from d_teacher order by idx desc) 
+		where 
+			rownum = 1 and d_member_idx = #{d_member_idx};
+	</select>
+	
+	<insert id="tSetImg" parameterType="dino.Dto.Common_ImgDto">
+		INSERT INTO
+			d_common_img
+		VALUES(
+			d_common_img_idx.nextval,
+			#{c_imgpath},
+			#{d_member_idx},
+			2,
+			#{ref_idx}
+		)
+	</insert>
+	
+	<select id="getImg" parameterType="Integer" resultType="dino.Dto.Common_ImgDto" >
+	    SELECT 
+	        dt.*, dci.c_imgpath
+	    FROM 
+	        d_teacher dt 
+	    LEFT JOIN 
+	        d_common_img dci 
+	    ON 
+	        dt.d_member_idx = dci.d_member_idx
+	    WHERE
+	        dt.d_member_idx = #{d_member_idx}
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

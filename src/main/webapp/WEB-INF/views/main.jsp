@@ -5,83 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>아 기 공 룡</title>
-  <!-- 파비콘 -->
-  <link rel="shortcut icon" href="./common/img/favicon/favicon.png" type="image/x-icon"> 
-  <link rel="icon" href="./common/img/favicon/favicon.png" type="image/x-icon"> 
-
-  <!-- fontasome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-  <!-- css -->
-  <link rel="stylesheet" href="./common/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./common/css/reset.css">
-  <link rel="stylesheet" href="./common/css/main.css">
+<!-- main css -->
+<link rel="stylesheet" href="./common/css/main.css">
 </head>
 <body id="page-top">
-
-  <!-- 페이지 상위 버튼 -->
-  <div id="top-button">
-    <a href="#page-top">
-      <i class="fas fa-arrow-up"></i>
-    </a>
-  <!-- ./ 페이지 상위 버튼 -->
-  </div>
-
-  <!-- 챗 버튼 -->
-  <div id="chat">
-    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#chatModal">
-      <span id="caht-cnt">
-        <p>1</p>
-      </span>
-      <i class="fas fa-comments"></i>
-    </a>
-  <!-- ./ 페이지 상위 버튼 -->
-  </div>
-
   <!-- header -->
-	<header>
-    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top" >
-        <div class="container px-4 px-lg-5">
-            <a id="header-logo" class="navbar-brand" href="main.do">
-              <span>ㅇㄱ</span>
-              <span>ㄱㄹ</span>
-            </a>
-
-            <!-- 반응형 메뉴바 -->
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            <!--  ./반응형 메뉴바 -->
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="formKidsCard.do?idx=23">돌봄신청</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#projects">아이찾기</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#signup">궁금해요
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <i class="fas fa-user"></i>
-                      </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-  <!-- ./header -->
-	</header>
+  <%@include file="./header.jsp" %>
 	
   <!-- wrapper -->
   <div class="wrapper">
     <!-- 영상부분 -->
-    <section id="section01">	
+    <section id="section01" >	
       <div class="active">
         <video class="mainvideo" preload="auto" autoplay loop muted webkit-playsinline="true" playsinline="true" 
               src="./common/video/mainvideo.mp4" type="video/mp4"></video>
@@ -230,7 +164,7 @@
                 <div class="col-lg col-sm-4 col-xs text-center" >
                   <span class="faq-box" >
                     <img src="./common/img/icons/people.jpg" alt="부모님을 어떻게 믿죠?">
-                    <h4 class="text-muted">아기공룡을 어떻게 믿죠?</h4>
+                    <h4 class="text-muted">부모님을 어떻게 믿죠?</h4>
                   </span>
                 </div>
 
@@ -238,7 +172,7 @@
                   <span class="faq-box">
                     <img src="./common/img/icons/membershipticket.jpg" alt="아기공룡 멤버쉽은 무엇인가요?">
                   </span>
-                  <h4 class="text-muted">아기공룡을 어떻게 믿죠?</h4>
+                  <h4 class="text-muted">아기공룡 멤버쉽은 무엇인가요?</h4>
                 </div>
               </div>
               <div class="m-5">
@@ -350,12 +284,12 @@
           </div>
           <div id="faq-content">
             <div class="text-center mt-5 mb-3">
-              <button type="button" class="btn btn-primary d-inline m-1">부모 회원</button>
-              <button type="button" class="btn btn-secondary d-inline m-1">선생님 회원</button>
+              <button type="button" class="btn btn-primary d-inline m-1" onclick="p_member();">부모 회원</button>
+              <button type="button" class="btn btn-secondary d-inline m-1" onclick="t_member();">선생님 회원</button>
             </div>
 
             <!-- 부모 회원( userParents )-->
-            <div id="userParents" class="row">
+            <div id="p_member" class="row">
               <div class="col-lg col-sm-4 col-xs-12 joinguide">
                 <div class="faq-box"> 
                   <div class="img-sarce">
@@ -416,14 +350,17 @@
                   </div>
                 </div>
               </div>
+              	<span class="d-block m-3 text-center" >
+            	<a href="#">선생님회원 가이드보기 ></a>
+          </span>
             </div>	
 
             <!-- 선생님 회원( userTeacher ) -->
-            <div id="userTeacher" class="row">
-              <div class="col-lg col-sm-4 col-xs-12 joinguide">
+            <div id="t_member" class="row">
+              <div class="col-xxl col-sm-4 col-xs-12 joinguide">
                 <div class="faq-box"> 
                   <div class="img-sarce">
-                    <img src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/mom-guide-1-v2.svg" alt="회원가입하기">
+                    <img  src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-1-v2.svg" alt="회원가입하기">
                   </div>
                   <div class="contents">
                     <h6 class="guide-title">회원가입하기</h6>
@@ -432,113 +369,69 @@
                 </div>
               </div>
 
-              <div class="col-lg col-sm-4 col-xs-12 joinguide">
+              <div class="col-xxl col-sm-4 col-xs-12 joinguide">
                 <div class="faq-box"> 
                   <div class="img-sarce">
-                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/mom-guide-2-v2.svg" alt="신청서작성하기">
+                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-2-v2.svg" alt="프로필 작성하기">
                   </div>
                   <div class="contents">
-                    <h6 class="guide-title">신청서 작성하기</h6>
-                    <p class="guide-content"> 돌봄이 필요한 요일, 장소, 원하는 돌봄 방식 등을 작성하게 됩니다.</p>
+                    <h6 class="guide-title">프로필 작성하기</h6>
+                    <p class="guide-content"> "내 활동 지역, 희망 시급,<br> "활동 기간 등을 상세하게 작성해주세요"</p>
                   </div>
                 </div>
               </div>
         
-              <div class="col-lg col-sm-4 col-xs-12 joinguide">
+              <div class="col-xxl col-sm-4 col-xs-12 joinguide">
                 <div class="faq-box">
                   <div class="img-sarce">
-                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/mom-guide-3-v2.svg" alt="선생님신청하기">
+                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-3-v2.svg" alt="부모 지원하기">
                   </div>
                   <div class="contents">
-                    <h6 class="guide-title">선생님 신청하기</h6>
-                    <p class="guide-content"> 우리동네로 검색해서, 맘에 드는 공룡선생님을 찾아 신청메시지를 보내세요.</p>
+                    <h6 class="guide-title">부모 지원하기</h6>
+                    <p class="guide-content"> 지역과 우리 동네 등으로 검색해서, 나와 맞는 부모님을 찾아 지원해보세요</p>
                   </div>
                 </div>
               </div>
           
-              <div class="col-lg col-sm-6 col-xs-12 joinguide">
+              <div class="col-xxl col-sm-6 col-xs-12 joinguide">
                 <div class="faq-box">
                   <div class="img-sarce">
-                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/mom-guide-4-v2.svg" alt="인터뷰 후 채용하기">
+                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-4-v2.svg" alt="인터뷰 후 활동하기">
                   </div>
             
                   <div class="contents">
-                    <h6 class="guide-title">인터뷰 후 채용하기</h6>
-                    <p class="guide-content"> 내 신청메시지에 수락한 공룡선생님들과 인터뷰를 진행한 뒤 맘에 드는 공룡선생님를 채용합니다.</p>
+                    <h6 class="guide-title">인터뷰 후 활동하기</h6>
+                    <p class="guide-content"> 인터뷰 시, 내가 안전하게 아이를 돌볼 수 있는 환경인지 확인한 뒤 공룡선생님로 활동합니다</p>
                   </div>
                 </div>
               </div>
           
-              <div class="col-lg col-sm-6 col-xs-12 joinguide">
+              <div class="col-xxl col-sm-6 col-xs-12 joinguide">
                 <div class="faq-box">
                   <div class="img-sarce">
-                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/mom-guide-5-v2.svg" alt="후기 작성하기">
+                    <img class="lL3tq"  src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-5-v2.svg" alt="후기작성">
                   </div>
                   <div class="contents">
                     <h6 class="guide-title">후기 작성</h6>
-                    <p class="guide-content">채용한 공룡선생님에 대한 후기를 작성하세요. 내가 작성한 후기는 공룡선생님 프로필에 노출됩니다.</p>
+                    <p class="guide-content">공룡선생님도 부모님에 대한 후기를 작성해주세요. 내가 작성한 후기는 부모님 신청서에 노출됩니다.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <span class="d-block m-3 text-center" >
-            <a href="#">부모회원 가이드보기 ></a>
-          </span>
     </section>
   </div>
 
   <!-- footer -->
-	<footer class="row">
-    <div class="col-sm-10 col-xs-12 pl-5">
-      <span class="footer-logo">
-        <h5>
-          <span class="d-block">BABY</span>
-          <span>DINODAUR</span>
-        </h5>
-      </span>
-      <div class="footer-address">
-            <p>상호 : (주)아기공룡</p>
-            <span>
-              <p>대표자 : 김이최</p>
-            </span>
-            <address>
-              <p>서울특별시 마포구 망원동 479-2</p>
-              <p>TEL : 1677-0707</p>
-              <p>E-MAIL : babydino@dinosaur.com</p>
-              <p>사업자등록번호 : 404-0707-1215</p>
-            </address>
-            <div class="footer-copyright">
-              <p>ⓒBABYDINOSAUR</p>
-            </div>
-      </div>
-    </div>
-
-    <div class="col-sm-2 col-xs-12">
-      <span class="footer-about">
-        <h5>ABOUT</h5>
-      </span>
-      <div class="footer-menu">
-            <p>
-              <strong>NEWSLETTER</strong> 
-            </p>
-            <p>
-              <strong>CONTACTUS</strong> 
-            </p>
-            <p></p>
-            <p>이용약관</p>
-            <p>개인정보취급방침</p>
-      </div>      
-    </div>
-	</footer>
+	<%@include file="./footer.jsp" %>
 
   <!-- 로그인 Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <h5 class="modal-title" >L O G I N</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -562,29 +455,30 @@
 						<span class="input-group-text" id="inputGroup-sizing-sm">V</span>
 					</div>
 					<span id="loginCheck">
-						<p>${msg} message</p>
+						<p> message</p>
 					</span>
 					<span class="#">
 						<input type="checkbox" name="saveId" value="on" 
 						${empty cookie.saveId.value ? '' : 'checked'} />ID 기억
 					</span>
-					<span class="login">
-						<button class="btn btn-primary" >LOGIN</button>
+					<span class="login" >
+						<button class="btn" style="background-color: #68983b; color: white;" >LOGIN</button>
 					</span>			
                 </div>
             </form>
           </div>
         </div>
         <div class="modal-footer">
-			<div class="login-buuton-box">
-				<button class="btn btn-primary">
+			<div class="login-buton-box">
+				<button class="btn button">
 				  <a href="findIdPwd.do">아이디, 비밀번호 찾기</a>
 				</button>
-				<button class="btn btn-primary">
+			</div>
+			<div class="login-buton-box">
+				<button class="btn button">
 				  <a href="join.do">회원가입</a>
 				</button>
 			</div>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -610,72 +504,35 @@
     </div>
   <!-- ./챗 Modal -->
   </div>
-
-
-  
 </body>
-  <script src="./common/js/jquery-3.6.0.min.js"></script>
 
-  <!-- custome js -->
-  <script src="./common/js/bootstrap.min.js"></script>
-
-  <script>	
-    // 헤더 이벤트 처리
-	window.addEventListener('DOMContentLoaded', event => {
-
-    // 스크롤이 0보다 크면 클래스 이벤트 추가
-    var navbarShrink = function () { 
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        const topBtn = document.getElementById('top-button');
-
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink');
-            setTimeout(function() {
-              topBtn.classList.remove('block');
-            }, 200);
-            
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink');
-            setTimeout(function() {
-              topBtn.classList.add('block');
-            }, 200);
-            
-        }
-    };
-
-    // Shrink the navbar 
-    navbarShrink();
-
-    // 스크롤시 해당 영역이 어딘지 확인 후 헤더에 표시해주는 이벤트 
-    document.addEventListener('scroll', navbarShrink);
-
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            offset: 80,
-        });
-    };
-
-    // 반응형 메뉴 바. (Collapse 추가되면 navbar에 메뉴 버튼이 생성된다.
-    // 생성 된 후 이벤트 적용
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });
-
-});
-
+<!-- 선생님 부모님 이용가이드 관련 js -->
+<script>
+	function showDiv1() {
+		var a = document.getElementById('p_member');
+		a.classList.remove('d-none');
+		var b = document.getElementById('t_member');
+		b.classList.add('d-none');
+	}
 </script>
+
+<!-- 부모님회원 선생님 회원 버튼 js -->
+  <script>
+	  let a = $('#p_member');
+	  let b = $('#t_member');
+	  $(document).ready(function() {               
+	      a.show();
+	      b.hide();   
+	  });
+	  function find_id(){        
+	  a.show();
+	  b.hide();
+	
+	  }
+	  function find_pwd(){  
+	  a.hide();
+	  b.show();
+	
+	  }
+  </script>
 </html>

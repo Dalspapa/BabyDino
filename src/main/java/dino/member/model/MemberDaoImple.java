@@ -1,5 +1,8 @@
 package dino.member.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dino.Dto.MemberDto;
@@ -55,6 +58,12 @@ public class MemberDaoImple implements MemberDao {
 		
 		return memberDto;
 	}
+	
+	public List<MemberDto> findId(Map map) {
+		
+		return null;
+	}
 
 
 }
+

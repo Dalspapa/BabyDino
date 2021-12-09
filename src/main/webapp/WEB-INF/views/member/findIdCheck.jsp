@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 </head>
 <body>
    <section>
@@ -13,12 +14,13 @@
          <h6>입력하신 정보로 가입한 계정 정보입니다.</h6>
       </div>
       <div>
-         ID :
+         ID : ${ list[0].id }
       </div>
       <div>
          <button>비밀번호 찾기</button>
          <button>로그인</button>
       </div>
-   </section>
+   </section> 
 </body>
+<%@include file="../footer.jsp" %>
 </html>

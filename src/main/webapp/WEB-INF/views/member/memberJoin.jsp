@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@include file="../header.jsp" %>
 </head>
 <!-- css -->
 <link rel="stylesheet" href="./common/css/bootstrap.min.css">
@@ -83,15 +84,18 @@ table tr th {
 									<th>주소</th>
 									<td>
 										<div class="d-flex">
-											<input id="address" type="text" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" name="addr1" readonly />
+											<input id="addr1" type="text" name="addr1" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" readonly />
 											<button type="button" class="btn btn-sm btn-outline-primary" onclick="kakaopost()">주소찾기</button>
+										</div>
+										<div class="d-flex">
+											<input id="addr2" type="text" name="addr2" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" readonly />
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<th>상세주소</th>
 									<td>
-										<input id="detail" type="text" name="addrDetail" class="form-control form-control-sm w-50" autocomplete="off" placeholder="상세주소 입력" />
+										<input id="addr3" type="text" name="addr3" class="form-control form-control-sm w-50" autocomplete="off" placeholder="상세주소 입력" />
 									</td>
 								</tr>
 								<tr>
@@ -194,7 +198,8 @@ table tr th {
 			</div>
 		</section>
 	</div>
-
+</body>
+<%@include file="../footer.jsp" %>
 <!-- 카카오 주소 API -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -224,21 +229,23 @@ table tr th {
 		var name	 = $("#name");
 		var gender	 = $("input[name=gender]");
 		var birth	 = $("#birth");
-		var address	 = $("#address");
-		var detail	 = $("#detail");
+		var addr1 	 = $("#addr1");
+		var addr2 	 = $("#addr2");
+		var addr3 	 = $("#addr3");
 		var tel	 	 = $("#tel");
 		var phone2	 = $("#phone2");
 		
-		var ID_VALID 	   = false;
-		var PWD_VALID	   = false;
-		var PWDCHECK_VALID = false;
-		var NAME_VALID 	   = false;
-		var GENDER_VALID   = false;
-		var BIRTH_VALID    = false;
-		var ADDRESS_VALID  = false;
-		var DETAIL_VALID   = false;
-		var TEL_VALID      = false;
-		var PHONE2_VALID   = false;
+		var ID_VALID 	   	= false;
+		var PWD_VALID	   	= false;
+		var PWDCHECK_VALID 	= false;
+		var NAME_VALID 	   	= false;
+		var GENDER_VALID   	= false;
+		var BIRTH_VALID    	= false;
+		var ADDRESS1_VALID  = false;
+		var ADDRESS2_VALID  = false;
+		var ADDRESS3_VALID  = false;
+		var TEL_VALID      	= false;
+		var PHONE2_VALID   	= false;
 		
 		// id 유효성 검사
 		if(id.val().trim().length == 0) {
@@ -315,26 +322,37 @@ table tr th {
 				BIRTH_VALID = true;
 		}
 		
-		// 지번주소 유효성 검사
-		if( $("#address").val() == '') {
-				$("#address").addClass('is-invalid');
-				$("#address").removeClass('is-valid');
-				ADDRESS_VALID = false;
+		// 주소1 유효성 검사
+		if( $("#addr1").val() == '') {
+				$("#addr1").addClass('is-invalid');
+				$("#addr1").removeClass('is-valid');
+				ADDRESS1_VALID = false;
 		} else {
-				$("#address").removeClass('is-invalid');
-				$("#address").addClass('is-valid');
-				ADDRESS_VALID = true;
+				$("#addr1").removeClass('is-invalid');
+				$("#addr1").addClass('is-valid');
+				ADDRESS1_VALID = true;
+		}
+		
+		// 주소2 유효성 검사
+		if( $("#addr2").val() == '') {
+				$("#addr2").addClass('is-invalid');
+				$("#addr2").removeClass('is-valid');
+				ADDRESS2_VALID = false;
+		} else {
+				$("#addr2").removeClass('is-invalid');
+				$("#addr2").addClass('is-valid');
+				ADDRESS2_VALID = true;
 		}
 		
 		// 상세주소 유효성검사
-		if(detail.val().trim().length == 0) {
-				$("#detail").addClass('is-invalid');
-				$("#detail").removeClass('is-valid');
-				DETAIL_VALID = false;
+		if(addr3.val().trim().length == 0) {
+				$("#addr3").addClass('is-invalid');
+				$("#addr3").removeClass('is-valid');
+				ADDRESS3_VALID = false;
 		} else {
-				$("#detail").removeClass('is-invalid');
-				$("#detail").addClass('is-valid');
-				DETAIL_VALID = true;
+				$("#addr3").removeClass('is-invalid');
+				$("#addr3").addClass('is-valid');
+				ADDRESS3_VALID = true;
 		}
 		
 		// 전화번호 유효성 검사
@@ -361,7 +379,7 @@ table tr th {
 		
 		// 유효성 전체 검사 하나라도 false면 못넘어감
 		if(!ID_VALID || !PWD_VALID || !PWDCHECK_VALID || !NAME_VALID || !GENDER_VALID || !BIRTH_VALID
-				|| !ADDRESS_VALID || !DETAIL_VALID || !TEL_VALID || !PHONE2_VALID) {
+				|| !ADDRESS1_VALID || !ADDRESS2_VALID || !ADDRESS3_VALID|| !TEL_VALID || !PHONE2_VALID) {
 			return false;
 		}
 		
@@ -381,8 +399,9 @@ table tr th {
 		formData.set("name", $("#name").val());
 		formData.set("gender", $("input[name='gender']:checked").val());
 		formData.set("birth", $("#birth").val().replaceAll('-',''));
-		formData.set("addr1", $("#address").val());
-		formData.set("addrDetail", $("#detail").val());
+		formData.set("addr1", $("#addr1").val());
+		formData.set("addr2", $("#addr2").val());
+		formData.set("addr3", $("#addr3").val());
 		formData.set("tel", $("#tel").val());
 		formData.set("memberType", $("#type").val());
 		
@@ -467,8 +486,18 @@ table tr th {
 	function kakaopost() {
 		new daum.Postcode({
 			oncomplete : function(data) {
+				
+				var addr2 = "";
+				
+				if(data.userSelectedType == 'R'){
+					addr2 = data.jibunAddress;
+				}else {
+					addr2 = data.jibunAddress;
+				}
+				
 				console.log("--- data : ", data);
-				document.getElementById("address").value = data.address
+				document.getElementById("addr1").value = data.zonecode
+				document.getElementById("addr2").value = addr2
 			}
 		}).open();
 	}
