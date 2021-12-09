@@ -19,12 +19,11 @@ public interface FindTeachersDao {
 	// make kid card
 	public int makeKCard(KidDto dto);
 	 
-	// set kid img 	
-	public int kSetImg (Common_ImgDto imgDto);
-	
-	//get img path
-	public List<Common_ImgDto> imgpath(int d_member_idx);
-	
+	/*
+	 * // set kid img public int kSetImg (Common_ImgDto imgDto);
+	 * 
+	 * //get img path public List<Common_ImgDto> imgpath(int d_member_idx);
+	 */
 	//teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx);
 	public List<ReviewDto> teacherReviewList(int idx);

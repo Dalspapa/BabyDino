@@ -15,7 +15,7 @@ import dino.Dto.ReportDto;
 import dino.report.service.ReportService;
 
 @Controller
-public class reportController {
+public class ReportController {
 
 	@Autowired
 	private ReportService reportService;

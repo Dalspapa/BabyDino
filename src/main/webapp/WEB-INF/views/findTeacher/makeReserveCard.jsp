@@ -33,7 +33,6 @@
 <section>
 	<form>
 		<div class="wrapper">
-			
 			<div>
 				<div>원하는 날짜가 언제인가요 ?</div>
 				<div class="calendar"></div>

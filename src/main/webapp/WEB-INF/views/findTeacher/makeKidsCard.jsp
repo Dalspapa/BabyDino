@@ -86,7 +86,7 @@ img {
 						<div>원하는 돌봄 분야</div>
 						<c:forEach var="c_list" items="${ care_list }">
 						<div class="col-md-2">
-							<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" autocomplete="off"> 
+							<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
 							<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
 						</div>
 						</c:forEach>
@@ -104,7 +104,7 @@ img {
 						<c:forEach var="k_opdto" items="${ k_list }">
 							<div>
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" name="k_op" id="${k_opdto.c_introduce}"> 
+									<input class="form-check-input" type="checkbox" name="k_op" id="${k_opdto.c_introduce}" value="${k_opdto.c_introduce}" /> 
 									<label class="form-check-label" for="${k_opdto.c_introduce}">${k_opdto.c_introduce} </label>
 								</div>
 							</div>
@@ -122,7 +122,7 @@ img {
 					<div>
 						<p>요청사항(선택)</p>
 						<div class="form-floating">
-							<textarea name="" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+							<textarea name="k_require" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
 							<label for="floatingTextarea2">선생님에게 요청사항이 있으시면 적어주세요.</label>
 						</div>
 					</div>
@@ -196,19 +196,19 @@ img {
 		
 		var formData = new FormData();
 		
-		formData.set("d_member_idx", 24)
-		formData.set("k_name", $("#k_name").val())
-		formData.set("k_gender", $("k_gender").val())
-		formData.set("k_tendency",k_tendency)
-		formData.set("k_birth",  $("#k_birth").val())
-		formData.set("k_introduce",k_introduce)
-		formData.set("k_care_type",k_care_type)
-		formData.set("teacher_type",teacher_type)
-		formData.set("k_require",k_require)
+		formData.set("d_member_idx", 23)							// 맴버 테이블 회원 인덱스
+		formData.set("k_name", $("#k_name").val())					// 아이 이름
+		formData.set("k_gender", $("#k_gender").val())				// 아이 성별
+		formData.set("k_tendency",k_op) 							// 아이 성향
+		formData.set("k_birth",  $("#k_birth").val())				// 아이 생년월일
+		formData.set("k_introduce", $("#floatingTextarea1").val())	// 아이 소개
+		formData.set("k_care_type", check_type) 					// 원하는 돌봄 분야
+		formData.set("teacher_type", check_age) 					// 원하는 선생님 연령대
+		formData.set("k_require", $("#floatingTextarea2").val())	// 요청 사항
 		
-		formData.forEach(function(value,ket){
+		formData.forEach(function(value, key){
 			
-			console.log(key,value);
+			console.log(key, value);
 		});
 		
 		
@@ -222,10 +222,12 @@ img {
 				cache: false,
 				success: function(r) {
 					console.log("--- r : ", r);
-					location.href='main.do';
+					window.alert("아이카드 등록 성공하셨습니다.");
+					location.href='pickKidsCard.do';
 				},
 				error: function(e) {
 					console.error(e);
+					window.alert("아이카드 등록 실패하셨습니다.");
 				}
 			  })
 		  }

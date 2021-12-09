@@ -18,14 +18,14 @@ public interface FindTeachersService {
 	public List<KidDto> pickKidsCard(int idx);
 	
 	// make kid card 
-	public void makeKCard(KidDto dto, Common_ImgDto imgDto, List<MultipartFile> imgFiles, String dirPath);
+	public int makeKCard(KidDto dto);
 	
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx);
 	
 	// set kid img 	
-	public int kSetImg(Common_ImgDto imgDto);
+	//public int kSetImg(Common_ImgDto imgDto);
 	
 	//get img path
-	public List<Common_ImgDto> imgpath(int d_member_idx);
+	//public List<Common_ImgDto> imgpath(int d_member_idx);
 }

@@ -45,23 +45,24 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 		return result;
 	}
 
-	// set Kid img
-	public int kSetImg(Common_ImgDto imgDto) {
+	/*
+	 * // set Kid img public int kSetImg(Common_ImgDto imgDto) {
+	 * 
+	 * int result = sqlMap.insert("kSetImg", imgDto);
+	 * 
+	 * //test code
+	 * System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+
+	 * "memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
+	 * 
+	 * return result; }
+	 */
 		
-		int result = sqlMap.insert("kSetImg", imgDto);
-	
-		//test code
-		System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
-	
-		return result;
-	}
-		
-	//get img path
-	public List<Common_ImgDto> imgpath(int d_member_idx){
-		List<Common_ImgDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
-		
-		return resultDto;
-	}
+	/*
+	 * //get img path public List<Common_ImgDto> imgpath(int d_member_idx){
+	 * List<Common_ImgDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
+	 * 
+	 * return resultDto; }
+	 */
 	
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx) {

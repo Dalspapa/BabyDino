@@ -1,6 +1,6 @@
 package dino.controller;
 
-import java.util.List;
+import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.Dto.MemberDto;
@@ -45,9 +47,9 @@ public class MemberController {
 		mav.setViewName("main");
 		
 		if (result == true) {
-			MemberDto MemberDto = memberService.getUserInfo(id);
-			String userName = MemberDto.getName();
-			int memberType = MemberDto.getMember_type();
+			MemberDto memberDto = memberService.getUserInfo(id);
+			String userName = memberDto.getName();
+			int memberType = memberDto.getMemberType();
 			
 			//TestCode
 			System.out.println("Controller.java memberType : " + memberType);
@@ -100,57 +102,72 @@ public class MemberController {
 		return mav;
 	}
 	
-	
-	
-	
 	@RequestMapping("/join.do")
 	public String goJoinPage() {
 		return "member/join";
 	}
 	
-	@RequestMapping(value = "/memberJoin.do", method = RequestMethod.POST)
-	public ModelAndView joinSubmit(MemberDto MemberDto) {
-		
-		int result = memberService.memberJoin(MemberDto);
-		
-		String msg = result > 0 ? "성공" : "실패";
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("msg", msg);
-		mav.setViewName("main");
-		
-		return mav;
-		
-	}
-	
-	
-	
-	
-	
-	
-	
+	//선생님 또는 부모님 회원가입 페이지 이동
 	@RequestMapping("/memberJoin.do")
 	public String join() {
+		
+		//테스트 코드
+		System.out.println("==== 테스트 ====");
+		
 		return "member/memberJoin";
 	}
 	
-	//아이디 비밀번호 찾기
+	//회원가입 요청
+	@RequestMapping(value = "joinMember.do", method = RequestMethod.POST)
+	public ResponseEntity<?> joinSubmit(MemberDto memberDto) {
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		System.out.println("-- memberTyep : " + memberDto.getMemberType());
+		
+		
+		int joinCount = memberService.memberJoin(memberDto);
+		
+		result.put("result", joinCount);
+		return ResponseEntity.ok(result);
+	}
+	
+	//아이디 중복 체크
+	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int idCheck(@RequestParam("id")String id) {
+		
+		//테스트 코드
+		System.out.println("==== 진입 ==== id : " + id);
+				
+		int result = memberService.idCheck(id);
+		
+		return result;
+	}
+
+	//휴대폰 번호인증
+	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET) 
+	@ResponseBody 
+	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기 
+		
+		int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);//난수 생성
+		
+		memberService.certifiedPhoneNumber(userPhoneNumber, randomNumber); 
+		
+		return Integer.toString(randomNumber); 
+	}
+	
 	@RequestMapping("/findIdPwd.do")
 	public String findIdPwd() {
-		
 		return "member/findIdPwd";
 	}
 	
-	//아이디 찾기
-	@RequestMapping("/findIdCheck.do")
-	public ModelAndView findIdCheck(@RequestParam("name") String name,@RequestParam("tel") String tel) {
-		
-		List<MemberDto> list = memberService.findId(name, tel);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("list",list);
-		mav.setViewName("member/findIdCheck");
-		return mav;
-	}
-
+	
 }
+
+
+
+
+
+
+
+
