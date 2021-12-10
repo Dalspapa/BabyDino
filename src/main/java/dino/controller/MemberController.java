@@ -89,10 +89,7 @@ public class MemberController {
 
 		//TestCode
 		System.out.println("::: 로그인 컨트롤러 수행됨 :::");
-
-  
 		response.put("success", success);
-		
 		return ResponseEntity.ok(response);
 	}
 

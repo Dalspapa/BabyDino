@@ -500,8 +500,7 @@
 		formData.set('pwd', pwd);
 		
 		formData.forEach(function(value, key) {
-			console.log(key, value);
-	 
+			console.log(key, value);	 
 		});
 	
 		$.ajax({

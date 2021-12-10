@@ -101,7 +101,6 @@ public class MemberServiceImple implements MemberService {
 		int result = memberDao.editPwd(memberDto);
 		return result;
 	}
-
 	
 	//휴대폰 인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) { 

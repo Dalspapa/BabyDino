@@ -47,9 +47,7 @@ public class MemberDaoImple implements MemberDao {
 		} else {
 			return null;
 		}
-		
-	}
- 
+	} 
 
 	public MemberDto getUserInfo(String id) {
 		MemberDto memberDto = sqlMap.selectOne("getUserInfo", id);

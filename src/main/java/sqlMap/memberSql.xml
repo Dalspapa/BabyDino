@@ -44,7 +44,7 @@
         )
 	</insert>
 
-	<select id="findId" parameterType="Map" resultType="dino.Dto.MemberDto">
+	<select id="findId" parameterType="Map" resultType="dino.dto.MemberDto">
 		SELECT 
 			id 
 		FROM 
@@ -63,7 +63,28 @@
 			D_MEMBER 
 		WHERE 
 			ID = #{id}
-	</select>	
-		
+	</select>
+	
+	<select resultType="dino.dto.MemberDto" parameterType="Map" id="findPwd">
+	   SELECT 
+	      ID, PWD 
+	   FROM
+	      D_MEMBER
+	   WHERE
+	      NAME = #{name}
+	   AND
+	      ID = #{id}
+	   AND
+	      TEL = #{tel} 
+   </select>
 
+   <!-- 비밀번호 변경하기 -->
+   <update parameterType="dino.dto.MemberDto" id="editPwd">
+	   UPDATE
+	      D_MEMBER
+	   SET
+	      PWD = #{pwd}
+	   WHERE   
+	      ID = #{id} 
+   </update>
 </mapper> 
