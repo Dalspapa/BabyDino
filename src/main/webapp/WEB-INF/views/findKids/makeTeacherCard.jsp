@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -264,6 +263,7 @@
   function isTest() {
 
 	  	let imgFile = $('#t_img1').val();
+
 	  	let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif|JPG|JPEG|PNG|GIF|BMP|PDF|JFIF)$/gi;
 
 	  	if( imgFile == ""){
@@ -283,7 +283,6 @@
 			$('#t_introduce').focus();
 			return false;
 		}
-
 
 		let kid_type = [];
 		$('input[name=kid_type]:checked').each(function(i){
@@ -327,9 +326,6 @@
 	  formData.set("t_introduce", $("#t_introduce").val())
 	  formData.set("cctvagree", cctv);
 
-
-	  // 이미지가 있으면 파일정보를 보내줘야하는데 지금 문자열을 보내줘서 에러나느거같아요.
-	  // 이미지 없으면 inputtype file display-none 으로 파일 하드코딩으로 박아버리고
 	  for(var i = 0; i < fileLength.length; i++) {
 		  if(fileLength[i].files[0] != undefined) {
 			  formData.set('tImg[' + i + ']', fileLength[i].files[0]);
@@ -342,7 +338,6 @@
 	  formData.forEach(function(value, key) {
 		  console.log(key, value);
 	  });
-
 
 	  $.ajax({
 		method: 'POST',
@@ -436,7 +431,6 @@
   		});
 
   	});
-
 
   </script>
 

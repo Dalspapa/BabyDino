@@ -17,12 +17,12 @@ public class MemberDto {
 		private String addr2;
 		private String addr3;
 	
-	
 	public MemberDto() {
 		super();
 	}
 
 	public MemberDto(int idx, String id, String pwd, String name, int gender, String birth, String tel, int member_type,
+
 			Date joinDate, String addr1, String addr2, String addr3) {
 		super();
 		this.idx = idx;
@@ -37,7 +37,7 @@ public class MemberDto {
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 		this.addr3 = addr3;
-		
+
 	}
 
 	public int getIdx() {
@@ -119,7 +119,6 @@ public class MemberDto {
 	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
 	}
-
 
 	public String getAddr2() {
 		return addr2;

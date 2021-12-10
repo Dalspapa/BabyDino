@@ -570,6 +570,5 @@
 	  a.hide();
 	  b.show();
 	  }
-	  
   </script>
 </html>

@@ -180,16 +180,15 @@ table .phone{
                      책임이 없음을 알려드립니다.</span>
                </p>
             </div>
-
             <div>
                <h4>< 맘시터 회원의 의무 ></h4>
                <p>
+				  
                   모든 회원은 자신에게 적합한 선생님 또는 일자리(부모)를 선택하여, 서로 합의한 계약조건 또는 관련 법에 의거하여
                   성실하게 활동해야 합니다. <br> <span style="color: red;">상호간 합의한
                      내용을 사전 조율없이 일방적으로 해지 통보할 경우, 서비스 이용약관에 따라 강제 탈퇴조치 될 수 있음을 알려드립니다.</span>
                </p>
             </div>
-
             <div>
                <input id="check-all" type="checkbox" class="form-check-input" class="form-check-input" /> <strong>전체동의</strong>
             </div>
@@ -236,199 +235,199 @@ table .phone{
    // 중복검사 버튼 누른지 확인
    var idCheckBtn = false;
 
-   // 회원가입 api 호출
-   function regMember() {
-      
-      var id        = $("#id");
-      var pwd     = $("#pwd");
-      var pwdCheck = $("#pwdCheck");
-      var name    = $("#name");
-      var gender    = $("input[name=gender]");
-      var birth    = $("#birth");
-      var addr1     = $("#addr1");
-      var addr2     = $("#addr2");
-      var addr3     = $("#addr3");
-      var tel        = $("#tel");
-      var phone2    = $("#phone2");
-      
-      var ID_VALID          = false;
-      var PWD_VALID         = false;
-      var PWDCHECK_VALID    = false;
-      var NAME_VALID          = false;
-      var GENDER_VALID      = false;
-      var BIRTH_VALID       = false;
-      var ADDRESS1_VALID  = false;
-      var ADDRESS2_VALID  = false;
-      var ADDRESS3_VALID  = false;
-      var TEL_VALID         = false;
-      var PHONE2_VALID      = false;
-      
-      // id 유효성 검사
-      if(id.val().trim().length == 0) {
-            $("#id").addClass('is-invalid');
-            $("#id").removeClass('is-valid');
-            ID_VALID = false;
-      } else {
-            $("#id").removeClass('is-invalid');
-            $("#id").addClass('is-valid');
-            ID_VALID = true;
-      }
-      
-      // pwd 유효성검사
-      if(pwd.val().trim().length < 6) {
-            $("#pwd").addClass('is-invalid');
-            $("#pwd").removeClass('is-valid');
-            PWD_VALID = false;
-      } else {
-            $("#pwd").removeClass('is-invalid');
-            $("#pwd").addClass('is-valid');
-            PWD_VALID = true;
-      }
-      
-      // pwdCheck 유효성검사
-      if(pwdCheck.val() != pwd.val() || pwdCheck.val().trim().length == 0 ) {
-            $("#pwdCheck").addClass('is-invalid');
-            $("#pwdCheck").removeClass('is-valid');
-            PWDCHECK_VALID = false;
-      } else {
-            $("#pwdCheck").removeClass('is-invalid');
-            $("#pwdCheck").addClass('is-valid');
-            PWDCHECK_VALID = true;
-      }
-      
-      // name 유효성검사
-      if(name.val().trim().length < 6) {
-            $("#name").addClass('is-invalid');
-            $("#name").removeClass('is-valid');
-            NAME_VALID = false;
-      } else {
-            $("#name").removeClass('is-invalid');
-            $("#name").addClass('is-valid');
-            NAME_VALID = true;
-      }
-      
-      // name 유효성검사
-      if(name.val().trim().length == 0) {
-            $("#name").addClass('is-invalid');
-            $("#name").removeClass('is-valid');
-            NAME_VALID = false;
-      } else {
-            $("#name").removeClass('is-invalid');
-            $("#name").addClass('is-valid');
-            NAME_VALID = true;
-      }
-      
-      // 성별 유효성 검사
-      if($("input[name='gender']:checked").val() == undefined) {
-         $("#genderWarning").text('성별을 선택해주세요');
-         GENDER_VALID = false;
-      } else {
-         $("#genderWarning").text('');
-         GENDER_VALID = true;
-      }
-      
-      // 생일 유효성 검사
-      if( $("#birth").val() == '') {
-            $("#birth").addClass('is-invalid');
-            $("#birth").removeClass('is-valid');
-            BIRTH_VALID = false;
-      } else {
-            $("#birth").removeClass('is-invalid');
-            $("#birth").addClass('is-valid');
-            BIRTH_VALID = true;
-      }
-      
-      // 주소1 유효성 검사
-      if( $("#addr1").val() == '') {
-            $("#addr1").addClass('is-invalid');
-            $("#addr1").removeClass('is-valid');
-            ADDRESS1_VALID = false;
-      } else {
-            $("#addr1").removeClass('is-invalid');
-            $("#addr1").addClass('is-valid');
-            ADDRESS1_VALID = true;
-      }
-      
-      // 주소2 유효성 검사
-      if( $("#addr2").val() == '') {
-            $("#addr2").addClass('is-invalid');
-            $("#addr2").removeClass('is-valid');
-            ADDRESS2_VALID = false;
-      } else {
-            $("#addr2").removeClass('is-invalid');
-            $("#addr2").addClass('is-valid');
-            ADDRESS2_VALID = true;
-      }
-      
-      // 상세주소 유효성검사
-      if(addr3.val().trim().length == 0) {
-            $("#addr3").addClass('is-invalid');
-            $("#addr3").removeClass('is-valid');
-            ADDRESS3_VALID = false;
-      } else {
-            $("#addr3").removeClass('is-invalid');
-            $("#addr3").addClass('is-valid');
-            ADDRESS3_VALID = true;
-      }
-      
-      // 전화번호 유효성 검사
-      if(tel.val().trim().length == 0) {
-            $("#tel").addClass('is-invalid');
-            $("#tel").removeClass('is-valid');
-            TEL_VALID = false;
-      } else {
-            $("#tel").removeClass('is-invalid');
-            $("#tel").addClass('is-valid');
-            TEL_VALID = true;
-      }
-      
-      // 전화번호 본인인증 유효성 검사
-      if(phone2.val().trim().length == 0) {
-            $("#phone2").addClass('is-invalid');
-            $("#phone2").removeClass('is-valid');
-            PHONE2_VALID = false;
-      } else {
-            $("#phone2").removeClass('is-invalid');
-            $("#phone2").addClass('is-valid');
-            PHONE2_VALID = true;
-      }
-      
-      // 유효성 전체 검사 하나라도 false면 못넘어감
-      if(!ID_VALID || !PWD_VALID || !PWDCHECK_VALID || !NAME_VALID || !GENDER_VALID || !BIRTH_VALID
-            || !ADDRESS1_VALID || !ADDRESS2_VALID || !ADDRESS3_VALID|| !TEL_VALID || !PHONE2_VALID) {
-         return false;
-      }
-      
-      console.log("--- api 호출해야됨");
-      
-      
-      if(!idCheckBtn){
-         $("#checkId").html('중복버튼클릭X.');
-           $("#checkId").css('color', '#ff0000');
-           return false;
-      }
-      
-      var formData = new FormData();
-      
-      formData.set("id", $("#id").val());
-      formData.set("pwd", $("#pwd").val());
-      formData.set("name", $("#name").val());
-      formData.set("gender", $("input[name='gender']:checked").val());
-      formData.set("birth", $("#birth").val().replaceAll('-',''));
-      formData.set("addr1", $("#addr1").val());
-      formData.set("addr2", $("#addr2").val());
-      formData.set("addr3", $("#addr3").val());
-      formData.set("tel", $("#tel").val());
-      formData.set("memberType", $("#type").val());
-      
-      formData.forEach(function(value ,key) {
-         console.log(key, value);   
-      })
-      
-      $.ajax({
-            url : 'joinMember.do',    //Controller에서 인식할 주소
-            type : 'post',          //POST 방식으로 전달
-            data : formData,       //id가 key userId가 밸류값
+	// 회원가입 api 호출
+	function regMember() {
+		
+		var id 		 = $("#id");
+		var pwd 	 = $("#pwd");
+		var pwdCheck = $("#pwdCheck");
+		var name	 = $("#name");
+		var gender	 = $("input[name=gender]");
+		var birth	 = $("#birth");
+		var addr1 	 = $("#addr1");
+		var addr2 	 = $("#addr2");
+		var addr3 	 = $("#addr3");
+		var tel	 	 = $("#tel");
+		var phone2	 = $("#phone2");
+		
+		var ID_VALID 	   	= false;
+		var PWD_VALID	   	= false;
+		var PWDCHECK_VALID 	= false;
+		var NAME_VALID 	   	= false;
+		var GENDER_VALID   	= false;
+		var BIRTH_VALID    	= false;
+		var ADDRESS1_VALID  = false;
+		var ADDRESS2_VALID  = false;
+		var ADDRESS3_VALID  = false;
+		var TEL_VALID      	= false;
+		var PHONE2_VALID   	= false;
+		
+		// id 유효성 검사
+		if(id.val().trim().length == 0) {
+				$("#id").addClass('is-invalid');
+				$("#id").removeClass('is-valid');
+				ID_VALID = false;
+		} else {
+				$("#id").removeClass('is-invalid');
+				$("#id").addClass('is-valid');
+				ID_VALID = true;
+		}
+		
+		// pwd 유효성검사
+		if(pwd.val().trim().length < 6) {
+				$("#pwd").addClass('is-invalid');
+				$("#pwd").removeClass('is-valid');
+				PWD_VALID = false;
+		} else {
+				$("#pwd").removeClass('is-invalid');
+				$("#pwd").addClass('is-valid');
+				PWD_VALID = true;
+		}
+		
+		// pwdCheck 유효성검사
+		if(pwdCheck.val() != pwd.val() || pwdCheck.val().trim().length == 0 ) {
+				$("#pwdCheck").addClass('is-invalid');
+				$("#pwdCheck").removeClass('is-valid');
+				PWDCHECK_VALID = false;
+		} else {
+				$("#pwdCheck").removeClass('is-invalid');
+				$("#pwdCheck").addClass('is-valid');
+				PWDCHECK_VALID = true;
+		}
+		
+		// name 유효성검사
+		if(name.val().trim().length < 6) {
+				$("#name").addClass('is-invalid');
+				$("#name").removeClass('is-valid');
+				NAME_VALID = false;
+		} else {
+				$("#name").removeClass('is-invalid');
+				$("#name").addClass('is-valid');
+				NAME_VALID = true;
+		}
+		
+		// name 유효성검사
+		if(name.val().trim().length == 0) {
+				$("#name").addClass('is-invalid');
+				$("#name").removeClass('is-valid');
+				NAME_VALID = false;
+		} else {
+				$("#name").removeClass('is-invalid');
+				$("#name").addClass('is-valid');
+				NAME_VALID = true;
+		}
+		
+		// 성별 유효성 검사
+		if($("input[name='gender']:checked").val() == undefined) {
+			$("#genderWarning").text('성별을 선택해주세요');
+			GENDER_VALID = false;
+		} else {
+			$("#genderWarning").text('');
+			GENDER_VALID = true;
+		}
+		
+		// 생일 유효성 검사
+		if( $("#birth").val() == '') {
+				$("#birth").addClass('is-invalid');
+				$("#birth").removeClass('is-valid');
+				BIRTH_VALID = false;
+		} else {
+				$("#birth").removeClass('is-invalid');
+				$("#birth").addClass('is-valid');
+				BIRTH_VALID = true;
+		}
+		
+		// 주소1 유효성 검사
+		if( $("#addr1").val() == '') {
+				$("#addr1").addClass('is-invalid');
+				$("#addr1").removeClass('is-valid');
+				ADDRESS1_VALID = false;
+		} else {
+				$("#addr1").removeClass('is-invalid');
+				$("#addr1").addClass('is-valid');
+				ADDRESS1_VALID = true;
+		}
+		
+		// 주소2 유효성 검사
+		if( $("#addr2").val() == '') {
+				$("#addr2").addClass('is-invalid');
+				$("#addr2").removeClass('is-valid');
+				ADDRESS2_VALID = false;
+		} else {
+				$("#addr2").removeClass('is-invalid');
+				$("#addr2").addClass('is-valid');
+				ADDRESS2_VALID = true;
+		}
+		
+		// 상세주소 유효성검사
+		if(addr3.val().trim().length == 0) {
+				$("#addr3").addClass('is-invalid');
+				$("#addr3").removeClass('is-valid');
+				ADDRESS3_VALID = false;
+		} else {
+				$("#addr3").removeClass('is-invalid');
+				$("#addr3").addClass('is-valid');
+				ADDRESS3_VALID = true;
+		}
+		
+		// 전화번호 유효성 검사
+		if(tel.val().trim().length == 0) {
+				$("#tel").addClass('is-invalid');
+				$("#tel").removeClass('is-valid');
+				TEL_VALID = false;
+		} else {
+				$("#tel").removeClass('is-invalid');
+				$("#tel").addClass('is-valid');
+				TEL_VALID = true;
+		}
+		
+		// 전화번호 본인인증 유효성 검사
+		if(phone2.val().trim().length == 0) {
+				$("#phone2").addClass('is-invalid');
+				$("#phone2").removeClass('is-valid');
+				PHONE2_VALID = false;
+		} else {
+				$("#phone2").removeClass('is-invalid');
+				$("#phone2").addClass('is-valid');
+				PHONE2_VALID = true;
+		}
+		
+		// 유효성 전체 검사 하나라도 false면 못넘어감
+		if(!ID_VALID || !PWD_VALID || !PWDCHECK_VALID || !NAME_VALID || !GENDER_VALID || !BIRTH_VALID
+				|| !ADDRESS1_VALID || !ADDRESS2_VALID || !ADDRESS3_VALID|| !TEL_VALID || !PHONE2_VALID) {
+			return false;
+		}
+		
+		console.log("--- api 호출해야됨");
+		
+		
+		if(!idCheckBtn){
+			$("#checkId").html('중복버튼클릭X.');
+        	$("#checkId").css('color', '#ff0000');
+        	return false;
+		}
+		
+		var formData = new FormData();
+		
+		formData.set("id", $("#id").val());
+		formData.set("pwd", $("#pwd").val());
+		formData.set("name", $("#name").val());
+		formData.set("gender", $("input[name='gender']:checked").val());
+		formData.set("birth", $("#birth").val().replaceAll('-',''));
+		formData.set("addr1", $("#addr1").val());
+		formData.set("addr2", $("#addr2").val());
+		formData.set("addr3", $("#addr3").val());
+		formData.set("tel", $("#tel").val());
+		formData.set("memberType", $("#type").val());
+		
+		formData.forEach(function(value ,key) {
+			console.log(key, value);	
+		})
+		
+		$.ajax({
+            url : 'joinMember.do', 	//Controller에서 인식할 주소
+            type : 'post', 			//POST 방식으로 전달
+            data : formData, 		//id가 key userId가 밸류값
             processData: false,
             contentType: false,
             success : function(r) {
@@ -496,8 +495,8 @@ table .phone{
          msg.style.color = noColor;
          msg.innerHTML ="비밀번호 불일치";
       }
-   }
-  
+   }  
+
    //카카오 주소 api
    function kakaopost() {
       new daum.Postcode({

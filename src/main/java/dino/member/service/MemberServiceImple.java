@@ -27,10 +27,9 @@ public class MemberServiceImple implements MemberService {
 	//회원가입
 	public int memberJoin(MemberDto memberDto) {
 		
-		//테스트 코드
-																											  
-																		  
-  
+		//test code
+		System.out.println(">>addr<<=" + memberDto.getAddr1() + memberDto.getAddr2() + memberDto.getAddr3());
+
 		int result = memberDao.memberJoin(memberDto);
 		
 		return result;

@@ -1,6 +1,8 @@
 package dino.controller;
 
-import java.util.*;					  
+						  
+
+import java.util.*;		
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -153,8 +155,7 @@ public class MemberController {
 	}
 		// 아이디 비밀번호 찾기 페이지 이동
 	@RequestMapping("/findIdPwd.do")
-	public String findIdPwd() {																									
-
+	public String findIdPwd() {		
 		return "member/findIdPwd";
 	}
 
@@ -167,7 +168,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("member/findIdCheck");
-	
+
 		return mav;
 	}
 
@@ -210,5 +211,13 @@ public class MemberController {
  
 			 
 	}	 
-			 
+
 }
+
+
+
+
+
+
+
+

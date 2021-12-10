@@ -52,13 +52,20 @@ public class CommonOpDaoImpl implements CommonOpDao {
 		List<CommonOpDto> b_list = sqlMap.selectList("t_bank_opList");
 		return b_list;
 	}
-
 	
-	// KidsCard
+	// Make KidsCard tendency list
 	public List<CommonOpDto> ktendency() {
-
 		List<CommonOpDto> list = sqlMap.selectList("k_tendency");
 		return list;
+	}
+	
+	// Make KidsCard care list
+	public List<CommonOpDto> k_care_type(){
+		
+		List<CommonOpDto> care_list = sqlMap.selectList("k_care_type");
+		//test code
+		System.out.println("careList==" + care_list);
+		return care_list;
 	}
 	
 	//reportType

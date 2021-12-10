@@ -62,8 +62,8 @@
 		where 
 			c_category = 4 
 		order by idx asc
-	</select>
-	
+	</select>	
+
 	<!-- Make a KidsCard -->
 	<select id="k_tendency" resultType="dino.dto.CommonOpDto">
          select 
@@ -75,12 +75,13 @@
    </select>
    
    <select id="reportOpList" resultType="dino.dto.CommonOpDto">
-   		select
-   			*
-   		from
-   			d_common_option
-   		where
-   			c_category=14
+	   SELECT
+	   		*
+	   FROM
+	   		d_common_option
+	   WHERE
+	   		c_category = 5
+   
    </select>
    
    <!-- 공지사항 -->
