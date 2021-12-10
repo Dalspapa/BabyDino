@@ -42,14 +42,12 @@ public class MemberController {
 		
 		HashMap<String, Object> response = new HashMap<String, Object>();
 		String success = "fail";
-						  
-		
 		boolean result = memberService.loginCheck(id, pwd);
 
 		response.put("result", result);
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
+		mav.setViewName("redirect:/main");
 
 		if (result == true) {
 			MemberDto memberDto = memberService.getUserInfo(id);

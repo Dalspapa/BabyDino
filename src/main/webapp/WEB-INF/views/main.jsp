@@ -434,11 +434,11 @@
 	    </section>
 	  </div>
 	  <!-- 지도. 우리 여기 있어요!! -->
-	<div>
+<!-- 	<div>
 	<section id = "section09" class = "kakaoMap">	
 		<div id="map">우리, 여기 있어요!!</div>	
 	</section>		 
-	</div> 
+	</div>  -->
 	 <!-- 챗 Modal -->
 	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
@@ -489,45 +489,7 @@
 		a.hide();
 		b.show();	
 	  }
-	  
-	  function ajaxTest(){
 
-		var id = $("#ID").val();
-		var pwd = $("#PWD").val();
-		
-		const formData = new FormData();
-		formData.set('id', id);
-		formData.set('pwd', pwd);
-		
-		formData.forEach(function(value, key) {
-			console.log(key, value);	 
-		});
-	
-		$.ajax({
-			method: 'POST',
-			url : 'login.do',
-			data :  {
-				id : id,
-				pwd: pwd
-			},
-			success : function(r){
-				console.log('------------ r :', r);
-				
-				if(r.result){
-					idCheckBtn = true;
-					$('#checkId').html('환영합니다!');
-					$('#checkId').css('color','green');
-					location.href="main.do"
-				}else{
-					$('#checkId').html('아이디 및 비밀번호를 확인해주세요');
-					$('#checkId').css('color','red');
-				}
-			},
-			error:function(){
-				alert("회원가입을 진행해주세요");
-			}			
-		});		
-	};
 	  
 	 /** 카카오 지도 api */
 	/* var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
