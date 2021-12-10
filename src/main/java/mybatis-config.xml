@@ -14,5 +14,6 @@
 		<mapper resource="sqlMap/commonImgSql.xml"/>
 		<mapper resource="sqlMap/reportSql.xml"/>
 		<mapper resource="sqlMap/findTeachersSql.xml"/>
+		<mapper resource="sqlMap/teacherProfileSql.xml"/>
 	</mappers>
 </configuration>

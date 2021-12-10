@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
+<%@include file="/header.jsp" %>
 <style>
 /*옆에 메뉴바*/
 .question{
@@ -46,8 +45,7 @@
 }
 </style>
 </head>
-  <!-- header -->
-	<%@include file="../header.jsp" %>
+
 <body>
 	<!-- 공지사항 리스트 -->
 	<div class="question">
@@ -96,6 +94,6 @@
 		</div>
 	</section>
 	  <!-- footer -->
-	  <%@include file="../footer.jsp" %>	
+	  <%@include file="/footer.jsp" %>	
 </body>
 </html>

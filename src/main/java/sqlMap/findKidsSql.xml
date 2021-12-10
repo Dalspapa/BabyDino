@@ -4,17 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.findKids">
 
-	<insert id="t_makeCard" parameterType="dino.Dto.MakeTCardDto">
+	<insert id="t_makeCard" parameterType="dino.dto.MakeTCardDto">
 		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
 			SELECT  d_teacher_idx.NEXTVAL FROM DUAL
 		</selectKey>
 		insert into
-			d_teacher
+			d_teachercard
 		values(
 			#{idx},
-			42,
+			#{memberIdx},
 			#{job},
-			'1',
+			'1,2,3',
 			#{kid_type},
 			#{t_care_type},
 			#{schedule_day},
@@ -26,17 +26,16 @@
 			#{cctvagree},
 			'signclear',
 			#{career_experience}
-		)		
+		)
 	</insert>
-	
+
 	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
-		SELECT  r.hope_cost
+		SELECT            
+				r.cost
 				, r.idx
-		        , r.r_time
-		        , r.r_endday
-		        , r.r_cost
-		        , r.d_kid_idx
-		        , r.d_member_p_idx
+		        , r.kid_idx
+		        , r.member_p_idx
+		        , r.status
 		        , m.addr1
 		        , m.addr2
 		        , m.addr3
@@ -52,25 +51,40 @@
 		        , rv.star
 		        , rv.r_writedate
 		        , rv.r_content
-		FROM 
-		    	d_reserve r
-		LEFT JOIN 	d_member m ON m.idx = r.d_member_p_idx
-		LEFT JOIN 	d_kid k ON k.idx = r.d_kid_idx
+                , t.start_day
+                , t.end_day
+                , t.start_time
+                , t.end_time
+		FROM
+		    	d_reserve r 
+		LEFT JOIN 	d_member m ON m.idx = r.member_p_idx
+		LEFT JOIN 	d_kidcard k ON k.idx = r.kid_idx
 		LEFT JOIN 	d_common_img i on i.ref_idx = k.idx
 		LEFT JOIN 	d_review rv on rv.d_reserve_idx = r.idx
-		
+        LEFT JOIN
+                 (SELECT
+                         idx AS t_idx
+                        ,TO_CHAR(start_date, 'yyyy-mm-dd') AS start_day
+                        ,TO_CHAR(end_date, 'yyyy-mm-dd')   AS end_day
+                        ,TO_CHAR(start_date, 'hh24') AS start_time
+                        ,TO_CHAR(end_date, 'hh24')   AS end_time
+                     FROM
+                        d_reserve
+                 ) t
+            ON t.t_idx = r.idx
+
 	</select>
-	
+
 	<select id="getTIdx" parameterType="Integer" resultType="Integer">
-		select 
-			idx 
-		from 
-			(select * from d_teacher order by idx desc) 
-		where 
-			rownum = 1 and d_member_idx = #{d_member_idx};
+		select
+			idx
+		from
+			(select * from d_teachercard order by idx desc)
+		where
+			rownum = 1 and d_member_idx = #{d_member_idx}
 	</select>
-	
-	<insert id="tSetImg" parameterType="dino.Dto.Common_ImgDto">
+
+	<insert id="tSetImg" parameterType="dino.dto.Common_ImgDto">
 		INSERT INTO
 			d_common_img
 		VALUES(
@@ -81,27 +95,26 @@
 			#{ref_idx}
 		)
 	</insert>
-	
-	<select id="getImg" parameterType="Integer" resultType="dino.Dto.Common_ImgDto" >
-	    SELECT 
+
+	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	    SELECT
 	        dt.*, dci.c_imgpath
-	    FROM 
-	        d_teacher dt 
-	    LEFT JOIN 
-	        d_common_img dci 
-	    ON 
+	    FROM
+	        d_teachercard dt
+	    LEFT JOIN
+	        d_common_img dci
+	    ON
 	        dt.d_member_idx = dci.d_member_idx
 	    WHERE
 	        dt.d_member_idx = #{d_member_idx}
 	</select>
-	
+
 	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
-		SELECT  r.hope_cost
-		        , r.r_time
-		        , r.r_endday
-		        , r.r_cost
-		        , r.d_kid_idx
-		        , r.d_member_p_idx
+		SELECT  r.cost
+		        , r.to_char(start_date, 'hh24')
+		        , r.to_char(end_date, 'hh24')
+		        , r.kid_idx
+		        , r.member_p_idx
 		        , m.addr1
 		        , m.addr2
 		        , m.addr3
@@ -117,13 +130,39 @@
 		        , r.idx
 	    FROM
 		  		  d_reserve r
-			LEFT JOIN d_member m ON m.idx = r.d_member_p_idx
-			LEFT JOIN d_kid k ON k.idx = r.d_kid_idx
+			LEFT JOIN d_member m ON m.idx = r.member_p_idx
+			LEFT JOIN d_kidcard k ON k.idx = r.kid_idx
 			LEFT JOIN d_common_img i on i.ref_idx = k.idx
 		WHERE
 				r.idx = #{idx}
 	</select>
+
+	<!-- 선생님 등급 수정 -->
+	<update id="updateTeacherGrade" parameterType="dino.dto.MemberDto">
+	   /* findKidsSql.updateTeacherGrade */
+	   UPDATE D_MEMBER
+	      SET MEMBER_TYPE = #{memberType}
+	        , UPD_DT      = SYSDATE
+	        , UPD_ID      = #{updId}
+	    WHERE IDX = #{idx}
+	</update>
 	
+	<update id="teacherGradeUpd" parameterType="Integer">
+		UPDATE D_MEMBER
+	      SET MEMBER_TYPE = 6
+	        , UPD_DT      = SYSDATE
+	        , UPD_ID      = #{updId}
+	    WHERE IDX = #{idx}	
+	</update>
+	
+	<select id="UpdGrade" parameterType="String" resultType="Integer">
+		SELECT 
+			MEMBER_TYPE
+		FROM 
+			D_MEMBER
+		WHERE ID = #{id}
+	</select>
+
 </mapper>
 
 

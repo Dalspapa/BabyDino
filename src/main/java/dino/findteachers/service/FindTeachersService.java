@@ -3,7 +3,6 @@ package dino.findteachers.service;
 import java.util.List;
 
 import dino.dto.KidDto;
-import dino.dto.MakeTCardDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 
 public interface FindTeachersService {

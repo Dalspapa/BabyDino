@@ -107,7 +107,7 @@ public class FindKidsController {
 			if(StringUtils.isEmpty(saveIdx)) {
 				throw new IllegalStateException("로그인상태가 아닙니다.");
 			}
-			dto.setMemberIdx(Integer.parseInt(saveIdx));
+			dto.setIdx(Integer.parseInt(saveIdx));
 			
 			findKidsService.makeTCard(dto, imgFiles, dirPath, imgDto, request);
 			result.put("fail", false);
@@ -190,7 +190,7 @@ public class FindKidsController {
 		FindKidsJoinDto kidInfoDto = findKidsService.kidContent(idx);
 		System.out.println("controller=====" + kidInfoDto.toString());
 		ModelAndView mav = new ModelAndView();
-		System.out.println(kidInfoDto.getK_care_type());
+		System.out.println("컨트롤러로 가져온 dto 정보"+kidInfoDto.getK_care_type());
 
 		if (kidInfoDto != null) {
 			mav.addObject("kidInfoDto", kidInfoDto);

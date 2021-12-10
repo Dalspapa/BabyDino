@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
+<%@include file="/header.jsp" %>
 <style>
 .noticecontent{
 	text-align: center;
@@ -78,7 +78,7 @@
 </section>
 </body>
 	  <!-- footer -->
-	  <%@include file="../footer.jsp" %>
+	  <%@include file="/footer.jsp" %>
 	  <!-- custome js -->
 	  <script src="./common/js/bootstrap.min.js"></script>
 </html>

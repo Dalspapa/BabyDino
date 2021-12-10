@@ -5,34 +5,18 @@
 
 <mapper namespace="dino.findTeachers">
 
-	<select id="formKidsCard" resultType="dino.Dto.KidDto">
+	<select id="formKidsCard" resultType="dino.dto.KidDto">
 		SELECT 
 			idx, 
 			k_name, 
 			k_gender, 
 			k_birth 
 		FROM 
-			d_kid 
+			d_kidcard
 		WHERE 
 			d_member_idx = 23
 	</select>
 
-	<!-- <insert id="k_makeCard" parameterType="dino.Dto.KidDto">
-	insert into
-                d_kid
-        values(
-                d_kid_idx.nextval,
-                24,
-                #{k_name},
-                2,
-                #{k_birth},
-                #{k_introduce},
-                #{k_care_type},
-                #{k_tendency},
-               	#{teacher_type},
-               	#{k_require}
-        )
-	</insert> -->
 		
 	<select id="teacherInfo"  resultType="dino.findteachers.model.FindTeacherJoinDto">
 		SELECT 
@@ -52,7 +36,7 @@
 			, m.addr1
 			, i.c_imgpath
 		FROM
-			d_teacher t
+			d_teachercard t
 		LEFT JOIN 
 			d_member m ON m.idx = t.d_member_idx
 		LEFT JOIN 
@@ -61,7 +45,7 @@
 			t.idx = 41
 	</select>
 	
-	<select id="teacherReviewList" resultType="dino.Dto.ReviewDto">
+	<select id="teacherReviewList" resultType="dino.dto.ReviewDto">
 		select idx
 	     	 , d_reserve_idx
 	     	 , d_member_idx

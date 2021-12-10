@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.json.simple.JSONObject;
-
 import dino.dto.MemberDto;
+
 import dino.member.model.MemberDao;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -28,9 +28,9 @@ public class MemberServiceImple implements MemberService {
 	public int memberJoin(MemberDto memberDto) {
 		
 		//테스트 코드
-		System.out.println("내가받아온 addr1 + addrDetail" + memberDto.getAddr1() + memberDto.getAddrDetail());
-		memberDto.setAddr1(memberDto.getAddr1()+", "+memberDto.getAddrDetail());
-		
+																											  
+																		  
+  
 		int result = memberDao.memberJoin(memberDto);
 		
 		return result;
@@ -67,6 +67,7 @@ public class MemberServiceImple implements MemberService {
 		}
 	}
 	
+ 
 	public MemberDto getUserInfo(String id) {
 		MemberDto memberDto = memberDao.getUserInfo(id);
 		return memberDto;
@@ -79,9 +80,28 @@ public class MemberServiceImple implements MemberService {
 		map.put("name", name);
 		map.put("tel", tel);
 		List<MemberDto> list = memberDao.findId(map);
-		return list;		
+		return list;							
+			  
 	}
-
+ 
+	//findPwd
+	public List<MemberDto> findPwd(String name, String id, String tel) {
+		Map map = new HashMap();
+		
+		map.put("name", name);
+		map.put("id", id);
+		map.put("tel", tel);
+		
+		List<MemberDto> list = memberDao.findPwd(map);
+		return list;
+	}
+	
+	//edit Pwd
+	public int editPwd(MemberDto memberDto) {
+		
+		int result = memberDao.editPwd(memberDto);
+		return result;
+	}
 
 	
 	//휴대폰 인증
@@ -108,5 +128,6 @@ public class MemberServiceImple implements MemberService {
 			System.out.println(e.getCode()); 
 			} 
 		}
+
 }
 

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,7 +99,7 @@ details summary{
 </style>
 </head>
  <!-- header -->
-	<%@include file="../header.jsp" %>
+	<%@include file="/header.jsp" %>
 <body>
 	<div>
 		<section>
@@ -162,9 +161,8 @@ details summary{
 		
 	</div>
  <!-- footer -->
-	<%@include file="../footer.jsp" %>
+	<%@include file="/footer.jsp" %>
 </body>
-<script src="./common/js/jquery-3.6.0.min.js"></script>
 <script>
 //버튼 클릭시 js
 
