@@ -399,23 +399,17 @@ section {
 			</ul>
 			<div><input type="button" value="인터뷰 요청"></div>
 		</section>
-	</div>	
+	</div>
+
+	<script>
+	const drawStar = (target) => {
+		document.querySelector('.star span').style.width = '${target.value * 10}%';
+	  }
+	  
+
+	</script>
+	
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<script>
-const drawStar = (target) => {
-    document.querySelector('.star span').style.width = '${target.value * 10}%';
-  }
-  
 
-</script>
 </html>
-
-
-
-
-
-
-
-
-

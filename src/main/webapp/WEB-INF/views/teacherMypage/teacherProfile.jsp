@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -159,13 +158,16 @@ section{
 			</div>
 		</section>
 	</div>
-</body>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+	
 <script>
 
 	$(document).ready(function(){
 		$('.hideDiv').hide();
 	});
 
-</script>
+</script>	
+	
+</body>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 </html>

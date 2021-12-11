@@ -359,8 +359,7 @@ section {
 			</div>
 		</section>
 	</div>
-</body>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 <!-- JQuery 라이브러리 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -401,5 +400,10 @@ section {
 	});
 		
 	
-</script>
+</script>	
+	
+	
+</body>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 </html>

@@ -8,6 +8,10 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<mappers>
+		<mapper resource="sqlmap/chatSql.xml"/>
+		<mapper resource="sqlmap/parentMypageSql.xml"/>
+		<mapper resource="sqlmap/careNoteSql.xml"/>
+		<mapper resource="sqlmap/reviewSql.xml"/>
 		<mapper resource="sqlmap/memberSql.xml"/>
 		<mapper resource="sqlmap/commonOpSql.xml"/>
 		<mapper resource="sqlmap/findKidsSql.xml"/>
@@ -15,9 +19,6 @@
 		<mapper resource="sqlmap/reportSql.xml"/>
 		<mapper resource="sqlmap/findTeachersSql.xml"/>
 		<mapper resource="sqlmap/teacherProfileSql.xml"/>
-		<mapper resource="sqlmap/reviewSql.xml"/>
-		<mapper resource="sqlmap/careNoteSql.xml"/>
-		<mapper resource="sqlmap/parentMypageSql.xml"/>
-		<mapper resource="sqlmap/chatSql.xml"/>
+		<mapper resource="sqlmap/adminSql.xml"/>
 	</mappers>
 </configuration>

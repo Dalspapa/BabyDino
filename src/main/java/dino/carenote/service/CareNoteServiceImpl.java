@@ -2,9 +2,12 @@ package dino.carenote.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import dino.carenote.model.CareNoteDao;
 import dino.dto.CareNoteDto;
 
+@Service
 public class CareNoteServiceImpl implements CareNoteService {
 
 	private CareNoteDao careNoteDao;

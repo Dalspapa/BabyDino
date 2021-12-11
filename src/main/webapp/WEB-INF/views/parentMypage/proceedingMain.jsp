@@ -59,9 +59,17 @@ a:link, a:visited {
             <div><button type="button" class="btn btn-outline-success" onclick="care_3();">완료현황</button></div>
 		 </div>
 
-		<c:if test="${ empty list }">
+		<!-- test -->
+		<c:url var="contentUrl" value="caring.do">
+	    	<c:param name="idx">70</c:param> <!-- ${ r_idx } 들어가야함 -->
+	    </c:url>
+	    <a href="${ contentUrl }">테스트링크</a>
+		<!-- end test -->
+
+
+		 <c:if test="${ empty list }">
 				<h2 align="center">요청진행상황이 없습니다.</h2>
-		</c:if>
+		 </c:if>
 
          <!-- 요청 받은 현황 섹션 -->
          <c:forEach var="list" items="${ list }">
@@ -105,7 +113,10 @@ a:link, a:visited {
 		 <c:forEach var="list" items="${ list }">
 	         <div id="section03" class="contentbody">
 	            <!-- 선생님 카드 -->
-	            <a href="caring.do">
+	            <c:url var="contentUrl" value="caring.do">
+	            	<c:param name="idx">${ list.r_idx }</c:param>
+	            </c:url>
+	            <a href="${ contentUrl }">
 	            <div class="t_card">
 	               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
 	               <div class="intro">#선생님 소개 들어가는 부분section03</div>
