@@ -128,7 +128,10 @@ public class MemberServiceImple implements MemberService {
 			}
 		}
 	
-
-
+	//회원탈퇴
+	public int memberOut(int idx) {
+		int result = memberDao.memberOut(idx);
+		return result;
+	}
 }
 
