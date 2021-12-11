@@ -7,3 +7,4 @@ public interface ParentMypageDao {
 	//proceedingMain.jsp
 	public List<ParentMypageDto> proceedingMain();
 }
+
