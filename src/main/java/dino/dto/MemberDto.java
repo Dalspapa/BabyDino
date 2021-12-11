@@ -16,7 +16,6 @@ public class MemberDto {
 	private String addr1;
 	private String addr2;
 	private String addr3;
-	private String addrDetail;
 	private String updId;
 	private String updDt;
 

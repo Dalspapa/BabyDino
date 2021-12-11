@@ -121,6 +121,42 @@
 		 	c_category = 31
 	</select>
 	
+	<!-- 주석 달게요 -->
+	<select id="date" resultType = "dino.dto.CommonOpDto">
+		select 
+		 	* 
+		 from 
+		 	d_common_option 
+		 where 
+		 	c_category = 2
+	</select>
+	
+	<select id="s_time" resultType = "dino.dto.CommonOpDto">
+		SELECT 
+            * 
+        FROM 
+            d_common_option 
+        WHERE
+            IDX 
+        BETWEEN
+            1
+        AND
+            16
+	</select>
+	
+	<select id="e_time" resultType = "dino.dto.CommonOpDto">
+		SELECT 
+            * 
+        FROM 
+            d_common_option 
+        WHERE
+            IDX 
+        BETWEEN
+            2
+        AND
+            17
+	</select>	
+	
 </mapper>
 
 
