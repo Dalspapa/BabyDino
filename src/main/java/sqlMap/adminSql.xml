@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="dino.adminmypage">
+  	<!-- 관리자 회원관리 -->
+	<select id="memberManagement" resultType="dino.dto.MemberDto">
+	SELECT
+		*
+	FROM
+		D_MEMBER 
+	</select>
+	
+	<!-- 선생님 정산 -->
+	<select id="tcost" resultType="dino.dto.ReserveDto">
+		select 
+			cost 
+		from 
+			d_reserve
+	</select>
+	
+	<!-- 취소사유(부모님) -->
+	<select id="pcancel" resultType="dino.dto.CommonOpDto">
+		select 
+			*
+		from 
+			d_common_option 
+		where 
+			c_category = 7
+	</select>
+	
+	<!-- 취소사유(선생님) -->
+	<select id="tcancel" resultType="dino.dto.CommonOpDto">
+		select 
+			*
+		from 
+			d_common_option 
+		where 
+			c_category = 8
+	</select>
+	
+	<!-- 부모님취소사유 (삭제) -->
+	<delete id="pdel" parameterType="Integer">
+		delete from 
+			d_common_option
+		where 
+			c_category = 7
+		and 
+			idx = #{idx}
+	</delete>
+	
+	<!-- 부모님 취소사유 (등록) -->
+	<insert id="parentsInsert" parameterType="dino.dto.CommonOpDto">
+		insert into
+			d_common_option
+		values 
+			(d_common_option_idx.nextval,
+			#{op},
+			#{c_introduce},
+			8)	
+	</insert>
+  </mapper>

@@ -40,6 +40,9 @@
 	<bean id="findTeachersDao" class="dino.findteachers.model.FindTeachersDaoImp">
 		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
+	<bean id="adminDao" class="dino.adminmypage.model.AdminDaoimpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
 	
 
 <!-- Service Area -->
@@ -58,4 +61,8 @@
 	<bean id="findTeachersService" class="dino.findteachers.service.FindTeachersServiceImp">
 		<property name="findTeachersDao" ref="findTeachersDao" />
 	</bean>
+	<bean id="adminService" class="dino.adminmypage.service.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"/>
+	</bean>
+	
 </beans>

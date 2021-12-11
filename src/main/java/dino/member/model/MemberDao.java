@@ -22,5 +22,7 @@ public interface MemberDao {
 			//editPwd
 			public int editPwd(MemberDto memberDto);
 			
+	
+			
 			
 }

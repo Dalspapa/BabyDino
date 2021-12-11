@@ -126,6 +126,8 @@ public class MemberServiceImple implements MemberService {
 			System.out.println(e.getCode()); 
 			} 
 		}
+	
+
 
 }
 

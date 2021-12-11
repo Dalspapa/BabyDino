@@ -15,5 +15,6 @@
 		<mapper resource="sqlMap/reportSql.xml"/>
 		<mapper resource="sqlMap/findTeachersSql.xml"/>
 		<mapper resource="sqlMap/teacherProfileSql.xml"/>
+		<mapper resource="sqlMap/adminSql.xml"/>
 	</mappers>
 </configuration>

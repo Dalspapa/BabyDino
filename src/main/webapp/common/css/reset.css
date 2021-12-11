@@ -195,6 +195,18 @@ section {
     color: black;
     text-decoration: none;
 }
+/*로그인 모달창 css추가*/
+.modal .modal-dialog .modal-content .modal-header .modal-title{
+	font-size: 24px;
+	font-weight: 500;
+}
+.modal .modal-dialog .modal-content .modal-footer .login-buton-box a{
+	text-decoration: none;
+	color: green;
+}
+.modal .modal-dialog .modal-content .modal-footer .login-buton-box a:hover{
+	color: white;
+}
 
 /* header */
 header {
@@ -239,7 +251,11 @@ header {
     outline: none;
     background-color: transparent;
 }
-
+#mainNav .collapse .navbar-nav .admin {
+	margin-top: 31px;
+    font-size: 13px;
+	
+}
 
 
 /* footer */

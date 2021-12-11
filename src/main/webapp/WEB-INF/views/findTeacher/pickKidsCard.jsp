@@ -90,7 +90,7 @@
 			</div>
 		</div>
 </body>
-<%@include file="../footer.jsp"%>
+<%@include file="/footer.jsp"%>
 
 <script>
 	function goStep(step){
