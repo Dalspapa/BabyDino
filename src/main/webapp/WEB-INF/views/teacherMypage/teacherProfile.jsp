@@ -68,7 +68,7 @@ section{
 			<!-- 선생님 프로필 부분 -->
 			<div class="t_profile">
 				<div class="profil">프로필</div><c:set var="proImg" value="${tDto.c_imgpath}" />
-				<div class="pic"><img src="/upload/${fn:replace(proImg,',',"")}" alt="profileImg" width="150px" height="150px"></div>
+				<div class="pic"><img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px"></div>
 				<div class="t_info">
 				<div>${tDto.name} | ${tDto.age} 세</div>
 				<div id="bankDiv1">
@@ -90,11 +90,11 @@ section{
 					<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="bankbtn2">수정하기</button>
 				</div>
 				<div class="hideDiv">희망시급 : <input type="text" style = "width:15%"><fmt:formatNumber value="${tDto.t_cost}" pattern="#,###" /> 원
-					<button type="button" class="btn btn-outline-success" style = "font-size: 2%">수정하기</button>				
+					<button type="button" class="btn btn-outline-success" style = "font-size: 2%">수정하기</button>
 				</div>
 			</div>
 			</div>
-			
+
 			<!-- 활동시간 부분 -->
 			<div class="t_profile">
 				<div class="profil">활동 시간</div>
@@ -136,7 +136,7 @@ section{
 			<div class="btn2">
 				<button type="button" class="btn btn-outline-success" onclick="#">수정하기</button>
 			</div>
-			
+
 			<!-- 선생님 소개글 -->
 			<div class="t_profile introduce">
 				<div class="profil">선생님 한마디</div>
