@@ -32,7 +32,7 @@
 		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
 	<bean id="findkidsDao" class="dino.findkids.model.FindKidsDaoImpl">
-		<constructor-arg ref="sqlSessionTemplate" />	
+		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
 	<bean id="reportDao" class="dino.report.model.ReportDaoImple">
 		<constructor-arg ref="sqlSessionTemplate" />
@@ -40,8 +40,20 @@
 	<bean id="findTeachersDao" class="dino.findteachers.model.FindTeachersDaoImp">
 		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
+	<bean id="reviewDao" class="dino.review.model.ReviewDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate" />
+	</bean>
+	<bean id="careNoteDao" class="dino.carenote.model.CareNoteDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
+	<bean id="parentMypageDao" class="dino.parentmypage.model.ParentMypageDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
 	<bean id="teacherMyPageDao" class="dino.teachermypage.model.TeacherMyPageDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
+	<bean id="chatDao" class="dino.chat.model.ChatDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
 
 
@@ -50,7 +62,7 @@
 		<property name="memberDao" ref="memberDao" />
 	</bean>
 	<bean id="commonOpService" class="dino.commonop.service.CommonOpServiceImple">
-		<property name="commonopDao" ref="commonopDao" />	
+		<property name="commonopDao" ref="commonopDao" />
 	</bean>
 	<bean id="findKidsService" class="dino.findkids.service.FindKidsServiceImple">
 		<property name="findkidsDao" ref="findkidsDao" />
@@ -61,7 +73,19 @@
 	<bean id="findTeachersService" class="dino.findteachers.service.FindTeachersServiceImp">
 		<property name="findTeachersDao" ref="findTeachersDao" />
 	</bean>
+	<bean id="reviewService" class="dino.review.service.ReviewServiceImpl">
+		<property name="reviewDao" ref="reviewDao" />
+	</bean>
+	<bean id="careNoteService" class="dino.carenote.service.CareNoteServiceImpl">
+		<property name="careNoteDao" ref="careNoteDao" />
+	</bean>
+	<bean id="parentMypageService" class="dino.parentmypage.service.ParentMypageServiceImpl">
+		<property name="parentMypageDao" ref="parentMypageDao"></property>
+	</bean>
 	<bean id="teacherMypageService" class="dino.teachermypage.service.TeacherMyPageServiceImpl">
 		<property name="teacherMyPageDao" ref="teacherMyPageDao" />
+	</bean>
+	<bean id="chatService" class="dino.chat.service.ChatServiceImpl">
+		<property name="chatDao" ref="chatDao"></property>
 	</bean>
 </beans>

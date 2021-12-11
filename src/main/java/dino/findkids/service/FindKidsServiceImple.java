@@ -4,17 +4,19 @@ package dino.findkids.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
-import dino.dto.*;
-import dino.findkids.model.*;
+import dino.dto.Common_ImgDto;
+import dino.dto.MakeTCardDto;
+import dino.dto.MemberDto;
+import dino.findkids.model.FindKidsDao;
+import dino.findkids.model.FindKidsJoinDto;
 
 @Service
 public class FindKidsServiceImple implements FindKidsService {
@@ -31,7 +33,6 @@ public class FindKidsServiceImple implements FindKidsService {
 	public void setFindkidsDao(FindKidsDao findkidsDao) {
 		this.findkidsDao = findkidsDao;
 	}
-
 
 	//make techer card -> d_teacher Table
 	@Transactional
@@ -60,20 +61,21 @@ public class FindKidsServiceImple implements FindKidsService {
 		// inset된 data idx
 		int ref_idx = dto.getIdx();
 		int category_idx = 2;
+
 		int d_member_idx = dto.getD_member_idx();
 		String updId = (String)request.getSession().getAttribute("saveId");
-		
+
 		//imgDto.setC_imgpath();
 		imgDto.setRef_idx(ref_idx);
 		imgDto.setCategory_idx(category_idx);
 		imgDto.setD_member_idx(d_member_idx);
 		imgDto.setC_imgpath(c_imgpath);
-		
+
+		System.out.println("이미지 DTO 값 : " + imgDto.getD_member_idx() + "/" + imgDto.getC_imgpath() + "/" + imgDto.getCategory_idx() + "/" + imgDto.getRef_idx());
+
 		int setImgResult = findkidsDao.tSetImg(imgDto);
-		int tGradeUpd = teacherGradeUpd(d_member_idx, updId);
-		if(setImgResult < 0 || tGradeUpd < 0) {
-			throw new IllegalStateException("카드 등록중 예기치 못한 문제가 발생하였습니다. 잠시후 다시 시도해주세요.");
-		}
+
+		System.out.println("==== result : " + result);
 
 	}
 
@@ -92,15 +94,11 @@ public class FindKidsServiceImple implements FindKidsService {
 
 	//get kids list
 	public List<FindKidsJoinDto> kidsList() {
-
 		List<FindKidsJoinDto> k_list = findkidsDao.kidsList();
 		return k_list;
-
 	}
 
-//	//set Teacher img  
 	public int tSetImg(Common_ImgDto imgDto) {
-
 		int result = findkidsDao.tSetImg(imgDto);
 		System.out.println("findKidsservice setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
 		return result;
@@ -126,19 +124,28 @@ public class FindKidsServiceImple implements FindKidsService {
 	}
 
 	/* (non-Javadoc)
+	 * @see dino.findkids.service.FindKidsService#updateTeacherGrade(dino.Dto.MemberDto)
+=======
+
+		return kidInfoDto;
+
+	}
+
+	/* (non-Javadoc)
 	 * @see dino.findkids.service.FindKidsService#updateTeacherGrade(dino.dto.MemberDto)
+>>>>>>> Yeongchan
 	 */
 	@Transactional
 	public int updateTeacherGrade(MemberDto member_type) {
 		return findkidsDao.updateTeacherGrade(member_type);
 
 	}
-	
+
 	//카드 만든 후 선생님 유형 변경
 	public int teacherGradeUpd(int idx, String updId) {
 		return findkidsDao.teacherGradeUpd(idx, updId);
 	}
-	
+
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id) {
 		return findkidsDao.UpdGrade(id);

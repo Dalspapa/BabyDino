@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<%@ include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<style>
 		/*로그인 모달창*/
 		.modal .modal-dialog .modal-content .modal-header .modal-title{
@@ -439,7 +439,7 @@
 		<div id="map">우리, 여기 있어요!!</div>	
 	</section>		 
 	</div>  -->
-	 <!-- 챗 Modal -->
+	  <!-- 챗 Modal -->
 	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
 	      <div class="modal-content">
@@ -448,19 +448,21 @@
 	          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	        </div>
 	        <div class="modal-body">
-	          <div id="chatBox">
-	            <form name="loginForm" action="login.do" method="post">
+	          <div id="chatBox"> 
+	            <form name="chatForm" action="#" method="post">
 	              <h3>여기는 채팅 박스 영역입니다.</h3>
+	              <a href="chatList.do">채팅</a>
+	              <%@ include file="chat/chatList.jsp" %>
 	            </form>
 	          </div>
 	        </div>
 	      </div>
 	    </div>
 	  <!-- ./챗 Modal -->
-	  </div>	 
+	  </div> 
 	</body>
 	  <!-- footer -->
-	  <%@ include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <!-- 선생님 부모님 이용가이드 관련 js -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script>
 <script>
@@ -532,4 +534,3 @@
 	  b.show();
 	  }
   </script>
-</html>

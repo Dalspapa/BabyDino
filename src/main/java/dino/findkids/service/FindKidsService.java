@@ -2,12 +2,15 @@ package dino.findkids.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import dino.dto.Common_ImgDto;
+import dino.dto.MakeTCardDto;
+import dino.dto.MemberDto;
+import dino.findkids.model.FindKidsJoinDto;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
-
-import dino.dto.*;
-import dino.findkids.model.FindKidsJoinDto;
 
 public interface FindKidsService {
 
@@ -33,7 +36,7 @@ public interface FindKidsService {
 	 * return: int
 	 * since: 2021. 12. 7.
 	 */
-	int updateTeacherGrade(MemberDto member_type);
+	int updateTeacherGrade(MemberDto teacher);
 	
 	//카드 만든 후 선생님 유형 변경
 	public int teacherGradeUpd(int idx, String updId);

@@ -1,11 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -401,7 +398,7 @@ section {
 		</section>
 	</div>	
 </body>
-<%@ include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 const drawStar = (target) => {
     document.querySelector('.star span').style.width = '${target.value * 10}%';

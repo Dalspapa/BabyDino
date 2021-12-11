@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-						  
+
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+
 <script src="common/js/signature_draw.js"></script>
 
 <style>
@@ -225,7 +226,6 @@ section p{
 			<button type="button" class="btn btn-outline-success nextbtn" >다음으로</button>
 		</div>
 		</div>
-		</div>  
 </section>
 <section id="step_11" class="makeTdiv" style="width: 39%;">
 	<div>
@@ -258,7 +258,7 @@ section p{
 </section>
 </form>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
   	<script>
   	
   	$(document).ready(function (){
@@ -295,7 +295,6 @@ section p{
     	 		fnCert();
 	 		}
 	 	});
-
 	});
 	
 	$(function(){
@@ -353,7 +352,7 @@ section p{
                 answer++;
             }
         }
-
+        
         if(answer < 8){
          	alert("인증점수가 미달되어 처음으로 돌아갑니다.");
              $('.makeTdiv').hide();
@@ -374,6 +373,7 @@ section p{
 	function fnCert(){
 		$("#form").submit();
 	}
+
 	</script>
 
 </html>

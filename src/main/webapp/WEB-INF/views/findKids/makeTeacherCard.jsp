@@ -119,7 +119,7 @@
 }
 
 </style>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 	<form name="make_t_Card" id="postForm">
@@ -226,7 +226,8 @@
 
 	</form>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 <script>
 	
   function isTest() {
@@ -266,10 +267,10 @@
 	  var fileLength = $("input[name=c_imgpath]");
 	  var cctv = $("input[name=cctvagree]").val();
 	  var formData = new FormData();
-	  var sidx = ${sessionScope.saveIdx};
-		
+
+
+	  formData.set("d_member_idx", '${sessionScope.saveIdx}');
 	  	  
-	  formData.set("d_member_idx", sidx)
 	  formData.set("job", $("#job").val())
 	  formData.set("kid_type", kid_type)
 	  formData.set("t_care_type", t_care_type)
@@ -381,12 +382,3 @@
   </script>
 
 </html>
-
-
-
-
-
-
-
-
-

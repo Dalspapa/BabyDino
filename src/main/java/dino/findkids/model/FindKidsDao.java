@@ -1,7 +1,10 @@
 package dino.findkids.model;
 
-import java.util.*;
-import dino.dto.*;
+import java.util.List;
+
+import dino.dto.Common_ImgDto;
+import dino.dto.MakeTCardDto;
+import dino.dto.MemberDto;
 
 public interface FindKidsDao {
 
@@ -26,11 +29,11 @@ public interface FindKidsDao {
 	 * return: int
 	 * since: 2021. 12. 7.
 	 */
-	public int updateTeacherGrade(MemberDto member_type);
-	
+	public int updateTeacherGrade(MemberDto teacher);
+
 	//카드 만든 후 선생님 유형 변경
 	public int teacherGradeUpd(int idx, String updId);
-	
+
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id);
 

@@ -1,8 +1,12 @@
 package dino.findkids.model;
 
-import java.util.*;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
-import dino.dto.*;
+
+import dino.dto.Common_ImgDto;
+import dino.dto.MakeTCardDto;
+import dino.dto.MemberDto;
 
 
 public class FindKidsDaoImpl implements FindKidsDao {
@@ -16,7 +20,6 @@ public class FindKidsDaoImpl implements FindKidsDao {
 
 	//make techer card -> d_teacher Table
 	public int makeTCard(MakeTCardDto dto) {
-
 		int result = sqlMap.insert("t_makeCard", dto);
 		return result;
 	};
@@ -56,18 +59,15 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return kidInfoDto;
 	}
 
-	/* (non-Javadoc)
-	 * @see dino.findkids.model.FindKidsDao#updateTeacherGrade(dino.dto.MemberDto)
-	 */
 	public int updateTeacherGrade(MemberDto member_type) {
 		return sqlMap.update("updateTeacherGrade", member_type);
 	}
-	
-	//카드 만든 후 선생님 유형 변경	
-	public int teacherGradeUpd(int idx, String updId) {		
+
+	//카드 만든 후 선생님 유형 변경
+	public int teacherGradeUpd(int idx, String updId) {
 		return sqlMap.update("teacherGradeUpd", idx);
 	}
-	
+
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id) {
 		System.out.println("findkid  dao imple"+id);

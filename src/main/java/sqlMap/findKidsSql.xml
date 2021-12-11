@@ -43,7 +43,7 @@
 		        , m.addr3
 		        , k.k_name
 		        , k.k_gender
-		        , k.k_birth
+		        , (to_char(sysdate,'yyyy') - to_char(k.k_birth,'yyyy')) as age
 		        , k.k_tendency
 		        , k.k_care_type
 		        , k.k_require
@@ -74,7 +74,6 @@
                         d_reserve
                  ) t
             ON t.t_idx = r.idx
-
 	</select>
 	
 	<!-- 선생님 고유번호 조회 -->
@@ -99,7 +98,7 @@
 			#{ref_idx}
 		)
 	</insert>
-	
+
 	<!-- 이미지 출력 -->
 	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
 	    SELECT
@@ -117,8 +116,8 @@
 	<!-- 아이카드 상세정보  -->
 	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT  r.cost
-		        , r.to_char(start_date, 'hh24')
-		        , r.to_char(end_date, 'hh24')
+		        , to_char(start_date, 'hh24')
+		        , to_char(end_date, 'hh24')
 		        , r.kid_idx
 		        , r.member_p_idx
 		        , m.addr1

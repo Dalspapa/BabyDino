@@ -10,17 +10,17 @@ public interface MemberDao {
 			//Join
 			public int memberJoin(MemberDto memberDto);
 			public int idCheck(String id);
-			
+
 			//Login
 			public MemberDto loginCheck(String id);
 			public MemberDto getUserInfo(String id);
-			
+
 			//FindId
 			public List<MemberDto> findId(Map map);
 			//FindPwd
 			public List<MemberDto> findPwd(Map map);
 			//editPwd
 			public int editPwd(MemberDto memberDto);
-			
-			
+
+
 }

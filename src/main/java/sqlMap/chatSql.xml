@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dino.chat">
+	<select id="getList" parameterType="Integer" resultType="dino.chat.model.ChatListVo">
+		SELECT * FROM
+	               (WITH MSG_TAB AS 
+	                   (SELECT MESSAGE_IDX, RANK, MESSAGE, D_CHATROOM_IDX, READ, SEND_TIME, D_MEMBER_IDX
+	                      FROM 
+                              (SELECT IDX AS MESSAGE_IDX
+                                    , ROW_NUMBER() OVER(PARTITION BY D_CHATROOM_IDX ORDER BY D_CHATROOM_IDX DESC) AS RANK
+                                    , MESSAGE
+                                    , D_CHATROOM_IDX
+                                    , READ
+                                    , SEND_TIME
+                                    , D_MEMBER_IDX
+                               FROM D_CHATMESSAGE 
+                               WHERE MESSAGE IS NOT NULL
+                               )
+	                     WHERE RANK = 1
+	                     )
+	                SELECT A.IDX AS ROOM_IDX
+	                        , A.SENDER
+	                        , A.RECEIVER
+	                        , B.ID SENDER_ID
+	                        , B.NAME SENDER_NAME
+	                        , B.MEMBER_TYPE AS SENDER_TYPE
+	                        , C.ID RECEIVER_ID
+	                        , C.NAME RECEIVER_NAME
+	                        , C.MEMBER_TYPE AS RECEIVER_TYPE
+	                        , D.MESSAGE
+	                        , D.SEND_TIME
+	                        , D.READ
+	                        , D.D_MEMBER_IDX AS LAST_SENDER
+	                        , D.MESSAGE_IDX
+	                  FROM D_CHATROOM A, D_MEMBER B, D_MEMBER C, MSG_TAB D
+	                 WHERE  A.SENDER  = B.IDX(+)
+	                   AND  A.RECEIVER = C.IDX(+)
+	                   AND  A.IDX = D.D_CHATROOM_IDX(+)
+	                ORDER BY D.MESSAGE_IDX DESC
+	                )
+		WHERE
+	          SENDER = #{sessionIdx}
+		  OR
+	        RECEIVER = #{sessionIdx}
+	</select>
+	
+	<select id="getInfo" parameterType="map" resultType="dino.dto.ChatRoomDto">
+		SELECT 
+			* 
+		FROM 
+			D_CHATROOM
+		WHERE 
+			SENDER = #{sessionIdx}
+		AND 
+			RECEIVER = #{receiverIdx}
+		OR 
+			SENDER = #{receiverIdx}
+		AND 
+			RECEIVER = #{sessionIdx}
+	</select>
+	
+	<insert id="addChatRoom" parameterType="map">
+<!-- 		<selectKey resultType="Integer" keyProperty="idx" order="AFTER">
+			SELECT D_CHATROOM_IDX.NEXTVAL FROM DUAL 
+		</selectKey> -->
+		
+		INSERT INTO 
+		    D_CHATROOM 
+		VALUES 
+			(
+		    D_CHATROOM_IDX.NEXTVAL,
+		    #{sessionIdx},
+		    #{receiverIdx}
+			)
+	</insert>
+	
+	<select id="getMessages" parameterType="Integer" resultType="dino.chat.model.ChatMessageVo">
+		SELECT *
+		FROM
+		    (SELECT
+		          A.IDX AS MESSAGE_IDX
+		        , A.MESSAGE
+		        , A.D_MEMBER_IDX 
+		        , A.D_CHATROOM_IDX AS CHATROOM_IDX
+		        , A.SEND_TIME
+		        , A.READ
+		        , B.NAME
+		        , B.MEMBER_TYPE
+		    FROM
+		        D_CHATMESSAGE A, D_MEMBER B 
+		    WHERE
+		        A.D_MEMBER_IDX = B.IDX)
+		WHERE CHATROOM_IDX = #{roomIdx}
+		ORDER BY MESSAGE_IDX ASC		
+	</select>
+	
+</mapper>

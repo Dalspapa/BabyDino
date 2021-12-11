@@ -48,7 +48,7 @@ table th,td {
 }
 </style>
 </head>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<div class = "title">
 		<h2>신고 내역</h2>
 	</div>
@@ -105,6 +105,6 @@ table th,td {
                </nav>
             </div>
 		</form>
-	<%@include file="/footer.jsp" %>	
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

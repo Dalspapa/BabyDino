@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dino.parentmypage">
+	<select id="proceedingMain" resultType="dino.parentmypage.model.ParentMypageDto">
+		select    a.t_introduce
+		        , b.name
+		        , a.t_care_type
+		        , a.t_cost
+		        , r.idx as r_idx
+		        , TO_CHAR(r.START_DATE,'yyyy.mm.dd AMHH:mm') || '~' || TO_CHAR(r.END_DATE,'HH:mm') AS CARE_TIME
+		from      d_teachercard a
+		        , d_member b
+		        , d_reserve r
+		where a.d_member_idx = b.idx and a.idx = r.teacher_idx
+	</select>
+
+	<select id="caringPage" parameterType="Integer" resultType="dino.dto.KidDto">
+		select
+		         k.idx
+		        ,k.d_member_idx
+		        ,k.k_name
+		        ,k.k_birth
+		        ,k.k_gender
+		        ,k.k_introduce
+		        ,k.k_care_type
+		        ,k.k_tendency
+		        ,k.teacher_type
+		        ,k.k_require
+		from
+		         d_kidcard k
+		        ,d_reserve r
+		where
+		        k.idx = r.kid_idx and r.kid_idx = #{idx}
+	</select>
+</mapper>

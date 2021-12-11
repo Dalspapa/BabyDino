@@ -4,22 +4,23 @@ import java.sql.Date;
 
 public class MemberDto {
 
-		private int idx;
-		private String id;
-		private String pwd;
-		private String name;
-		private int gender;
-		private String birth;
-		private String tel;
-		private int member_type;
-		private Date joinDate;
-		private String addr1;
-		private String addr2;
-		private String addr3;
-		private String updId;
-		private String updDt;
+	private int idx;
+	private String id;
+	private String pwd;
+	private String name;
+	private int gender;
+	private String birth;
+	private String tel;
+	private int member_type;
+	private Date joinDate;
+	private String addr1;
+	private String addr2;
+	private String addr3;
+	private String addrDetail;
+	private String updId;
+	private String updDt;
 
-	
+
 	public MemberDto() {
 		super();
 	}
@@ -88,6 +89,8 @@ public class MemberDto {
 	public int getMember_type() {
 		return member_type;
 	}
+
+
 	public void setMember_type(int member_type) {
 		this.member_type = member_type;
 	}
@@ -115,6 +118,7 @@ public class MemberDto {
 	public void setAddr3(String addr3) {
 		this.addr3 = addr3;
 	}
+
 	public String getUpdId() {
 		return updId;
 	}
@@ -129,9 +133,9 @@ public class MemberDto {
 	}
 	
 	@Override
-	   public String toString() {
-	     String str = "멤버타입" + member_type + "\n아이디 : " + id + "\n비밀번호 : " + pwd + "\n이름 : " + name + "\n성별 : " + gender + "생일" + birth + "\n전화번호 : " + tel + "\n주소 :" + addr1;
-	     System.out.println(str);
-	      return str;
-	   }
+	public String toString() {
+		String str = "멤버타입" + member_type + "\n아이디 : " + id + "\n비밀번호 : " + pwd + "\n이름 : " + name + "\n성별 : " + gender + "생일" + birth + "\n전화번호 : " + tel + "\n주소 :" + addr1;
+		System.out.println(str);
+		return str;
+	}
 }

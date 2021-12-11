@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -265,7 +265,7 @@ section{
             <div>
               <!--<img src=""/>활동에 대한 이미지 들어갈 자리 -->
               #원하는 활동 데이터 들어갈 자리
-            </div> 
+            </div>
           </div>
         </li>
         <li>
@@ -273,7 +273,7 @@ section{
           <div class="contentBox ativeList">
             <div>
               #선호 시간때 데이터 들어갈 자리
-            </div> 
+            </div>
           </div>
         </li>
         <li>
@@ -281,7 +281,7 @@ section{
           <div class="contentBox ativeList">
             <div>
               #희망급여 데이터 들어갈 자리
-            </div> 
+            </div>
           </div>
         </li>
 		<li>
@@ -289,7 +289,7 @@ section{
           <div class="contentBox ativeList">
             <div>
               #그 외 요청사항 데이터 들어갈 자리
-            </div> 
+            </div>
           </div>
         </li>
       </ul>
@@ -299,5 +299,5 @@ section{
     </div>
   </div>
 </body>
-<%@include file="../footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </html>
