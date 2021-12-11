@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dino.dto.KidDto;
 import dino.parentmypage.model.ParentMypageDto;
 import dino.parentmypage.service.ParentMypageService;
 
@@ -35,9 +37,12 @@ public class ParentMypageController {
 	 * @return
 	 */
 	@RequestMapping("/caring.do")
-	public ModelAndView caring() {
+	public ModelAndView caring(@RequestParam("idx")int idx) {
+
+		KidDto dto = parentMypageService.caring(idx);
 
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto",dto);
 		mav.setViewName("parentMypage/caringPage");
 		return mav;
 	}
