@@ -48,7 +48,7 @@ table th,td {
 }
 </style>
 </head>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<div class = "title">
 		<h2>신고 내역(관리자용)</h2>
 	</div>
@@ -118,7 +118,7 @@ table th,td {
                  </ul>
                </nav>
             </div>
-	<%@include file="/footer.jsp" %>	
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <script>
 function checkForm(){

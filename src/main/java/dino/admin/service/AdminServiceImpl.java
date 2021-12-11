@@ -2,9 +2,12 @@ package dino.admin.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import dino.admin.model.AdminDao;
 import dino.dto.ReportDto;
 
+@Service
 public class AdminServiceImpl implements AdminService {
 
 	private AdminDao adminDao;
