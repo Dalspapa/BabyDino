@@ -12,14 +12,14 @@
 		insert into
 			d_teachercard
 		values(
-			#{idx},
-			#{memberIdx},
+			d_teachercard_idx.nextval,
+			#{d_member_idx},
 			#{job},
-			'1,2,3',
+			'1,2,3',		<!-- 퀴즈, 등본, 성범죄 조회 = 필수검증 -->
 			#{kid_type},
 			#{t_care_type},
-			#{schedule_day},
-			#{schedule_time},
+			null,
+			null,
 			#{t_cost},
 			#{t_introduce},
 			#{bank},

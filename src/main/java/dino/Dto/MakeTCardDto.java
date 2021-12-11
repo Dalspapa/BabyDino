@@ -23,10 +23,6 @@ public class MakeTCardDto {
 	private String t_sexcrime;
 	private String career_experience;
 	
-	
-	
-	
-	
 	private List<MultipartFile> tImg;
 	
 	
