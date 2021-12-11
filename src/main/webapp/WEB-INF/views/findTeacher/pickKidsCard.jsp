@@ -90,24 +90,24 @@
 			</div>
 		</div>
 </body>
-<%@include file="../footer.jsp"%>
+<%@include file="/footer.jsp"%>
 
 <script>
 	function goStep(step){
-		
+
 		if(step == 2){
 			document.getElementById('step1').classList.add('d-none');
 			document.getElementById('step2').classList.remove('d-none');
-		
+
 		}
 	}
-	
+
 	$('.calendar').pignoseCalendar({
 		lang: 'ko',
 		minDate: moment().format("YYYY-MM-DD"),
 		format: 'YYYY.MM.DD'
 		});
-		
+
 	$('.timepicker1').wickedpicker();
 	$('.timepicker2').wickedpicker();
 </script>
