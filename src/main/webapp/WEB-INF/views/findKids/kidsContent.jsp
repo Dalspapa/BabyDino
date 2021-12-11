@@ -2,29 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="/WEB-INF/views/header.jsp" %>
+<%@ include file="/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
 <style type="text/css">
 @import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap')
-	;
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -319,7 +305,7 @@ section {
 </style>
 	<!-- /offcanvas -->
 	<div class="wrapper">
-		<section>
+		<section><br><br><br><br><br><br><br><br>
 			<div class="topCont d-flex justify-content-between">
 				<div>#뒤로가기버튼</div>
 				<div>${ kidInfoDto.k_name }</div>
@@ -329,14 +315,22 @@ section {
 				<div class="childImg">
 					<img src="/upload/${ kidInfoDto.c_imgpath }" alt="메인 아이 사진" width="200" height="200">
 				</div>
-				<div class="childInfo">#아이정보 / #성별</div>
+				<div class="childInfo">
+					<c:if test="${kidInfoDto.k_gender == 1 }">
+						여아
+					</c:if>
+					<c:if test="${kidInfoDto.k_gender == 2 }">
+						남아
+					</c:if><br>
+					${kidInfoDto.k_introduce }
+				</div>
 			</div>
-			<ul class="item3">
+			<ul class="item3">				
 				<li>
 					<h3>이런 활동을 하고 싶어요~</h3>
 					<div class="contentBox" id="wnatSam">
 					<c:set  var="kType" value="${kidInfoDto.k_care_type}" />
-						<c:forEach items="${fn:split(kType, ',') }" var="kType">
+						<c:forEach items="${fn:split(kType, ',') }" var="item">
 							<c:if test="${item == '1'}">#등하원&nbsp;&nbsp;&nbsp;</c:if>
 							<c:if test="${item == '2'}">#야외활동&nbsp;&nbsp;&nbsp;</c:if>
 							<c:if test="${item == '3'}">#책읽기&nbsp;&nbsp;&nbsp;</c:if>
@@ -355,15 +349,20 @@ section {
 				<li>
 					<h3>원하는 시터 나이</h3>
 					<div class="contentBox ageWrap">
-						<div class="circle-div">#20대</div>
-						<div class="circle-div">#50대</div>
-						<div class="circle-div">#60대</div>
+						<c:set var="timg" value="${kidInfoDto.teacher_type}" />
+						<c:forEach items="${fn:split(timg, ',') }" var="item">
+							<c:if test="${item == '1'}"><img src="${pageContext.request.contextPath }/common/img/teacher/tAge1.png" alt="tAge" class="ageImg"></c:if>
+							<c:if test="${item == '2'}"><img src="${pageContext.request.contextPath }/common/img/teacher/tAge2.png" alt="tAge" class="ageImg"></c:if>
+							<c:if test="${item == '3'}"><img src="${pageContext.request.contextPath }/common/img/teacher/tAge3.png" alt="tAge" class="ageImg"></c:if>
+							<c:if test="${item == '4'}"><img src="${pageContext.request.contextPath }/common/img/teacher/tAge4.png" alt="tAge" class="ageImg"></c:if>
+							<c:if test="${item == '5'}"><img src="${pageContext.request.contextPath }/common/img/teacher/tAge5.png" alt="tAge" class="ageImg"></c:if>
+						</c:forEach>
 					</div>
 				</li>
 				<li>
 					<h3>돌봄 지역</h3>
 					<div class="contentBox">
-						<div>#주소정보</div>
+						<div>${kidInfoDto.addr1}</div>
 					</div>
 				</li>
 			</ul>
@@ -373,60 +372,42 @@ section {
 					<div class="contentBox">
 						<ul class="flex-list">
 							<li>
-								<div>#아이유형이미지</div>
-								<div style="margin-left: 10px">#아이유형텍스트</div>
-							</li>
-							<li>
-								<div>#아이유형이미지</div>
-								<div style="margin-left: 10px">#아이유형텍스트</div>
-							</li>
+							<c:set  var="tenden" value="${kidInfoDto.k_tendency}" />
+							<c:forEach items="${fn:split(tenden, ',') }" var="item">
+								<c:if test="${item == '0'}">특이사항이 없어요.<br></c:if>
+								<c:if test="${item == '1'}">처음에는 낯을 가려요.<br></c:if>
+								<c:if test="${item == '2'}">놀이를 먼저 제안하는걸 좋아해요.<br></c:if>
+								<c:if test="${item == '3'}">하고 싶은 놀이와 이야기가 많아요.<br></c:if>
+								<c:if test="${item == '4'}">에너지가 넘치고 활동량이 많아요.<br></c:if>
+								<c:if test="${item == '5'}">승부욕이 강한 편이에요.<br></c:if>
+								<c:if test="${item == '6'}">섬세하고 예민한 편이에요.<br></c:if>
+								<c:if test="${item == '7'}">알러지가 있어요.<br></c:if>
+								<c:if test="${item == '8'}">복용중인 약이 있어요.</c:if>
+							</c:forEach>
+							</li>							
 						</ul>
 					</div>
 				</li>
 				<li>
-					<h3>원하는 활동</h3>
+					<h3>이것만은 부탁해요~</h3>
 					<div class="contentBox ativeList">
 						<div>
-							<!--<img src=""/>-->
-							#원하는활동명
+							${kidInfoDto.k_require }
 						</div>						
 					</div>
 				</li>
-				<li>
-					
-				</li>
 			</ul>
+			<div><input type="button" value="인터뷰 요청"></div>
 		</section>
 	</div>	
 </body>
-<%@ include file="/WEB-INF/views/footer.jsp" %>
+<%@ include file="/footer.jsp" %>
 <script>
 const drawStar = (target) => {
     document.querySelector('.star span').style.width = '${target.value * 10}%';
   }
   
-  $(document).ready(function(){
-		let wnatSamText = "";
-			<c:set  var="kType" value="${kidInfoDto.k_care_type}" />
-				<c:forEach items="${fn:split(intro, ',') }" var="kType">
-					<c:if test="${item == '1'}">7~8시</c:if>
-					<c:if test="${item == '2'}">8~9시</c:if>
-					<c:if test="${item == '3'}">9~10시</c:if>
-					<c:if test="${item == '4'}">10~11시</c:if>
-					<c:if test="${item == '5'}">11~12시</c:if>
-					<c:if test="${item == '6'}">12~13시</c:if>
-					<c:if test="${item == '7'}">13~14시</c:if>
-					<c:if test="${item == '8'}">14~15시</c:if>
-					<c:if test="${item == '9'}">15~16시</c:if>
-					<c:if test="${item == '10'}">16~17시</c:if>
-					<c:if test="${item == '11'}">17~18시</c:if>
-					<c:if test="${item == '12'}">18~19시</c:if>
-					<c:if test="${item == '13'}">19~20시</c:if>
-					<c:if test="${item == '14'}">20~21시</c:if>
-					<c:if test="${item == '15'}">21~22시</c:if>
-					<c:if test="${item == '16'}">22~23시</c:if>
-				</c:forEach>
-  });
+
 </script>
 </html>
 

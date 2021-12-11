@@ -1,9 +1,10 @@
-package dino.Dto;
+package dino.dto;
 
 import java.sql.Date;
 
 public class MemberDto {
 
+<<<<<<< HEAD:src/main/java/dino/Dto/MemberDto.java
 	private int idx;
 	private String id;
 	private String pwd;
@@ -20,12 +21,28 @@ public class MemberDto {
 	private String updId;
 	private String updDt;
 
+=======
+		private int idx;
+		private String id;
+		private String pwd;
+		private String name;
+		private int gender;
+		private String birth;
+		private String tel;
+		private int member_type;
+		private Date joinDate;
+		private String addr1;
+		private String addr2;
+		private String addr3;
+	
+>>>>>>> Yeongchan:src/main/java/dino/dto/MemberDto.java
 	public MemberDto() {
 		super();
 	}
 
-	public MemberDto(int idx, String id, String pwd, String name, int gender, String birth, String tel, int member_Type,
-			Date joinDate, String addr1, String addr2, String addr3, String addrDetail) {
+	public MemberDto(int idx, String id, String pwd, String name, int gender, String birth, String tel, int member_type,
+
+			Date joinDate, String addr1, String addr2, String addr3) {
 		super();
 		this.idx = idx;
 		this.id = id;
@@ -34,12 +51,16 @@ public class MemberDto {
 		this.gender = gender;
 		this.birth = birth;
 		this.tel = tel;
+<<<<<<< HEAD:src/main/java/dino/Dto/MemberDto.java
 		this.member_type = member_Type;
+=======
+		this.member_type = member_type;
+>>>>>>> Yeongchan:src/main/java/dino/dto/MemberDto.java
 		this.joinDate = joinDate;
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 		this.addr3 = addr3;
-		this.addrDetail = addrDetail;
+
 	}
 
 	public int getIdx() {
@@ -102,8 +123,13 @@ public class MemberDto {
 		return member_type;
 	}
 
+<<<<<<< HEAD:src/main/java/dino/Dto/MemberDto.java
 	public void setMemberType(int member_Type) {
 		this.member_type = member_Type;
+=======
+	public void setMemberType(int member_type) {
+		this.member_type = member_type;
+>>>>>>> Yeongchan:src/main/java/dino/dto/MemberDto.java
 	}
 
 	public Date getJoinDate() {
@@ -120,14 +146,6 @@ public class MemberDto {
 
 	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
-	}
-
-	public String getAddrDetail() {
-		return addrDetail;
-	}
-
-	public void setAddrDetail(String addrDetail) {
-		this.addrDetail = addrDetail;
 	}
 
 	public String getAddr2() {

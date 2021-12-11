@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.Dto.CommonOpDto;
-import dino.Dto.ReportDto;
+import dino.dto.CommonOpDto;
+import dino.dto.ReportDto;
 import dino.report.service.ReportService;
 
 @Controller

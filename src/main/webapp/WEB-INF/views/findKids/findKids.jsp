@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+=======
+>>>>>>> Yeongchan
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -7,21 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="./common/img/favicon/favicon.png"
-	type="image/x-icon">
-<link rel="icon" href="./common/img/favicon/favicon.png"
-	type="image/x-icon">
-
-<!-- fontasome -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-<!-- css -->
-<link rel="stylesheet" href="./common/css/bootstrap.min.css">
-<link rel="stylesheet" href="./common/css/reset.css">
-<link rel="stylesheet" href="./common/css/main.css">
+<%@include file="/header.jsp" %>
 <style>
 #cardImg {
 	width: 50px;
@@ -94,11 +83,13 @@
 					<!-- 카드정보[START] -->
 					<!-- filp01 -->
 					<div class="flip-card col-lg">
-
 							<c:url var = "contentUrl" value="kidsContent.do">
 								<c:param name="idx">${kDto.idx}</c:param>
 							</c:url>
+<<<<<<< HEAD
 
+=======
+>>>>>>> Yeongchan
 						<div class="flip-card-inner" onclick="location.href='${ contentUrl }'">
 							<div class="flip-card-front">
 								<div class="mb-2">
@@ -107,6 +98,7 @@
 									<h5 id="tendetcy">
 									<c:set  var="careType" value="${kDto.k_care_type}" />
 									<c:forEach items="${fn:split(careType, ',') }" var="item">
+										#${item}&nbsp;&nbsp;<%-- 
 										<c:if test="${item == '1'}">#등하원</c:if>
 										<c:if test="${item == '2'}">#야외활동</c:if>
 										<c:if test="${item == '3'}">#책읽기</c:if>
@@ -118,39 +110,34 @@
 										<c:if test="${item == '9'}">#미술놀이</c:if>
 										<c:if test="${item == '10'}">#간단청소</c:if>
 										<c:if test="${item == '11'}">#밥챙겨주기</c:if>
-										<c:if test="${item == '12'}">#간단 설거지</c:if>
+										<c:if test="${item == '12'}">#간단 설거지</c:if> --%>
 									</c:forEach>
 									</h5>
 								</div>
 								<div>
+<<<<<<< HEAD
 									<h6 class="text-warning" id="title">새로운 추천01</h6>
 									<h6 id="info">${kDto.addr1 } / ${kDto.k_name }  /
+=======
+									<h6 class="text-warning" id="title">${kDto.k_name }</h6>
+									<h6 id="info">${kDto.addr2 }
+>>>>>>> Yeongchan
 										<c:if test="${kDto.k_gender == 1 }">
 											여아
 										</c:if>
 										<c:if test="${kDto.k_gender == 2 }">
 											남아
-										</c:if>
+										</c:if>										
 									</h6>
 								</div>
 							</div>
 							<div class="flip-card-back ">
 								<h1 id="name">${kDto.k_name}</h1>
 								<p id="tendency">
-									<c:set  var="intro" value="${kDto.k_introduce}" />
-									<c:forEach items="${fn:split(intro, ',') }" var="item">
-										<c:if test="${item == '0'}">특이사항이 없어요.<br></c:if>
-										<c:if test="${item == '1'}">처음에는 낯을 가려요.<br></c:if>
-										<c:if test="${item == '2'}">놀이를 먼저 제안하는걸 좋아해요.<br></c:if>
-										<c:if test="${item == '3'}">하고 싶은 놀이와 이야기가 많아요.<br></c:if>
-										<c:if test="${item == '4'}">에너지가 넘치고 활동량이 많아요.<br></c:if>
-										<c:if test="${item == '5'}">승부욕이 강한 편이에요.<br></c:if>
-										<c:if test="${item == '6'}">섬세하고 예민한 편이에요.<br></c:if>
-										<c:if test="${item == '7'}">알러지가 있어요.<br></c:if>
-										<c:if test="${item == '8'}">복용중인 약이 있어요.</c:if>
-									</c:forEach>
+									${kDto.k_introduce}
 								</p>
 								<ul>
+<<<<<<< HEAD
 									<li id="palyday">${kDto.r_endday} /
 										<c:set  var="time" value="${kDto.r_time}" />
 										<c:forEach items="${fn:split(intro, ',') }" var="item">
@@ -174,6 +161,11 @@
 										<script>console.log('dddd==='+${kDto.r_time})</script>
 									</li>
 									<li id="cost"><fmt:formatNumber value="${kDto.hope_cost}" pattern="#,###" />원 / 협의가능</li>
+=======
+									<li id="playday">${kDto.start_day} ~ ${kDto.end_day}<br></li>
+									<li id="playtime">${kDto.start_time} ~ ${kDto.end_time}</li>
+									<li id="cost"><fmt:formatNumber value="${kDto.cost}" pattern="#,###" />원  / 협의가능</li>
+>>>>>>> Yeongchan
 								</ul>
 							</div>
 						</div>
@@ -186,7 +178,11 @@
 		<!-- 하단 정보[START] -->
 	</section>
 </body>
+<<<<<<< HEAD
 <%@include file="../footer.jsp" %>
+=======
+<%@include file="/footer.jsp" %>
+>>>>>>> Yeongchan
 
 <!-- custome js -->
 <script src="./common/js/bootstrap.min.js"></script>
@@ -209,12 +205,19 @@
 	}
 
 	function check() {
-	   var a = document.getElementsByName('cDiv')
+	   var a = document.getElementsByName('cDiv');
 	   var b = [];
 	   for(var i = 0; i < a.length; i++ ) {
+<<<<<<< HEAD
 
 	      if(a[i].classList.contains('isTest')) b.push(a[i].id)
 	   };
+=======
+	      
+	      if(a[i].classList.contains('isTest')) b.push(a[i].id);
+	   }
+
+>>>>>>> Yeongchan
 	   console.log("-- selected : ", b);
 	}
 

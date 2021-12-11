@@ -1,6 +1,9 @@
-package dino.Dto;
+package dino.dto;
 
 import java.sql.*;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class KidDto {	
 
@@ -15,30 +18,54 @@ public class KidDto {
 	private String k_care_type;
 	private String teacher_type;
 	private String k_require;
+	private int age;
+	
+	private List<MultipartFile> kImg;
 	
 	public KidDto() {
 		super();
 	}
-
+	
 	public KidDto(int idx, int d_member_idx, String k_name, int k_gender, String k_tendency, Date k_birth,
-		String k_introduce, String k_care_type, String teacher_type, String k_require) {
-	super();
-	this.idx = idx;
-	this.d_member_idx = d_member_idx;
-	this.k_name = k_name;
-	this.k_gender = k_gender;
-	this.k_tendency = k_tendency;
-	this.k_birth = k_birth;
-	this.k_introduce = k_introduce;
-	this.k_care_type = k_care_type;
-	this.teacher_type = teacher_type;
-	this.k_require = k_require;
+			String k_introduce, String k_care_type, String teacher_type, String k_require, int age,
+			List<MultipartFile> kImg) {
+		super();
+		this.idx = idx;
+		this.d_member_idx = d_member_idx;
+		this.k_name = k_name;
+		this.k_gender = k_gender;
+		this.k_tendency = k_tendency;
+		this.k_birth = k_birth;
+		this.k_introduce = k_introduce;
+		this.k_care_type = k_care_type;
+		this.teacher_type = teacher_type;
+		this.k_require = k_require;
+		this.age = age;
+		this.kImg = kImg;
 	}
+
+	public List<MultipartFile> getkImg() {
+		return kImg;
+	}
+
+	public void setkImg(List<MultipartFile> kImg) {
+		this.kImg = kImg;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 
 	public int getIdx() {
 		return idx;
 	}
-
+	
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}

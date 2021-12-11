@@ -1,4 +1,4 @@
-package dino.Dto;
+package dino.dto;
 
 import java.sql.*;
 

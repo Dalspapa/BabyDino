@@ -2,10 +2,14 @@ package dino.findkids.model;
 
 import java.util.*;
 import org.mybatis.spring.SqlSessionTemplate;
-import dino.Dto.*;
+import dino.dto.*;
 
 
+<<<<<<< HEAD
 public class FindKidsDaoImpl implements FindKidsDao {
+=======
+public class FindKidsDaoImpl implements FindKidsDao {
+>>>>>>> Yeongchan
 
 	private SqlSessionTemplate sqlMap;
 
@@ -19,6 +23,7 @@ public class FindKidsDaoImpl implements FindKidsDao {
 
 		int result = sqlMap.insert("t_makeCard", dto);
 		return result;
+<<<<<<< HEAD
 	};
 
 	//get kids list
@@ -27,6 +32,16 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return k_list;
 	}
 
+=======
+	};
+
+	//get kids list
+	public List<FindKidsJoinDto> kidsList() {
+		List<FindKidsJoinDto> k_list = sqlMap.selectList("kidsList");
+		return k_list;
+	}
+
+>>>>>>> Yeongchan
 	// set Teacher img
 	public int tSetImg(Common_ImgDto imgDto) {
 
@@ -57,12 +72,31 @@ public class FindKidsDaoImpl implements FindKidsDao {
 	}
 
 	/* (non-Javadoc)
+<<<<<<< HEAD
 	 * @see dino.findkids.model.FindKidsDao#updateTeacherGrade(dino.Dto.MemberDto)
+=======
+	 * @see dino.findkids.model.FindKidsDao#updateTeacherGrade(dino.dto.MemberDto)
+>>>>>>> Yeongchan
 	 */
 	public int updateTeacherGrade(MemberDto teacher) {
 		return sqlMap.update("updateTeacherGrade", teacher);
 	}
+<<<<<<< HEAD
 
+=======
+	
+	//카드 만든 후 선생님 유형 변경	
+	public int teacherGradeUpd(int idx, String updId) {		
+		return sqlMap.update("teacherGradeUpd", idx);
+	}
+	
+	//수정된 멤버타입 조회
+	public int UpdGrade(String id) {
+		System.out.println("findkid  dao imple"+id);
+		return sqlMap.selectOne("UpdGrade", id);
+	}
+
+>>>>>>> Yeongchan
 }
 
 

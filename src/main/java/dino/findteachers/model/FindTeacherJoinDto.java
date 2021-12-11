@@ -2,7 +2,7 @@ package dino.findteachers.model;
 
 import java.util.List;
 
-import dino.Dto.ReviewDto;
+import dino.dto.*;
 
 public class FindTeacherJoinDto {
 	private int t_cost;

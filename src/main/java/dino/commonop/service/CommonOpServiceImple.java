@@ -2,7 +2,7 @@ package dino.commonop.service;
 
 import java.util.*;
 
-import dino.Dto.CommonOpDto;
+import dino.dto.CommonOpDto;
 import dino.commonop.model.CommonOpDao;
 
 public class CommonOpServiceImple implements CommonOpService {
@@ -54,14 +54,20 @@ public class CommonOpServiceImple implements CommonOpService {
 		return b_list;
 	}
 
-	// kidsCard
+	// Make KidsCard tendency list
 	public List<CommonOpDto> ktendency() {
-
 		
 		List<CommonOpDto> list = commonopDao.ktendency();
 		return list;
 	}
  
+	//Make KidsCard care list
+	public List<CommonOpDto> k_care_type(){
+		
+		List<CommonOpDto> care_list = commonopDao.k_care_type();
+		return care_list;
+	}
+	
 	// reportType
 	public List<CommonOpDto> reportType() {
 		

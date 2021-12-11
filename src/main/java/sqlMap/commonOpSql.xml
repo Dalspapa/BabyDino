@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.commonop">
 	<!-- Make a TeacherCard -->
-	<select id="t_job_opList" resultType="dino.Dto.CommonOpDto">
+	<select id="t_job_opList" resultType="dino.dto.CommonOpDto">
 		select 
 			idx, op, c_introduce 
 		from
@@ -15,7 +15,7 @@
 			
 	</select>
 	
-	<select id="k_type_opList" resultType="dino.Dto.CommonOpDto">
+	<select id="k_type_opList" resultType="dino.dto.CommonOpDto">
 		select
 			idx, c_introduce, op
 		from 
@@ -25,7 +25,7 @@
 		order by idx asc
 	</select>
 	
-	<select id="t_care_opList" resultType="dino.Dto.CommonOpDto">
+	<select id="t_care_opList" resultType="dino.dto.CommonOpDto">
 		select
 			idx, c_introduce
 		from
@@ -34,7 +34,7 @@
 			c_category = 5
 		order by idx asc
 	</select>
-	<select id="t_date_opList" resultType="dino.Dto.CommonOpDto">
+	<select id="t_date_opList" resultType="dino.dto.CommonOpDto">
 		select 
 			idx, c_introduce 
 		from 
@@ -44,7 +44,7 @@
 		order by idx asc
 	</select>
 	
-	<select id="t_time_opList" resultType="dino.Dto.CommonOpDto">
+	<select id="t_time_opList" resultType="dino.dto.CommonOpDto">
 		select 
 			idx, c_introduce 
 		from 
@@ -54,7 +54,7 @@
 		order by idx asc
 	</select>
 	
-	<select id="t_bank_opList" resultType="dino.Dto.CommonOpDto">
+	<select id="t_bank_opList" resultType="dino.dto.CommonOpDto">
 		select
 			idx, c_introduce 
 		from 
@@ -62,10 +62,10 @@
 		where 
 			c_category = 4 
 		order by idx asc
-	</select>
-	
+	</select>	
+
 	<!-- Make a KidsCard -->
-	<select id="k_tendency" resultType="dino.Dto.CommonOpDto">
+	<select id="k_tendency" resultType="dino.dto.CommonOpDto">
          select 
             * 
          from 
@@ -74,17 +74,18 @@
             c_category=9
    </select>
    
-   <select id="reportOpList" resultType="dino.Dto.CommonOpDto">
-   		select
-   			*
-   		from
-   			d_common_option
-   		where
-   			c_category=14
+   <select id="reportOpList" resultType="dino.dto.CommonOpDto">
+	   SELECT
+	   		*
+	   FROM
+	   		d_common_option
+	   WHERE
+	   		c_category = 5
+   
    </select>
    
    <!-- 공지사항 -->
-	<select id="notice" resultType = "dino.Dto.CommonOpDto">
+	<select id="notice" resultType="dino.dto.CommonOpDto">
 		select 
 		 	* 
 		 from 
@@ -93,7 +94,7 @@
 		 	c_category = 28
 	</select>
 	<!-- 자주 묻는 질문(회원관련) -->
-	<select id="qna" resultType = "dino.Dto.CommonOpDto">
+	<select id="qna" resultType="dino.dto.CommonOpDto">
 		select 
 		 	* 
 		 from 
@@ -102,7 +103,7 @@
 		 	c_category = 29
 	</select>
 	<!-- 자주 묻는 질문(정부지원관련) -->
-	<select id="government" resultType = "dino.Dto.CommonOpDto">
+	<select id="government" resultType="dino.dto.CommonOpDto">
 		select 
 		 	* 
 		 from 
@@ -111,7 +112,7 @@
 		 	c_category = 30
 	</select>
 	<!-- 자주 묻는 질문(결제 환불관련) -->
-	<select id="pay" resultType = "dino.Dto.CommonOpDto">
+	<select id="pay" resultType="dino.dto.CommonOpDto">
 		select 
 		 	* 
 		 from 

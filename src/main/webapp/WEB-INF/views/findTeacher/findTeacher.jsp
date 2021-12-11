@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
+<%@include file="/header.jsp" %>
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="./common/img/favicon/favicon.png"
 	type="image/x-icon">
@@ -40,27 +42,7 @@
 	<%--    <form action="getImg.do" name="getimg">
       <c:forEach var="imgs" items="${imgName}">
          <img alt="teacherImg" src="/upload/${imgs}" id="cardImg">
-      </c:forEach>
-<<<<<<< HEAD
-      
-   <!--  img Test  -->
-   
-   <div class="result-images">
-   	<c:forEach var="imageFileName" items="${ map.fileList }">
-   		<img src="${ contextPath }/download?imageFileName=${ imageFileName }">
-   		<br>
-   	</c:forEach>
-   </div>
-   
-   
-   </div><!-- 하단 정보[START] -->
-   
-</div>
-      
-=======
-      <input type="hidden" name="d_member_idx" value="41">
-      <input type="submit" value="imgGetbtn">
-   </form> --%>
+      </c:forEach> --%>
 	<h1>선생님찾기 페이지</h1>
 	<section>
 		<div class="container">
@@ -78,9 +60,7 @@
 						<div style="width: 20%; border: 1px solid red; height: 30px;"
 							name="cDiv" id="four" onclick="changeDiv('four')">4</div>
 					</div>
-
 					<button onclick="check()">check</button>
-
 
 					<div class="row mt-4">
 						<div class="form-check w-50">
@@ -158,7 +138,7 @@
 		<!-- 하단 정보[START] -->
 	</section>
 </body>
-<%@include file="../footer.jsp" %>
+<%@include file="/footer.jsp" %>
 <!-- J-query -->
 <script src="./common/js/jquery-3.6.0.min.js"></script>
 

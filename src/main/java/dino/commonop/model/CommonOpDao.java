@@ -2,7 +2,7 @@ package dino.commonop.model;
 
 import java.util.*;
 
-import dino.Dto.*;
+import dino.dto.*;
 
 public interface CommonOpDao {
 
@@ -14,8 +14,11 @@ public interface CommonOpDao {
 	public List<CommonOpDto> t_time_opList();
 	public List<CommonOpDto> t_bank_opList();
 	
-	//Make a KidsCard
+
+	//Make KidsCard list
 	public List<CommonOpDto> ktendency();
+	public List<CommonOpDto> k_care_type();
+
 
 	//reportType 
 	public List<CommonOpDto> reportType();

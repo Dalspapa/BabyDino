@@ -19,10 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 import dino.Dto.CommonOpDto;
 import dino.Dto.Common_ImgDto;
 import dino.Dto.MakeTCardDto;
 import dino.Dto.MemberDto;
+=======
+import dino.dto.CommonOpDto;
+import dino.dto.Common_ImgDto;
+import dino.dto.MakeTCardDto;
+import dino.dto.MemberDto;
+>>>>>>> Yeongchan
 import dino.commonop.service.CommonOpService;
 import dino.findkids.model.FindKidsJoinDto;
 import dino.findkids.service.FindKidsService;
@@ -81,7 +88,11 @@ public class FindKidsController {
 
 
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
+<<<<<<< HEAD
 	public ResponseEntity<?> makeTeacherCard(MakeTCardDto dto, Common_ImgDto imgDto, HttpServletRequest request) {
+=======
+	public ResponseEntity<?> makeTeacherCard(MakeTCardDto dto, Common_ImgDto imgDto, HttpServletRequest request, MemberDto mdto, HttpSession session) {
+>>>>>>> Yeongchan
 
 		System.out.println("== 컨트롤러 진입.");
 
@@ -107,12 +118,21 @@ public class FindKidsController {
 			if(StringUtils.isEmpty(saveIdx)) {
 				throw new IllegalStateException("로그인상태가 아닙니다.");
 			}
+<<<<<<< HEAD
 			dto.setMemberIdx(Integer.parseInt(saveIdx));
 			findKidsService.makeTCard(dto, imgFiles, dirPath, imgDto);
+=======
+			dto.setIdx(Integer.parseInt(saveIdx));
+			
+			findKidsService.makeTCard(dto, imgFiles, dirPath, imgDto, request);
+			result.put("fail", false);
+>>>>>>> Yeongchan
 			success = true;
 		} catch (Exception e) {
 			System.out.println("오류발생. " + e.getMessage());
+			result.put("success", success);
 		};
+<<<<<<< HEAD
 
 		int setImg = findKidsService.tSetImg(imgDto);
 		if( setImg != 1 ) {
@@ -121,6 +141,38 @@ public class FindKidsController {
 			result.put("success", success);
 		}
 
+=======
+		
+		System.out.println("인증후 그레이드 6 수정 전");
+		//검증 후 카드를 만든 선생님 grade update
+		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
+		if(StringUtils.isEmpty(idx)) {
+			throw new IllegalStateException("로그인 상태가 아닙니다.");
+		}
+		mdto.setIdx(Integer.parseInt(idx));
+
+		mdto.setMemberType(6);
+		int rst = findKidsService.updateTeacherGrade(mdto);
+		if(rst <= 0) {
+			throw new IllegalStateException("선생님 카드 등록시 오류가 발생하였습니다.");
+		}
+		System.out.println("인증후 그레이드 6 수정 후========");
+		
+		//int setImg = findKidsService.tSetImg(imgDto);
+//		if( setImg != 1 ) {
+//			result.put("fail", false);
+//		} else {
+//			result.put("success", success);
+//		}
+		String id = String.valueOf(request.getSession().getAttribute("saveId"));
+		if(StringUtils.isEmpty(id)) {
+			throw new IllegalStateException("로그인 상태가 아닙니다.");
+		}
+		
+		int updMType = findKidsService.UpdGrade(id);
+		System.out.println("수정된 멤버타입"+updMType);
+		session.setAttribute("saveMemberType", updMType);
+>>>>>>> Yeongchan
 		result.put("success", success);
 		return ResponseEntity.ok(result);
 	}
@@ -165,7 +217,11 @@ public class FindKidsController {
 		FindKidsJoinDto kidInfoDto = findKidsService.kidContent(idx);
 		System.out.println("controller=====" + kidInfoDto.toString());
 		ModelAndView mav = new ModelAndView();
+<<<<<<< HEAD
 		System.out.println(kidInfoDto.getK_care_type());
+=======
+		System.out.println("컨트롤러로 가져온 dto 정보"+kidInfoDto.getK_care_type());
+>>>>>>> Yeongchan
 
 		if (kidInfoDto != null) {
 			mav.addObject("kidInfoDto", kidInfoDto);
@@ -177,6 +233,7 @@ public class FindKidsController {
 		return mav;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * 선생님 인증처리
 	 * author: 이은사
@@ -186,12 +243,20 @@ public class FindKidsController {
 	@RequestMapping(value="/teacher/cert.do")
 	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
+=======
+	/** 선생님 인증처리 */
+	@RequestMapping("/cert.do")
+	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request, HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+>>>>>>> Yeongchan
 
 		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
 		if(StringUtils.isEmpty(idx)) {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
 		}
 		teacher.setIdx(Integer.parseInt(idx));
+<<<<<<< HEAD
 
 		teacher.setMemberType(5);
 		int rst = findKidsService.updateTeacherGrade(teacher);
@@ -201,6 +266,31 @@ public class FindKidsController {
 
 		mv.setViewName("redirect:/makeTeacherCard.do");
 		return mv;
+=======
+		
+		teacher.setMemberType(5);
+		int rst = findKidsService.updateTeacherGrade(teacher);
+		System.out.println("컨트롤러에 teacher ====="+rst);
+		if(rst <= 0) {
+			throw new IllegalStateException("선생님 등급 수정시 오류가 발생하였습니다.");
+		}
+		String id = String.valueOf(request.getSession().getAttribute("saveId"));
+		if(StringUtils.isEmpty(id)) {
+			throw new IllegalStateException("로그인 상태가 아닙니다.");
+		}
+		teacher.setId(id);
+		int updMType = findKidsService.UpdGrade(teacher.getId());
+		System.out.println("인증 된 선생님 세션에 그레이드 수정"+updMType);
+		System.out.println("컨트롤러====="+updMType);
+		session.setAttribute("saveMemberType", updMType);
+		
+		msg = "선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
+		goUrl = "main.do";
+		mav.addObject("msg", msg);
+		mav.addObject("goUrl", goUrl);
+		mav.setViewName("findKids/kidsMsg");
+		return mav;
+>>>>>>> Yeongchan
 	}
 
 

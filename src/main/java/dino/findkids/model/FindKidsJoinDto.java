@@ -4,17 +4,17 @@ import java.sql.*;
 
 public class FindKidsJoinDto {
 		
-	private int hope_cost;
+	private int cost;
+	//idx of reserve Table 
 	private int idx;
-	private String r_time;
-	private Date r_endday;
-	private int r_cost;
-	private int d_member_p_idx;
+	private int kid_idx;
+	private int member_p_idx;
+	private int status;
 	private String addr1;
 	private String addr2;
-	private String addr3;	
-	private String k_name;	
-	private int k_gender;
+	private String addr3;
+	private String k_name;
+	private int gender;
 	private Date k_birth;
 	private String k_tendency;
 	private String k_care_type;
@@ -22,10 +22,13 @@ public class FindKidsJoinDto {
 	private String k_introduce;
 	private String c_imgpath;
 	private String teacher_type;
-	private int d_kid_idx;	
 	private int star;
 	private Date r_writedate;
 	private String r_content;
+	private String start_day;
+	private String end_day;
+	private String start_time;
+	private String end_time;
 	
 	
 	
@@ -33,22 +36,21 @@ public class FindKidsJoinDto {
 		super();
 	}
 
-	public FindKidsJoinDto(int hope_cost, int idx, String r_time, Date r_endday, int r_cost, int d_member_p_idx,
-			String addr1, String addr2, String addr3, String k_name, int k_gender, Date k_birth, String k_tendency,
-			String k_care_type, String k_require, String k_introduce, String c_imgpath, String teacher_type,
-			int d_kid_idx, int star, Date r_writedate, String r_content) {
+	public FindKidsJoinDto(int cost, int idx, int kid_idx, int member_p_idx, int status, String addr1, String addr2,
+			String addr3, String k_name, int gender, Date k_birth, String k_tendency, String k_care_type,
+			String k_require, String k_introduce, String c_imgpath, String teacher_type, int star, Date r_writedate,
+			String r_content, String start_day, String end_day, String start_time, String end_time) {
 		super();
-		this.hope_cost = hope_cost;
+		this.cost = cost;
 		this.idx = idx;
-		this.r_time = r_time;
-		this.r_endday = r_endday;
-		this.r_cost = r_cost;
-		this.d_member_p_idx = d_member_p_idx;
+		this.kid_idx = kid_idx;
+		this.member_p_idx = member_p_idx;
+		this.status = status;
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 		this.addr3 = addr3;
 		this.k_name = k_name;
-		this.k_gender = k_gender;
+		this.gender = gender;
 		this.k_birth = k_birth;
 		this.k_tendency = k_tendency;
 		this.k_care_type = k_care_type;
@@ -56,18 +58,21 @@ public class FindKidsJoinDto {
 		this.k_introduce = k_introduce;
 		this.c_imgpath = c_imgpath;
 		this.teacher_type = teacher_type;
-		this.d_kid_idx = d_kid_idx;
 		this.star = star;
 		this.r_writedate = r_writedate;
 		this.r_content = r_content;
+		this.start_day = start_day;
+		this.end_day = end_day;
+		this.start_time = start_time;
+		this.end_time = end_time;
 	}
 
-	public int getHope_cost() {
-		return hope_cost;
+	public int getCost() {
+		return cost;
 	}
 
-	public void setHope_cost(int hope_cost) {
-		this.hope_cost = hope_cost;
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 
 	public int getIdx() {
@@ -78,36 +83,28 @@ public class FindKidsJoinDto {
 		this.idx = idx;
 	}
 
-	public String getR_time() {
-		return r_time;
+	public int getKid_idx() {
+		return kid_idx;
 	}
 
-	public void setR_time(String r_time) {
-		this.r_time = r_time;
+	public void setKid_idx(int kid_idx) {
+		this.kid_idx = kid_idx;
 	}
 
-	public Date getR_endday() {
-		return r_endday;
+	public int getMember_p_idx() {
+		return member_p_idx;
 	}
 
-	public void setR_endday(Date r_endday) {
-		this.r_endday = r_endday;
+	public void setMember_p_idx(int member_p_idx) {
+		this.member_p_idx = member_p_idx;
 	}
 
-	public int getR_cost() {
-		return r_cost;
+	public int getStatus() {
+		return status;
 	}
 
-	public void setR_cost(int r_cost) {
-		this.r_cost = r_cost;
-	}
-
-	public int getD_member_p_idx() {
-		return d_member_p_idx;
-	}
-
-	public void setD_member_p_idx(int d_member_p_idx) {
-		this.d_member_p_idx = d_member_p_idx;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public String getAddr1() {
@@ -142,12 +139,12 @@ public class FindKidsJoinDto {
 		this.k_name = k_name;
 	}
 
-	public int getK_gender() {
-		return k_gender;
+	public int getGender() {
+		return gender;
 	}
 
-	public void setK_gender(int k_gender) {
-		this.k_gender = k_gender;
+	public void setGender(int gender) {
+		this.gender = gender;
 	}
 
 	public Date getK_birth() {
@@ -206,14 +203,6 @@ public class FindKidsJoinDto {
 		this.teacher_type = teacher_type;
 	}
 
-	public int getD_kid_idx() {
-		return d_kid_idx;
-	}
-
-	public void setD_kid_idx(int d_kid_idx) {
-		this.d_kid_idx = d_kid_idx;
-	}
-
 	public int getStar() {
 		return star;
 	}
@@ -225,7 +214,7 @@ public class FindKidsJoinDto {
 	public Date getR_writedate() {
 		return r_writedate;
 	}
-	
+
 	public void setR_writedate(Date r_writedate) {
 		this.r_writedate = r_writedate;
 	}
@@ -238,7 +227,36 @@ public class FindKidsJoinDto {
 		this.r_content = r_content;
 	}
 
-	
+	public String getStart_day() {
+		return start_day;
+	}
 
-	
+	public void setStart_day(String start_day) {
+		this.start_day = start_day;
+	}
+
+	public String getEnd_day() {
+		return end_day;
+	}
+
+	public void setEnd_day(String end_day) {
+		this.end_day = end_day;
+	}
+
+	public String getStart_time() {
+		return start_time;
+	}
+
+	public void setStart_time(String start_time) {
+		this.start_time = start_time;
+	}
+
+	public String getEnd_time() {
+		return end_time;
+	}
+
+	public void setEnd_time(String end_time) {
+		this.end_time = end_time;
+	}
+
 }
