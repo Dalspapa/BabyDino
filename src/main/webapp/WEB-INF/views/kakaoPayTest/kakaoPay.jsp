@@ -18,7 +18,7 @@
 
 </body>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script>
+<!-- <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script> -->
 <script>
 
 	/** 카카오 지도 api */
@@ -30,21 +30,26 @@
 
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 	 */
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-        center: new kakao.maps.LatLng(37.51795334189508, 126.89483972060654), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
 
-	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	if(typeof kakao != 'undefined'){
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+	    mapOption = {
+	        center: new kakao.maps.LatLng(37.51795334189508, 126.89483972060654), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	}
 
 	// 마커가 표시될 위치입니다
 	var markerPosition  = new kakao.maps.LatLng(37.51795334189508, 126.89483972060654);
 
 	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-	    position: markerPosition
-	});
+	if(typeof kakao != 'undefined'){
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
+	}
 
 	// 마커가 지도 위에 표시되도록 설정합니다
 	marker.setMap(map);

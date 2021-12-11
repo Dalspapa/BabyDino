@@ -73,9 +73,11 @@ public class MemberDaoImple implements MemberDao {
 
 	//editpwd
 	public int editPwd(MemberDto memberDto) {
-
 		int result = sqlMap.update("editPwd", memberDto);
 		return result;
 	}
+	
+
 
 }
+

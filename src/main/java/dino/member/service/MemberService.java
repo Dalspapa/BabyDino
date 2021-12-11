@@ -23,5 +23,6 @@ public interface MemberService {
 
 		//휴대폰 번호 인증
 		public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber);
+		
 
 }

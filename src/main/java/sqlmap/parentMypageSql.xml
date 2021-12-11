@@ -15,4 +15,23 @@
 		        , d_reserve r
 		where a.d_member_idx = b.idx and a.idx = r.teacher_idx
 	</select>
+
+	<select id="caringPage" parameterType="Integer" resultType="dino.dto.KidDto">
+		select
+		         k.idx
+		        ,k.d_member_idx
+		        ,k.k_name
+		        ,k.k_birth
+		        ,k.k_gender
+		        ,k.k_introduce
+		        ,k.k_care_type
+		        ,k.k_tendency
+		        ,k.teacher_type
+		        ,k.k_require
+		from
+		         d_kidcard k
+		        ,d_reserve r
+		where
+		        k.idx = r.kid_idx and r.kid_idx = #{idx}
+	</select>
 </mapper>

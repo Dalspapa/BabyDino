@@ -11,19 +11,19 @@
 	margin-top: 100px;
 }
 </style>
-<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@include file="/header.jsp" %>
 </head>
 <body>
 	<div class="title">
 		<div>취소사유 추가하기</div>
 		<div>
-			<input  class="form-control" id="inputPassword2" placeholder="사유 번호를 입력해주세요" name="#">
+			<input type="#" class="form-control" id="inputPassword2" placeholder="사유 번호를 입력해주세요">
 			<input class="form-control" type="text" placeholder="예)몸이 안좋아요" aria-label="default input example">
 		</div>
 		<div>
-			<button type="button" class="btn btn-outline-success"><a href="parentAdd.do">추가하기</a></button>
+			<button type="button" class="btn btn-outline-success">추가하기</button>
 		</div>
 	</div>
 </body>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<%@include file="/footer.jsp" %>
 </html>
