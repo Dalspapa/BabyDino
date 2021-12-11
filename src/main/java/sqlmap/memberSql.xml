@@ -87,4 +87,14 @@
       WHERE   
          ID = #{id} 
    </update>
+   
+      <!-- 회원탈퇴 -->
+   <update id="memberOut" parameterType="dino.dto.MemberDto">
+   		UPDATE
+   			D_MEMBER
+   		SET
+   			MEMBER_TYPE = 9
+   		WHERE
+   			IDX = #{idx}
+   </update>
 </mapper> 

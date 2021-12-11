@@ -1,11 +1,12 @@
+
 package dino.findkids.model;
 
 import java.sql.*;
 
 public class FindKidsJoinDto {
-
+		
 	private int cost;
-	// idx of reserve Table
+	//idx of reserve Table 
 	private int idx;
 	private int kid_idx;
 	private int member_p_idx;
@@ -29,8 +30,8 @@ public class FindKidsJoinDto {
 	private String start_day;
 	private String end_day;
 	private String start_time;
-	private String end_time;
-
+	private String end_time;	
+	
 	public FindKidsJoinDto() {
 		super();
 	}

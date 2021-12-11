@@ -29,7 +29,7 @@ public class AdminController {
 		List<ReportDto> reportManagement = adminService.reportList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("reportManagement",reportManagement);
-		mav.setViewName("admin/reportManagement");
+		mav.setViewName("adminMypage/reportManagement");
 		
 		return mav;
 	}
@@ -46,7 +46,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg",msg);
 		mav.addObject("goUrl", goUrl);
-		mav.setViewName("admin/adminMsg");
+		mav.setViewName("adminMypage/adminMsg");
 		return mav;
 	}
 	

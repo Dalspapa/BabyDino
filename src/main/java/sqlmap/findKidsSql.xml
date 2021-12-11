@@ -12,14 +12,14 @@
 		insert into
 			d_teachercard
 		values(
-			#{idx},
-			#{memberIdx},
+			d_teachercard_idx.nextval,
+			#{d_member_idx},
 			#{job},
-			'1,2,3',
+			'1,2,3',		<!-- 퀴즈, 등본, 성범죄 조회 = 필수검증 -->
 			#{kid_type},
 			#{t_care_type},
-			#{schedule_day},
-			#{schedule_time},
+			null,
+			null,
 			#{t_cost},
 			#{t_introduce},
 			#{bank},
@@ -43,7 +43,7 @@
 		        , m.addr3
 		        , k.k_name
 		        , k.k_gender
-		        , k.k_birth
+		        , (to_char(sysdate,'yyyy') - to_char(k.k_birth,'yyyy')) as age
 		        , k.k_tendency
 		        , k.k_care_type
 		        , k.k_require
@@ -116,8 +116,8 @@
 	<!-- 아이카드 상세정보  -->
 	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT  r.cost
-		        , r.to_char(start_date, 'hh24')
-		        , r.to_char(end_date, 'hh24')
+		        , to_char(start_date, 'hh24')
+		        , to_char(end_date, 'hh24')
 		        , r.kid_idx
 		        , r.member_p_idx
 		        , m.addr1

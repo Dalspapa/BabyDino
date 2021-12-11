@@ -205,7 +205,36 @@ public class MemberController {
 		return mav;
 
 	}
-
+	
+	//회원탈퇴
+		@RequestMapping("/memberOutFoam.do")
+		public String memberOutFoam() {
+			return ("member/memberOut");
+			
+		}
+		
+		//회원탈퇴
+		@RequestMapping("/memberOut.do")
+		public ModelAndView memberOut(@RequestParam("sidx") int idx ) {
+			
+			
+			int result = memberService.memberOut(idx);
+			String msg = result > 0? "성공적으로 탈퇴가 되었습니다." : "회원 탈퇴가 이루어지지 않았습니다.";
+			
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("msg",msg);
+			mav.addObject("goUrl","main.do");
+			mav.setViewName("member/findPwdMsg");
+			return mav;
+			
+		}
+		
+		//계정관리
+		@RequestMapping("/accountManagement.do")
+		public String accoutManagement() {
+			return ("commonMember/accountManagement");
+		}
 }
 
 

@@ -24,5 +24,6 @@ public interface MemberService {
 		//휴대폰 번호 인증
 		public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber);
 		
-
+		//회원 탈퇴
+		public int memberOut(int idx);
 }
