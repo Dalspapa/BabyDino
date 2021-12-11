@@ -5,6 +5,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
@@ -32,7 +34,6 @@
 	</style>
 </head>
 <body>
-	<!-- TO DO : 현재 하드 코딩임. 각 세션별 ID값 줘서 데이터 받아서 처리해야함. -->
 	<div class="search">
 	 	<form class="" action="showTeacherList.do" method="post">
 			<!-- 캘린더 -->
@@ -126,7 +127,15 @@
 			</section>
 			
 			<section>
-				<input type="checkbox">돌봄유형 bla~bla~ <!-- TO DO : 여기에 돌봄유형 뿌려주세요. -->
+				<div class="row">
+					<div>원하는 돌봄 분야</div>
+					<c:forEach var="c_list" items="${ c_list }">
+						<div class="col-md-2">
+							<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
+							<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
+						</div>
+					</c:forEach>
+				</div>
 			</section>
 			
 			<section>

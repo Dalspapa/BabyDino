@@ -35,7 +35,7 @@ public class FindKidsDaoImpl implements FindKidsDao {
 
 		int result = sqlMap.insert("tSetImg", imgDto);
 		//Test Code
-		System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
+		System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+"member idx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
 		return result;
 	}
 

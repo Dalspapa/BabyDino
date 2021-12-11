@@ -24,10 +24,6 @@ public class MakeTCardDto {
 	private String t_sexcrime;
 	private String career_experience;
 
-
-
-
-
 	public int getMemberIdx() {
 		return memberIdx;
 	}
@@ -79,7 +75,6 @@ public class MakeTCardDto {
 		this.tImg = tImg;
 	}
 
-
 	//게터세터
 
 	public List<MultipartFile> getTImg() {
@@ -89,10 +84,6 @@ public class MakeTCardDto {
 	public void setTImg(List<MultipartFile> tImg) {
 		this.tImg = tImg;
 	}
-
-
-
-
 
 	public int getIdx() {
 		return idx;
