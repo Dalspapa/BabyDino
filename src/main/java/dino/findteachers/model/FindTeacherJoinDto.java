@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package dino.findteachers.model;
 
 import java.util.List;
@@ -6,14 +5,14 @@ import java.util.List;
 import dino.dto.ReviewDto;
 
 public class FindTeacherJoinDto {
-	
+
 	private int idx;
 	private int t_cost;
 	private int job;
 	private int badge;
 	private String t_introduce;
-	private String schedule_day;		// 샘은 시간안씀 
-	private String schedule_time;		// 샘은 시간안씀 
+	private String schedule_day;		// 샘은 시간안씀
+	private String schedule_time;		// 샘은 시간안씀
 	private String kid_type;
 	private String t_care_type;
 	private String career_experience;
@@ -28,7 +27,7 @@ public class FindTeacherJoinDto {
 	private String r_content;
 	private String c_imgpath;
 	private List<ReviewDto> review_list;
-	
+
 	public FindTeacherJoinDto() {
 		super();
 	}
@@ -68,7 +67,7 @@ public class FindTeacherJoinDto {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	
+
 	public int getAge() {
 		return age;
 	}
@@ -76,7 +75,7 @@ public class FindTeacherJoinDto {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
 	public int getT_cost() {
 		return t_cost;
 	}
@@ -229,6 +228,6 @@ public class FindTeacherJoinDto {
 		this.review_list = review_list;
 	}
 
-	
+
 }
 
