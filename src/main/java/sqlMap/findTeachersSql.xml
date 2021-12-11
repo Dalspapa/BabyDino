@@ -26,18 +26,59 @@
             FROM 
                 d_kidcard
             WHERE 
-                d_member_idx = 23) b
+                d_member_idx = 115) b
     WHERE 
         a.idx = b.xidx
 	</select>
-
+	
+	<!-- pick addr card -->
+	<select id="pickAddr" parameterType="int" resultType="dino.Dto.MemberDto">
+	SELECT
+    	idx,
+    	addr1,
+    	addr2,
+    	addr3
+	FROM
+    	d_member
+	WHERE
+    	idx = 41
+	</select>
+	
+	<!-- pick addr card 
+	나중에 추가
+	parameterType="int"  -->
+	<select id="getaddr" resultType="dino.Dto.MemberDto">
+	SELECT
+    	idx,
+    	addr1,
+    	addr2,
+    	addr3
+	FROM
+    	d_member
+	WHERE
+    	idx = 41
+	</select>
+	
+	
+	<!-- update addr card -->
+	<update id="upAddr" parameterType="dino.Dto.MemberDto">
+	UPDATE
+		d_member
+	SET
+		addr1 = #{addr1},
+		addr2 = #{addr2},
+		addr3 = #{addr3}
+	WHERE
+		idx = 41
+	</update>
+	
 	<!-- make kid card --> 
 	<insert id="k_makeCard" parameterType="dino.Dto.KidDto">
-	insert into
+	INSERT INTO 
                 d_kidcard
-        values(
-                d_kid_idx.nextval,
-                23,
+        VALUES(
+                d_kidcard_idx.nextval,
+                115,
                 #{k_name},
                 2,
                 #{k_birth},
@@ -47,6 +88,23 @@
                	#{teacher_type},
                	#{k_require}
         )
+	</insert>
+	
+	<insert id="k_reserve" parameterType="dino.Dto.ReserveDto">
+	INSERT INTO
+	    	 d_reserve
+		VALUES(
+		    D_RESERVE_IDX.nextval,
+		    114,
+		    #{kid_idx},
+		    to_date(#{start_date}, 'yyyy-mm-dd hh24'),
+		    to_date(#{end_date}, 'yyyy-mm-dd hh24'),
+		    #{cost},
+		    1,
+		    null,
+		    null,
+		    null
+	)
 	</insert>
 	
 	<!-- <insert id="kSetImg" parameterType="dino.Dto.Common_ImgDto">
@@ -103,15 +161,16 @@
 	</select>
 	
 	<select id="teacherReviewList" resultType="dino.Dto.ReviewDto">
-		select idx
+		SELECT
+			 idx
 	     	 , d_reserve_idx
 	     	 , d_member_idx
 	     	 , star
 	     	 , r_writedate
 	     	 , r_content
-		from 
+		FROM 
 			d_review 
-		where 
+		WHERE 
 			d_member_idx = 41
 	</select>
 	

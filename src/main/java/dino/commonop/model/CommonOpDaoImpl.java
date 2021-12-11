@@ -97,6 +97,24 @@ public class CommonOpDaoImpl implements CommonOpDao {
 		List<CommonOpDto> p_list = sqlMap.selectList("pay" , map);
 		return p_list;
 	}
+
+	public List<CommonOpDto> k_date_list() {
+		List<CommonOpDto> d_list = sqlMap.selectList("date");
+		
+		return d_list;
+	}
+
+	public List<CommonOpDto> k_time_start_list() {
+		List<CommonOpDto> ts_list = sqlMap.selectList("s_time");
+		
+		return ts_list;
+	}
+	
+	public List<CommonOpDto> k_time_end_list() {
+		List<CommonOpDto> te_list = sqlMap.selectList("e_time");
+		
+		return te_list;
+	}
 	
 	
 	

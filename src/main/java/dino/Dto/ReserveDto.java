@@ -5,153 +5,123 @@ import java.sql.*;
 public class ReserveDto {
  
 	private int idx;
-	private int d_member_p_idx;
-	private int d_kid_idx;
-	private String r_time;
-	private int r_status;
-	private int hope_cost;
-	private Date r_endday;
-	private int r_cost;
-	private int d_teacher_idx;
-	private Date r_day;
-	private int r_cancle_reason;
-	
+	private int member_p_idx;
+	private int kid_idx;
+	private Date start_date;
+	private Date end_date;
+	private int cost;
+	private int status;
+	private Date match_date;
+	private int teacher_idx;
+	private int cancle_reason;
 	
 	public ReserveDto() {
 		super();
 	}
 
-
-	public ReserveDto(int idx, int d_member_p_idx, int d_kid_idx, String r_time, int r_status, int hope_cost,
-			Date r_endday, int r_cost, int d_teacher_idx, Date r_day, int r_cancle_reason) {
+	public ReserveDto(int idx, int member_p_idx, int kid_idx, Date start_date, Date end_date, int cost, int status,
+			Date match_date, int teacher_idx, int cancle_reason) {
 		super();
 		this.idx = idx;
-		this.d_member_p_idx = d_member_p_idx;
-		this.d_kid_idx = d_kid_idx;
-		this.r_time = r_time;
-		this.r_status = r_status;
-		this.hope_cost = hope_cost;
-		this.r_endday = r_endday;
-		this.r_cost = r_cost;
-		this.d_teacher_idx = d_teacher_idx;
-		this.r_day = r_day;
-		this.r_cancle_reason = r_cancle_reason;
+		this.member_p_idx = member_p_idx;
+		this.kid_idx = kid_idx;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.cost = cost;
+		this.status = status;
+		this.match_date = match_date;
+		this.teacher_idx = teacher_idx;
+		this.cancle_reason = cancle_reason;
 	}
-
 
 	public int getIdx() {
 		return idx;
 	}
 
-
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
 
-
-	public int getD_member_p_idx() {
-		return d_member_p_idx;
+	public int getMember_p_idx() {
+		return member_p_idx;
 	}
 
-
-	public void setD_member_p_idx(int d_member_p_idx) {
-		this.d_member_p_idx = d_member_p_idx;
+	public void setMember_p_idx(int member_p_idx) {
+		this.member_p_idx = member_p_idx;
 	}
 
-
-	public int getD_kid_idx() {
-		return d_kid_idx;
+	public int getKid_idx() {
+		return kid_idx;
 	}
 
-
-	public void setD_kid_idx(int d_kid_idx) {
-		this.d_kid_idx = d_kid_idx;
+	public void setKid_idx(int kid_idx) {
+		this.kid_idx = kid_idx;
 	}
 
-
-	public String getR_time() {
-		return r_time;
+	public Date getStart_date() {
+		return start_date;
 	}
 
-
-	public void setR_time(String r_time) {
-		this.r_time = r_time;
+	public void setStart_date(Date start_date) {
+		this.start_date = start_date;
 	}
 
-
-	public int getR_status() {
-		return r_status;
+	public Date getEnd_date() {
+		return end_date;
 	}
 
-
-	public void setR_status(int r_status) {
-		this.r_status = r_status;
+	public void setEnd_date(Date end_date) {
+		this.end_date = end_date;
 	}
 
-
-	public int getHope_cost() {
-		return hope_cost;
+	public int getCost() {
+		return cost;
 	}
 
-
-	public void setHope_cost(int hope_cost) {
-		this.hope_cost = hope_cost;
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 
-
-	public Date getR_endday() {
-		return r_endday;
+	public int getStatus() {
+		return status;
 	}
 
-
-	public void setR_endday(Date r_endday) {
-		this.r_endday = r_endday;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
-
-	public int getR_cost() {
-		return r_cost;
+	public Date getMatch_date() {
+		return match_date;
 	}
 
-
-	public void setR_cost(int r_cost) {
-		this.r_cost = r_cost;
+	public void setMatch_date(Date match_date) {
+		this.match_date = match_date;
 	}
 
-
-	public int getD_teacher_idx() {
-		return d_teacher_idx;
+	public int getTeacher_idx() {
+		return teacher_idx;
 	}
 
-
-	public void setD_teacher_idx(int d_teacher_idx) {
-		this.d_teacher_idx = d_teacher_idx;
+	public void setTeacher_idx(int teacher_idx) {
+		this.teacher_idx = teacher_idx;
 	}
 
-
-	public Date getR_day() {
-		return r_day;
+	public int getCancle_reason() {
+		return cancle_reason;
 	}
 
-
-	public void setR_day(Date r_day) {
-		this.r_day = r_day;
+	public void setCancle_reason(int cancle_reason) {
+		this.cancle_reason = cancle_reason;
 	}
 
-
-	public int getR_cancle_reason() {
-		return r_cancle_reason;
-	}
-
-
-	public void setR_cancle_reason(int r_cancle_reason) {
-		this.r_cancle_reason = r_cancle_reason;
-	}
-
-	 @Override
+	@Override
 	   public String toString() {
-	     String str = "돌봄에약건에 대한 부모님 아이디" + d_member_p_idx + " 돌봄 활동 시간: " + r_time + "\n요청 받는 사람의 희망 시급: " + hope_cost + "\n실제 돌봄이 이뤄지는 날짜: " + r_endday;
+	     String str = "돌봄에약건에 대한 부모님 아이디: " + member_p_idx + " 돌봄 활동 시간: " +
+	   "선생님 아이디: " + teacher_idx + "시작일: " + start_date + "끝난일: " + end_date
+	   + "비용: " + cost + "아이카드 idx: " + kid_idx + "돌봄 진행 상태: " + status + "취소사유"
+	   + cancle_reason;
 	     System.out.println(str);
 	      return str;
 	   }
+	
 }	

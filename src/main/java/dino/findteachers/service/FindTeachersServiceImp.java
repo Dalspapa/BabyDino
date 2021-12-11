@@ -4,6 +4,8 @@ import dino.findteachers.model.FindTeachersDao;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dino.Dto.Common_ImgDto;
 import dino.Dto.KidDto;
+import dino.Dto.MemberDto;
+import dino.Dto.ReserveDto;
 import dino.Dto.ReviewDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 
@@ -107,13 +111,53 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		return mkList;
 	}
 
-	// make kid card 
+	// pick addr card
+	public MemberDto pickKidsAddrCard(int idx) {
+
+		MemberDto addr_dto = findTeachersDao.pickKidsAddrCard(idx);
+
+		return addr_dto;
+	}
+
+	// update addr get
+	public MemberDto addrUpForm(int idx) {
+		
+		MemberDto addrUp = findTeachersDao.addrUpForm(idx);
+		
+		return addrUp;
+	}
+
+	// update addr card
+	public int updateAddr(MemberDto dto) {
+
+		int addr_update = findTeachersDao.updateAddr(dto);
+
+		return addr_update;
+
+	}
+
+	// make kid card
 	public int makeKCard(KidDto dto) {
-	  
-	  int result = findTeachersDao.makeKCard(dto); 
-	  
-	  return result; 
-	} 
+
+		int result = findTeachersDao.makeKCard(dto);
+
+		return result;
+	}
+	
+	// Insert reserve Kid Card
+	@Transactional
+	public int reserveCard(ReserveDto dto) {
+		
+//		int addrUpdate = findTeachersDao.updateAddr(mDto);
+		int result = findTeachersDao.reserveCard(dto);
+		
+//		List result = new ArrayList();
+//		result.add(addrUpdate);
+//		result.add(reserveInsert);
+		
+		
+		return result;
+	}
 
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx) {
@@ -122,7 +166,7 @@ public class FindTeachersServiceImp implements FindTeachersService {
 
 		List<ReviewDto> reviewList = findTeachersDao.teacherReviewList(idx);
 		t_dto.setReview_list(reviewList);
-		
+
 		return t_dto;
 	}
 

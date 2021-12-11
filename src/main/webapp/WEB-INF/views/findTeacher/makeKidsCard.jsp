@@ -196,7 +196,7 @@ img {
 		
 		var formData = new FormData();
 		
-		formData.set("d_member_idx", 23)							// 맴버 테이블 회원 인덱스
+		formData.set("d_member_idx", 115)							// 맴버 테이블 회원 인덱스
 		formData.set("k_name", $("#k_name").val())					// 아이 이름
 		formData.set("k_gender", $("#k_gender").val())				// 아이 성별
 		formData.set("k_tendency",k_op) 							// 아이 성향
