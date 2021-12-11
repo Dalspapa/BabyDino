@@ -21,5 +21,9 @@ public interface MemberDao {
 			public List<MemberDto> findPwd(Map map);
 			//editPwd
 			public int editPwd(MemberDto memberDto);
+
+			//memberOut
+			public int memberOut(int idx);
+			
 			
 }

@@ -77,7 +77,12 @@ public class MemberDaoImple implements MemberDao {
 		return result;
 	}
 	
-
+	//memberOut
+	public int memberOut(int idx) {
+		
+		int result = sqlMap.update("memberOut", idx);
+		return result;
+	}
 
 }
 
