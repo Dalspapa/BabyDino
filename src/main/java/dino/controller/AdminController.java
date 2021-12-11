@@ -162,4 +162,10 @@ public class AdminController {
 		return mav;
 	}
 	
+	//회원 이미지 테이블(수정예정)
+	@RequestMapping("/memberImg.do")
+	public String memberImg() {
+		return "adminMypage/memberImgTable";
+	}
+	
 }

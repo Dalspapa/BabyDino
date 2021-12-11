@@ -188,6 +188,7 @@
 		  <div class="offcanvas-body">
 		    <div><a href="memberManagement.do">회원 관리</a></div>
 		    <div><a href="settlement.do">선생님 정산</a></div>
+		    <div><a href="memberImg.do">회원 이미지 테이블</a></div>
 		    <div><a href="functionEdit.do">기능 편집</a></div>
 		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
 		  </div>
