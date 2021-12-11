@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,9 +104,7 @@
 									</c:forEach>
 									</h5>
 								</div>
-								<div>
-									<h6 class="text-warning" id="title">새로운 추천01</h6>
-									<h6 id="info">${kDto.addr1 } / ${kDto.k_name }  / 
+								<div>									 
 									<h6 class="text-warning" id="title">${kDto.k_name }</h6>
 									<h6 id="info">${kDto.addr2 }
 										<c:if test="${kDto.k_gender == 1 }">
@@ -166,11 +161,6 @@
 	</section>
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-
-<!-- custome js -->
-<script src="./common/js/bootstrap.min.js"></script>
-
-
 <script>
 
 	function goUrl(){
