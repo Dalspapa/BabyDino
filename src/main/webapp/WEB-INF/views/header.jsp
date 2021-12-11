@@ -35,33 +35,6 @@
 	<!-- ./ 챗 버튼 -->
 </div>
 
-<<<<<<< HEAD
-    <!-- header -->
-	<header>
-		<c:set var="sid" value="${sessionScope.saveId}" />
-		<c:set var="sname" value="${sessionScope.saveName}" />
-		<c:set var="stype" value="${sessionScope.saveMemberType}" />
-		<c:set var="sidx" value="${sessionScope.saveIdx}" />
-		<nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
-			<div class="container px-4 px-lg-5">
-				<a id="header-logo" class="navbar-brand" href="main.do">
-					<span>ㅇㄱ</span>
-					<span>ㄱㄹ</span>
-				</a>
-
-				<!-- 반응형 메뉴바 -->
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-					Menu
-					<i class="fas fa-bars"></i>
-					<!--  ./반응형 메뉴바 -->
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ms-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="#about">돌봄신청</a>
-						</li>
-=======
 <!-- header -->
 <header>
 	<c:set var="sid" value="${sessionScope.saveId}" />
@@ -97,7 +70,6 @@
 	                    </li>
                     </c:if>
                     <c:if test="${ (!empty sid && stype == 4) || (!empty sid && stype == 5) }">
->>>>>>> Yeongchan
 						<li class="nav-item">
 							<a class="nav-link" href="javascript:goCompulCheck(${ stype });">아이찾기</a>
 						<li class="nav-item"><a class="nav-link" href="noticeMain.do">궁금해요</a>
@@ -132,14 +104,7 @@
 	<script src="./common/js/jquery-3.6.0.min.js"></script>
 </head>
 
-<<<<<<< HEAD
 <script>
-
-alert("${sid}:${stype}");
-
-=======
-<script>
->>>>>>> Yeongchan
 
 	function goCompulCheck(stype) {
 
