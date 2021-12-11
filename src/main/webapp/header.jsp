@@ -193,7 +193,7 @@
 		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="#">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
+		    <div><a href="reportManagement.do">신고내역</a></div>
 		    <div><a href="#">계정관리</a></div>
 		  </div>
 		</div>
