@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dino.admin.service.AdminService;
+import dino.adminmypage.service.AdminService;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;

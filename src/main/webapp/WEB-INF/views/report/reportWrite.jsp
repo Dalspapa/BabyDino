@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%@ include file="/WEB-INF/views/include/header.jsp" %>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	 
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ 
 <style>
 /* body {
     width: 952px;
@@ -231,7 +230,7 @@ asvg {
 </style>
 </head>
 <body>
-
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<form name="reportWrite" action="reportWrite.do" method="post">
 		<div class="body">
 		<div class="appbar">
@@ -302,20 +301,18 @@ asvg {
 			</div>
 			</div>
 		</form>
-		
-	<script>
-	function checkForm(){
-		var form = document.reportWrite;
-		/**카테고리 유효성 검사*/
-		if(form.rp_type.value==""||form.rp_type.value==null){
-			alert('신고유형을 선택해주세요.');
-			form.rp_type.select();
-			return false;
-		}
-		form.submit();
-	} 
-	</script>		
-		
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>	
 </body>
+<script>
+function checkForm(){
+	var form = document.reportWrite;
+	/**카테고리 유효성 검사*/
+	if(form.rp_type.value==""||form.rp_type.value==null){
+		alert('신고유형을 선택해주세요.');
+		form.rp_type.select();
+		return false;
+	}
+	form.submit();
+} 
+</script>
 </html>

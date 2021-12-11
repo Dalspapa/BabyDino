@@ -3,11 +3,10 @@ package dino.adminmypage.service;
 import java.util.List;
 
 import dino.adminmypage.model.AdminDao;
-import dino.commonop.model.CommonOpDao;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
+import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
-import dino.member.model.MemberDao;
 
 public class AdminServiceImpl implements AdminService {
 
@@ -16,6 +15,19 @@ public class AdminServiceImpl implements AdminService {
 	public AdminDao getAdminDao() {
 		return adminDao;
 	}
+	
+	public List<ReportDto> reportList() {
+		
+		List<ReportDto> reportlist = adminDao.reportList();
+		
+		return reportlist;
+	}
+	
+	//회원 강제탈퇴 관련 메서드
+	public int adminMemberOut(int idx) {
+		int result = adminDao.adminMemberOut(idx);
+		return result;
+	}	
 
 	public void setAdminDao(AdminDao adminDao) {
 		this.adminDao = adminDao;

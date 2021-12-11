@@ -6,11 +6,24 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
+import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
 
 public class AdminDaoimpl implements AdminDao {
 	
 	private SqlSessionTemplate sqlMap;
+	
+	public List<ReportDto> reportList() {
+		List<ReportDto> reportlist = sqlMap.selectList("reportList");
+		return reportlist;
+	}
+	
+	//회원강제탈퇴
+	public int adminMemberOut(int idx) {
+		System.out.println("리포트 삭제 idxdddddddddddd "+idx);
+		int result = sqlMap.update("adminMemberOut", idx);
+		return result;
+	}	
 
 	public AdminDaoimpl(SqlSessionTemplate sqlMap) {
 		super();
