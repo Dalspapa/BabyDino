@@ -1,17 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-<%@include file="../header.jsp" %>
 
-=======
-						  
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/header.jsp" %>
->>>>>>> Yeongchan
+<%@include file="/header.jsp" %>
+
 <script src="common/js/signature_draw.js"></script>
 
 <style>
@@ -96,11 +89,7 @@ section p{
 </head>
 <body>
 <h2>필수인증</h2>
-<<<<<<< HEAD
-<form id="form" name="t_compulsory" action="/teacher/cert.do" method="post">
-=======
 <form id="form" name="t_compulsory" action="cert.do" method="post">
->>>>>>> Yeongchan
 <section>
 	<div id="qna">
 	<div id="h_Div">
@@ -180,13 +169,8 @@ section p{
 					<input type="radio" id="q_6_d" name="quiz6" class="quiz" value="0"><label for="q_6_d">오늘 한 놀이 복습</label>
 				</p>
 			<div id="q_btn">
-<<<<<<< HEAD
-				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
-				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
-=======
 				<button type="button" class="btn btn-outline-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-outline-success nextbtn" >다음으로</button>
->>>>>>> Yeongchan
 			</div>
 		</div>
 		<div id="step_7" class="makeTdiv" style="width: 100%;">
@@ -211,13 +195,8 @@ section p{
 					<input type="radio" id="q_8_d" name="quiz8" class="quiz" value="1"><label for="q_8_d">아이의 마음에 공감해주면서 다른 놀이로 관심을 유도한다.</label>
 				</p>
 			<div id="q_btn">
-<<<<<<< HEAD
-				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
-				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
-=======
 				<button type="button" class="btn btn-outline-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-outline-success nextbtn" >다음으로</button>
->>>>>>> Yeongchan
 			</div>
 		</div>
 		<div id="step_9" class="makeTdiv" style="width: 100%;">
@@ -229,13 +208,8 @@ section p{
 					<input type="radio" id="q_9_d" name="quiz9" class="quiz" value="0"><label for="q_9_d">마스크</label>
 				</p>
 			<div id="q_btn">
-<<<<<<< HEAD
-				<button type="button" class="btn btn-secondary prevbtn" >이전으로</button>
-				<button type="button" class="btn btn-secondary nextbtn" >다음으로</button>
-=======
 				<button type="button" class="btn btn-outline-secondary prevbtn" >이전으로</button>
 				<button type="button" class="btn btn-outline-success nextbtn" >다음으로</button>
->>>>>>> Yeongchan
 			</div>
 		</div>
 
@@ -252,10 +226,6 @@ section p{
 			<button type="button" class="btn btn-outline-success nextbtn" >다음으로</button>
 		</div>
 		</div>
-<<<<<<< HEAD
-=======
-		</div>  
->>>>>>> Yeongchan
 </section>
 <section id="step_11" class="makeTdiv" style="width: 39%;">
 	<div>
@@ -264,13 +234,8 @@ section p{
 			<h5>등본 등록</h5>
 			<input type="file" id="t_copy" name="t_copy" class="form-control"/>
 		</div>
-<<<<<<< HEAD
-		<div>
-			<h3>동의 서명</h3>
-=======
 		<div class="sign">
 			<h5>동의 서명</h5>
->>>>>>> Yeongchan
 			<div class="canvas-draw-box">
 				<div class="canvas-draw-base" data-id="canvas_name"></div>
 					<div class="canvas-draw-pad-box">
@@ -293,23 +258,10 @@ section p{
 </section>
 </form>
 </body>
-<<<<<<< HEAD
-<%@include file="../footer.jsp" %>
-
-  <!-- custome js -->
-  <script src="./common/js/bootstrap.min.js"></script>
-
-  	<script>
-
-
-	$(document).ready(function (){
-
-=======
 <%@include file="/footer.jsp" %>
   	<script>
   	
   	$(document).ready(function (){
->>>>>>> Yeongchan
 
 		let name = 'step_';
 		let count = 1;
@@ -343,19 +295,8 @@ section p{
     	 		fnCert();
 	 		}
 	 	});
-<<<<<<< HEAD
-
-	});
-
-
-
-
-
-=======
-
 	});
 	
->>>>>>> Yeongchan
 	$(function(){
 		_SIGNATURE.start("canvas_name", 300, 300)
 	});
@@ -411,23 +352,7 @@ section p{
                 answer++;
             }
         }
-
-<<<<<<< HEAD
-//         if(answer < 8){
-//         	alert("인증점수가 미달되어 처음으로 돌아갑니다.");
-//             $('.makeTdiv').hide();
-//             $('#step_1').show();
-//             name = 'step_';
-//             count = 1;
-//             dName = name + count;
-
-//             $('.makeTdiv').hide();
-
-//             console.log("검증count2B"+count);
-//             rst = false;
-//         }
-
-=======
+        
         if(answer < 8){
          	alert("인증점수가 미달되어 처음으로 돌아갑니다.");
              $('.makeTdiv').hide();
@@ -441,7 +366,6 @@ section p{
              console.log("검증count2B"+count);
              rst = false;
         }
->>>>>>> Yeongchan
 
         return rst;
 	}
@@ -449,10 +373,7 @@ section p{
 	function fnCert(){
 		$("#form").submit();
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> Yeongchan
 	</script>
 
 </html>

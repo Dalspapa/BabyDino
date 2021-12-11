@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../header.jsp" %>
+<%@include file="/header.jsp" %>
 </head>
 <body>
 <h1>공지사항</h1>
@@ -40,5 +40,5 @@
 	</tbody>
 	</table>
 </body>
-<%@include file="../footer.jsp" %>
+<%@include file="/footer.jsp" %>
 </html>
