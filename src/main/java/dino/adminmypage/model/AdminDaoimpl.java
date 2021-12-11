@@ -20,7 +20,6 @@ public class AdminDaoimpl implements AdminDao {
 	
 	//회원강제탈퇴
 	public int adminMemberOut(int idx) {
-		System.out.println("리포트 삭제 idxdddddddddddd "+idx);
 		int result = sqlMap.update("adminMemberOut", idx);
 		return result;
 	}	
