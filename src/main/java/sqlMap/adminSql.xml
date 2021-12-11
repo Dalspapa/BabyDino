@@ -40,13 +40,13 @@
 	</select>
 	
 	<!-- 부모님취소사유 (삭제) -->
-	<delete id="pdel" parameterType="Integer">
-		delete from 
+	<delete id="pdel" parameterType="String">
+		 delete from 
 			d_common_option
 		where 
 			c_category = 7
 		and 
-			idx = #{idx}
+			op = #{op}
 	</delete>
 	
 	<!-- 부모님 취소사유 (등록) -->
@@ -57,6 +57,61 @@
 			(d_common_option_idx.nextval,
 			#{op},
 			#{c_introduce},
-			8)	
+			7)	
 	</insert>
+	
+	<!-- 선생님 취소사유(등록) -->
+	<insert id="teacherInsert" parameterType="dino.dto.CommonOpDto">
+		insert into
+			d_common_option
+		values
+			(d_common_option_idx.nextval,
+			#{op},
+			#{c_introduce},
+			8)
+	</insert>
+	
+	<!-- 선생님 취소사유(삭제) -->
+	<delete id="tdel" parameterType="String">
+		delete  from
+			d_common_option
+		where
+			c_category = 8
+		and 
+			op = #{op}
+	</delete>
+	
+	<!-- 돌봄분야 리스트 -->
+	<select id="careList" resultType="dino.dto.CommonOpDto">
+		select 
+			* 
+		from 
+			d_common_option 
+		where 
+			c_category = 5
+	</select>
+	
+	<!-- 돌봄분야 추가 -->
+	<insert id="careAdd" parameterType="dino.dto.CommonOpDto">
+		insert into
+			d_common_option
+		values
+			(
+			d_common_option_idx.nextval,
+			#{op},
+			#{c_introduce},
+			5
+			)
+	</insert>
+	
+	<!-- 돌봄분야 삭제 -->
+	<delete id="cdel" parameterType="String">
+		delete  from
+			d_common_option
+		where
+			c_category = 5
+		and 
+			op = #{op}
+	</delete>
+	
   </mapper>

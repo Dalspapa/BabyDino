@@ -14,16 +14,18 @@
 <%@include file="/header.jsp" %>
 </head>
 <body>
+<form name="reason" action="parentAdd.do">
 	<div class="title">
 		<div>취소사유 추가하기</div>
-		<div>
-			<input type="#" class="form-control" id="inputPassword2" placeholder="사유 번호를 입력해주세요">
-			<input class="form-control" type="text" placeholder="예)몸이 안좋아요" aria-label="default input example">
+		<div>			
+			<input type="text" class="form-control" id="inputPassword2" placeholder="사유 번호를 입력해주세요" name="op">
+			<input class="form-control" type="text" placeholder="예)몸이 안좋아요" aria-label="default input example" name="c_introduce">			
 		</div>
 		<div>
-			<button type="button" class="btn btn-outline-success">추가하기</button>
+			<button type="submit" class="btn btn-outline-success">추가하기</button>
 		</div>
 	</div>
+</form>	
 </body>
 <%@include file="/footer.jsp" %>
 </html>
