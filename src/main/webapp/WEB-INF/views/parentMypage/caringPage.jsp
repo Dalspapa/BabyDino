@@ -240,7 +240,7 @@ section{
         <div class="userImg">
           #이미지
         </div>
-        <div class="nameText">아기공룡 #아이이름</div>
+        <div class="nameText">아기공룡  ${ dto.k_name }</div>
       </div>
       <div class="userLiveWrap">
         <div class="userLive">

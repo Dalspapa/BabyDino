@@ -105,11 +105,14 @@ a:link, a:visited {
 		 <c:forEach var="list" items="${ list }">
 	         <div id="section03" class="contentbody">
 	            <!-- 선생님 카드 -->
-	            <a href="caring.do">
-	            <div class="t_card">
-	               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
-	               <div class="intro">#선생님 소개 들어가는 부분section03</div>
-	            </div>
+	            <c:url var="contentUrl" value="caring.do">
+					<c:param name="r_idx">${ list.r_idx }</c:param>
+				</c:url>
+	            <a href="${ contentUrl }">
+		            <div class="t_card">
+		               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
+		               <div class="intro">#선생님 소개 들어가는 부분section03</div>
+		            </div>
 	            </a>
 	            <!-- 선생님 정보 -->
 	            <div class="info">
