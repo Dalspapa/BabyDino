@@ -129,8 +129,8 @@ public class FindKidsServiceImple implements FindKidsService {
 	 * @see dino.findkids.service.FindKidsService#updateTeacherGrade(dino.dto.MemberDto)
 	 */
 	@Transactional
-	public int updateTeacherGrade(MemberDto teacher) {
-		return findkidsDao.updateTeacherGrade(teacher);
+	public int updateTeacherGrade(MemberDto member_type) {
+		return findkidsDao.updateTeacherGrade(member_type);
 
 	}
 	

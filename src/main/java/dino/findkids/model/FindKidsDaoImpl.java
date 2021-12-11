@@ -59,8 +59,8 @@ public class FindKidsDaoImpl implements FindKidsDao {
 	/* (non-Javadoc)
 	 * @see dino.findkids.model.FindKidsDao#updateTeacherGrade(dino.dto.MemberDto)
 	 */
-	public int updateTeacherGrade(MemberDto teacher) {
-		return sqlMap.update("updateTeacherGrade", teacher);
+	public int updateTeacherGrade(MemberDto member_type) {
+		return sqlMap.update("updateTeacherGrade", member_type);
 	}
 	
 	//카드 만든 후 선생님 유형 변경	

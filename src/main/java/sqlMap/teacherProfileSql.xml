@@ -6,6 +6,38 @@
 
 	<select id="teacherProfile" parameterType="Integer" resultType="dino.teachermypage.model.TeacherMyPageDto">
 		
+		SELECT 
+			t.idx
+			,t.d_member_idx
+			,t.badge
+			,t.kid_type
+			,t.t_care_type
+			,t.schedule_day
+			,t.schedule_time
+			,t.t_cost
+	    	,t.t_introduce
+			,t.bank
+			,t.acnum
+			,t.cctvagree
+	    	,t.t_sexcrime
+	    	,t.career_experience
+	    	,m.name
+	    	,(to_char(sysdate,'yyyy') - to_char(m.birth,'yyyy')) as age
+	    	,m.gender
+	    	,r.idx as d_reserve_idx
+	    	,r.cost
+	    	,ci.c_imgpath
+	    	,rv.star
+	    	,rv.r_writedate
+	    	,rv.r_content
+	    FROM 
+	    	d_teachercard t
+	    LEFT JOIN d_member m ON m.idx = t.d_member_idx
+	    LEFT JOIN d_reserve r ON r.teacher_idx = t.d_member_idx
+	    LEFT JOIN d_common_img ci ON ci.d_member_idx = t.d_member_idx    
+	    LEFT JOIN d_review rv ON rv.d_reserve_idx = r.idx
+    	WHERE t.d_member_idx =  #{idx}
+		
 	</select>
 
 </mapper>

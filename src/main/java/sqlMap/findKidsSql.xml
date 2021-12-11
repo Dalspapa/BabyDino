@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.findKids">
-
+	
+	<!-- 선생님 카드 등록 -->
 	<insert id="t_makeCard" parameterType="dino.dto.MakeTCardDto">
 		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
 			SELECT  d_teacher_idx.NEXTVAL FROM DUAL
@@ -28,7 +29,8 @@
 			#{career_experience}
 		)
 	</insert>
-
+	
+	<!-- 아이찾기 리스트 출력 -->
 	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT            
 				r.cost
@@ -74,7 +76,8 @@
             ON t.t_idx = r.idx
 
 	</select>
-
+	
+	<!-- 선생님 고유번호 조회 -->
 	<select id="getTIdx" parameterType="Integer" resultType="Integer">
 		select
 			idx
@@ -83,7 +86,8 @@
 		where
 			rownum = 1 and d_member_idx = #{d_member_idx}
 	</select>
-
+	
+	<!-- 이미지 인서트 -->
 	<insert id="tSetImg" parameterType="dino.dto.Common_ImgDto">
 		INSERT INTO
 			d_common_img
@@ -95,7 +99,8 @@
 			#{ref_idx}
 		)
 	</insert>
-
+	
+	<!-- 이미지 출력 -->
 	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
 	    SELECT
 	        dt.*, dci.c_imgpath
@@ -108,7 +113,8 @@
 	    WHERE
 	        dt.d_member_idx = #{d_member_idx}
 	</select>
-
+	
+	<!-- 아이카드 상세정보  -->
 	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT  r.cost
 		        , r.to_char(start_date, 'hh24')
@@ -141,12 +147,13 @@
 	<update id="updateTeacherGrade" parameterType="dino.dto.MemberDto">
 	   /* findKidsSql.updateTeacherGrade */
 	   UPDATE D_MEMBER
-	      SET MEMBER_TYPE = #{memberType}
+	      SET MEMBER_TYPE = #{member_type}
 	        , UPD_DT      = SYSDATE
 	        , UPD_ID      = #{updId}
 	    WHERE IDX = #{idx}
 	</update>
 	
+	<!-- 선생님 grade 수정 -->
 	<update id="teacherGradeUpd" parameterType="Integer">
 		UPDATE D_MEMBER
 	      SET MEMBER_TYPE = 6
@@ -155,6 +162,7 @@
 	    WHERE IDX = #{idx}	
 	</update>
 	
+	<!-- 선생님 grade 조회 / 세션 등록 위함 -->
 	<select id="UpdGrade" parameterType="String" resultType="Integer">
 		SELECT 
 			MEMBER_TYPE

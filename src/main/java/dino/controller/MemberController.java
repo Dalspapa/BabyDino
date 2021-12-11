@@ -1,8 +1,6 @@
 package dino.controller;
 
-						  
-
-import java.util.*;		
+import java.util.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +50,7 @@ public class MemberController {
 		if (result == true) {
 			MemberDto memberDto = memberService.getUserInfo(id);
 			String userName = memberDto.getName();
-			int memberType = memberDto.getMemberType();
+			int memberType = memberDto.getMember_type();
 
 			//TestCode
 			System.out.println("Controller.java memberType : " + memberType);
@@ -127,7 +125,7 @@ public class MemberController {
 	public ResponseEntity<?> joinSubmit(MemberDto memberDto) {
 
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		System.out.println("-- memberTyep : " + memberDto.getMemberType());
+		System.out.println("-- memberTyep : " + memberDto.getMember_type());
 
 
 		int joinCount = memberService.memberJoin(memberDto);

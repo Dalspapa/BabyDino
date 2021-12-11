@@ -79,7 +79,7 @@ public class FindKidsController {
 		return mav;
 	}
 
-
+	//make Teacher Card
 	@RequestMapping(value = "/makeTeacherCard.do", method = RequestMethod.POST)
 	public ResponseEntity<?> makeTeacherCard(MakeTCardDto dto, Common_ImgDto imgDto, HttpServletRequest request, MemberDto mdto, HttpSession session) {
 
@@ -125,7 +125,7 @@ public class FindKidsController {
 		}
 		mdto.setIdx(Integer.parseInt(idx));
 
-		mdto.setMemberType(6);
+		mdto.setMember_type(6);
 		int rst = findKidsService.updateTeacherGrade(mdto);
 		if(rst <= 0) {
 			throw new IllegalStateException("선생님 카드 등록시 오류가 발생하였습니다.");
@@ -214,7 +214,7 @@ public class FindKidsController {
 		}
 		teacher.setIdx(Integer.parseInt(idx));
 		
-		teacher.setMemberType(5);
+		teacher.setMember_type(5);
 		int rst = findKidsService.updateTeacherGrade(teacher);
 		System.out.println("컨트롤러에 teacher ====="+rst);
 		if(rst <= 0) {
@@ -231,6 +231,7 @@ public class FindKidsController {
 		session.setAttribute("saveMemberType", updMType);
 		
 		msg = "선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
+		System.out.println("컨트롤러 msg ========"+msg);
 		goUrl = "main.do";
 		mav.addObject("msg", msg);
 		mav.addObject("goUrl", goUrl);

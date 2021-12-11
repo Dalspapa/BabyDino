@@ -26,7 +26,7 @@ public interface FindKidsDao {
 	 * return: int
 	 * since: 2021. 12. 7.
 	 */
-	public int updateTeacherGrade(MemberDto teacher);
+	public int updateTeacherGrade(MemberDto member_type);
 	
 	//카드 만든 후 선생님 유형 변경
 	public int teacherGradeUpd(int idx, String updId);
