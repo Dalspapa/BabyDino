@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ID / PWD 찾기</title>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 section{
 	margin-top: 180px;
@@ -109,7 +109,7 @@ section .findIdBtn{
 		</article>
 	</section>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
 	//아이디찾기 비밀번호 찾기 js

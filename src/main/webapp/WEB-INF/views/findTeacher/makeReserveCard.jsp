@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <!-- pignose-calendar -->
 <link rel="stylesheet" href="./common/css/pignose.calendar.min.css">
 
@@ -57,7 +57,7 @@
 	</form>	
 </section>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 $('.calendar').pignoseCalendar({
 	lang: 'ko',

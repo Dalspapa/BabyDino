@@ -11,7 +11,7 @@
 	margin-top: 200px;
 }
 </style>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 	<div class="main">
@@ -106,7 +106,7 @@
 		
 	</div>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
 //돌봄분야 추가기능&취소사유 js

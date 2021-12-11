@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 <script src="common/js/signature_draw.js"></script>
 
@@ -258,7 +258,7 @@ section p{
 </section>
 </form>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
   	<script>
   	
   	$(document).ready(function (){

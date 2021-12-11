@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 	<br>
@@ -90,7 +90,7 @@
 			</div>
 		</div>
 </body>
-<%@include file="/footer.jsp"%>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
 	function goStep(step){
