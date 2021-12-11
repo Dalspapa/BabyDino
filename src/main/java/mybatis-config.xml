@@ -18,5 +18,6 @@
 		<mapper resource="sqlMap/reviewSql.xml"/>
 		<mapper resource="sqlMap/careNoteSql.xml"/>
 		<mapper resource="sqlMap/parentMypageSql.xml"/>
+		<mapper resource="sqlMap/chatSql.xml"/>
 	</mappers>
 </configuration>
