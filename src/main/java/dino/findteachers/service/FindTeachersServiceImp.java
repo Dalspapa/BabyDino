@@ -145,16 +145,9 @@ public class FindTeachersServiceImp implements FindTeachersService {
 	}
 	
 	// Insert reserve Kid Card
-	@Transactional
-	public int reserveCard(ReserveDto dto) {
+	public int reserveCard(ReserveDto reserveCard) {
 		
-//		int addrUpdate = findTeachersDao.updateAddr(mDto);
-		int result = findTeachersDao.reserveCard(dto);
-		
-//		List result = new ArrayList();
-//		result.add(addrUpdate);
-//		result.add(reserveInsert);
-		
+		int result = findTeachersDao.reserveCard(reserveCard);
 		
 		return result;
 	}

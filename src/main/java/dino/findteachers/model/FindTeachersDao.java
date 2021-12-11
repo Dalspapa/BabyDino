@@ -22,7 +22,7 @@ public interface FindTeachersDao {
 	public int makeKCard(KidDto dto);
 
 	// Insert reserve Kid Card
-	public int reserveCard(ReserveDto dto);
+	public int reserveCard(ReserveDto reserveCard);
 	
 	// pick addr card
 	public MemberDto pickKidsAddrCard(int idx);

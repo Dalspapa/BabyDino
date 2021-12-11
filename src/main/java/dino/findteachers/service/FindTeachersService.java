@@ -37,7 +37,7 @@ public interface FindTeachersService {
 	public FindTeacherJoinDto teacherInfo(int idx);
 	
 	// Insert reserve Kid Card
-	public int reserveCard(ReserveDto dto);
+	public int reserveCard(ReserveDto reserveCard);
 	
 	// set kid img 	
 	//public int kSetImg(Common_ImgDto imgDto);

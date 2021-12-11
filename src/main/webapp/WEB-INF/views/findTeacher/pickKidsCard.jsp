@@ -24,8 +24,8 @@
 </head>
 
 <body>
-	<div class="container" style="padding: 120px 0;">
-		<form name="makeKidsCard" action="makingKidCard.do">
+	<form name="makeKidsCard" action="makingKidCard.do">
+		<div class="container" style="padding: 120px 0;">
 			<!--  아이카드 선택 [START] -->
 			<div class="row" id="step1">
 				<div class="col-12">
@@ -117,55 +117,55 @@
 				</div>
 			</div>
 			<!-- 주소정보 선택 [END] -->
-		</form>
-	</div>
-
-	<div id="step3" class="d-none">
-		<div class="wrapper">
-			<div>
-				<div class="row">
-					<div class="calendar"></div>
-				</div>
-			</div>
-			<hr>
-			<div class="row d-none" id="selectDateRow">
-				<div class="col-md-6" style="text-align: right;">
-					<h5>시작시간</h5>
-					<select id="start_date" class="form-control" style="width: 20%; float: right;">
-						<c:forEach begin="07" end="22" var="startDate">
-							<option value="${startDate}">${startDate }</option>
-						</c:forEach>
-					</select>
-				</div>
-				<div class="col-md-6" style="text-align: left;">
-					<h5>종료시간</h5>
-					<select id="end_date" class="form-control"  style="width: 20%;">
-						<c:forEach begin="08" end="23" var="endDate">
-							<option value="${endDate}">${endDate}</option>
-						</c:forEach>
-					</select>
-				</div>
-			</div>
-			<div class="row">
+		</div>
+	
+		<div id="step3" class="d-none">
+			<div class="wrapper">
 				<div>
 					<div class="row">
-						<div>맘시터에게 지급할 희망 시급을 적어주세요.</div>
-						<div class="col-md-8">
-							<input id="cost" class="form-control" name="cost" type="text"
-								placeholder="희망시급" aria-label="default input example">
-						</div>
+						<div class="calendar"></div>
 					</div>
 				</div>
-				<div>
-					<!-- kidList GO -->
-					<button type="button" class="btn btn-outline-primary"
-						onclick="goKidList()">등록하기</button>
+				<hr>
+				<div class="row d-none" id="selectDateRow">
+					<div class="col-md-6" style="text-align: right;">
+						<h5>시작시간</h5>
+						<select id="start_date" class="form-control" style="width: 20%; float: right;">
+							<c:forEach begin="07" end="22" var="startDate">
+								<option value="${startDate}">${startDate }</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="col-md-6" style="text-align: left;">
+						<h5>종료시간</h5>
+						<select id="end_date" class="form-control"  style="width: 20%;">
+							<c:forEach begin="08" end="23" var="endDate">
+								<option value="${endDate}">${endDate}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div>
+						<div class="row">
+							<div>맘시터에게 지급할 희망 시급을 적어주세요.</div>
+							<div class="col-md-8">
+								<input id="cost" class="form-control" name="cost" type="text"
+									placeholder="희망시급" aria-label="default input example">
+							</div>
+						</div>
+					</div>
+					<div>
+						<!-- kidList GO -->
+						<button type="button" class="btn btn-outline-primary"
+							onclick="goKidList()">등록하기</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 </body>
-<%@include file="../footer.jsp"%>
+<%-- <%@include file="../footer.jsp"%> --%>
 <!-- 카카오 주소 API -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -241,8 +241,6 @@
 	//데이터 넘기기
 	function goKidList() {
 
-		console.log('btn click');
-
 		var cost = $("#cost");
 		var COST_VALID = false;
 
@@ -256,10 +254,10 @@
 			COST_VALID = true;
 		}
 
-		if(!COST_VALID) {
+		/* if(!COST_VALID) {
 			return false;
-		}
-		console.log('set 전');
+		} */
+		
 		var _kidCard = $(".kid-card");
 		var kidCard;
 
@@ -275,24 +273,29 @@
 		var end = reserveDate + ' ' + $("#end_date").val();
 		if($("#end_date").val().length == 1) end = reserveDate + ' 0' + $("#end_date").val();
 
+		var saveIdx = '${sessionScope.saveIdx}';
+		
 		var formData = new FormData();
-		formData.set('member_p_idx', '${sessionScope.saveIdx}');
+		formData.set('member_p_idx', Number(1));
 		formData.set('kid_idx'     , kidCard);
 		formData.set('start_date'  , start);
 		formData.set('end_date'    , end);
 		formData.set('cost'        , $("#cost").val());
 		formData.set('status'      , 1);
-
+		
 		formData.forEach(function(value, key) {
 			console.log(key, value);
-		});
-
-
+		});		
+		
 		/* return false; */
 		$.ajax({
 			method : 'POST',
 			url : '/reserveCard.do',
-// 			data : formData,
+ 			data : formData,
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			cache: false, 			
 			success : function(e){
 				console.log(e);
 			},

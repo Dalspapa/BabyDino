@@ -26,7 +26,7 @@
             FROM 
                 d_kidcard
             WHERE 
-                d_member_idx = 115) b
+                d_member_idx = 122) b
     WHERE 
         a.idx = b.xidx
 	</select>
@@ -41,7 +41,7 @@
 	FROM
     	d_member
 	WHERE
-    	idx = 41
+    	idx = 122
 	</select>
 	
 	<!-- pick addr card 
@@ -56,7 +56,7 @@
 	FROM
     	d_member
 	WHERE
-    	idx = 41
+    	idx = 122
 	</select>
 	
 	
@@ -69,7 +69,7 @@
 		addr2 = #{addr2},
 		addr3 = #{addr3}
 	WHERE
-		idx = 41
+		idx = 122
 	</update>
 	
 	<!-- make kid card --> 
@@ -78,7 +78,7 @@
                 d_kidcard
         VALUES(
                 d_kidcard_idx.nextval,
-                115,
+                122,
                 #{k_name},
                 2,
                 #{k_birth},

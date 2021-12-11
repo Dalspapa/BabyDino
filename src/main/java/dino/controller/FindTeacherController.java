@@ -118,10 +118,10 @@ public class FindTeacherController {
 
 
 	// Insert reserve Kid Card
-		@RequestMapping(value = "/reserveCard.do", method = RequestMethod.POST)
-		@ResponseBody
+		@RequestMapping("/reserveCard.do")
 		public ModelAndView makeReserveCard(ReserveDto reserveCard) {
 
+			System.out.println("예약테이블에 올라 갈 수 있음 ?" + reserveCard);
 //			List result = new ArrayList();
 //			result = findTeachersService.reserveCard(vo);
 			int result = teachersService.reserveCard(reserveCard);
@@ -140,11 +140,6 @@ public class FindTeacherController {
 
 			return mav;
 		}
-
-
-
-
-
 
 	//Update Address Go
 	//현재 하드코딩. 파라미터값 받아야 함.

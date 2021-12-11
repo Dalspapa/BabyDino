@@ -2,6 +2,7 @@ package dino.findteachers.model;
 
 import java.util.List;
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dino.Dto.Common_ImgDto;
@@ -46,9 +47,9 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	}
 	
 	// Insert reserve Kid Card
-	public int reserveCard(ReserveDto dto) {
+	public int reserveCard(ReserveDto reserveCard) {
 		
-		int result = sqlMap.insert("k_reserve", dto);
+		int result = sqlMap.insert("k_reserve", reserveCard);
 		return result;
 	}
 
