@@ -359,13 +359,12 @@ section {
 			</div>
 		</section>
 	</div>
-</body>
-<%@include file="/footer.jsp" %>
-<!-- JQuery 라이브러리 -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"></script>
-<script>
+	
+	<!-- JQuery 라이브러리 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<script>
 
 	$(function(){
 		
@@ -399,7 +398,10 @@ section {
 			}
 		});
 	});
-		
+</script>	
 	
-</script>
+	
+</body>
+<%@include file="/footer.jsp" %>
+
 </html>

@@ -468,21 +468,6 @@
 	    </section>
 	  </div>
 
-	  <!-- footer -->
-	  <%@include file="./footer.jsp" %>
-	  <!-- 챗 Modal -->
-					<span class="d-block m-3 text-center" >
-						<a href="TeacherGuide.do">아기공룡 가이드 보러가기 ></a>
-					</span>
-	          </div>
-	    </section>
-	  </div>
-	  <!-- 지도. 우리 여기 있어요!! -->
-<!-- 	<div>
-	<section id = "section09" class = "kakaoMap">
-		<div id="map">우리, 여기 있어요!!</div>
-	</section>
-	</div>  -->
 	 <!-- 챗 Modal -->
 	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">

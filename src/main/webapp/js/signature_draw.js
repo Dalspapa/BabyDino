@@ -118,18 +118,3 @@ var _SIGNATURE = new function(){
 
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

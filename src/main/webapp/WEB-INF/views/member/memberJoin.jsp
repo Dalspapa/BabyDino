@@ -225,8 +225,7 @@ table .phone{
 		<div class="btn2">
 			<button type="submit" class="btn btn-outline-success">다음으로</button>
 		</div>
-</body>
-<%@include file="/footer.jsp" %>
+		
 <!-- 카카오 주소 API -->
 <script
    src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -580,5 +579,10 @@ table .phone{
          $('.btn').prop('checked', this.checked);
       })
    })
-</script>
+</script>		
+		
+		
+</body>
+<%@include file="/footer.jsp" %>
+
 </html>

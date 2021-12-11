@@ -159,13 +159,16 @@ section{
 			</div>
 		</section>
 	</div>
-</body>
-<%@ include file="/footer.jsp" %>
+	
 <script>
 
 	$(document).ready(function(){
 		$('.hideDiv').hide();
 	});
 
-</script>
+</script>	
+	
+</body>
+<%@ include file="/footer.jsp" %>
+
 </html>

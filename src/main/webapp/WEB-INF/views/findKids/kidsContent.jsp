@@ -410,12 +410,3 @@ const drawStar = (target) => {
 
 </script>
 </html>
-
-
-
-
-
-
-
-
-

@@ -3,9 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<%@include file="/header.jsp" %>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	 
 <style>
+/* body {
+    width: 952px;
+    margin-left: 12%;
+    font-size: 12px;
+    margin: 0px auto;
+}
+/*h2 {
+	color : green;
+	text-align : center;
+	margin-top : 50px;
+	margin-bottom : 50px;
+} */
 .body{
 	width: 747px;
     margin-left: 414px;
@@ -217,7 +231,7 @@ asvg {
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+
 	<form name="reportWrite" action="reportWrite.do" method="post">
 		<div class="body">
 		<div class="appbar">
@@ -288,18 +302,20 @@ asvg {
 			</div>
 			</div>
 		</form>
-<%@include file="/footer.jsp" %>	
+		
+	<script>
+	function checkForm(){
+		var form = document.reportWrite;
+		/**카테고리 유효성 검사*/
+		if(form.rp_type.value==""||form.rp_type.value==null){
+			alert('신고유형을 선택해주세요.');
+			form.rp_type.select();
+			return false;
+		}
+		form.submit();
+	} 
+	</script>		
+		
+	<%@include file="/footer.jsp" %>	
 </body>
-<script>
-function checkForm(){
-	var form = document.reportWrite;
-	/**카테고리 유효성 검사*/
-	if(form.rp_type.value==""||form.rp_type.value==null){
-		alert('신고유형을 선택해주세요.');
-		form.rp_type.select();
-		return false;
-	}
-	form.submit();
-} 
-</script>
 </html>
