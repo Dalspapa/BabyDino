@@ -92,6 +92,7 @@
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
+
 <script>
 	function goStep(step){
 
