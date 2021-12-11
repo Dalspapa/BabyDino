@@ -114,6 +114,10 @@
 	text-decoration: none;
 	color: #68983b;
 }
+.pignose-calendar-unit-disabled a {
+   color: red !important
+}
+
 </style>
 <%@include file="/header.jsp" %>
 </head>
@@ -136,8 +140,7 @@
 			<h2>어떤 아이를 돌봐 주실수 있나요?</h2>
 			<c:forEach var="kt_opdto" items="${k_list}">
 				<div class="check2">
-					<label><input type="checkbox" id="kidType" class="ktchk" name="kid_type"
-						value="${kt_opdto.op}"> ${kt_opdto.c_introduce} </label>
+					<label><input type="checkbox" id="kidType" class="ktchk" name="kid_type" value="${kt_opdto.op}"> ${kt_opdto.c_introduce} </label>
 				</div>
 			</c:forEach>
 			<div class="btn">
@@ -145,7 +148,7 @@
 			<button type="button" class="btn btn-outline-dark"
 				onclick="javascript:location.href='main.do'">포기하기</button>
 			<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>
-		 
+		</div>
 		</div>
 		<!-- class="d-none" style="width: 100%;" -->
 		<div id="step_3" class="makeTdiv">
@@ -161,13 +164,52 @@
 					</div>
 				</c:forEach>
 			</div>
-			<button type="button" class="btn btn-outline-secondary prevbtn">이전으로</button>
-			<button type="button" class="btn btn-outline-dark"
-				onclick="javascript:location.href='main.do'">포기하기</button>
-			<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>
+			<div class="btn">
+				<button type="button" class="btn btn-outline-secondary prevbtn">이전으로</button>
+				<button type="button" class="btn btn-outline-dark"
+					onclick="javascript:location.href='main.do'">포기하기</button>
+				<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>
+			</div>
 		</div>
+		
+		
 		<div id="step_4" class="makeTdiv">
+			
+			<div class="wrapper">
 			<h2>언제 활동 할 수 있나요 ?</h2>
+				<div>
+					<div class="row">
+						<div class="calendar"></div>
+					</div>
+				</div>
+					<hr>
+				<div class="row d-none" id="selectDateRow">
+				<div class="col-md-6" style="text-align: right;">
+					<h5>시작시간</h5>
+					<select id="start_date" class="form-control" style="width: 20%; float: right;">
+						<c:forEach begin="07" end="22" var="startDate">
+							<option value="${startDate}">${startDate }</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="col-md-6" style="text-align: left;">
+					<h5>종료시간</h5>
+					<select id="end_date" class="form-control"  style="width: 20%;">
+						<c:forEach begin="08" end="23" var="endDate">
+							<option value="${endDate}">${endDate}</option>
+						</c:forEach>
+					</select>
+				</div>
+				</div>
+			</div>
+			<div class="btn">
+				<button type="button" class="btn btn-outline-secondary prevbtn">이전으로</button>
+				<button type="button" class="btn btn-outline-dark"
+					onclick="javascript:location.href='main.do'">포기하기</button>
+				<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>
+			</div>
+		</div>
+<%-- 			<h2>언제 활동 할 수 있나요 ?</h2>
 			<div class="row">
 				<c:forEach var="d_opdto" items="${d_list}">
 					<div class="col-1" style="width: 14%;">
@@ -191,8 +233,13 @@
 			<button type="button" class="btn btn-outline-secondary prevbtn">이전으로</button>
 			<button type="button" class="btn btn-outline-dark"
 				onclick="javascript:location.href='main.do'">포기하기</button>
-			<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>
-		</div>
+			<button type="button" class="btn btn-outline-success nextbtn">다음으로</button> --%>
+
+		
+		
+		
+		
+		
 		<div id="step_5" class="makeTdiv">
 			<div class="hopepay">희망 시급을 입력해주세요.</div>
 			<input type="text" id="tCost" name="t_cost" maxlength="5"
@@ -224,9 +271,6 @@
 		<div id="step_6" class="makeTdiv" id="basicimg">
 			<h2>프로필 사진을 올려주세요.필수사항)</h2>
 			<input type="file" id="t_img1" name="c_imgpath" class="form-control" />
-			<!-- <input type="file" id="t_img2" name="c_imgpath" class="form-control" />
-			<input type="file" id="t_img3" name="c_imgpath" class="form-control" /> -->
-			<!-- <div>프로필 사진을 등록하지 않으면 기본이미지로 보입니다.</div> -->
 			<div>
 				<h2>활동했었던 돌봄 경험을 작성해주세요.(선택사항)</h2>
 				<div>
@@ -243,13 +287,8 @@
 				</div>
 			</div>
 
-<<<<<<< HEAD
-			<button type="button" class="btn btn-secondary prevbtn">이전으로</button>
-			<button type="button" class="btn btn-secondary"
-=======
 			<button type="button" class="btn btn-outline-secondary prevbtn">이전으로</button>
 			<button type="button" class="btn btn-outline-dark"
->>>>>>> Yeongchan
 				onclick="javascript:location.href='main.do'">포기하기</button>
 			<button type="button" onclick="isTest()" value="저장하기" class="btn btn-outline-success">저장하기</button>
 		</div>
@@ -260,6 +299,7 @@
 <%@include file="../footer.jsp" %>
 =======
 <%@include file="/footer.jsp" %>
+<<<<<<< HEAD
 				
 													   
 >>>>>>> Yeongchan
@@ -267,8 +307,16 @@
 <!-- custome js -->
 <script src="./common/js/bootstrap.min.js"></script>
 
+=======
+<!-- pignose-calendar -->
+<link rel="stylesheet" href="./common/css/pignose.calendar.min.css">
+<script src="./common/js/pignose.calendar.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+>>>>>>> JuHo
 <script>
 
+	let reserveDate;
+	
   function isTest() {
 
 	  	let imgFile = $('#t_img1').val();
@@ -310,26 +358,18 @@
 			t_care_type.push($(this).val());
 		});
 
-		let schedule_day = [];
+	/* 	let schedule_day = [];
 		$('input[name=schedule_day]:checked').each(function(i){
 			schedule_day.push($(this).val());
-		});
-
+		}); */
 
 	  var fileLength = $("input[name=c_imgpath]");
 	  var cctv = $("input[name=cctvagree]").val();
-
-
-	  // console.log('--- kidTYpe : ', $("#kidType").val());
-
-
 	  var formData = new FormData();
+	 // var sidx = ${sessionScope.saveIdx};
 
-<<<<<<< HEAD
-	  formData.set("d_member_idx", 41)
-=======
 	  formData.set("d_member_idx", ${sessionScope.saveIdx})
->>>>>>> Yeongchan
+	  	  
 	  formData.set("job", $("#job").val())
 	  formData.set("kid_type", kid_type)
 	  formData.set("t_care_type", t_care_type)
@@ -346,12 +386,6 @@
 	  formData.set("t_introduce", $("#t_introduce").val())
 	  formData.set("cctvagree", cctv);
 
-<<<<<<< HEAD
-
-	  // 이미지가 있으면 파일정보를 보내줘야하는데 지금 문자열을 보내줘서 에러나느거같아요.
-	  // 이미지 없으면 inputtype file display-none 으로 파일 하드코딩으로 박아버리고
-=======
->>>>>>> Yeongchan
 	  for(var i = 0; i < fileLength.length; i++) {
 		  if(fileLength[i].files[0] != undefined) {
 			  formData.set('tImg[' + i + ']', fileLength[i].files[0]);
@@ -365,10 +399,6 @@
 		  console.log(key, value);
 	  });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Yeongchan
 	  $.ajax({
 		method: 'POST',
 		url: '${pageContext.request.contextPath}/makeTeacherCard.do',
@@ -417,7 +447,7 @@
   					count = 3;
   				}
   			}
-  			if(count == 5){
+  			/* if(count == 5){
   				let cnt = $('input[name=schedule_day]:checkbox:checked').length;
 
   				let cnt2 = $('#scheduleTime').val();
@@ -428,7 +458,7 @@
   					alert('시간을 선택해주세요');
   					count = 4;
   				}
-  			}
+  			} */
   			if(count == 6){
   				let cnt = $('#tCost').val();
   				let cnt2 = $('#bank').val();
@@ -461,10 +491,35 @@
   		});
 
   	});
-<<<<<<< HEAD
-
-=======
->>>>>>> Yeongchan
+  	
+    //달력
+    $('.calendar').pignoseCalendar({
+       lang : 'ko',
+       minDate : moment().format("YYYY-MM-DD"),
+       format : 'YYYY-MM-DD',
+       select: function(r) {
+          console.log('r : ', r);
+          var selectDate;
+          if(r[0] == null) {
+             selectDate = null;
+          } else {
+             reserveDate = r[0]._i;
+             selectDate = r[0]._i;
+          }
+          if(selectDate == null) {
+             $("#selectDateRow").addClass('d-none');
+          } else {
+             $("#selectDateRow").removeClass('d-none');
+          }
+       }
+    });
+    
+    let start = reserveDate + ' ' + $("#start_date").val();
+    if($("#start_date").val().length == 1) start = reserveDate + ' 0' + $("#start_date").val();
+    
+    
+    let end = reserveDate + ' ' + $("#end_date").val();
+    if($("#end_date").val().length == 1) end = reserveDate + ' 0' + $("#end_date").val();
 
   </script>
 

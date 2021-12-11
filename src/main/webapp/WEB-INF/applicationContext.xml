@@ -49,6 +49,9 @@
 	<bean id="parentMypageDao" class="dino.parentmypage.model.ParentMypageDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
+	<bean id="teacherMyPageDao" class="dino.teachermypage.model.TeacherMyPageDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
 
 
 <!-- Service Area -->
@@ -75,5 +78,7 @@
 	</bean>
 	<bean id="parentMypageService" class="dino.parentmypage.service.ParentMypageServiceImpl">
 		<property name="parentMypageDao" ref="parentMypageDao"></property>
+	<bean id="teacherMypageService" class="dino.teachermypage.service.TeacherMyPageServiceImpl">
+		<property name="teacherMyPageDao" ref="teacherMyPageDao" />
 	</bean>
 </beans>

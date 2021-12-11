@@ -34,7 +34,7 @@
            	#{gender}, <!--gender -->
             TO_DATE(#{birth}, 'YYYY-MM-DD'), <!-- date type으로 넣어야함 -->
          	#{tel},
-            #{memberType}, <!-- memberType -->
+            #{member_type}, <!-- memberType -->
             sysdate,
             #{addr1}, <!-- 시  -->
            	#{addr2}, <!-- 도  -->

@@ -36,8 +36,8 @@
                   <p id="checkId"></p>
                </span>
                <span class="#">
-                  <input type="checkbox" name="saveId" value="on" 
-                  ${empty cookie.saveId.value ? '' : 'checked'} />ID 기억
+                  <label for="idRemember"><input type="checkbox" id="idRemember" name="saveId" value="on" 
+                  ${empty cookie.saveId.value ? '' : 'checked'} />ID 기억</label>
                </span>
                <span class="login" >
                   <button type="button" class="btn btn-outline-success" onclick="ajaxTest()">LOGIN</button>

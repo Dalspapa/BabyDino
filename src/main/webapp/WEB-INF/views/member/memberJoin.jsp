@@ -418,7 +418,7 @@ table .phone{
 		formData.set("addr2", $("#addr2").val());
 		formData.set("addr3", $("#addr3").val());
 		formData.set("tel", $("#tel").val());
-		formData.set("memberType", $("#type").val());
+		formData.set("member_type", $("#type").val());
 		
 		formData.forEach(function(value ,key) {
 			console.log(key, value);	

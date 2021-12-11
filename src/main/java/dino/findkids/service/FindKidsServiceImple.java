@@ -192,8 +192,8 @@ public class FindKidsServiceImple implements FindKidsService {
 >>>>>>> Yeongchan
 	 */
 	@Transactional
-	public int updateTeacherGrade(MemberDto teacher) {
-		return findkidsDao.updateTeacherGrade(teacher);
+	public int updateTeacherGrade(MemberDto member_type) {
+		return findkidsDao.updateTeacherGrade(member_type);
 
 	}
 <<<<<<< HEAD

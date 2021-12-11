@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.findKids">
-
+	
+	<!-- 선생님 카드 등록 -->
 	<insert id="t_makeCard" parameterType="dino.dto.MakeTCardDto">
 		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
 			SELECT  d_teacher_idx.NEXTVAL FROM DUAL
@@ -27,12 +28,9 @@
 			'signclear',
 			#{career_experience}
 		)
-<<<<<<< HEAD
 	</insert>
-=======
-	</insert>
->>>>>>> Yeongchan
-
+	
+	<!-- 아이찾기 리스트 출력 -->
 	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT            
 				r.cost
@@ -55,14 +53,6 @@
 		        , rv.star
 		        , rv.r_writedate
 		        , rv.r_content
-<<<<<<< HEAD
-		FROM
-		    	d_reserve r
-		LEFT JOIN 	d_member m ON m.idx = r.d_member_p_idx
-		LEFT JOIN 	d_kid k ON k.idx = r.d_kid_idx
-		LEFT JOIN 	d_common_img i on i.ref_idx = k.idx
-		LEFT JOIN 	d_review rv on rv.d_reserve_idx = r.idx
-=======
                 , t.start_day
                 , t.end_day
                 , t.start_time
@@ -84,29 +74,20 @@
                         d_reserve
                  ) t
             ON t.t_idx = r.idx
->>>>>>> Yeongchan
-
 	</select>
-
+	
+	<!-- 선생님 고유번호 조회 -->
 	<select id="getTIdx" parameterType="Integer" resultType="Integer">
 		select
 			idx
 		from
-<<<<<<< HEAD
-			(select * from d_teacher order by idx desc)
-		where
-			rownum = 1 and d_member_idx = #{d_member_idx};
-	</select>
-
-	<insert id="tSetImg" parameterType="dino.Dto.Common_ImgDto">
-=======
 			(select * from d_teachercard order by idx desc)
 		where
 			rownum = 1 and d_member_idx = #{d_member_idx}
 	</select>
-
+	
+	<!-- 이미지 인서트 -->
 	<insert id="tSetImg" parameterType="dino.dto.Common_ImgDto">
->>>>>>> Yeongchan
 		INSERT INTO
 			d_common_img
 		VALUES(
@@ -118,19 +99,12 @@
 		)
 	</insert>
 
-<<<<<<< HEAD
-	<select id="getImg" parameterType="Integer" resultType="dino.Dto.Common_ImgDto" >
-	    SELECT
-	        dt.*, dci.c_imgpath
-	    FROM
-	        d_teacher dt
-=======
+	<!-- 이미지 출력 -->
 	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
 	    SELECT
 	        dt.*, dci.c_imgpath
 	    FROM
 	        d_teachercard dt
->>>>>>> Yeongchan
 	    LEFT JOIN
 	        d_common_img dci
 	    ON
@@ -138,7 +112,8 @@
 	    WHERE
 	        dt.d_member_idx = #{d_member_idx}
 	</select>
-
+	
+	<!-- 아이카드 상세정보  -->
 	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT  r.cost
 		        , r.to_char(start_date, 'hh24')
@@ -168,21 +143,16 @@
 	</select>
 
 	<!-- 선생님 등급 수정 -->
-<<<<<<< HEAD
-	<update id="updateTeacherGrade" parameterType="dino.Dto.MemberDto">
-=======
 	<update id="updateTeacherGrade" parameterType="dino.dto.MemberDto">
->>>>>>> Yeongchan
 	   /* findKidsSql.updateTeacherGrade */
 	   UPDATE D_MEMBER
-	      SET MEMBER_TYPE = #{memberType}
+	      SET MEMBER_TYPE = #{member_type}
 	        , UPD_DT      = SYSDATE
 	        , UPD_ID      = #{updId}
 	    WHERE IDX = #{idx}
 	</update>
-<<<<<<< HEAD
-=======
 	
+	<!-- 선생님 grade 수정 -->
 	<update id="teacherGradeUpd" parameterType="Integer">
 		UPDATE D_MEMBER
 	      SET MEMBER_TYPE = 6
@@ -191,6 +161,7 @@
 	    WHERE IDX = #{idx}	
 	</update>
 	
+	<!-- 선생님 grade 조회 / 세션 등록 위함 -->
 	<select id="UpdGrade" parameterType="String" resultType="Integer">
 		SELECT 
 			MEMBER_TYPE
@@ -198,7 +169,6 @@
 			D_MEMBER
 		WHERE ID = #{id}
 	</select>
->>>>>>> Yeongchan
 
 </mapper>
 

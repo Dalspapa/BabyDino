@@ -12,11 +12,8 @@ public class TeacherMyPageDaoImpl implements TeacherMyPageDao {
 	}
 	
 	//선생님 프로필
-	public TeacherMyPageDto teacherProfile(int idx) {
-		
-		TeacherMyPageDto tProDto = sqlMap.selectOne("", idx);
-		
-		return tProDto;
+	public TeacherMyPageDto teacherProfile(int idx) {		
+		return sqlMap.selectOne("teacherProfile", idx);
 	}
 	
 	

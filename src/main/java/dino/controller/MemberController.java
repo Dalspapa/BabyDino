@@ -1,12 +1,9 @@
 package dino.controller;
 
-<<<<<<< HEAD
 import java.util.HashMap;
-=======
 						  
 
 import java.util.*;		
->>>>>>> Yeongchan
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -39,20 +36,6 @@ public class MemberController {
 
 	//Do Login
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-<<<<<<< HEAD
-	public ModelAndView loginSubmit(@RequestParam("id") String id,
-			@RequestParam("pwd") String pwd, HttpSession session,
-			@RequestParam(value = "saveId", required = false) String saveId,
-			HttpServletResponse resp) {
-
-		boolean result = memberService.loginCheck(id, pwd);
-
-		//TestCode
-		System.out.println("Controller.java result : " + result);
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
-=======
 	public ResponseEntity<?> loginSubmit(@RequestParam("id") String id, 
 			@RequestParam("pwd") String pwd, HttpSession session, 
 			@RequestParam(value = "saveId", required = false) String saveId, 
@@ -66,12 +49,11 @@ public class MemberController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/main");
->>>>>>> Yeongchan
 
 		if (result == true) {
 			MemberDto memberDto = memberService.getUserInfo(id);
 			String userName = memberDto.getName();
-			int memberType = memberDto.getMemberType();
+			int memberType = memberDto.getMember_type();
 
 			//TestCode
 			System.out.println("Controller.java memberType : " + memberType);
@@ -98,25 +80,16 @@ public class MemberController {
 				ck.setMaxAge(60*60*24*30);
 				resp.addCookie(ck);
 			}
-<<<<<<< HEAD
-
-=======
 			success = "success";
    
->>>>>>> Yeongchan
 		} else if (result == false) {
 			mav.addObject("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
 		}
 
 		//TestCode
 		System.out.println("::: 로그인 컨트롤러 수행됨 :::");
-<<<<<<< HEAD
-
-		return mav;
-=======
 		response.put("success", success);
 		return ResponseEntity.ok(response);
->>>>>>> Yeongchan
 	}
 
 	//Do Logout
@@ -155,7 +128,7 @@ public class MemberController {
 	public ResponseEntity<?> joinSubmit(MemberDto memberDto) {
 
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		System.out.println("-- memberTyep : " + memberDto.getMemberType());
+		System.out.println("-- memberTyep : " + memberDto.getMember_type());
 
 
 		int joinCount = memberService.memberJoin(memberDto);
@@ -176,7 +149,6 @@ public class MemberController {
 
 		return result;
 	}
-<<<<<<< HEAD
 
 	//휴대폰 번호인증
 	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
@@ -190,13 +162,7 @@ public class MemberController {
 		return Integer.toString(randomNumber);
 	}
 
-	@RequestMapping("/findIdPwd.do")
-	public String findIdPwd() {
-		return "member/findIdPwd";
-	}
-
-=======
-		// 아이디 비밀번호 찾기 페이지 이동
+	// 아이디 비밀번호 찾기 페이지 이동
 	@RequestMapping("/findIdPwd.do")
 	public String findIdPwd() {		
 		return "member/findIdPwd";
@@ -226,7 +192,6 @@ public class MemberController {
 		mav.setViewName("member/findPwdCheck");
 		return mav;
 	}
->>>>>>> Yeongchan
 
 	// 비밀번호 수정하기
 	@RequestMapping(value = "/updatePwd.do" , method = RequestMethod.POST)

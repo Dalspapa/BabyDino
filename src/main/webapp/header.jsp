@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <meta charset="UTF-8">
 <title>아 기 공 룡</title>
@@ -120,21 +122,22 @@
                     </c:if>
                     <c:if test="${stype == 1}">
 						<li class="nav-item">
-	                      <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3">
+	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3">
 	                        <i class="fas fa-user"></i>		
 	               		</a>
 						</li>
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
 						<li class="nav-item">
-	                      <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
+	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
 	                        <i class="fas fa-user"></i>		
 	               		</a>
 						</li>
                     </c:if>
+                    <!-- teacher navbar -->
                     <c:if test="${stype == 4 || stype == 5 || stype ==6}">
 						<li class="nav-item">
-	                      <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">
+	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">
 	                        <i class="fas fa-user"></i>		
 	               		</a>
 						</li>
@@ -147,8 +150,9 @@
 		<!-- side navbar parents -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight">
 		  <div class="offcanvas-header">
-		  	<div class="memberImg">#이미지</div>
-		    <h5 id="offcanvasRightLabel">#부모님이름 회원님</h5>
+		 <%--  <c:if test="navImg" value="${getNavImg.c_imgpath}" />
+		  	<div class="memberImg"><img src="/upload/${fn:replace(${navImg,','""')}" alt="navImg"></div> --%>
+		    <h5 id="offcanvasRightLabel">${sid} 부모님</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
@@ -164,13 +168,12 @@
 		<!-- side navbar teacher -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight2">
 		  <div class="offcanvas-header">
-		  	<div class="memberImg">#이미지</div>
-		    <h5 id="offcanvasRightLabel">#선생님이름 회원님</h5>
+		    <h5 id="offcanvasRightLabel">${sid} 선생님</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
 		    <div><a href="#">돌봄현황</a></div>
-		    <div><a href="#">프로필</a></div>
+		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
 		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="#">후기내역</a></div>
@@ -181,8 +184,7 @@
 		<!-- side navbar admin -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight3">
 		  <div class="offcanvas-header">
-		  	<div class="memberImg">#이미지</div>
-		    <h5 id="offcanvasRightLabel">#관리자 회원님</h5>
+		    <h5 id="offcanvasRightLabel">${sid}</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
@@ -198,6 +200,7 @@
 	</header>
 </head>
 <script>
+		
 	
 	function dinoCare(stype){
 		
