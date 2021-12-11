@@ -119,7 +119,7 @@
 }
 
 </style>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 	<form name="make_t_Card" id="postForm">
@@ -295,24 +295,15 @@
 
 	</form>
 </body>
-<<<<<<< HEAD
-<%@include file="../footer.jsp" %>
-=======
-<%@include file="/footer.jsp" %>
-<<<<<<< HEAD
-				
-													   
->>>>>>> Yeongchan
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <!-- custome js -->
 <script src="./common/js/bootstrap.min.js"></script>
 
-=======
 <!-- pignose-calendar -->
 <link rel="stylesheet" href="./common/css/pignose.calendar.min.css">
 <script src="./common/js/pignose.calendar.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
->>>>>>> JuHo
 <script>
 
 	let reserveDate;
@@ -320,10 +311,7 @@
   function isTest() {
 
 	  	let imgFile = $('#t_img1').val();
-<<<<<<< HEAD
-=======
 
->>>>>>> Yeongchan
 	  	let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif|JPG|JPEG|PNG|GIF|BMP|PDF|JFIF)$/gi;
 
 	  	if( imgFile == ""){
@@ -344,10 +332,6 @@
 			return false;
 		}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Yeongchan
 		let kid_type = [];
 		$('input[name=kid_type]:checked').each(function(i){
 			kid_type.push($(this).val());
@@ -524,12 +508,3 @@
   </script>
 
 </html>
-
-
-
-
-
-
-
-
-

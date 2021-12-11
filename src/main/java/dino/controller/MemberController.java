@@ -98,8 +98,7 @@ public class MemberController {
 		session.invalidate();
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/ma
-		n.do");
+		mav.setViewName("redirect:main.do");
 
 		//TestCode
 		System.out.println("::: 로그아웃 컨트롤러 수행됨 :::");

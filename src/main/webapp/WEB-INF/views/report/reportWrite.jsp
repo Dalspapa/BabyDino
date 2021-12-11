@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%@include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	 
@@ -316,6 +316,6 @@ asvg {
 	} 
 	</script>		
 		
-	<%@include file="/footer.jsp" %>	
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>	
 </body>
 </html>

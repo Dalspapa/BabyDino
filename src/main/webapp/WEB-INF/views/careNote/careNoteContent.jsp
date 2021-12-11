@@ -77,7 +77,7 @@ h3 {
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<div class="wrapper">
 	<h2>돌봄 노트 영역</h2>
 		<div class="noteTitle">#아이이름 돌봄노트</div>
@@ -99,6 +99,6 @@ h3 {
 			</div>
 		</div>
 	</div>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

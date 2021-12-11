@@ -9,7 +9,7 @@
 
 	<mvc:annotation-driven/>
 	
-		<!-- Configuration Area -->
+	<!-- Configuration Area -->
 	<!-- Autowired -->
 	<bean
 		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />

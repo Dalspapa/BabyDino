@@ -48,7 +48,7 @@ a:link, a:visited {
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
    <div class="main">
          <!-- 돌봄 현황 제목 -->
          <div class="title">돌봄 현황</div>
@@ -123,7 +123,7 @@ a:link, a:visited {
          </c:forEach>
 
       </div>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <!-- 돌봄 현황 버튼 js -->
 <script>

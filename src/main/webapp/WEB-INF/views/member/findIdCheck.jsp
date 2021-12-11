@@ -26,7 +26,7 @@
 </style>
 </head>
   <!-- header -->
-	<%@include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
    <div class="findIdPwd">
       <div class="title">
@@ -43,7 +43,7 @@
    </div> 
 </body>
   <!-- footer -->
-	<%@include file="/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 function goMain() {
 	window.location.replace("http://localhost:9090/BabyDino/main.do");

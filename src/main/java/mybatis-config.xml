@@ -19,5 +19,6 @@
 		<mapper resource="sqlmap/careNoteSql.xml"/>
 		<mapper resource="sqlmap/parentMypageSql.xml"/>
 		<mapper resource="sqlmap/adminSql.xml"/>
+		<mapper resource="sqlmap/chatSql.xml"/>
 	</mappers>
 </configuration>

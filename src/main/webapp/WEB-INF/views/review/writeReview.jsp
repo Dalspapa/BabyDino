@@ -52,7 +52,7 @@
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<form name="writeReview" action="writeReview.do" method="post">
 		<div class="wrapper">
 			<div class="top-title">
@@ -82,6 +82,6 @@
 			</div>
 		</div>
 	</form>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

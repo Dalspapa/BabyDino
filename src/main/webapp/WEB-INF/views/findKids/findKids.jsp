@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 #cardImg {
 	width: 50px;
@@ -83,10 +83,6 @@
 							<c:url var = "contentUrl" value="kidsContent.do">
 								<c:param name="idx">${kDto.idx}</c:param>
 							</c:url>
-<<<<<<< HEAD
-
-=======
->>>>>>> Yeongchan
 						<div class="flip-card-inner" onclick="location.href='${ contentUrl }'">
 							<div class="flip-card-front">
 								<div class="mb-2">
@@ -112,13 +108,10 @@
 									</h5>
 								</div>
 								<div>
-<<<<<<< HEAD
 									<h6 class="text-warning" id="title">새로운 추천01</h6>
-									<h6 id="info">${kDto.addr1 } / ${kDto.k_name }  /
-=======
+									<h6 id="info">${kDto.addr1 } / ${kDto.k_name }  / 
 									<h6 class="text-warning" id="title">${kDto.k_name }</h6>
 									<h6 id="info">${kDto.addr2 }
->>>>>>> Yeongchan
 										<c:if test="${kDto.k_gender == 1 }">
 											여아
 										</c:if>
@@ -134,7 +127,6 @@
 									${kDto.k_introduce}
 								</p>
 								<ul>
-<<<<<<< HEAD
 									<li id="palyday">${kDto.r_endday} /
 										<c:set  var="time" value="${kDto.r_time}" />
 										<c:forEach items="${fn:split(intro, ',') }" var="item">
@@ -158,11 +150,9 @@
 										<script>console.log('dddd==='+${kDto.r_time})</script>
 									</li>
 									<li id="cost"><fmt:formatNumber value="${kDto.hope_cost}" pattern="#,###" />원 / 협의가능</li>
-=======
 									<li id="playday">${kDto.start_day} ~ ${kDto.end_day}<br></li>
 									<li id="playtime">${kDto.start_time} ~ ${kDto.end_time}</li>
 									<li id="cost"><fmt:formatNumber value="${kDto.cost}" pattern="#,###" />원  / 협의가능</li>
->>>>>>> Yeongchan
 								</ul>
 							</div>
 						</div>
@@ -175,11 +165,7 @@
 		<!-- 하단 정보[START] -->
 	</section>
 </body>
-<<<<<<< HEAD
-<%@include file="../footer.jsp" %>
-=======
-<%@include file="/footer.jsp" %>
->>>>>>> Yeongchan
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <!-- custome js -->
 <script src="./common/js/bootstrap.min.js"></script>
@@ -205,38 +191,13 @@
 	   var a = document.getElementsByName('cDiv');
 	   var b = [];
 	   for(var i = 0; i < a.length; i++ ) {
-<<<<<<< HEAD
-
-	      if(a[i].classList.contains('isTest')) b.push(a[i].id)
-	   };
-=======
 	      
 	      if(a[i].classList.contains('isTest')) b.push(a[i].id);
 	   }
 
->>>>>>> Yeongchan
 	   console.log("-- selected : ", b);
 	}
 
 </script>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

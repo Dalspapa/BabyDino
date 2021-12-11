@@ -52,8 +52,8 @@
 	<bean id="teacherMyPageDao" class="dino.teachermypage.model.TeacherMyPageDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
-	<bean id ="adminDao" class="dino.admin.model.AdminDaoImpl">
-		<constructor-arg ref="sqlSessionTemplate"/>
+	<bean id="chatDao" class="dino.chat.model.ChatDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
 
 
@@ -85,7 +85,7 @@
 	<bean id="teacherMypageService" class="dino.teachermypage.service.TeacherMyPageServiceImpl">
 		<property name="teacherMyPageDao" ref="teacherMyPageDao" />
 	</bean>
-	<bean id="adminService" class="dino.admin.service.AdminServiceImpl">
-		<property name="adminDao" ref="adminDao"/>
+	<bean id="chatService" class="dino.chat.service.ChatServiceImpl">
+		<property name="chatDao" ref="chatDao"></property>
 	</bean>
 </beans>

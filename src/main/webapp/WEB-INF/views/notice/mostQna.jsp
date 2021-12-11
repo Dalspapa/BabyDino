@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c"%>
-=======
->>>>>>> Yeongchan
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,14 +97,8 @@ details summary{
 	padding-bottom: 9%;
 }
 </style>
-<!-- header -->
-<%@include file="../header.jsp" %>
-</head>
-<<<<<<< HEAD
-=======
  <!-- header -->
-	<%@include file="/header.jsp" %>
->>>>>>> Yeongchan
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
 	<div>
 		<section>
@@ -170,7 +160,7 @@ details summary{
 
 	</div>
  <!-- footer -->
-	<%@include file="/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <script>
 //버튼 클릭시 js
