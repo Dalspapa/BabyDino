@@ -61,7 +61,7 @@ public class CommonOpDaoImpl implements CommonOpDao {
 	// Make KidsCard care list
 	public List<CommonOpDto> k_care_type(){
 
-		List<CommonOpDto> care_list = sqlMap.selectList("k_care_type");
+		List<CommonOpDto> care_list = sqlMap.selectList("t_care_opList");
 		//test code
 		System.out.println("careList==" + care_list);
 		return care_list;
@@ -95,6 +95,24 @@ public class CommonOpDaoImpl implements CommonOpDao {
 	public List<CommonOpDto> pay() {
 		List<CommonOpDto> p_list = sqlMap.selectList("pay");
 		return p_list;
+	}
+	
+	public List<CommonOpDto> k_date_list() {
+		List<CommonOpDto> d_list = sqlMap.selectList("date");
+		
+		return d_list;
+	}
+
+	public List<CommonOpDto> k_time_start_list() {
+		List<CommonOpDto> ts_list = sqlMap.selectList("s_time");
+		
+		return ts_list;
+	}
+	
+	public List<CommonOpDto> k_time_end_list() {
+		List<CommonOpDto> te_list = sqlMap.selectList("e_time");
+		
+		return te_list;
 	}
 
 

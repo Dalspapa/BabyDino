@@ -102,6 +102,27 @@ public class CommonOpServiceImple implements CommonOpService {
 		List<CommonOpDto> p_list = commonopDao.pay();
 		return p_list;
 	}
+	
+	public List<CommonOpDto> k_date_opList() {
+		
+		List<CommonOpDto> d_list = commonopDao.k_date_list();
+		
+		return d_list;
+	}
+
+	public List<CommonOpDto> k_time_start_opList() {
+		
+		List<CommonOpDto> ts_list = commonopDao.k_time_start_list();
+		
+		return ts_list;
+	}
+	
+	public List<CommonOpDto> k_time_end_opList() {
+		
+		List<CommonOpDto> te_list = commonopDao.k_time_end_list();
+		
+		return te_list;
+	}	
 
 
 }

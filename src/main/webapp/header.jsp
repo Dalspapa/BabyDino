@@ -94,6 +94,9 @@
 						<a class="nav-link" href="javascript:dinoKids(${stype});">아이찾기</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="findTeacher.do">공룡샘 찾기</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="noticeMain.do">궁금해요</a>
 					</li>
 					
@@ -204,13 +207,15 @@
 	
 	function dinoCare(stype){
 		
-		if (stype == 1 || stype == 4 || stype == 5 || stype == 6) { //3,4 는 아이카드 선택으로 이동 
+		if (stype == 1 || stype == 4 || stype == 5 || stype == 6) { //2,3 는 아이카드 선택으로 이동 
 			
-			location.href = 'findTeacher.do';
+			location.href = 'findTeacher.do?idx=${sidx}';
 			
 		} else if ( stype == 2 || stype == 3 ) { 
 			
-			location.href = '#'; //3,4 는 아이카드 선택으로 이동 
+			location.href = 'pickKidsCard.do?idx=${sidx}'; //2,3 는 아이카드 선택으로 이동 
+			
+			
 			
 		} else if ( stype == null){
 			

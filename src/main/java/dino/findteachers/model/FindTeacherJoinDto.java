@@ -5,33 +5,40 @@ import java.util.List;
 import dino.dto.ReviewDto;
 
 public class FindTeacherJoinDto {
+	
+	private int idx;
 	private int t_cost;
 	private int job;
 	private int badge;
 	private String t_introduce;
-	private String schedule_day;
-	private String schedule_time;
+	private String schedule_day;		// 샘은 시간안씀 
+	private String schedule_time;		// 샘은 시간안씀 
 	private String kid_type;
 	private String t_care_type;
 	private String career_experience;
 	private int cctvagree;
 	private String name;
 	private String birth;
+	private int age;
 	private int gender;
 	private String addr1;
+	private String addr2;
+	private String addr3;
 	private String r_content;
 	private String c_imgpath;
 	private List<ReviewDto> review_list;
-
+	
 	public FindTeacherJoinDto() {
 		super();
 	}
 
-	public FindTeacherJoinDto(int t_cost, int job, int badge, String t_introduce, String schedule_day,
+	public FindTeacherJoinDto(int idx, int t_cost, int job, int badge, String t_introduce, String schedule_day,
 			String schedule_time, String kid_type, String t_care_type, String career_experience, int cctvagree,
-			String name, String birth, int gender, String addr1, String r_content, String c_imgpath,
-			List<ReviewDto> review_list) {
+			String name, String birth, int gender, String addr1, String addr2, String addr3, String r_content,
+			String c_imgpath, List<ReviewDto> review_list, int age) {
 		super();
+		this.idx = idx;
+		this.age = age;
 		this.t_cost = t_cost;
 		this.job = job;
 		this.badge = badge;
@@ -46,11 +53,29 @@ public class FindTeacherJoinDto {
 		this.birth = birth;
 		this.gender = gender;
 		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.addr3 = addr3;
 		this.r_content = r_content;
 		this.c_imgpath = c_imgpath;
 		this.review_list = review_list;
 	}
 
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 	public int getT_cost() {
 		return t_cost;
 	}
@@ -163,6 +188,22 @@ public class FindTeacherJoinDto {
 		this.addr1 = addr1;
 	}
 
+	public String getAddr2() {
+		return addr2;
+	}
+
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+
+	public String getAddr3() {
+		return addr3;
+	}
+
+	public void setAddr3(String addr3) {
+		this.addr3 = addr3;
+	}
+
 	public String getR_content() {
 		return r_content;
 	}
@@ -186,4 +227,6 @@ public class FindTeacherJoinDto {
 	public void setReview_list(List<ReviewDto> review_list) {
 		this.review_list = review_list;
 	}
+
+	
 }

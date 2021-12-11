@@ -18,7 +18,9 @@ public interface CommonOpDao {
 	//Make KidsCard list
 	public List<CommonOpDto> ktendency();
 	public List<CommonOpDto> k_care_type();
-
+	public List<CommonOpDto> k_date_list();
+	public List<CommonOpDto> k_time_start_list();
+	public List<CommonOpDto> k_time_end_list();
 
 	//reportType
 	public List<CommonOpDto> reportType();
