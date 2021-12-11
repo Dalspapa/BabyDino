@@ -78,7 +78,7 @@
 				</div>
 			</div>
 			<!-- 아이카드선택영역 -->
-			
+
 			<!-- 주소정보 선택 [START] -->
 			<div class="row d-none" id="step2">
 				<div class="col-12">
@@ -108,7 +108,7 @@
 							</c:if>
 						</div>
 						<div class="col-12 mt-3">
-							<button type="button" class="btn btn-primary" onclick="kakaopost()">수정하기</button>	
+							<button type="button" class="btn btn-primary" onclick="kakaopost()">수정하기</button>
 						</div>
 					</div>
 					<div class="mt-3">
@@ -207,7 +207,7 @@
 			}
 		}).open();
 	}
-	
+
 	// 아이카드 클릭 이벤트
 	function toggleActive(_this) {
 		const selectId = _this.id;
@@ -238,14 +238,14 @@
 		}
 	});
 
-	//데이터 넘기기	   
+	//데이터 넘기기
 	function goKidList() {
-		
+
 		console.log('btn click');
-		
+
 		var cost = $("#cost");
 		var COST_VALID = false;
-		
+
 		if(cost.val().trim().length == 0) {
 			cost.removeClass('is-valid');
 			cost.addClass('is-invalid');
@@ -255,7 +255,7 @@
 			cost.removeClass('is-invalid');
 			COST_VALID = true;
 		}
-		
+
 		if(!COST_VALID) {
 			return false;
 		}
@@ -268,49 +268,38 @@
 				kidCard = _kidCard[i].id;
 			}
 		};
-		
+
 		var start = reserveDate + ' ' + $("#start_date").val();
 		if($("#start_date").val().length == 1) start = reserveDate + ' 0' + $("#start_date").val();
-		
+
 		var end = reserveDate + ' ' + $("#end_date").val();
 		if($("#end_date").val().length == 1) end = reserveDate + ' 0' + $("#end_date").val();
 
 		var formData = new FormData();
-		
-		formData.set('member_p_idx', 114); // TODO 로그인한 idx로 바꿔야됨
-		formData.set('kid_idx', kidCard);
-		formData.set('start_date', start);
-		formData.set('end_date', end);
-		formData.set('cost', $("#cost").val());
-		formData.set('status', 1);
-		
-		console.log('set 후');
-		
+		formData.set('member_p_idx', '${sessionScope.saveIdx}');
+		formData.set('kid_idx'     , kidCard);
+		formData.set('start_date'  , start);
+		formData.set('end_date'    , end);
+		formData.set('cost'        , $("#cost").val());
+		formData.set('status'      , 1);
+
 		formData.forEach(function(value, key) {
 			console.log(key, value);
 		});
-		
-		
-		/* return false; */
 
+
+		/* return false; */
 		$.ajax({
 			method : 'POST',
-			url : '${pageContext.request.contextPath}/reserveCard.do',
-			data : formData,
-			processData : false,
-			contentType : false,
-			cache : false,
-			success : function(r) {
-				console.log("--- r : ", r);
-				window.alert("${msgUpdate}");
-				location.href = 'main.do';
+			url : '/reserveCard.do',
+// 			data : formData,
+			success : function(e){
+				console.log(e);
 			},
-
-			error : function(e) {
-				console.error(e);
-				window.alert("whywhywhy");
+			error : function(e){
+				console.log(e);
 			}
-		})
+		});
 	}
 
 	function goStep(step) {
@@ -335,16 +324,16 @@
 			}
 
 			if (!KIDCARD_VALID) return false;
-			
+
 
 			document.getElementById('step1').classList.add('d-none');
 			document.getElementById('step2').classList.remove('d-none');
 
 		} else if (step == 3) {
-			
+
 			var detailAddr = $("#addr3");
 			var ADDR_VALID = false;
-			
+
 			if(detailAddr.val().trim().length == 0) {
 				detailAddr.removeClass('is-valid');
 				detailAddr.addClass('is-invalid');
@@ -354,10 +343,10 @@
 				detailAddr.addClass('is-valid');
 				ADDR_VALID = true;
 			};
-			
+
 			if(!ADDR_VALID) return false;
-			
-			
+
+
 			document.getElementById('step2').classList.add('d-none');
 			document.getElementById('step3').classList.remove('d-none');
 		}

@@ -1,36 +1,24 @@
 package dino.controller;
 
-import java.util.ArrayList;
-
-
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 
-import org.apache.ibatis.javassist.expr.NewArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-
 import dino.Dto.CommonOpDto;
-import dino.Dto.Common_ImgDto;
 import dino.Dto.KidDto;
-import dino.Dto.MakeTCardDto;
 import dino.Dto.MemberDto;
 import dino.Dto.ReserveDto;
 import dino.commonop.service.CommonOpService;
 import dino.findteachers.model.FindTeacherJoinDto;
-import dino.findteachers.model.MakeReserveCardVo;
 import dino.findteachers.service.FindTeachersService;
 
 @Controller
@@ -40,7 +28,7 @@ public class FindTeacherController {
 	private CommonOpService commonOpService;
 
 	@Autowired
-	private FindTeachersService findTeachersService;
+	private FindTeachersService teachersService;
 
 	@Autowired
 	ServletContext servletContext;
@@ -49,17 +37,17 @@ public class FindTeacherController {
 
 	/*
 	 * @RequestMapping("/findTeacher.do") public ModelAndView findTeacher() {
-	 * 
+	 *
 	 * //test code System.out.println("======진입======");
-	 * 
+	 *
 	 * List<FindTeacherJoinDto> t_List = findTeachersService.teacherList();
 	 * ModelAndView mav = new ModelAndView(); mav.addObject("t_List", t_List);
 	 * mav.setViewName("findTeacher/findTeacher");
-	 * 
+	 *
 	 * return mav; }
 	 */
 
-	
+
 	//나의 아이카드 리스트 출력 메소드
 	@RequestMapping("/pickKidsCard.do")
 	public ModelAndView showPickKidsCard(
@@ -70,15 +58,15 @@ public class FindTeacherController {
 
 		ModelAndView mav = new ModelAndView();
 
-		MemberDto addrList = findTeachersService.pickKidsAddrCard(idx);
-		List<KidDto> mkList = findTeachersService.pickKidsCard(idx);
+		MemberDto addrList = teachersService.pickKidsAddrCard(idx);
+		List<KidDto> mkList = teachersService.pickKidsCard(idx);
 		List<CommonOpDto> d_list = commonOpService.k_date_opList();
 		List<CommonOpDto> ts_list = commonOpService.k_time_start_opList();
 		List<CommonOpDto> te_list = commonOpService.k_time_end_opList();
 
 		// test code
 		System.out.println("== name : " + mkList.get(0));
-		
+
 		mav.addObject("addrList", addrList);
 		mav.addObject("k_dto", mkList);
 		mav.addObject("d_list", d_list);
@@ -88,9 +76,9 @@ public class FindTeacherController {
 
 		return mav;
 	}
-	
-	
-	//아이카드 추가시 정보 불러오기 메소드 
+
+
+	//아이카드 추가시 정보 불러오기 메소드
 	@RequestMapping(value = "/makingKidCard.do")
 	public ModelAndView showMakeKidcard() {
 
@@ -107,14 +95,14 @@ public class FindTeacherController {
 
 		return mav;
 	}
-	
+
 	// 찐또메이크 아이카드 등록
 	@RequestMapping("/makeKidsCard.do")
 	public ModelAndView makeKidCard(KidDto dto) {
 
 		System.out.println("====아이카드 추가 등록 컨트롤러 진입=====" + dto);
 
-		int result = findTeachersService.makeKCard(dto);
+		int result = teachersService.makeKCard(dto);
 
 		String msg = result > 0 ? "아이카드가 정상적으로 등록되었습니다!" : "아이카드 등록에 실패하셨습니다.";
 
@@ -124,137 +112,134 @@ public class FindTeacherController {
 
 		return mav;
 	}
-	
-	
-	/////////////////////문제없음////////////////////////////////////////
-	
-	
-	// Insert reserve Kid Card
-		@ResponseBody
-		@RequestMapping(value = "/reserveCard.do", method = RequestMethod.POST)
-		public ModelAndView makeReserveCard(ReserveDto dto) {
 
-			System.out.println("====에약카드 생성 컨트롤러 진입=====" + dto);
+
+	/////////////////////문제없음////////////////////////////////////////
+
+
+	// Insert reserve Kid Card
+		@RequestMapping(value = "/reserveCard.do", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView makeReserveCard(ReserveDto reserveCard) {
 
 //			List result = new ArrayList();
 //			result = findTeachersService.reserveCard(vo);
-			int result = findTeachersService.reserveCard(dto);
-			
+			int result = teachersService.reserveCard(reserveCard);
+
 //			int addrUpdate = (Integer) result.get(0);
 //			int reserveInsert = (Integer) result.get(1);
 
 //			String msgUpdate = addrUpdate > 0 ? "주소수정 성공" : "주소 수정 실패";
 //			System.out.println(msgUpdate);
 			String msg = result > 0 ? "아이카드가 정상적으로 등록되었습니다!" : "아이카드 등록에 실패하셨습니다.";
-			System.out.println(msg);
-			
+
 			ModelAndView mav = new ModelAndView();
-			
+
 			mav.addObject("msg", msg);
 			mav.setViewName("findTeacher/teachersMsg");
 
 			return mav;
 		}
-	
 
 
 
 
-	
+
+
 	//Update Address Go
 	//현재 하드코딩. 파라미터값 받아야 함.
 	@RequestMapping("/makingAddrCard.do")
 	public ModelAndView showUpdateAddr(
 			@RequestParam(value = "idx" , defaultValue = "0")int idx) {
-		
+
 		//test code
 		System.out.println(">>>>>>>>>주소 업데이트 폼 컨트롤러 진입<<<<<<<<" + idx);
-		
-		MemberDto dto = findTeachersService.addrUpForm(idx);
-		
+
+		MemberDto dto = teachersService.addrUpForm(idx);
+
 		ModelAndView mav= new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.setViewName("findTeacher/updateAddr");
-		
+
 		return mav;
 	}
-	
+
 	//Update Address do
 //	@RequestMapping("/updateAddr.do")
 //	public ModelAndView doUpdateAddr(MemberDto dto) {
-//		
+//
 //		//test code
 //		System.out.println(":::::주소업데이트 컨트롤러 진입:::::" + dto);
 //
 //		int result = findTeachersService.updateAddr(dto);
 //		String msg = result > 0 ? "주소 수정 완료!" : "주소 수정 실패";
-//		
+//
 //		ModelAndView mav = new ModelAndView();
 //		mav.addObject("msg", msg);
 //		mav.setViewName("findTeacher/teachersMsg");
 //
-//		return mav; 
+//		return mav;
 //	}
-	
+
 
 	@RequestMapping("/makeReserveCard.do")
 	public String makeReserveCard() {
-		
+
 		return "findTeacher/makeReserveCard";
 	}
-	
+
 
 	/*
 	 * // set kid img
-	 * 
+	 *
 	 * @RequestMapping(value = "/makeKidCard.do", method = RequestMethod.POST)
 	 * public ResponseEntity<?> makeKidCard(KidDto dto, Common_ImgDto imgDto){
-	 * 
+	 *
 	 * // test code System.out.println(">>>>>컨트롤러 진입<<<<<<");
-	 * 
+	 *
 	 * HashMap<String, Object> result = new HashMap<String, Object>(); boolean
 	 * success = false;
-	 * 
+	 *
 	 * List<MultipartFile> imgFiles = new ArrayList<MultipartFile>(); imgFiles =
 	 * dto.getkImg();
-	 * 
+	 *
 	 * if (imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
 	 * imgDto.setC_imgpath("kid.png"); }
-	 * 
+	 *
 	 * String dirPath = servletContext.getRealPath("/resources");
-	 * 
+	 *
 	 * try { findTeachersService.makeKCard(dto, imgDto, imgFiles, dirPath); success
 	 * = true; } catch (Exception e) { System.out.println("요류입니다." +
 	 * e.getMessage()); };
-	 * 
+	 *
 	 * int setImg = findTeachersService.kSetImg(imgDto);
-	 * 
+	 *
 	 * if(setImg != 1) { result.put("fail", false); }else { result.put("success",
 	 * success);
-	 * 
+	 *
 	 * } result.put("success", success);
-	 * 
+	 *
 	 * return ResponseEntity.ok(result); }
 	 */
 
 	/*
 	 * //get img path
-	 * 
+	 *
 	 * @RequestMapping("/getKidImg.do") public ModelAndView getImg(int d_member_idx)
 	 * {
-	 * 
+	 *
 	 * List<Common_ImgDto> resultImg = findTeachersService.imgpath(d_member_idx);
-	 * 
+	 *
 	 * String [] imgName = {};
-	 * 
+	 *
 	 * for(int i = 0; i < resultImg.size(); i++) { //test code
 	 * System.out.println("리스트로 가져온 이미지" + resultImg.get(i).getC_imgpath()); imgName
 	 * = resultImg.get(i).getC_imgpath().split(","); } //test code
 	 * System.out.println(imgName + ">>> 이미지 ㅎㅇㅇㅇㅇㅇ <<<");
-	 * 
+	 *
 	 * ModelAndView mav = new ModelAndView(); mav.addObject("imgName", imgName);
 	 * mav.setViewName("findTeacher/findteacher");
-	 * 
+	 *
 	 * return mav; }
 	 */
 
@@ -269,7 +254,7 @@ public class FindTeacherController {
 
 		ModelAndView mav = new ModelAndView();
 
-		FindTeacherJoinDto t_dto = findTeachersService.teacherInfo(idx);
+		FindTeacherJoinDto t_dto = teachersService.teacherInfo(idx);
 		System.out.println("=== t_dto : " + t_dto);
 
 		if (t_dto == null) {
