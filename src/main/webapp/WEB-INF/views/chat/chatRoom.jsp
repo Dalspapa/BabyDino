@@ -329,41 +329,66 @@
                	<c:set var="memberIdx" value="${ vo.d_member_idx }" />
                	<c:set var="message" value="${ vo.message }" />
                	<c:set var="name" value="${ vo.name }" />
-               	<c:set var="type" value="${ vo.member_type }" />
+               	<c:set var="memberType" value="${ vo.member_type }" />
                	<c:set var="sendTime" value="${ vo.send_time }" />
                	
+               	<!-- 내가 보낸메시지 오른쪽 -->
+               	<c:if test="${ sessionIdx == memberIdx }">
 	              <li class="right clearfix">
-	              		<!-- 내가 보낸메시지 오른쪽 -->
-		               <c:if test="${ sessionIdx == memberIdx }">
-		               		<span class="chat-img pull-right" id="setPic">
-		               		 
-		               </c:if>
-		               <c:if test="${ sessionIdx != memberIdx }">
-		              		<span class="chat-img pull-left">
-		               </c:if>
-		               		<c:choose>
-								<c:when test="${ type == 1 }">
-									 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-								</c:when>
-								<c:when test="${ type == 4 }">
-									 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-								</c:when>
-								<c:otherwise>
-									<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
-								</c:otherwise>
-							</c:choose>
-		               		</span>
-		               	
-		               	<div class="chat-body clearfix">
-		               		<div class="header">
-		               			<strong id="setName" class="primary-font">${ name }</strong>
-		               			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ${ sendTime }</small>
-		               		</div>
-		               		<p id="">
-		               			${ message } 
-		               		</p>
-		               	</div>
-	               </li>   
+               		<span class="chat-img pull-right" id="setPic">
+               		<c:choose>
+						<c:when test="${ memberType == 1 }">
+							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 4 || memberType == 5 || memberType == 6 || memberType == 7 }">
+							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
+							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
+						</c:when>
+					</c:choose>
+               		</span>
+               		
+	               	<div class="chat-body clearfix">
+	               		<div class="header">
+	               			<strong id="setName" class="primary-font">${ name }</strong>
+	               			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ${ sendTime }</small>
+	               		</div>
+	               		<p id="">
+	               			${ message } 
+	               		</p>
+	               	</div>
+                 </li>
+	        	</c:if>
+	        	
+	        	<!-- 상대방 보낸메시지 왼쪽 -->
+	        	<c:if test="${ sessionIdx != memberIdx }">
+	              <li class="left clearfix">
+               		<span class="chat-img pull-left" id="setPic">
+               		<c:choose>
+						<c:when test="${ memberType == 1 }">
+							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 4 || memberType == 5 || memberType == 6 || memberType == 7 }">
+							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
+							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
+						</c:when>
+					</c:choose>
+               		</span>
+               	
+	               	<div class="chat-body clearfix">
+	               		<div class="header">
+	               			<strong id="setName" class="primary-font">${ name }</strong>
+	               			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ${ sendTime }</small>
+	               		</div>
+	               		<p id="">
+	               			${ message } 
+	               		</p>
+	               	</div>
+                 </li>
+	        	</c:if>
                
                </c:forEach>
                
@@ -440,7 +465,7 @@
 			return alert("대화방이 닫혀있습니다.");
 		}
 
-		var msg = '${sessionScope.userName}님: ' + document.fm.write.value + '\n';
+		var msg = '${sessionScope.saveName}님: ' + document.fm.write.value + '\n';
 		document.fm.content.value += msg;
 		ws.send(msg);
 		

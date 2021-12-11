@@ -40,7 +40,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		System.out.println("##################################################################################");
 		String roomIdx = null;
 
-		if(sessionInfo.get("userName") == null) {
+		if(sessionInfo.get("saveName") == null) {
 			System.out.println("### INFO 로그인상태가 아닙니다.");
 			return;
 		}
@@ -55,7 +55,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			}
 		}
 		if (isExistRoom) { //이미방이 존재하면 방에 입장합니다.
-			System.out.println("### INFO 방번호::" + sessionRoomIdx + "에 "+ sessionInfo.get("userName") +"님이 입장하였습니다." );
+			System.out.println("### INFO 방번호::" + sessionRoomIdx + "에 "+ sessionInfo.get("saveName") +"님이 입장하였습니다." );
 			sessionList = roomList.get(roomIdx);
 			if (!sessionList.contains(session)) {
 				sessionList.add(session);
@@ -81,7 +81,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		Map<String, Object> sessionInfo = this.getSessionInfo(session);
 		String sessRoomIdx = sessionInfo.get("roomIdx").toString();
 
-		String msg = sessionInfo.get("userName") + "님 : " + message.getPayload();
+		String msg = sessionInfo.get("saveName") + "님 : " + message.getPayload();
 		Iterator roomIdxList = roomList.keySet().iterator(); //이터레이터로 맵의 키값 가져옴.
 
 		//방별 세션에 메세지 전달처리.
@@ -92,7 +92,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			if(!StringUtils.isEmpty(roomIdx) && sessRoomIdx.equals(roomIdx)) {
 				sessionList = roomList.get(roomIdx);
 				for (WebSocketSession sess : sessionList) {
-					System.out.println("### INFO 참여명수:"+sessionList.size()+" 방번호:"+roomIdx+"에 보내는 "+sessionInfo.get("userName")+"님의  메세지:"+msg);
+					System.out.println("### INFO 참여명수:"+sessionList.size()+" 방번호:"+roomIdx+"에 보내는 "+sessionInfo.get("saveName")+"님의  메세지:"+msg);
 					if(!session.equals(sess)) {
 						sess.sendMessage(new TextMessage(msg));
 					}
