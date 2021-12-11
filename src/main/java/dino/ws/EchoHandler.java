@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -30,7 +29,7 @@ public class EchoHandler extends TextWebSocketHandler {
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		
+
 		sessionList = new ArrayList<WebSocketSession>();
 
 		boolean isExistRoom = false;
@@ -40,7 +39,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		System.out.println("### sessionRoomIdx : "+sessionRoomIdx);
 		System.out.println("##################################################################################");
 		String roomIdx = null;
-		
+
 		if(sessionInfo.get("userName") == null) {
 			System.out.println("### INFO 로그인상태가 아닙니다.");
 			return;
@@ -90,7 +89,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			String roomIdx = (String)roomIdxList.next();
 
 			//내가 진입한 방번호에만 메세지 전달처리.
-			if(StringUtils.isNotBlank(roomIdx) && sessRoomIdx.equals(roomIdx)) {
+			if(!StringUtils.isEmpty(roomIdx) && sessRoomIdx.equals(roomIdx)) {
 				sessionList = roomList.get(roomIdx);
 				for (WebSocketSession sess : sessionList) {
 					System.out.println("### INFO 참여명수:"+sessionList.size()+" 방번호:"+roomIdx+"에 보내는 "+sessionInfo.get("userName")+"님의  메세지:"+msg);
