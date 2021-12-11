@@ -46,7 +46,7 @@
 </style>
 </head>
   <!-- header -->
-	<%@include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
 	<!-- 공지사항 리스트 -->
 	<div class="question">
@@ -85,6 +85,6 @@
 		</section>
 	</div>
 	  <!-- footer -->
-	  <%@include file="/footer.jsp" %>	
+	  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

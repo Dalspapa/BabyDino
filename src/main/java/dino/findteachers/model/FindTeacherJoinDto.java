@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package dino.findteachers.model;
 
 import java.util.List;
@@ -230,3 +231,4 @@ public class FindTeacherJoinDto {
 
 	
 }
+

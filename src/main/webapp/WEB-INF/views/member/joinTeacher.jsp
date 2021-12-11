@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 <h2>당신은 어떤 분인가요?</h2>
@@ -22,5 +22,5 @@
    <input type="radio" name="nomal" value="일반인" width="100" />일반인이에요
    <p>위 3가지 경우에 해당하지 않으나 악어선생님으로 활동하고 싶은 경우</p>      
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </html>

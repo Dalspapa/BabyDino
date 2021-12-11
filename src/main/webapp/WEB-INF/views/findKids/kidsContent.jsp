@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -399,23 +399,17 @@ section {
 			</ul>
 			<div><input type="button" value="인터뷰 요청"></div>
 		</section>
-	</div>	
+	</div>
+
+	<script>
+	const drawStar = (target) => {
+		document.querySelector('.star span').style.width = '${target.value * 10}%';
+	  }
+	  
+
+	</script>
+	
 </body>
-<%@ include file="/footer.jsp" %>
-<script>
-const drawStar = (target) => {
-    document.querySelector('.star span').style.width = '${target.value * 10}%';
-  }
-  
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
-</script>
 </html>
-
-
-
-
-
-
-
-
-

@@ -5,8 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <%@include file="/header.jsp"%>
 
+=======
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="./common/img/favicon/favicon.png"
+	type="image/x-icon">
+<link rel="icon" href="./common/img/favicon/favicon.png"
+	type="image/x-icon">
+
+<!-- fontasome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- css -->
+<link rel="stylesheet" href="./common/css/bootstrap.min.css">
+<link rel="stylesheet" href="./common/css/reset.css">
+<link rel="stylesheet" href="./common/css/main.css">
+>>>>>>> 229586f25ced8515b6d1708d2a00404dd264fe96
 <style>
 #cardImg {
 	width: 50px;
@@ -127,7 +145,17 @@
 		<!-- 하단 정보[START] -->
 	</section>
 </body>
+<<<<<<< HEAD
 <%@include file="/footer.jsp"%>
+=======
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<!-- J-query -->
+<script src="./common/js/jquery-3.6.0.min.js"></script>
+
+<!-- custome js -->
+<script src="./common/js/bootstrap.min.js"></script>
+
+>>>>>>> 229586f25ced8515b6d1708d2a00404dd264fe96
 
 <script>
 	//  $(document).ready(function(){

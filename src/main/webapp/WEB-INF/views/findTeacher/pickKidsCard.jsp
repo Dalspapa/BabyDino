@@ -165,6 +165,7 @@
 		</div>
 	</form>
 </body>
+
 <%@include file="/footer.jsp" %>
 <!-- 카카오 주소 API -->
 <script

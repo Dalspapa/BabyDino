@@ -189,5 +189,4 @@
 		WHERE 
 			d_member_idx = #{idx}
 	</select>
-	
 </mapper>

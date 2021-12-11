@@ -232,7 +232,7 @@ section{
 
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
   <div class="wrapper" style="margin-top:80px;">
     <section class="userInfoWrap">
       <h2>사용자 상태 영역</h2>
@@ -240,7 +240,7 @@ section{
         <div class="userImg">
           #이미지
         </div>
-        <div class="nameText">아기공룡 #아이이름</div>
+        <div class="nameText">아기공룡 ${ dto.k_name }</div>
       </div>
       <div class="userLiveWrap">
         <div class="userLive">
@@ -270,7 +270,7 @@ section{
           </div>
           <div>
             <div class="aa">돌봄완료</div>
-            <button type="button" class="btn btn-outline-success">후기작성</button>
+            <button type="button" class="btn btn-outline-success" onclick="writeReview();">후기작성</button>
           </div>
         </div>
         <!-- progress bar -->
@@ -284,20 +284,26 @@ section{
     <section>
       <div class="topCont d-flex justify-content-between">
         <div>#뒤로가기버튼</div>
-        <div>#아이이름</div>
+        <div>${ dto.k_name }</div>
         <div>#좋아요버튼</div>
       </div>
       <div class="item1">
         <div class="childImg">#아이이미지</div>
         <div class="childInfo">
-          #아이정보 / #성별
+          ${ dto.k_introduce } /
+            <c:if test="${ dto.k_gender==2 }">
+				남자아이
+			</c:if>
+			<c:if test="${ dto.k_gender==1 }">
+				여자아이
+			</c:if>
         </div>
       </div>
       <ul class="item3">
         <li>
           <h3>신청내용</h3>
           <div class="contentBox">
-            #끝나고 책 읽어줄 선생님 구해요 ~
+            ${ dto.k_require }
           </div>
         </li>
         <li>
@@ -340,35 +346,16 @@ section{
               <!--<img src=""/>-->
               #원하는활동명
             </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
-            </div>
           </div>
         </li>
       </ul>
     </section>
   </div>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<script>
+function writeReview(){
+	location.href = "writeReview.do";
+}
+</script>
 </body>
 </html>

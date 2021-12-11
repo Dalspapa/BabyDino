@@ -3,9 +3,9 @@ package dino.findkids.model;
 import java.sql.*;
 
 public class FindKidsJoinDto {
-		
+
 	private int cost;
-	//idx of reserve Table 
+	// idx of reserve Table
 	private int idx;
 	private int kid_idx;
 	private int member_p_idx;
@@ -14,7 +14,8 @@ public class FindKidsJoinDto {
 	private String addr2;
 	private String addr3;
 	private String k_name;
-	private int gender;
+	private int k_gender;
+	private int age;
 	private Date k_birth;
 	private String k_tendency;
 	private String k_care_type;
@@ -29,15 +30,13 @@ public class FindKidsJoinDto {
 	private String end_day;
 	private String start_time;
 	private String end_time;
-	
-	
-	
+
 	public FindKidsJoinDto() {
 		super();
 	}
 
 	public FindKidsJoinDto(int cost, int idx, int kid_idx, int member_p_idx, int status, String addr1, String addr2,
-			String addr3, String k_name, int gender, Date k_birth, String k_tendency, String k_care_type,
+			String addr3, String k_name, int k_gender, int age, Date k_birth, String k_tendency, String k_care_type,
 			String k_require, String k_introduce, String c_imgpath, String teacher_type, int star, Date r_writedate,
 			String r_content, String start_day, String end_day, String start_time, String end_time) {
 		super();
@@ -50,7 +49,8 @@ public class FindKidsJoinDto {
 		this.addr2 = addr2;
 		this.addr3 = addr3;
 		this.k_name = k_name;
-		this.gender = gender;
+		this.k_gender = k_gender;
+		this.age = age;
 		this.k_birth = k_birth;
 		this.k_tendency = k_tendency;
 		this.k_care_type = k_care_type;
@@ -139,12 +139,20 @@ public class FindKidsJoinDto {
 		this.k_name = k_name;
 	}
 
-	public int getGender() {
-		return gender;
+	public int getK_gender() {
+		return k_gender;
 	}
 
-	public void setGender(int gender) {
-		this.gender = gender;
+	public void setK_gender(int k_gender) {
+		this.k_gender = k_gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public Date getK_birth() {

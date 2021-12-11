@@ -70,7 +70,7 @@ h2 {
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<div class="wrapper">
 		<div class="d-flex headerTitle">
 			<div>
@@ -108,7 +108,7 @@ h2 {
 			</div>
 		</c:forEach>
 	</div>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <script>
 function showDiv1() {

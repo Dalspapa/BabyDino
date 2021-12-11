@@ -230,7 +230,7 @@ asvg {
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<form name="reportWrite" action="reportWrite.do" method="post">
 		<div class="body">
 		<div class="appbar">
@@ -301,7 +301,7 @@ asvg {
 			</div>
 			</div>
 		</form>
-<%@include file="/footer.jsp" %>	
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>	
 </body>
 <script>
 function checkForm(){

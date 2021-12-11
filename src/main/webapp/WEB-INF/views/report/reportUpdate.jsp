@@ -157,7 +157,7 @@ a:hover {
 </head>
 <body>
 
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <!-- offcanvas(부모회원) -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">아이콘이미지</button>
 
@@ -248,6 +248,6 @@ a:hover {
 		</div>
 	</form>
 </section>
-<%@include file="/footer.jsp" %>	
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>	
 </body>
 </html>

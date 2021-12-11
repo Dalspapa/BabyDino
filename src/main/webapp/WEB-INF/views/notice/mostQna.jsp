@@ -98,7 +98,7 @@ details summary{
 }
 </style>
  <!-- header -->
-	<%@include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
 	<div>
 		<section>
@@ -160,7 +160,7 @@ details summary{
 
 	</div>
  <!-- footer -->
-	<%@include file="/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <script>
 //버튼 클릭시 js

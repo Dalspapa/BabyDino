@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package dino.findteachers.service;
 
 import java.util.List;
@@ -44,3 +45,4 @@ public interface FindTeachersService {
 	//get img path
 	//public List<Common_ImgDto> imgpath(int d_member_idx);
 }
+
