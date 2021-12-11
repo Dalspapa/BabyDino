@@ -232,7 +232,7 @@ section{
 
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
   <div class="wrapper" style="margin-top:80px;">
     <section class="userInfoWrap">
       <h2>사용자 상태 영역</h2>
@@ -369,6 +369,6 @@ section{
       </ul>
     </section>
   </div>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

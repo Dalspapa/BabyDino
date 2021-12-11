@@ -37,7 +37,7 @@
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<div class="wrapper">
 		<div class="careTitle">
 			<p>돌봄노트</p>
@@ -57,6 +57,6 @@
 	<div>
 		<a href="carenoteForm.do">작성하기</a>
 	</div>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

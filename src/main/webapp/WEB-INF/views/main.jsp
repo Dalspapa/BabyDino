@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<%@ include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<style>
 		/*로그인 모달창*/
 		.modal .modal-dialog .modal-content .modal-header .modal-title{
@@ -462,7 +462,7 @@
 	  </div> 
 	</body>
 	  <!-- footer -->
-	  <%@ include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <!-- 선생님 부모님 이용가이드 관련 js -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script>
 <script>

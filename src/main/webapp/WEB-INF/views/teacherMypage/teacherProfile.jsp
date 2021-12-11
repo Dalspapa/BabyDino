@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>선생님 프로필</title>
-<%@ include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 section{
 	width: 80%;
@@ -160,7 +160,7 @@ section{
 		</section>
 	</div>
 </body>
-<%@ include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 
 	$(document).ready(function(){

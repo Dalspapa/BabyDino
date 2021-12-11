@@ -118,7 +118,7 @@ a:hover {
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <section>
 <div class = "ttl">
 	<div class="appbar">
@@ -163,7 +163,7 @@ a:hover {
 		</div>	
 	</div>	
 	</section>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <script>
 	function goBack() {

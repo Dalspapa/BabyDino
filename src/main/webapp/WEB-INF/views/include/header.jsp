@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 <meta charset="UTF-8">
 <title>아 기 공 룡</title>
 <!-- 전역css -->
-<link rel="stylesheet" href="/BabyDino/common/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/css/reset.css">
 <!-- main css -->
-<link rel="stylesheet" href="/BabyDino/common/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/css/main.css">
 <!-- 파비콘 -->
-<link rel="shortcut icon" href="/BabyDino/common/img/favicon/favicon.png" type="image/x-icon">
-<link rel="icon" href="/BabyDino/common/img/favicon/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/common/img/favicon/favicon.png" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath}/common/img/favicon/favicon.png" type="image/x-icon">
 <!-- fontasome -->
-<link rel="stylesheet" href="/BabyDino/common/fonts/Binggrae-Bold.eot">
-<link rel="stylesheet" href="/BabyDino/common/fonts/Binggrae-Bold.ttf">
-<link rel="stylesheet" href="/BabyDino/common/fonts/Binggrae-Bold.woff">
-<link rel="stylesheet" href="/BabyDino/common/fonts/Cafe24SsurroundAir.eot">
-<link rel="stylesheet" href="/BabyDino/common/fonts/Cafe24SsurroundAir.ttf">
-<link rel="stylesheet" href="/BabyDino/common/fonts/Cafe24SsurroundAir.woff">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/fonts/Binggrae-Bold.eot">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/fonts/Binggrae-Bold.ttf">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/fonts/Binggrae-Bold.woff">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/fonts/Cafe24SsurroundAir.eot">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/fonts/Cafe24SsurroundAir.ttf">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/fonts/Cafe24SsurroundAir.woff">
 
 <!-- 폰트어썸(아이콘) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -124,14 +124,14 @@
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3">
 	                        <i class="fas fa-user"></i>		
-	               		</a>
+	               		  </a>
 						</li>
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
 	                        <i class="fas fa-user"></i>		
-	               		</a>
+	               		  </a>
 						</li>
                     </c:if>
                     <!-- teacher navbar -->
@@ -139,7 +139,7 @@
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">
 	                        <i class="fas fa-user"></i>		
-	               		</a>
+	               		  </a>
 						</li>
                     </c:if>
                    </ul>

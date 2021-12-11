@@ -11,7 +11,7 @@
 	margin-top: 100px;
 }
 </style>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 	<div class="title">
@@ -25,5 +25,5 @@
 		</div>
 	</div>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </html>

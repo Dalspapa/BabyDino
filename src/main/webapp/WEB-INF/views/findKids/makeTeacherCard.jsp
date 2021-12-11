@@ -119,7 +119,7 @@
 }
 
 </style>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 	<form name="make_t_Card" id="postForm">
@@ -295,7 +295,7 @@
 
 	</form>
 </body>
-<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <!-- custome js -->
 <script src="./common/js/bootstrap.min.js"></script>

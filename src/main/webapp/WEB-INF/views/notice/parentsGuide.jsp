@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 /*옆에 메뉴바*/
 .question{
@@ -94,6 +94,6 @@
 		</div>
 	</section>
 	  <!-- footer -->
-	  <%@include file="/footer.jsp" %>	
+	  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
