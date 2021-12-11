@@ -78,10 +78,10 @@ img {
 					<div class="row">
 						<div>원하는 돌봄 분야</div>
 						<c:forEach var="c_list" items="${ care_list }">
-						<div class="col-md-2">
-							<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
-							<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
-						</div>
+							<div class="col-md-2">
+								<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
+								<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
+							</div>
 						</c:forEach>
 					</div>
 					
