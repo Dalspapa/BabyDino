@@ -3,15 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.review">
-	<select id="reviewList" resultType="dino.Dto.ReviewDto">
+	<select id="reviewList" resultType="dino.dto.ReviewDto">
 		select
 			*
 		from
 			d_review
 	</select>
-	<insert id="writeReview" parameterType="dino.Dto.ReviewDto">
-		insert into 
-			d_review 
+	<insert id="writeReview" parameterType="dino.dto.ReviewDto">
+		insert into
+			d_review
 		values(
 			d_review_idx.nextval,
 			100,
@@ -21,4 +21,4 @@
 			#{r_content}
 		)
 	</insert>
-</mapper> 
+</mapper>
