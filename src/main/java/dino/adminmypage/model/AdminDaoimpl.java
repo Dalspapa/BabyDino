@@ -42,8 +42,8 @@ public class AdminDaoimpl implements AdminDao {
 	}
 
 	//부모님사유 삭제
-	public int parentDelete(int idx) {
-		int result = sqlMap.delete("pdel",idx);
+	public int parentDelete(String op) {
+		int result = sqlMap.delete("pdel",op);
 		return result;
 	}
 
@@ -53,5 +53,33 @@ public class AdminDaoimpl implements AdminDao {
 		return count;
 	}
 
+	//선생님 사유등록
+	public int teacherAdd(CommonOpDto commonopDto) {
+		int count = sqlMap.insert("teacherInsert",commonopDto);
+		return count;
+	}
+	
+	//선생님 사유삭제
+	public int teacherDelete(String op) {
+		int result = sqlMap.delete("tdel",op);
+		return result;
+	}
 
+	//돌봄분야 리스트
+	public List<CommonOpDto> careList() {
+		List<CommonOpDto> c_list = sqlMap.selectList("careList");
+		return c_list;
+	}
+	
+	//돌봄분야 등록
+	public int careAdd(CommonOpDto commonopDto) {
+		int count = sqlMap.insert("careAdd",commonopDto);
+		return count;
+	}
+	
+	//돌봄분야 삭제
+	public int careDel(String op) {
+		int result = sqlMap.delete("cdel",op);
+		return result;
+	}
 }
