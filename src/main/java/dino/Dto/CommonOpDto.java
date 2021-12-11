@@ -1,4 +1,4 @@
-package dino.Dto;
+package dino.dto;
 
 public class CommonOpDto {
 
@@ -49,6 +49,13 @@ public class CommonOpDto {
 
 	public void setC_category(int c_category) {
 		this.c_category = c_category;
+	}
+	
+	@Override
+	public String toString() {
+		String str = "돌봄분야,배지 등 공통으로 사용하는 옵션의 이름" + op + "\n해당 옵션의 설명" + c_introduce + "\n옵션카테고리" + c_category;
+		System.out.println(str);
+		return str; 
 	}
 	
 }

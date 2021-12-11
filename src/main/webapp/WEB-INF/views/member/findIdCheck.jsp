@@ -4,21 +4,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
+<style>
+.findIdPwd{
+	margin-top: 180px;
+	text-align: center;
+	margin-bottom: 200px;
+	font-size: 19px;
+}  
+.title h4{
+	font-family: 'S-Air';
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.title h6{
+	margin-bottom: 53px;
+}
+.findIdPwd .result{
+	margin-bottom: 50px;
+}
+</style>
 </head>
+  <!-- header -->
+	<%@include file="/header.jsp" %>
 <body>
-   <section>
-      <div>
+   <div class="findIdPwd">
+      <div class="title">
          <h4>계정 정보</h4>
          <h6>입력하신 정보로 가입한 계정 정보입니다.</h6>
       </div>
-      <div>
-         ID :
+      <div class="result">
+         ID : ${ list[0].id }
       </div>
       <div>
-         <button>비밀번호 찾기</button>
-         <button>로그인</button>
+      	<button type="button" class="btn btn-outline-success" onclick="goMain()">홈으로 가기</button>
+								   
       </div>
-   </section>
+   </div> 
 </body>
+  <!-- footer -->
+	<%@include file="/footer.jsp" %>
+<script>
+function goMain() {
+	window.location.replace("http://localhost:9090/BabyDino/main.do");
+}
+</script>
 </html>

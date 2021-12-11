@@ -1,14 +1,26 @@
 package dino.member.model;
 
-import dino.Dto.MemberDto;
+import java.util.List;
+import java.util.Map;
+
+import dino.dto.MemberDto;
 
 public interface MemberDao {
 
-		//Join
-		public int memberJoin(MemberDto memberDto);
-		public boolean idCheck(String id);
-		
-		//Login
-		public MemberDto loginCheck(String id);
-		public MemberDto getUserInfo(String id);
+			//Join
+			public int memberJoin(MemberDto memberDto);
+			public int idCheck(String id);
+
+			//Login
+			public MemberDto loginCheck(String id);
+			public MemberDto getUserInfo(String id);
+
+			//FindId
+			public List<MemberDto> findId(Map map);
+			//FindPwd
+			public List<MemberDto> findPwd(Map map);
+			//editPwd
+			public int editPwd(MemberDto memberDto);
+
+
 }

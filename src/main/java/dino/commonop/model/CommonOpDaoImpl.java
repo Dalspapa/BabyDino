@@ -1,11 +1,10 @@
 package dino.commonop.model;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import dino.Dto.CommonOpDto;
+import dino.dto.CommonOpDto;
 
 public class CommonOpDaoImpl implements CommonOpDao {
 
@@ -53,18 +52,51 @@ public class CommonOpDaoImpl implements CommonOpDao {
 		return b_list;
 	}
 
-	
-	// KidsCard
-	public List<CommonOpDto> ktendency(Map map) {
-
-		List<CommonOpDto> list = sqlMap.selectList("k_tendency", map);
+	// Make KidsCard tendency list
+	public List<CommonOpDto> ktendency() {
+		List<CommonOpDto> list = sqlMap.selectList("k_tendency");
 		return list;
 	}
-	
+
+	// Make KidsCard care list
+	public List<CommonOpDto> k_care_type(){
+
+		List<CommonOpDto> care_list = sqlMap.selectList("k_care_type");
+		//test code
+		System.out.println("careList==" + care_list);
+		return care_list;
+	}
+
 	//reportType
 	public List<CommonOpDto> reportType() {
 
 		List<CommonOpDto> rp_list = sqlMap.selectList("rp_typeList");
 		return rp_list;
 	}
+
+	//공지사항
+	public List<CommonOpDto> noticeList() {
+		List<CommonOpDto> list = sqlMap.selectList("notice");
+		System.out.println("dao======= "+ list);
+		return list;
+	}
+
+	//자주 묻는 질문(회원관련)
+	public List<CommonOpDto> qna() {
+		List<CommonOpDto> list = sqlMap.selectList("qna");
+		return list;
+	}
+	//정부지원관련
+	public List<CommonOpDto> government() {
+		List<CommonOpDto> g_list = sqlMap.selectList("government");
+		return g_list;
+	}
+	//결제환불관련
+	public List<CommonOpDto> pay() {
+		List<CommonOpDto> p_list = sqlMap.selectList("pay");
+		return p_list;
+	}
+
+
+
 }

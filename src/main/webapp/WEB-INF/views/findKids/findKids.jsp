@@ -1,65 +1,242 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://kit.fontawesome.com/3ae3ff2538.js"
-	crossorigin="anonymous"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
+<%@include file="/header.jsp" %>
 <style>
+#cardImg {
+	width: 50px;
+	heitht: 50px;
+}
+
+.pignose-calendar-unit-disabled a {
+	color: red !important
+}
+
+.isTest {
+	background-color: red;
+}
 </style>
 </head>
 <body>
 	<h1>아이찾기 페이지</h1>
 	<section>
-	<c:if test="${empty k_list}">
-		<h2>등록된 아이가 없습니다.</h2>
-	</c:if>
 		<div class="container">
+			<!-- 필터[START] -->
 			<div class="row">
-				<c:forEach var="k_dto" items="${k_list}">
-					<div class="col-4 p-2">
-						<div class="row" style="border: 1px solid black; height:80px;">
-							<div class="col-4">
-								<img alt="kids_img" src="./common/img/bossbaby.png" style="width:35px; height:35px;">
-								${k_dto.k_name}
-							</div>
-							<div class="col-8">
-								<p>
-									<c:if test="${k_dto.k_gender == 0}">
-										여아
-									</c:if>
-									<c:if test="${k_dto.k_gender == 1}">
-										남아
-									</c:if>
-								</p>
-								<p>
-									${k_dto.k_introduce}
-								</p>
-								<p>
-									${k_dto.k_tendency}
-								</p>
-							</div>
+				<div class="col-6">
+					<div class="row" style="justify-content: space-between;">
+						<div style="width: 20%; border: 1px solid red; height: 30px;"
+							name="cDiv" id="first" onclick="changeDiv('first')">1</div>
+						<div style="width: 20%; border: 1px solid red; height: 30px;"
+							name="cDiv" id="second" onclick="changeDiv('second')">2</div>
+						<div style="width: 20%; border: 1px solid red; height: 30px;"
+							name="cDiv" id="third" onclick="changeDiv('third')">3</div>
+						<div style="width: 20%; border: 1px solid red; height: 30px;"
+							name="cDiv" id="four" onclick="changeDiv('four')">4</div>
+					</div>
+					<button onclick="check()">check</button>
+					<div class="row mt-4">
+						<div class="form-check w-50">
+							<input class="form-check-input" type="checkbox" value="1"
+								id="flexCheckDefault1" /> <label class="form-check-label"
+								for="flexCheckDefault1">등하원</label>
+						</div>
+						<div class="form-check w-50">
+							<input class="form-check-input" type="checkbox" value="2"
+								id="flexCheckDefault2" /> <label class="form-check-label"
+								for="flexCheckDefault2">놀이</label>
+						</div>
+						<div class="form-check w-50">
+							<input class="form-check-input" type="checkbox" value="3"
+								id="flexCheckDefault3" /> <label class="form-check-label"
+								for="flexCheckDefault3">학습</label>
+						</div>
+						<div class="form-check w-50">
+							<input class="form-check-input" type="checkbox" value="4"
+								id="flexCheckDefault4" /> <label class="form-check-label"
+								for="flexCheckDefault4">기타</label>
 						</div>
 					</div>
-				</c:forEach>
+				</div>
+				<!--  날짜 -->
+				<div class="col-6"></div>
 			</div>
 		</div>
+		<!-- 필터[END] -->
+		<hr />
+		<!-- 하단 정보[START] -->
+		<div class="row" id="flipcard">
+			<c:if test="${empty KidsList }">
+				<h2 align="center">원하는 아이가 없습니다.</h2>
+			</c:if>
+			<c:forEach var="kDto" items="${ KidsList }">
+				<div class="col-4 p-2">
+					<!-- 카드정보[START] -->
+					<!-- filp01 -->
+					<div class="flip-card col-lg">
+							<c:url var = "contentUrl" value="kidsContent.do">
+								<c:param name="idx">${kDto.idx}</c:param>
+							</c:url>
+<<<<<<< HEAD
+
+=======
+>>>>>>> Yeongchan
+						<div class="flip-card-inner" onclick="location.href='${ contentUrl }'">
+							<div class="flip-card-front">
+								<div class="mb-2">
+									<img src="/upload/${kDto.c_imgpath}" alt="선생님 사진" ><br>
+									<input type="hidden" name="idx" value="${ kDto.idx }">
+									<h5 id="tendetcy">
+									<c:set  var="careType" value="${kDto.k_care_type}" />
+									<c:forEach items="${fn:split(careType, ',') }" var="item">
+										#${item}&nbsp;&nbsp;<%-- 
+										<c:if test="${item == '1'}">#등하원</c:if>
+										<c:if test="${item == '2'}">#야외활동</c:if>
+										<c:if test="${item == '3'}">#책읽기</c:if>
+										<c:if test="${item == '4'}">#학습지도</c:if>
+										<c:if test="${item == '5'}">#한글놀이</c:if>
+										<c:if test="${item == '6'}">#영어놀이</c:if>
+										<c:if test="${item == '7'}">#실내놀이</c:if>
+										<c:if test="${item == '8'}">#체육놀이</c:if>
+										<c:if test="${item == '9'}">#미술놀이</c:if>
+										<c:if test="${item == '10'}">#간단청소</c:if>
+										<c:if test="${item == '11'}">#밥챙겨주기</c:if>
+										<c:if test="${item == '12'}">#간단 설거지</c:if> --%>
+									</c:forEach>
+									</h5>
+								</div>
+								<div>
+<<<<<<< HEAD
+									<h6 class="text-warning" id="title">새로운 추천01</h6>
+									<h6 id="info">${kDto.addr1 } / ${kDto.k_name }  /
+=======
+									<h6 class="text-warning" id="title">${kDto.k_name }</h6>
+									<h6 id="info">${kDto.addr2 }
+>>>>>>> Yeongchan
+										<c:if test="${kDto.k_gender == 1 }">
+											여아
+										</c:if>
+										<c:if test="${kDto.k_gender == 2 }">
+											남아
+										</c:if>										
+									</h6>
+								</div>
+							</div>
+							<div class="flip-card-back ">
+								<h1 id="name">${kDto.k_name}</h1>
+								<p id="tendency">
+									${kDto.k_introduce}
+								</p>
+								<ul>
+<<<<<<< HEAD
+									<li id="palyday">${kDto.r_endday} /
+										<c:set  var="time" value="${kDto.r_time}" />
+										<c:forEach items="${fn:split(intro, ',') }" var="item">
+											<c:if test="${item == '1'}">7~8시</c:if>
+											<c:if test="${item == '2'}">8~9시</c:if>
+											<c:if test="${item == '3'}">9~10시</c:if>
+											<c:if test="${item == '4'}">10~11시</c:if>
+											<c:if test="${item == '5'}">11~12시</c:if>
+											<c:if test="${item == '6'}">12~13시</c:if>
+											<c:if test="${item == '7'}">13~14시</c:if>
+											<c:if test="${item == '8'}">14~15시</c:if>
+											<c:if test="${item == '9'}">15~16시</c:if>
+											<c:if test="${item == '10'}">16~17시</c:if>
+											<c:if test="${item == '11'}">17~18시</c:if>
+											<c:if test="${item == '12'}">18~19시</c:if>
+											<c:if test="${item == '13'}">19~20시</c:if>
+											<c:if test="${item == '14'}">20~21시</c:if>
+											<c:if test="${item == '15'}">21~22시</c:if>
+											<c:if test="${item == '16'}">22~23시</c:if>
+										</c:forEach>
+										<script>console.log('dddd==='+${kDto.r_time})</script>
+									</li>
+									<li id="cost"><fmt:formatNumber value="${kDto.hope_cost}" pattern="#,###" />원 / 협의가능</li>
+=======
+									<li id="playday">${kDto.start_day} ~ ${kDto.end_day}<br></li>
+									<li id="playtime">${kDto.start_time} ~ ${kDto.end_time}</li>
+									<li id="cost"><fmt:formatNumber value="${kDto.cost}" pattern="#,###" />원  / 협의가능</li>
+>>>>>>> Yeongchan
+								</ul>
+							</div>
+						</div>
+						<!-- ./ filp01 -->
+					</div>
+					<!-- 카드정보[END] -->
+				</div>
+			</c:forEach>
+		</div>
+		<!-- 하단 정보[START] -->
 	</section>
 </body>
+<<<<<<< HEAD
+<%@include file="../footer.jsp" %>
+=======
+<%@include file="/footer.jsp" %>
+>>>>>>> Yeongchan
+
+<!-- custome js -->
+<script src="./common/js/bootstrap.min.js"></script>
+
+
+<script>
+
+	function goUrl(){
+		location.href='${contentUrl}';
+	}
+
+	function changeDiv(val) {
+	   var a = document.getElementById(val);
+
+	   if(a.classList.contains('isTest')){
+	      a.classList.remove('isTest');
+	    } else {
+	       a.classList.add('isTest');
+	    }
+	}
+
+	function check() {
+	   var a = document.getElementsByName('cDiv');
+	   var b = [];
+	   for(var i = 0; i < a.length; i++ ) {
+<<<<<<< HEAD
+
+	      if(a[i].classList.contains('isTest')) b.push(a[i].id)
+	   };
+=======
+	      
+	      if(a[i].classList.contains('isTest')) b.push(a[i].id);
+	   }
+
+>>>>>>> Yeongchan
+	   console.log("-- selected : ", b);
+	}
+
+</script>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

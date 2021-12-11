@@ -1,9 +1,14 @@
-package dino.Dto;
+package dino.dto;
+
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class MakeTCardDto {
 
 	//Teacher Card Table
 	private int idx;
+	private int memberIdx;
 	private int d_member_idx;
 	private int job;
 	private String badge;
@@ -18,20 +23,43 @@ public class MakeTCardDto {
 	private int cctvagree;
 	private String t_sexcrime;
 	private String career_experience;
-	
+
+
+
+
+
+	public int getMemberIdx() {
+		return memberIdx;
+	}
+
+	public void setMemberIdx(int memberIdx) {
+		this.memberIdx = memberIdx;
+	}
+
+	public List<MultipartFile> gettImg() {
+		return tImg;
+	}
+
+	public void settImg(List<MultipartFile> tImg) {
+		this.tImg = tImg;
+	}
+
+	private List<MultipartFile> tImg;
+
+
 	//Kids Card Table
-	
+
 	//Reserve Table
-	
+
 	//기본생성자
 	public MakeTCardDto() {
 		super();
 	}
-	
+
 	//인자생성자
 	public MakeTCardDto(int idx, int d_member_idx, int job, String badge, String kid_type, String t_care_type,
 			String schedule_day, String schedule_time, int t_cost, String t_introduce, int bank, String acnum,
-			int cctvagree, String t_sexcrime, String career_experience) {
+			int cctvagree, String t_sexcrime, String career_experience, List<MultipartFile> tImg) {
 		super();
 		this.idx = idx;
 		this.d_member_idx = d_member_idx;
@@ -48,10 +76,24 @@ public class MakeTCardDto {
 		this.cctvagree = cctvagree;
 		this.t_sexcrime = t_sexcrime;
 		this.career_experience = career_experience;
+		this.tImg = tImg;
 	}
-	
-	
+
+
 	//게터세터
+
+	public List<MultipartFile> getTImg() {
+		return tImg;
+	}
+
+	public void setTImg(List<MultipartFile> tImg) {
+		this.tImg = tImg;
+	}
+
+
+
+
+
 	public int getIdx() {
 		return idx;
 	}
@@ -171,19 +213,17 @@ public class MakeTCardDto {
 	public void setCareer_experience(String career_experience) {
 		this.career_experience = career_experience;
 	}
-	
-	
+
 	//toString
 	@Override
 	public String toString() {
-		
+
 		String str = "idx : " + idx + "\nm_idx : " + d_member_idx + "\njob : " + job + "\nbadge : " + badge + "\nkid_type : " + kid_type +
-				"\ncare_type : " + t_care_type + "\ns_day : " + schedule_day + "\ns_time : " + schedule_time + "\ncost : " + t_cost + 
+				"\ncare_type : " + t_care_type + "\ns_day : " + schedule_day + "\ns_time : " + schedule_time + "\ncost : " + t_cost +
 				"\nintro : " + t_introduce + "\nbank : " + bank + "\nacnum : " + acnum + "\ncctv : " + cctvagree + "\nsex : " + t_sexcrime +
 				"\ncareer : " + career_experience;
+		System.out.println(str);
 		return str;
 	}
-	
-	
-	
+
 }

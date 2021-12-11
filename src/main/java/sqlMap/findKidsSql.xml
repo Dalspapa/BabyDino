@@ -3,15 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.findKids">
-
-	<insert id="t_makeCard" parameterType="dino.Dto.MakeTCardDto">
+	
+	<!-- 선생님 카드 등록 -->
+	<insert id="t_makeCard" parameterType="dino.dto.MakeTCardDto">
+		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
+			SELECT  d_teacher_idx.NEXTVAL FROM DUAL
+		</selectKey>
 		insert into
-			d_teacher
+			d_teachercard
 		values(
-			d_teacher_idx.nextval,
-			22,
+			#{idx},
+			#{memberIdx},
 			#{job},
-			'1',
+			'1,2,3',
 			#{kid_type},
 			#{t_care_type},
 			#{schedule_day},
@@ -23,14 +27,160 @@
 			#{cctvagree},
 			'signclear',
 			#{career_experience}
-		)		
+		)
 	</insert>
-	<select id="kidsList" parameterType="Map" resultType="dino.Dto.MakeTCardDto">
-		select
-			*
-		from 
-			d_kid
-		order by idx desc
-	</select>	
-</mapper>
 	
+	<!-- 아이찾기 리스트 출력 -->
+	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
+		SELECT            
+				r.cost
+				, r.idx
+		        , r.kid_idx
+		        , r.member_p_idx
+		        , r.status
+		        , m.addr1
+		        , m.addr2
+		        , m.addr3
+		        , k.k_name
+		        , k.k_gender
+		        , k.k_birth
+		        , k.k_tendency
+		        , k.k_care_type
+		        , k.k_require
+		        , k.k_introduce
+		        , i.c_imgpath
+		        , k.teacher_type
+		        , rv.star
+		        , rv.r_writedate
+		        , rv.r_content
+                , t.start_day
+                , t.end_day
+                , t.start_time
+                , t.end_time
+		FROM
+		    	d_reserve r 
+		LEFT JOIN 	d_member m ON m.idx = r.member_p_idx
+		LEFT JOIN 	d_kidcard k ON k.idx = r.kid_idx
+		LEFT JOIN 	d_common_img i on i.ref_idx = k.idx
+		LEFT JOIN 	d_review rv on rv.d_reserve_idx = r.idx
+        LEFT JOIN
+                 (SELECT
+                         idx AS t_idx
+                        ,TO_CHAR(start_date, 'yyyy-mm-dd') AS start_day
+                        ,TO_CHAR(end_date, 'yyyy-mm-dd')   AS end_day
+                        ,TO_CHAR(start_date, 'hh24') AS start_time
+                        ,TO_CHAR(end_date, 'hh24')   AS end_time
+                     FROM
+                        d_reserve
+                 ) t
+            ON t.t_idx = r.idx
+	</select>
+	
+	<!-- 선생님 고유번호 조회 -->
+	<select id="getTIdx" parameterType="Integer" resultType="Integer">
+		select
+			idx
+		from
+			(select * from d_teachercard order by idx desc)
+		where
+			rownum = 1 and d_member_idx = #{d_member_idx}
+	</select>
+	
+	<!-- 이미지 인서트 -->
+	<insert id="tSetImg" parameterType="dino.dto.Common_ImgDto">
+		INSERT INTO
+			d_common_img
+		VALUES(
+			d_common_img_idx.nextval,
+			#{c_imgpath},
+			#{d_member_idx},
+			2,
+			#{ref_idx}
+		)
+	</insert>
+
+	<!-- 이미지 출력 -->
+	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	    SELECT
+	        dt.*, dci.c_imgpath
+	    FROM
+	        d_teachercard dt
+	    LEFT JOIN
+	        d_common_img dci
+	    ON
+	        dt.d_member_idx = dci.d_member_idx
+	    WHERE
+	        dt.d_member_idx = #{d_member_idx}
+	</select>
+	
+	<!-- 아이카드 상세정보  -->
+	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
+		SELECT  r.cost
+		        , r.to_char(start_date, 'hh24')
+		        , r.to_char(end_date, 'hh24')
+		        , r.kid_idx
+		        , r.member_p_idx
+		        , m.addr1
+		        , m.addr2
+		        , m.addr3
+		        , k.k_name
+		        , k.k_gender
+		        , k.k_birth
+		        , k.k_tendency
+		        , k.k_care_type
+		        , k.k_require
+		        , k.k_introduce
+		        , i.c_imgpath
+		        , k.teacher_type
+		        , r.idx
+	    FROM
+		  		  d_reserve r
+			LEFT JOIN d_member m ON m.idx = r.member_p_idx
+			LEFT JOIN d_kidcard k ON k.idx = r.kid_idx
+			LEFT JOIN d_common_img i on i.ref_idx = k.idx
+		WHERE
+				r.idx = #{idx}
+	</select>
+
+	<!-- 선생님 등급 수정 -->
+	<update id="updateTeacherGrade" parameterType="dino.dto.MemberDto">
+	   /* findKidsSql.updateTeacherGrade */
+	   UPDATE D_MEMBER
+	      SET MEMBER_TYPE = #{member_type}
+	        , UPD_DT      = SYSDATE
+	        , UPD_ID      = #{updId}
+	    WHERE IDX = #{idx}
+	</update>
+	
+	<!-- 선생님 grade 수정 -->
+	<update id="teacherGradeUpd" parameterType="Integer">
+		UPDATE D_MEMBER
+	      SET MEMBER_TYPE = 6
+	        , UPD_DT      = SYSDATE
+	        , UPD_ID      = #{updId}
+	    WHERE IDX = #{idx}	
+	</update>
+	
+	<!-- 선생님 grade 조회 / 세션 등록 위함 -->
+	<select id="UpdGrade" parameterType="String" resultType="Integer">
+		SELECT 
+			MEMBER_TYPE
+		FROM 
+			D_MEMBER
+		WHERE ID = #{id}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

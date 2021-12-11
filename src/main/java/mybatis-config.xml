@@ -8,9 +8,15 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<mappers>
-		<mapper resource="sqlMap/memberSql.xml"/>
-		<mapper resource="sqlMap/commonOpSql.xml"/>
-		<mapper resource="sqlMap/findKidsSql.xml"/>
-		<mapper resource="sqlMap/reportSql.xml"/>
+		<mapper resource="sqlmap/memberSql.xml"/>
+		<mapper resource="sqlmap/commonOpSql.xml"/>
+		<mapper resource="sqlmap/findKidsSql.xml"/>
+		<mapper resource="sqlmap/commonImgSql.xml"/>
+		<mapper resource="sqlmap/reportSql.xml"/>
+		<mapper resource="sqlmap/findTeachersSql.xml"/>
+		<mapper resource="sqlmap/teacherProfileSql.xml"/>
+		<mapper resource="sqlmap/reviewSql.xml"/>
+		<mapper resource="sqlmap/careNoteSql.xml"/>
+		<mapper resource="sqlmap/parentMypageSql.xml"/>
 	</mappers>
 </configuration>

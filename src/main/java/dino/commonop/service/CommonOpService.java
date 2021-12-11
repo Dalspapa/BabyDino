@@ -1,8 +1,8 @@
 package dino.commonop.service;
 
-import java.util.*;
+import java.util.List;
 
-import dino.Dto.CommonOpDto;
+import dino.dto.CommonOpDto;
 
 public interface CommonOpService {
 
@@ -13,10 +13,23 @@ public interface CommonOpService {
 	public List<CommonOpDto> t_date_opList();
 	public List<CommonOpDto> t_time_opList();
 	public List<CommonOpDto> t_bank_opList();
-	
-	//Make a KidsCard
+
+	//Make KidsCard list
 	public List<CommonOpDto> ktendency();
-	
+	public List<CommonOpDto> k_care_type();
+
 	//reportType
 	public List<CommonOpDto> reportType();
+
+	//공지사항
+	public List<CommonOpDto> noticeList();
+
+	//자주 묻는 질문(회원관련)
+	public List<CommonOpDto> qna();
+
+	//자주 묻는 질문(정부지원관련)
+	public List<CommonOpDto> government();
+
+	//자주 묻는 질문(결제 환불 관련)
+	public List<CommonOpDto> pay();
 }
