@@ -127,8 +127,6 @@
 	</section>
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-
-
 <script>
 
 	function goUrl(){

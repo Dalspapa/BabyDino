@@ -165,9 +165,4 @@ a:hover {
 	</section>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
-<script>
-	function goBack() {
-		window.history.back();
-	}
-</script>
 </html>

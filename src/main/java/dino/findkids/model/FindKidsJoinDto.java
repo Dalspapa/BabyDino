@@ -267,6 +267,5 @@ public class FindKidsJoinDto {
 		this.end_time = end_time;
 	}
 	
-	
 
 }
