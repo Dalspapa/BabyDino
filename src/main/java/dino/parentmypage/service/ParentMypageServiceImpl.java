@@ -25,3 +25,4 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 		return list;
 	}
 }
+

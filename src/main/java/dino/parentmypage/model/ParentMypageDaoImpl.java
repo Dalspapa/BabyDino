@@ -20,3 +20,4 @@ public class ParentMypageDaoImpl implements ParentMypageDao {
 		return list;
 	}
 }
+
