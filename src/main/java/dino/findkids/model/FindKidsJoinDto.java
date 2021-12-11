@@ -1,3 +1,4 @@
+
 package dino.findkids.model;
 
 import java.sql.*;
@@ -266,6 +267,5 @@ public class FindKidsJoinDto {
 	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
 	}
-	
 
 }
