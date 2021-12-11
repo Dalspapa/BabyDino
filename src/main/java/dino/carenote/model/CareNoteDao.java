@@ -6,6 +6,9 @@ import dino.dto.CareNoteDto;
 
 public interface CareNoteDao {
 
+	/**
+	 * @return
+	 */
 	public List<CareNoteDto> careNoteList();
 
 	public int writeCareNote(CareNoteDto dto);
