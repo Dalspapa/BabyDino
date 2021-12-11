@@ -110,7 +110,7 @@
 
                     <c:if test="${stype == 1}">
 	                    <li class="nav-item">
-	                    	관리자 로그인 중&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
+	                    	<a href="logout.do" class="nav-link">관리자 로그인 중</a>
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
@@ -207,15 +207,15 @@
 
 	function dinoCare(stype){
 
-		
-		if (stype == 1 || stype == 4 || stype == 5 || stype == 6) { //2,3 는 아이카드 선택으로 이동 
-			
+
+		if (stype == 1 || stype == 4 || stype == 5 || stype == 6) { //2,3 는 아이카드 선택으로 이동
+
 			location.href = 'findTeacher.do?idx=${sidx}';
-			
-		} else if ( stype == 2 || stype == 3 ) { 
-			
-			location.href = 'pickKidsCard.do?idx=${sidx}'; //2,3 는 아이카드 선택으로 이동 
-			
+
+		} else if ( stype == 2 || stype == 3 ) {
+
+			location.href = 'pickKidsCard.do?idx=${sidx}'; //2,3 는 아이카드 선택으로 이동
+
 		} else if ( stype == null){
 
 			window.alert('회원 가입 후 이용할 수 있습니다.');

@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-	<h1>아이찾기 페이지</h1>
+<!-- 	<h1>아이찾기 페이지</h1> -->
 	<section>
 		<div class="container">
 			<!-- 필터[START] -->
@@ -93,7 +93,7 @@
 									</h5>
 								</div>
 								<div>
-									<h6 class="text-warning" id="title">${kDto.k_name } / ${kDto.age}세 / 
+									<h6 class="text-warning" id="title">${kDto.k_name } / ${kDto.age}세 /
 										<c:if test="${kDto.k_gender == 1 }">
 											여아
 										</c:if>
@@ -110,7 +110,7 @@
 									${kDto.k_introduce}
 								</p>
 								<ul>
-									<li id="palyday">이날 만났으면 좋겠어요~</li>									
+									<li id="palyday">이날 만났으면 좋겠어요~</li>
 									<li id="playday">${kDto.start_day}일 ~ ${kDto.end_day}일<br></li>
 									<li id="playtime">${kDto.start_time}시 ~ ${kDto.end_time}시</li>
 									<li id="cost"><fmt:formatNumber value="${kDto.cost}" pattern="#,###" />원  / 협의가능</li>
@@ -147,7 +147,7 @@
 	   var a = document.getElementsByName('cDiv');
 	   var b = [];
 	   for(var i = 0; i < a.length; i++ ) {
-	      
+
 	      if(a[i].classList.contains('isTest')) b.push(a[i].id);
 	   }
 
