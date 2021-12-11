@@ -2,8 +2,8 @@ package dino.carenote.service;
 
 import java.util.List;
 
-import dino.dto.CareNoteDto;
 import dino.carenote.model.CareNoteDao;
+import dino.dto.CareNoteDto;
 
 public class CareNoteServiceImpl implements CareNoteService {
 

@@ -1,7 +1,6 @@
 package dino.commonop.model;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -52,36 +51,36 @@ public class CommonOpDaoImpl implements CommonOpDao {
 		List<CommonOpDto> b_list = sqlMap.selectList("t_bank_opList");
 		return b_list;
 	}
-	
+
 	// Make KidsCard tendency list
 	public List<CommonOpDto> ktendency() {
 		List<CommonOpDto> list = sqlMap.selectList("k_tendency");
 		return list;
 	}
-	
+
 	// Make KidsCard care list
 	public List<CommonOpDto> k_care_type(){
-		
+
 		List<CommonOpDto> care_list = sqlMap.selectList("k_care_type");
 		//test code
 		System.out.println("careList==" + care_list);
 		return care_list;
 	}
-	
+
 	//reportType
 	public List<CommonOpDto> reportType() {
 
 		List<CommonOpDto> rp_list = sqlMap.selectList("rp_typeList");
 		return rp_list;
 	}
-	
+
 	//공지사항
 	public List<CommonOpDto> noticeList() {
 		List<CommonOpDto> list = sqlMap.selectList("notice");
 		System.out.println("dao======= "+ list);
 		return list;
 	}
-	
+
 	//자주 묻는 질문(회원관련)
 	public List<CommonOpDto> qna() {
 		List<CommonOpDto> list = sqlMap.selectList("qna");
@@ -97,7 +96,7 @@ public class CommonOpDaoImpl implements CommonOpDao {
 		List<CommonOpDto> p_list = sqlMap.selectList("pay");
 		return p_list;
 	}
-	
-	
-	
+
+
+
 }

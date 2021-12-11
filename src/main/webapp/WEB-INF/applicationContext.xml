@@ -78,6 +78,7 @@
 	</bean>
 	<bean id="parentMypageService" class="dino.parentmypage.service.ParentMypageServiceImpl">
 		<property name="parentMypageDao" ref="parentMypageDao"></property>
+	</bean>
 	<bean id="teacherMypageService" class="dino.teachermypage.service.TeacherMyPageServiceImpl">
 		<property name="teacherMyPageDao" ref="teacherMyPageDao" />
 	</bean>

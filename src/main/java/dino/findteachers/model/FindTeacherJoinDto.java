@@ -2,7 +2,7 @@ package dino.findteachers.model;
 
 import java.util.List;
 
-import dino.dto.*;
+import dino.dto.ReviewDto;
 
 public class FindTeacherJoinDto {
 	private int t_cost;
@@ -22,7 +22,7 @@ public class FindTeacherJoinDto {
 	private String r_content;
 	private String c_imgpath;
 	private List<ReviewDto> review_list;
-	
+
 	public FindTeacherJoinDto() {
 		super();
 	}

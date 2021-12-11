@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import dino.dto.*;
+
 import dino.commonop.service.CommonOpService;
+import dino.dto.CommonOpDto;
 
 @Controller
 public class NoticeController {
-	
+
 	@Autowired
 	private CommonOpService commonopService;
 
@@ -19,7 +20,7 @@ public class NoticeController {
 	public String noticeMain() {
 		return "notice/noticeMain";
 	}
-	
+
 	//공지사항
 	@RequestMapping(value = "/notice.do")
 	public ModelAndView notice() {
@@ -31,7 +32,7 @@ public class NoticeController {
 		mav.setViewName("notice/notice");
 		return mav;
 	}
-	
+
 	@RequestMapping("/mostQna.do")
 	public ModelAndView mostQna() {
 		System.out.println("qnaController");
@@ -45,26 +46,26 @@ public class NoticeController {
 		mav.setViewName("notice/mostQna");
 		return mav;
 	}
-	
+
 	//부모님 이용가이드 페이지
 	@RequestMapping("/parentsGuide.do" )
 	public String parentsGuidepage() {
 		return "notice/parentsGuide";
 	}
-	
+
 	//선생님 이용 가이드 페이지
 	@RequestMapping("/TeacherGuide.do")
 	public String TeacherGuide() {
 		return "notice/TeacherGuide";
 	}
-	
+
 	@RequestMapping("/Qna.do")
 	public String QnaForm() {
 		return "notice/QnaForm";
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }

@@ -1,9 +1,7 @@
 package dino.controller;
 
 import java.util.HashMap;
-						  
-
-import java.util.*;		
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -36,11 +34,11 @@ public class MemberController {
 
 	//Do Login
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ResponseEntity<?> loginSubmit(@RequestParam("id") String id, 
-			@RequestParam("pwd") String pwd, HttpSession session, 
-			@RequestParam(value = "saveId", required = false) String saveId, 
+	public ResponseEntity<?> loginSubmit(@RequestParam("id") String id,
+			@RequestParam("pwd") String pwd, HttpSession session,
+			@RequestParam(value = "saveId", required = false) String saveId,
 			HttpServletResponse resp) {
-		
+
 		HashMap<String, Object> response = new HashMap<String, Object>();
 		String success = "fail";
 		boolean result = memberService.loginCheck(id, pwd);
@@ -81,7 +79,7 @@ public class MemberController {
 				resp.addCookie(ck);
 			}
 			success = "success";
-   
+
 		} else if (result == false) {
 			mav.addObject("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
 		}
@@ -159,12 +157,12 @@ public class MemberController {
 
 		memberService.certifiedPhoneNumber(userPhoneNumber, randomNumber);
 
-		return Integer.toString(randomNumber);
+		return String.valueOf(randomNumber);
 	}
 
 	// 아이디 비밀번호 찾기 페이지 이동
 	@RequestMapping("/findIdPwd.do")
-	public String findIdPwd() {		
+	public String findIdPwd() {
 		return "member/findIdPwd";
 	}
 
@@ -196,30 +194,17 @@ public class MemberController {
 	// 비밀번호 수정하기
 	@RequestMapping(value = "/updatePwd.do" , method = RequestMethod.POST)
 	public ModelAndView editPwd(MemberDto memberDto) {
-		
+
 		int result = memberService.editPwd(memberDto);
-		
+
 		ModelAndView mav = new ModelAndView();
 		String msg = result > 0 ?"비밀번호가 정상적으로 바뀌었습니다." : "비밀번호 수정에 실패하였습니다.다시 확인해주세요!";
 		mav.addObject("msg", msg);
 		mav.setViewName("member/findPwdMsg");
-		
+
 		return mav;
-		
+
 	}
-	//휴대폰 번호인증
-	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
-	@ResponseBody
-	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
-
-		int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);//난수 생성
-
-		memberService.certifiedPhoneNumber(userPhoneNumber, randomNumber);					  
-
-		return Integer.toString(randomNumber);
- 
-			 
-	}	 
 
 }
 

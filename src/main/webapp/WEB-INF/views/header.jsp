@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta charset="UTF-8">
@@ -77,20 +77,20 @@
 
 			<!-- 반응형 메뉴바 -->
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				Menu 
+				Menu
 				<i class="fas fa-bars"></i>
 				<!--  ./반응형 메뉴바 -->
 			</button>
-			
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item">
 						<a class="nav-link" href="#about">돌봄신청</a>
 					</li>
-					<li class="nav-item">						
-						<a class="nav-link" href="javascript:goCompulCheck(${ stype });">아이찾기</a>						
-					<li class="nav-item"><a class="nav-link" href="noticeMain.do">궁금해요</a>					
-					
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:goCompulCheck(${ stype });">아이찾기</a>
+					<li class="nav-item"><a class="nav-link" href="noticeMain.do">궁금해요</a>
+
 					<c:if test="${ (!empty sid && stype == 2) || (!empty sid && stype == 3) }">
 						<li class="nav-item">
 	                    	${ sid } 부모님 환영합니다!&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
@@ -138,7 +138,7 @@
 alert("${sid}:${stype}");
 
 =======
-<script>	
+<script>
 >>>>>>> Yeongchan
 
 	function goCompulCheck(stype) {
@@ -165,11 +165,8 @@ alert("${sid}:${stype}");
 	}
 
 </script>
-<<<<<<< HEAD
 
-=======
 </html>
->>>>>>> Yeongchan
 
 
 

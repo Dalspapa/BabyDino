@@ -19,12 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import dino.commonop.service.CommonOpService;
 import dino.dto.CommonOpDto;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
-import dino.commonop.service.CommonOpService;
 import dino.findkids.model.FindKidsJoinDto;
 import dino.findkids.service.FindKidsService;
 
@@ -109,7 +108,7 @@ public class FindKidsController {
 				throw new IllegalStateException("로그인상태가 아닙니다.");
 			}
 			dto.setIdx(Integer.parseInt(saveIdx));
-			
+
 			findKidsService.makeTCard(dto, imgFiles, dirPath, imgDto, request);
 			result.put("fail", false);
 			success = true;
@@ -139,7 +138,7 @@ public class FindKidsController {
 			throw new IllegalStateException("선생님 카드 등록시 오류가 발생하였습니다.");
 		}
 		System.out.println("인증후 그레이드 6 수정 후========");
-		
+
 		//int setImg = findKidsService.tSetImg(imgDto);
 //		if( setImg != 1 ) {
 //			result.put("fail", false);
@@ -150,7 +149,7 @@ public class FindKidsController {
 		if(StringUtils.isEmpty(id)) {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
 		}
-		
+
 		int updMType = findKidsService.UpdGrade(id);
 		System.out.println("수정된 멤버타입"+updMType);
 		session.setAttribute("saveMemberType", updMType);
@@ -218,14 +217,14 @@ public class FindKidsController {
 	 */
 	@RequestMapping(value="/teacher/cert.do")
 	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 
 		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
 		if(StringUtils.isEmpty(idx)) {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
 		}
 		teacher.setIdx(Integer.parseInt(idx));
-		
+
 		teacher.setMember_type(5);
 		int rst = findKidsService.updateTeacherGrade(teacher);
 		System.out.println("컨트롤러에 teacher ====="+rst);
@@ -240,8 +239,8 @@ public class FindKidsController {
 		int updMType = findKidsService.UpdGrade(teacher.getId());
 		System.out.println("인증 된 선생님 세션에 그레이드 수정"+updMType);
 		System.out.println("컨트롤러====="+updMType);
-		session.setAttribute("saveMemberType", updMType);
-		
+		request.getSession().setAttribute("saveMemberType", updMType);
+
 		msg = "선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
 		System.out.println("컨트롤러 msg ========"+msg);
 		goUrl = "main.do";
