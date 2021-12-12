@@ -151,6 +151,7 @@
 				idCheckBtn = true;
 				$('#checkId').html('탈퇴한 회원입니다.');
 				$('#checkId').css('color','red');
+				location.href="logout.do"
 			} else {
 			
 				if(r.result){
