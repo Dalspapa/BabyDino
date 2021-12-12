@@ -7,18 +7,6 @@
 <title>Insert title here</title>
  
 <style>
-/* body {
-    width: 952px;
-    margin-left: 12%;
-    font-size: 12px;
-    margin: 0px auto;
-}
-/*h2 {
-	color : green;
-	text-align : center;
-	margin-top : 50px;
-	margin-bottom : 50px;
-} */
 .body{
 	width: 747px;
     margin-left: 414px;
