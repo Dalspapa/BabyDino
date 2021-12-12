@@ -27,8 +27,8 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 	}
 
 	//매칭된 돌봄 현황 페이지
-	public KidDto caring(int idx) {
-		KidDto dto = parentMypageDao.caring(idx);
+	public ParentMypageDto caring(int idx) {
+		ParentMypageDto dto = parentMypageDao.caring(idx);
 		return dto;
 	}
 }

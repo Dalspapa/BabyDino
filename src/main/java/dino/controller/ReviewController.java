@@ -29,21 +29,19 @@ public class ReviewController {
 		return mav;
 	}
 
-	@RequestMapping(value="/writeReview.do", method=RequestMethod.GET)
+	//리뷰작성하기
+	@RequestMapping(value="writeReviewForm.do")
 	public String writeReviewForm() {
 		return "review/writeReview";
 	}
 
-	@RequestMapping(value="/writeReview.do", method=RequestMethod.POST)
+	//리뷰작성서브밋
+	@RequestMapping(value="/writesubmit.do")
 	public ModelAndView writeReview(ReviewDto dto) {
-		int result=reviewService.writeReview(dto);
+		reviewService.writeReview(dto);
 		ModelAndView mav = new ModelAndView();
-
-		String msg = result > 0 ? "리뷰작성을 완료했습니다." : "다시 시도해 주세요.";
-		System.out.println("result >>>>>>>>>>" + msg);
-
-		mav.addObject("msg", msg);
 		mav.setViewName("review/reviewMain");
+		mav.
 		return mav;
 	}
 }

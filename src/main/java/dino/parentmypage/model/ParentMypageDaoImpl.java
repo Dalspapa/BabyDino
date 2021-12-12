@@ -23,8 +23,8 @@ public class ParentMypageDaoImpl implements ParentMypageDao {
 	}
 
 	//매칭된 돌봄 현황 페이지
-	public KidDto caring(int idx) {
-		KidDto dto = sqlMap.selectOne("caringPage",idx);
+	public ParentMypageDto caring(int idx) {
+		ParentMypageDto dto = sqlMap.selectOne("caringPage",idx);
 		return dto;
 	}
 }

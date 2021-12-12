@@ -10,6 +10,6 @@ public interface ParentMypageDao {
 	public List<ParentMypageDto> proceedingMain();
 
 	//매칭된 돌봄 현황 페이지
-	public KidDto caring(int idx);
+	public ParentMypageDto caring(int idx);
 }
 
