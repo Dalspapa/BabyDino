@@ -11,7 +11,7 @@
 	margin-top: 100px;
 }
 </style>
-<%@include file="/header.jsp" %>
+<%@include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 <form name="reason" action="teacherAdd.do">
@@ -27,5 +27,5 @@
 	</div>
 </form>	
 </body>
-<%@include file="/footer.jsp" %>
+<%@include file="/WEB-INF/views/include/footer.jsp" %>
 </html>

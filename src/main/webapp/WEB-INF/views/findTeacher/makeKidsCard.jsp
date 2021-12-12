@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/header.jsp" %>
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="./common/img/favicon/favicon.png"
+	type="image/x-icon">
+<link rel="icon" href="./common/img/favicon/favicon.png"
+	type="image/x-icon">
+<!-- css -->
+<link rel="stylesheet" href="./common/css/bootstrap.min.css">
 </head>
 <style>
 img {
@@ -78,10 +85,10 @@ img {
 					<div class="row">
 						<div>원하는 돌봄 분야</div>
 						<c:forEach var="c_list" items="${ care_list }">
-						<div class="col-md-2">
-							<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
-							<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
-						</div>
+							<div class="col-md-2">
+								<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
+								<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
+							</div>
 						</c:forEach>
 					</div>
 					
@@ -127,8 +134,12 @@ img {
 		</div>
 	</form>
 </body>
-<%@include file="/footer.jsp" %>
+<!-- J-query -->
+<script src="./common/js/jquery-3.6.0.min.js"></script>
+
 <script>
+
+
 	// 아이카드 등록
 	function regKidCard() {
 		
@@ -186,7 +197,7 @@ img {
 		
 		var formData = new FormData();
 		
-		formData.set("d_member_idx", 23)							// 맴버 테이블 회원 인덱스
+		formData.set("d_member_idx", 115)							// 맴버 테이블 회원 인덱스
 		formData.set("k_name", $("#k_name").val())					// 아이 이름
 		formData.set("k_gender", $("#k_gender").val())				// 아이 성별
 		formData.set("k_tendency",k_op) 							// 아이 성향

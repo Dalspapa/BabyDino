@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +13,7 @@
 </style>
 </head>
  <!-- header -->
-	<%@include file="/header.jsp" %>
+	<%@include file="/WEB-INF/views/include//header.jsp" %>
 	<div class="card size">
 	    <div class="card-header">
 	        <i class="fas fa-chart-area me-1"></i>
@@ -98,5 +97,5 @@
   </div>
 </div>
  <!-- footer -->
-	<%@include file="/footer.jsp" %>
+	<%@include file="/WEB-INF/views/include//footer.jsp" %>
 </html>

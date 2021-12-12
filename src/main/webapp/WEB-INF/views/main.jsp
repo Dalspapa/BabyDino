@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<%@ include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<style>
 		/*로그인 모달창*/
 		.modal .modal-dialog .modal-content .modal-header .modal-title{
@@ -25,18 +25,18 @@
 			margin-right : 10%;
 		}
 		#section09 #map {
-		position: absolute; 
-		left: 0px; 
-		width: 100%; 
-		height: 100%; 
+		position: absolute;
+		left: 0px;
+		width: 100%;
+		height: 100%;
 		margin-left : 70%;
 		margin-right : 70%;
-		touch-action: none; 
+		touch-action: none;
 		cursor: url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico") 7 5, url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico"), default;
 		}
 	</style>
 	</head>
-	<body id="page-top">	   
+	<body id="page-top">
 	  <!-- wrapper -->
 	  <div class="wrapper">
 	    <!-- 영상부분 -->
@@ -79,7 +79,7 @@
 	    </section>
 	    <!-- 광고배너 -->
 	     <section id="section04" class="container">
-			<div class="text-center"> 
+			<div class="text-center">
 				<hr class="divider divider-black mt-5 mb-5">
 				<h2 class="section-heading text-uppercase" style="font-family: 'S-Air';">아기공룡이 인증하는 후기</h2>
 			</div>
@@ -104,7 +104,7 @@
 	          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 	            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 	            <span class="visually-hidden">Previous</span>
-	          </button>				
+	          </button>
 	          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
 	            <span class="carousel-control-next-icon" aria-hidden="true"></span>
 	            <span class="visually-hidden">Next</span>
@@ -139,26 +139,26 @@
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
 	                  <span class="nori-box " >
 	                    <img src="./common/img/2.jpg" alt="책읽기">
-	                  </span>																											 
-	                </div>									
+	                  </span>
+	                </div>
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
 	                  <span class="nori-box " >
-	                    <img src="./common/img/3.jpg" alt="책읽기">																													
-	                  </span>					
+	                    <img src="./common/img/3.jpg" alt="책읽기">
+	                  </span>
 	                </div>
-	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >											 
+	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
 	                  <span class="nori-box">
 	                    <img src="./common/img/4.jpg" alt="책읽기">
 	                  </span>
 	                </div>
 
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
-						 
+
 	                  <span class="nori-box">
 	                    <img src="./common/img/5.jpg" alt="책읽기">
 	                  </span>
 	                </div>
-	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6">	
+	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
 	                  <span class="nori-box">
 	                    <img src="./common/img/6.jpg" alt="책읽기">
 	                  </span>
@@ -166,7 +166,7 @@
 	              </div>
 	            </div>
 	          </div>
-	      </div>				
+	      </div>
 	    </section>
 
 	      <!-- 아기공룡 궁금해요 -->
@@ -181,8 +181,8 @@
 	                <div class="col-lg col-sm-4 col-xs text-center" >
 	                  <span class="faq-box" >
 	                    <img src="./common/img/icons/smile.jpg" alt="아이공룡을 어떻게 믿죠?">
-	                    <h4 class="text-muted">전문 1:1 놀이 돌봄</h4>			   
-	                  </span>				   
+	                    <h4 class="text-muted">전문 1:1 놀이 돌봄</h4>
+	                  </span>
 	                </div>
 	                <div class="col-lg col-sm-4 col-xs text-center" >
 	                  <span class="faq-box" >
@@ -200,7 +200,7 @@
 	              </div>
 	              <div class="m-5">
 	                <button class="btn btn btn-warning text-center d-block m-auto">FAQ 더 알아보기</button>
-	              </div> 
+	              </div>
 	          </div>
 	    </section>
 	    <!-- 공룡선생님 추천 -->
@@ -218,7 +218,7 @@
 	                  <div class="flip-card-front">
 	                    <div class="mb-2">
 	                      <img src="./common/img/faq-img.png" alt="선생님 사진" >
-									  
+
 	                    </div>
 	                    <div>
 	                      <h6 class="text-warning">새로운 추천01</h6>
@@ -288,12 +288,12 @@
 	              <!-- ./ filp03 -->
 	              </div>
 	            </div>
-	          <!-- ./teacher-proposal -->  
+	          <!-- ./teacher-proposal -->
 	          </div>
 	      </div>
 	    </section>
 	    <!-- 아기공룡 이용방법 -->
-			  
+
 	    <section id="section08" class="container guide">
 	          <div class="text-center">
 	              <span class="faq-mainImg d-block">
@@ -318,10 +318,10 @@
 	                    <h6 class="guide-title">회원가입하기</h6>
 	                    <p class="guide-content"> 빠르고 간편한 회원가입을 진행해주세요.</p>
 	                  </div>
-	                </div>	
-	              </div> 
+	                </div>
+	              </div>
 	              <div class="col-lg col-sm-4 col-xs-12 joinguide">
-					
+
 	                <div class="faq-box">
 	                  <div class="img-sarce">
 	                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/mom-guide-2-v2.svg" alt="신청서작성하기">
@@ -343,7 +343,7 @@
 	                    <p class="guide-content"> 우리동네로 검색해서, 맘에 드는 공룡선생님을 찾아 신청메시지를 보내세요.</p>
 	                  </div>
 	                </div>
-	              </div>						
+	              </div>
 	              <div class="col-lg col-sm-6 col-xs-12 joinguide">
 	                <div class="faq-box">
 	                  <div class="img-sarce">
@@ -373,15 +373,15 @@
 	              <div class="col-xxl col-sm-4 col-xs-12 joinguide">
 	                <div class="faq-box">
 	                  <div class="img-sarce">
-	                    <img src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-1-v2.svg" alt="회원가입하기">																														  
+	                    <img src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-1-v2.svg" alt="회원가입하기">
 	                  </div>
-										 
+
 	                  <div class="contents">
 	                    <h6 class="guide-title">회원가입하기</h6>
 	                    <p class="guide-content"> 빠르고 간편한 회원가입을 진행해주세요.</p>
 	                  </div>
 	                </div>
-	              </div>		   
+	              </div>
 	              <div class="col-xxl col-sm-4 col-xs-12 joinguide">
 	                <div class="faq-box">
 	                  <div class="img-sarce">
@@ -435,11 +435,11 @@
 	  </div>
 	  <!-- 지도. 우리 여기 있어요!! -->
 <!-- 	<div>
-	<section id = "section09" class = "kakaoMap">	
-		<div id="map">우리, 여기 있어요!!</div>	
-	</section>		 
+	<section id = "section09" class = "kakaoMap">
+		<div id="map">우리, 여기 있어요!!</div>
+	</section>
 	</div>  -->
-	 <!-- 챗 Modal -->
+	  <!-- 챗 Modal -->
 	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
 	      <div class="modal-content">
@@ -449,20 +449,20 @@
 	        </div>
 	        <div class="modal-body">
 	          <div id="chatBox">
-	            <form name="loginForm" action="login.do" method="post">
+	            <form name="chatForm" action="#" method="post">
 	              <h3>여기는 채팅 박스 영역입니다.</h3>
+	              <a href="chatList.do">채팅</a>
+	              <%@ include file="/WEB-INF/views/chat/chatList.jsp" %>
 	            </form>
 	          </div>
 	        </div>
 	      </div>
 	    </div>
 	  <!-- ./챗 Modal -->
-	  </div>	 
-	</body>
-	  <!-- footer -->
-	  <%@ include file="/footer.jsp" %>
+	  </div>
+	  
 <!-- 선생님 부모님 이용가이드 관련 js -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script>
+<!-- <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script> -->
 <script>
 /* 	function showDiv1() {
 		var a = document.getElementById('p_member');
@@ -479,57 +479,65 @@
 	      a.show();
 	      b.hide();
 	  });
-	  
+
 	  function p_member() {
 		a.show();
 		b.hide();
 	  }
-	 
+
 	  function t_member() {
 		a.hide();
-		b.show();	
+		b.show();
 	  }
 
-	  
+
 	 /** 카카오 지도 api */
 	/* var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
 		center: new kakao.maps.LatLng(37.51795334189508, 126.89483972060654), //지도의 중심좌표.
 		level: 3 //지도의 레벨(확대, 축소 정도)
 	};
-	
+
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 	 */
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	mapOption = {
-	    center: new kakao.maps.LatLng(37.556852, 126.941569), // 지도의 중심좌표
-	    level: 3 // 지도의 확대 레벨
-	};
-	
-	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	
-	// 마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(37.556852, 126.941569); 
-	
-	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-	    position: markerPosition
-	});
-	
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
-	
+
+	// 마커가 표시될 위치입니다
+	if(typeof kakao != 'undefined'){
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+		    center: new kakao.maps.LatLng(37.556852, 126.941569), // 지도의 중심좌표
+		    level: 3 // 지도의 확대 레벨
+		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	    var markerPosition  = new kakao.maps.LatLng(37.556852, 126.941569);
+
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+	}
+
+
+
 	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-	// marker.setMap(null);   
-	  
+	// marker.setMap(null);
+
 	  function find_id(){
 	  a.show();
 	  b.hide();
 	  }
-	  
+
 	  function find_pwd(){
 	  a.hide();
 	  b.show();
 	  }
-  </script>
-</html>
+  </script>	  
+	  
+	</body>
+	  <!-- footer -->
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+

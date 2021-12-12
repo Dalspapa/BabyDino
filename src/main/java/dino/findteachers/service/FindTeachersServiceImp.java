@@ -2,8 +2,19 @@ package dino.findteachers.service;
 
 import dino.findteachers.model.FindTeachersDao;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import dino.dto.Common_ImgDto;
 import dino.dto.KidDto;
+import dino.dto.MemberDto;
+import dino.dto.ReserveDto;
 import dino.dto.ReviewDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 
@@ -22,12 +33,14 @@ public class FindTeachersServiceImp implements FindTeachersService {
 	}
 
 	// find teacher card list
-	/*
-	 * public List<FindTeacherJoinDto> teacherList() {
-	 * 
-	 * List<FindTeacherJoinDto> t_list = findTeachersDao.teacherList(); return
-	 * t_list; }
-	 */
+	
+	public List<FindTeacherJoinDto> teacherList() {
+	
+	List<FindTeacherJoinDto> t_list = findTeachersDao.teacherList();
+	return	t_list;
+	
+	}
+	
 
 	/*
 	 * @Transactional public void makeKCard(KidDto dto, Common_ImgDto imgDto,
@@ -100,13 +113,46 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		return mkList;
 	}
 
-	// make kid card 
+	// pick addr card
+	public MemberDto pickKidsAddrCard(int idx) {
+
+		MemberDto addr_dto = findTeachersDao.pickKidsAddrCard(idx);
+
+		return addr_dto;
+	}
+
+	// update addr get
+	public MemberDto addrUpForm(int idx) {
+
+		MemberDto addrUp = findTeachersDao.addrUpForm(idx);
+
+		return addrUp;
+	}
+
+	// update addr card
+	public int updateAddr(MemberDto dto) {
+
+		int addr_update = findTeachersDao.updateAddr(dto);
+
+		return addr_update;
+
+	}
+
+	// make kid card
 	public int makeKCard(KidDto dto) {
-	  
-	  int result = findTeachersDao.makeKCard(dto); 
-	  
-	  return result; 
-	} 
+
+		int result = findTeachersDao.makeKCard(dto);
+
+		return result;
+	}
+
+	// Insert reserve Kid Card
+	public int reserveCard(ReserveDto reserveCard) {
+
+		int result = findTeachersDao.reserveCard(reserveCard);
+
+		return result;
+	}
 
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx) {
@@ -114,7 +160,10 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		FindTeacherJoinDto t_dto = findTeachersDao.teacherInfo(idx);
 
 		List<ReviewDto> reviewList = findTeachersDao.teacherReviewList(idx);
-		t_dto.setReview_list(reviewList);
+		
+		if(t_dto != null && reviewList != null && reviewList.size() > 0) {
+			t_dto.setReview_list(reviewList);
+		}
 		
 		return t_dto;
 	}

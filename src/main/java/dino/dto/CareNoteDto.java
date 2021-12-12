@@ -8,8 +8,45 @@ public class CareNoteDto {
 	private int d_reserve_idx;
 	private String c_content;
 	private Date c_writedate;
-	
-	
+
+	private String k_name;
+	private String k_care_type;
+	private String care_time;
+
+
+
+
+
+	public String getK_name() {
+		return k_name;
+	}
+
+
+	public void setK_name(String k_name) {
+		this.k_name = k_name;
+	}
+
+
+	public String getK_care_type() {
+		return k_care_type;
+	}
+
+
+	public void setK_care_type(String k_care_type) {
+		this.k_care_type = k_care_type;
+	}
+
+
+	public String getCare_time() {
+		return care_time;
+	}
+
+
+	public void setCare_time(String care_time) {
+		this.care_time = care_time;
+	}
+
+
 	public CareNoteDto() {
 		super();
 	}
@@ -62,11 +99,11 @@ public class CareNoteDto {
 	public void setC_writedate(Date c_writedate) {
 		this.c_writedate = c_writedate;
 	}
-	
+
 	@Override
 	public String toString() {
 		String str = "돌봄노트 게시글 내용" + c_content + "\n돌봄노트 작성 날짜" + c_writedate ;
 		System.out.println(str);
-		return str; 
+		return str;
 	}
 }

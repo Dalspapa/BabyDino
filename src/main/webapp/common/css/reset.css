@@ -1,4 +1,4 @@
-/*  
+/*
   eot : IE 9 이상 버전 대응
   eot?#iefix: IE 6 ~ 9 버전 대응
   woff : 크롬, 사파리, 파이어폭스, 안드로이드 대응
@@ -107,7 +107,7 @@ body {
   box-sizing: border-box;
 }
 .wrapper {
-    margin-top: -80px;
+    margin-top: 80px;
 }
 section {
     margin: 50px 0;
@@ -144,7 +144,7 @@ section {
 }
 #chat i {
     font-size: 40px;
-    /* color: ##64a19d; 초록컬러 */ 
+    /* color: ##64a19d; 초록컬러 */
     color: #FFDC3C;
 }
 
@@ -167,7 +167,7 @@ section {
 #top-button.block {
     opacity: 1;
     transition: 1s;
-} 
+}
 #top-button a {
     width: 100%;
     height: 100%;

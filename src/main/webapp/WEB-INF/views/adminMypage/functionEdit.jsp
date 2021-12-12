@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +10,7 @@
 	margin-top: 200px;
 }
 </style>
-<%@include file="/header.jsp" %>
+<%@include file="/WEB-INF/views/include//header.jsp" %>
 </head>
 <body>
 	<div class="main">
@@ -106,9 +105,7 @@
 		</div>
 		
 	</div>
-
-
-
+	
 <script>
 //돌봄분야 추가기능&취소사유 js
 let a = $('#care_add');
@@ -141,10 +138,13 @@ function cancel() {
 
 
 
-</script>
+</script>	
+	
+	
+</body>
+<%@include file="/WEB-INF/views/include//footer.jsp" %>
 
-<%@include file="/footer.jsp" %>
+
+
 </body>
 </html>
-
-

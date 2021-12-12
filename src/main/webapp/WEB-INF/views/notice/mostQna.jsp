@@ -23,43 +23,43 @@
 	color: #68983b!important;
 }
 /*자주묻는 질문 드롭다운바 */
-details { 
-	margin:5px 0 10px; 
+details {
+	margin:5px 0 10px;
 }
 details > summary {
- 	background:#444; 
- 	color:#fff; 
- 	padding:10px; 
- 	outline:0; 
- 	border-radius:5px; 
- 	cursor:pointer; 
- 	transition:background 0.5s; 
- 	text-align:left; 
+ 	background:#444;
+ 	color:#fff;
+ 	padding:10px;
+ 	outline:0;
+ 	border-radius:5px;
+ 	cursor:pointer;
+ 	transition:background 0.5s;
+ 	text-align:left;
  	box-shadow: 1px 1px 2px gray;
 }
-details > summary::-webkit-details-marker { 
-	background:#444; 
-	color:#fff; 
-	background-size:contain; 
-	transform:rotate3d(0, 0, 1, 90deg); 
+details > summary::-webkit-details-marker {
+	background:#444;
+	color:#fff;
+	background-size:contain;
+	transform:rotate3d(0, 0, 1, 90deg);
 	transition:transform 0.25s;
 }
-details[open] > summary::-webkit-details-marker { 
+details[open] > summary::-webkit-details-marker {
 	transform:rotate3d(0, 0, 1, 180deg);
 }
-details[open] > summary { 
+details[open] > summary {
 	background:#white;
 }
-details[open] > summary ~ * { 
+details[open] > summary ~ * {
 	animation:reveal 0.5s;
 }
-.tpt { 
-	background:#444; 
-	color:#fff; 
-	margin:5px 0 10px; 
-	padding:5px 10px; 
-	line-height:25px; 
-	border-radius:5px; 
+.tpt {
+	background:#444;
+	color:#fff;
+	margin:5px 0 10px;
+	padding:5px 10px;
+	line-height:25px;
+	border-radius:5px;
 	box-shadow: 1px 1px 2px gray;
 }
 @keyframes reveal {
@@ -67,7 +67,7 @@ details[open] > summary ~ * {
     to { opacity:1; transform:translate3d(0, 0, 0); }
 }
 /*.자주묻는 질문 드롭다운바 */
-h3{ 
+h3{
 	padding-left: 49%;
 	margin-top: -21%!important;
 	padding-bottom: 1%!important;
@@ -97,9 +97,8 @@ details summary{
 	padding-bottom: 9%;
 }
 </style>
-</head>
  <!-- header -->
-	<%@include file="/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
 	<div>
 		<section>
@@ -133,7 +132,7 @@ details summary{
 				   <p>A.<br>${list[1].c_introduce}</p>
 				</details>
 			</div>
-			
+
 			<div id="government">
 				<h4> 정부 지원 관련 질문</h4>
 				<details>
@@ -145,7 +144,7 @@ details summary{
 				   <p>A.<br>${g_list[1].c_introduce}</p>
 				</details>
 			</div>
-			
+
 			<div id="pay">
 				<h4>환불 결제관련 질문</h4>
 				<details>
@@ -158,41 +157,41 @@ details summary{
 				</details>
 			</div>
 		</section>
-		
+
 	</div>
  <!-- footer -->
-	<%@include file="/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <script>
 //버튼 클릭시 js
 
 
 $(document).ready(function() {
-	
+
 	let a = $('#qnaList');
 	let b = $('#government');
 	let c = $('#pay');
-	
-	
+
+
     a.show();
     b.hide();
     c.hide();
-    
-    
-    
+
+
+
     $('#memberbtn').click(function(){
     	a.show();
     	b.hide();
     	c.hide();
-    }); 
-    
-    
+    });
+
+
     $('#governmentbtn').click(function(){
     	a.hide();
     	b.show();
     	c.hide();
     });
-    
+
     $('#paybtn').click(function(){
     	a.hide();
     	b.hide();

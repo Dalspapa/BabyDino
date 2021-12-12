@@ -4,9 +4,15 @@ import java.util.List;
 
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
+import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
 
 public interface AdminDao {
+	
+	public List<ReportDto> reportList();
+	
+	//회원강제탈퇴
+	public int adminMemberOut(int idx);
 
 	//admin회원 관리
 	public List<MemberDto> memberManagement();

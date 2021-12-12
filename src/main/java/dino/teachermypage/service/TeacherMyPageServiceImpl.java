@@ -4,22 +4,19 @@ import dino.teachermypage.model.*;
 
 public class TeacherMyPageServiceImpl implements TeacherMyPageService {
 
-	private TeacherMyPageDao teacherMyPageDao;
+	private TeacherMyPageDao teacherMypageDao;
 
 	public TeacherMyPageDao getTeacherMyPageDao() {
-		return teacherMyPageDao;
+		return teacherMypageDao;
 	}
 
 	public void setTeacherMyPageDao(TeacherMyPageDao teacherMyPageDao) {
-		this.teacherMyPageDao = teacherMyPageDao;
+		this.teacherMypageDao = teacherMyPageDao;
 	}
 
 	//선생님 프로필
-	public TeacherMyPageDto teacherProfile(int idx) {
-		
-		TeacherMyPageDto tProDto = teacherMyPageDao.teacherProfile(idx);
-		
-		return tProDto;
+	public TeacherMyPageDto teacherProfile(int idx) {		
+		return teacherMypageDao.teacherProfile(idx);
 	}
 	
 	

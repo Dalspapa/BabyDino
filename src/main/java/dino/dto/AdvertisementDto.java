@@ -1,7 +1,7 @@
 package dino.dto;
 
 public class AdvertisementDto {
-	
+
 	private int idx;
 	private String a_imgpath;
 	private String a_linkpage;
@@ -9,8 +9,8 @@ public class AdvertisementDto {
 	private String a_name;
 	private String a_date;
 	private String a_cost;
-	
-	
+
+
 	public AdvertisementDto() {
 		super();
 	}
@@ -97,11 +97,11 @@ public class AdvertisementDto {
 	public void setA_cost(String a_cost) {
 		this.a_cost = a_cost;
 	}
-	
+
 	@Override
 	public String toString() {
 		String str = "광고 이미지 경로" + a_imgpath + "\n회사명" + corporate_name + "\n광고명" + a_name + "\n광고 기간" + a_date;
 		System.out.println(str);
-		return str; 
+		return str;
 	}
 }

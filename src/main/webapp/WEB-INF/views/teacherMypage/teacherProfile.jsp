@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>선생님 프로필</title>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 section{
 	width: 80%;
@@ -61,21 +61,22 @@ section{
 	list-style: none;
 }
 </style>
-<!-- 부트스트랩링크(헤더 붙히면 나중에 삭제 예정) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-
 <body>
 	<div>
 		<section>
 			<!-- 선생님 프로필 부분 -->
 			<div class="t_profile">
-				<div class="profil">프로필</div>
-				<div class="pic">#선생님 프로필 이미지 들어갈 부분</div>
+				<div class="profil">프로필</div><c:set var="proImg" value="${tDto.c_imgpath}" />
+				<div class="pic"><img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px"></div>
 				<div class="t_info">
-				<div>#선생님 이름 | #나이</div>
-				<div>
-					계좌번호 : 
+				<div>${tDto.name} | ${tDto.age} 세</div>
+				<div id="bankDiv1">
+					<div>은행 : ${tDto.bank}</div>
+					<div>계좌번호 : ${tDto.acnum}
+						<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="bankbtn1">수정</button>
+					</div>
+				</div>
+				<div id="bandDiv2" class="hideDiv">
 					<select class="form-select" aria-label="Default select example">
 						<option selected>은행을 선택해주세요</option>
 						<option>국민</option>
@@ -83,19 +84,16 @@ section{
 						<option>농협</option>
 						<option>우체국</option>
 					</select>
+					<div><label for="acnum">계좌번호 : <input type="text" name="acnum" id="acnum"></label></div>
 					<input type="text" style = "font-size : 95%" placeholder="계좌번호를 입력해주세요">
+					<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="bankbtn2">수정하기</button>
+				</div>
+				<div class="hideDiv">희망시급 : <input type="text" style = "width:15%"><fmt:formatNumber value="${tDto.t_cost}" pattern="#,###" /> 원
 					<button type="button" class="btn btn-outline-success" style = "font-size: 2%">수정하기</button>
 				</div>
-				<div>희망시급 : <input type="text" style = "width:15%"> 원 
-				<button type="button" class="btn btn-outline-success" style = "font-size: 2%">수정하기</button>
-				<div>누적활동 #시간</div>
-				<div>누적 수익: #수익</div>
-				<div>보유 뱃지: #뱃지 갯수</div>
-				<div><a herf="#">후기 보러가기></a></div>
-				</div>
 			</div>
 			</div>
-			
+
 			<!-- 활동시간 부분 -->
 			<div class="t_profile">
 				<div class="profil">활동 시간</div>
@@ -137,7 +135,7 @@ section{
 			<div class="btn2">
 				<button type="button" class="btn btn-outline-success" onclick="#">수정하기</button>
 			</div>
-			
+
 			<!-- 선생님 소개글 -->
 			<div class="t_profile introduce">
 				<div class="profil">선생님 한마디</div>
@@ -160,5 +158,16 @@ section{
 			</div>
 		</section>
 	</div>
+	
+<script>
+
+	$(document).ready(function(){
+		$('.hideDiv').hide();
+	});
+
+</script>	
+	
 </body>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 </html>

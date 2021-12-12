@@ -104,8 +104,8 @@
                     </c:if>
                     
                     <c:if test="${stype == 1}">
-	                    <li class="admin nav-item">
-	                    	관리자 로그인 중 입니다.<!-- 로그아웃 버튼 사이드바로 이동 -->
+	                    <li class="nav-item">
+	                    	관리자 로그인 중&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
@@ -116,6 +116,12 @@
                      <c:if test="${stype == 4 || stype == 5 || stype ==6}">
 	                    <li class="nav-item">
 	                    	${sid}선생님 환영합니다!&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
+	                    </li>
+                    </c:if>
+                    <!-- 탈퇴한 회원 로그인시 뜨는 것 추가했음 -->
+                     <c:if test="${stype == 9}">
+	                    <li class="nav-item">
+	                    	${sid}님은 탈퇴한 회원입니다.&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.do" class="nav-link">로그아웃</a>
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 1}">
@@ -156,8 +162,8 @@
 		    <div><a href="#">아이카드</a></div>
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="#">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
-		    <div><a href="#">계정관리</a></div>
+		    <div><a href="reportList.do">신고내역</a></div>
+		    <div><a href="accountManagement.do">계정관리</a></div>
 		  </div>
 		</div>
 		
@@ -174,11 +180,11 @@
 		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="#">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
-		    <div><a href="#">계정관리</a></div>
+		    <div><a href="reportList.do">신고내역</a></div>
+		    <div><a href="accountManagement.do">계정관리</a></div>
 		  </div>
 		</div>
-		<!-- side navbar admin (20211211 a태그 추가)-->
+		<!-- side navbar admin -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight3">
 		  <div class="offcanvas-header">
 		  	<div class="memberImg">#이미지</div>
@@ -186,11 +192,21 @@
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
+<<<<<<< HEAD
 		    <div><a href="memberManagement.do">회원 관리</a></div>
 		    <div><a href="settlement.do">선생님 정산</a></div>
 		    <div><a href="memberImg.do">회원 이미지 테이블</a></div>
 		    <div><a href="functionEdit.do">기능 편집</a></div>
 		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
+=======
+		    <div><a href="#">돌봄현황</a></div>
+		    <div><a href="#">프로필</a></div>
+		    <div><a href="#">공룡발자국</a></div>
+		    <div><a href="#">돌봄노트</a></div>
+		    <div><a href="#">후기내역</a></div>
+		    <div><a href="reportManagement.do">신고내역</a></div>
+		    <div><a href="#">계정관리</a></div>
+>>>>>>> master
 		  </div>
 		</div>
 	</header>
