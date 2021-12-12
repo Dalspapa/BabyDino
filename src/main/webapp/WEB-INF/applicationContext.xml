@@ -55,7 +55,7 @@
 	<bean id="chatDao" class="dino.chat.model.ChatDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate" />
 	</bean>
-	<bean id="adminDao" class="dino.adminmypage.model.AdminDaoimpl">
+	<bean id="adminDao" class="dino.adminmypage.model.AdminDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
 

@@ -5,16 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 관리</title>
+<style>
+.likebody{
+	margin-top: 225px;
+	width: 90%;
+	margin-left: 67px;
+	
+}
+.likebody .search{
+	text-align: center;
+}
+.likebody .search .title{
+	font-size: 20px;
+}
+</style>
 </head>
  <!-- header -->
 	<%@include file="/WEB-INF/views/include//header.jsp" %>
 <body>
-	<div>
+	<div class="likebody">
 		<section>
 			
 			<!-- 회원목록(관리자) -->
-			<div>
-				<div>회원목록(관리자)</div>
+			<div class="search">
+				<div class="title">회원목록(관리자)</div>
 				<div>
 					<select class="form-select-sm">
 						<option>전체</option>
