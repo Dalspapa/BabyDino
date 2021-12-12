@@ -53,11 +53,6 @@ public class MemberController {
 			String userName = memberDto.getName();
 			int memberType = memberDto.getMember_type();
 
-			session.setAttribute("saveIdx", memberDto.getIdx());
-			session.setAttribute("saveId", id);
-			session.setAttribute("saveName", userName);
-			session.setAttribute("saveMemberType", memberType);
-
 			if (memberType == 9) {
 				boolean outMember = true;
 				response.put("outMember", outMember);
@@ -65,6 +60,11 @@ public class MemberController {
 				return ResponseEntity.ok(response);
 			}
 			
+			session.setAttribute("saveIdx", memberDto.getIdx());
+			session.setAttribute("saveId", id);
+			session.setAttribute("saveName", userName);
+			session.setAttribute("saveMemberType", memberType);
+
 			mav.addObject("msg", userName + "님 환영합니다 !");
 
 			if (saveId == null) {
