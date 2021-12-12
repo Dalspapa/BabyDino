@@ -64,6 +64,15 @@ public class MemberController {
 			session.setAttribute("saveName", userName);
 			session.setAttribute("saveMemberType", memberType);
 
+			if (memberType == 9) {
+				boolean outMember = true;
+				response.put("outMember", outMember);
+				
+				System.out.println("탈퇴한 회원 >>>>>>>>>" + outMember);
+				
+				return ResponseEntity.ok(response);
+			}
+			
 			mav.addObject("msg", userName + "님 환영합니다 !");
 
 			//TestCode
@@ -215,11 +224,13 @@ public class MemberController {
 		
 		//회원탈퇴
 		@RequestMapping("/memberOut.do")
-		public ModelAndView memberOut(@RequestParam("sidx") int idx ) {
+		public ModelAndView memberOut(@RequestParam("sidx") int idx, HttpSession session) {
 			
 			
 			int result = memberService.memberOut(idx);
 			String msg = result > 0? "성공적으로 탈퇴가 되었습니다." : "회원 탈퇴가 이루어지지 않았습니다.";
+			System.out.println("회원탈퇴 결과 : >>>>>>>>>>>>>>>>>>" + msg);
+			session.invalidate();
 			
 			
 			ModelAndView mav = new ModelAndView();

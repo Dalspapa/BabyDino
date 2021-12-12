@@ -142,14 +142,22 @@
 		success : function(r){
 			console.log('------------ r :', r);
 			
-			if(r.result){
+			if (r.outMember) {
 				idCheckBtn = true;
-				$('#checkId').html('환영합니다!');
-				$('#checkId').css('color','green');
-				location.href="main.do"
-			}else{
-				$('#checkId').html('아이디 및 비밀번호를 확인해주세요');
+				$('#checkId').html('탈퇴한 회원입니다.');
 				$('#checkId').css('color','red');
+			} else {
+			
+				if(r.result){
+					idCheckBtn = true;
+					$('#checkId').html('환영합니다!');
+					$('#checkId').css('color','green');
+					location.href="main.do"
+				}else{
+					$('#checkId').html('아이디 및 비밀번호를 확인해주세요');
+					$('#checkId').css('color','red');
+					
+				}
 			}
 		},
 		error:function(){
