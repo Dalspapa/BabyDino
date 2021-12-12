@@ -7,18 +7,6 @@
 <title>Insert title here</title>
  
 <style>
-/* body {
-    width: 952px;
-    margin-left: 12%;
-    font-size: 12px;
-    margin: 0px auto;
-}
-/*h2 {
-	color : green;
-	text-align : center;
-	margin-top : 50px;
-	margin-bottom : 50px;
-} */
 .body{
 	width: 747px;
     margin-left: 414px;
@@ -242,7 +230,7 @@ asvg {
 	
 	<div class="formBlock">
 		<div class="titleBlock">
-			<p class="sc-bdnxRM kHvtJd" color="#444444">신고 유형</p></div>
+			<p class="sc-bdnxRM kHvtJd" color="#444444">신고 유형 </p></div>
 		<div class="MuiInputBase-root MuiInput-root sc-daBunf gQyNyw">
 			<select class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input" name="rp_type">
 				<option value="" selected disabled>신고 유형을 선택해주세요.</option>

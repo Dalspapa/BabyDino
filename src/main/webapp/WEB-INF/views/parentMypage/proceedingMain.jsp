@@ -15,6 +15,7 @@ a:link, a:visited {
    width: 100%;
    margin-top: 130px;
    text-align: center;
+   font-family: 'S-Air';
 }
 .main .title{
    font-size: 20px;
@@ -29,6 +30,7 @@ a:link, a:visited {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin: 60px auto;
 }
 .main .t_card{
     width: 500px;
@@ -45,6 +47,9 @@ a:link, a:visited {
     border-radius: 50%;
     overflow: hidden;
 }
+.intro {
+	width: 349px;
+}
 </style>
 </head>
 <body>
@@ -59,14 +64,6 @@ a:link, a:visited {
             <div><button type="button" class="btn btn-outline-success" onclick="care_3();">완료현황</button></div>
 		 </div>
 
-		<!-- test -->
-		<c:url var="contentUrl" value="caring.do">
-	    	<c:param name="idx">70</c:param> <!-- ${ r_idx } 들어가야함 -->
-	    </c:url>
-	    <a href="${ contentUrl }">테스트링크</a>
-		<!-- end test -->
-
-
 		 <c:if test="${ empty list }">
 				<h2 align="center">요청진행상황이 없습니다.</h2>
 		 </c:if>
@@ -75,10 +72,15 @@ a:link, a:visited {
          <c:forEach var="list" items="${ list }">
 	         <div id="section01" class="contentbody">
 	            <!-- 선생님 카드 -->
+	            <c:url var="contentUrl" value="caring.do">
+	            	<c:param name="idx">${ list.r_idx }</c:param>
+	            </c:url>
+	            <a href="${ contentUrl }">
 	            <div class="t_card">
 	               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
 	               <div class="intro">선생님 소개 : ${list.t_introduce}</div>
 	            </div>
+	            </a>
 	            <!-- 선생님 정보 -->
 	            <div class="info">
 	               <div>선생님 이름 : ${list.name}</div>

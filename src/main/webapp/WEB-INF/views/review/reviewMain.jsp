@@ -36,6 +36,7 @@ h2 {
 }
 .wrapper {
 	width: 100%;
+	font-family: 'S-Air';
 }
 .headerTitle, .reviewIObtn, .reviewContent {
 	margin-top: 20px;

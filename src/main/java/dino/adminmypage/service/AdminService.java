@@ -47,4 +47,7 @@ public interface AdminService {
 	
 	//돌봄분야 삭제
 	public int careDel(String op);
+	
+	//선생님 필수 검증(쿼리 수정예정)
+	public List<MemberDto> teacherCertification();
 }

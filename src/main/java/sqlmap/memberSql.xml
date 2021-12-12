@@ -89,7 +89,8 @@
    </update>
    
       <!-- 회원탈퇴 -->
-   <update id="memberOut" parameterType="dino.dto.MemberDto">
+   <update id="memberOut" parameterType="Integer">
+
    		UPDATE
    			D_MEMBER
    		SET

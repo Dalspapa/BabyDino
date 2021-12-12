@@ -35,10 +35,13 @@ public class ReportController {
 	}
 
 	@RequestMapping(value = "/reportWrite.do", method = RequestMethod.GET)
-	public ModelAndView reportWriteForm() {
-
+	public ModelAndView reportWriteForm(@RequestParam(value = "idx",  defaultValue = "0") int idx) {
+				
+		System.out.println("ddddd"+idx);
+		
 		List<CommonOpDto> rp_list = reportService.reportOpList();
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("idx", idx);
 		mav.addObject("rp_list", rp_list);
 		mav.setViewName("report/reportWrite");
 

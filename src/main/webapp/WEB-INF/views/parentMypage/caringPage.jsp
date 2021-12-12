@@ -38,7 +38,9 @@ h2 {
 
 .wrapper {
    width: 80%;
-   margin-top: 80px;
+   margin: 80px auto;
+   text-align: center;
+   font-family: 'S-Air';
 }
 /* userInfo 사용자 상태영역 */
 .userInfo {
@@ -316,7 +318,7 @@ section{
         </li>
         <li>
           <h3>돌봄 지역</h3>
-          <div class="contentBox"><div>#주소정보</div></div>
+          <div class="contentBox"><div>${dto.addr1} ${dto.addr2} ${dto.addr3}</div></div>
         </li>
       </ul>
       <ul class="item3">
@@ -325,12 +327,7 @@ section{
           <div class="contentBox">
             <ul class="flex-list">
               <li>
-                <div>#아이유형이미지</div>
-                <div style="margin-left: 10px">#아이유형텍스트</div>
-              </li>
-              <li>
-                <div>#아이유형이미지</div>
-                <div style="margin-left: 10px">#아이유형텍스트</div>
+                <div>${dto.k_tendency}</div>
               </li>
             </ul>
           </div>
@@ -340,11 +337,7 @@ section{
           <div class="contentBox activeList">
             <div>
               <!--<img src=""/>-->
-              #원하는활동명
-            </div>
-            <div>
-              <!--<img src=""/>-->
-              #원하는활동명
+              ${dto.k_care_type}
             </div>
           </div>
         </li>
@@ -354,7 +347,7 @@ section{
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 function writeReview(){
-	location.href = "writeReview.do";
+	location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
 }
 </script>
 </body>

@@ -2,6 +2,8 @@ package dino.controller;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+										 
 
 @Controller
 public class AdminController {
@@ -190,4 +193,19 @@ public class AdminController {
 		return mav;
 	}
 	
+		//선생님 필수검증(수정예정)
+	@RequestMapping("/teacherCertification.do")
+	public ModelAndView teacherCertification() {
+		List<MemberDto> t_list = adminService.teacherCertification();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("t_list",t_list);
+		mav.setViewName("adminMypage/teacherCertification");
+		return mav;
+	}
+	
+
+	
+	
+}
+ 
 }

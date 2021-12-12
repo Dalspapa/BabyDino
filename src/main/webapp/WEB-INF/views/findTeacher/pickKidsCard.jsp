@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc9d753bd2e6f38ee2f5c1ea71c78cbdcd79fc9e
 <style>
 .pignose-calendar-unit-disabled a {
 	color: red !important
@@ -166,7 +170,12 @@
 	</form>
 </body>
 
+<<<<<<< HEAD
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+=======
+<%@include file="/WEB-INF/views/include/footer.jsp" %>
+
+>>>>>>> cc9d753bd2e6f38ee2f5c1ea71c78cbdcd79fc9e
 <!-- 카카오 주소 API -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -70,6 +70,7 @@ public class AdminServiceImpl implements AdminService {
 		return count;
 	}
 	
+	
 	//선생님 사유 삭제
 	public int teacherDelete(String op) {
 		int result = adminDao.teacherDelete(op);
@@ -92,5 +93,12 @@ public class AdminServiceImpl implements AdminService {
 	public int careDel(String op) {
 		int result = adminDao.careDel(op);
 		return result;
+	}
+	
+	
+	//선생님 필수 인증(쿼리 수정예정)
+	public List<MemberDto> teacherCertification() {
+		List<MemberDto> t_list = adminDao.teacherCertification();
+		return t_list;
 	}
 }

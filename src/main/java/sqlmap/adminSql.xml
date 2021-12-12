@@ -116,6 +116,7 @@
 	</delete>
 	
 	<!-- admin report List -->
+																					 
 	<select id="adminrpList" resultType="dino.dto.ReportDto">
 		SELECT
 			*
@@ -134,4 +135,16 @@
    		WHERE
    			IDX = #{IDX}
 	</update>
+		
+	<!-- 선생님 필수 인증 (이미지테이블 조인쿼리로 수정해야함)-->
+	<select id="teacherCertification" resultType="dino.dto.MemberDto">
+		select 
+			*
+		from
+			d_member
+		where 
+			member_type = 4
+	</select>
+	
 </mapper>
+
