@@ -33,15 +33,11 @@ public class FindTeacherController {
 	@Autowired
 	ServletContext servletContext;
 
-	// find teacher card list
-
 	
+	// find teacher card list	
 	 @RequestMapping("/findTeacher.do") 
 	 public ModelAndView findTeacher() {
-	
-	 //test code 
-	 System.out.println("샘목록 컨트롤ㄹ러======진입======");
-	
+		
 	 List<FindTeacherJoinDto> t_List = teachersService.teacherList();
 	 ModelAndView mav = new ModelAndView(); 
 	 mav.addObject("t_List", t_List);
@@ -50,19 +46,19 @@ public class FindTeacherController {
 	 return mav;
 	 }
 
-
 	//나의 아이카드 리스트 출력 메소드
 	@RequestMapping("/pickKidsCard.do")
 	public ModelAndView showPickKidsCard(
 			@RequestParam(value = "idx", defaultValue = "0") int idx) {
 
-		// test
-		System.out.println("======아이카드리스트 출력 컨틀롤러 진입======" + idx);
-
 		ModelAndView mav = new ModelAndView();
 
-		MemberDto addrList = teachersService.pickKidsAddrCard(idx);
+		//아이카드 불러오기
 		List<KidDto> mkList = teachersService.pickKidsCard(idx);
+		
+		//주소정보 불러오기
+		MemberDto addrList = teachersService.pickKidsAddrCard(idx);
+		
 		List<CommonOpDto> d_list = commonOpService.k_date_opList();
 		List<CommonOpDto> ts_list = commonOpService.k_time_start_opList();
 		List<CommonOpDto> te_list = commonOpService.k_time_end_opList();
@@ -77,13 +73,9 @@ public class FindTeacherController {
 		return mav;
 	}
 
-
 	//아이카드 추가시 정보 불러오기 메소드
 	@RequestMapping(value = "/makingKidCard.do")
 	public ModelAndView showMakeKidcard() {
-
-		// test Code
-		System.out.println("====아이카드 추가 페이지 돌봄분야 출력  컨트롤러 진입===");
 
 		List<CommonOpDto> k_list = commonOpService.ktendency(); //아이성향
 		List<CommonOpDto> care_list = commonOpService.k_care_type(); //돌봄분야
@@ -113,24 +105,12 @@ public class FindTeacherController {
 		return mav;
 	}
 
-
-	/////////////////////문제없음////////////////////////////////////////
-
-
-	// Insert reserve Kid Card
+	// 아이카드 등록 메서드
 		@RequestMapping("/reserveCard.do")
 		public ModelAndView makeReserveCard(ReserveDto reserveCard) {
 
-			System.out.println("예약테이블에 올라 갈 수 있음 ?" + reserveCard);
-//			List result = new ArrayList();
-//			result = findTeachersService.reserveCard(vo);
 			int result = teachersService.reserveCard(reserveCard);
 
-//			int addrUpdate = (Integer) result.get(0);
-//			int reserveInsert = (Integer) result.get(1);
-
-//			String msgUpdate = addrUpdate > 0 ? "주소수정 성공" : "주소 수정 실패";
-//			System.out.println(msgUpdate);
 			String msg = result > 0 ? "아이카드가 정상적으로 등록되었습니다!" : "아이카드 등록에 실패하셨습니다.";
 
 			ModelAndView mav = new ModelAndView();
@@ -141,24 +121,33 @@ public class FindTeacherController {
 			return mav;
 		}
 
-	//Update Address Go
-	//현재 하드코딩. 파라미터값 받아야 함.
-	@RequestMapping("/makingAddrCard.do")
-	public ModelAndView showUpdateAddr(
-			@RequestParam(value = "idx" , defaultValue = "0")int idx) {
-
-		//test code
-		System.out.println(">>>>>>>>>주소 업데이트 폼 컨트롤러 진입<<<<<<<<" + idx);
-
-		MemberDto dto = teachersService.addrUpForm(idx);
-
-		ModelAndView mav= new ModelAndView();
-		mav.addObject("dto", dto);
-		mav.setViewName("findTeacher/updateAddr");
-
-		return mav;
+	@RequestMapping("/modalEx.do")
+	public String modalEx() {
+		return "findTeacher/modalEx";
 	}
 
+	// 선생님 카드 상세 정보
+	@RequestMapping("/teacherInfo.do")
+	public ModelAndView teacherInfo(
+			@RequestParam(value = "idx", defaultValue = "0") int idx) {
+
+		System.out.println("###INFO### >>>>>>>>>> 샘 카드 상세 정보 : " + idx);
+		
+		FindTeacherJoinDto t_dto = teachersService.teacherInfo(idx);
+		System.out.println("sam info controller ==="+t_dto);
+		ModelAndView mav = new ModelAndView();
+		
+		if (t_dto != null) {		
+			mav.addObject("t_dto", t_dto);
+			mav.setViewName("findTeacher/teacherInfo");
+		}else {
+			mav.addObject("msg", "잘못된 접근 또는 삭제된 게시글 입니다.");
+			mav.setViewName("findTeacher/teachersMsg");
+		}
+		
+		return mav;
+	}
+	
 	//Update Address do
 //	@RequestMapping("/updateAddr.do")
 //	public ModelAndView doUpdateAddr(MemberDto dto) {
@@ -175,14 +164,6 @@ public class FindTeacherController {
 //
 //		return mav;
 //	}
-
-
-	@RequestMapping("/makeReserveCard.do")
-	public String makeReserveCard() {
-
-		return "findTeacher/makeReserveCard";
-	}
-
 
 	/*
 	 * // set kid img
@@ -237,29 +218,5 @@ public class FindTeacherController {
 	 *
 	 * return mav; }
 	 */
-
-	@RequestMapping("/modalEx.do")
-	public String modalEx() {
-		return "findTeacher/modalEx";
-	}
-
-	// 선생님 카드 상세 정보(teacher card content)
-	@RequestMapping("/teacherInfo.do")
-	public ModelAndView teacherInfo(@RequestParam(value = "idx", defaultValue = "0") int idx) {
-
-		ModelAndView mav = new ModelAndView();
-
-		FindTeacherJoinDto t_dto = teachersService.teacherInfo(idx);
-		System.out.println("=== t_dto : " + t_dto);
-
-		if (t_dto == null) {
-			mav.addObject("msg", "잘못된 접근 또는 삭제된 게시글 입니다.");
-			mav.setViewName("findTeacher/teachersMsg");
-		} else {
-			mav.addObject("t_dto", t_dto);
-			mav.setViewName("findTeacher/teacherInfo");
-		}
-
-		return mav;
-	}
+	
 }

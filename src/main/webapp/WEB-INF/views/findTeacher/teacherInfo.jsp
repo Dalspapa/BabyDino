@@ -278,13 +278,6 @@ section {
 
 			<ul class="item3">
 				<li>
-					<h3>인증뱃지</h3>
-					<div class="contentBox">
-						<div>${ t_dto.badge }</div>
-					</div>
-				</li>
-
-				<li>
 					<h3>간단 자기 소개</h3>
 					<div class="contentBox ativeList">
 						<div>
@@ -318,13 +311,6 @@ section {
 				</li>
 				
 				<li>
-					<h3>활동 가능 날짜 및 시간</h3>
-					<div class="contentBox">
-						<div>${ t_dto.schedule_day } / ${ t_dto.schedule_time }</div>
-					</div>
-				</li>
-				
-				<li>
 					<h3>가능한 활동</h3>
 					<div class="contentBox">
 						<div>${ t_dto.t_care_type }</div>
@@ -334,7 +320,7 @@ section {
 				<li>
 					<h3>활동 가능지역</h3>
 					<div class="contentBox">
-						<div>${ t_dto.addr1 }</div>
+						<div>${ t_dto.addr2 }</div>
 					</div>
 				</li>
 				
@@ -358,14 +344,16 @@ section {
 				<button type="button" class="btn btn-outline-primary">인터뷰요청</button>
 			</div>
 		</section>
-	</div>
+	</div>	
+</body>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <!-- JQuery 라이브러리 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
-<script>
 
+<script>
 	$(function(){
 		
 		// 현재날짜 구하는거
@@ -397,13 +385,6 @@ section {
 				$("#kidType4").attr("src", "${pageContext.request.contextPath }/common/img/kidType/kidstype4_on.png");
 			}
 		});
-	});
-		
-	
+	});	
 </script>	
-	
-	
-</body>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
-
 </html>

@@ -6,11 +6,12 @@
 <mapper namespace="dino.findTeachers">
 
 	<select id="teacherList" resultType="dino.findteachers.model.FindTeacherJoinDto">
-		  SELECT 
-                m.idx
+		  	SELECT 
+                 m.idx
                 ,m.name
                 ,(TO_CHAR(SYSDATE ,'yyyy') - TO_CHAR (birth, 'yyyy')) as age
                 ,m.gender
+                ,t.idx as teacher_idx
                 ,t.t_care_type
                 ,t.t_cost
                 ,t.t_introduce
@@ -26,14 +27,14 @@
 	</select>
 	
 	<!-- pick kid card -->
-	<select id="pickKidsCard" parameterType="int" resultType="dino.dto.KidDto">
+	<select id="pickKidsCard" parameterType="Integer" resultType="dino.dto.KidDto">
 	SELECT
 			a.idx,
 			a.k_name, 
 			a.k_gender, 
 			a.k_birth,
-            b.*
-		FROM 
+            b.age
+	FROM 
 			d_kidcard a, 
             (SELECT
             idx as xidx,
@@ -48,7 +49,7 @@
 	</select>
 	
 	<!-- pick addr card -->
-	<select id="pickAddr" parameterType="int" resultType="dino.dto.MemberDto">
+	<select id="pickAddr" parameterType="Integer" resultType="dino.dto.MemberDto">
 	SELECT
     	idx,
     	addr1,
@@ -59,34 +60,6 @@
 	WHERE
     	idx = #{idx}
 	</select>
-	
-	<!-- pick addr card 
-	나중에 추가
-	parameterType="int"  -->
-	<select id="getaddr" resultType="dino.dto.MemberDto">
-	SELECT
-    	idx,
-    	addr1,
-    	addr2,
-    	addr3
-	FROM
-    	d_member
-	WHERE
-    	idx = #{idx}
-	</select>
-	
-	
-	<!-- update addr card -->
-	<update id="upAddr" parameterType="dino.dto.MemberDto">
-	UPDATE
-		d_member
-	SET
-		addr1 = #{addr1},
-		addr2 = #{addr2},
-		addr3 = #{addr3}
-	WHERE
-		idx = #{idx}
-	</update>
 	
 	<!-- make kid card --> 
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
@@ -94,9 +67,9 @@
                 d_kidcard
         VALUES(
                 d_kidcard_idx.nextval,
-               #{idx},
+               	#{d_member_idx},
                 #{k_name},
-                2,
+                #{k_gender},
                 #{k_birth},
                 #{k_introduce},
                 #{k_care_type},
@@ -111,7 +84,7 @@
 	    	 d_reserve
 		VALUES(
 		    D_RESERVE_IDX.nextval,
-		    #{idx},
+		    #{member_p_idx},
 		    #{kid_idx},
 		    to_date(#{start_date}, 'yyyy-mm-dd hh24'),
 		    to_date(#{end_date}, 'yyyy-mm-dd hh24'),
@@ -123,40 +96,11 @@
 	)
 	</insert>
 	
-	<!-- <insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
-		INSERT INTO
-			d_common_img
-		VALUES(
-			d_common_img_idx.nextval,
-			#{c_imgpath},
-			#{d_member_idx},
-			1,
-			#{ref_idx}
-		)
-	</insert>
-	 -->
-	<!-- <select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
-	    SELECT 
-	        dk.*, dci.c_imgpath
-	    FROM 
-	        d_kid dk 
-	    LEFT JOIN 
-	        d_common_img dci 
-	    ON 
-	        dk.d_member_idx = dci.d_member_idx
-	    WHERE
-	        dk.d_member_idx = #{d_member_idx}
-	</select>
-	 -->
-	
 	<select id="teacherInfo" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto">
 		SELECT 
-			t.t_cost
+			  t.t_cost
 			, t.job
-			, t.badge
 			, t.t_introduce
-			, t.schedule_day
-			, t.schedule_time
 			, t.kid_type
 			, t.t_care_type
 			, t.career_experience
@@ -187,6 +131,32 @@
 		FROM 
 			d_review 
 		WHERE 
-			d_member_idx = #{idx}
+			d_member_idx = #{d_member_idx}
 	</select>
+	
+	<!-- <insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
+		INSERT INTO
+			d_common_img
+		VALUES(
+			d_common_img_idx.nextval,
+			#{c_imgpath},
+			#{d_member_idx},
+			1,
+			#{ref_idx}
+		)
+	</insert> -->
+	
+	<!-- <select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	    SELECT 
+	        dk.*, dci.c_imgpath
+	    FROM 
+	        d_kid dk 
+	    LEFT JOIN 
+	        d_common_img dci 
+	    ON 
+	        dk.d_member_idx = dci.d_member_idx
+	    WHERE
+	        dk.d_member_idx = #{d_member_idx}
+	</select> -->
+	
 </mapper>

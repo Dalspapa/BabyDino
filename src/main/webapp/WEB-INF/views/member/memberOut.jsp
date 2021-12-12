@@ -206,7 +206,7 @@
    text-align: center;"
 }
 </style>
-<%@ include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 <form action="">
