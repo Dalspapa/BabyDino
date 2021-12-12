@@ -48,8 +48,21 @@ public class FindKidsController {
 	@RequestMapping(value = "/findKids.do")
 	public ModelAndView findKids() {
 
+		//아이 연령대 리스트 출력
+		List<CommonOpDto> kidAge = commonOpService.k_type_opList();
+		System.out.println("아이 연령대 >>>>>>>>>>" + kidAge);
+		
+		//돌봄분야 리스트 출력
+		List<CommonOpDto> c_list = commonOpService.t_care_opList();
+		System.out.println("돌봄분야 >>>>>>>>>>" + c_list);
+		
+		//아이카드 리스트 출력
 		List<FindKidsJoinDto> KidsList = findKidsService.kidsList();
+		
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("kidAge", kidAge);
+		mav.addObject("c_list", c_list);
 		mav.addObject("KidsList", KidsList);
 		mav.setViewName("findKids/findKids");
 		return mav;
