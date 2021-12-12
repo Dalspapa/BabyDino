@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-<<<<<<< HEAD
-=======
-
->>>>>>> cc9d753bd2e6f38ee2f5c1ea71c78cbdcd79fc9e
 <style>
 .pignose-calendar-unit-disabled a {
 	color: red !important
@@ -99,7 +93,7 @@
 							<c:if test="${ empty addrList }">
 								<h2 align="center">등록된 주소가 없습니다!</h2>
 							</c:if>
-							<c:if test="${ !empty addrList }">
+							<c:if test="${ not empty addrList }">
 								<div class="col-12 mb-2">
 									<span style="font-weight: bold;" id="addr1">(${ addrList.addr1 })</span>
 								</div>
@@ -170,12 +164,7 @@
 	</form>
 </body>
 
-<<<<<<< HEAD
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-=======
-<%@include file="/WEB-INF/views/include/footer.jsp" %>
-
->>>>>>> cc9d753bd2e6f38ee2f5c1ea71c78cbdcd79fc9e
 <!-- 카카오 주소 API -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -270,7 +259,7 @@
 		var saveIdx = '${sessionScope.saveIdx}';
 		
 		var formData = new FormData();
-		formData.set('member_p_idx', Number(1));
+		formData.set('member_p_idx', saveIdx);
 		formData.set('kid_idx'     , kidCard);
 		formData.set('start_date'  , start);
 		formData.set('end_date'    , end);
@@ -292,7 +281,7 @@
 			cache: false, 			
 			success : function(e){
 				window.alert="예약등록되었습니다.";
-				location.href="main.do";
+				location.href='findTeacher.do?idx='+ saveIdx;
 				console.log(e);
 			},
 			error : function(e){

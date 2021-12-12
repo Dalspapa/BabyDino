@@ -78,7 +78,7 @@ table .phone{
                            <th>비밀번호 확인</th>
                            <td>
                               <input id="pwdCheck" type="password" class="form-control form-control-sm w-50" placeholder="비밀번호를 다시 입력해주세요." width="100" autocomplete="off" onkeyup="pwdEqual()"/>
-                              <span id="msg"></span>
+                              <span id="msg" style="display: flex; align-item: center;"></span>
                            </td>
                         </tr>
                         <tr>

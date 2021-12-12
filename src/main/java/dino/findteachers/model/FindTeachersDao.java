@@ -28,12 +28,6 @@ public interface FindTeachersDao {
 	// pick addr card
 	public MemberDto pickKidsAddrCard(int idx);
 
-	// update addr get
-	public MemberDto addrUpForm(int idx);
-
-	// update addr card
-	public int updateAddr(MemberDto dto);
-	
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx);
 	public List<ReviewDto> teacherReviewList(int idx);

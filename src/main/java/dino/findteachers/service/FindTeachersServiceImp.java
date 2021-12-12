@@ -40,8 +40,53 @@ public class FindTeachersServiceImp implements FindTeachersService {
 	return	t_list;
 	
 	}
-	
 
+	// pick kid card
+	public List<KidDto> pickKidsCard(int idx) {
+
+		List<KidDto> mkList = findTeachersDao.pickKidsCard(idx);
+
+		return mkList;
+	}
+
+	// pick addr card
+	public MemberDto pickKidsAddrCard(int idx) {
+
+		MemberDto addr_dto = findTeachersDao.pickKidsAddrCard(idx);
+
+		return addr_dto;
+	}
+
+	// make kid card
+	public int makeKCard(KidDto dto) {
+
+		int result = findTeachersDao.makeKCard(dto);
+
+		return result;
+	}
+
+	// Insert reserve Kid Card
+	public int reserveCard(ReserveDto reserveCard) {
+
+		int result = findTeachersDao.reserveCard(reserveCard);
+
+		return result;
+	}
+
+	// teacher card content
+	public FindTeacherJoinDto teacherInfo(int idx) {
+
+		FindTeacherJoinDto t_dto = findTeachersDao.teacherInfo(idx);
+
+		List<ReviewDto> reviewList = findTeachersDao.teacherReviewList(idx);
+		
+		if(t_dto != null && reviewList != null && reviewList.size() > 0) {
+			t_dto.setReview_list(reviewList);
+		}
+		
+		return t_dto;
+	}
+	
 	/*
 	 * @Transactional public void makeKCard(KidDto dto, Common_ImgDto imgDto,
 	 * List<MultipartFile> imgFiles, String dirPath) {
@@ -104,68 +149,5 @@ public class FindTeachersServiceImp implements FindTeachersService {
 	 * 
 	 * return resultImg; }
 	 */
-
-	// pick kid card
-	public List<KidDto> pickKidsCard(int idx) {
-
-		List<KidDto> mkList = findTeachersDao.pickKidsCard(idx);
-
-		return mkList;
-	}
-
-	// pick addr card
-	public MemberDto pickKidsAddrCard(int idx) {
-
-		MemberDto addr_dto = findTeachersDao.pickKidsAddrCard(idx);
-
-		return addr_dto;
-	}
-
-	// update addr get
-	public MemberDto addrUpForm(int idx) {
-
-		MemberDto addrUp = findTeachersDao.addrUpForm(idx);
-
-		return addrUp;
-	}
-
-	// update addr card
-	public int updateAddr(MemberDto dto) {
-
-		int addr_update = findTeachersDao.updateAddr(dto);
-
-		return addr_update;
-
-	}
-
-	// make kid card
-	public int makeKCard(KidDto dto) {
-
-		int result = findTeachersDao.makeKCard(dto);
-
-		return result;
-	}
-
-	// Insert reserve Kid Card
-	public int reserveCard(ReserveDto reserveCard) {
-
-		int result = findTeachersDao.reserveCard(reserveCard);
-
-		return result;
-	}
-
-	// teacher card content
-	public FindTeacherJoinDto teacherInfo(int idx) {
-
-		FindTeacherJoinDto t_dto = findTeachersDao.teacherInfo(idx);
-
-		List<ReviewDto> reviewList = findTeachersDao.teacherReviewList(idx);
-		
-		if(t_dto != null && reviewList != null && reviewList.size() > 0) {
-			t_dto.setReview_list(reviewList);
-		}
-		
-		return t_dto;
-	}
 
 }
