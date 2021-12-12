@@ -114,11 +114,14 @@
 			op = #{op}
 	</delete>
 	
-	<!-- 회원이미지테이블(조인쿼리로 수정예정) -->
-	<select id="memberImg" resultType="dino.dto.MemberDto">
+	
+	<!-- 선생님 필수 인증 (이미지테이블 조인쿼리로 수정해야함)-->
+	<select id="teacherCertification" resultType="dino.dto.MemberDto">
 		select 
 			*
 		from
 			d_member
+		where 
+			member_type = 4
 	</select>
   </mapper>

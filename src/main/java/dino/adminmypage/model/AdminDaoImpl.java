@@ -13,6 +13,7 @@ public class AdminDaoImpl implements AdminDao {
 	
 	private SqlSessionTemplate sqlMap;
 	
+	//신고하기
 	public List<ReportDto> reportList() {
 		List<ReportDto> reportlist = sqlMap.selectList("reportList");
 		return reportlist;
@@ -93,5 +94,12 @@ public class AdminDaoImpl implements AdminDao {
 	public int careDel(String op) {
 		int result = sqlMap.delete("cdel",op);
 		return result;
+	}
+
+	
+	//선생님 필수 인증(쿼리부분수정예정)
+	public List<MemberDto> teacherCertification() {
+		List<MemberDto> t_list = sqlMap.selectList("teacherCertification");
+		return t_list;
 	}
 }

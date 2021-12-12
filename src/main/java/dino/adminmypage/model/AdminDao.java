@@ -9,6 +9,7 @@ import dino.dto.ReserveDto;
 
 public interface AdminDao {
 	
+	//신고하기(관리자)
 	public List<ReportDto> reportList();
 	
 	//회원강제탈퇴
@@ -46,4 +47,7 @@ public interface AdminDao {
 	
 	//돌봄분야 삭제
 	public int careDel(String op);
+	
+	//선생님 필수 인증(쿼리부분수정예정)
+	public List<MemberDto> teacherCertification();
 }
