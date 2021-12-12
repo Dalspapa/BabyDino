@@ -62,7 +62,7 @@
 	        </span>
 	        <span class="n_img">
 	          <a href="parentsGuide.do">
-	            <img src="https://cdn.mom-sitter.com/momsitter-cs/icon/sitter.svg" alt="alt=" 시터회원="" 이용가이드""=""><br>
+	            <img src="https://cdn.mom-sitter.com/momsitter-cs/icon/sitter.svg" alt="시터회원 이용가이드"><br>
 	            <span>부모님<br>이용가이드</span>
 	          </a>
 	        </span>
