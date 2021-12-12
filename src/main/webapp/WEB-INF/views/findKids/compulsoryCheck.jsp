@@ -261,11 +261,11 @@ section p{
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
   	<script>
   	
+  	let name = 'step_';
+	let count = 1;
+	let dName = name + count;
+  	
   	$(document).ready(function (){
-
-		let name = 'step_';
-		let count = 1;
-		let dName = name + count;
 
 		this.count = count;
 
@@ -295,40 +295,11 @@ section p{
     	 		fnCert();
 	 		}
 	 	});
-	});
-	
-	$(function(){
-		_SIGNATURE.start("canvas_name", 300, 300)
-	});
-/* 	경로 저장
-	function save (_canvas){
-		var data = _SIGNATURE.getCanvas(_canvas);
-		console.log("data is : " + data);
-		$("input[name=t_sexcrime]").val(data);
-	} */
-
-	function del (_canvas){
-		_SIGNATURE.clearCanvas(_canvas);
-	}
-/* 	경로 다운로드
-	function down (_canvas){
-		_SIGNATURE.downCanvas(_canvas);
-	} */
-
-	function done (_canvas){
-		_SIGNATURE.doneCanvas(_canvas);
-	}
-
-	$("body").delegate(".canvas-draw-base","click", function(){
-		var _canvas = $(this).data("id");
-		$("canvas#" + _canvas).parents(".canvas-draw-pad-box").show();
-
-		//_SIGNATURE.setPreImage(_canvas);
-	});
+	});	
 
 	function fnCertValidation(){
 
-		var rst = true;
+	 	var rst = true;
 
         let imgFile = $('#t_copy').val();
         let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif|JPG|JPEG|PNG|GIF|BMP|PDF|JFIF)$/gi;
@@ -360,19 +331,58 @@ section p{
              name = 'step_';
              count = 1;
              dName = name + count;
-
+			 
              $('.makeTdiv').hide();
 
              console.log("검증count2B"+count);
              rst = false;
         }
+        
+/*         let canCheck = $(data('canvas_name'));
+        
+        if (canChedck == "") {
+        	alert('서명을 해주셔야 인정요청이 가능합니다.');
+        	rst = false;
+        } */
 
         return rst;
 	}
 
 	function fnCert(){
 		$("#form").submit();
+/* let formData = new FormData();
+		
+		formData.set() */
 	}
+	
+	$(function(){
+		_SIGNATURE.start("canvas_name", 300, 300)
+	});
+/* 	경로 저장
+	function save (_canvas){
+		var data = _SIGNATURE.getCanvas(_canvas);
+		console.log("data is : " + data);
+		$("input[name=t_sexcrime]").val(data);
+	} */
+
+	function del (_canvas){
+		_SIGNATURE.clearCanvas(_canvas);
+	}
+/* 	경로 다운로드
+	function down (_canvas){
+		_SIGNATURE.downCanvas(_canvas);
+	} */
+
+	function done (_canvas){
+		_SIGNATURE.doneCanvas(_canvas);
+	}
+
+	$("body").delegate(".canvas-draw-base","click", function(){
+		var _canvas = $(this).data("id");
+		$("canvas#" + _canvas).parents(".canvas-draw-pad-box").show();
+
+		//_SIGNATURE.setPreImage(_canvas);
+	});
 
 	</script>
 

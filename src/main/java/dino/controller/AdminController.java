@@ -13,14 +13,45 @@ import org.springframework.web.servlet.ModelAndView;
 import dino.adminmypage.service.AdminService;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
+import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
-import dino.member.service.MemberService;
+										 
 
 @Controller
 public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
+	
+	String msg = "";
+	String goUrl = "";
+	
+	@RequestMapping("/reportManagement.do")
+	public ModelAndView reportManagement() {
+		
+		List<ReportDto> reportManagement = adminService.reportList();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("reportManagement",reportManagement);
+		mav.setViewName("adminMypage/reportManagement");
+		
+		return mav;
+	}
+	
+	//관리자가 강제탈퇴버튼 누르면 연결되는 메서드
+	@RequestMapping("/adminMemberOut.do")
+	public ModelAndView adminMemberOut(@RequestParam("idx") int idx) {
+		
+		System.out.println("리포트 삭제 idx "+idx);
+		int result = adminService.adminMemberOut(idx);
+		msg = result > 0? "강제탈퇴 처리 되었습니다." : "강제탈퇴처리가 이루어지지 않았습니다.";
+		goUrl = "reportManagement.do";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.addObject("goUrl", goUrl);
+		mav.setViewName("adminMypage/adminMsg");
+		return mav;
+	}
 	
 	//회원관리로 이동
 	@RequestMapping("/memberManagement.do")
@@ -162,8 +193,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	
-	//선생님 필수검증(수정예정)
+		//선생님 필수검증(수정예정)
 	@RequestMapping("/teacherCertification.do")
 	public ModelAndView teacherCertification() {
 		List<MemberDto> t_list = adminService.teacherCertification();
@@ -176,4 +206,6 @@ public class AdminController {
 
 	
 	
+}
+ 
 }

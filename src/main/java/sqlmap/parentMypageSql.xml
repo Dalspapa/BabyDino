@@ -4,35 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.parentmypage">
 	<select id="proceedingMain" resultType="dino.parentmypage.model.ParentMypageDto">
-		select
-		    m.name
-		    , r.idx as r_idx
-		    , t.t_care_type
-		    , t.t_cost
-		    , t.t_introduce
-		    , t.career_experience
-		from
-		    d_member m, d_teachercard t, d_reserve r
-		where
-		    m.idx = t.d_member_idx and t.d_member_idx = r.teacher_idx
+		select *
+		from d_member m , d_kidcard k , d_reserve r
+		where m.idx = k.d_member_idx and k.idx = r.kid_idx and m.idx = 130
 	</select>
 
-	<select id="caringPage" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
+	<select id="caringPage" parameterType="Integer" resultType="dino.dto.KidDto">
 		select
-		    k.k_name
-		    ,m.addr1
-		    ,m.addr2
-		    ,m.addr3
-		    ,k.k_care_type
-		    ,k.k_gender
-		    ,k.k_tendency
-		    ,k.k_require
-		    ,k.k_introduce
-		    ,k.k_birth
-		    ,r.idx as r_idx
+		         k.idx
+		        ,k.d_member_idx
+		        ,k.k_name
+		        ,k.k_birth
+		        ,k.k_gender
+		        ,k.k_introduce
+		        ,k.k_care_type
+		        ,k.k_tendency
+		        ,k.teacher_type
+		        ,k.k_require
 		from
-		    d_member m, d_kidcard k, d_reserve r
+		         d_kidcard k
+		        ,d_reserve r
 		where
-		    m.idx = k.d_member_idx and k.idx = r.kid_idx and r.idx = #{idx}
+		        k.idx = r.kid_idx and r.kid_idx = #{idx}
 	</select>
 </mapper>

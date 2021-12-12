@@ -242,7 +242,7 @@ asvg {
 	
 	<div class="formBlock">
 		<div class="titleBlock">
-			<p class="sc-bdnxRM kHvtJd" color="#444444">신고 유형</p></div>
+			<p class="sc-bdnxRM kHvtJd" color="#444444">신고 유형 </p></div>
 		<div class="MuiInputBase-root MuiInput-root sc-daBunf gQyNyw">
 			<select class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input" name="rp_type">
 				<option value="" selected disabled>신고 유형을 선택해주세요.</option>

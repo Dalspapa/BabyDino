@@ -225,13 +225,13 @@ public class MemberController {
 		//회원탈퇴
 		@RequestMapping("/memberOut.do")
 		public ModelAndView memberOut(@RequestParam("sidx") int idx, HttpSession session) {
+
 			
 			
 			int result = memberService.memberOut(idx);
 			String msg = result > 0? "성공적으로 탈퇴가 되었습니다." : "회원 탈퇴가 이루어지지 않았습니다.";
 			System.out.println("회원탈퇴 결과 : >>>>>>>>>>>>>>>>>>" + msg);
 			session.invalidate();
-			
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("msg",msg);
