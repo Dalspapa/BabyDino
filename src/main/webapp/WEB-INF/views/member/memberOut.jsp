@@ -206,7 +206,7 @@
    text-align: center;"
 }
 </style>
-<%@ include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
 <form action="">
@@ -264,10 +264,12 @@
             	<label for="inputReason" class="_1ZcJu">탈퇴 사유<input type="text" placeholder="여기에 적어주세요." class="xggqW" id="inputReason"></label>
             		<p class="_2Uhi7">알려주신 소중한 내용으로 더 좋은 아기공룡 서비스를 만들 수 있도록 노력하겠습니다.</p>
          </div>
-         <button class="_3-aXc" type="button"><a href = "memberOut.do?sidx=${sidx}">
-            <div>
-               <span class="out">탈퇴 신청</span>
-            </div></a>
+         <button class="_3-aXc" type="button">
+         	<a href = "memberOut.do?sidx=${sidx}">
+	            <div>
+	               <span class="out">탈퇴 신청</span>
+	            </div>
+            </a>
          </button>
       </div>
    </div>
