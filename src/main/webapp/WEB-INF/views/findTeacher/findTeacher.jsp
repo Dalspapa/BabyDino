@@ -110,7 +110,7 @@
 								<h2>${tDto.name }</h2>
 								<p>
 									<c:set var="tintro" value="${tDto.t_introduce}" />
-									${fn:substring(TextValue,0,25)}
+									${fn:substring(tintro,0,25)}
 								</p>
 								<ul>
 									<li>희망 급여</li>
