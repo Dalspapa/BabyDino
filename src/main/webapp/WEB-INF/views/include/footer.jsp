@@ -117,16 +117,6 @@
  <body onkeydown="javascript:onEnterLogin();">
 
 
-<!-- 
-	 <form action="ok.jsp" method="post" name="loginForm">
-
-		아이디 : <input type="text" name="id" value=""><br/>
-
-		비밀번호 : <input type="password" name="passwd" ><br/>
-
-		<input type="submit" value="로그인">
-
-	</form> -->
 
 </body>
 
@@ -233,15 +223,13 @@
   });
 	
 //엔터키로 로그인하기
-  <script type="text/javascript">
-
-	function onEnterLogin(){
+ 	function onEnterLogin(){
 
 		var keyCode = window.event.keyCode;
 
-		if (keyCode == 13) { //엔테키 이면
+		if (keyCode == 13) { //엔테키면
 
-			loginForm.submit();
+			ajaxTest();
 
 		}
 
