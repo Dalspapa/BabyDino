@@ -7,7 +7,7 @@
 <title>회원 이미지 테이블</title>
 </head>
  <!-- header -->
-	<%@include file="/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
 			<!-- 회원테이블 -->
 			<div>
@@ -54,6 +54,6 @@
 				</div>
 			</div>
  <!-- footer -->
-	<%@include file="/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

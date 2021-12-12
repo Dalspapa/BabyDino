@@ -9,7 +9,7 @@ import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
 
-public class AdminDaoimpl implements AdminDao {
+public class AdminDaoImpl implements AdminDao {
 	
 	private SqlSessionTemplate sqlMap;
 	
@@ -24,7 +24,7 @@ public class AdminDaoimpl implements AdminDao {
 		return result;
 	}	
 
-	public AdminDaoimpl(SqlSessionTemplate sqlMap) {
+	public AdminDaoImpl(SqlSessionTemplate sqlMap) {
 		super();
 		this.sqlMap = sqlMap;
 	}
