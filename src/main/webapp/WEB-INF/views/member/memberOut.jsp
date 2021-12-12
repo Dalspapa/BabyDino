@@ -162,47 +162,47 @@
 ._3-aXc {
    height: 55px !important;
    background-color: #2F9D27 !important;
-   border: 10px; 
-   box-sizing: border-box;  
+   border: 10px;
+   box-sizing: border-box;
    min-width: 100%;
-   
+
 }
 ._3-aXc span, ._1nTB5 span {
    vertical-align: top !important;
    color: #fff !important;
    font-size: 16px !important;
 }
-.out { 	
-   position: relative; 
-   padding-left: 16px; 
+.out {
+   position: relative;
+   padding-left: 16px;
    padding-right: 16px;
-   vertical-align: middle; 
-   letter-spacing: 0px; 
-   text-transform: uppercase; 
-   font-weight: 500; 
+   vertical-align: middle;
+   letter-spacing: 0px;
+   text-transform: uppercase;
+   font-weight: 500;
    font-size: 14px;
 }
 .memout {
-   border: 10px; 
-   box-sizing: border-box; 
-   display: inline-block; 
-   cursor: pointer; 
+   border: 10px;
+   box-sizing: border-box;
+   display: inline-block;
+   cursor: pointer;
    text-decoration: none;
-   margin: 0px; 
-   padding: 0px; 
-   outline: none; 
-   font-size: inherit; 
-   font-weight: inherit; 
-   position: relative; 
-   z-index: 1; 
-   height: 36px; 
-   line-height: 36px; 
-   min-width: 100%; 
-   color: rgba(0, 0, 0, 0.87); 
-   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; 
-   border-radius: 2px; 
-   user-select: none; 
-   overflow: hidden; 
+   margin: 0px;
+   padding: 0px;
+   outline: none;
+   font-size: inherit;
+   font-weight: inherit;
+   position: relative;
+   z-index: 1;
+   height: 36px;
+   line-height: 36px;
+   min-width: 100%;
+   color: rgba(0, 0, 0, 0.87);
+   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+   border-radius: 2px;
+   user-select: none;
+   overflow: hidden;
    text-align: center;"
 }
 </style>

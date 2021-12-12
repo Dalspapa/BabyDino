@@ -39,7 +39,7 @@ public class ParentMypageController {
 	@RequestMapping("/caring.do")
 	public ModelAndView caring(@RequestParam("idx")int idx) {
 
-		KidDto dto = parentMypageService.caring(idx);
+		ParentMypageDto dto = parentMypageService.caring(idx);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto",dto);

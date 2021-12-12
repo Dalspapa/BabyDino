@@ -39,6 +39,8 @@
 .wrapper {
 	width: 100%;
 	text-align: center;
+	margin-top: 150px!important;
+	font-family: 'S-Air';
 }
 .form-floating {
 	width: 80%;
@@ -53,7 +55,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-	<form name="writeReview" action="writeReview.do" method="post">
+	<form name="writeReview" action="writesubmit.do" method="post">
 		<div class="wrapper">
 			<div class="top-title">
 				<p>후기 작성</p>
@@ -81,6 +83,8 @@
 				<button type="submit" class="btn btn-outline-success">작성완료</button>
 			</div>
 		</div>
+		<input type="hidden" name="d_reserve_idx" value="${ param.r_idx }"/>
+		<input type="hidden" name="d_member_idx" value="${sessionScope.saveIdx}"/>
 	</form>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>

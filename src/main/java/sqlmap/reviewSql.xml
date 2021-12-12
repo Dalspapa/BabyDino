@@ -14,8 +14,8 @@
 			d_review
 		values(
 			d_review_idx.nextval,
-			100,
-			35,
+			#{d_reserve_idx},
+			#{d_member_idx},
 			#{star},
 			sysdate,
 			#{r_content}
