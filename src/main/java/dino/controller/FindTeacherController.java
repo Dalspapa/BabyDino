@@ -189,13 +189,17 @@ public class FindTeacherController {
 		int result = teachersService.makeKCard(dto);
 		
 		String[] careTypeList = dto.getK_care_type().split(",");
+		
 		for (String careType : careTypeList) {
 			dto.setKids_idx(dto.getD_kidcard_idx());
 			dto.setCare_type(careType);
 			dto.setRegId((String)session.getAttribute("saveId"));
 			dto.setUpdId((String)session.getAttribute("saveId"));
+			
 			teachersService.makeKCareType(dto);
 		}
+		return null;
+	}
 
 	// 아이카드 등록 메서드
 	@RequestMapping("/reserveCard.do")

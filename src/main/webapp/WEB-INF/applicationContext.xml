@@ -80,7 +80,7 @@
 	<bean id="reportService" class="dino.report.service.ReportServiceImple">
 		<property name="reportDao" ref="reportDao" />
 	</bean>
-	<bean id="findTeachersService" class="dino.findteachers.service.FindTeachersServiceImp">
+	<bean id="findTeachersService" class="dino.findteachers.service.FindTeachersServiceImpl">
 		<property name="findTeachersDao" ref="findTeachersDao" />
 	</bean>
 	<bean id="reviewService" class="dino.review.service.ReviewServiceImpl">

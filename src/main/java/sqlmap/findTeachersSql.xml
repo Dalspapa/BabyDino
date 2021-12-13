@@ -103,26 +103,9 @@
                 #{k_tendency},
                	#{teacher_type},
                	#{k_require}
-
-		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
-			SELECT  d_kidcard_idx.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT INTO 
-        	d_kidcard
-        VALUES(
-			d_kidcard_idx.nextval,
-			#{d_member_idx},
-			#{k_name},
-			#{k_gender},
-			#{k_birth},
-			#{k_introduce},
-			#{k_care_type},
-			#{k_tendency},
-			#{teacher_type},
-			#{k_require}
-
-        )
 	</insert>
+	
+	<!-- 돌봄유형 만들기 -->
 	<insert id="makeKCareType" parameterType="dino.dto.KidDto">
 	INSERT INTO 
 		d_kid_caretype 

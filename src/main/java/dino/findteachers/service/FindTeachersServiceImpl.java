@@ -21,11 +21,11 @@ import dino.dto.ReserveDto;
 import dino.dto.ReviewDto;
 import dino.findteachers.model.FindTeacherJoinDto;
 
-public class FindTeachersServiceImp implements FindTeachersService {
+public class FindTeachersServiceImpl implements FindTeachersService {
 
 	private FindTeachersDao findTeachersDao;
 
-	public static final String IMGPATH = "C:\\리동현\\upload\\";
+	public static final String IMGPATH = "C:\\upload\\";
 
 	public FindTeachersDao getFindTeachersDao() {
 		return findTeachersDao;
@@ -169,5 +169,10 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		}
 
 		return t_dto;
+	}
+
+	public int makeKCard(KidDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
