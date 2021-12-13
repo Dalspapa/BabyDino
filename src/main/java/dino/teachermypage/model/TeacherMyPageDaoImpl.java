@@ -24,5 +24,9 @@ public class TeacherMyPageDaoImpl implements TeacherMyPageDao {
 		return sqlMap.update("profileUpd" ,upDto);
 	}
 	
-	
+	//teacher profile bank, acnum, cost Update
+	public int introUpdate(MakeTCardDto introDto) {
+		System.out.println("intro dao impl------"+introDto.getT_introduce()+"//"+introDto.getCareer_experience()+"//"+introDto.getD_member_idx()+"/////"+introDto.getCctvagree());
+		return sqlMap.update("introUpd", introDto);
+	}
 }

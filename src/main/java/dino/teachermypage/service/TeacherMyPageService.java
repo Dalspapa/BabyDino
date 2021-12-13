@@ -11,4 +11,7 @@ public interface TeacherMyPageService {
 	//sam - bank, acnum, t_cost Update
 	public int batUpdate(MakeTCardDto upDto);
 
+	//teacher profile bank, acnum, cost Update
+	public int introUpdate(MakeTCardDto introDto);
+	
 }

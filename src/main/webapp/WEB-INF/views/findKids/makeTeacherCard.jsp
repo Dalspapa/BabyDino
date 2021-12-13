@@ -137,17 +137,101 @@
 			<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>
 		</div>
 		<div id="step_2" class="makeTdiv">
-			<h2>어떤 아이를 돌봐 주실수 있나요?</h2>
+			<h2>어떤 아이를 돌봐 주실수 있나요?</h2>		
 			<c:forEach var="kt_opdto" items="${k_list}">
-				<div class="check2">
-					<label><input type="checkbox" id="kidType" class="ktchk" name="kid_type" value="${kt_opdto.op}"> ${kt_opdto.c_introduce} </label>
+				<div class="check2 ktypeckb">							
+				<c:if test="${kt_opdto.op == 1}">
+					<div class="ktypeckb_child">
+						<input type="checkbox" id="kidType${kt_opdto.op}" class="ktchk" name="kid_type" value="${kt_opdto.op}">
+						<label for="kidType" id="lb${kt_opdto.op}">${kt_opdto.c_introduce}<span id="sp${kt_opdto.op}"></span></label>
+					</div>		
+					<style>
+						.ktypeckb {
+							width:500px;
+							margin: 50px auto;
+						}
+						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} {
+							display: none;
+						}
+						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} +  label span{
+							display: inline-block;
+							width: 200px;
+							height: 200px;
+							background: url(/common/img/kidType/kidstype1_off.png) no-repeat center/200px 200px;
+							cursor: pointer;
+							vertical-align: middle;
+							
+						}				
+						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op}:checked + #lb${kt_opdto.op} #sp${kt_opdto.op} {
+							background: url(/common/img/kidType/kidstype1_on.png) no-repeat center/200px 200px;
+						}		
+					</style>
+				</c:if>
+				<c:if test="${kt_opdto.op == 2}">
+					<div class="ktypeckb_child">
+						<input type="checkbox" id="kidType${kt_opdto.op}" class="ktchk" name="kid_type" value="${kt_opdto.op}">
+						<label for="kidType">${kt_opdto.c_introduce}<span></span></label>
+					</div>		
+					<style>
+						.ktypeckb {
+							width:500px;
+							margin: 50px auto;
+						}
+						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} {
+							display: none;
+						}
+						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} + label span{
+							display: inline-block;
+							width: 200px;
+							height: 200px;
+							background: url(/common/img/kidType/kidstype2_off.png) no-repeat center/200px 200px;
+							cursor: pointer;
+							vertical-align: middle;
+							
+						}				
+						/* .ktypeckb .ktypeckb_child #kidType${kt_opdto.op}:checked + label span {
+							background: url(/common/img/kidType/kidstype2_on.png) no-repeat center/200px 200px;					
+						} */
+					</style>
+				</c:if>
+				<c:if test="${kt_opdto.op == 3}">
+					<div class="ktypeckb_child">
+						<input type="checkbox" id="kidType${kt_opdto.op}" class="ktchk" name="kid_type" value="${kt_opdto.op}">
+						<label for="kidType">${kt_opdto.c_introduce}<span></span></label>
+					</div>		
+					<style>
+						.ktypeckb {
+							width:500px;
+							margin: 50px auto;
+						}
+						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} {
+							display: none;
+						}
+						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} + label span{
+							display: inline-block;
+							width: 200px;
+							height: 200px;
+							background: url(/common/img/kidType/kidstype3_off.png) no-repeat center/200px 200px;
+							cursor: pointer;
+							vertical-align: middle;
+							
+						}
+						/* .ktypeckb .ktypeckb_child #kidType${kt_opdto.op}:checked + label span {
+							background: url(/common/img/kidType/kidstype3_on.png) no-repeat center/200px 200px;					
+						} */
+						
+						
+						<!--before /common/img/kidType/kidstype3_off.png-->
+						<!--after /common/img/kidType/kidstype3_on.png-->
+					</style>
+				</c:if>
 				</div>
 			</c:forEach>
 			<div class="btn">
 			<button type="button" class="btn btn-outline-secondary prevbtn">이전으로</button>
 			<button type="button" class="btn btn-outline-dark"
 				onclick="javascript:location.href='main.do'">포기하기</button>
-			<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>
+			<button type="button" class="btn btn-outline-success nextbtn">다음으로</button>			
 		</div>
 		</div>
 		<!-- class="d-none" style="width: 100%;" -->
@@ -165,10 +249,10 @@
 										display: block;
 										width: 24px;
 										height: 24px;
-										background: url('./common/img/10.png') no-repeat 0 0px / contain;
+										background: url('./common/img/10.jng') no-repeat 0 0px / contain;
 									}
 									#tCareType:checked+#carelb{
-										background: url('./common/img/2.png') no-repeat 0 1px / contain;
+										background: url('./common/img/2.jng') no-repeat 0 1px / contain;
 									}
 									#tCareType{
 										display: none;
@@ -244,7 +328,7 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
-	
+
   function isTest() {
 
 	  	let imgFile = $('#t_img1').val();
@@ -280,7 +364,7 @@
 		});
 
 	  var fileLength = $("input[name=c_imgpath]");
-	  var cctv = $("input[name=cctvagree]").val();
+	  var cctv = $('input[name="cctvagree"]:checked').val();
 	  var formData = new FormData();
 
 
@@ -327,8 +411,15 @@
 		}
 	  })
   }
+  	
 
   	$(document).ready(function (){
+  		
+  		let ckbs = $('#kidType${kt_opdto.op}').is(':checked');
+  		
+  		if ( ckbs == true ) {
+  			$('#kidType${kt_opdto.op}').css("background","url(/common/img/kidType/kidstype${kt_opdto.op}_on.png) no-repeat center/200px 200px");
+  		}
 
   		let name = 'step_'
   		let count = 1;

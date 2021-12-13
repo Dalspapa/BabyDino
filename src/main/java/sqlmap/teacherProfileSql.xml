@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.teacherProfile">
-
+	<!-- get teacher Infomation -->
 	<select id="teacherProfile" parameterType="Integer" resultType="dino.teachermypage.model.TeacherMyPageDto">
 		
 		SELECT 
@@ -40,6 +40,7 @@
 		
 	</select>
 	
+	<!-- teacher profile bank, acnum, cost Update -->
 	<update id="profileUpd" parameterType="dino.dto.MakeTCardDto">
 	
 		UPDATE 
@@ -48,6 +49,20 @@
 			bank = #{bank}
 			,acnum = #{acnum}
 			,t_cost = #{t_cost}
+		WHERE 
+			D_MEMBER_IDX = #{d_member_idx}
+	
+	</update>
+	
+	<!-- teacher profile introduce, career Experience Update -->
+	<update id="introUpd" parameterType="dino.dto.MakeTCardDto">
+	
+		UPDATE 
+			d_teachercard 
+		SET 
+			t_introduce = #{t_introduce}
+			,career_experience = #{career_experience}
+			,cctvagree = #{cctvagree}
 		WHERE 
 			D_MEMBER_IDX = #{d_member_idx}
 	
