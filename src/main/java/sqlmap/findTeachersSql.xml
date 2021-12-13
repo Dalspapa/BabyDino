@@ -63,12 +63,19 @@
 	
 	<!-- 이미지 출력 -->
 	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
-	    SELECT dk.*
-     		 , dci.c_imgpath
-		FROM d_kidcard dk 
-		LEFT JOIN d_common_img dci ON dk.idx = dci.ref_idx
-		WHERE dk.idx = #{d_member_idx}
-		and dci.category_idx = 1
+		SELECT 
+				dt.*
+     			, dci.c_imgpath
+		FROM 
+				d_teachercard dt 
+		LEFT JOIN 
+				d_common_img dci 
+		ON 
+				dt.d_member_idx = dci.d_member_idx
+		WHERE 
+				dt.idx = #{d_teachercard_idx}
+		AND 
+				dci.category_idx = 2;
 	</select>
 	
 	
@@ -93,16 +100,16 @@
 		INSERT INTO 
         	d_kidcard
         VALUES(
-			d_kidcard_idx.nextval,
-			#{d_member_idx},
-			#{k_name},
-			#{k_gender},
-			#{k_birth},
-			#{k_introduce},
-			#{k_care_type},
-			#{k_tendency},
-			#{teacher_type},
-			#{k_require}
+	d_kidcard_idx.nextval,
+	#{d_member_idx},
+	#{k_name},
+	#{k_gender},
+	#{k_birth},
+	#{k_introduce},
+	#{k_care_type},
+	#{k_tendency},
+	#{teacher_type},
+	#{k_require}
         )
 	</insert>
 	

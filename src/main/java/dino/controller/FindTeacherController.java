@@ -110,12 +110,12 @@ public class FindTeacherController {
 	
 	};
 	
-		int setImg = teachersService.kSetImg(imgDto);
-		if(setImg != 1) {
-			result.put("fail", false); 
-		  } else { 
-			  result.put("success", success);
-		  }
+//		int setImg = teachersService.kSetImg(imgDto);
+//		if(setImg != 1) {
+//			result.put("fail", false); 
+//		  } else { 
+//			  result.put("success", success);
+//		  }
 		return ResponseEntity.ok(result);
 	}
 	

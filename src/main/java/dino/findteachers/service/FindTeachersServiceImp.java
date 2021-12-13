@@ -5,8 +5,6 @@ import dino.findteachers.model.FindTeachersDao;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Member;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,15 +32,16 @@ public class FindTeachersServiceImp implements FindTeachersService {
 	public void setFindTeachersDao(FindTeachersDao findTeachersDao) {
 		this.findTeachersDao = findTeachersDao;
 	}
-
-	public int kSetImg(Common_ImgDto imgDto) {
-		
-		int result = findTeachersDao.kSetImg(imgDto);
-		
-		System.out.println("findKidsservice setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
-		
-		return result;
-	}
+	
+//	//중복제거 
+//	public int kSetImg(Common_ImgDto imgDto) {
+//		
+//		int result = findTeachersDao.kSetImg(imgDto);
+//		
+//		System.out.println("findKidsservice setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
+//		
+//		return result;
+//	}
 
 	//Test imgpath
 	public List<Common_ImgDto> imgpath(int d_member_idx) {
@@ -76,13 +75,13 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		return addr_dto;
 	}
 
-//	// make kid card
-//	public int makeKCard(KidDto dto) {
-//
-//		int result = findTeachersDao.makeKCard(dto);
-//
-//		return result;
-//	}
+	// make kid card
+	public int makeKCard(KidDto dto) {
+
+		int result = findTeachersDao.makeKCard(dto);
+
+		return result;
+	}
 
 	// make kid card (테스트)
 	@Transactional
@@ -139,7 +138,6 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		}
 	}
 	
-
 	// Insert reserve Kid Card
 	public int reserveCard(ReserveDto reserveCard) {
 
@@ -161,4 +159,5 @@ public class FindTeachersServiceImp implements FindTeachersService {
 
 		return t_dto;
 	}
+
 }
