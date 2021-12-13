@@ -36,7 +36,7 @@ a:link, a:visited {
     width: 500px;
     height: 300px;
     border-radius: 10px;
-    background-color: #f5f5f5;
+    background-color: #ccc;
     display: flex;
     align-items: center;
 }
@@ -49,13 +49,6 @@ a:link, a:visited {
 }
 .intro {
 	width: 349px;
-}
-.notitle {
-	text-align: center;
-	margin: 100px auto;
-}
-.info {
-	margin-left: 60px;
 }
 </style>
 </head>
@@ -72,7 +65,7 @@ a:link, a:visited {
 		 </div>
 
 		 <c:if test="${ empty list }">
-				<h2 class="notitle">진행상황이 없습니다.</h2>
+				<h2 align="center">요청진행상황이 없습니다.</h2>
 		 </c:if>
 
          <!-- 요청 받은 현황 섹션 -->
@@ -101,11 +94,11 @@ a:link, a:visited {
 
          <!-- 요청한 현황 섹션 -->
          <c:forEach var="list" items="${ list }">
-	         <div id="section002" class="contentbody">
+	         <div id="section02" class="contentbody">
 	            <!-- 선생님 카드 -->
 	            <div class="t_card">
 	               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
-	               <div class="intro">#선생님 소개 들어가는 부분section002</div>
+	               <div class="intro">#선생님 소개 들어가는 부분section02</div>
 	            </div>
 	            <!-- 선생님 정보 -->
 	            <div class="info">
@@ -149,7 +142,7 @@ a:link, a:visited {
 <script>
 
    let a = $('#section01');
-   let b = $('#section002');
+   let b = $('#section02');
    let c = $('#section03');
 
    $(document).ready(function() {
