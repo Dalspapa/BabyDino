@@ -158,7 +158,9 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		FindTeacherJoinDto t_dto = findTeachersDao.teacherInfo(idx);
 
 		List<ReviewDto> reviewList = findTeachersDao.teacherReviewList(idx);
-		t_dto.setReview_list(reviewList);
+		if(t_dto != null && reviewList != null && reviewList.size() > 0) {
+			t_dto.setReview_list(reviewList);
+		}
 
 		return t_dto;
 	}

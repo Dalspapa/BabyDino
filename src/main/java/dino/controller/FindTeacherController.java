@@ -64,9 +64,6 @@ public class FindTeacherController {
 		List<CommonOpDto> ts_list = commonOpService.k_time_start_opList();
 		List<CommonOpDto> te_list = commonOpService.k_time_end_opList();
 
-		// test code
-		System.out.println("== name : " + mkList.get(0));
-
 		mav.addObject("addrList", addrList);
 		mav.addObject("k_dto", mkList);
 		mav.addObject("d_list", d_list);

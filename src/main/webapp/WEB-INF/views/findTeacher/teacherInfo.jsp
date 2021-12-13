@@ -347,7 +347,7 @@ section {
 				<li>
 					<h3>활동 가능지역</h3>
 					<div class="contentBox">
-						<div>${ t_dto.addr1 }</div>
+						<div>${ t_dto.addr2 }</div>
 					</div>
 				</li>
 				
