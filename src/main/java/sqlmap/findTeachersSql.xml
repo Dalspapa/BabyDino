@@ -2,9 +2,9 @@
 <!DOCTYPE mapper 
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="dino.findTeachers">
 
+	<!-- 선생님 카드 리스트 -->
 	<select id="teacherList" resultType="dino.findteachers.model.FindTeacherJoinDto">
 		  	SELECT 
                  m.idx
@@ -26,7 +26,7 @@
                 t.d_member_idx = m.idx
 	</select>
 	
-	<!-- pick kid card -->
+	<!-- 아이카드 선택하기 -->
 	<select id="pickKidsCard" parameterType="Integer" resultType="dino.dto.KidDto">
 	SELECT
 			a.idx,
@@ -48,7 +48,35 @@
         a.idx = b.xidx
 	</select>
 	
-	<!-- pick addr card -->
+	<!-- 이미지 인서트 -->
+	<insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
+		INSERT INTO
+			d_common_img
+		VALUES(
+			d_common_img_idx.nextval,
+			#{c_imgpath},
+			#{d_member_idx},
+			1,
+			#{ref_idx}
+		)
+	</insert>
+	
+	<!-- 이미지 출력 -->
+	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	    SELECT 
+	        dk.*, dci.c_imgpath
+	    FROM 
+	        d_kidcard dk 
+	    LEFT JOIN 
+	        d_common_img dci 
+	    ON 
+	        dk.d_member_idx = dci.d_member_idx
+	    WHERE
+	        dk.d_member_idx = #{d_member_idx}
+	</select>
+	
+	
+	<!-- 아이 주소카드 선택하기 -->
 	<select id="pickAddr" parameterType="Integer" resultType="dino.dto.MemberDto">
 	SELECT
     	idx,
@@ -61,7 +89,7 @@
     	idx = #{idx}
 	</select>
 	
-	<!-- make kid card --> 
+	<!-- 아이카드 만들기 --> 
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
 	INSERT INTO 
                 d_kidcard
@@ -79,6 +107,7 @@
         )
 	</insert>
 	
+	<!-- 아이 카드로 예약  -->
 	<insert id="k_reserve" parameterType="dino.dto.ReserveDto">
 	INSERT INTO
 	    	 d_reserve
@@ -96,6 +125,7 @@
 	)
 	</insert>
 	
+	<!-- 선생님 상세정보 출력 -->
 	<select id="teacherInfo" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto">
 		SELECT 
 			  t.t_cost
@@ -120,6 +150,7 @@
 			t.idx = #{idx}
 	</select>
 	
+	<!-- 선생님 상세 정보 리뷰 출력 -->
 	<select id="teacherReviewList" resultType="dino.dto.ReviewDto">
 		SELECT
 			 idx
@@ -134,28 +165,5 @@
 			d_member_idx = #{d_member_idx}
 	</select>
 	
-	<!-- <insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
-		INSERT INTO
-			d_common_img
-		VALUES(
-			d_common_img_idx.nextval,
-			#{c_imgpath},
-			#{d_member_idx},
-			1,
-			#{ref_idx}
-		)
-	</insert> -->
 	
-	<!-- <select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
-	    SELECT 
-	        dk.*, dci.c_imgpath
-	    FROM 
-	        d_kid dk 
-	    LEFT JOIN 
-	        d_common_img dci 
-	    ON 
-	        dk.d_member_idx = dci.d_member_idx
-	    WHERE
-	        dk.d_member_idx = #{d_member_idx}
-	</select> -->
 </mapper>
