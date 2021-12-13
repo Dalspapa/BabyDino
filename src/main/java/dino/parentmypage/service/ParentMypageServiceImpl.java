@@ -20,9 +20,9 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 
 	//start
 
-	//proceedingMain.jsp 출력
-	public List<ParentMypageDto> proceedingMain() {
-		List<ParentMypageDto> list = parentMypageDao.proceedingMain();
+	//돌봄 현황 페이지
+	public List<ParentMypageDto> proceedingMain(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.proceedingMain(idx);
 		return list;
 	}
 
@@ -30,6 +30,12 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 	public ParentMypageDto caring(int idx) {
 		ParentMypageDto dto = parentMypageDao.caring(idx);
 		return dto;
+	}
+
+	//아이카드 리스트 페이지
+	public List<ParentMypageDto> kidsCardList(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.kidsCardList(idx);
+		return list;
 	}
 }
 

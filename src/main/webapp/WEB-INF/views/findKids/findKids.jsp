@@ -132,10 +132,17 @@
 						<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
 						<label class="btn btn-outline-secondary" for="btn-check-2-outlined">만났던 순</label> 
 						<input type="checkbox" class="btn-check" id="btn-check-3-outlined" checked autocomplete="off">
+<<<<<<< HEAD
 						<!-- <label class="btn btn-outline-secondary" for="btn-check-3-outlined">별점 높은 순</label> 
 						<input type="checkbox" class="btn-check" id="btn-check-4-outlined" checked autocomplete="off">
 						<label class="btn btn-outline-secondary" for="btn-check-4-outlined">리뷰 많은 순</label> 
 						<input type="checkbox" class="btn-check" id="btn-check-5-outlined" checked autocomplete="off"> -->
+=======
+						<label class="btn btn-outline-secondary" for="btn-check-3-outlined">별점 높은 순</label> 
+						<input type="checkbox" class="btn-check" id="btn-check-4-outlined" checked autocomplete="off">
+						<label class="btn btn-outline-secondary" for="btn-check-4-outlined">리뷰 많은 순</label> 
+						<input type="checkbox" class="btn-check" id="btn-check-5-outlined" checked autocomplete="off">
+>>>>>>> master
 					</section>
 					
 					<!-- 요 버튼 누르면 위에 조건들 수행 -->

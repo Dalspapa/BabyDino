@@ -10,8 +10,11 @@ public class ReviewDto {
 	private int star;
 	private Date r_writedate;
 	private String r_content;
-	
-	
+
+	private int re_idx;
+	private int m_idx;
+	private int member_type;
+
 	public ReviewDto() {
 		super();
 	}
@@ -86,11 +89,36 @@ public class ReviewDto {
 	public void setR_content(String r_content) {
 		this.r_content = r_content;
 	}
-	
-	@Override
-	public String toString() {
-		String str = "후기를 작성한 작성자 아이디" + d_member_idx + "\n후기 작성 날짜" + r_writedate + "\n후기 게시글의 본문내용" + r_content;
-		System.out.println(str);
-		return str; 
+
+
+	public int getRe_idx() {
+		return re_idx;
 	}
+
+
+	public void setRe_idx(int re_idx) {
+		this.re_idx = re_idx;
+	}
+
+
+	public int getM_idx() {
+		return m_idx;
+	}
+
+
+	public void setM_idx(int m_idx) {
+		this.m_idx = m_idx;
+	}
+
+
+	public int getMember_type() {
+		return member_type;
+	}
+
+
+	public void setMember_type(int member_type) {
+		this.member_type = member_type;
+	}
+
+
 }
