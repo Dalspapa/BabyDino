@@ -44,7 +44,7 @@
 					<c:forEach items="${ k_dto }" var="k_dto">
 						<div class="row p-4 kid-card mb-3" onclick="toggleActive(this)"
 							id="${k_dto.idx}"
-							style="width: 50%; border: 1px solid #e5e5e5; border-radius: 8px;">
+							style="width: 50%; border: 1px solid #e5e5e5; border-radius: 8px;">							
 							<div class="col-12 mb-2">
 								<span style="font-weight: bold;">${ k_dto.k_name }</span>
 							</div>

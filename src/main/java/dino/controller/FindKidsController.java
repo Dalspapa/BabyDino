@@ -249,7 +249,7 @@ public class FindKidsController {
 	 * return: ModelAndView
 	 * since: 2021. 12. 7.
 	 */
-	@RequestMapping(value="/teacher/cert.do")
+	@RequestMapping(value="cert.do", method = RequestMethod.POST)
 	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 

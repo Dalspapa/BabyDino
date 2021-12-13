@@ -3,6 +3,7 @@ package dino.findteachers.model;
 import java.util.List;
 
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dino.dto.Common_ImgDto;
@@ -87,22 +88,27 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 		return review_list;
 	}
 	
-	/*
-	 * // set Kid img public int kSetImg(Common_ImgDto imgDto) {
-	 * 
-	 * int result = sqlMap.insert("kSetImg", imgDto);
-	 * 
-	 * //test code
-	 * System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+
-	 * "memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
-	 * 
-	 * return result; }
-	 */
+	
+	  // set Kid img 
+	  public int kSetImg(Common_ImgDto imgDto) {
+	  
+	 	int result = sqlMap.insert("kSetImg", imgDto);
+	  
+		//test code
+		System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+
+		"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
+		  
+	  return result; 
+	  }
+	 
 		
-	/*
-	 * //get img path public List<Common_ImgDto> imgpath(int d_member_idx){
-	 * List<Common_ImgDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
-	 * 
-	 * return resultDto; }
-	 */
+	
+	  //get img path 
+	  public List<Common_ImgDto> imgpath(int d_member_idx){
+	  
+		  List<Common_ImgDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
+	  
+	  return resultDto; 
+	  }
+	 
 }

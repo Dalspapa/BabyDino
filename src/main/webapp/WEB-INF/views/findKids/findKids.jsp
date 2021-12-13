@@ -151,7 +151,9 @@
 		<!-- 필터[END] -->
 		<hr />
 		<!-- 하단 정보[START] -->
+
 		<div class="row" id="kidsCard">
+
 		</div>
 		<!-- 하단 정보[START] -->
 	</section>

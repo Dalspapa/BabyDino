@@ -47,10 +47,10 @@ public class CommonOpServiceImple implements CommonOpService {
 		List<CommonOpDto> t_list = commonopDao.t_time_opList();
 		return t_list;
 	}
-
+	// 은행 옵션들 가져오기 
 	public List<CommonOpDto> t_bank_opList() {
-
-		List<CommonOpDto> b_list = commonopDao.t_bank_opList();
+		
+		List<CommonOpDto> b_list = commonopDao.t_bank_opList();	
 		return b_list;
 	}
 
@@ -79,8 +79,6 @@ public class CommonOpServiceImple implements CommonOpService {
 	public List<CommonOpDto> noticeList() {
 
 		List<CommonOpDto> list = commonopDao.noticeList();
-
-		System.out.println("sevice =========="+ list);
 		return list;
 	}
 
