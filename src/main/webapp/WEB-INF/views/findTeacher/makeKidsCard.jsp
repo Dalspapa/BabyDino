@@ -188,7 +188,8 @@ img {
 		});
 		
 		var saveIdx = '${sessionScope.saveIdx}';
-		
+		var fileLength = $("input[name=c_imgpath]");
+		 
 		// 이미지 제외하고 정보 등록
 		
 		var formData = new FormData();
@@ -202,6 +203,12 @@ img {
 		formData.set("k_care_type", check_type) 					// 원하는 돌봄 분야
 		formData.set("teacher_type", check_age) 					// 원하는 선생님 연령대
 		formData.set("k_require", $("#floatingTextarea2").val())	// 요청 사항
+		
+		for(var i = 0; i < fileLength.length; i++) {
+			  if(fileLength[i].files[0] != undefined) {
+				  formData.set('kImg[' + i + ']', fileLength[i].files[0]);
+			  } 
+		  };
 		
 		formData.forEach(function(value, key){
 			
@@ -230,7 +237,7 @@ img {
 		  }
 	
 	/* 이미지 미리보기 */
-	function setimage(event) {
+	/* function setimage(event) {
 		var reader = new FileReader();
 
 		reader.onload = function(event) {
@@ -241,7 +248,7 @@ img {
 
 		reader.readAsDataURL(event.target.files[0]);
 	}
-
+ */
 	//다음 스텝 이동
 	function goStep(step) {
 	
