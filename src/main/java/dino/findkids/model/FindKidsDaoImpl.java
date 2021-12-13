@@ -73,6 +73,13 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		System.out.println("findkid  dao imple"+id);
 		return sqlMap.selectOne("UpdGrade", id);
 	}
+	
+	//선생님 인증 정보 입력
+	public int teacherCert(FindKidsJoinDto tDto) {
+		System.out.println("teacher certi imple"+tDto.toString());
+		return sqlMap.insert("",tDto);
+	}
+	
 
 }
 

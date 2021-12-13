@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dino.commonmember">
+
+	<!-- 계정관리 pwd 확인 -->
+ 	<select id="accountPwdCheck" parameterType="dino.dto.MemberDto">
+		
+		SELECT * from d_member
+		
+	</select>
+
+</mapper>

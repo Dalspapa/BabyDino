@@ -75,10 +75,10 @@ public class FindKidsController {
 
 		List<Common_ImgDto> resultImg = findKidsService.imgpath(d_member_idx);
 
-		String [] imgName = {};
+		String imgName = "";
 		for(int i = 0; i < resultImg.size(); i++) {
 			System.out.println("리스트로 가져온 이미지"+resultImg.get(i).getC_imgpath());
-			imgName = resultImg.get(i).getC_imgpath().split(",");
+			imgName = resultImg.get(i).getC_imgpath();
 		}
 		System.out.println(imgName+"22222222222222mg");
 		//String [] imgName = resultImg.getC_imgpath().split(",");
@@ -229,15 +229,15 @@ public class FindKidsController {
 	 * since: 2021. 12. 7.
 	 */
 	@RequestMapping(value="cert.do", method = RequestMethod.POST)
-	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request) {
+	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request, FindKidsJoinDto tDto, Common_ImgDto imgDto, MakeTCardDto dto) {
+		
 		ModelAndView mav = new ModelAndView();
-
+		//선생님 회원 등급 수정
 		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
 		if(StringUtils.isEmpty(idx)) {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
 		}
 		teacher.setIdx(Integer.parseInt(idx));
-
 		teacher.setMember_type(5);
 		int rst = findKidsService.updateTeacherGrade(teacher);
 		System.out.println("컨트롤러에 teacher ====="+rst);
@@ -253,8 +253,42 @@ public class FindKidsController {
 		System.out.println("인증 된 선생님 세션에 그레이드 수정"+updMType);
 		System.out.println("컨트롤러====="+updMType);
 		request.getSession().setAttribute("saveMemberType", updMType);
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		boolean success = false;
+		
+		//선생님 회원 인증정보 입력 && 이미지 포함.
+		List<MultipartFile> imgFile = new ArrayList<MultipartFile>();
+		imgFile = dto.getTImg();
+		if (imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
+			imgDto.setC_imgpath("teacher.png");
+		}
+		String dirPath = servletContext.getRealPath("/resources");
+		try {
+			String saveIdx = String.valueOf(request.getSession().getAttribute("saveIdx"));
+			if(StringUtils.isEmpty(saveIdx)) {
+				throw new IllegalStateException("로그인상태가 아닙니다.");
+			}
+			dto.setIdx(Integer.parseInt(saveIdx));
 
-		msg = "선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
+			findKidsService.makeTCard(dto, imgFile, dirPath, imgDto, request);
+			result.put("fail", false);
+			success = true;
+		} catch (Exception e) {
+			System.out.println("오류발생. " + e.getMessage());
+			result.put("success", success);
+		};
+
+		int setImg = findKidsService.tSetImg(imgDto);
+		if( setImg != 1 ) {
+			result.put("fail", false);
+		} else {
+			result.put("success", success);
+		}		
+		
+		int teacherCert = findKidsService.teacherCert(tDto);		
+		msg = teacherCert < 0? "필수 인증 요청에 실패했습니다. 잠시후 다시 시도해주세요.":"필수 인증이 완료되었습니다. 관리자의 승인 후 공룡선생님 카드를 등록해주세요.";
+
 		System.out.println("컨트롤러 msg ========"+msg);
 		goUrl = "main.do";
 		mav.addObject("msg", msg);

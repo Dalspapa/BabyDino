@@ -58,6 +58,9 @@
 	<bean id="adminDao" class="dino.adminmypage.model.AdminDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
+ 	<bean id="commonMemberDao" class="dino.commonmember.model.CommonMemberDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate" />
+	</bean>
 
 <!-- Service Area -->
 	<bean id="memberService" class="dino.member.service.MemberServiceImple">
@@ -92,5 +95,8 @@
 	</bean>
 	<bean id="adminService" class="dino.adminmypage.service.AdminServiceImpl">
 		<property name="adminDao" ref="adminDao"/>
+	</bean>
+ 	<bean id="commonMemberService" class="dino.commonmember.service.CommonMemberServiceImpl">
+		<property name="commonMemberDao" ref="commonMemberDao" />
 	</bean>
 </beans>

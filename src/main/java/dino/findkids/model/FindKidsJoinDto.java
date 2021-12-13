@@ -30,7 +30,10 @@ public class FindKidsJoinDto {
 	private String start_day;
 	private String end_day;
 	private String start_time;
-	private String end_time;	
+	private String end_time;
+	private String exemplification;
+	private int crimeagree;
+	private int d_member_idx;	
 	
 	public FindKidsJoinDto() {
 		super();
@@ -39,7 +42,8 @@ public class FindKidsJoinDto {
 	public FindKidsJoinDto(int cost, int idx, int kid_idx, int member_p_idx, int status, String addr1, String addr2,
 			String addr3, String k_name, int k_gender, int age, Date k_birth, String k_tendency, String k_care_type,
 			String k_require, String k_introduce, String c_imgpath, String teacher_type, int star, Date r_writedate,
-			String r_content, String start_day, String end_day, String start_time, String end_time) {
+			String r_content, String start_day, String end_day, String start_time, String end_time,
+			String exemplification, int crimeagree, int d_member_idx) {
 		super();
 		this.cost = cost;
 		this.idx = idx;
@@ -66,6 +70,9 @@ public class FindKidsJoinDto {
 		this.end_day = end_day;
 		this.start_time = start_time;
 		this.end_time = end_time;
+		this.exemplification = exemplification;
+		this.crimeagree = crimeagree;
+		this.d_member_idx = d_member_idx;
 	}
 
 	public int getCost() {
@@ -267,5 +274,31 @@ public class FindKidsJoinDto {
 	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
 	}
+
+	public String getExemplification() {
+		return exemplification;
+	}
+
+	public void setExemplification(String exemplification) {
+		this.exemplification = exemplification;
+	}
+
+	public int getCrimeagree() {
+		return crimeagree;
+	}
+
+	public void setCrimeagree(int crimeagree) {
+		this.crimeagree = crimeagree;
+	}
+
+	public int getD_member_idx() {
+		return d_member_idx;
+	}
+
+	public void setD_member_idx(int d_member_idx) {
+		this.d_member_idx = d_member_idx;
+	}
+
+	
 
 }

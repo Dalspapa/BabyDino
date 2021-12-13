@@ -222,11 +222,7 @@ public class MemberController {
 			
 		}
 		
-		//계정관리
-		@RequestMapping("/accountManagement.do")
-		public String accoutManagement() {
-			return ("commonMember/accountManagement");
-		}
+
 }
 
 
