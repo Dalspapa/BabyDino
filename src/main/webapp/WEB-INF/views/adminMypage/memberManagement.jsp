@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 관리</title>
+<!-- -------------지원 css---------------- -->
 <style>
 .likebody{
 	margin-top: 225px;
@@ -15,10 +16,17 @@
 .likebody .search{
 	text-align: center;
 }
-.likebody .search .title{
-	font-size: 20px;
+.likebody section .search .title{
+	font-size: 22px;
+    font-family: 'S-Air';
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.likebody .btn{
+	margin-left: 700px;
 }
 </style>
+<!-- -------------지원 css---------------- -->
 </head>
  <!-- header -->
 	<%@include file="/WEB-INF/views/include//header.jsp" %>
@@ -29,8 +37,8 @@
 			<!-- 회원목록(관리자) -->
 			<div class="search">
 				<div class="title">회원목록(관리자)</div>
-				<div>
-					<select class="form-select-sm">
+				<div class="select">
+					<select>
 						<option>전체</option>
 						<option>학부모</option>
 						<option>부모님</option>
@@ -56,12 +64,12 @@
 						<option>많은순</option>
 						<option>적은순</option>
 					</select>
-					<div>
+					<br><div>
 						<button type="button" class="btn btn-outline-success">검색</button>
 					</div>
 				</div>
 			</div>
-			
+			<br>
 			<!-- 회원테이블 -->
 			<div>
 			<table class="table table-hover">
@@ -99,7 +107,7 @@
 			    </c:forEach>
 			  </tbody>
 			</table>
-				<div>
+				<div class="btn">
 					<button type="button" class="btn btn-outline-success">탈퇴처리</button>
 				</div>
 				<div>

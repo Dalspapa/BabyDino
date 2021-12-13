@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<!-- ---------지원css------------- -->
 <style>
 #cardImg {
 	width: 50px;
@@ -12,11 +13,15 @@
 }
 
 .pignose-calendar-unit-disabled a {
-	color: red !important
+	color: #68983b !important
 }
 
 .isTest {
-	background-color: red;
+	background-color:  #68983b;
+}
+section .container{
+    margin: 10% 34%;
+    text-align: center;
 }
 </style>
 </head>
@@ -28,16 +33,17 @@
 			<div class="row">
 				<div class="col-6">
 					<div class="row" style="justify-content: space-between;">
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="first" onclick="changeDiv('first')">1</div>
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="second" onclick="changeDiv('second')">2</div>
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="third" onclick="changeDiv('third')">3</div>
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="four" onclick="changeDiv('four')">4</div>
 					</div>
-					<button onclick="check()">check</button>
+					<br>
+					<button class="btn btn-outline-success" onclick="check()">check</button>
 					<div class="row mt-4">
 						<div class="form-check w-50">
 							<input class="form-check-input" type="checkbox" value="1"

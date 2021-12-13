@@ -44,6 +44,7 @@ h2 {
 
 .wrapper {
 	width: 80%;
+	margin: 5% auto;
 }
 /* userInfo 사용자 상태영역 */
 .userInfo {
@@ -256,54 +257,15 @@ section {
 	overflow: hidden;
 	pointer-events: none;
 }
+.wrapper section .btns{
+    margin: auto 45%;
+}
 </style>
 
 </head>
 <body>
-	<!-- offcanvas(부모회원) -->
-	<style>
-.memberImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	overflow: hidden;
-	background-color: yellow;
-}
-
-.offcanvas-end {
-	width: 300px;
-}
-
-.offcanvas-body {
-	text-align: center;
-}
-
-.offcanvas-body div {
-	margin-top: 25px;
-}
-.memberImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	overflow: hidden;
-	background-color: yellow;
-}
-
-.offcanvas-end {
-	width: 300px;
-}
-
-.offcanvas-body {
-	text-align: center;
-}
-
-.offcanvas-body div {
-	margin-top: 25px;
-}
-</style>
-	<!-- /offcanvas -->
 	<div class="wrapper">
-		<section><br><br><br><br><br><br><br><br>
+		<section><br><br><br>
 			<div class="topCont d-flex justify-content-between">
 				<div>#뒤로가기버튼</div>
 				<div>${ kidInfoDto.k_name }</div>
@@ -395,7 +357,9 @@ section {
 					</div>
 				</li>
 			</ul>
-			<div><input type="button" value="인터뷰 요청"></div>
+			<div class="btns">
+			<button type="button" class="btn btn-outline-success">인터뷰 요청</button>
+			</div>
 		</section>
 	</div>	
 </body>

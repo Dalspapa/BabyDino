@@ -4,17 +4,31 @@
 <head>
 <meta charset="UTF-8">
 <title>기능 편집</title>
+<!-- -------------지원 css---------------- -->
 <style>
 .main{
-	width: 100%;
+	width: 80%;
 	margin-top: 200px;
+	margin-left: 200px;
+	margin-bottom: 100px;
+}
+.main .title{
+	font-size: 20px;
+    font-family: 'S-Air';
+    text-align: center;
+    font-weight: 500;
+}
+.main .btns{
+	text-align: center;
 }
 </style>
+<!-- --------------지원---------------- -->
 <%@include file="/WEB-INF/views/include//header.jsp" %>
 </head>
 <body>
 	<div class="main">
-		<div>
+		<div class="title">기능 편집</div>
+		<div class="btns">
 			<button type="button" class="btn btn-outline-success" onclick="care();">돌봄 분야 추가 기능</button>
 			<button type="button" class="btn btn-outline-success" onclick="cancel();">취소 사유 편집</button>
 		</div>
@@ -25,7 +39,7 @@
 			<table class="table table-hover">
 			  <thead>
 			    <tr>
-			      <th scope="col"><input type="checkbox"></th>
+			      <th scope="col"></th>
 			      <th scope="col">돌봄분야 </th>
 			    </tr>
 			  </thead>
@@ -48,7 +62,7 @@
 		
 		<!-- 취소사유 편집 -->
 		<div id="cancel">
-			<div>
+			<div class="btns">
 				<button type="button" class="btn btn-outline-success" id="pCancelBtn">부모님 취소 사유</button>
 				<button type="button" class="btn btn-outline-success" id="tCancelBtn">선생님 취소 사유</button>
 			</div>
@@ -58,7 +72,7 @@
 			<table class="table table-hover">
 			  <thead>
 			    <tr>
-			      <th scope="col"><input type="checkbox"></th>
+			      <th scope="col"></th>
 			      <th scope="col">부모님 취소 사유 내용</th>
 			    </tr>
 			  </thead>
@@ -83,7 +97,7 @@
 			<table class="table table-hover">
 			  <thead>
 			    <tr>
-			      <th scope="col"><input type="checkbox"></th>
+			      <th scope="col"></th>
 			      <th scope="col">선생님 취소 사유 내용</th>
 			    </tr>
 			  </thead>

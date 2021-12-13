@@ -21,9 +21,9 @@
 	color : black;
 }
 table{
-	width: 1200px!important;
-    margin-left: 164px;
+	width: 1400px!important;
     font-size: 14px;
+    margin: auto;
 }
 table a:hover {
 	color : #68983b;

@@ -5,15 +5,28 @@
 <meta charset="UTF-8">
 <title>선생님 정산페이지</title>
 <link href="../common/css/startbootstrapstyles.css" rel="stylesheet" />
+<!-- -------------지원 css---------------- -->
 <style>
 .size {
 	width: 1000px;
 	height: 500px;
+	margin-top: 50px;
+	margin-left: 500px;
+	margin-bottom: 200px;
+}
+.btn{
+	margin-top: 200px;
+	margin-left: 1300px;
 }
 </style>
+<!-- -------------지원 css---------------- -->
 </head>
  <!-- header -->
 	<%@include file="/WEB-INF/views/include//header.jsp" %>
+  <!-- 수수료 변경 modal -->
+	<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	  선생님 수수료 변경
+	</button>
 	<div class="card size">
 	    <div class="card-header">
 	        <i class="fas fa-chart-area me-1"></i>
@@ -46,7 +59,7 @@
 	              pointHitRadius: 50,
 	              pointBorderWidth: 2,
 	           
-	              data: ["${c_list[0].cost}", "${c_list[1].cost}", "${c_list[2].cost}", "${c_list[3].cost}", "${c_list[4].cost}", "${c_list[5].cost}", "${c_list[6].cost}", "${c_list[7].cost}", 25849, 24159, 32651, 31984, 38451, 19930],
+	              data: ["${cost_list[0].cost}", "${cost_list[1].cost}", "${cost_list[2].cost}", "${cost_list[3].cost}", "${cost_list[4].cost}", "${cost_list[5].cost}", "${cost_list[6].cost}", "${cost_list[7].cost}", 25849, 24159, 32651, 31984, 38451, 19930],
 	            }],
 	          },
 	          options: {
@@ -91,7 +104,7 @@
       </div>
       <div class="modal-body">
         <input type = "text">
-        <button type = "button">변경완료</button>
+        <button type = "button" class="btn-outline-success">변경완료</button>
       </div>
     </div>
   </div>
