@@ -89,7 +89,8 @@
 							onclick="location.href='${contentUrl}'">
 							<div class="flip-card-front">
 								<div class="mb-2">
-									<img src="./common/img/faq-img.png" alt="선생님 사진">
+									<img src="/upload/${fn:replace(tDto.c_imgpath, ',', '')}" alt="선생님사진" ><br>
+									<input type="hidden" name="idx" value="${ tDto.idx }">
 								</div>
 								<div>
 									<h6 class="text-warning" id="title">${tDto.name}
@@ -101,8 +102,8 @@
 									<h5>
 										<c:set var="ctype" value="${tDto.t_care_type}" />
 										<c:forEach items="${fn:split(ctype,',')}" var="item">
-                     	#${item}&nbsp;&nbsp;&nbsp;
-                     </c:forEach>
+					                     	#${item}&nbsp;&nbsp;&nbsp;
+					                    </c:forEach>
 									</h5>
 								</div>
 							</div>

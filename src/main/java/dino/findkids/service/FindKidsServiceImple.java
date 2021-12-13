@@ -123,18 +123,6 @@ public class FindKidsServiceImple implements FindKidsService {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see dino.findkids.service.FindKidsService#updateTeacherGrade(dino.Dto.MemberDto)
-=======
-
-		return kidInfoDto;
-
-	}
-
-	/* (non-Javadoc)
-	 * @see dino.findkids.service.FindKidsService#updateTeacherGrade(dino.dto.MemberDto)
->>>>>>> Yeongchan
-	 */
 	@Transactional
 	public int updateTeacherGrade(MemberDto member_type) {
 		return findkidsDao.updateTeacherGrade(member_type);
@@ -149,6 +137,12 @@ public class FindKidsServiceImple implements FindKidsService {
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id) {
 		return findkidsDao.UpdGrade(id);
+	}
+	
+	//선생님 인증 정보 입력
+	public int teacherCert(FindKidsJoinDto tDto) {
+		System.out.println("teacher cert service ==="+tDto.toString());
+		return findkidsDao.teacherCert(tDto);
 	}
 
 }

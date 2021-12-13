@@ -27,7 +27,7 @@
 	
 	<select id="t_care_opList" resultType="dino.dto.CommonOpDto">
 		select
-			idx, c_introduce
+			idx, c_introduce, op
 		from
 			d_common_option
 		where

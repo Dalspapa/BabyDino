@@ -169,7 +169,20 @@
 			D_MEMBER
 		WHERE ID = #{id}
 	</select>
-
+	
+	<!-- 선생님 검증 정보 입력 -->
+	<insert id="setTeacherCert" parameterType="dino.findkids.model.FindKidsJoinDto">
+	
+		INSERT INTO 
+			D_TEACHERCERT 
+		VALUES(
+    		D_TEACHERCERT_IDX.nextval
+	    	,#{exemplification}
+	    	,#{crimeagree}
+	    	,#{d_member_idx}
+		)
+	
+	</insert>
 </mapper>
 
 

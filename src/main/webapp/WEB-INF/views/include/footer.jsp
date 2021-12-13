@@ -136,7 +136,7 @@
 	formData.forEach(function(value, key) {
 		console.log(key, value);	 
 	});
-
+	
 	$.ajax({
 		method: 'POST',
 		url : 'login.do',

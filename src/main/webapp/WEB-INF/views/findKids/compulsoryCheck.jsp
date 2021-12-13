@@ -237,7 +237,7 @@ section p{
 		<div class="sign">
 			<h5>동의 서명</h5>
 			<div class="canvas-draw-box">
-				<div class="canvas-draw-base" data-id="canvas_name"></div>
+				<div class="canvas-draw-base" data-id="canvas_name" id="canvas"></div>
 					<div class="canvas-draw-pad-box">
 					<canvas id="canvas_name" class="canvas-draw-pad">1. 사용중인 브라우저에서 지원하지 못합니다.</canvas>
 					<div>
@@ -253,7 +253,7 @@ section p{
 			<button type="button" class="btn btn-outline-secondary prevbtn" >이전으로</button>
 			<button type="button" class="btn btn-outline-success" id="reqAgree">인증요청</button>
 		</div>
-		<input type="hidden" name="t_sexcrime">
+		<input type="hidden" name="t_sexcrime" id="crimeAgree">
 	</div>
 </section>
 </form>
@@ -338,17 +338,25 @@ section p{
              rst = false;
         }
         
-/*         let canCheck = $(data('canvas_name'));
-        
-        if (canChedck == "") {
-        	alert('서명을 해주셔야 인정요청이 가능합니다.');
-        	rst = false;
-        } */
-
+    	let img = document.getElementById('canvas'),
+		style = img.currentStyle || window.getComputedStyle(img, false),
+		bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");
+		
+		
+		if(bi.length == 0) {
+			alert('성범죄 동의 서명을 해주셔야 인증요청을 할수 있습니다.');
+			return false;
+		} else {
+			$('#crimeAgree').val('동의합니다.');
+		}
         return rst;
 	}
 
 	function fnCert(){
+		
+		return false;
+		
+		
 		$("#form").submit();
 /* let formData = new FormData();
 		

@@ -181,7 +181,7 @@
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="#">후기내역</a></div>
 		    <div><a href="#">신고내역</a></div>
-		    <div><a href="#">계정관리</a></div>
+		    <div><a class="nav-link" data-bs-toggle="modal" data-bs-target="#pwdcheckModal"<%-- href="accountManagement.do?idx=${sidx}"  --%>>계정관리</a></div>
 		  </div>
 		</div>
 		<!-- side navbar admin -->
@@ -200,9 +200,66 @@
 		  </div>
 		</div>
 	</header>
+<!-- 계정관리 비번확인 -->
+  <div class="modal fade" id="pwdcheckModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >본 인 인 증</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="pwd"> 
+            <form name="pwdCheckForm">
+                  <div id="pwdCheck" class="input-group input-group-sm mb-3">
+					  <input type="password" class="form-control" 
+					  aria-label="Sizing example input" 
+					  aria-describedby="inputGroup-sizing-sm" 
+					  name="pwd" id="pwdCheck"
+					  placeholder="비밀번호를 입력해주세요." autocomplete="off" /> 
+					  <span class="input-group-text" id="inputGroup-sizing-sm">V</span>
+				  </div>
+               <span class="pwdCheck" >
+                  <button type="button" class="btn btn-outline-success" onclick="pwdCheck();">인증하기</button>
+               </span>                
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ 계정관리 비번확인 -->
 </head>
 <script>
 
+/* function pwdCheck()(){
+
+		
+		let id = ${sid};
+		let pwd = $("#pwdCheck").val();
+		
+		let fdata = new FormData();
+		fdata.set('id', id);
+		fdata.set('pwd', pwd);
+		
+		formData.forEach(function(value, key) {
+			console.log(key, value);	 
+		});
+	
+		$.ajax({
+			method: 'POST',
+			url : 'accountCheck.do',
+			data : fdata,
+			success : fu
+			nction(r){
+				console.log('------------ r :', r);
+				location.href='accountManagement.do';				
+			},
+			error:function(){
+				alert("입력한 정보가 일치하지 않습니다.");
+			}			
+		});		
+	}; */
 
 	function dinoCare(stype){
 
