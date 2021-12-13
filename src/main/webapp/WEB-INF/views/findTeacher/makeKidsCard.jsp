@@ -25,7 +25,9 @@ img {
 				<div><h3>아이카드등록</h3></div>
 				<div id="step1">
 					<div>
-						<div id="image_container"></div>
+						<div id="image_container">
+							<h2>프로필 사진을 올려주세요.(필수사항)</h2>
+						</div>
 						<input type="file" id="k_img1" name="c_imgpath" class="form-control" />
 					</div>
 					<div class="row">
