@@ -2,7 +2,7 @@ package dino.dto;
 
 public class AdvertisementDto {
 
-	private int idx;
+	private Integer idx;
 	private String a_imgpath;
 	private String a_linkpage;
 	private String corporate_name;

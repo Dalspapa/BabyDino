@@ -21,6 +21,13 @@ public interface FindTeachersDao {
 
 	// make kid card
 	public int makeKCard(KidDto dto);
+	
+	/**
+	 * 아이 캐어항목 저장
+	 * @param dto
+	 * @return
+	 */
+	public int makeKCareType(KidDto dto);
 
 	// Insert reserve Kid Card
 	public int reserveCard(ReserveDto reserveCard);

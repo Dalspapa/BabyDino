@@ -4,27 +4,27 @@ import java.sql.Date;
 
 public class TeacherMyPageDto {
 	
-	private int t_idx;
-	private int d_time_idx;
-	private int badge;
+	private Integer t_idx;
+	private Integer d_time_idx;
+	private Integer badge;
 	private String kid_type;
 	private String t_care_type;
 	private String schedule_day;
 	private String schedule_time;
-	private int t_cost;
+	private Integer t_cost;
 	private String t_introduce;
-	private int bank;
+	private Integer bank;
 	private String acnum;
-	private int cctvagree;	
+	private Integer cctvagree;	
 	private String t_sexcrime;
 	private String career_experience;
 	private String name;
-	private int age;
-	private int gender;
-	private int d_reserve_idx;
-	private int cost;				//reserve.cost
+	private Integer age;
+	private Integer gender;
+	private Integer d_reserve_idx;
+	private Integer cost;				//reserve.cost
 	private String c_imgpath;
-	private int star;
+	private Integer star;
 	private Date r_writedate;
 	private String r_content;
 	

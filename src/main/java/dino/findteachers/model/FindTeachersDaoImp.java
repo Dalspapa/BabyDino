@@ -45,6 +45,16 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 		return result;
 	}
 	
+	/**
+	 * 아이 캐어항목 저장
+	 */
+	public int makeKCareType(KidDto dto) {
+		
+		int result = sqlMap.insert("makeKCareType", dto);
+		
+		return result;
+	}
+	
 	// Insert reserve Kid Card
 	public int reserveCard(ReserveDto reserveCard) {
 		

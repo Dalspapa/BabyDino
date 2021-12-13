@@ -67,7 +67,7 @@ section{
 			<!-- 선생님 프로필 부분 -->
 			<div class="t_profile">
 				<div class="profil">프로필</div><c:set var="proImg" value="${tDto.c_imgpath}" />
-				<div class="pic"><img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px"></div>
+				<div class="pic"><img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px" onerror="this.remove();"></div>
 				<div class="t_info">
 				<div>${tDto.name} | ${tDto.age} 세</div>
 				<div id="bankDiv1">

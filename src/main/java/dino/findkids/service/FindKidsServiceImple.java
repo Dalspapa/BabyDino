@@ -93,8 +93,14 @@ public class FindKidsServiceImple implements FindKidsService {
 	}
 
 	//get kids list
-	public List<FindKidsJoinDto> kidsList() {
+	public List<FindKidsJoinDto> getKidsList() {
 		List<FindKidsJoinDto> k_list = findkidsDao.kidsList();
+		return k_list;
+	}
+	
+	//searchKids
+	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids) {
+		List<FindKidsJoinDto> k_list = findkidsDao.searchKids(searchKids);
 		return k_list;
 	}
 
@@ -150,5 +156,7 @@ public class FindKidsServiceImple implements FindKidsService {
 	public int UpdGrade(String id) {
 		return findkidsDao.UpdGrade(id);
 	}
+	
+	
 
 }

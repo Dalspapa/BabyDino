@@ -20,6 +20,13 @@ public interface FindTeachersService {
 
 	// make kid card
 	public int makeKCard(KidDto dto);
+	
+	/**
+	 * 아이캐어타입 저장
+	 * @param dto
+	 * @return
+	 */
+	public int makeKCareType(KidDto dto);
 
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx);

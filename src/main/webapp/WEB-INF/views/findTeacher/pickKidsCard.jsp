@@ -172,10 +172,6 @@
 <!-- pignose-calendar -->
 <link rel="stylesheet" href="./common/css/pignose.calendar.min.css">
 
-<script src="./common/js/pignose.calendar.full.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-
 <script>
 
 	let reserveDate;

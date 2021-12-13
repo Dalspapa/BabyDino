@@ -330,7 +330,7 @@ section {
 	
 			<div class="item1">
 				<div class="childImg">
-					<img src="/upload/${fn:replace(kidInfoDto.c_imgpath, ',', '')}" alt="아이 사진" width="200px" height="200px"><br>
+					<img src="/upload/${fn:replace(kidInfoDto.c_imgpath, ',', '')}" alt="아이 사진" width="200px" height="200px" onerror="this.remove();"><br>
 				</div>
 				<div class="childInfo">
 					<c:if test="${kidInfoDto.k_gender == 1 }">

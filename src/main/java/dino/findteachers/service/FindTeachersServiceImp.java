@@ -64,6 +64,13 @@ public class FindTeachersServiceImp implements FindTeachersService {
 
 		return result;
 	}
+	
+	public int makeKCareType(KidDto dto) {
+		
+		int result = findTeachersDao.makeKCareType(dto);
+		
+		return result;
+	}
 
 	// Insert reserve Kid Card
 	public int reserveCard(ReserveDto reserveCard) {

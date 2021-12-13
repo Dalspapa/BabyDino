@@ -3,6 +3,7 @@ package dino.controller;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,11 +91,20 @@ public class FindTeacherController {
 
 	// 찐또메이크 아이카드 등록
 	@RequestMapping("/makeKidsCard.do")
-	public ModelAndView makeKidCard(KidDto dto) {
+	public ModelAndView makeKidCard(KidDto dto, HttpSession session) {
 
 		System.out.println("====아이카드 추가 등록 컨트롤러 진입=====" + dto);
 
 		int result = teachersService.makeKCard(dto);
+		
+		String[] careTypeList = dto.getK_care_type().split(",");
+		for (String careType : careTypeList) {
+			dto.setKids_idx(dto.getD_kidcard_idx());
+			dto.setCare_type(careType);
+			dto.setRegId((String)session.getAttribute("saveId"));
+			dto.setUpdId((String)session.getAttribute("saveId"));
+			teachersService.makeKCareType(dto);
+		}
 
 		String msg = result > 0 ? "아이카드가 정상적으로 등록되었습니다!" : "아이카드 등록에 실패하셨습니다.";
 

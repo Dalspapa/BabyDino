@@ -63,10 +63,13 @@
 	
 	<!-- make kid card --> 
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
+	<selectKey resultType="dino.dto.KidDto" keyProperty="d_kidcard_idx" order="BEFORE">
+		select d_kidcard_idx.nextval as d_kidcard_idx from dual
+	</selectKey>
 	INSERT INTO 
                 d_kidcard
         VALUES(
-                d_kidcard_idx.nextval,
+                #{d_kidcard_idx},
                	#{d_member_idx},
                 #{k_name},
                 #{k_gender},
@@ -77,6 +80,18 @@
                	#{teacher_type},
                	#{k_require}
         )
+	</insert>
+	<insert id="makeKCareType" parameterType="dino.dto.KidDto">
+	INSERT INTO 
+		d_kid_caretype 
+    VALUES(
+		#{kids_idx},
+		#{care_type},
+		#{regId},
+		SYSDATE,
+		${updId},
+		SYSDATE
+    )
 	</insert>
 	
 	<insert id="k_reserve" parameterType="dino.dto.ReserveDto">
