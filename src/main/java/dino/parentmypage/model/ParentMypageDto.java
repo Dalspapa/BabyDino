@@ -50,6 +50,7 @@ public class ParentMypageDto {
 	private int cancle_reason;
 
 	private String care_time;
+	private String k_age;
 
 	public ParentMypageDto() {
 		super();
@@ -101,6 +102,15 @@ public class ParentMypageDto {
 		this.match_date = match_date;
 		this.cancle_reason = cancle_reason;
 		this.care_time = care_time;
+	}
+
+
+	public String getK_age() {
+		return k_age;
+	}
+
+	public void setK_age(String k_age) {
+		this.k_age = k_age;
 	}
 
 	public int getM_idx() {
