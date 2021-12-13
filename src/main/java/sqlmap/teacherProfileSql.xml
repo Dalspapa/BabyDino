@@ -36,8 +36,21 @@
 	    LEFT JOIN d_reserve r ON r.teacher_idx = t.d_member_idx
 	    LEFT JOIN d_common_img ci ON ci.d_member_idx = t.d_member_idx    
 	    LEFT JOIN d_review rv ON rv.d_reserve_idx = r.idx
-    	WHERE t.d_member_idx =  #{idx}
+    	WHERE t.d_member_idx = #{idx}
 		
 	</select>
+	
+	<update id="profileUpd" parameterType="dino.dto.MakeTCardDto">
+	
+		UPDATE 
+			d_teachercard 
+		SET 
+			bank = #{bank}
+			,acnum = #{acnum}
+			,t_cost = #{t_cost}
+		WHERE 
+			D_MEMBER_IDX = #{d_member_idx}
+	
+	</update>
 
 </mapper>

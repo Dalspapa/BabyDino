@@ -157,9 +157,24 @@
 				<c:forEach var="c_opdto" items="${c_list}">
 					<div class="col-4 p-2">
 						<div style="height: 30px;">
-							<label><input type="checkbox" id="tCareType" class="tctchk"
+							<input type="checkbox" id="tCareType" class="tctchk"
 								name="t_care_type" value="${c_opdto.c_introduce}">
-								${c_opdto.c_introduce} </label>
+								<label for="tCareType" id="carelb">${c_opdto.c_introduce}</label>
+								<style>
+									#tCareType+#carelb{
+										display: block;
+										width: 24px;
+										height: 24px;
+										background: url('./common/img/10.png') no-repeat 0 0px / contain;
+									}
+									#tCareType:checked+#carelb{
+										background: url('./common/img/2.png') no-repeat 0 1px / contain;
+									}
+									#tCareType{
+										display: none;
+									}
+								
+								</style>
 						</div>
 					</div>
 				</c:forEach>

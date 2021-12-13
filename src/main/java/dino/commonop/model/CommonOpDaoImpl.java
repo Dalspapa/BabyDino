@@ -48,7 +48,7 @@ public class CommonOpDaoImpl implements CommonOpDao {
 
 	public List<CommonOpDto> t_bank_opList() {
 
-		List<CommonOpDto> b_list = sqlMap.selectList("t_bank_opList");
+		List<CommonOpDto> b_list = sqlMap.selectList("t_bank_opList");	
 		return b_list;
 	}
 
