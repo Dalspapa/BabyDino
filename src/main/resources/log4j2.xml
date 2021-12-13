@@ -27,26 +27,25 @@
         </Root>
 
 
-<!--         <Logger name="org.springframework" level="DEBUG" -->
-<!--                 additivity="false"> -->
-<!--             <AppenderRef ref="Console_Appender" /> -->
-<!--             <AppenderRef ref="File_Appender"/> -->
-<!--         </Logger> -->
-<!--         <Logger name="dino" level="INFO" additivity="false"> -->
-<!--             <AppenderRef ref="Console_Appender" /> -->
-<!--             <AppenderRef ref="File_Appender"/> -->
-<!--         </Logger> -->
-<!--         <Logger name="dino" level="TRACE" additivity="false"> -->
-<!--             <AppenderRef ref="Console_Appender" /> -->
-<!--         </Logger> -->
+        <Logger name="org.springframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console_Appender" />
+            <AppenderRef ref="File_Appender"/>
+        </Logger>
+        <Logger name="dino" level="INFO" additivity="false">
+            <AppenderRef ref="Console_Appender" />
+            <AppenderRef ref="File_Appender"/>
+        </Logger>
+        <Logger name="dino" level="TRACE" additivity="false">
+            <AppenderRef ref="Console_Appender" />
+        </Logger>
 
 
-		<logger name="jdbc.sqlonly" level="OFF"/>
-		<logger name="jdbc.sqltiming" level="DEBUG"/>
-		<logger name="jdbc.audit" level="OFF"/>
-		<logger name="jdbc.resultset" level="OFF"/>
-		<logger name="jdbc.resultsettable" level="DEBUG"/>
-		<logger name="jdbc.connection" level="OFF"/>
+<!-- 		<logger name="jdbc.sqlonly" level="OFF"/> -->
+<!-- 		<logger name="jdbc.sqltiming" level="DEBUG"/> -->
+<!-- 		<logger name="jdbc.audit" level="OFF"/> -->
+<!-- 		<logger name="jdbc.resultset" level="OFF"/> -->
+<!-- 		<logger name="jdbc.resultsettable" level="DEBUG"/> -->
+<!-- 		<logger name="jdbc.connection" level="OFF"/> -->
 
     </Loggers>
 </Configuration>
