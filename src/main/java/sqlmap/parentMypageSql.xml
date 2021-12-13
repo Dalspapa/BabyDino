@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.parentmypage">
-	<select id="proceedingMain" resultType="dino.parentmypage.model.ParentMypageDto">
+	<select id="proceedingMain" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
 		    m.name
 		    , r.idx as r_idx
@@ -14,7 +14,7 @@
 		from
 		    d_member m, d_teachercard t, d_reserve r
 		where
-		    m.idx = t.d_member_idx and t.d_member_idx = r.teacher_idx
+		    m.idx = t.d_member_idx and t.d_member_idx = r.teacher_idx and r.member_p_idx = #{idx}
 	</select>
 
 	<select id="caringPage" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
@@ -34,5 +34,20 @@
 		    d_member m, d_kidcard k, d_reserve r
 		where
 		    m.idx = k.d_member_idx and k.idx = r.kid_idx and r.idx = #{idx}
+	</select>
+
+	<select id="kidsCard" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
+		select
+		    k.k_name
+		    , k.k_birth
+		    , k.k_gender
+		    , k.k_introduce
+		    , m.idx as m_idx
+		    , k.idx as k_idx
+		    , (TO_CHAR(SYSDATE ,'yyyy') - TO_CHAR (k_birth, 'yyyy')) as k_age
+		from
+		    d_member m, d_kidcard k
+		where
+		    m.idx = k.d_member_idx and m.idx = #{idx}
 	</select>
 </mapper>

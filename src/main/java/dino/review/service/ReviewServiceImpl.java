@@ -17,11 +17,13 @@ public class ReviewServiceImpl implements ReviewService {
 		this.reviewDao = reviewDao;
 	}
 
-	public List<ReviewDto> reviewList() {
-		List<ReviewDto> reviewList = reviewDao.reviewList();
+	//내가 작성한 리뷰
+	public List<ReviewDto> reviewList(ReviewDto dto) {
+		List<ReviewDto> reviewList = reviewDao.reviewList(dto);
 		return reviewList;
 	}
 
+	//리뷰 작성
 	public int writeReview(ReviewDto dto) {
 		int result=reviewDao.writeReview(dto);
 		return result;

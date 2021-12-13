@@ -159,10 +159,10 @@
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
-		    <div><a href="#">돌봄현황</a></div>
-		    <div><a href="#">아이카드</a></div>
+		    <div><a href="proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
+		    <div><a href="kidsCard.do?idx=${sidx}">아이카드</a></div>
 		    <div><a href="#">돌봄노트</a></div>
-		    <div><a href="#">후기내역</a></div>
+		    <div><a href="reviewMain.do?m_idx=${sidx}&member_type=${stype}">후기내역</a></div>
 		    <div><a href="#">신고내역</a></div>
 		    <div><a href="#">계정관리</a></div>
 		  </div>
@@ -175,7 +175,7 @@
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
-		    <div><a href="#">돌봄현황</a></div>
+		    <div><a href="proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
 		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>
