@@ -243,13 +243,24 @@ section {
 	<div class="wrapper">
 		<section>
 			<div class="topCont d-flex justify-content-between">
-				<div>#뒤로가기버튼</div>
+				<div><a href="javascript:history.back();"> <-목록으로 </a></div>
 				<div>${ t_dto.name }</div>
-				<div>#좋아요/#신고하기</div>
+				<form name="reportIdx" action="reportWrite.do">
+					<input type="hidden" name="idx" value="${t_dto.teacher_idx }">
+				<div>
+					<button type="submit">
+						&#128680;
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a>
+						#좋아요버튼 / ${t_dto.teacher_idx }
+					</a>
+				</div>
+				</form>
 			</div>
 
 			<div class="item1">
-				<div class="childImg"><!-- ${ t_dto.c_imgpath } --></div>
+				<img src="/upload/${fn:replace(t_dto.c_imgpath, ',', '')}" alt="선생님 사진" width="200px" height="200px"><br>
 				<div class="childInfo">
 					<div>이름: ${ t_dto.name } / 나이: <span id="teacherAge"></span></div>
 					<div>직업: 

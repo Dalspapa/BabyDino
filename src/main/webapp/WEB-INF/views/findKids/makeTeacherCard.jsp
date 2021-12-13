@@ -233,45 +233,8 @@
 
 <script>
 
-	
-	
-	function isTest2(_this, _val) {
-		var el = $("#kidTypeImg_" + _val);
-		var textEl = $("#kidTypeText_" + _val);
-		var imgUrl;
-		
-		if(el.hasClass('active')) {
-			el.removeClass('active');
-			textEl.removeClass('active');
-			imgUrl = "/common/img/kidType/kidstype" + _val + "_off.png";
-			el.attr("src", imgUrl);
-		} else {
-			el.addClass('active');
-			textEl.addClass('active');
-			imgUrl = "/common/img/kidType/kidstype" + _val + "_on.png";
-			el.attr("src", imgUrl);
-		}
-	}
-	
-	function isTest3(_this, _val) {
-		var el = $("#careTypeImg_" + _val);
-		var textEl = $("#careTypeText_" + _val);
-		var imgUrl;
-		
-		if(el.hasClass('active')) {
-			el.removeClass('active');
-			textEl.removeClass('active');
-			imgUrl = "/common/img/careType/caretype" + _val + "_off.png";
-			el.attr("src", imgUrl);
-		} else {
-			el.addClass('active');
-			textEl.addClass('active');
-			imgUrl = "/common/img/careType/caretype" + _val + "_on.png";
-			el.attr("src", imgUrl);
-		}
-	}
+   function isTest() {
 
-  function isTest() {
 
 	  	let imgFile = $('#t_img1').val();
 
@@ -446,8 +409,8 @@
 
   	});
   	
-
-
+  	
+     
   </script>
 
 </html>

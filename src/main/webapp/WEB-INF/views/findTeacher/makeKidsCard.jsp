@@ -236,7 +236,7 @@ img {
 			  })
 		  }
 	
-	/* 이미지 미리보기 */
+	/* 이미지 미리보기 (대기) */
 	/* function setimage(event) {
 		var reader = new FileReader();
 
@@ -249,6 +249,7 @@ img {
 		reader.readAsDataURL(event.target.files[0]);
 	}
  */
+ 
 	//다음 스텝 이동
 	function goStep(step) {
 	
