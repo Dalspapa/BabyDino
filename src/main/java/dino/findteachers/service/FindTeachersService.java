@@ -18,12 +18,6 @@ public interface FindTeachersService {
 	// pick addr card
 	public MemberDto pickKidsAddrCard(int idx);
 
-	// update addr get
-	public MemberDto addrUpForm(int idx);
-
-	// update addr card
-	public int updateAddr(MemberDto dto);
-
 	// make kid card
 	public int makeKCard(KidDto dto);
 

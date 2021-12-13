@@ -37,8 +37,16 @@ h2 {
 .wrapper {
 	width: 100%;
 	font-family: 'S-Air';
+	margin-top: 130px;
 }
-.headerTitle, .reviewIObtn, .reviewContent {
+.headerTitle {
+	font-size: 2.5rem;
+    font-weight: bold;
+}
+.d-flex, headerTitle {
+	margin-top: 130px;
+}
+.reviewIObtn, .reviewContent {
 	margin-top: 20px;
 }
 .headerTitle {
@@ -90,7 +98,7 @@ h2 {
 				<div class="d-flex reviewContent">
 					<div class="reImg">#사진</div>
 					<div>
-						<div>#이름 ${ rl.star }</div>
+						<div>#선생님이름 ${ rl.star }</div>
 						<div class="reviewContent-con">${ rl.r_content }</div>
 					</div>
 				</div>

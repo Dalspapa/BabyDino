@@ -4,103 +4,66 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<%@ include file="/WEB-INF/views/include/header.jsp" %>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-
-    
-    <link rel="stylesheet" href="./calendar/fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="./calendar/css/rome.css">
-    
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./calendar/css/bootstrap.min.css">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="./calendar/css/style.css">
     
 	<title>선생님찾기</title>
+
+	<style>
+	.pignose-calendar-unit-disabled a {
+		color: red !important
+	}
 	
+	.active {
+		border: 1px solid #68983b !important;
+	}
 	
-	<!-- main css -->
-	<style type="text/css">
-		.calendar{
-			justify-content: left!important;
-		}
+	.is-invalid {
+		border: 1px solid #dc3545 !important;
+	}
 	</style>
+
+
 </head>
 <body>
 	<div class="search">
 	 	<form class="" action="showTeacherList.do" method="post">
+	 	
 			<!-- 캘린더 -->
-			<section id="calendar" class="calendar">
-				<div class="content">
-				    <div class="container text-left">
-				      <div class="row justify-content-center">
-				        <div class="col-md-10 text-center">
-				          <h3 class="mb-5 text-center">언제 방문할까요?</h3>
-				          <input type="text" class="form-control w-25 mx-auto mb-3" id="result" placeholder="Select date" disabled="">
-				          <form action="#" class="row">
-				            <div class="col-md-12">
-				              <div id="inline_cal"></div>
-				            </div>
-				          </form>
-				        </div>
-				      </div>
-				    </div>
-			  	</div>
-			  	<div id="reserveTime">
-					<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-					  <option selected>돌봄 시작시간을 선택해주세요.</option>
-					  <option value="07">오전 7시</option>
-					  <option value="08">오전 8시</option>
-					  <option value="09">오전 9시</option>
-					  <option value="10">오전 10시</option>
-					  <option value="11">오전 11시</option>
-					  <option value="12">오후 12시</option>
-					  <option value="13">오후 1시</option>
-					  <option value="14">오후 2시</option>
-					  <option value="15">오후 3시</option>
-					  <option value="16">오후 4시</option>
-					  <option value="17">오후 5시</option>
-					  <option value="18">오후 6시</option>
-					  <option value="19">오후 7시</option>
-					  <option value="20">오후 8시</option>
-					  <option value="21">오후 9시</option>
-					  <option value="22">오후 10시</option>
-					  <!-- TO DO : 공통테이블에서 시간 데이터 뿌려주세요. -->
-					</select>
-					
-					<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-					  <option selected>돌봄 종료시간을 선택해주세요.</option>
-					  <option value="08">오전 8시</option>
-					  <option value="09">오전 9시</option>
-					  <option value="10">오전 10시</option>
-					  <option value="11">오전 11시</option>
-					  <option value="12">오후 12시</option>
-					  <option value="13">오후 1시</option>
-					  <option value="14">오후 2시</option>
-					  <option value="15">오후 3시</option>
-					  <option value="16">오후 4시</option>
-					  <option value="17">오후 5시</option>
-					  <option value="18">오후 6시</option>
-					  <option value="19">오후 7시</option>
-					  <option value="20">오후 8시</option>
-					  <option value="21">오후 9시</option>
-					  <option value="22">오후 10시</option>
-					  <option value="23">오후 11시</option>
-					  <!-- TO DO : 공통테이블에서 시간 데이터 뿌려주세요. -->
-					</select>
+			<section>
+				<div>
+					<div class="row">
+						<div class="calendar"></div>
+					</div>
 				</div>
+				<hr>
+				<div class="row d-none" id="selectDateRow">
+					<div class="col-md-6" style="text-align: right;">
+						<h5>시작시간</h5>
+						<select id="start_date" class="form-control" style="width: 20%; float: right;">
+							<c:forEach begin="07" end="22" var="startDate">
+								<option value="${startDate}">${startDate}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="col-md-6" style="text-align: left;">
+						<h5>종료시간</h5>
+						<select id="end_date" class="form-control"  style="width: 20%;">
+							<c:forEach begin="08" end="23" var="endDate">
+								<option value="${endDate}">${endDate}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<!-- 캘린더 -->
 			</section>
 			
+			<!-- 검색조건  -->
 			<section>
-		      <input class="form-control me-2" type="search" placeholder="선생님 이름을 입력해 주세요 :)" aria-label="Search">
-		      
+				<div>
+					<input class="form-control me-2" type="search" placeholder="선생님 이름을 입력해 주세요 :)" aria-label="Search">
+				</div>
+				
 		        <div class="btn-group" role="group" aria-label="Basic outlined example">
 				  <button type="button" class="btn btn-outline-primary">20대</button>
 				  <button type="button" class="btn btn-outline-primary">30대</button>
@@ -124,11 +87,16 @@
 				  <input type="radio" class="btn-check" name="cost" id="btnradio4" autocomplete="off">
 				  <label class="btn btn-outline-primary" for="btnradio4">시급 낮은 순</label>
 				</div>
+				<!-- 검색조건  -->
 			</section>
 			
+			<!-- 돌봄분야 이미지 추가해야함. -->
 			<section>
 				<div class="row">
-					<div>원하는 돌봄 분야</div>
+					<div>
+						<strong>원하는 돌봄 분야</strong>
+					</div>
+					
 					<c:forEach var="c_list" items="${ c_list }">
 						<div class="col-md-2">
 							<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
@@ -138,6 +106,7 @@
 				</div>
 			</section>
 			
+			<!-- 밑에 섹션 오른쪽에 붙혀주세요. 스테이폴리오 최신순, 인기순 참조 -->
 			<section>
 				<input type="checkbox" class="btn-check" id="btn-check-1-outlined" checked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-1-outlined">가까운 순</label> 
@@ -151,34 +120,90 @@
 			</section>
 			
 			<!-- 요 버튼 누르면 위에 조건들 수행 -->
-		 	<button class="btn btn-outline-success" type="submit">Search</button>
+			<!-- 검색버튼 좀 더 키워주세요 -->
+			<div>
+		 		<button class="btn btn-outline-success" type="button" onclick="showTeacherList()">SEARCH</button>
+		 	</div>
       	</form>
 	</div>
 </body>
 
-<!-- 캘린더  -->
-<script src="./calendar/js/popper.min.js"></script>
-<script src="./calendar/js/rome.js"></script>
-<script src="./calendar/js/jquery-3.3.1.min.js"></script>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
-<!-- 부트스트랩 css -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!-- 부트스트랩 js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- pignose-calendar -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/css/pignose.calendar.min.css">
 
+<script src="${pageContext.request.contextPath}/common/js/pignose.calendar.full.min.js"></script>
 
-<!-- 캘린더 -->
 <script>
-	$(function() {
 
-	  // rome(inline_cal, { time: false });
-
-
-		rome(inline_cal, {time: false, inputFormat: 'MMMM DD, YYYY'}).on('data', function (value) {
-		  result.value = value;
-		});
-
+	let reserveDate;
+	
+	//달력
+	$('.calendar').pignoseCalendar({
+		lang : 'ko',
+		minDate : moment().format("YYYY-MM-DD"),
+		format : 'YYYY-MM-DD',
+		select: function(r) {
+			console.log('r : ', r);
+			var selectDate;
+			if(r[0] == null) {
+				selectDate = null;
+			} else {
+				reserveDate = r[0]._i;
+				selectDate = r[0]._i;
+			}
+			if(selectDate == null) {
+				$("#selectDateRow").addClass('d-none');
+			} else {
+				$("#selectDateRow").removeClass('d-none');
+			}
+		}
 	});
+	
+	//데이터 넘기기
+	function showTeacherList() {
+	
+		var start = reserveDate + ' ' + $("#start_date").val();
+		if($("#start_date").val().length == 1) start = reserveDate + ' 0' + $("#start_date").val();
+	
+		var end = reserveDate + ' ' + $("#end_date").val();
+		if($("#end_date").val().length == 1) end = reserveDate + ' 0' + $("#end_date").val();
+	
+		var saveIdx = '${sidx}';
+		
+		var formData = new FormData();
+		formData.set('member_p_idx', Number(1));
+		formData.set('kid_idx'     , kidCard);
+		formData.set('start_date'  , start);
+		formData.set('end_date'    , end);
+		formData.set('cost'        , $("#cost").val());
+		formData.set('status'      , 1);
+		
+		formData.forEach(function(value, key) {
+			console.log(key, value);
+		});		
+		
+		/* return false; */
+		$.ajax({
+			method : 'POST',
+			url : '/showTeacherList.do',
+				data : formData,
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			cache: false, 			
+			success : function(e){
+				window.alert="예약등록되었습니다.";
+				location.href="main.do";
+				console.log(e);
+			},
+			error : function(e){
+				console.log(e);
+			}
+		});
+	}
+	
 </script>
 
 </html>

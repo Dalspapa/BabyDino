@@ -25,8 +25,6 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	public List<FindTeacherJoinDto> teacherList() {
 
 		List<FindTeacherJoinDto> t_list = sqlMap.selectList("teacherList");
-		// test code
-		System.out.println("t_list = " + t_list);
 
 		return t_list;
 	}
@@ -35,7 +33,7 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	public List<KidDto> pickKidsCard(int idx) {
 
 		List<KidDto> mkList = sqlMap.selectList("pickKidsCard", idx);
-		System.out.println("=== dao idx : " + idx);
+		
 		return mkList;
 	}
 
@@ -43,6 +41,7 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	public int makeKCard(KidDto dto) {
 
 		int result = sqlMap.insert("k_makeCard", dto);
+		
 		return result;
 	}
 	
@@ -50,6 +49,7 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	public int reserveCard(ReserveDto reserveCard) {
 		
 		int result = sqlMap.insert("k_reserve", reserveCard);
+	
 		return result;
 	}
 
@@ -60,27 +60,12 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 
 		return addr_dto;
 	}
-	
-	// update addr get
-	public MemberDto addrUpForm(int idx) {
-		
-		MemberDto addrUp = sqlMap.selectOne("getaddr", idx);
-		
-		return addrUp;
-	}
-	
-	// update addr card
-	public int updateAddr(MemberDto dto) {
-
-		int addr_update = sqlMap.update("upAddr", dto);
-
-		return addr_update;
-	}
 
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx) {
 
 		FindTeacherJoinDto t_dto = sqlMap.selectOne("teacherInfo", idx);
+		
 		return t_dto;
 	}
 
@@ -88,6 +73,7 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	public List<ReviewDto> teacherReviewList(int idx) {
 
 		List<ReviewDto> review_list = sqlMap.selectList("teacherReviewList", idx);
+		
 		return review_list;
 	}
 	

@@ -114,7 +114,12 @@
       </div>      
    </div>
 </footer>
- 
+ <body onkeydown="javascript:onEnterLogin();">
+
+
+
+</body>
+
   <!-- 헤더이벤트처리 -->
   <script>
   
@@ -216,6 +221,19 @@
 	});
 
   });
+	
+//엔터키로 로그인하기
+ 	function onEnterLogin(){
+
+		var keyCode = window.event.keyCode;
+
+		if (keyCode == 13) { //엔테키면
+
+			ajaxTest();
+
+		}
+
+	} //onEnterLogin()
 
 </script>
 
