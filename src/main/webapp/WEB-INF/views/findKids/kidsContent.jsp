@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -317,12 +316,12 @@ section {
 				<form name="reportIdx" action="reportWrite.do">
 					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
 				<div>
-					<button type="submit">
+					<a href="javascript:reportIdx.submit();">
 						&#128680;
-					</button>
+					</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<a>
-						#좋아요버튼 / ${kidInfoDto.member_p_idx }
+						#좋아요버튼 
 					</a>
 				</div>
 				</form>

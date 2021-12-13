@@ -18,7 +18,7 @@ public class MakeTCardDto {
 	private String schedule_time;
 	private int t_cost;
 	private String t_introduce;
-	private int bank;
+	private String bank;
 	private String acnum;
 	private int cctvagree;
 	private String t_sexcrime;
@@ -41,12 +41,7 @@ public class MakeTCardDto {
 	}
 
 	private List<MultipartFile> tImg;
-
-
-	//Kids Card Table
-
-	//Reserve Table
-
+	
 	//기본생성자
 	public MakeTCardDto() {
 		super();
@@ -54,7 +49,7 @@ public class MakeTCardDto {
 
 	//인자생성자
 	public MakeTCardDto(int idx, int d_member_idx, int job, String badge, String kid_type, String t_care_type,
-			String schedule_day, String schedule_time, int t_cost, String t_introduce, int bank, String acnum,
+			String schedule_day, String schedule_time, int t_cost, String t_introduce, String bank, String acnum,
 			int cctvagree, String t_sexcrime, String career_experience, List<MultipartFile> tImg) {
 		super();
 		this.idx = idx;
@@ -165,11 +160,11 @@ public class MakeTCardDto {
 		this.t_introduce = t_introduce;
 	}
 
-	public int getBank() {
+	public String getBank() {
 		return bank;
 	}
 
-	public void setBank(int bank) {
+	public void setBank(String bank) {
 		this.bank = bank;
 	}
 
