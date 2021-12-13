@@ -236,7 +236,7 @@ img {
 			  })
 		  }
 	
-	/* 이미지 미리보기 (대기) */
+	/* 이미지 미리보기 */
 	/* function setimage(event) {
 		var reader = new FileReader();
 
