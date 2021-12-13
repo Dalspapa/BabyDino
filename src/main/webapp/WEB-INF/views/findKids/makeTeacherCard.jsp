@@ -329,7 +329,7 @@
 
 <script>
 
-  function isTest() {
+   function isTest() {
 
 	  	let imgFile = $('#t_img1').val();
 
@@ -483,8 +483,8 @@
 
   	});
   	
-
-
+  	
+     
   </script>
 
 </html>

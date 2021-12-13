@@ -63,16 +63,12 @@
 	
 	<!-- 이미지 출력 -->
 	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
-	    SELECT 
-	        dk.*, dci.c_imgpath
-	    FROM 
-	        d_kidcard dk 
-	    LEFT JOIN 
-	        d_common_img dci 
-	    ON 
-	        dk.d_member_idx = dci.d_member_idx
-	    WHERE
-	        dk.d_member_idx = #{d_member_idx}
+	    SELECT dk.*
+     		 , dci.c_imgpath
+		FROM d_kidcard dk 
+		LEFT JOIN d_common_img dci ON dk.idx = dci.ref_idx
+		WHERE dk.idx = #{d_member_idx}
+		and dci.category_idx = 1
 	</select>
 	
 	
@@ -91,19 +87,22 @@
 	
 	<!-- 아이카드 만들기 --> 
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
-	INSERT INTO 
-                d_kidcard
+		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
+			SELECT  d_kidcard_idx.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO 
+        	d_kidcard
         VALUES(
-                d_kidcard_idx.nextval,
-               	#{d_member_idx},
-                #{k_name},
-                #{k_gender},
-                #{k_birth},
-                #{k_introduce},
-                #{k_care_type},
-                #{k_tendency},
-               	#{teacher_type},
-               	#{k_require}
+			d_kidcard_idx.nextval,
+			#{d_member_idx},
+			#{k_name},
+			#{k_gender},
+			#{k_birth},
+			#{k_introduce},
+			#{k_care_type},
+			#{k_tendency},
+			#{teacher_type},
+			#{k_require}
         )
 	</insert>
 	

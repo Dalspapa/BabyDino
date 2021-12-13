@@ -58,8 +58,13 @@ public class FindTeacherController {
 	 
 	List<Common_ImgDto> resultImg = teachersService.imgpath(d_member_idx);
 	 
+	String [] imgName = {};
+	for(int i = 0; i < resultImg.size(); i++) {
+		System.out.println("리스트로 가져온 이미지"+resultImg.get(i).getC_imgpath());
+		imgName = resultImg.get(i).getC_imgpath().split(",");
+	}
 	 //test code
-	 System.out.println(resultImg + ">>> 이미지 ㅎㅇㅇㅇㅇㅇ <<<");
+		System.out.println(imgName+"22222222222222mg");
 	  
 	  ModelAndView mav = new ModelAndView(); 
 		  mav.addObject("imgName", resultImg);

@@ -100,7 +100,7 @@ public class FindTeachersServiceImp implements FindTeachersService {
 			System.out.println("== filimgFileName : " + imgFiles.get(i).getOriginalFilename());
 			copyInto(imgFiles.get(i));
 			System.out.println("copyinto 성공 ");
-			c_imgpath += imgFiles.get(i).getOriginalFilename() + ",";
+			c_imgpath += imgFiles.get(i).getOriginalFilename();
 		}
 		
 		int result = findTeachersDao.makeKCard(dto);
@@ -113,7 +113,7 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		int category_idx = 1;
 
 		int d_member_idx = dto.getD_member_idx();
-		String updId = (String)request.getSession().getAttribute("saveId");
+//		String updId = (String)request.getSession().getAttribute("saveId");
 
 		//imgDto.setC_imgpath();
 		imgDto.setRef_idx(ref_idx);
@@ -121,7 +121,7 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		imgDto.setD_member_idx(d_member_idx);
 		imgDto.setC_imgpath(c_imgpath);
 
-		System.out.println("이미지 DTO 값 : " + imgDto.getD_member_idx() + "/" + imgDto.getC_imgpath() + "/" + imgDto.getCategory_idx() + "/" + imgDto.getRef_idx());
+		System.out.println("이미지 DTO 값 : " + imgDto.getD_member_idx());
 
 		int setImgResult = findTeachersDao.kSetImg(imgDto);
 	}
