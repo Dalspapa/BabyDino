@@ -141,54 +141,54 @@ ttl {
 </style>
 </head>
 <body>
-   <div>
-      <section>
-      <div class="container">
-     	 <div class="appbar">
-     		 <div class="backward">
-     		 <img src="https://cdn.mom-sitter.com/momsitter-app/static/public/svg/backward.svg" alt="">
-     		 </div>
-     	 <div class="title">계정 관리</div>
-     		 <div class="_36gBs">
-     	 		<div class = "_2nIFL">
-     				<div class="_1vbgj">
-      					<div class="nATE5">
-     						<div class="_1QQ_I">회원 유형</div>
-      						<div class="qlKb8">##유형 코드 들어갈 곳</div>
-      					</div>
+  <div>
+     <section>
+     <div class="container">
+    	 <div class="appbar">
+    		 <div class="backward">
+    		 <img src="https://cdn.mom-sitter.com/momsitter-app/static/public/svg/backward.svg" alt="">
+    		 </div>
+    	 <div class="title">계정 관리</div>
+    		 <div class="_36gBs">
+    	 		<div class = "_2nIFL">
+    				<div class="_1vbgj">
      					<div class="nATE5">
-      						<div class="_1QQ_I">사용중인 아이디</div>
-      						<div class="qlKb8">##아이디 코드 들어갈 곳</div>
-      					</div>
-      					<div class="nATE5">
-      						<div class ="_1QQ_I">가입한 휴대폰 번호</div>
-      						<div class="qlKb8">##번호 코드 들어갈 곳</div>
-      					</div>
-      					<div class="nATE5">
-      						<div class ="_1QQ_I">가입한 이메일</div>
-      						<div class="qlKb8">##메일 코드 들어갈 곳</div>
-      					</div>
-     	 			</div>
-      			</div>
-      	<div class="_1Iazm"></div>
-	 		<div class="mintitle">
-	 			<span><a href="#">내 주소 수정하기</a></span>
-	 			<i class="far fa-angle-right"></i>
-	 		</div>
-      <div class="_2MTRN"></div>
-     	<div class="mintitle">
-     		<span><a href="#">비밀번호 변경</a></span>
-     		<i class="far fa-angle-right"></i>
-     	</div>
-      <div class="_2MTRN"></div>
-     	<div class="mintitle">
-     		<span><a href="#">아기공룡 회원 탈퇴하기</a></span>
-     		<i class="far fa-angle-right"></i>
-     	</div>
-
-     
-   
-      </section>
-   </div>
+    						<div class="_1QQ_I">회원 유형</div>
+     						<div class="qlKb8">##유형 코드 들어갈 곳</div>
+     					</div>
+    					<div class="nATE5">
+     						<div class="_1QQ_I">사용중인 아이디</div>
+     						<div class="qlKb8">##아이디 코드 들어갈 곳</div>
+     					</div>
+     					<div class="nATE5">
+     						<div class ="_1QQ_I">가입한 휴대폰 번호</div>
+     						<div class="qlKb8">##번호 코드 들어갈 곳</div>
+     					</div>
+     					<div class="nATE5">
+     						<div class ="_1QQ_I">가입한 이메일</div>
+     						<div class="qlKb8">##메일 코드 들어갈 곳</div>
+     					</div>
+    	 			</div>
+     			</div>
+     	<div class="_1Iazm"></div>
+ 		<div class="mintitle">
+ 			<span><a href="#">내 주소 수정하기</a></span>
+ 			<i class="far fa-angle-right"></i>
+ 		</div>
+     <div class="_2MTRN"></div>
+    	<div class="mintitle">
+    		<span><a href="#">비밀번호 변경</a></span>
+    		<i class="far fa-angle-right"></i>
+    	</div>
+     <div class="_2MTRN"></div>
+    	<div class="mintitle">
+    		<span><a href="#">아기공룡 회원 탈퇴하기</a></span>
+    		<i class="far fa-angle-right"></i>
+    	</div>
+	</div>
+</div>
+</div>
+</section>
+</div>
 </body>
 </html>

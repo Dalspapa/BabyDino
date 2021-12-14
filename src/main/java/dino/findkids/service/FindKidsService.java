@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
-import dino.findkids.model.FindKidsJoinDto;
+import dino.findkids.model.*;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +26,7 @@ public interface FindKidsService {
 
 	// set Teacher img
 	public int tSetImg(Common_ImgDto imgDto);
-
+	
 	// get imgpath
 	public List<Common_ImgDto> imgpath(int d_member_idx);
 
@@ -46,5 +46,8 @@ public interface FindKidsService {
 	
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id);
-
+//////////////주호
+	//선생님 필수 정보 입력
+	public int setTeacherCert(TeacherCertDto tcDto);
+//////////////주호 끝
 }
