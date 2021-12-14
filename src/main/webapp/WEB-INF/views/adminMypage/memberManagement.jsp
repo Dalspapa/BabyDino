@@ -22,10 +22,11 @@
     font-weight: 500;
     margin-bottom: 12px;
 }
-.likebody section .btns{
-	margin: 1% auto;
+.likebody .btn{
+	margin-left: 700px;
 }
 </style>
+<!-- -------------지원 css---------------- -->
 </head>
  <!-- header -->
 	<%@include file="/WEB-INF/views/include//header.jsp" %>
@@ -37,7 +38,8 @@
 			<div class="search">
 				<div class="title">회원목록(관리자)</div>
 				<div class="select">
-					<select class="form-select-sm">
+
+					<select>
 						<option>전체</option>
 						<option>학부모</option>
 						<option>부모님</option>
@@ -107,7 +109,7 @@
 			  </tbody>
 			</table>
 		
-				<div class="btns">
+				<div class="btns">				
 					<button type="button" class="btn btn-outline-success">탈퇴처리</button>
 				</div>
 				<div>

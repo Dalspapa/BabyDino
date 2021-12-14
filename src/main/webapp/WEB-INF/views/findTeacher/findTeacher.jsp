@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- ---------지원css------------- -->
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-<!-- -지원css 수정및 추가 -->
+
 <style>
 #cardImg {
 	width: 50px;
@@ -14,11 +16,11 @@
 }
 
 .pignose-calendar-unit-disabled a {
-	color: red !important
+	color: #68983b !important
 }
 
 .isTest {
-	background-color:#68983b;
+	background-color: #68983b;
 }
 .title{
 	font-size: 22px;
@@ -35,6 +37,7 @@ section .container{
 </head>
 <body>
 	<!-- <div class="title">선생님찾기 페이지</div>-->
+
 	<section class="title">
 		<div class="container">
 			<!-- 필터[START] -->
@@ -50,8 +53,8 @@ section .container{
 						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="four" onclick="changeDiv('four')">4</div>
 					</div>
-					<button class="btn btn-outline-success" onclick="check()" style="margin-top: 25px;">check</button>
-
+					<br>
+					<button class="btn btn-outline-success" onclick="check()">check</button>
 					<div class="row mt-4">
 						<div class="form-check w-50">
 							<input class="form-check-input" type="checkbox" value="1"

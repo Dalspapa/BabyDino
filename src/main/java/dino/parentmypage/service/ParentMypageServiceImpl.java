@@ -37,5 +37,11 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 		List<ParentMypageDto> list = parentMypageDao.kidsCardList(idx);
 		return list;
 	}
+
+	//돌봄 노트 리스트 페이지
+	public List<ParentMypageDto> careNoteList(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.careNoteList(idx);
+		return list;
+	}
 }
 

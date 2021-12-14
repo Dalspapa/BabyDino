@@ -15,4 +15,7 @@ public interface ParentMypageService {
 
 	//아이카드 리스트 페이지
 	public List<ParentMypageDto> kidsCardList(int idx);
+
+	//돌봄 노트 리스트 페이지
+	public List<ParentMypageDto> careNoteList(int idx);
 }

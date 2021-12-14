@@ -47,7 +47,7 @@ h2 {
 	margin-top: 130px;
 }
 .reviewIObtn, .reviewContent {
-	margin-top: 20px;
+	margin: 20px auto;
 }
 .headerTitle {
 	justify-content: space-between;
@@ -70,7 +70,7 @@ h2 {
 .reviewContent-con {
 	width: 600px;
 	height: 100px;
-	background-color: #ccc;
+	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 .d-none {
@@ -93,29 +93,43 @@ h2 {
 			<div><button type="button" class="btn btn-outline-warning" onclick="showDiv1();">내가 받은 후기</button></div>
 		</div>
 		<!-- 내가 보낸 후기 -->
-		<c:forEach var="rl" items="${reviewList}">
-			<div id="is-send">
+		<div id="is-send">
+			<c:if test="${ empty myreview }">
+				<h2>작성한 후기가 없습니다.</h2>
+			</c:if>
+			<c:forEach var="rl" items="${myreview}">
 				<div class="d-flex reviewContent">
-					<div class="reImg">#사진</div>
 					<div>
-						<div>#선생님이름 ${ rl.star }</div>
+						<div>TO. ${ rl.name} 회원님  ${ rl.r_writedate }/
+							<c:forEach begin="1" end="${ rl.star }" step="1">
+								<span>★</span>
+							</c:forEach>
+						</div>
 						<div class="reviewContent-con">${ rl.r_content }</div>
 					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
+
 		<!-- 내가 받은 후기 -->
-		<c:forEach var="rl" items="${reviewList}">
-			<div id="is-receive" class="d-none">
+		<div id="is-receive" class="d-none">
+			<c:if test="${ empty getreview }">
+				<h2>받은 후기가 없습니다.</h2>
+			</c:if>
+			<c:forEach var="gl" items="${getreview}">
 				<div class="d-flex reviewContent">
-					<div class="reImg">사진</div>
 					<div>
-						<div>#이름 ${ rl.star }</div>
-						<div class="reviewContent-con">${ rl.r_content }</div>
+						<div>FROM. ${ gl.name} 회원님 ${ gl.r_writedate }/
+							<c:forEach begin="1" end="${ gl.star }" step="1">
+								<span>★</span>
+							</c:forEach>
+						</div>
+						<div class="reviewContent-con">${ gl.r_content }</div>
 					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
+
 	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
