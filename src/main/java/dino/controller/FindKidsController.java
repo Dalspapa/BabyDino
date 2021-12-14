@@ -24,7 +24,7 @@ import dino.dto.CommonOpDto;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
-import dino.findkids.model.FindKidsJoinDto;
+import dino.findkids.model.*;
 import dino.findkids.service.FindKidsService;
 
 @Controller
@@ -145,7 +145,7 @@ public class FindKidsController {
 		}
 		mdto.setIdx(Integer.parseInt(idx));
 
-		mdto.setMember_type(6);
+		mdto.setMember_type(10);
 		int rst = findKidsService.updateTeacherGrade(mdto);
 		if(rst <= 0) {
 			throw new IllegalStateException("선생님 카드 등록시 오류가 발생하였습니다.");
@@ -229,9 +229,10 @@ public class FindKidsController {
 	 * since: 2021. 12. 7.
 	 */
 	@RequestMapping(value="cert.do", method = RequestMethod.POST)
-	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request) {
+	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request, TeacherCertDto tcDto) {
 		ModelAndView mav = new ModelAndView();
 
+		//선생님 필수 인증 후 등급 수정
 		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
 		if(StringUtils.isEmpty(idx)) {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
@@ -240,8 +241,10 @@ public class FindKidsController {
 
 		teacher.setMember_type(5);
 		int rst = findKidsService.updateTeacherGrade(teacher);
+		
 		System.out.println("컨트롤러에 teacher ====="+rst);
 		if(rst <= 0) {
+			
 			throw new IllegalStateException("선생님 등급 수정시 오류가 발생하였습니다.");
 		}
 		String id = String.valueOf(request.getSession().getAttribute("saveId"));
@@ -253,9 +256,17 @@ public class FindKidsController {
 		System.out.println("인증 된 선생님 세션에 그레이드 수정"+updMType);
 		System.out.println("컨트롤러====="+updMType);
 		request.getSession().setAttribute("saveMemberType", updMType);
-
-		msg = "선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
-		System.out.println("컨트롤러 msg ========"+msg);
+		
+		//선생님 필수 인증 정보 입력
+		//////////////주호
+		
+		System.out.println("컨트롤러로 넘어온 선생님 인증" + tcDto.toString());
+		System.out.println("컨트롤러로 넘어온 선생님 인증==================="+tcDto.toString()); 
+		int certRst = findKidsService.setTeacherCert(tcDto);
+		msg = certRst < 0 ? "인증요청중 오류가 발생했습니다. 잠시후 다시 시도해 주세요.":"선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
+		
+		///////////////주호 끝		
+		
 		goUrl = "main.do";
 		mav.addObject("msg", msg);
 		mav.addObject("goUrl", goUrl);

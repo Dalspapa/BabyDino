@@ -36,5 +36,9 @@ public interface FindKidsDao {
 
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id);
+//////////////주호
+	//선생님 필수 정보 입력
+	public int setTeacherCert(TeacherCertDto tcDto);
+//////////////주호끝
 
 }

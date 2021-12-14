@@ -139,92 +139,8 @@
 		<div id="step_2" class="makeTdiv">
 			<h2>어떤 아이를 돌봐 주실수 있나요?</h2>		
 			<c:forEach var="kt_opdto" items="${k_list}">
-				<div class="check2 ktypeckb">							
-				<c:if test="${kt_opdto.op == 1}">
-					<div class="ktypeckb_child">
-						<input type="checkbox" id="kidType${kt_opdto.op}" class="ktchk" name="kid_type" value="${kt_opdto.op}">
-						<label for="kidType" id="lb${kt_opdto.op}">${kt_opdto.c_introduce}<span id="sp${kt_opdto.op}"></span></label>
-					</div>		
-					<style>
-						.ktypeckb {
-							width:500px;
-							margin: 50px auto;
-						}
-						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} {
-							display: none;
-						}
-						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} +  label span{
-							display: inline-block;
-							width: 200px;
-							height: 200px;
-							background: url(/common/img/kidType/kidstype1_off.png) no-repeat center/200px 200px;
-							cursor: pointer;
-							vertical-align: middle;
-							
-						}				
-						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op}:checked + #lb${kt_opdto.op} #sp${kt_opdto.op} {
-							background: url(/common/img/kidType/kidstype1_on.png) no-repeat center/200px 200px;
-						}		
-					</style>
-				</c:if>
-				<c:if test="${kt_opdto.op == 2}">
-					<div class="ktypeckb_child">
-						<input type="checkbox" id="kidType${kt_opdto.op}" class="ktchk" name="kid_type" value="${kt_opdto.op}">
-						<label for="kidType">${kt_opdto.c_introduce}<span></span></label>
-					</div>		
-					<style>
-						.ktypeckb {
-							width:500px;
-							margin: 50px auto;
-						}
-						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} {
-							display: none;
-						}
-						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} + label span{
-							display: inline-block;
-							width: 200px;
-							height: 200px;
-							background: url(/common/img/kidType/kidstype2_off.png) no-repeat center/200px 200px;
-							cursor: pointer;
-							vertical-align: middle;
-							
-						}				
-						/* .ktypeckb .ktypeckb_child #kidType${kt_opdto.op}:checked + label span {
-							background: url(/common/img/kidType/kidstype2_on.png) no-repeat center/200px 200px;					
-						} */
-					</style>
-				</c:if>
-				<c:if test="${kt_opdto.op == 3}">
-					<div class="ktypeckb_child">
-						<input type="checkbox" id="kidType${kt_opdto.op}" class="ktchk" name="kid_type" value="${kt_opdto.op}">
-						<label for="kidType">${kt_opdto.c_introduce}<span></span></label>
-					</div>		
-					<style>
-						.ktypeckb {
-							width:500px;
-							margin: 50px auto;
-						}
-						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} {
-							display: none;
-						}
-						.ktypeckb .ktypeckb_child #kidType${kt_opdto.op} + label span{
-							display: inline-block;
-							width: 200px;
-							height: 200px;
-							background: url(/common/img/kidType/kidstype3_off.png) no-repeat center/200px 200px;
-							cursor: pointer;
-							vertical-align: middle;
-							
-						}
-						/* .ktypeckb .ktypeckb_child #kidType${kt_opdto.op}:checked + label span {
-							background: url(/common/img/kidType/kidstype3_on.png) no-repeat center/200px 200px;					
-						} */
-						
-						
-						<!--before /common/img/kidType/kidstype3_off.png-->
-						<!--after /common/img/kidType/kidstype3_on.png-->
-					</style>
-				</c:if>
+				<div>
+					<label><input type="checkbox" id="kidType" class="ktchk" name="kid_type" value="${kt_opdto.c_introduce}"> ${kt_opdto.c_introduce} </label>
 				</div>
 			</c:forEach>
 			<div class="btn">
@@ -241,24 +157,7 @@
 				<c:forEach var="c_opdto" items="${c_list}">
 					<div class="col-4 p-2">
 						<div style="height: 30px;">
-							<input type="checkbox" id="tCareType" class="tctchk"
-								name="t_care_type" value="${c_opdto.c_introduce}">
-								<label for="tCareType" id="carelb">${c_opdto.c_introduce}</label>
-								<style>
-									#tCareType+#carelb{
-										display: block;
-										width: 24px;
-										height: 24px;
-										background: url('./common/img/10.jng') no-repeat 0 0px / contain;
-									}
-									#tCareType:checked+#carelb{
-										background: url('./common/img/2.jng') no-repeat 0 1px / contain;
-									}
-									#tCareType{
-										display: none;
-									}
-								
-								</style>
+							<label><input type="checkbox" id="tCareType" class="tctchk"	name="t_care_type" value="${c_opdto.c_introduce}">${c_opdto.c_introduce} </label>
 						</div>
 					</div>
 				</c:forEach>
@@ -392,8 +291,9 @@
 
 	  formData.forEach(function(value, key) {
 		  console.log(key, value);
+		  return false;
 	  });
-
+		
 	  $.ajax({
 		method: 'POST',
 		url: '${pageContext.request.contextPath}/makeTeacherCard.do',
