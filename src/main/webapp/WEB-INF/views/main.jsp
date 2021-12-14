@@ -160,7 +160,7 @@
 	                </div>
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
 	                  <span class="nori-box">
-	                    <img src="./common/img/6.jpg" alt="책읽기">
+	                    <img src="./common/img/1.jpg" alt="책읽기">
 	                  </span>
 	                </div>
 	              </div>
