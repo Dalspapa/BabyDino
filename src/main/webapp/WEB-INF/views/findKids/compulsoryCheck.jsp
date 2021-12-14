@@ -249,7 +249,7 @@ section p{
 				</div>
 			</div>
 		</div>
-		<div style="padding-top:200px;">
+		<div style="padding-top:80px;">
 			<button type="button" class="btn btn-outline-secondary prevbtn" >이전으로</button>
 			<button type="button" class="btn btn-outline-success" id="reqAgree">인증요청</button>
 		</div>

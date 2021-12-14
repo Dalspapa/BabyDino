@@ -5,20 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- --------지원css---------- -->
 <style>
 #step_1{
-    margin-top: 182px;
-    margin-bottom: 81px;
+	margin-top: 182px;
     text-align: center;
+    margin: 9% auto;
 }
 #step_1 h2{
 	font-family: 'S-Air';
 	margin-bottom: 15px;
 }
 #step_2{
-    margin-top: 182px;
-    margin-bottom: 110px;
+	margin-top: 182px;
     text-align: center;
+    margin: 9% auto;
 }
 #step_2 .check2{
 	margin-bottom: 20px;
@@ -31,9 +32,9 @@
 	margin-top: 15px;
 }
 #step_3{
-    margin-top: 182px;
-    margin-bottom: 81px;
+	margin-top: 182px;
     text-align: center;
+    margin: 9% auto;
 }
 #step_3 .row .col-4{
 	width: 390px!important;
@@ -48,9 +49,8 @@
 	margin-bottom: 15px;
 }
 #step_4{
-    margin-top: 182px;
-    margin-bottom: 50px;
     text-align: center;
+    margin: 13% auto;
 }
 #step_4 h2{
 	font-family: 'S-Air';
@@ -68,9 +68,10 @@
 	margin-bottom: 15px;
 }
 #step_5{
-    margin-top: 182px;
-    margin-bottom: 81px;
+	margin-top: 182px;
     text-align: center;
+    margin: 9% auto;
+    width: 80%;
 }
 #step_5 .hopepay{
 	font-family: 'S-Air';
@@ -92,10 +93,14 @@
 #step_5 .btn{
 	margin-top: 20px;
 }
+#step_5 .info .other a{
+    text-decoration: none;
+    color: #68983b;
+}
 #step_6 {
 	margin-top: 182px;
-    margin-bottom: 81px;
     text-align: center;
+    margin: 9% auto;
 }
 #step_6 h2{
 	font-family: 'S-Air';
@@ -119,6 +124,7 @@
 }
 
 </style>
+
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>

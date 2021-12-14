@@ -1,0 +1,14 @@
+diff a/src/main/webapp/WEB-INF/views/findTeacher/makeKidsCard.jsp b/src/main/webapp/WEB-INF/views/findTeacher/makeKidsCard.jsp	(rejected hunks)
+@@ -18,10 +18,11 @@
+ }
+ </style>
+ <body>
++	<br><br><br>
+ 	<form id="postForm" name="make_t_Card">
+-		<h1>아이카드등록</h1>
+ 		<div class="wrapper">
+ 			<div class="container">
++				<div><h3>아이카드등록</h3></div>
+ 				<div id="step1">
+ 					<div>
+ 						<div id="image_container"></div>

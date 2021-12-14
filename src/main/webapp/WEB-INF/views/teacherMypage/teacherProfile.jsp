@@ -69,21 +69,10 @@ section{
 		<section>
 			<!-- 선생님 프로필 부분 -->
 			<div class="t_profile">
-
-				<div class="profil">프로필</div><c:set var="proImg" value="${tDto.c_imgpath}" />
-				<div class="pic"><img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px" onerror="this.remove();"></div>
-				<div class="t_info">
-				<div>${tDto.name} | ${tDto.age} 세</div>
-				<div id="bankDiv1">
-					<div>은행 : ${tDto.bank}</div>
-					<div>계좌번호 : ${tDto.acnum}
-						<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="bankbtn1">수정</button>
-
-				<!-- <div class="profil">프로필</div>
+				<div class="profil">프로필</div>
 					<c:set var="proImg" value="${tDto.c_imgpath}" />
 					<div class="pic">
-						<img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px"> -->
-
+						<img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px">
 					</div>
 				<div class="t_info">
 					<div>${tDto.name} | ${tDto.age} 세</div>

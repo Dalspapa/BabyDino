@@ -5,25 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 지원css수정 및 추가 -->
 <style type="text/css">
-.wrapper {
-	text-align: center;
+.main {
+    text-align: center;
+    margin: 9% auto;
+    width: 80%;
 }
-.careTitle {
-	font-size: 25px;
-	font-weight: bold;
+.main .careTitle p{
+	font-size: 22px;
+	font-family: 'S-Air';
+    font-weight: 500;
 	border-bottom: 1px solid #ccc;
+	margin: 4% auto;
 }
-.careCard {
+.main .careCard {
 	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	width: 600px;
-	height: 200px;
-	background-color: #ccc;
-	margin: 0 auto;
-	border-radius: 10px;
-	margin-top: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 600px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 2px solid #68983b
 }
 .image {
 	width: 200px;
@@ -34,11 +39,15 @@
 .content {
 	width: 400px;
 }
+.btns{
+	text-align: center;
+    margin-bottom: 43px;
+}
 </style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-	<div class="wrapper">
+	<div class="main">
 		<div class="careTitle">
 			<p>돌봄노트</p>
 		</div>
@@ -52,10 +61,8 @@
 		</div>
 		</c:forEach>
 	</div>
-
-
-	<div>
-		<a href="carenoteForm.do">작성하기</a>
+	<div class="btns">
+			<button type="button"  class="btn btn-outline-success" onclick=  "location.href = 'carenoteForm.do'">작성하기</button>
 	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>

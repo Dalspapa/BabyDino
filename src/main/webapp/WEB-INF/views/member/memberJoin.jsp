@@ -7,6 +7,7 @@
 <title>회원가입</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
+<!-- 지원css수정 -->
 <style>
 section{
 	margin-top: 150px;
@@ -15,7 +16,7 @@ section{
 section .title{
 	font-family: 'S-Air';
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 table tr th {
 	vertical-align: middle;
@@ -28,11 +29,10 @@ table .phone{
 }
 /*section2 부분*/
 #step2 {
-    border: 1px solid gray;
+	border: 1px solid gray;
     width: 1350px;
     height: 678px;
-    margin-bottom: 22px;
-    margin-left: 274px;
+    margin: 2% auto;
 	
 }
 .btn2{
@@ -45,7 +45,7 @@ table .phone{
    <div id="step1">
       <!-- 회원가입 폼 -->
       <section>
-         <h1>사용하실 아이디와 비밀번호를 입력해주세요.</h1>
+        <!--  <h1>사용하실 아이디와 비밀번호를 입력해주세요.</h1>  -->
 		 <div class="title">회원가입</div>
          <!-- <form name="memberJoinForm" action="joinMember.do" method="post" onsubmit="return checkAll()"> -->
          <form name="memberJoinForm">
@@ -110,7 +110,7 @@ table .phone{
                            <td>
                               <div class="d-flex">
                                  <input id="addr1" type="text" name="addr1" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" readonly />
-                                 <button type="button" class="btn btn-sm btn-outline-primary" onclick="kakaopost()">주소찾기</button>
+                                 <button type="button" class="btn btn-sm btn btn-outline-success " onclick="kakaopost()">주소찾기</button>
                               </div>
                               <div class="d-flex">
                                  <input id="addr2" type="text" name="addr2" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" readonly />
@@ -129,7 +129,7 @@ table .phone{
                               <div class="d-flex">
                                  <input id="tel" type="text" name="tel" class="form-control form-control-sm w-50" style="margin-right: 4px;" autocomplete="off" width="100" />
                                  <!-- 문자인증하기 --> 
-                                  <button id="phoneChk" class="doubleChk btn btn-sm btn-outline-primary" type="button">인증번호 보내기</button>
+                                  <button id="phoneChk" class="doubleChk btn btn-sm btn-outline-success" type="button">인증번호 보내기</button>
                               </div>
                               
                            </td>
@@ -213,9 +213,6 @@ table .phone{
                </div>
             </div>
 
-            <div class="btn">
-               <button type="submit" class="btn btn-outline-success">다음으로</button>
-            </div>
 
          </div>
       </section>

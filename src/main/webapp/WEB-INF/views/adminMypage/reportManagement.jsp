@@ -21,9 +21,9 @@
 	color : black;
 }
 table{
-	width: 1200px!important;
-    margin-left: 164px;
+    width: 1200px!important;
     font-size: 14px;
+    margin: 1% auto;
 }
 table a:hover {
 	color : #68983b;
@@ -33,14 +33,14 @@ table th,td {
 }
 .rpbtn {
 	margin-right:180px;
-    margin-bottom: 21px;
+    margin-bottom: 3%;
     text-align : right;
 }
 .paging {
 	margin-top: -39px;
 }
 .bodysize {
-	width: 80%
+	width: 80%;
 }
 /*페이징 부분*/
 .paging a{

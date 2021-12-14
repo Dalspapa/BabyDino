@@ -5,10 +5,16 @@
 <meta charset="UTF-8">
 <title>선생님 정산페이지</title>
 <link href="../common/css/startbootstrapstyles.css" rel="stylesheet" />
+<!-- -------------지원 css---------------- -->
 <style>
 .size {
-	width: 1000px;
-	height: 500px;
+    width: 1000px;
+    height: 500px;
+    margin: 6% auto;
+}
+.btn{
+	margin-top: 200px;
+	margin-left: 1300px;
 }
 </style>
 </head>

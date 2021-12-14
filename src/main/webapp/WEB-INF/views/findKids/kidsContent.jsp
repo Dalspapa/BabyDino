@@ -43,6 +43,7 @@ h2 {
 
 .wrapper {
 	width: 80%;
+	margin: auto;
 }
 /* userInfo 사용자 상태영역 */
 .userInfo {
@@ -255,51 +256,13 @@ section {
 	overflow: hidden;
 	pointer-events: none;
 }
+.wrapper section .btns{
+    margin: auto 45%;
+}
 </style>
-
+<!-- ---지원css 수정----- -->
 </head>
 <body>
-	<!-- offcanvas(부모회원) -->
-	<style>
-.memberImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	overflow: hidden;
-	background-color: yellow;
-}
-
-.offcanvas-end {
-	width: 300px;
-}
-
-.offcanvas-body {
-	text-align: center;
-}
-
-.offcanvas-body div {
-	margin-top: 25px;
-}
-.memberImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	overflow: hidden;
-	background-color: yellow;
-}
-
-.offcanvas-end {
-	width: 300px;
-}
-
-.offcanvas-body {
-	text-align: center;
-}
-
-.offcanvas-body div {
-	margin-top: 25px;
-}
-</style>
 	<!-- /offcanvas -->
 	<div>
 		<c:if test="${empty kidInfoDto}">
@@ -312,7 +275,7 @@ section {
 		<section><br><br><br><br><br><br><br><br>
 			<div class="topCont d-flex justify-content-between">
 				<div><a href="javascript:history.back();">다른 아이 보러가기</a></div>
-				<div>${ kidInfoDto.k_name }</div>
+				<div style="font-size: 22px; font-weight: 500;">${ kidInfoDto.k_name }</div>
 				<form name="reportIdx" action="reportWrite.do">
 					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
 				<div>
@@ -329,7 +292,7 @@ section {
 	
 			<div class="item1">
 				<div class="childImg">
-					<img src="/upload/${fn:replace(kidInfoDto.c_imgpath, ',', '')}" alt="아이 사진" width="200px" height="200px" onerror="this.remove();"><br>
+					<img src="/upload/${fn:replace(kidInfoDto.c_imgpath, ',', '')}" alt="아이 사진" width="200px" height="200px"><br>
 				</div>
 				<div class="childInfo">
 					<c:if test="${kidInfoDto.k_gender == 1 }">
@@ -402,7 +365,9 @@ section {
 					</div>
 				</li>
 			</ul>
-			<div><input type="button" value="인터뷰 요청"></div>
+			<div class="btns">
+			<button type="button" class="btn btn-outline-success">인터뷰 요청</button>
+			</div>
 		</section>
 	</div>	
 </body>

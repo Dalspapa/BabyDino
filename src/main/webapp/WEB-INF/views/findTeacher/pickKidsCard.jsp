@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<!-- 지원 20211213 css 수정 및 추가 -->
 <style>
 .pignose-calendar-unit-disabled a {
 	color: red !important
@@ -17,6 +18,38 @@
 
 .is-invalid {
 	border: 1px solid #dc3545 !important;
+}
+.container .row{
+    width: 80%;
+    margin: 6% auto;
+    text-align: center;
+}
+.container .row .col-12 h2{
+	font-family: 'S-Air';
+	font-size: 23px;
+}
+.container .row .col-12 h4{
+	margin-top: 35px;
+}
+.container .row .col-12 h5{
+    margin-top: 22px;
+}
+.container .row .col-12 h2{
+	margin-top: 15px;
+}
+.container .row .col-12 .btns{
+	margin: 2% auto;
+}
+.contaniner #step3 .wrapper .row .text .row{ 
+    width: 80%;
+    /* margin: 1% 31%; */
+}
+.contaniner #step3 .wrapper .row .btns{
+    margin: 1% auto;
+}
+.cost {
+	margin-left : 70%;
+	margin-top: 1%;
 }
 </style>
 </head>
@@ -65,7 +98,7 @@
 						</div>
 					</c:forEach>
 					<c:if test="${kidCardLength != 3 }">
-						<div>
+						<div class="btns">
 							<button type="submit" class="btn btn-secondary btn-lg">아이카드추가</button>
 						</div>
 					</c:if>
@@ -130,7 +163,7 @@
 						<h5>시작시간</h5>
 						<select id="start_date" class="form-control" style="width: 20%; float: right;">
 							<c:forEach begin="07" end="22" var="startDate">
-								<option value="${startDate}">${startDate }</option>
+								<option value="${startDate}">${startDate }</option>시
 							</c:forEach>
 						</select>
 					</div>
@@ -138,24 +171,25 @@
 						<h5>종료시간</h5>
 						<select id="end_date" class="form-control"  style="width: 20%;">
 							<c:forEach begin="08" end="23" var="endDate">
-								<option value="${endDate}">${endDate}</option>
+								<option value="${endDate}">${endDate}</option>시
 							</c:forEach>
 						</select>
 					</div>
 				</div>
 				<div class="row">
-					<div>
+					<div class="text">
 						<div class="row">
-							<div>맘시터에게 지급할 희망 시급을 적어주세요.</div>
+							<div style="display: flex; justify-content: center;">
+							맘시터에게 지급할 희망 시급을 적어주세요.</div>
 							<div class="col-md-8">
-								<input id="cost" class="form-control" name="cost" type="text"
-									placeholder="희망시급" aria-label="default input example">
+								<input id="cost" class="cost" name="cost" type="text"
+									placeholder="희망시급" aria-label="default input example">원
 							</div>
 						</div>
 					</div>
-					<div>
+					<div class="btns">
 						<!-- kidList GO -->
-						<button type="button" class="btn btn-outline-primary"
+						<button type="button" class="btn btn-outline-primary" style="margin-left: 48%; margin-top: 1%;"
 							onclick="goKidList()">등록하기</button>
 					</div>
 				</div>
@@ -171,6 +205,10 @@
 
 <!-- pignose-calendar -->
 <link rel="stylesheet" href="./common/css/pignose.calendar.min.css">
+
+<script src="./common/js/pignose.calendar.full.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 
 <script>
 

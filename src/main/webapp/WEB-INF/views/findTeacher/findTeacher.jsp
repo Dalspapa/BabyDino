@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-
+<!-- -지원css 수정및 추가 -->
 <style>
 #cardImg {
 	width: 50px;
@@ -18,28 +18,39 @@
 }
 
 .isTest {
-	background-color: red;
+	background-color:#68983b;
+}
+.title{
+	font-size: 22px;
+    font-family: 'S-Air';
+    font-weight: 500;
+    margin-top: 200px;
+    text-align: center;
+}
+section .container{
+    margin: auto 34%;
+    text-align: center;
 }
 </style>
 </head>
 <body>
-	<h1>선생님찾기 페이지</h1>
-	<section>
+	<!-- <div class="title">선생님찾기 페이지</div>-->
+	<section class="title">
 		<div class="container">
 			<!-- 필터[START] -->
 			<div class="row">
 				<div class="col-6">
 					<div class="row" style="justify-content: space-between;">
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="first" onclick="changeDiv('first')">1</div>
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="second" onclick="changeDiv('second')">2</div>
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="third" onclick="changeDiv('third')">3</div>
-						<div style="width: 20%; border: 1px solid red; height: 30px;"
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
 							name="cDiv" id="four" onclick="changeDiv('four')">4</div>
 					</div>
-					<button onclick="check()">check</button>
+					<button class="btn btn-outline-success" onclick="check()" style="margin-top: 25px;">check</button>
 
 					<div class="row mt-4">
 						<div class="form-check w-50">
@@ -89,7 +100,7 @@
 							onclick="location.href='${contentUrl}'">
 							<div class="flip-card-front">
 								<div class="mb-2">
-									<img src="/upload/${fn:replace(tDto.c_imgpath, ',', '')}" alt="선생님사진" ><br>
+									<img src="/upload/${tDto.c_imgpath}" alt="선생님사진" ><br>
 									<input type="hidden" name="idx" value="${ tDto.idx }">
 								</div>
 								<div>

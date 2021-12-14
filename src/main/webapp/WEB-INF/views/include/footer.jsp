@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
       
   <!-- 로그인 Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,69 +62,70 @@
     </div>
   <!-- ./로그인 Modal -->
   </div>
-  
-  
 
-  
-  
-	<!-- footer -->
-	<footer class="row">
-	    <div class="col-xxl-12 col-lg-8 col-sm-4 col-xs  foot">
-	      <span class="footer-logo">
-	        <h5>
-	          <span class="d-block">BABY</span>
-	          <span>DINODAUR</span>
-	        </h5>
-	      </span>
-	      <div class="footer-address">
-			<p>상호 : (주)아기공룡</p><br>
-			
-			<address>
-			  <p>육아에 도움이 필요할 땐</p>
-			  <p>아기공룡이 도와드리겠습니다.</p>													  
-			</address>
-			<div class="footer-copyright">
-			  <p>ⓒBABYDINOSAUR</p>				  
-	      </div>
-	    </div>
-	    <div class="footer-address">							  
-			<div>오시는 길</div><br>
-			   <address>
-				 <p>본사</p>
-				 <p>서울특별시 마포구 망원동 <br>이젠 그라운드 E479</p>
-			   </address>
-		</div>
-		<div class="footer-address">
-			<div>아기공룡 고객지원</div><br>
-			   <address>
-					<p>운영시간 | 평일 10:00~19:00</p>
-					<p>카톡 | 카카오톡 친구 아기공룡</p> 
-					<p>전화 | 1577 4040</p>
-					<p>메일 | contact@jaranda.kr</p>
-					<p>블로그 | blog.naver.com/jaranblog</p>			
-			   </address>
-		 </div>
-		 <div class="footer-about">
-	        <h5>ABOUT</h5>
-				<p>
-	              <strong>NEWSLETTER</strong> 
-	            </p>
-	            <p>
-	              <strong>CONTACTUS</strong> 
-	            </p>
-	            <p></p>
-	            <p>이용약관</p>
-	            <p>개인정보취급방침</p>
-	      </div>      
-	   </div>
-	</footer>
+<!-- footer -->
+<footer class="row">
+    <div class="col-xxl-12 col-lg-8 col-sm-4 col-xs  foot">
+      <span class="footer-logo">
+        <h5>
+          <span class="d-block">BABY</span>
+          <span>DINODAUR</span>
+        </h5>
+      </span>
+      <div class="footer-address">
+		<p>상호 : (주)아기공룡</p><br>
+		
+		<address>
+		  <p>육아에 도움이 필요할 땐</p>
+		  <p>아기공룡이 도와드리겠습니다.</p>													  
+		</address>
+		<div class="footer-copyright">
+		  <p>ⓒBABYDINOSAUR</p>				  
+      </div>
+    </div>
+    <div class="footer-address">							  
+		<div>오시는 길</div><br>
+		   <address>
+			 <p>본사</p>
+			 <p>서울특별시 마포구 망원동 <br>이젠 그라운드 E479</p>
+		   </address>
+	</div>
+	<div class="footer-address">
+		<div>아기공룡 고객지원</div><br>
+		   <address>
+				<p>운영시간 | 평일 10:00~19:00</p>
+				<p>카톡 | 카카오톡 친구 아기공룡</p> 
+				<p>전화 | 1577 4040</p>
+				<p>메일 | contact@jaranda.kr</p>
+				<p>블로그 | blog.naver.com/jaranblog</p>			
+		   </address>
+	 </div>
+	 <div class="footer-about">
+        <h5>ABOUT</h5>
+			<p>
+              <strong>NEWSLETTER</strong> 
+            </p>
+            <p>
+              <strong>CONTACTUS</strong> 
+            </p>
+            <p></p>
+            <p>이용약관</p>
+            <p>개인정보취급방침</p>
+      </div>      
+   </div>
+</footer>
+ <body onkeydown="javascript:onEnterLogin();">
+
+
+
+</body>
 
   <!-- 헤더이벤트처리 -->
   <script>
   
-  <!-- login -->
+  <!--login -->
   function ajaxTest(){
-	  
+
 	var id = $("#ID").val();
 	var pwd = $("#PWD").val();
 	
@@ -168,13 +172,6 @@
 };
 															 
   $(function(){
-	  
-	//엔터키 누를시 로그인처리
-// 	$('input[type=password]').change(function(e){
-// 		if (e.keyCode == 13) { //엔테키면
-// 			ajaxTest();
-// 		}
-// 	});
 
 	// 스크롤이 0보다 크면 클래스 이벤트 추가
 	var navbarShrink = function () {
@@ -216,7 +213,7 @@
 	    document.querySelectorAll('#navbarResponsive .nav-link')
 	);
 	responsiveNavItems.map(function (responsiveNavItem) {
-	    responsiveNavItem.addEventListener('click', function(){
+	    responsiveNavItem.addEventListener('click', () => {
 	        if (window.getComputedStyle(navbarToggler).display !== 'none') {
 	            navbarToggler.click();
 	        }
@@ -225,6 +222,18 @@
 
   });
 	
+//엔터키로 로그인하기
+ 	function onEnterLogin(){
+
+		var keyCode = window.event.keyCode;
+
+		if (keyCode == 13) { //엔테키면
+
+			ajaxTest();
+
+		}
+
+	} //onEnterLogin()
 
 </script>
 
