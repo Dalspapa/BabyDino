@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import dino.dto.MemberDto;
 import dino.member.service.MemberService;
@@ -218,24 +221,35 @@ public class MemberController {
 			mav.setViewName("member/findPwdMsg");
 			return mav;			
 		}
-		
-		//계정관리 전 본인인증
-		@RequestMapping("/accountCheck.do")
-		public String accountCheck(MemberDto memberDto) {
-										
-			String result = memberService.accountCheck(memberDto);
-			if (result == memberDto.getId() || result.equals(memberDto.getId())) {
-				return result;
-			}
-			
-			return "";
-		}
-		
-		//계정관리
-		@RequestMapping("/accountManagement.do")
-		public String accoutManagement() {
-			return ("commonMember/accountManagement");
-		}
+				
+/////////////////주호
+		//계정관리	
+		 @RequestMapping(value = "/accountManagement.do", method=RequestMethod.GET) 
+		 public String accoutManagement() {
+			 return ("commonMember/accountManagement");
+		 }
+		 
+		 //계정관리 비번 확인
+		 @ResponseBody
+		 @RequestMapping(value = "/accountCheck.do", method=RequestMethod.POST)
+		 public ResponseEntity<?> accountCheck(MemberDto mdto) {
+			 
+			 System.out.println("컨트롤러로 넘어온 계정 관리 비번 "+mdto.toString());
+			 
+			 HashMap<String, Object> result = new HashMap<String, Object>();
+			 
+			 String rst = memberService.accountCheck(mdto);
+			 if (StringUtils.isEmpty(rst)) {
+				 result.put("result", mdto.getId());
+			 }
+			 result.put("result", mdto.getId());
+			 
+			 
+			 return ResponseEntity.ok(result);
+		 }
+		 
+/////////////////주호 끝
+		 
 }
 
 

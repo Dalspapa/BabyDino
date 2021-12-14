@@ -106,7 +106,7 @@
    	FROM 
    		d_member 
    	WHERE 
-   		idx = #{idx} and pwd = #{pwd}
+   		pwd = #{pwd} and idx = #{idx}
    
    </select>
    

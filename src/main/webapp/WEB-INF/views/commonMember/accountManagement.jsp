@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>계정관리</title>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 section {
    	width: 694px;
@@ -141,54 +140,142 @@ ttl {
 </style>
 </head>
 <body>
-  <div>
-     <section>
-     <div class="container">
-    	 <div class="appbar">
-    		 <div class="backward">
-    		 <img src="https://cdn.mom-sitter.com/momsitter-app/static/public/svg/backward.svg" alt="">
-    		 </div>
-    	 <div class="title">계정 관리</div>
-    		 <div class="_36gBs">
-    	 		<div class = "_2nIFL">
-    				<div class="_1vbgj">
-     					<div class="nATE5">
-    						<div class="_1QQ_I">회원 유형</div>
-     						<div class="qlKb8">##유형 코드 들어갈 곳</div>
-     					</div>
-    					<div class="nATE5">
-     						<div class="_1QQ_I">사용중인 아이디</div>
-     						<div class="qlKb8">##아이디 코드 들어갈 곳</div>
-     					</div>
-     					<div class="nATE5">
-     						<div class ="_1QQ_I">가입한 휴대폰 번호</div>
-     						<div class="qlKb8">##번호 코드 들어갈 곳</div>
-     					</div>
-     					<div class="nATE5">
-     						<div class ="_1QQ_I">가입한 이메일</div>
-     						<div class="qlKb8">##메일 코드 들어갈 곳</div>
-     					</div>
-    	 			</div>
-     			</div>
-     	<div class="_1Iazm"></div>
- 		<div class="mintitle">
- 			<span><a href="#">내 주소 수정하기</a></span>
- 			<i class="far fa-angle-right"></i>
- 		</div>
-     <div class="_2MTRN"></div>
-    	<div class="mintitle">
-    		<span><a href="#">비밀번호 변경</a></span>
-    		<i class="far fa-angle-right"></i>
-    	</div>
-     <div class="_2MTRN"></div>
-    	<div class="mintitle">
-    		<span><a href="#">아기공룡 회원 탈퇴하기</a></span>
-    		<i class="far fa-angle-right"></i>
-    	</div>
-	</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="accountCheck">
+	<div>
+		<form name="accountForm">
+			<fieldset style="width:350px; margin: 0px auto;">
+				<legend>본인확인 비밀번호 확인</legend>
+				<input type="password" class="form-control form-control-sm w-50" name="pwd" id="APWD" placeholder="6자리 이상 입력해주세요." autocomplete="off" />
+				<span id="msg" style="display: flex; align-item: center;"></span>
+				<button id="accountTest" onclick="show();">확인하기</button>
+			</fieldset>
+		</form>
+	</div>	
 </div>
-</div>
-</section>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="hideDiv" id="accountCheck2">
+	<section>
+		<div class="container">
+			<div class="appbar">
+			<div class="backward">
+			<img src="https://cdn.mom-sitter.com/momsitter-app/static/public/svg/backward.svg" alt="imgs">
+			</div>
+			<div class="title">계정 관리</div>
+				<div class="_36gBs">
+					<div class = "_2nIFL">
+						<div class="_1vbgj">
+							<div class="nATE5">
+								<div class="_1QQ_I">회원 유형</div>
+								<div class="qlKb8">##유형 코드 들어갈 곳</div>
+							</div>
+							<div class="nATE5">
+								<div class="_1QQ_I">사용중인 아이디</div>
+								<div class="qlKb8">##아이디 코드 들어갈 곳</div>
+							</div>
+							<div class="nATE5">
+								<div class ="_1QQ_I">가입한 휴대폰 번호</div>
+								<div class="qlKb8">##번호 코드 들어갈 곳</div>
+							</div>
+							<div class="nATE5">
+								<div class ="_1QQ_I">가입한 이메일</div>
+								<div class="qlKb8">##메일 코드 들어갈 곳</div>
+							</div>
+						</div>
+					</div>
+						<div class="_1Iazm"></div>
+					<div class="mintitle">
+						<span><a href="#">내 주소 수정하기</a></span>
+						<i class="far fa-angle-right"></i>
+					</div>
+					<div class="_2MTRN"></div>
+					<div class="mintitle">
+						<span><a href="#">비밀번호 변경</a></span>
+						<i class="far fa-angle-right"></i>
+					</div>
+					<div class="_2MTRN"></div>
+					<div class="mintitle">
+						<span><a href="#">아기공룡 회원 탈퇴하기</a></span>
+						<i class="far fa-angle-right"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
 </body>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
+<script>
+
+	$(document).ready(function() {
+	
+		$('.hideDiv').hide();
+		
+	});
+	
+	$('#accountTest').click(function(){
+	
+	let pwd = $('#APWD').val();
+	if(pwd.trim().length < 6){
+		alert('6자이상 입력해주세요');
+	}
+	
+
+	console.log('hi');
+	let id = '${sid}';
+	let idx = ${sidx};
+		 
+	let fmdata = new FormData();
+	
+	fmdata.set('pwd', pwd);
+	fmdata.set('idx', idx);
+	
+	fmdata.forEach(function(value, key) {
+		console.log(key, value);
+	})
+	
+	$.ajax({
+		
+		method : 'POST',
+		url : 'accountCheck.do',
+		data : fmdata,
+		processData: false,
+		contentType: false,
+		success : function(result){
+			
+			if (result == id) {
+				console.log(result);
+				return false;
+				$('.hideDiv').show();
+				$('#accountCheck').hide();
+			} else {
+				console.log(result);
+				alert("틀린 비밀번호 입니다. 다시 시도해주세요.");
+				return false;
+			}
+		},
+		error : function(){
+			alert("잘못된 접근 또는 오류가 발생했습니다.");
+		}
+		
+	});
+
+});
+
+
+
+
+</script>
+
 </html>
+
+
+
+
+
+
+
+
+

@@ -135,8 +135,9 @@ public class MemberServiceImple implements MemberService {
 	}
 	
 	//계정 관리 전 본인 확인
-	public String accountCheck(MemberDto memberDto) {		
-		return memberDao.accountCheck(memberDto);
+	public String accountCheck(MemberDto mdto) {
+		System.out.println("==========service id check"+mdto.getId());
+		return memberDao.accountCheck(mdto);
 	}
 	
 	

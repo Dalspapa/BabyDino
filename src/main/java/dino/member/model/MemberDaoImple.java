@@ -85,8 +85,9 @@ public class MemberDaoImple implements MemberDao {
 	}
 	
 	//계정 관리 전 본인 확인
-	public String accountCheck(MemberDto memberDto) {		
-		return sqlMap.selectOne("accountCheck", memberDto);
+	public String accountCheck(MemberDto mdto) {
+		System.out.println("==========dao id check"+mdto.getId());
+		return sqlMap.selectOne("accountCheck", mdto);
 	}
 
 }
