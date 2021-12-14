@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,8 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
-import dino.findkids.model.FindKidsDao;
-import dino.findkids.model.FindKidsJoinDto;
+import dino.findkids.model.*;
 
 @Service
 public class FindKidsServiceImple implements FindKidsService {
@@ -78,6 +78,25 @@ public class FindKidsServiceImple implements FindKidsService {
 		System.out.println("==== result : " + result);
 
 	}
+	
+	// 선생님 필수 정보 입력  //////////////주호
+	public int setTeacherCert(TeacherCertDto tcDto) {
+				
+		copyInto(tcDto.getImgpath());
+		
+		System.out.println("sevice로 넘어온 인증 DTo" + tcDto.toString());
+		
+		String certimgpath = tcDto.getImgpath().getOriginalFilename();
+		tcDto.setExemplification(certimgpath);
+		String crimeagree = tcDto.getCrimeagree();
+		if(StringUtils.isEmpty(crimeagree)) {
+			tcDto.setCrimeagree("동의합니다.");
+		}
+		
+		int certRst = findkidsDao.setTeacherCert(tcDto);
+		
+	return certRst;
+}//////////////주호 끝
 
 	//img copy method
 	public void copyInto(MultipartFile imgFiles) {

@@ -133,5 +133,12 @@ public class MemberServiceImple implements MemberService {
 		int result = memberDao.memberOut(idx);
 		return result;
 	}
+	
+	//계정 관리 전 본인 확인
+	public String accountCheck(MemberDto memberDto) {		
+		return memberDao.accountCheck(memberDto);
+	}
+	
+	
 }
 
