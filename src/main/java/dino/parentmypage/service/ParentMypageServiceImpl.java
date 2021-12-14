@@ -49,5 +49,17 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 		List<ParentMypageDto> list = parentMypageDao.careNoteList(idx);
 		return list;
 	}
+
+	//선생님 진행중 돌봄 목록
+	public List<ParentMypageDto> t_proceedingMain_ing(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.t_proceedingMain_ing(idx);
+		return list;
+	}
+
+	//선생님 완료된 돌봄 목록
+	public List<ParentMypageDto> t_proceedingMain_done(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.t_proceedingMain_done(idx);
+		return list;
+	}
 }
 

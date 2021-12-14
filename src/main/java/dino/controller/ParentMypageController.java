@@ -19,7 +19,7 @@ public class ParentMypageController {
 	private ParentMypageService parentMypageService;
 
 	/**
-	 * 돌봄 현황 페이지
+	 * 부모님 돌봄 현황 페이지
 	 * @return
 	 */
 	@RequestMapping("/proceedingMain.do")
@@ -34,7 +34,23 @@ public class ParentMypageController {
 	}
 
 	/**
-	 * 매칭된 돌봄 현황 페이지
+	 * 선생님 돌봄 현황 페이지
+	 * @param idx
+	 * @return
+	 */
+	@RequestMapping("/t_proceedingMain.do")
+	public ModelAndView t_proceedingMain_ing(@RequestParam("idx")int idx) {
+		List<ParentMypageDto> t_list_ing = parentMypageService.t_proceedingMain_ing(idx);
+		List<ParentMypageDto> t_list_done = parentMypageService.t_proceedingMain_done(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("t_list_ing",t_list_ing);
+		mav.addObject("t_list_done",t_list_done);
+		mav.setViewName("teacherMypage/t_proceedingMain");
+		return mav;
+	}
+
+	/**
+	 * 부모님 - 매칭된 돌봄 현황 페이지
 	 * @return
 	 */
 	@RequestMapping("/caring.do")
@@ -43,6 +59,20 @@ public class ParentMypageController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto",dto);
 		mav.setViewName("parentMypage/caringPage");
+		return mav;
+	}
+
+	/**
+	 * 선생님 - 매칭된 돌봄 현황 페이지
+	 * @param idx
+	 * @return
+	 */
+	@RequestMapping("/t_caring.do")
+	public ModelAndView t_caring(@RequestParam("idx") int idx) {
+		ParentMypageDto dto = parentMypageService.caring(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto",dto);
+		mav.setViewName("teacherMypage/t_caringPage");
 		return mav;
 	}
 

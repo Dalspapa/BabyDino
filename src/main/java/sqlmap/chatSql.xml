@@ -63,10 +63,6 @@
 	</select>
 
 	<insert id="addChatRoom" parameterType="map">
-<!-- 		<selectKey resultType="Integer" keyProperty="idx" order="AFTER">
-			SELECT D_CHATROOM_IDX.NEXTVAL FROM DUAL
-		</selectKey> -->
-
 		INSERT INTO
 		    D_CHATROOM
 		VALUES
@@ -96,5 +92,25 @@
 		WHERE CHATROOM_IDX = #{roomIdx}
 		ORDER BY MESSAGE_IDX ASC
 	</select>
+	
+	<insert id="saveChatMessage" parameterType="dino.dto.ChatMessageDto">
+		INSERT INTO 
+		    D_CHATMESSAGE (
+		    	IDX
+		    	, MESSAGE
+		    	, D_MEMBER_IDX
+		    	, D_CHATROOM_IDX
+		    	, SEND_TIME
+		    	, READ
+		    )
+		VALUES (
+		    D_CHATMESSAGE_IDX.NEXTVAL,		/* IDX */
+		    #{message},						/* MESSAGE */
+		    #{d_member_idx},				/* D_MEMBER_IDX */
+		    #{d_chatroom_idx},				/* D_CHATROOM_IDX */
+		    #{send_time},					/* SEND_TIME */
+		    1								/* READ */
+		)
+	</insert>
 
 </mapper>

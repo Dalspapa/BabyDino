@@ -210,7 +210,7 @@
 </style>
 	
 <script>
-function listView(userid){
+function listView(userid) {
     let f = document.createElement('form');
     
     let obj;

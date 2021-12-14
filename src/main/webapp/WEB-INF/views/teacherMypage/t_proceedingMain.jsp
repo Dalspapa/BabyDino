@@ -88,26 +88,26 @@ a:link, a:visited {
 
         <!-- 진행중 섹션 -->
 		<div id="section01">
-			<c:if test="${ empty list_ing }">
+			<c:if test="${ empty t_list_ing }">
 				<div class="nolist"><h2 style="line-height: 300px;"> 진행중인 돌봄 사항이 없습니다. </h2></div>
 			</c:if>
-		   	<c:forEach var="l_ing" items="${ list_ing }">
+		   	<c:forEach var="tl_ing" items="${ t_list_ing }">
 				<div class="contentbody">
 					<!-- 선생님 카드 -->
-					<c:url var="contentUrl" value="caring.do">
-						<c:param name="idx">${ l_ing.r_idx }</c:param>
+					<c:url var="contentUrl" value="t_caring.do">
+						<c:param name="idx">${ tl_ing.r_idx }</c:param>
 					</c:url>
 					<a href="${ contentUrl }">
 					<div class="t_card">
-						<div class="pic"><img alt="선생님기본사진" src="./common/img/basic/teacher.png" style="width: auto; max-height: 100%;"></div>
-						<div class="intro">${l_ing.t_introduce}</div>
+						<div class="pic"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
+						<div class="intro">${tl_ing.k_introduce}</div>
 					</div>
 					</a>
 					<!-- 선생님 정보 -->
 					<div class="info">
-						<div>선생님 이름 : ${l_ing.name}</div>
-						<div>돌봄 가능 유형 : ${l_ing.t_care_type}</div>
-						<div>희망 시급 : ${l_ing.t_cost}원</div>
+						<div>아이 이름 : ${tl_ing.k_name}</div>
+						<div>돌봄 유형 : ${tl_ing.k_care_type}</div>
+						<div>요구 사항 : ${tl_ing.k_require}</div>
 						<button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
 					</div>
 				</div>
@@ -116,27 +116,26 @@ a:link, a:visited {
 
         <!-- 완료된 섹션 -->
 		<div id="section002">
-			<c:if test="${ empty list_done }">
+			<c:if test="${ empty t_list_done }">
 				<div class="nolist"><h2 style="line-height: 300px;"> 완료된 돌봄 사항이 없습니다. </h2></div>
 			</c:if>
-		   	<c:forEach var="l_done" items="${ list_done }">
+		   	<c:forEach var="tl_done" items="${ t_list_done }">
 				<div class="contentbody">
 					<!-- 선생님 카드 -->
-					<c:url var="contentUrl" value="caring.do">
-						<c:param name="idx">${ l_done.r_idx }</c:param>
+					<c:url var="contentUrl" value="t_caring.do">
+						<c:param name="idx">${ tl_done.r_idx }</c:param>
 					</c:url>
 					<a href="${ contentUrl }">
 					<div class="t_card">
-						<div class="pic"><img alt="선생님기본사진" src="./common/img/basic/teacher.png" style="width: auto; max-height: 100%;"></div>
-						<div class="intro">선생님 소개 : ${l_done.t_introduce}</div>
+						<div class="pic"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
+						<div class="intro">${tl_done.k_introduce}</div>
 					</div>
 					</a>
 					<!-- 선생님 정보 -->
 					<div class="info">
-						<div>선생님 이름 : ${ l_done.name}</div>
-						<div>돌봄 가능 유형 : ${ l_done.t_care_type}</div>
-						<div>희망 시급 : ${ l_done.t_cost}원</div>
-						<div>${ l_done.care_time}</div>
+						<div>아이 이름 : ${ tl_done.k_name}</div>
+						<div>돌봄 유형 : ${ tl_done.k_care_type}</div>
+						<div>요구 사항 : ${tl_done.k_require}</div>
 						<button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
 					</div>
 				</div>

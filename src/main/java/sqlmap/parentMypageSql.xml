@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.parentmypage">
-	<!-- 진행중 돌봄 목록 -->
+	<!-- 부모님 진행중 돌봄 목록 -->
 	<select id="proceedingMain_ing" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
 		    m.name
@@ -22,7 +22,7 @@
             r.status != 7
 	</select>
 
-	<!-- 완료된 돌봄 목록 -->
+	<!-- 부모님 완료된 돌봄 목록 -->
 	<select id="proceedingMain_done" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
 		    m.name
@@ -41,7 +41,7 @@
             r.status = 7
 	</select>
 
-	<!-- 돌봄진행중인건 페이지 -->
+	<!-- 부모님 돌봄진행중인건 페이지 -->
 	<select id="caringPage" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
 	         k.idx
@@ -64,7 +64,7 @@
 	    	r.idx = #{idx}
 	</select>
 
-	<!-- 아이카드조회 페이지 -->
+	<!-- 부모님 아이카드조회 페이지 -->
 	<select id="kidsCard" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
 		    k.k_name
@@ -80,7 +80,7 @@
 		    m.idx = k.d_member_idx and m.idx = #{idx}
 	</select>
 
-	<!-- 돌봄카드목록 페이지 -->
+	<!-- 부모님 돌봄카드목록 페이지 -->
 	<select id="careNoteList" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
 		     m.name
@@ -94,4 +94,41 @@
 		and
 		    r.member_p_idx = #{idx}
 	</select>
+
+	<!-- 선생님 진행중 돌봄 목록 -->
+	<select id="t_proceedingMain_ing" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
+		select
+		         k.k_name
+		        ,k.k_introduce
+		        ,k.k_care_type
+		        ,k.k_require
+		        ,r.idx as r_idx
+		from
+		       d_reserve r, d_kidcard k, d_teachercard t, d_member m
+		where
+		       r.kid_idx = k.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		and
+		        t.d_member_idx = #{idx}
+		and
+		       r.status != 7
+	</select>
+
+	<!-- 선생님 완료된 돌봄 목록 -->
+	<select id="t_proceedingMain_done" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
+		select
+		         k.k_name
+		        ,k.k_introduce
+		        ,k.k_care_type
+		        ,k.k_require
+		        ,r.idx as r_idx
+		from
+		       d_reserve r, d_kidcard k, d_teachercard t, d_member m
+		where
+		       r.kid_idx = k.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		and
+		        t.d_member_idx = #{idx}
+		and
+		       r.status = 7
+	</select>
+
 </mapper>

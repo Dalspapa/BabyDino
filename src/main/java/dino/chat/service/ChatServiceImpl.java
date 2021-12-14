@@ -26,22 +26,6 @@ public class ChatServiceImpl implements ChatService {
 		this.chatDao = chatDao;
 	}
 
-	
-	
-	
-//	public Map<String, Object> doAdd(Map<String, Object> param) {
-//		chatDao.add(param);
-//
-//		Map<String, Object> rs = new HashMap<String, Object>();
-//
-//		rs.put("resultCode", "S-1");
-//		rs.put("msg", "채팅방이 생성되었습니다.");
-//		int id = ((BigInteger) param.get("id")).intValue();
-//		rs.put("id", id);
-//
-//		return rs;
-//	}
-
 	//채팅방리스트 출력
 	public List<ChatListVo> getList(int sessionIdx) {
 		List<ChatListVo> list = chatDao.getList(sessionIdx);
@@ -76,24 +60,9 @@ public class ChatServiceImpl implements ChatService {
 		return messageList;
 	}
 
-//	public ChatRoomDto findById(int id) {
-//		return chatDao.findById(id);
-//	}
-//
-//	public Map<String, Object> addMessage(Map<String, Object> param) {
-//		chatDao.addMessage(param);
-//
-//		Map<String, Object> rs = new HashMap<String, Object>();
-//
-//		rs.put("resultCode", "S-1");
-//		rs.put("msg", "채팅 메세지가 생성되었습니다.");
-//		int id = ((BigInteger) param.get("id")).intValue();
-//		rs.put("id", id);
-//
-//		return rs;
-//	}
-//
-//	public List<ChatMessageDto> getMessages(int roomId, int from) {
-//		return chatDao.getMessages(roomId, from);
-//	}
+	public int saveChatMessage(ChatMessageDto chatMessageDto) {
+		int result = chatDao.saveChatMessage(chatMessageDto);
+		return result;
+	}
+
 }
