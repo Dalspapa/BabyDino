@@ -5,19 +5,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-<<<<<<< HEAD
 <!-- 지원 css 추가 수정 -->
 <style>
 section{
 	font-family: 'S-Air';
 	width: 80%;
-	margin: 0px auto;
-=======
-<!-- 20211214지원css 수정 -->
-<style>
-section{
-    font-family: 'S-Air';
->>>>>>> master_new
 }
 section .row .mtitle{
     font-size: 20px;
@@ -25,7 +17,6 @@ section .row .mtitle{
     margin-top: 10px;
 }
 #cardImg {
-<<<<<<< HEAD
 	width: 50px;
 	heitht: 50px;
 }
@@ -40,16 +31,9 @@ section .container{
 
 .pignose-calendar-unit-disabled a {
 	color:#68983b !important;
-=======
     width: 50px;
     heitht: 50px;
 }
-
-.pignose-calendar-unit-disabled a {
-    color: red !important
->>>>>>> master_new
-}
-
 .isTest {
     background-color: red;
 }
@@ -57,9 +41,7 @@ section .container{
     margin-top: 107px;
     width: 80%;
 }
-.container .search {
-    margin: 146px auto;
-}
+
 .container .search .btns{
     text-align: center;
 }
@@ -189,17 +171,11 @@ section .container{
 					</section>
 					
 					<!-- 요 버튼 누르면 위에 조건들 수행 -->
-<<<<<<< HEAD
-					<!-- 검색버튼 좀 더 키워주세요-->
-					<div class="btns" style="text-align: center;">
-						<button class="btn btn-outline-success btn-lg" type="reset">RESET</button>
-				 		<button class="btn btn-outline-success btn-lg" type="button" onclick="showTeacherList()">SEARCH</button>
-=======
+					
 					<!-- 검색버튼 좀 더 키워주세요 -->
-					<div>
+					<div class="btns" style="text-align: center;margin-right: 190px;">
 						<button class="btn btn-outline-success" type="reset">RESET</button>
 				 		<button class="btn btn-outline-success" type="button" onclick="fnShowTeacherList()">SEARCH</button>
->>>>>>> master_new
 				 	</div>
 		      	</form>
 			</div>
