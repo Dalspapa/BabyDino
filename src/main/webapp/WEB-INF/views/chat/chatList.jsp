@@ -273,8 +273,8 @@ function listView(userid) {
             		<c:set var="receiverIdx" value="${ chatVo.receiver }" />
             		<c:set var="receiverName" value="${ chatVo.receiver_name }" />
             		<c:set var="receiverType" value="${ chatVo.receiver_type }" />
-            		<c:set var="lastMIdx" value="${ chatVo.message_idx }" />
-	                <c:set var="lastRead" value="${ chatVo.read }" />
+            		<c:set var="lastMIdx" value="${ chatVo.last_m_idx }" />
+	                <c:set var="lastRead" value="${ chatVo.last_read }" />
 	                
             		<!-- 보낸사람 이름으로 채팅방 출력 -->
            		  	<c:choose>
@@ -303,11 +303,11 @@ function listView(userid) {
 								<c:when test="${ chatPartnerType == 1}">
 									 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
 								</c:when>
-								<c:when test="${ chatPartnerType == 4}">
-									 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+								<c:when test="${ chatPartnerType == 2 || chatPartnerType == 3 || chatPartnerType == 8}">
+									 <img src="https://bootdey.com/img/Content/user_6.jpg" alt="" class="img-circle">
 								</c:when>
 								<c:otherwise>
-									<img src="https://bootdey.com/img/Content/user_6.jpg" alt="" class="img-circle">
+									<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
 								</c:otherwise>
 							</c:choose>
 	                		
@@ -317,13 +317,13 @@ function listView(userid) {
                 			</div>
                 			
                 			<!-- 마지막으로 남긴 메시지 -->
-	                		<div class="last-message text-muted">${ chatVo.message }</div>
+	                		<div class="last-message text-muted">${ chatVo.last_message }</div>
 	                		
 	                		<!-- 마지막 채팅 보낸 시간 -->
-	                		<small class="time text-muted">${ chatVo.send_time }</small>
+	                		<small class="time text-muted">${ chatVo.last_send_time }</small>
 	                		
 	                		<!-- 새로운 메시지 알림 -->
-	                		<c:if test="${ sessionIdx != lastMIdx && read == 1 }">
+	                		<c:if test="${ sessionIdx != lastMIdx && lastRead == 1 }">
 	                			<small class="chat-alert label label-danger">NEW</small>
 	                		</c:if>
 	                	</a>
