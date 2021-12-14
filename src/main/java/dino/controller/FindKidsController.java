@@ -232,6 +232,7 @@ public class FindKidsController {
 	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request, FindKidsJoinDto tDto, Common_ImgDto imgDto, MakeTCardDto dto) {
 		
 		ModelAndView mav = new ModelAndView();
+		
 		//선생님 회원 등급 수정
 		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
 		if(StringUtils.isEmpty(idx)) {
@@ -257,9 +258,12 @@ public class FindKidsController {
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		boolean success = false;
 		
+		
+		
 		//선생님 회원 인증정보 입력 && 이미지 포함.
 		List<MultipartFile> imgFile = new ArrayList<MultipartFile>();
 		imgFile = dto.getTImg();
+		System.out.println("넘어온 파라미터값 "+dto.getTImg());
 		if (imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
 			imgDto.setC_imgpath("teacher.png");
 		}

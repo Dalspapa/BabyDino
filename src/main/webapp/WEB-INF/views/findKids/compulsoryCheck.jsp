@@ -89,9 +89,9 @@ section p{
 </head>
 <body>
 <h2>필수인증</h2>
-<form id="form" name="t_compulsory" action="cert.do" method="post">
+<form id="form" name="t_compulsory" action="cert.do" method="post" enctype="multipart/form-data">
 <section>
-	<div id="qna">
+<!-- 	<div id="qna"> -->
 	<div id="h_Div">
 		<h4>S T E P 1</h4>
 	</div>
@@ -354,10 +354,18 @@ section p{
 
 	function fnCert(){
 		
+		
+		
+		var str = $('#form').serialize();
+		console.log('str: '+ str);
+
 		return false;
 		
-		
+				
 		$("#form").submit();
+		
+		
+	
 /* let formData = new FormData();
 		
 		formData.set() */

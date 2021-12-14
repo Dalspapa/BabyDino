@@ -35,7 +35,7 @@ public class FindKidsDaoImpl implements FindKidsDao {
 
 		int result = sqlMap.insert("tSetImg", imgDto);
 		//Test Code
-		System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+"member idx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
+		System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+"====member idx====="+imgDto.getD_member_idx()+"====ref idx====="+imgDto.getRef_idx());
 		return result;
 	}
 
@@ -77,7 +77,7 @@ public class FindKidsDaoImpl implements FindKidsDao {
 	//선생님 인증 정보 입력
 	public int teacherCert(FindKidsJoinDto tDto) {
 		System.out.println("teacher certi imple"+tDto.toString());
-		return sqlMap.insert("",tDto);
+		return sqlMap.insert("ㅡㅡㅡ뭐가 없어 또 ",tDto);
 	}
 	
 

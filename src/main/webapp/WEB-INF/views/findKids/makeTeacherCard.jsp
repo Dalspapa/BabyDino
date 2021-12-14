@@ -329,12 +329,12 @@
 
   	$(document).ready(function (){
   		
-  		let ckbs = $('#kidType${kt_opdto.op}').is(':checked');
+/*   		let ckbs = $('#kidType${kt_opdto.op}').is(':checked');
   		
   		if ( ckbs == true ) {
   			$('#kidType${kt_opdto.op}').css("background","url(/common/img/kidType/kidstype${kt_opdto.op}_on.png) no-repeat center/200px 200px");
   		}
-
+ */
   		let name = 'step_'
   		let count = 1;
   		let dName = name + count;
