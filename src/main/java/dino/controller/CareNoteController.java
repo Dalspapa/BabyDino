@@ -17,33 +17,21 @@ public class CareNoteController {
 	@Autowired
 	private CareNoteService careNoteService;
 
-	@RequestMapping("/carenoteList.do")
-	public ModelAndView careNoteList() {
-
-		List<CareNoteDto> list=careNoteService.careNoteList();
-		ModelAndView mav=new ModelAndView();
-
-		mav.addObject("carenoteList", list);
-		mav.setViewName("careNote/careNoteList");
-
-		return mav;
-	}
-
 	/**
-	 * 케어노트 작성화면
+	 * 케어노트 작성
 	 * @return
 	 */
-	@RequestMapping(value="/carenoteForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="/writeCareNote.do")
 	public String carenoteForm() {
 		return "careNote/writeCareNote";
 	}
 
 	/**
-	 * 캐어노트작성
+	 * 캐어노트 서브밋
 	 * @param dto
 	 * @return
 	 */
-	@RequestMapping(value="/carenote/write.do")
+	@RequestMapping(value="/carenote/write.do", method = RequestMethod.POST)
 	public ModelAndView carenoteWrite(CareNoteDto dto) {
 
 		int result=careNoteService.writeCareNote(dto);
