@@ -9,13 +9,11 @@
 <style>
 section {
 	width: 700px;
-    margin-top: 173px!important;
     text-align: center;
     border: 1px solid #68983b;
     border-radius: 110px;
     padding: 45px;
-    margin-left: 630px;
-    margin-bottom: 113px;
+    margin: 8% auto;
 }
 section .title{
 	font-family: 'S-Air';

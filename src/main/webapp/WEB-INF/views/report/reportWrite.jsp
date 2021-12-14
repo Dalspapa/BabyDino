@@ -20,13 +20,11 @@
 	margin-bottom : 50px;
 } */
 .body{
-	width: 747px;
-    margin-left: 414px;
-    margin-top: 130px;
-    margin-bottom: 39px;
+    width: 747px;
     border: 1px solid #68983b;
     border-radius: 110px;
     padding: 33px;
+    margin: 9% auto;
 }
 .appbar {
     display: block;

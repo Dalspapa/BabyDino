@@ -13,6 +13,7 @@
 .careNote .childName{
 	font-family: 'S-Air';
 	color: #68983b;
+	font-size: 22px;
 }
 .careNote .info{
 	font-weight: 500;
@@ -25,7 +26,7 @@
    <div class="careNote">
       <section>
          <div class="childName">
-            <h1>#아이이름 돌봄노트</h1>
+            <div>#아이이름 돌봄노트</div>
          </div>
          <hr>
          <div>

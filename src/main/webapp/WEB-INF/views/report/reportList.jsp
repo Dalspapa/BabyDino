@@ -12,7 +12,7 @@
     margin-top: 123px;
     margin-bottom: 50px;
 }
-.btn a {
+.btns a {
 	text-decoration: none;
 	color : black;
 }
@@ -31,10 +31,10 @@ table a:hover {
 table th,td {
 	text-align : center;
 }
-.btn {
-    justify-content: flex-end;
-    margin-left: 624px;
-    margin-bottom: 21px;
+.btns {
+   justify-content: flex-end;
+    margin: 2% auto;
+    margin-left: 82%;
 }
 .paging {
 	margin-top: -39px;
@@ -81,8 +81,8 @@ table th,td {
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class ="btn">
-		<button type="button" class="btn btn-outline-success"><a href = "reportWrite.do">글쓰기</a></button>
+		<div class ="btns">
+		<button type="button" class="btn btn-outline-success"  onclick=  "location.href = 'reportWrite.do'">글쓰기</button>
 		</div>
 	<!-- 페이징 처리 될 부분 -->
             <div class = "paging">

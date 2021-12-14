@@ -22,6 +22,9 @@
 section .container{
     margin: 10% 34%;
     text-align: center;
+    font-size: 22px;
+    font-family: 'S-Air';
+    font-weight: 500;
 }
 </style>
 </head>

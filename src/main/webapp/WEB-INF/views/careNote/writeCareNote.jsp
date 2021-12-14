@@ -26,17 +26,9 @@ a:link, a:visited {
 	text-decoration: none;
 }
 
-h2 {
-	font-size: 0;
-	line-height: 0;
-	width: 0px;
-	height: 0px;
-	position: absolute;
-	left: -9999px;
-}
-
-.wrapper {
-	width: 100%;
+.main {
+	width: 80%;
+	margin: 5% auto;
 	text-align: center;
 }
 
@@ -57,7 +49,7 @@ h2 {
 }
 
 h3 {
-	color: rgb(56, 173, 101);
+	color: #68983b;
 }
 
 .noteImg {
@@ -73,8 +65,7 @@ h3 {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-	<div class="wrapper">
-	<h2>돌봄 노트 영역</h2>
+	<div class="main">
 		<div class="noteTitle">#아이이름 돌봄노트</div>
 		<form name="writefm" action="/carenote/write.do" method="post">
 		<div class="noteWrap">

@@ -35,7 +35,7 @@ section .container{
 </head>
 <body>
 	<!-- <div class="title">선생님찾기 페이지</div>-->
-	<section>
+	<section class="title">
 		<div class="container">
 			<!-- 필터[START] -->
 			<div class="row">

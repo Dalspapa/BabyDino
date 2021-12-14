@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<!-- 지원 20211213 css 수정 및 추가 -->
 <style>
 .pignose-calendar-unit-disabled a {
 	color: red !important
@@ -19,6 +20,27 @@
 
 .is-invalid {
 	border: 1px solid #dc3545 !important;
+}
+.container .row{
+    width: 80%;
+    margin: 6% auto;
+    text-align: center;
+}
+.container .row .col-12 h2{
+	font-family: 'S-Air';
+	font-size: 23px;
+}
+.container .row .col-12 h4{
+	margin-top: 35px;
+}
+.container .row .col-12 h5{
+    margin-top: 22px;
+}
+.container .row .col-12 h2{
+	margin-top: 15px;
+}
+.container .row .col-12 .btns{
+	margin: 2% auto;
 }
 </style>
 </head>
@@ -35,7 +57,7 @@
 				<div class="col-12">
 					<h5>
 						아이 카드를 선택해주세요.<br>아이카드가 없을 시에 추가 버튼을 눌러 추가해주세요.
-					</h5>
+					</h5><br>
 				</div>
 
 				<div class="col-12">
@@ -67,8 +89,8 @@
 						</div>
 					</c:forEach>
 					<c:if test="${kidCardLength != 3 }">
-						<div>
-							<button type="submit" class="btn btn-secondary btn-lg">아이카드추가</button>
+						<div class="btns">
+							<button type="submit" class="btn btn-outline-success">아이카드추가</button>
 						</div>
 					</c:if>
 					<div>
@@ -108,7 +130,7 @@
 							</c:if>
 						</div>
 						<div class="col-12 mt-3">
-							<button type="button" class="btn btn-primary" onclick="kakaopost()">수정하기</button>
+							<button type="button" class="btn btn-outline-success" onclick="kakaopost()">수정하기</button>
 						</div>
 					</div>
 					<div class="mt-3">

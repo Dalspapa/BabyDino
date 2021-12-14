@@ -43,7 +43,7 @@
 	    <section id="section01" >
 	      <div class="active">
 	        <video class="mainvideo" preload="auto" autoplay loop muted webkit-playsinline="true" playsinline="true"
-	              src="./common/video/mainvideo.mp4" type="video/mp4"></video>
+	              src="./common/video/mainvideo2.mp4" type="video/mp4"></video>
 	      </div>
 	    </section>
 	    <!-- 아기공룡 안내글자 -->

@@ -6,14 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="./common/img/favicon/favicon.png"
-	type="image/x-icon">
-<link rel="icon" href="./common/img/favicon/favicon.png"
-	type="image/x-icon">
-<!-- css -->
-<link rel="stylesheet" href="./common/css/bootstrap.min.css">
-</head>
 <style>
 img {
 	width: 100px;
@@ -23,11 +15,41 @@ img {
 .container div {	
 	margin-top: 10px;
 }
+/*지원 20211213 css 수정 및 추가*/
+.wrapper{
+	width: 80%;
+    margin: 11% 10% 9% 10%!important;
+    text-align: center;
+
+}
+.wrapper .title{
+    font-size: 22px;
+    font-family: 'S-Air';
+    font-weight: 600;
+    margin-bottom: 5%;
+}
+.wrapper .mtitle{
+	font-family: 'S-Air';
+}
+.wrapper .container #step1 .row .col-md-2{
+	 margin-left: 42%;
+}
+.wrapper .container #step1 .row .btns{
+	margin-top: 3%;
+}
+.wrapper .container #step2 .row .btns{
+	margin-top: 3%;
+}
+.wrapper .container #step3 .row .btns{
+	margin-top: 3%;
+}
 </style>
+<%@include file="/WEB-INF/views/include//header.jsp" %>
+</head>
 <body>
 	<form id="postForm" name="make_t_Card">
-		<h1>아이카드등록</h1>
 		<div class="wrapper">
+			<div class="title">아이카드등록</div>
 			<div class="container">
 				<div id="step1">
 					<div>
@@ -35,13 +57,13 @@ img {
 						<input type="file" id="k_img1" name="c_imgpath" class="form-control" />
 					</div>
 					<div class="row">
-						<div>아이이름</div>
+						<div class="mtitle">아이이름</div>
 						<div class="col-md-2">
 							<input class="form-control" type="text" placeholder="아이이름" id="k_name" name="k_name" aria-label="default input example">
 						</div>
 					</div>
 					<div class="row">
-						<div>성별</div>
+						<div class="mtitle">성별</div>
 						<div class="col-md-2">
 							<select class="form-select" name="k_gender" id="k_gender" aria-label="Default select example">
 								<option value="0" selected>성별</option>
@@ -50,12 +72,12 @@ img {
 							</select>
 						</div>
 					</div>
-					<div>아이 출생년일</div>
+					<div class="mtitle">아이 출생년일</div>
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-2">
 							<input id="k_birth" type="date" class="form-control" autocomplete="off" name="k_birth" width="100" />
 						</div>
-						<div>
+						<div class="btns">
 							<button class="btn btn-outline-primary" type="button" onclick="goStep(2)">다음으로</button>
 						</div>
 					</div>
@@ -92,7 +114,7 @@ img {
 						</c:forEach>
 					</div>
 					
-					<div>
+					<div class="btns">
 						<button class="btn btn-outline-primary" type="button"
 							onclick="goStep(3)">다음으로</button>
 					</div>
@@ -126,7 +148,7 @@ img {
 							<label for="floatingTextarea2">선생님에게 요청사항이 있으시면 적어주세요.</label>
 						</div>
 					</div>
-					<div>
+					<div class="btns">
 						<button type="button" onclick="regKidCard()" class="btn btn-outline-success">카드등록</button>
 					</div>
 				</div>
@@ -354,4 +376,5 @@ img {
 		}
 	}
 </script>
+<%@include file="/WEB-INF/views/include//footer.jsp" %>
 </html>

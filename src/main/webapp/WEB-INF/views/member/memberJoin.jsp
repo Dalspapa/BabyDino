@@ -15,7 +15,7 @@ section{
 section .title{
 	font-family: 'S-Air';
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 table tr th {
 	vertical-align: middle;
@@ -28,11 +28,10 @@ table .phone{
 }
 /*section2 부분*/
 #step2 {
-    border: 1px solid gray;
+	border: 1px solid gray;
     width: 1350px;
     height: 678px;
-    margin-bottom: 22px;
-    margin-left: 274px;
+    margin: 2% auto;
 	
 }
 .btn2{
@@ -45,8 +44,7 @@ table .phone{
    <div id="step1">
       <!-- 회원가입 폼 -->
       <section>
-         <h1>사용하실 아이디와 비밀번호를 입력해주세요.</h1>
-		 <div class="title">회원가입</div>
+		 <div class="title">아기공룡 회원가입</div>
          <!-- <form name="memberJoinForm" action="joinMember.do" method="post" onsubmit="return checkAll()"> -->
          <form name="memberJoinForm">
             <div class="card" style="width: 70%; margin: 0 auto;">
@@ -110,7 +108,7 @@ table .phone{
                            <td>
                               <div class="d-flex">
                                  <input id="addr1" type="text" name="addr1" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" readonly />
-                                 <button type="button" class="btn btn-sm btn-outline-primary" onclick="kakaopost()">주소찾기</button>
+                                 <button type="button" class="btn btn-sm btn btn-outline-success" onclick="kakaopost()">주소찾기</button>
                               </div>
                               <div class="d-flex">
                                  <input id="addr2" type="text" name="addr2" class="form-control form-control-sm w-50" style="margin-right: 4px; background-color: #ffffff;" autocomplete="off" readonly />
@@ -129,7 +127,7 @@ table .phone{
                               <div class="d-flex">
                                  <input id="tel" type="text" name="tel" class="form-control form-control-sm w-50" style="margin-right: 4px;" autocomplete="off" width="100" />
                                  <!-- 문자인증하기 --> 
-                                  <button id="phoneChk" class="doubleChk btn btn-sm btn-outline-primary" type="button">인증번호 보내기</button>
+                                  <button id="phoneChk" class="doubleChk btn btn-sm btn-outline-success" type="button">인증번호 보내기</button>
                               </div>
                               
                            </td>
@@ -169,9 +167,9 @@ table .phone{
       <!-- 약관동의 폼-->
       <section>
          <div>
-            <div class="title">아기공룡 서비스 이용 동의</div>
+            <div class="title">아기공룡 서비스 이용 동의</div><br>
             <div>
-               <h4>< 아기공룡 서비스 운영정책 ></h4>
+               <h4>아기공룡 서비스 운영정책 </h4>
                <p>
                   아기공룡은 회원분들이 다양한 정보와 기술로 더 좋은 아이돌보미 또는 일자리(부모)를 찾고 연락하실 수 있도록 정보를
                   제공하는 구인구직 플랫폼입니다. <br> 본 서비스에 가입된 회원분들은 (주)아기공룡에 채용되거나 교육된
@@ -180,6 +178,7 @@ table .phone{
                      책임이 없음을 알려드립니다.</span>
                </p>
             </div>
+            <br>
             <div>
                <h4>< 맘시터 회원의 의무 ></h4>
                <p>
@@ -213,10 +212,6 @@ table .phone{
                   <input name="bt4" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
                   <span> 개인정보 제3자 제공에 관한 동의 (필수)</span>
                </div>
-            </div>
-
-            <div class="btn">
-               <button type="submit" class="btn btn-outline-success">다음으로</button>
             </div>
 
          </div>
@@ -466,10 +461,10 @@ table .phone{
                 if(result == 0){
                    idCheckBtn = true;
                    $("#checkId").html('사용할 수 있는 아이디 입니다.');
-                   $("#checkId").css('color', '#00ff00');
+                   $("#checkId").css('color', '#68983b');
                 }else{
                    $("#checkId").html('사용할 수 없는 아이디 입니다.');
-                   $("#checkId").css('color', '#ff0000');
+                   $("#checkId").css('color', '#68983b');
                 }
             },
             error:function(){
@@ -484,7 +479,7 @@ table .phone{
       var pwd = document.getElementById('pwd');         // 비밀번호 
       var pwdok = document.getElementById('pwdCheck');   // 비밀번호 확인 값
       var msg = document.getElementById('msg');         // 확인 메세지
-      var okColor = "#00ff00";                     // 맞았을 때 출력되는 색깔.
+      var okColor = "#68983b";                     // 맞았을 때 출력되는 색깔.
       var noColor ="#ff0000";                        // 틀렸을 때 출력되는 색깔
       
       if(pwd.value == pwdok.value){                  // pwd 변수의 값과 pwdok 변수의 값과 동일하다.
@@ -548,7 +543,7 @@ table .phone{
                   $("#phone2").attr("disabled",false); 
                   $("#phoneChk2").css("display","inline-block"); 
                   $(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오."); 
-                  $(".successPhoneChk").css("color","green"); 
+                  $(".successPhoneChk").css("color","#68983b"); 
                   $("#phone").attr("readonly",true); 
                   code2 = data; 
                }
@@ -561,7 +556,7 @@ table .phone{
          
          if($("#phone2").val() == code2){ 
             $(".successPhoneChk").text("인증번호가 일치합니다."); 
-            $(".successPhoneChk").css("color","green"); 
+            $(".successPhoneChk").css("color","#68983b"); 
             $("#phoneDoubleChk").val("true"); 
             $("#phone2").attr("disabled",true); 
          
