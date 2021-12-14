@@ -57,7 +57,7 @@
 	    <!-- 메인사진+안내문구 -->
 	    <section id="section03 services " class="page-section-question">
 	        <div class="col-xxl col-lg">
-	          <img class="mianimg" src="./common/img/메인사진1.png" alt="메인사진1">
+	          <img class="mianimg" src="./common/img/main_mid.jpg" alt="메인사진1">
 	        </div>
 	        <div id="about" class="px-4 px-lg-2 miantext">
 	          <div class="row gx-4 gx-lg-5 justify-content-center">

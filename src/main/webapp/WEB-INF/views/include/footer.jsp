@@ -36,7 +36,6 @@
                   aria-describedby="inputGroup-sizing-sm" 
                   name="pwd" id="PWD" 
                   placeholder="비밀번호를 입력해주세요." autocomplete="off" onkeyup="if(window.event.keyCode==13){ajaxTest()}" /> 
-                  <span class="input-group-text" id="inputGroup-sizing-sm">V</span>
                </div>
                <span id="loginCheck">
                   <p id="checkId"></p>
