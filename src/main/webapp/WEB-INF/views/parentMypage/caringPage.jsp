@@ -6,10 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-}
 /* reset */
 * {
   margin: 0;
