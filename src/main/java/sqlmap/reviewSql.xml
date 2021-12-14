@@ -3,19 +3,97 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.review">
-	<select id="reviewList" parameterType="dino.dto.ReviewDto" resultType="dino.dto.ReviewDto">
+	<!-- 부모님이 작성한 리뷰 리스트 -->
+	<select id="myreview" parameterType="Integer" resultType="dino.review.model.ReviewJoinDto">
 		select
-		     re.idx as re_idx
+		     m.name
 		    ,re.star
-		    ,re.r_content
 		    ,re.r_writedate
-		    ,m.idx as m_idx
-		    ,m.member_type
+		    ,re.r_content
+		    ,re.d_member_idx
+		    ,re.d_reserve_idx
 		from
-		    d_review re, d_member m
-		where re.d_member_idx = m.idx and m.idx = #{m_idx} and m.member_type = #{member_type}
+		    d_review re, d_reserve r, d_teachercard t, d_member m
+		where
+		    re.d_reserve_idx = r.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		and
+		    re.d_member_idx = #{idx}
+		order by
+			re.r_writedate desc
 	</select>
 
+	<!-- 부모님이 받은 리뷰 리스트 -->
+	<select id="getreview" parameterType="Integer" resultType="dino.review.model.ReviewJoinDto">
+		select
+		     m.name
+		    ,re.star
+		    ,re.r_writedate
+		    ,re.r_content
+		    ,re.d_member_idx
+		    ,re.d_reserve_idx
+		from
+		    d_review re, d_reserve r, d_teachercard t, d_member m
+		where
+		    re.d_reserve_idx = r.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		and
+		    re.d_member_idx != #{idx}
+        and
+            r.member_p_idx = #{idx}
+        order by
+        	re.r_writedate desc
+	</select>
+
+	<!-- 선생님이 작성한 리뷰 리스트 -->
+	<select id="t_myreview" parameterType="Integer" resultType="dino.review.model.ReviewJoinDto">
+		select
+		     m.name
+		    ,re.star
+		    ,re.r_writedate
+		    ,re.r_content
+		    ,re.d_member_idx
+		    ,re.d_reserve_idx
+		from
+		    d_review re, d_reserve r, d_member m
+		where
+		    re.d_reserve_idx = r.idx and r.member_p_idx = m.idx
+		and
+		    re.d_member_idx = #{idx}
+		order by
+			re.r_writedate desc
+	</select>
+
+	<!-- 선생님이 받은 리뷰 리스트 -->
+	<select id="t_getreview" parameterType="Integer" resultType="dino.review.model.ReviewJoinDto">
+		select
+  			  m.name
+		    ,re.star
+		    ,re.r_writedate
+		    ,re.r_content
+		    ,re.d_member_idx
+		    ,re.d_reserve_idx
+		from
+  		     d_review re, d_reserve r, d_member m
+		where
+		     re.d_reserve_idx = r.idx and r.member_p_idx = m.idx
+		and
+		     re.d_member_idx != #{idx}
+        and
+             r.teacher_idx
+            	  =
+             (select
+                	tt.idx
+             from
+               	    d_member mm, d_teachercard tt
+             where
+         	        mm.idx = tt.d_member_idx
+             and
+          	        mm.idx = #{idx}
+             )
+        order by
+        	re.r_writedate desc
+	</select>
+
+	<!-- 리뷰 작성 -->
 	<insert id="writeReview" parameterType="dino.dto.ReviewDto">
 		insert into
 			d_review

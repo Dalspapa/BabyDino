@@ -36,11 +36,22 @@ a:link, a:visited {
 	width: 500px;
 	height: 300px;
 	background-color: #f5f5f5;
-    border-radius: 10px;
+    border-radius: 10%;
     margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 0px 3px 13px -4px #3c3b3b;
+}
+.cardList:hover {
+    transform:scale(1.05); /* 마우스 오버시 이미지 크기를 1.1 배만큼 확대시킨다. */
+        -o-transform:scale(1.05);
+        -moz-transform:scale(1.05);
+        -webkit-transform:scale(1.05);
+    transition: transform .35s;
+        -o-transition: transform .35s;
+        -moz-transition: transform .35s;
+        -webkit-transition: transform .35s;
 }
 .cardList p {
 	font-weight: bold;

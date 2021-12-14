@@ -3,7 +3,7 @@ package dino.dto;
 import java.sql.*;
 
 public class ReserveDto {
- 
+
 	private int idx;
 	private int member_p_idx;
 	private int kid_idx;
@@ -14,7 +14,7 @@ public class ReserveDto {
 	private String match_date;
 	private int teacher_idx;
 	private int cancle_reason;
-	
+
 	public ReserveDto() {
 		super();
 	}
@@ -120,4 +120,4 @@ public class ReserveDto {
 	     System.out.println(str);
 	      return str;
 	   }
-}	
+}

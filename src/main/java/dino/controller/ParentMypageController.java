@@ -56,5 +56,18 @@ public class ParentMypageController {
 		mav.setViewName("parentMypage/kidsCard");
 		return mav;
 	}
+
+	/**
+	 * 작성된 돌봄노트 목록 보기
+	 * @return
+	 */
+	@RequestMapping(value = "/careNoteList.do")
+	public ModelAndView careNoteList(@RequestParam("idx")int idx) {
+		List<ParentMypageDto> list = parentMypageService.careNoteList(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("parentMypage/careNote");
+		return mav;
+	}
 }
 

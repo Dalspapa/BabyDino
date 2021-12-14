@@ -37,7 +37,7 @@ h2 {
 
 
 .wrapper {
-   width: 80%;
+   width: 70%;
    margin: 80px auto;
    text-align: center;
    font-family: 'S-Air';
@@ -238,12 +238,6 @@ section{
   <div class="wrapper" style="margin-top:80px;">
     <section class="userInfoWrap">
       <h2>사용자 상태 영역</h2>
-      <div class="userInfo">
-        <div class="userImg">
-          #이미지
-        </div>
-        <div class="nameText">아기공룡 ${ dto.k_name }</div>
-      </div>
       <div class="userLiveWrap">
         <div class="userLive">
           <div>
@@ -285,9 +279,9 @@ section{
     </section>
     <section>
       <div class="topCont d-flex justify-content-between">
-        <div>#뒤로가기버튼</div>
+      	<div></div>
         <div>${ dto.k_name }</div>
-        <div>#좋아요버튼</div>
+        <div></div>
       </div>
       <div class="item1">
         <div class="childImg">#아이이미지</div>
