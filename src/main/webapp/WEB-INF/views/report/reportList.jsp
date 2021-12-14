@@ -11,6 +11,7 @@
     text-align: center;
     margin-top: 123px;
     margin-bottom: 50px;
+    font-family: 'S-Air';
 }
 .btn a {
 	text-decoration: none;
@@ -56,7 +57,7 @@ table th,td {
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>번호</th>
+					<th>NO</th>
 					<th>신고내용</th>
 					<th>상태</th>
 				</tr>

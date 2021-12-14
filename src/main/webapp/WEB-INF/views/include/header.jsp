@@ -183,7 +183,7 @@
 		    <div><a href="kidsCard.do?idx=${sidx}">아이카드</a></div>
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="reviewMain.do?m_idx=${sidx}&member_type=${stype}">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
+		    <div><a href="reportList.do?idx=${sidx}">신고내역</a></div>
 		    <div><a href="#">계정관리</a></div>
 		  </div>
 		</div>

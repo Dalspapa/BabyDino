@@ -155,7 +155,7 @@ a:hover {
 			<c:url var = "deleteUrl" value = "reportDelete.do">
 				<c:param name = "idx">${dto.idx}</c:param>
 			</c:url>		
-			<div><button class="btn btn-outline-success" onclick = "location.href = '${ deleteUrl }'">내용삭제</button></div>
+			<div><button class="btn btn-outline-success" onclick = "location.href = '${ deleteUrl }'">신고취소</button></div>
 			<c:url var = "updateUrl" value = "reportUpdate.do">
 					<c:param name="idx">${dto.idx}</c:param>
 			</c:url>		

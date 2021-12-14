@@ -2,9 +2,60 @@
 	pageEncoding="UTF-8"%>
 <!-- header -->
 <html>
-<head>
-<%@ include file="/WEB-INF/views/include/header.jsp"%>
-<style>
+	<head>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
+	<style>
+		/*로그인 모달창*/
+		.modal .modal-dialog .modal-content .modal-header .modal-title{
+			font-size: 24px;
+			font-weight: 500;
+		}
+		.modal .modal-dialog .modal-content .modal-footer .login-buton-box a{
+			text-decoration: none;
+			color: green;
+		}
+		.modal .modal-dialog .modal-content .modal-footer .login-buton-box a:hover{
+			color: white;
+		}
+		/*카카오맵*/
+		#section09 {
+			width : 80%;
+			height : 80%;
+			margin-left : 10%;
+			margin-right : 10%;
+		}
+		#section09 #map {
+		position: absolute;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		margin-left : 70%;
+		margin-right : 70%;
+		touch-action: none;
+		cursor: url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico") 7 5, url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico"), default;
+		}
+		.jido {
+		}
+	</style>
+	</head>
+	<body id="page-top">
+	  <!-- wrapper -->
+	  <div class="wrapper">
+	    <!-- 영상부분 -->
+	    <section id="section01" >
+	      <div class="active">
+	        <video class="mainvideo" preload="auto" autoplay loop muted webkit-playsinline="true" playsinline="true"
+	              src="./common/video/mainvideo.mp4" type="video/mp4"></video>
+	      </div>
+	    </section>
+	    <!-- 아기공룡 안내글자 -->
+	    <section id="section02">
+	        <div>
+	          <h1 class="text-uppercase mb-4" style="font-weight: 600;">아기<br>공룡</h1>
+	          <p>육아에 도움이 필요할 땐 언제 어디서나 아기공룡이 해결하겠습니다.</p>
+	        </div>
+	    </section>
+
 
 /*카카오맵*/
 #section09 {
@@ -141,100 +192,91 @@
 									alt="책읽기">
 								</span>
 							</div>
+	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
+	                  <span class="nori-box " >
+	                    <img src="./common/img/img2.jpg" alt="책읽기">
+	                  </span>
+	                </div>
+	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
+	                  <span class="nori-box " >
+	                    <img src="./common/img/img3.jpg" alt="책읽기">
+	                  </span>
+	                </div>
+	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
+	                  <span class="nori-box">
+	                    <img src="./common/img/img8.jpg" alt="책읽기">
+	                  </span>
+	                </div>
+					<div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
+	                  <span class="nori-box">
+	                    <img src="./common/img/img12.jpg" alt="책읽기">
+	                  </span>
+	                </div>
+	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
+	                  <span class="nori-box">
+	                    <img src="./common/img/img6.jpg" alt="책읽기">
+	                  </span>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	      </div>
+	    </section>
 
-							<div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
-								<span class="nori-box "> <img src="./common/img/2.jpg"
-									alt="책읽기">
-								</span>
-							</div>
-							<div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
-								<span class="nori-box "> <img src="./common/img/3.jpg"
-									alt="책읽기">
-								</span>
-							</div>
-							<div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
-								<span class="nori-box"> <img src="./common/img/4.jpg"
-									alt="책읽기">
-								</span>
-							</div>
+	      <!-- 아기공룡 궁금해요 -->
+	    <section id="section06" class="page-section-question">
+	          <div class="container">
+	              <div class="text-center">
+	                  <hr class="divider divider-black mt-5 mb-5">
+	                  <h2 class="section-heading text-uppercase">아기공룡이 궁금하신가요?</h2><br>
+	              </div>
+	              <div class="row faq-imgs">
+	                <div class="col-lg col-sm-4 col-xs text-center" >
+	                  <span class="faq-box" >
+	                    <img src="./common/img/icon1.png" alt="아이공룡을 어떻게 믿죠?"><hr>
+	                    <h5>전문 1:1 놀이 돌봄</h5>
+	                  </spn>
+	                </div>
+	                <div class="col-lg col-sm-4 col-xs text-center" style="MARGIN: -4px;" >
+	                  <span class="faq-box" >
+	                    <img src="./common/img/icon2.png" alt="부모님을 어떻게 믿죠?"><hr>
+	                    <h5>아이의 일상을 기록하는 성장노트</h5>
+	                  </span>
+	                </div>
 
-							<div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
-
-								<span class="nori-box"> <img src="./common/img/5.jpg"
-									alt="책읽기">
-								</span>
-							</div>
-							<div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
-								<span class="nori-box"> <img src="./common/img/6.jpg"
-									alt="책읽기">
-								</span>
-							</div>
+	                <div class="col-lg col-sm-4 col-xs text-center" style="MARGIN-TOP: -17PX;" >
+	                  <span class="faq-box">
+	                    <img src="./common/img/icon3.png" alt="아기공룡 멤버쉽은 무엇인가요?"><hr>
+	                  </span>
+	                 	<h5>믿을 수 있는 아기공룡 시스템</h5>
+	                </div>
+	              </div>
+	              <div class="m-5">
+	                <button class="btn btn btn-warning text-center d-block m-auto">FAQ 더 알아보기</button>
+	              </div>
+	          </div>
+	    </section>
+	    <!-- 공룡선생님 추천 -->
+	    <section id="section07" class="page-section-recom">
+	      <div class="text-center">
+	        <hr class="divider divider-black mt-5 mb-5">
+	        <h3 class="section-heading text-uppercase">이번달 우리동네 공룡 선생님</h3><br>
+	      </div>
+	      <div class="container marketing">
+	          <div class="teacher-proposal row">
+	            <div class="row p-0 m-auto">
+	              <!-- filp01 -->
+	              <div class="flip-card col-lg">
+	                <div class="flip-card-inner">
+	                  <div class="flip-card-front">
+	                    <div class="mb-2">
+	                      <img src="./common/img/faq-img.png" alt="선생님 사진" >
 						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- 아기공룡 궁금해요 -->
-		<section id="section06" class="page-section-question">
-			<div class="container">
-				<div class="text-center">
-					<hr class="divider divider-black mt-5 mb-5">
-					<h2 class="section-heading text-uppercase">아기공룡이 궁금하신가요?</h2>
-					<br>
-				</div>
-
-				<div class="row faq-imgs">
-					<div class="col-lg col-sm-4 col-xs text-center">
-						<span class="faq-box"> <img
-							src="./common/img/icons/smile.jpg" alt="아이공룡을 어떻게 믿죠?">
-							<h4 class="text-muted">전문 1:1 놀이 돌봄</h4>
-						</span>
-					</div>
-					<div class="col-lg col-sm-4 col-xs text-center">
-						<span class="faq-box"> <img
-							src="./common/img/icons/people.jpg" alt="부모님을 어떻게 믿죠?">
-							<h4 class="text-muted">아이의 일상을 기록하는 성장노트</h4>
-						</span>
-					</div>
-
-					<div class="col-lg col-sm-4 col-xs text-center">
-						<span class="faq-box"> <img
-							src="./common/img/icons/membershipticket.jpg"
-							alt="아기공룡 멤버쉽은 무엇인가요?">
-						</span>
-						<h4 class="text-muted">믿을 수 있는 아기공룡 시스템</h4>
-					</div>
-				</div>
-				<div class="m-5">
-					<button class="btn btn btn-warning text-center d-block m-auto">FAQ
-						더 알아보기</button>
-				</div>
-			</div>
-		</section>
-		<!-- 공룡선생님 추천 -->
-		<section id="section07" class="page-section-recom">
-			<div class="text-center">
-				<hr class="divider divider-black mt-5 mb-5">
-				<h3 class="section-heading text-uppercase">이번달 우리동네 공룡 선생님</h3>
-				<br>
-			</div>
-			<div class="container marketing">
-				<div class="teacher-proposal row">
-					<div class="row p-0 m-auto">
-						<!-- filp01 -->
-						<div class="flip-card col-lg">
-							<div class="flip-card-inner">
-								<div class="flip-card-front">
-									<div class="mb-2">
-										<img src="./common/img/faq-img.png" alt="선생님 사진">
-
-									</div>
-									<div>
-										<h6 class="text-warning">새로운 추천01</h6>
-										<h4>선생님 이름</h4>
-									</div>
-								</div>
+						<div>
+							<h6 class="text-warning">새로운 추천01</h6>
+							<h4>선생님 이름</h4>
+						</div>
+						</div>
 								<div class="flip-card-back ">
 									<h1>선생님 이름</h1>
 									<p>선생님을 설명하는 부분입니다.</p>
@@ -403,84 +445,121 @@
 									src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-1-v2.svg"
 									alt="회원가입하기">
 							</div>
-
-							<div class="contents">
-								<h6 class="guide-title">회원가입하기</h6>
-								<p class="guide-content">빠르고 간편한 회원가입을 진행해주세요.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-xxl col-sm-4 col-xs-12 joinguide">
-						<div class="faq-box">
-							<div class="img-sarce">
-								<img class="lL3tq"
-									src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-2-v2.svg"
-									alt="프로필 작성하기">
-							</div>
-							<div class="contents">
-								<h6 class="guide-title">프로필 작성하기</h6>
-								<p class="guide-content">
-									"내 활동 지역, 희망 시급,<br> "활동 기간 등을 상세하게 작성해주세요"
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-xxl col-sm-4 col-xs-12 joinguide">
-						<div class="faq-box">
-							<div class="img-sarce">
-								<img class="lL3tq"
-									src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-3-v2.svg"
-									alt="부모 지원하기">
-							</div>
-							<div class="contents">
-								<h6 class="guide-title">부모 지원하기</h6>
-								<p class="guide-content">지역과 우리 동네 등으로 검색해서, 나와 맞는 부모님을 찾아
-									지원해보세요</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-xxl col-sm-6 col-xs-12 joinguide">
-						<div class="faq-box">
-							<div class="img-sarce">
-								<img class="lL3tq"
-									src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-4-v2.svg"
-									alt="인터뷰 후 활동하기">
-							</div>
-							<div class="contents">
-								<h6 class="guide-title">인터뷰 후 활동하기</h6>
-								<p class="guide-content">인터뷰 시, 내가 안전하게 아이를 돌볼 수 있는 환경인지 확인한
-									뒤 공룡선생님로 활동합니다</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-xxl col-sm-6 col-xs-12 joinguide">
-						<div class="faq-box">
-							<div class="img-sarce">
-								<img class="lL3tq"
-									src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-5-v2.svg"
-									alt="후기작성">
-							</div>
-							<div class="contents">
-								<h6 class="guide-title">후기 작성</h6>
-								<p class="guide-content">공룡선생님도 부모님에 대한 후기를 작성해주세요. 내가 작성한
-									후기는 부모님 신청서에 노출됩니다.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<span class="d-block m-3 text-center"> <a
-					href="TeacherGuide.do">아기공룡 가이드 보러가기 ></a>
-				</span>
-			</div>
-		</section>
-	</div>
-	<!-- 지도. 우리 여기 있어요!! -->
-	<!-- 	<div>
+	                  <div class="contents">
+	                    <h6 class="guide-title">회원가입하기</h6>
+	                    <p class="guide-content"> 빠르고 간편한 회원가입을 진행해주세요.</p>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="col-xxl col-sm-4 col-xs-12 joinguide">
+	                <div class="faq-box">
+	                  <div class="img-sarce">
+	                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-2-v2.svg" alt="프로필 작성하기">
+	                  </div>
+	                  <div class="contents">
+	                    <h6 class="guide-title">프로필 작성하기</h6>
+	                    <p class="guide-content"> "내 활동 지역, 희망 시급,<br> "활동 기간 등을 상세하게 작성해주세요"</p>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="col-xxl col-sm-4 col-xs-12 joinguide">
+	                <div class="faq-box">
+	                  <div class="img-sarce">
+	                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-3-v2.svg" alt="부모 지원하기">
+	                  </div>
+	                  <div class="contents">
+	                    <h6 class="guide-title">부모 지원하기</h6>
+	                    <p class="guide-content"> 지역과 우리 동네 등으로 검색해서, 나와 맞는 부모님을 찾아 지원해보세요</p>
+	                  </div>
+	              </div>
+	              </div>
+	              <div class="col-xxl col-sm-6 col-xs-12 joinguide">
+	                <div class="faq-box">
+	                  <div class="img-sarce">
+	                    <img class="lL3tq" src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-4-v2.svg" alt="인터뷰 후 활동하기">
+	                  </div>
+	                  <div class="contents">
+	                    <h6 class="guide-title">인터뷰 후 활동하기</h6>
+	                    <p class="guide-content"> 인터뷰 시, 내가 안전하게 아이를 돌볼 수 있는 환경인지 확인한 뒤 공룡선생님로 활동합니다</p>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="col-xxl col-sm-6 col-xs-12 joinguide">
+	                <div class="faq-box">
+	                  <div class="img-sarce">
+	                    <img class="lL3tq"  src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-5-v2.svg" alt="후기작성">
+	                  </div>
+	                  <div class="contents">
+	                    <h6 class="guide-title">후기 작성</h6>
+	                    <p class="guide-content">공룡선생님도 부모님에 대한 후기를 작성해주세요. 내가 작성한 후기는 부모님 신청서에 노출됩니다.</p>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+					<span class="d-block m-3 text-center" >
+						<a href="TeacherGuide.do">아기공룡 가이드 보러가기 ></a>
+					</span>
+	          </div>
+	    </section>
+	  </div>
+	  
+	<div class = "jido">  
+	   지도. 우리 여기 있어요!! 
 	<section id = "section09" class = "kakaoMap">
 		<div id="map">우리, 여기 있어요!!</div>
 	</section>
-	</div>  -->
+	</div>  
+	
+	  <!-- 챗 Modal -->
+	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h5 class="modal-title" id="exampleModalLabel">채팅</h5>
+	          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	        </div>
+	        <div class="modal-body">
+	          <div id="chatBox">
+	            <form name="chatForm" action="#" method="post">
+	              <h3>여기는 채팅 박스 영역입니다.</h3>
+	              <a href="chatList.do">채팅</a>
+	              <%@ include file="/WEB-INF/views/chat/chatList.jsp" %>
+	            </form>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  <!-- ./챗 Modal -->
+	  </div>
+	  
+<!-- 선생님 부모님 이용가이드 관련 js -->
+<!-- <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script> -->
+<script>
+/* 	function showDiv1() {
+		var a = document.getElementById('p_member');
+		a.classList.remove('d-none');
+		var b = document.getElementById('t_member');
+		b.classList.add('d-none');
+	} */
+</script>
+<!-- 부모님회원 선생님 회원 버튼 js -->
+  <script>
+	  let a = $('#p_member');
+	  let b = $('#t_member');
+	  $(document).ready(function() {
+	      a.show();
+	      b.hide();
+	  });
 
+	  function p_member() {
+		a.show();
+		b.hide();
+	  }
+
+	  function t_member() {
+		a.hide();
+		b.show();
+	  }
 
 	<!-- 선생님 부모님 이용가이드 관련 js -->
 	<!-- <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script> -->
