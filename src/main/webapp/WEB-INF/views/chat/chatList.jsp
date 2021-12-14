@@ -241,7 +241,6 @@ function listView(userid) {
            		<h4 class="chat-title">공 룡 톡</h4>
             </div>
           	<form name="chatForm" action="" onsubmit="return false;" method="post">
-          	<input type="hidden" value="${ 1 }" />
             <ul class="friend-list">			
             
 				<!-- 문의하기 -->
@@ -324,7 +323,7 @@ function listView(userid) {
 	                		
 	                		<!-- 새로운 메시지 알림 -->
 	                		<c:if test="${ sessionIdx != lastMIdx && lastRead == 1 }">
-	                			<small class="chat-alert label label-danger">NEW</small>
+	                			<small class="chat-alert label label-danger" style="color:red;">NEW</small>
 	                		</c:if>
 	                	</a>
 	                </li>
@@ -340,7 +339,7 @@ function listView(userid) {
   <!-- 챗룸 버튼 -->
   <div id="chatRoom ">
     <a class="nav-link clearfix" href="#" data-bs-toggle="modal" data-bs-target="#chatModal">
-     	누르면 이동
+     	
     </a>
   <!-- ./챗룸 버튼 -->
   </div>
