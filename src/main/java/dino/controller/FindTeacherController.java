@@ -45,6 +45,7 @@ public class FindTeacherController {
 	 public ModelAndView findTeacher() {
 		
 	 List<FindTeacherJoinDto> t_List = teachersService.teacherList();
+	 
 	 ModelAndView mav = new ModelAndView(); 
 	 mav.addObject("t_List", t_List);
 	 mav.setViewName("findTeacher/findTeacher");
@@ -56,7 +57,7 @@ public class FindTeacherController {
 	@RequestMapping("/getKidImg.do") 
 	public ModelAndView getImg(int d_member_idx){
 	 
-	List<Common_ImgDto> resultImg = teachersService.imgpath(d_member_idx);
+	List<FindTeacherJoinDto> resultImg = teachersService.imgpath(d_member_idx);
 	 
 	String [] imgName = {};
 	for(int i = 0; i < resultImg.size(); i++) {
@@ -78,7 +79,7 @@ public class FindTeacherController {
 	public ResponseEntity<?> makeKidCard(KidDto dto, Common_ImgDto imgDto, HttpServletRequest request, MemberDto mdto, HttpSession session){
 
 	// test code 
-	System.out.println(">>>>>컨트롤러 진입<<<<<<");
+	System.out.println(">>>>>아이카드컨트롤러 진입<<<<<<");
 		 
 	HashMap<String, Object> result = new HashMap<String, Object>(); 
 	boolean success = false;
@@ -87,7 +88,7 @@ public class FindTeacherController {
 	imgFiles = dto.getkImg();
 		 
 	if (imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
-		imgDto.setC_imgpath("kid.png"); 
+		imgDto.setC_imgpath("Baby_Tina.png"); 
 	}
 		 
 	String dirPath = servletContext.getRealPath("/resources");
@@ -110,12 +111,12 @@ public class FindTeacherController {
 	
 	};
 	
-//		int setImg = teachersService.kSetImg(imgDto);
-//		if(setImg != 1) {
-//			result.put("fail", false); 
-//		  } else { 
-//			  result.put("success", success);
-//		  }
+		int setImg = teachersService.kSetImg(imgDto);
+		if(setImg != 1) {
+			result.put("fail", false); 
+		  } else { 
+			  result.put("success", success);
+		  }
 		return ResponseEntity.ok(result);
 	}
 	

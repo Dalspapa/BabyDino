@@ -2,6 +2,10 @@ package dino.findteachers.model;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import dino.dto.Common_ImgDto;
 import dino.dto.KidDto;
 import dino.dto.MemberDto;
@@ -14,7 +18,6 @@ public interface FindTeachersDao {
 	
 	 //find teacher card list 
 	public List<FindTeacherJoinDto> teacherList();
-	 
 
 	// pick kid card
 	public List<KidDto> pickKidsCard(int idx);
@@ -36,5 +39,5 @@ public interface FindTeachersDao {
 	public int kSetImg (Common_ImgDto imgDto); 
 	
 	//get img path 
-	public List<Common_ImgDto> imgpath(int d_member_idx);
+	public List<FindTeacherJoinDto> imgpath(int d_member_idx);
 }

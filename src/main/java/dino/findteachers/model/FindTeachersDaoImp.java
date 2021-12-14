@@ -2,9 +2,10 @@ package dino.findteachers.model;
 
 import java.util.List;
 
-
+import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import dino.dto.Common_ImgDto;
 import dino.dto.KidDto;
@@ -85,7 +86,7 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 	 	int result = sqlMap.insert("kSetImg", imgDto);
 	  
 		//test code
-		System.out.println("findKidsDao setTimg imgpath"+imgDto.getC_imgpath()+
+		System.out.println("findTeacherDao setTimg imgpath"+imgDto.getC_imgpath()+
 		"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
 		  
 	  return result; 
@@ -94,9 +95,9 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 		
 	
 	  //get img path 
-	  public List<Common_ImgDto> imgpath(int d_member_idx){
+	  public List<FindTeacherJoinDto> imgpath(int d_member_idx){
 	  
-		  List<Common_ImgDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
+		  List<FindTeacherJoinDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
 	  
 	  return resultDto; 
 	  }

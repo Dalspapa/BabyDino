@@ -33,20 +33,20 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		this.findTeachersDao = findTeachersDao;
 	}
 	
-//	//중복제거 
-//	public int kSetImg(Common_ImgDto imgDto) {
-//		
-//		int result = findTeachersDao.kSetImg(imgDto);
-//		
-//		System.out.println("findKidsservice setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
-//		
-//		return result;
-//	}
+	//중복제거 
+	public int kSetImg(Common_ImgDto imgDto) {
+		
+		int result = findTeachersDao.kSetImg(imgDto);
+		
+		System.out.println("findteacherservice setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
+		
+		return result;
+	}
 
 	//Test imgpath
-	public List<Common_ImgDto> imgpath(int d_member_idx) {
+	public List<FindTeacherJoinDto> imgpath(int d_member_idx) {
 
-		List<Common_ImgDto> resultImg = findTeachersDao.imgpath(d_member_idx);
+		List<FindTeacherJoinDto> resultImg = findTeachersDao.imgpath(d_member_idx);
 
 		return resultImg;
 	}
@@ -75,13 +75,13 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		return addr_dto;
 	}
 
-	// make kid card
-	public int makeKCard(KidDto dto) {
-
-		int result = findTeachersDao.makeKCard(dto);
-
-		return result;
-	}
+//	// make kid card
+//	public int makeKCard(KidDto dto) {
+//
+//		int result = findTeachersDao.makeKCard(dto);
+//
+//		return result;
+//	}
 
 	// make kid card (테스트)
 	@Transactional
@@ -90,7 +90,7 @@ public class FindTeachersServiceImp implements FindTeachersService {
 		String c_imgpath = "";
 		if ( imgFiles == null || imgFiles.size() == 0) {
 
-			c_imgpath = "teacher.png";
+			c_imgpath = "teacher.png"; //기본 이미지
 			imgDto.setC_imgpath(c_imgpath);
 		}
 
@@ -122,7 +122,7 @@ public class FindTeachersServiceImp implements FindTeachersService {
 
 		System.out.println("이미지 DTO 값 : " + imgDto.getD_member_idx());
 
-		int setImgResult = findTeachersDao.kSetImg(imgDto);
+//		int setImgResult = findTeachersDao.kSetImg(imgDto);
 	}
 	
 	//img copy method

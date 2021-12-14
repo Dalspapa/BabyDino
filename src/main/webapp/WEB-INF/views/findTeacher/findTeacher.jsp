@@ -89,7 +89,7 @@
 							onclick="location.href='${contentUrl}'">
 							<div class="flip-card-front">
 								<div class="mb-2">
-									<img src="/upload/${tDto.c_imgpath}" alt="선생님사진" ><br>
+									<img src="/upload/${tDto.c_imgpath}" alt="${tDto.c_imgpath}사진" ><br>
 									<input type="hidden" name="idx" value="${ tDto.idx }">
 								</div>
 								<div>

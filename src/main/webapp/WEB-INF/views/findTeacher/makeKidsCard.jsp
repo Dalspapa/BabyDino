@@ -276,7 +276,23 @@ img {
 			}
 			
 			// TODO 이미지 파일
-			console.log("--- file : ", file[0].files);
+			
+			let imgFile = $('#k_img1').val();
+			console.log("이미지::", imgFile);
+		  	
+			let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf|jfif|JPG|JPEG|PNG|GIF|BMP|PDF|JFIF)$/gi;
+
+		  	if( imgFile == ""){
+		  		alert('이미지 첨부는 필수입니다.');
+		  		$('#k_img1').focus();
+		  		return
+		  	}
+		  	if(imgFile != "" && imgFile != null){
+		  		if(!imgFile.match(fileForm)){
+		  			alert('이미지 파일만 등록 가등합니다.');
+		  			return;
+		  		}
+		  	}
 			
 			// 아이 이름 유효성 검사
 			if(kName.val().trim().length == 0) {

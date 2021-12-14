@@ -19,9 +19,13 @@
             FROM 
                 d_teachercard t
             LEFT JOIN 
-                d_member m ON m.idx = t.d_member_idx
+                d_member m 
+            ON
+            	  	m.idx = t.d_member_idx
             LEFT JOIN 
-                d_common_img ci ON ci.d_member_idx = t.idx
+                d_common_img ci 
+            ON
+            	  	ci.d_member_idx = t.idx
             WHERE
                 t.d_member_idx = m.idx
 	</select>
@@ -62,7 +66,7 @@
 	</insert>
 	
 	<!-- 이미지 출력 -->
-	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	<select id="getImg" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto">
 		SELECT 
 				dt.*
      			, dci.c_imgpath
@@ -73,9 +77,7 @@
 		ON 
 				dt.d_member_idx = dci.d_member_idx
 		WHERE 
-				dt.idx = #{d_teachercard_idx}
-		AND 
-				dci.category_idx = 2;
+				dt.idx = #{idx};
 	</select>
 	
 	
@@ -100,17 +102,17 @@
 		INSERT INTO 
         	d_kidcard
         VALUES(
-	d_kidcard_idx.nextval,
-	#{d_member_idx},
-	#{k_name},
-	#{k_gender},
-	#{k_birth},
-	#{k_introduce},
-	#{k_care_type},
-	#{k_tendency},
-	#{teacher_type},
-	#{k_require}
-        )
+			d_kidcard_idx.nextval,
+			#{d_member_idx},
+			#{k_name},
+			#{k_gender},
+			#{k_birth},
+			#{k_introduce},
+			#{k_care_type},
+			#{k_tendency},
+			#{teacher_type},
+			#{k_require}
+     )
 	</insert>
 	
 	<!-- 아이 카드로 예약  -->

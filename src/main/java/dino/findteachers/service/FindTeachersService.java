@@ -35,12 +35,12 @@ public interface FindTeachersService {
 	// Insert reserve Kid Card
 	public int reserveCard(ReserveDto reserveCard);
 
-// 중복제거
-//	// set teacher img
-//	public int kSetImg(Common_ImgDto imgDto);
+	//중복제거
+	// set teacher img
+	public int kSetImg(Common_ImgDto imgDto);
 	
 	//get img path
-	public List<Common_ImgDto> imgpath(int d_member_idx);
+	public List<FindTeacherJoinDto> imgpath(int d_member_idx);
 
 }
 
