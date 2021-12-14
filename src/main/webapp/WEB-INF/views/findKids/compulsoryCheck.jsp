@@ -89,9 +89,9 @@ section p{
 </head>
 <body>
 <h2>필수인증</h2>
-<form id="form" name="t_compulsory" action="cert.do" method="post">
-<section>
-	<div id="qna">
+<form id="form" name="t_compulsory" action="cert.do" method="post" enctype="multipart/form-data">
+<input type="hidden" name="d_member_idx" value="${sidx}">
+<section>	
 	<div id="h_Div">
 		<h4>S T E P 1</h4>
 	</div>
@@ -232,14 +232,14 @@ section p{
 		<h4>S T E P 2</h4>
 		<div>
 			<h5>등본 등록</h5>
-			<input type="file" id="t_copy" name="t_copy" class="form-control"/>
+			<input type="file" id="t_copy" name="imgpath" class="form-control"/>
 		</div>
 		<div class="sign">
 			<h5>동의 서명</h5>
 			<div class="canvas-draw-box">
-				<div class="canvas-draw-base" data-id="canvas_name"></div>
+				<div class="canvas-draw-base" data-id="canvas_name" id="canvas"></div>
 					<div class="canvas-draw-pad-box">
-					<canvas id="canvas_name" class="canvas-draw-pad">1. 사용중인 브라우저에서 지원하지 못합니다.</canvas>
+					<canvas id="canvas_name" class="canvas-draw-pad" name="crimeagree" value="동의합니다.">1. 사용중인 브라우저에서 지원하지 못합니다.</canvas>
 					<div>
 						<!-- <button type="button" class="btn btn-secondary" onclick="javascript:save('canvas_name')">저장하기</button>
 						<button type="button" class="btn btn-secondary" onclick="javascript:down('canvas_name')">다운로드</button> -->
@@ -290,6 +290,7 @@ section p{
 
 		//인증요청 버튼 클릭
 	 	$('#reqAgree').click(function(){
+	 		console.log('hello');
 	 		var rst = fnCertValidation();
 	 		if(rst){
     	 		fnCert();
@@ -324,6 +325,20 @@ section p{
             }
         }
         
+/*         let img = document.getElementById('canvas'),
+		style = img.currentStyle || window.getComputedStyle(img, false),
+		bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");		
+		console.log('--------img'+img);
+		if(bi.length == 0) {
+			alert('성범죄 동의 서명을 해주셔야 인증요청을 할수 있습니다.');			
+		 	count = 10;
+			dName = name + count;
+			console.log('------r--'+bi) 
+			return false;
+		} else {
+			$('#crimeAgree').val('동의합니다.');			
+		} */
+        
         if(answer < 8){
          	alert("인증점수가 미달되어 처음으로 돌아갑니다.");
              $('.makeTdiv').hide();
@@ -336,23 +351,16 @@ section p{
 
              console.log("검증count2B"+count);
              rst = false;
+             
         }
-        
-/*         let canCheck = $(data('canvas_name'));
-        
-        if (canChedck == "") {
-        	alert('서명을 해주셔야 인정요청이 가능합니다.');
-        	rst = false;
-        } */
-
+        		
         return rst;
 	}
 
 	function fnCert(){
+
 		$("#form").submit();
-/* let formData = new FormData();
-		
-		formData.set() */
+
 	}
 	
 	$(function(){

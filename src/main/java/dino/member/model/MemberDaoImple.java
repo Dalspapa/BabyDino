@@ -83,6 +83,11 @@ public class MemberDaoImple implements MemberDao {
 		int result = sqlMap.update("memberOut", idx);
 		return result;
 	}
+	
+	//계정 관리 전 본인 확인
+	public String accountCheck(MemberDto memberDto) {		
+		return sqlMap.selectOne("accountCheck", memberDto);
+	}
 
 }
 

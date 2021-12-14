@@ -206,8 +206,6 @@ public class MemberController {
 		//회원탈퇴
 		@RequestMapping("/memberOut.do")
 		public ModelAndView memberOut(@RequestParam("sidx") int idx, HttpSession session) {
-
-			
 			
 			int result = memberService.memberOut(idx);
 			String msg = result > 0? "성공적으로 탈퇴가 되었습니다." : "회원 탈퇴가 이루어지지 않았습니다.";
@@ -218,8 +216,19 @@ public class MemberController {
 			mav.addObject("msg",msg);
 			mav.addObject("goUrl","main.do");
 			mav.setViewName("member/findPwdMsg");
-			return mav;
+			return mav;			
+		}
+		
+		//계정관리 전 본인인증
+		@RequestMapping("/accountCheck.do")
+		public String accountCheck(MemberDto memberDto) {
+										
+			String result = memberService.accountCheck(memberDto);
+			if (result == memberDto.getId() || result.equals(memberDto.getId())) {
+				return result;
+			}
 			
+			return "";
 		}
 		
 		//계정관리

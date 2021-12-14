@@ -138,12 +138,18 @@
 		
 	<!-- 선생님 필수 인증 (이미지테이블 조인쿼리로 수정해야함)-->
 	<select id="teacherCertification" resultType="dino.dto.MemberDto">
-		select 
-			*
-		from
-			d_member
-		where 
-			member_type = 4
+		SELECT 
+		    m.idx
+		    ,m.name
+		    ,m.id
+		    ,m.tel
+		    ,m.joindate
+		    ,t.exemplification
+		    ,t.crimeagree
+		FROM 
+   			 d_member m
+		LEFT JOIN d_teachercert t ON m.idx = t.d_member_idx
+		WHERE m.member_type = 5
 	</select>
 	
 </mapper>
