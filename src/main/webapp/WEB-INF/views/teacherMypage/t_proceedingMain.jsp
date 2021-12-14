@@ -99,7 +99,7 @@ a:link, a:visited {
 					</c:url>
 					<a href="${ contentUrl }">
 					<div class="t_card">
-						<div class="pic"><img alt="선생님기본사진" src="./common/img/basic/teacher.png" style="width: auto; max-height: 100%;"></div>
+						<div class="pic"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
 						<div class="intro">${tl_ing.k_introduce}</div>
 					</div>
 					</a>
@@ -122,13 +122,13 @@ a:link, a:visited {
 		   	<c:forEach var="tl_done" items="${ t_list_done }">
 				<div class="contentbody">
 					<!-- 선생님 카드 -->
-					<c:url var="contentUrl" value="caring.do">
+					<c:url var="contentUrl" value="t_caring.do">
 						<c:param name="idx">${ tl_done.r_idx }</c:param>
 					</c:url>
 					<a href="${ contentUrl }">
 					<div class="t_card">
-						<div class="pic"><img alt="선생님기본사진" src="./common/img/basic/teacher.png" style="width: auto; max-height: 100%;"></div>
-						<div class="intro">아이 소개 : ${tl_done.k_introduce}</div>
+						<div class="pic"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
+						<div class="intro">${tl_done.k_introduce}</div>
 					</div>
 					</a>
 					<!-- 선생님 정보 -->
