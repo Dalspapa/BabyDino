@@ -249,7 +249,7 @@ section{
           </div>
           <div>
             <div class="aa">결제대기</div>
-            <button type="button" class="btn btn-outline-success">결제하기</button>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">결제하기</button>
           </div>
           <div>
             <div class="aa">결제완료</div>
@@ -264,6 +264,25 @@ section{
             <button type="button" class="btn btn-outline-success" onclick="writeReview();">후기작성</button>
           </div>
         </div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">결제정보</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        ${dto.r_cost}원을 계산 하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
+		        <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="requestPaymentApi('kakaopay')">결제하기</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
         <!-- progress bar -->
         <div class="progress-center">
           <div class="progress">
@@ -357,9 +376,48 @@ section{
     </section>
   </div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <script>
 function writeReview(){
 	location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
+}
+/** 카카오페이 결제 api */
+var IMP = window.IMP;
+IMP.init('imp65129698'); // 가맹점 식별코드
+
+function requestPaymentApi(type){
+
+	IMP.request_pay({
+		pg : type,	 							// 결제방식
+		pay_method : 'card', 					// 결제 수단
+		merchant_uid : 'merchant_' + new Date().getTime(),
+		name : '주문명: 결제 테스트', 				// order 테이블에 들어갈 주문명 혹은 주문 번호(TODO 상품명으로바꿔야됨)
+		amount : ${dto.r_cost}, 							// 결제 금액		(TODO 결제금액으로 바꿔야됨)
+		buyer_email : 'dlwodlf000@naver.com', 	// 구매자 email 	(TODO 회원정보 이메일로바꿔야됨)
+		buyer_name : '이동현', 					// 구매자 이름		(TODO 회원정보 이름으로)
+		buyer_tel : '010-9957-6872', 			// 구매자 전화번호	(TODO 회원정보 연락처)
+		buyer_addr : '서울시 영등포구', 			// 구매자 주소T	(TODO 회원정보 주소)
+		buyer_postcode : '1234', 				// 구매자 우편번호	(TODO 회원정보 우편번호)
+	}, function(res) {
+		if (res.success) { // 성공시
+			console.log("---- rsp : ", res);
+			var msg = '결제가 완료되었습니다.';
+			msg += '고유ID : ' + res.imp_uid;
+			msg += '상점 거래ID : ' + res.merchant_uid;
+			msg += '결제 금액 : ' + res.paid_amount;
+			msg += '카드 승인번호 : ' + res.apply_num;
+			location.href = 'statusUpdate.do?idx=${dto.r_idx}';
+		} else { // 실패시
+			var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + res.error_msg;
+		}
+
+		return false;
+
+
+		console.log('-- msg: ', msg);
+		location.href = 'kakaoPayOk.do?msg=' + msg;
+	});
 }
 </script>
 </body>
