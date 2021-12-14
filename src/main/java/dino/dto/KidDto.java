@@ -22,9 +22,18 @@ public class KidDto {
 	private String teacher_type;
 	private String k_require;
 	private Integer age;
+	private List<MultipartFile> k_img;
 
 	private String regId;
 	private String updId;
+
+
+	public List<MultipartFile> getK_img() {
+		return k_img;
+	}
+	public void setK_img(List<MultipartFile> k_img) {
+		this.k_img = k_img;
+	}
 	public Integer getIdx() {
 		return idx;
 	}

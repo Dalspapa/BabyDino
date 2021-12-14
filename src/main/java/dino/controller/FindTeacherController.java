@@ -85,7 +85,7 @@ public class FindTeacherController {
 	boolean success = false;
 
 	List<MultipartFile> imgFiles = new ArrayList<MultipartFile>();
-	imgFiles = dto.getk_img();
+	imgFiles = dto.getK_img();
 
 	if (imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
 		imgDto.setC_imgpath("kid.png");
