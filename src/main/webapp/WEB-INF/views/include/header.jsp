@@ -211,7 +211,7 @@
 		  </div>
 		</div>
 	</header>
-		
+
 	<!-- 계정관리 비밀번호 확인 -->
 <form name="accountChecks" method="post">
 <div class="modal fade" id="accountChecks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -224,9 +224,9 @@
 			<div class="modal-body">
 				<div id="account-box">
 					<div id="accountPwd" class="input-group input-group-sm mb-3">
-						<input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="pwd" id="APWD" placeholder="비밀번호를 입력해주세요." autocomplete="off" /> 
+						<input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="pwd" id="APWD" placeholder="비밀번호를 입력해주세요." autocomplete="off" />
 						<span class="input-group-text" id="inputGroup-sizing-sm">V</span>
-					</div>					
+					</div>
 					<div class="account-input">
 						<span class="account" >
 						<button type="button" class="btn btn-outline-success" onclick="accountCheck();">본인 확인</button>
@@ -234,7 +234,7 @@
 					</div>
 				</div>
 			</div>
-		<div class="modal-footer">        
+		<div class="modal-footer">
 		</div>
 		</div>
 	</div>
@@ -297,30 +297,30 @@
 
 
 	function accountCheck(){
-		
+
 		let pwd = $('#APWD').val();
-		let sidx = ${sidx};
+		let sidx = '${sidx}';
 		let sid = '${sid}';
 		let urls = '?idx=${sidx}';
-		
+
 		const fmdata = new FormData();
-		
+
 		fmdata.set('pwd', pwd);
 		fmdata.set('idx', sidx);
 		fmdata.set('id', sid);
-		
+
 		fmdata.forEach(function(value, key){
-			console.log(key, value);		
+			console.log(key, value);
 		});
-	
+
 		$.ajax({
-		
+
 			url: 'accountCheck.do',
 			type: 'POST',
 			data: fmdata,
 			contentType: false,
 			processData: false,
-			
+
             success : function(error) {
                if(error.result) {
                   location.href= 'accountManagement.do'+urls;
@@ -329,13 +329,13 @@
                }
             },
             error:function(){
-            	
+
                 alert("회원가입중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.");
                 return false;
                 location.href= 'main.do';
             }
 		});
-	
+
 	}
 
 </script>

@@ -5,42 +5,43 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class KidDto {	
+public class KidDto {
 
 	//Kid Card Table
-	private int idx;
-	private int kids_idx;
-	private int d_kidcard_idx;
-	private int d_member_idx;
+	private Integer idx;
+	private Integer kids_idx;
+	private Integer d_kidcard_idx;
+	private Integer d_member_idx;
 	private String k_name;
 	private String care_type;
-	private int k_gender;
+	private Integer k_gender;
 	private String k_tendency;
 	private Date k_birth;
 	private String k_introduce;
 	private String k_care_type;
 	private String teacher_type;
 	private String k_require;
-	private int age;
-	
+	private Integer age;
+
 	private String regId;
 	private String updId;
-	
-	
-	
-	public int getD_kidcard_idx() {
+
+
+
+
+	public Integer getD_kidcard_idx() {
 		return d_kidcard_idx;
 	}
 
-	public void setD_kidcard_idx(int d_kidcard_idx) {
+	public void setD_kidcard_idx(Integer d_kidcard_idx) {
 		this.d_kidcard_idx = d_kidcard_idx;
 	}
 
-	public int getKids_idx() {
+	public Integer getKids_idx() {
 		return kids_idx;
 	}
 
-	public void setKids_idx(int kids_idx) {
+	public void setKids_idx(Integer kids_idx) {
 		this.kids_idx = kids_idx;
 	}
 
@@ -68,15 +69,15 @@ public class KidDto {
 		this.updId = updId;
 	}
 
-	private List<MultipartFile> kImg;
-	
+	private List<MultipartFile> k_img;
+
 	public KidDto() {
 		super();
 	}
-	
-	public KidDto(int idx, int d_member_idx, String k_name, int k_gender, String k_tendency, Date k_birth,
-			String k_introduce, String k_care_type, String teacher_type, String k_require, int age,
-			List<MultipartFile> kImg) {
+
+	public KidDto(Integer idx, Integer d_member_idx, String k_name, Integer k_gender, String k_tendency, Date k_birth,
+			String k_introduce, String k_care_type, String teacher_type, String k_require, Integer age,
+			List<MultipartFile> k_img) {
 		super();
 		this.idx = idx;
 		this.d_member_idx = d_member_idx;
@@ -89,40 +90,40 @@ public class KidDto {
 		this.teacher_type = teacher_type;
 		this.k_require = k_require;
 		this.age = age;
-		this.kImg = kImg;
+		this.k_img = k_img;
 	}
 
-	public List<MultipartFile> getkImg() {
-		return kImg;
+	public List<MultipartFile> getk_img() {
+		return k_img;
 	}
 
-	public void setkImg(List<MultipartFile> kImg) {
-		this.kImg = kImg;
+	public void setkImg(List<MultipartFile> k_img) {
+		this.k_img = k_img;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
 
-	public int getIdx() {
+	public Integer getIdx() {
 		return idx;
 	}
-	
-	public void setIdx(int idx) {
+
+	public void setIdx(Integer idx) {
 		this.idx = idx;
 	}
 
-	public int getD_member_idx() {
+	public Integer getD_member_idx() {
 		return d_member_idx;
 	}
 
-	public void setD_member_idx(int d_member_idx) {
+	public void setD_member_idx(Integer d_member_idx) {
 		this.d_member_idx = d_member_idx;
 	}
 
@@ -134,11 +135,11 @@ public class KidDto {
 		this.k_name = k_name;
 	}
 
-	public int getK_gender() {
+	public Integer getK_gender() {
 		return k_gender;
 	}
 
-	public void setK_gender(int k_gender) {
+	public void setK_gender(Integer k_gender) {
 		this.k_gender = k_gender;
 	}
 
@@ -194,7 +195,7 @@ public class KidDto {
 	public String toString() {
 		String str = "아이 이름" + k_name + "아이 성별" + k_gender + "아이성향" + k_tendency;
 		System.out.println(str);
-		return str; 
+		return str;
 	}
-	
+
 }
