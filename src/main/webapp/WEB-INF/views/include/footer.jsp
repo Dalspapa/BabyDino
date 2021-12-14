@@ -35,7 +35,7 @@
                   aria-label="Sizing example input" 
                   aria-describedby="inputGroup-sizing-sm" 
                   name="pwd" id="PWD" 
-                  placeholder="비밀번호를 입력해주세요." autocomplete="off" /> 
+                  placeholder="비밀번호를 입력해주세요." autocomplete="off" onkeyup="if(window.event.keyCode==13){ajaxTest()}" /> 
                   <span class="input-group-text" id="inputGroup-sizing-sm">V</span>
                </div>
                <span id="loginCheck">
@@ -122,8 +122,6 @@
 	      </div>      
 	   </div>
 </footer>
- <body onkeydown="javascript:onEnterLogin();">
-</body>
 
   <!-- 헤더이벤트처리 -->
   <script>
@@ -227,18 +225,6 @@
 
   });
 	
-//엔터키로 로그인하기
- 	function onEnterLogin(){
-
-		var keyCode = window.event.keyCode;
-
-		if (keyCode == 13) { //엔테키면
-
-			ajaxTest();
-
-		}
-
-	} //onEnterLogin()
 
 </script>
 
