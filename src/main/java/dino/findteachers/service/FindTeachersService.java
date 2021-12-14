@@ -23,10 +23,6 @@ public interface FindTeachersService {
 	// pick addr card
 	public MemberDto pickKidsAddrCard(int idx);
 
-
-	// make kid card
-	public int makeKCard(KidDto dto);
-	
 	/**
 	 * 아이캐어타입 저장
 	 * @param dto
@@ -51,7 +47,7 @@ public interface FindTeachersService {
 	public int kSetImg(Common_ImgDto imgDto);
 	
 	//get img path
-	public List<Common_ImgDto> imgpath(int d_member_idx);
+	public List<FindTeacherJoinDto> imgpath(int d_member_idx);
 
 }
 

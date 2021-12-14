@@ -62,13 +62,19 @@
 	</insert>
 	
 	<!-- 이미지 출력 -->
-	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	<select id="getImg" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto" >
 	    SELECT dk.*
-     		 , dci.c_imgpath
-		FROM d_kidcard dk 
-		LEFT JOIN d_common_img dci ON dk.idx = dci.ref_idx
-		WHERE dk.idx = #{d_member_idx}
-		and dci.category_idx = 1
+     		 	, dci.c_imgpath
+		FROM 
+				d_kidcard dk 
+		LEFT JOIN 
+				d_common_img dci 
+		ON 		
+				dk.idx = dci.ref_idx
+		WHERE 
+				dk.idx = #{d_member_idx}
+		AND 
+				dci.category_idx = 1
 	</select>
 	
 	
@@ -155,10 +161,14 @@
 		FROM
 			d_teachercard t
 		LEFT JOIN 
-			d_member m ON m.idx = t.d_member_idx
+			d_member m 
+		ON 
+			m.idx = t.d_member_idx
 		LEFT JOIN 
-			d_common_img i on i.ref_idx = t.idx
-		where 
+			d_common_img i 
+		ON 
+			i.ref_idx = t.idx
+		WHERE 
 			t.idx = #{idx}
 	</select>
 	
