@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!-- header -->
+<!DOCTYPE html>
 <html>
 	<head>
 	<%@ include file="/WEB-INF/views/include/header.jsp" %>
@@ -34,8 +34,8 @@
 		touch-action: none;
 		cursor: url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico") 7 5, url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico"), default;
 		}
-		.jido {
-		}
+
+
 	</style>
 	</head>
 	<body id="page-top">
@@ -502,14 +502,7 @@
 	          </div>
 	    </section>
 	  </div>
-	  
-	<div class = "jido">  
-	   지도. 우리 여기 있어요!! 
-	<section id = "section09" class = "kakaoMap">
-		<div id="map">우리, 여기 있어요!!</div>
-	</section>
-	</div>  
-	
+
 	  <!-- 챗 Modal -->
 	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
@@ -595,46 +588,38 @@
 		var options = { //지도를 생성할 때 필요한 기본 옵션
 			center: new kakao.maps.LatLng(37.51795334189508, 126.89483972060654), //지도의 중심좌표.
 			level: 3 //지도의 레벨(확대, 축소 정도)
+
 		};
 
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-		 */
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	    var markerPosition  = new kakao.maps.LatLng(37.556852, 126.941569);
 
-		// 마커가 표시될 위치입니다
-		if (typeof kakao != 'undefined') {
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-			mapOption = {
-				center : new kakao.maps.LatLng(37.556852, 126.941569), // 지도의 중심좌표
-				level : 3
-			// 지도의 확대 레벨
-			};
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
 
-			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-			var markerPosition = new kakao.maps.LatLng(37.556852, 126.941569);
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+	}
 
-			// 마커를 생성합니다
-			var marker = new kakao.maps.Marker({
-				position : markerPosition
-			});
 
-			// 마커가 지도 위에 표시되도록 설정합니다
-			marker.setMap(map);
-		}
 
-		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-		// marker.setMap(null);
+	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+	// marker.setMap(null);
 
-		function find_id() {
-			a.show();
-			b.hide();
-		}
+	  function find_id(){
+	  a.show();
+	  b.hide();
+	  }
 
-		function find_pwd() {
-			a.hide();
-			b.show();
-		}
-	</script>
+	  function find_pwd(){
+	  a.hide();
+	  b.show();
+	  }
+  </script>	  
+	  
+	</body>
+	  <!-- footer -->
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
-</body>
-<!-- footer -->
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>

@@ -27,7 +27,9 @@
 </head>
 <body>
 	<div class="main">
+
 		<div class="title">기능 편집</div>
+
 		<div class="btns">
 			<button type="button" class="btn btn-outline-success" onclick="care();">돌봄 분야 추가 기능</button>
 			<button type="button" class="btn btn-outline-success" onclick="cancel();">취소 사유 편집</button>
@@ -62,7 +64,7 @@
 		
 		<!-- 취소사유 편집 -->
 		<div id="cancel">
-			<div class="btns">
+			<div  class="btns">
 				<button type="button" class="btn btn-outline-success" id="pCancelBtn">부모님 취소 사유</button>
 				<button type="button" class="btn btn-outline-success" id="tCancelBtn">선생님 취소 사유</button>
 			</div>

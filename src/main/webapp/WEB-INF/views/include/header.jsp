@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<head>
 <meta charset="UTF-8">
 <title>아 기 공 룡</title>
 <!-- 전역css -->
@@ -22,37 +23,16 @@
 <!-- 폰트어썸(아이콘) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/common/js/jquery-3.6.0.min.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+<!-- <script src="/BabyDino/common/js/jquery-3.6.0.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- 부트스트랩 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <!-- <link rel="stylesheet" href="/BabyDino/common/css/bootstrap.min.css"> -->
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/common/js/pignose.calendar.full.min.js"></script> --%>
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script> -->
-
-<!-- 캘린더 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/common/css/pignose.calendar.min.css">
-<script src="${pageContext.request.contextPath}/common/js/pignose.calendar.full.min.js"></script>
-
+<!-- 지원 css수정 -->
 <style>
-
-/*로그인 모달창*/
-.modal .modal-dialog .modal-content .modal-header .modal-title{
-	font-size: 24px;
-	font-weight: 500;
-}
-.modal .modal-dialog .modal-content .modal-footer .login-buton-box a{
-	text-decoration: none;
-	color: green;
-}
-.modal .modal-dialog .modal-content .modal-footer .login-buton-box a:hover{
-	color: white;
-}
-
-
-.memberImg {
+<!--.memberImg {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
@@ -66,7 +46,18 @@
 	text-align: center;
 }
 .offcanvas-body div{
-	margin-top: 25px;
+	margin-top: 30px;
+}
+.offcanvas-body div a{
+	margin-top: 30px;
+	text-decoration: none!important;
+	color: black;
+	font-size: 17px;
+}
+.offcanvas-body div a:hover{
+	font-weight:500;
+	text-decoration: none!important;
+	color: #68983b;
 }
 </style>
 
@@ -111,7 +102,7 @@
 						<a class="nav-link" href="javascript:dinoCare(${stype});">돌봄신청</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:fnDinoKids(${stype});">아이찾기</a>
+						<a class="nav-link" href="javascript:dinoKids(${stype});">아이찾기</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="findTeacher.do">공룡샘 찾기</a>
@@ -201,7 +192,7 @@
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="#">후기내역</a></div>
 		    <div><a href="#">신고내역</a></div>
-		    <div><a href="#">계정관리</a></div>
+		    <div><a class="nav-link" data-bs-toggle="modal" data-bs-target="#accountChecks">계정관리</a></div>
 		  </div>
 		</div>
 		<!-- side navbar admin -->
@@ -219,31 +210,42 @@
 		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
 		  </div>
 		</div>
+	</header>
 		
-		
-  <!-- 챗 Modal -->
-  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">채팅</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div id="chatBox">
-            <form name="chatForm" action="#" method="post">
-              <h3>여기는 채팅 박스 영역입니다.</h3>
-              <a href="chatList.do">채팅</a>
-              <%@ include file="/WEB-INF/views/chat/chatList.jsp" %>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  <!-- ./챗 Modal -->
-  </div>
-</header>
+	<!-- 계정관리 비밀번호 확인 -->
+<form name="accountChecks" method="post">
+<div class="modal fade" id="accountChecks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" >본인 인증</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="account-box">
+					<div id="accountPwd" class="input-group input-group-sm mb-3">
+						<input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="pwd" id="APWD" placeholder="비밀번호를 입력해주세요." autocomplete="off" /> 
+						<span class="input-group-text" id="inputGroup-sizing-sm">V</span>
+					</div>					
+					<div class="account-input">
+						<span class="account" >
+						<button type="button" class="btn btn-outline-success" onclick="accountCheck();">본인 확인</button>
+					</span>
+					</div>
+				</div>
+			</div>
+		<div class="modal-footer">        
+		</div>
+		</div>
+	</div>
+<!--  계정관리 비밀번호  확인 -->
+</div>
+</form>
+
+</head>
 <script>
+
+
 	function dinoCare(stype){
 
 
@@ -263,10 +265,10 @@
 		}
 	}
 
-	function fnDinoKids(stype){
+	function dinoKids(stype){
 
 		if (stype == 1 || stype == 2 || stype == 3 || stype == 6) {
-			location.href = '/findKids/form.do';
+			location.href = 'findKids.do';
 
 		} else if (stype == 4) {
 
@@ -294,8 +296,51 @@
 	}
 
 
+	function accountCheck(){
+		
+		let pwd = $('#APWD').val();
+		let sidx = ${sidx};
+		let sid = '${sid}';
+		let urls = '?idx=${sidx}';
+		
+		const fmdata = new FormData();
+		
+		fmdata.set('pwd', pwd);
+		fmdata.set('idx', sidx);
+		fmdata.set('id', sid);
+		
+		fmdata.forEach(function(value, key){
+			console.log(key, value);		
+		});
+	
+		$.ajax({
+		
+			url: 'accountCheck.do',
+			type: 'POST',
+			data: fmdata,
+			contentType: false,
+			processData: false,
+			
+            success : function(error) {
+               if(error.result) {
+                  location.href= 'accountManagement.do'+urls;
+               } else {
+                  alert("본인 인증에 실패했습니다. 비밀번호를 정확히 입력해주세요.");
+               }
+            },
+            error:function(){
+            	
+                alert("회원가입중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.");
+                return false;
+                location.href= 'main.do';
+            }
+		});
+	
+	}
+
 </script>
 
+</html>
 
 
 

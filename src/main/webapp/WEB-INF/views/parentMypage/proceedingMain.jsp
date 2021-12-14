@@ -16,15 +16,17 @@ a:link, a:visited {
    margin-top: 130px;
    text-align: center;
    font-family: 'S-Air';
+   margin-bottom: 61px;
 }
 .main .title{
-   font-size: 20px;
-   font-weight: 600;
+   font-size: 25px;
+   font-weight: 500;
    margin-bottom: 18px;
 }
 .main .btns{
 	display: flex;
 	justify-content: space-evenly;
+	margin-bottom: 35px;
 }
 .contentbody {
 	display: flex;

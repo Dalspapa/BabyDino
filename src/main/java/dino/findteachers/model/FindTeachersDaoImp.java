@@ -104,9 +104,9 @@ public class FindTeachersDaoImp implements FindTeachersDao {
 		
 	
 	  //get img path 
-	  public List<Common_ImgDto> imgpath(int d_member_idx){
+	  public List<FindTeacherJoinDto> imgpath(int d_member_idx){
 	  
-		  List<Common_ImgDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
+		  List<FindTeacherJoinDto> resultDto = sqlMap.selectList("getImg", d_member_idx);
 	  
 	  return resultDto; 
 	  }

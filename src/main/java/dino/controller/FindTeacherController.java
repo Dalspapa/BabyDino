@@ -1,6 +1,7 @@
 package dino.controller;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class FindTeacherController {
 	@RequestMapping("/getKidImg.do") 
 	public ModelAndView getImg(int d_member_idx){
 	 
-	List<Common_ImgDto> resultImg = teachersService.imgpath(d_member_idx);
+	List<FindTeacherJoinDto> resultImg = teachersService.imgpath(d_member_idx);
 	 
 	String [] imgName = {};
 	for(int i = 0; i < resultImg.size(); i++) {
@@ -79,7 +80,7 @@ public class FindTeacherController {
 	public ResponseEntity<?> makeKidCard(KidDto dto, Common_ImgDto imgDto, HttpServletRequest request, MemberDto mdto, HttpSession session){
 
 	// test code 
-	System.out.println(">>>>>컨트롤러 진입<<<<<<");
+	System.out.println(">>>>>아이카드 컨트롤러 진입<<<<<<");
 		 
 	HashMap<String, Object> result = new HashMap<String, Object>(); 
 	boolean success = false;
@@ -88,7 +89,7 @@ public class FindTeacherController {
 	imgFiles = dto.getkImg();
 		 
 	if (imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
-		imgDto.setC_imgpath("kid.png"); 
+		imgDto.setC_imgpath("icons_main.png"); 
 	}
 		 
 	String dirPath = servletContext.getRealPath("/resources");
@@ -180,26 +181,26 @@ public class FindTeacherController {
 	}
 
 
-	// 찐또메이크 아이카드 등록
-	@RequestMapping("/makeKidsCard.do")
-	public ModelAndView makeKidCard(KidDto dto, HttpSession session) {
-
-		System.out.println("====아이카드 추가 등록 컨트롤러 진입=====" + dto);
-
-		int result = teachersService.makeKCard(dto);
-		
-		String[] careTypeList = dto.getK_care_type().split(",");
-		
-		for (String careType : careTypeList) {
-			dto.setKids_idx(dto.getD_kidcard_idx());
-			dto.setCare_type(careType);
-			dto.setRegId((String)session.getAttribute("saveId"));
-			dto.setUpdId((String)session.getAttribute("saveId"));
-			
-			teachersService.makeKCareType(dto);
-		}
-		return null;
-	}
+//	// 찐또메이크 아이카드 등록
+//	@RequestMapping("/makeKidsCard.do")
+//	public ModelAndView makeKidCard(KidDto dto, HttpSession session) {
+//
+//		System.out.println("====아이카드 추가 등록 컨트롤러 진입=====" + dto);
+//
+//		int result = teachersService.makeKCard(dto);
+//		
+//		String[] careTypeList = dto.getK_care_type().split(",");
+//		
+//		for (String careType : careTypeList) {
+//			dto.setKids_idx(dto.getD_kidcard_idx());
+//			dto.setCare_type(careType);
+//			dto.setRegId((String)session.getAttribute("saveId"));
+//			dto.setUpdId((String)session.getAttribute("saveId"));
+//			
+//			teachersService.makeKCareType(dto);
+//		}
+//		return null;
+//	}
 
 	// 아이카드 등록 메서드
 	@RequestMapping("/reserveCard.do")

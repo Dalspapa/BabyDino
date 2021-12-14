@@ -22,6 +22,7 @@
     font-weight: 500;
     margin-bottom: 12px;
 }
+
 .likebody .btn{
 	margin-left: 700px;
 }
@@ -107,7 +108,7 @@
 			    </c:forEach>
 			  </tbody>
 			</table>
-				<div class="btn">
+				<div class="btns">
 					<button type="button" class="btn btn-outline-success">탈퇴처리</button>
 				</div>
 				<div>

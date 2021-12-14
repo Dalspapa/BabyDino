@@ -25,5 +25,8 @@ public interface MemberDao {
 			//memberOut
 			public int memberOut(int idx);
 			
+			//계정 관리 전 본인 확인
+			public String accountCheck(MemberDto memberDto);
+			
 			
 }

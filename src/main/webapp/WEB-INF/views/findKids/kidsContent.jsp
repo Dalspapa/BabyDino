@@ -260,7 +260,7 @@ section {
     margin: auto 45%;
 }
 </style>
-
+<!-- ---지원css 수정----- -->
 </head>
 <body>
 
@@ -312,13 +312,13 @@ section {
 		</c:if>
 	</div>
 	
-	
 	<div class="wrapper">
 		<section><br><br><br>
 			<div class="topCont d-flex justify-content-between">
 				<div><a href="javascript:history.back();">다른 아이 보러가기</a></div>
 				<div>${ kidInfoDto.k_name }</div>
 				<form name="reportIdx" action="reportWrite.do">
+
 					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
 				<div>
 					<a href="javascript:reportIdx.submit();">
@@ -334,7 +334,7 @@ section {
 	
 			<div class="item1">
 				<div class="childImg">
-					<img src="/upload/${fn:replace(kidInfoDto.c_imgpath, ',', '')}" alt="아이 사진" width="200px" height="200px" onerror="this.remove();"><br>
+					<img src="/upload/${fn:replace(kidInfoDto.c_imgpath, ',', '')}" alt="아이 사진" width="200px" height="200px"><br>
 				</div>
 				<div class="childInfo">
 					<c:if test="${kidInfoDto.k_gender == 1 }">

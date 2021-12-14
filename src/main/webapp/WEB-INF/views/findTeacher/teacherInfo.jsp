@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<!-- 지원 css수정 및 추가 -->
 <style type="text/css">
 @import
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap')
@@ -48,6 +49,7 @@ h2 {
 
 .wrapper {
 	width: 80%;
+	margin: 9% auto;
 }
 /* userInfo 사용자 상태영역 */
 .userInfo {
@@ -224,6 +226,9 @@ section {
 	padding: 10px;
 	margin: 1rem;
 }
+section .btns{
+	text-align: center;
+}
 
 @media all and (min-width: 720px) and (max-width: 1280px) {
 	body {
@@ -300,7 +305,7 @@ section {
 				<li>
 					<h3>돌봄가능연령</h3>
 					<div class="contentBox">
-						<div class="row">
+						<div class="row" style="width: 50%; margin: auto;">
 							<div class="col-3 text-center">
 								<img id="kidType1" src="${pageContext.request.contextPath }/common/img/kidType/kidstype1_off.png" class="w-100"/>
 								<span>영아(1~2세)</span>
@@ -351,8 +356,8 @@ section {
 					</div>
 				</li>
 			</ul>
-			<div>
-				<button type="button" class="btn btn-outline-primary">인터뷰요청</button>
+			<div class="btns">
+				<button type="button" class="btn btn-outline-success">인터뷰요청</button>
 			</div>
 		</section>
 	</div>	

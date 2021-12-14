@@ -25,7 +25,6 @@
 			#{bank},
 			#{acnum},
 			#{cctvagree},
-			'signclear',
 			#{career_experience}
 		)
 	</insert>
@@ -135,6 +134,21 @@
 			2,
 			#{ref_idx}
 		)
+	</insert>
+	
+	<!-- 선생님 필수 인증 정보 입력 //////////////주호 -->
+	<insert id="setCert" parameterType="dino.findkids.model.TeacherCertDto">
+	
+		INSERT INTO 
+			d_teachercert 
+		VALUES(
+   			 d_teachercert_idx.nextval
+    		,#{exemplification}
+    		,#{crimeagree}
+    		,#{d_member_idx}
+		)
+<!-- //////////////주호 끝 -->
+	
 	</insert>
 
 	<!-- 이미지 출력 -->

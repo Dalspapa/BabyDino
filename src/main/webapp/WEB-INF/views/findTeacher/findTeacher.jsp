@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- ---------지원css------------- -->
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-
 
 <style>
 #cardImg {
@@ -55,7 +53,6 @@ section .container{
 					</div>
 					<br>
 					<button class="btn btn-outline-success" onclick="check()">check</button>
-
 					<div class="row mt-4">
 						<div class="form-check w-50">
 							<input class="form-check-input" type="checkbox" value="1"
@@ -104,7 +101,7 @@ section .container{
 							onclick="location.href='${contentUrl}'">
 							<div class="flip-card-front">
 								<div class="mb-2">
-									<img src="/upload/${fn:replace(tDto.c_imgpath, ',', '')}" alt="선생님사진" ><br>
+									<img src="/upload/${tDto.c_imgpath}" alt="선생님사진" ><br>
 									<input type="hidden" name="idx" value="${ tDto.idx }">
 								</div>
 								<div>

@@ -11,6 +11,7 @@
 }
 </style>    
      
+
   <!-- 로그인 Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -70,7 +71,6 @@
   <!-- ./로그인 Modal -->
   </div>
 
-
 <!-- footer -->
 <footer class="row">
     <div class="col-xxl-12 col-lg-8 col-sm-4 col-xs  foot">
@@ -125,14 +125,15 @@
 	   </div>
 </footer>
  <body onkeydown="javascript:onEnterLogin();">
+
 </body>
 
   <!-- 헤더이벤트처리 -->
   <script>
   
-  <!-- login -->
+  <!--login -->
   function ajaxTest(){
-	  
+
 	var id = $("#ID").val();
 	var pwd = $("#PWD").val();
 	
@@ -179,13 +180,6 @@
 };
 															 
   $(function(){
-	  
-	//엔터키 누를시 로그인처리
-// 	$('input[type=password]').change(function(e){
-// 		if (e.keyCode == 13) { //엔테키면
-// 			ajaxTest();
-// 		}
-// 	});
 
 	// 스크롤이 0보다 크면 클래스 이벤트 추가
 	var navbarShrink = function () {
@@ -227,7 +221,7 @@
 	    document.querySelectorAll('#navbarResponsive .nav-link')
 	);
 	responsiveNavItems.map(function (responsiveNavItem) {
-	    responsiveNavItem.addEventListener('click', function(){
+	    responsiveNavItem.addEventListener('click', () => {
 	        if (window.getComputedStyle(navbarToggler).display !== 'none') {
 	            navbarToggler.click();
 	        }
@@ -236,6 +230,18 @@
 
   });
 	
+//엔터키로 로그인하기
+ 	function onEnterLogin(){
+
+		var keyCode = window.event.keyCode;
+
+		if (keyCode == 13) { //엔테키면
+
+			ajaxTest();
+
+		}
+
+	} //onEnterLogin()
 
 </script>
 

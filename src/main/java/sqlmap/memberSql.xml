@@ -98,4 +98,19 @@
    		WHERE
    			IDX = #{idx}
    </update>
+   
+   <select id="accountCheck" parameterType="dino.dto.MemberDto" resultType="String">
+   
+   	SELECT 
+   		id 
+   	FROM 
+   		d_member 
+   	WHERE 
+   		idx = #{idx} and pwd = #{pwd}
+   
+   </select>
+   
+   
+   
+   
 </mapper> 

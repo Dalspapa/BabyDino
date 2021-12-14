@@ -45,9 +45,9 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 	}
 
 	//Test imgpath
-	public List<Common_ImgDto> imgpath(int d_member_idx) {
+	public List<FindTeacherJoinDto> imgpath(int d_member_idx) {
 
-		List<Common_ImgDto> resultImg = findTeachersDao.imgpath(d_member_idx);
+		List<FindTeacherJoinDto> resultImg = findTeachersDao.imgpath(d_member_idx);
 
 		return resultImg;
 	}
@@ -171,8 +171,4 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 		return t_dto;
 	}
 
-	public int makeKCard(KidDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }
