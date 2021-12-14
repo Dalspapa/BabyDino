@@ -86,7 +86,7 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 
 	// make kid card (테스트)
 	@Transactional
-	public void makeKCard(KidDto dto, List<MultipartFile> imgFiles, String dirPath, Common_ImgDto imgDto, HttpServletRequest request) {
+	public void makeKCard(KidDto kids, List<MultipartFile> imgFiles, String dirPath, Common_ImgDto imgDto, HttpServletRequest request) {
 
 		String c_imgpath = "";
 		if ( imgFiles == null || imgFiles.size() == 0) {
@@ -105,16 +105,16 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 			}
 		}
 
-		int result = findTeachersDao.makeKCard(dto);
+		int result = findTeachersDao.makeKCard(kids);
 		if(result == 0) {
 			System.out.println("insert 에러남.");
 		}
 
 		// inset된 data idx
-		int ref_idx = dto.getIdx();
+		int ref_idx = kids.getIdx();
 		int category_idx = 1;
 
-		int d_member_idx = dto.getD_member_idx();
+		int d_member_idx = kids.getD_member_idx();
 //		String updId = (String)request.getSession().getAttribute("saveId");
 
 		//imgDto.setC_imgpath();
