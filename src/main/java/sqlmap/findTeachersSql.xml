@@ -52,28 +52,31 @@
 	<insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
 		INSERT INTO
 			d_common_img
+			(
+			IDX, C_IMGPATH, D_MEMBER_IDX, CATEGORY_IDX, REF_IDX
+		    )
 		VALUES(
-			d_common_img_idx.nextval,
-			#{c_imgpath},
-			#{d_member_idx},
-			1,
-			#{ref_idx}
-		)
+				d_common_img_idx.nextval,
+				#{c_imgpath},
+				#{d_member_idx},
+				1,
+				#{ref_idx}
+			)
 	</insert>
 
 	<!-- 이미지 출력 -->
 	<select id="getImg" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto" >
 	    SELECT dk.*
      		 	, dci.c_imgpath
-		FROM 
-				d_kidcard dk 
-		LEFT JOIN 
-				d_common_img dci 
-		ON 		
+		FROM
+				d_kidcard dk
+		LEFT JOIN
+				d_common_img dci
+		ON
 				dk.idx = dci.ref_idx
-		WHERE 
+		WHERE
 				dk.idx = #{d_member_idx}
-		AND 
+		AND
 				dci.category_idx = 1
 	</select>
 
@@ -161,15 +164,15 @@
 			, i.c_imgpath
 		FROM
 			d_teachercard t
-		LEFT JOIN 
-			d_member m 
-		ON 
+		LEFT JOIN
+			d_member m
+		ON
 			m.idx = t.d_member_idx
-		LEFT JOIN 
-			d_common_img i 
-		ON 
+		LEFT JOIN
+			d_common_img i
+		ON
 			i.ref_idx = t.idx
-		WHERE 
+		WHERE
 			t.idx = #{idx}
 	</select>
 
