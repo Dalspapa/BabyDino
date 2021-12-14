@@ -353,7 +353,7 @@
 				talkHtml += 		'<strong class="primary-font">' + senderName + '</strong>';
 				talkHtml += 		'<small class="pull-right text-muted">';
 				talkHtml += 			'<i class="fa fa-clock-o"></i>';
-				talkHtml += 			sendTime;
+				talkHtml += 			fnGetTime();
 				talkHtml += 		'</small>';
 				talkHtml += 	'</div>';
 				talkHtml += 	'<p>';
@@ -396,6 +396,27 @@
 		var message = document.fm.write.value + '\n';
 		var send_time = fnGetTime();
 		
+		var jsonParams = {d_member_idx   : d_member_idx,
+						    d_chatroom_idx : d_chatroom_idx,
+						    message        : message,
+						    send_time      : send_time
+						   };
+		console.log("### INFO jsonParams : ", jsonParams);
+		
+		$.ajax({
+			method : 'POST',
+			url : '/saveChatMessage.do',
+			data : jsonParams,
+			dataType : 'json',
+			success : function (result) {
+				console.log('메시지 저장 성공');
+			},
+			error:function(){
+				console.log('메시지 저장 실패' + message);
+        }
+			
+		});
+		
 		$('.chat').append(
 				
 	           '<li class="right clearfix">' +
@@ -428,7 +449,7 @@
 		
 		
 		
-	}
+	};
 	
 	
 	function yongClose() {

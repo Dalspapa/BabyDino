@@ -426,6 +426,7 @@ table .phone{
                if(r.result > 0) {
                   alert('회원가입이 완료되었습니다.');
                   location.href= 'main.do';
+                  fnShowLogin();
                } else {
                   alert("회원가입중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.");
                }
@@ -437,6 +438,12 @@ table .phone{
       
    }
    
+	//로그인 모달호출 함수	
+	function fnShowLogin() {
+		 $('#loginModal').modal('show');
+	}
+	
+	
    //아이디 중복 체크
    function idCheck() {
       let userId = $('.input_id').val(); //input 태그의 class 명의 value 값
