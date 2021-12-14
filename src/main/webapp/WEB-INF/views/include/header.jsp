@@ -153,7 +153,7 @@
 						</li>
                     </c:if>
                     <!-- teacher navbar -->
-                    <c:if test="${stype == 4 || stype == 5 || stype ==6}">
+                    <c:if test="${stype == 4 || stype == 5 || stype == 6 || stype == 10 || stype == 11}">
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">
 	                        <i class="fas fa-user"></i>
