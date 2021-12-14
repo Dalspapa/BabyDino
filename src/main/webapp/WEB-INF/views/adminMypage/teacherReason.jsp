@@ -23,6 +23,7 @@
 	margin: 10px 336px;
 }
 </style>
+<!-- -------------지원 css---------------- -->
 <%@include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <body>
