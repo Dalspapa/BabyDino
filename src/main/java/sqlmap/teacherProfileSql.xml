@@ -19,7 +19,6 @@
 			,t.bank
 			,t.acnum
 			,t.cctvagree
-	    	,t.t_sexcrime
 	    	,t.career_experience
 	    	,m.name
 	    	,(to_char(sysdate,'yyyy') - to_char(m.birth,'yyyy')) as age
