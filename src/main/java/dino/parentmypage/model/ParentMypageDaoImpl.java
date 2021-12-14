@@ -58,5 +58,11 @@ public class ParentMypageDaoImpl implements ParentMypageDao {
 		List<ParentMypageDto> list = sqlMap.selectList("t_proceedingMain_done", idx);
 		return list;
 	}
+
+	//결제후 예약테이블 상태 변경
+	public int statusUpdate(int idx) {
+		int result = sqlMap.update("statusUpdate", idx);
+		return result;
+	}
 }
 
