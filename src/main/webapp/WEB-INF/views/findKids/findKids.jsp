@@ -289,7 +289,7 @@ section .row .mtitle{
 		/* return false; */
 		$.ajax({
 			method : 'POST',
-			url : '/search.do',
+			url : '/findKidsList.do',
 				data : formData,
 			enctype: 'multipart/form-data',
 			processData: false,

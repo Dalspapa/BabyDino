@@ -50,7 +50,7 @@ public class FindKidsController {
 	 * 아이찾기화면
 	 * @return
 	 */
-	@RequestMapping("/findKids/form.do")
+	@RequestMapping("/findKidsForm.do")
 	public ModelAndView findKidsForm() {
 		
 		//돌봄분야 리스트 출력
@@ -71,7 +71,7 @@ public class FindKidsController {
 	 * @param searchKids
 	 * @return
 	 */
-	@RequestMapping(value = "/findKids/list.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/findKidsList.do", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView getKidsList(@RequestBody FindKidsJoinDto searchKids) {
 		

@@ -32,7 +32,7 @@
 <!-- <link rel="stylesheet" href="/BabyDino/common/css/bootstrap.min.css"> -->
 <!-- 지원 css수정 -->
 <style>
-<!--.memberImg {
+.memberImg {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
@@ -70,7 +70,8 @@
 </div>
 <!-- 챗 버튼 -->
 <div id="chat">
-	<a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal">
+	<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
+	<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
 		<span id="caht-cnt">
 			<p>1</p>
 		</span>
@@ -268,7 +269,7 @@
 	function dinoKids(stype){
 
 		if (stype == 1 || stype == 2 || stype == 3 || stype == 6) {
-			location.href = 'findKids.do';
+			location.href = 'findKidsForm.do';
 
 		} else if (stype == 4) {
 

@@ -214,21 +214,10 @@
 	
 </head>
 
-<c:set var="sessionIdx" value="${ sessionScope.saveIdx }" />
-
 <body>
 
-<!-- 테스트영억 -->
-
-<div class="chat-messages">
-
-</div>
-
-<!-- 테스트영억 끝-->
-	
 	<h1>${ sessionScope.roomIdx }</h1>
 	
-
     <!-- selected chat -->
    	<div class="bg-white ">
        <div class="chat-message">
@@ -305,26 +294,24 @@
                </c:forEach>
                <!-- 기존 채팅 리스트 불러오기  끝 -->           
            </ul>
-           
-			<!-- 메시지 보내기 -->	
-			<form name="fm" method="post" onsubmit="return false;">	
-				<div class="chat-box bg-white">
-					<div class="input-group">
-					
-						<input type="text" name="write" class="form-control border no-shadow no-rounded" 
-							placeholder="메시지를 입력해 주세요." autocomplete="off" 
-							onkeyup="if(window.event.keyCode==13){sendMessage()}">
-							
-						<span class="input-group-btn">
-							<button class="btn btn-success no-rounded" type="button" onclick="sendMessage()">Send</button>
-						</span>
-					
-					</div><!-- /input-group -->	
-				</div> 
-			</form>
-			<!-- 메시지 보내기 닫힘-->
-			
-       </div>            
+       </div>   
+       <!-- 메시지 보내기 -->	
+		<form name="fm" method="post" onsubmit="return false;">	
+			<div class="chat-box bg-white">
+				<div class="input-group">
+				
+					<input type="text" name="write" class="form-control border no-shadow no-rounded" 
+						placeholder="메시지를 입력해 주세요." autocomplete="off" 
+						onkeyup="if(window.event.keyCode==13){sendMessage()}">
+						
+					<span class="input-group-btn">
+						<button class="btn btn-success no-rounded" type="button" onclick="sendMessage()">Send</button>
+					</span>
+				
+				</div>
+			</div> 
+		</form>
+		<!-- 메시지 보내기 닫힘-->         
 	</div>
 </body>
 
@@ -353,7 +340,7 @@
 			ws.onmessage = function(evt) {
 
 				var senderName = '${sessionScope.saveName}님 ';
-
+				
 				var talkHtml = '';
 				talkHtml += '<li class="left clearfix">';
 				talkHtml += 	'<span class="chat-img pull-left">';
@@ -398,7 +385,10 @@
 		}
 		
 		var senderName = '${sessionScope.saveName}님 ';
-		var msg = document.fm.write.value + '\n';
+		var d_member_idx = '${ sessionScope.saveIdx }';
+		var d_chatroom_idx = '${sessionScope.roomIdx}';
+		var message = document.fm.write.value + '\n';
+		var send_time = fnGetTime();
 		
 		$('.chat').append(
 				
@@ -410,11 +400,11 @@
                		'<div class="header">' + 
                			'<strong class="primary-font">' + senderName + '</strong>' + 
                			'<small class="pull-right text-muted">' + 
-               				'<i class="fa fa-clock-o"></i>' + sendTime + 
+               				'<i class="fa fa-clock-o"></i>' + fnGetTime() + 
                			'</small>' + 
                		'</div>' + 
                		'<p>'  
-               			+ msg + 
+               			+ message + 
                		'</p>' + 
                	'</div>' + 
                '</li>' 
@@ -425,10 +415,12 @@
         $("input[name=write]")[0].scrollIntoView();
 		
 		//핸들러로 메시지 보냄.
-		ws.send(msg);
+		ws.send(message);
 				
 		document.fm.write.value = '';
 		document.fm.write.focus();
+		
+		
 		
 	}
 	
@@ -440,25 +432,25 @@
 	}
 	
 
-	/* 보낸 시간 구하기  TO DO : 자바단에서 구해서 보내줘야함.*/ 
-	var currentNow = new Date();
-	var theHours = currentNow.getHours();
-	var theMinutes = currentNow.getMinutes();
-	var sendTime;
-	
-	if (theHours > 12) {
+	//시간구하기
+	function fnGetTime() {
+		var currentNow = new Date();
+		var theHours = currentNow.getHours();
+		var theMinutes = currentNow.getMinutes();
+		var sendTime;
 		
-		theHours = theHours -12
-		sendTime = " 오후 " + theHours + ":" + theMinutes;
+		if (theHours > 12) {
+			theHours = theHours -12
+			sendTime = " 오후 " + theHours + ":" + theMinutes;
+		} else {
+			sendTime = " 오전 " + theHours + ":" + theMinutes;
+		}
 		
-		$("#sendTime").text(sendTime);
-		
-	} else {
-		
-		sendTime = " 오전 " + theHours + ":" + theMinutes;
-		$("#sendTime").text(sendTime);
-		
+		return sendTime;
 	}
+	
+	
+	
 	
 </script>
 
