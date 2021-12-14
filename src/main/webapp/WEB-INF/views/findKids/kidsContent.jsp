@@ -43,7 +43,7 @@ h2 {
 
 .wrapper {
 	width: 80%;
-	margin: auto;
+	margin: 5% auto;
 }
 /* userInfo 사용자 상태영역 */
 .userInfo {
@@ -269,13 +269,59 @@ section {
 			<h2>등록된 아이가 없거나, 잘못된 접근입니다.</h2>
 		</c:if>
 	</div>
-	
-	
+
+	<!-- offcanvas(부모회원) -->
+	<style>
+.memberImg {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: yellow;
+}
+
+.offcanvas-end {
+	width: 300px;
+}
+
+.offcanvas-body {
+	text-align: center;
+}
+
+.offcanvas-body div {
+	margin-top: 25px;
+}
+.memberImg {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: yellow;
+}
+
+.offcanvas-end {
+	width: 300px;
+}
+
+.offcanvas-body {
+	text-align: center;
+}
+
+.offcanvas-body div {
+	margin-top: 25px;
+}
+</style>
+	<!-- /offcanvas -->
+	<div>
+		<c:if test="${empty kidInfoDto}">
+			<h2>등록된 아이가 없거나, 잘못된 접근입니다.</h2>
+		</c:if>
+	</div>
 	<div class="wrapper">
-		<section><br><br><br><br><br><br><br><br>
+		<section><br><br><br>
 			<div class="topCont d-flex justify-content-between">
 				<div><a href="javascript:history.back();">다른 아이 보러가기</a></div>
-				<div style="font-size: 22px; font-weight: 500;">${ kidInfoDto.k_name }</div>
+				<div>${ kidInfoDto.k_name }</div>
 				<form name="reportIdx" action="reportWrite.do">
 					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
 				<div>

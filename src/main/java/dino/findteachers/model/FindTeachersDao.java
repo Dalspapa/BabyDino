@@ -43,5 +43,5 @@ public interface FindTeachersDao {
 	public int kSetImg (Common_ImgDto imgDto); 
 	
 	//get img path 
-	public List<Common_ImgDto> imgpath(int d_member_idx);
+	public List<FindTeacherJoinDto> imgpath(int d_member_idx);
 }

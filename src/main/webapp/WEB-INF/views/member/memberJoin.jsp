@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +44,6 @@ table .phone{
    <div id="step1">
       <!-- 회원가입 폼 -->
       <section>
-        <!--  <h1>사용하실 아이디와 비밀번호를 입력해주세요.</h1>  -->
 		 <div class="title">회원가입</div>
          <!-- <form name="memberJoinForm" action="joinMember.do" method="post" onsubmit="return checkAll()"> -->
          <form name="memberJoinForm">
