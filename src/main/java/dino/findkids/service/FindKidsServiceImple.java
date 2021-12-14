@@ -75,15 +75,14 @@ public class FindKidsServiceImple implements FindKidsService {
 	}
 	
 	// 선생님 필수 정보 입력  //////////////주호
-	public int setTeacherCert(TeacherCertDto tcDto) {
+	public int setTeacherCert(TeacherCertDto tcDto) {		
 		
-		
+		SetUUID uuid = new SetUUID();
+		String uid = uuid.getUUid();
 		
 		copyInto(tcDto.getImgpath());
 		
-		System.out.println("sevice로 넘어온 인증 DTo" + tcDto.toString());
-		
-		String certimgpath = tcDto.getImgpath().getOriginalFilename();
+		String certimgpath = uid+tcDto.getImgpath().getOriginalFilename();
 		tcDto.setExemplification(certimgpath);
 		String crimeagree = tcDto.getCrimeagree();
 		if(StringUtils.isEmpty(crimeagree)) {

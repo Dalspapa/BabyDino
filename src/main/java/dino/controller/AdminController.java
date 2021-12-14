@@ -1,26 +1,33 @@
 package dino.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
-
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dino.adminmypage.model.AdminDto;
 import dino.adminmypage.service.AdminService;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+import dino.parentmypage.model.ParentMypageDto;
 										 
 
 @Controller
 public class AdminController {
 
+	public static final String IMGPATH = "C:\\upload\\";
+	
 	@Autowired
 	private AdminService adminService;
 	
@@ -198,7 +205,7 @@ public class AdminController {
 	@RequestMapping("/teacherCertification.do")
 	public ModelAndView teacherCertification() {
 		
-		List<MemberDto> t_list = adminService.teacherCertification();
+		List<AdminDto> t_list = adminService.teacherCertification();
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -212,6 +219,25 @@ public class AdminController {
 		return mav;
 	}
 	
+	@RequestMapping("/down.do")
+	public ModelAndView fileDownload(@RequestParam("fname") String fname) {
+		
+		ModelAndView mav = new ModelAndView();
+		File f = new File(IMGPATH + fname);
+		mav.addObject("downloadFile", f);
+		mav.setViewName("fileDown");
+		return mav;
+	}
+	
+	@RequestMapping("/teaCertUpd.do")
+	public ResponseEntity<?> teaCertUpd(int idx){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		int rst = memberser
+		
+		return ResponseEntity.ok(result);
+	}
 
 	
 	

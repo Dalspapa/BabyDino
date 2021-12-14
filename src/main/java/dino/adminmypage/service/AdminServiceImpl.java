@@ -2,11 +2,12 @@ package dino.adminmypage.service;
 
 import java.util.List;
 
-import dino.adminmypage.model.AdminDao;
+import dino.adminmypage.model.*;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+
 
 public class AdminServiceImpl implements AdminService {
 
@@ -96,9 +97,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
-	//선생님 필수 인증(쿼리 수정예정)
-	public List<MemberDto> teacherCertification() {
-		List<MemberDto> t_list = adminDao.teacherCertification();
+	//선생님 필수 인증(쿼리 수정완료 )
+	public List<AdminDto> teacherCertification() {
+		List<AdminDto> t_list = adminDao.teacherCertification();
 		return t_list;
 	}
 }

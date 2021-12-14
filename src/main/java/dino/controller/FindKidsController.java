@@ -245,9 +245,7 @@ public class FindKidsController {
 	 */
 	@RequestMapping(value="cert.do", method = RequestMethod.POST)
 	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request, TeacherCertDto tcDto) {
-		ModelAndView mav = new ModelAndView();
-		
-		String img = tcDto.getImgpath();
+		ModelAndView mav = new ModelAndView();		
 
 		//선생님 필수 인증 후 등급 수정
 		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
