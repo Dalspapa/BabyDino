@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+
 <!-- 20211214지원css 수정 -->
 <style>
 section{
@@ -15,10 +16,28 @@ section .row .mtitle{
 	font-weight: 500;
 	margin-top: 10px;
 }
+
 #cardImg {
 	width: 50px;
 	heitht: 50px;
 }
+
+
+.pignose-calendar-unit-disabled a {
+	color: #68983b !important
+}
+
+.isTest {
+	background-color:  #68983b;
+}
+section .container{
+    margin: 10% 34%;
+    text-align: center;
+}
+</style>
+
+</head>
+
 
 .pignose-calendar-unit-disabled a {
 	color: red !important
@@ -45,15 +64,25 @@ section .row .mtitle{
 	<section>
 		<div class="container">
 			<!-- 필터[START] -->
-			<div class="search">
-			 	<form class="" action="search.do" method="post">
-			 	
-					<!-- 캘린더 -->
-					<section>
-						<div>
-							<div class="row">
-								<div class="calendar"></div>
-							</div>
+			<div class="row">
+				<div class="col-6">
+					<div class="row" style="justify-content: space-between;">
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
+							name="cDiv" id="first" onclick="changeDiv('first')">1</div>
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
+							name="cDiv" id="second" onclick="changeDiv('second')">2</div>
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
+							name="cDiv" id="third" onclick="changeDiv('third')">3</div>
+						<div style="width: 20%; border: 1px solid #68983b; height: 30px;"
+							name="cDiv" id="four" onclick="changeDiv('four')">4</div>
+					</div>
+					<br>
+					<button class="btn btn-outline-success" onclick="check()">check</button>
+					<div class="row mt-4">
+						<div class="form-check w-50">
+							<input class="form-check-input" type="checkbox" value="1"
+								id="flexCheckDefault1" /> <label class="form-check-label"
+								for="flexCheckDefault1">등하원</label>
 						</div>
 						<hr>
 						<div class="row d-none" id="selectDateRow">

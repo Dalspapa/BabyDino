@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>선생님 필수 인증</title>
+<!-- -------------지원 css---------------- -->
 <style>
 .teacherTable{
 	margin-top: 168px;
@@ -13,6 +14,7 @@
     text-align: center;
 }
 </style>
+<!-- -------------지원 css---------------- -->
 </head>
  <!-- header -->
 <%@ include file="/WEB-INF/views/include/header.jsp" %>

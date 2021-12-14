@@ -66,12 +66,12 @@ public class AdminController {
 	//선생님 정산
 	@RequestMapping("/settlement.do")
 	public ModelAndView settlement() {
-		List<ReserveDto> c_list = adminService.teacherCost();
+		List<ReserveDto> cost_list = adminService.teacherCost();
 		//테스트코드
-		System.out.println("선생님 정산 컨트롤러 >>>>>>>>>>>>>" + c_list);
+		System.out.println("선생님 정산 컨트롤러 >>>>>>>>>>>>>" + cost_list);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("c_list" , c_list);
+		mav.addObject("cost_list" , cost_list);
 		mav.setViewName("adminMypage/settlement");
 		return mav;
 	}
