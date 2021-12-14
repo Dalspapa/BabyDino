@@ -356,11 +356,11 @@ section{
       </ul>
     </section>
   </div>
+	<script>
+	function writeReview(){
+		location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
+	}
+	</script>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<script>
-function writeReview(){
-	location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
-}
-</script>
 </body>
 </html>

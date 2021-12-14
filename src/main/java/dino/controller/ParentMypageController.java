@@ -19,7 +19,7 @@ public class ParentMypageController {
 	private ParentMypageService parentMypageService;
 
 	/**
-	 * 돌봄 현황 페이지
+	 * 부모님 돌봄 현황 페이지
 	 * @return
 	 */
 	@RequestMapping("/proceedingMain.do")
@@ -62,12 +62,17 @@ public class ParentMypageController {
 		return mav;
 	}
 
+	/**
+	 * 선생님 - 매칭된 돌봄 현황 페이지
+	 * @param idx
+	 * @return
+	 */
 	@RequestMapping("/t_caring.do")
-	public ModelAndView t_caring(@RequestParam("idx")int idx) {
+	public ModelAndView t_caring(@RequestParam("idx") int idx) {
 		ParentMypageDto dto = parentMypageService.caring(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto",dto);
-		mav.setViewName("parentMypage/t_caringPage");
+		mav.setViewName("teacherMypage/t_caringPage");
 		return mav;
 	}
 
