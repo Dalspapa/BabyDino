@@ -50,7 +50,7 @@ public class FindKidsServiceImple implements FindKidsService {
 			System.out.println("== filimgFileName : " + imgFiles.get(i).getOriginalFilename());
 			copyInto(imgFiles.get(i));
 			System.out.println("copyinto 성공 ");
-			c_imgpath += imgFiles.get(i).getOriginalFilename() + ",";
+			c_imgpath += imgFiles.get(i).getOriginalFilename();
 		}
 
 		int result = findkidsDao.makeTCard(dto);
@@ -73,7 +73,7 @@ public class FindKidsServiceImple implements FindKidsService {
 
 		System.out.println("이미지 DTO 값 : " + imgDto.getD_member_idx() + "/" + imgDto.getC_imgpath() + "/" + imgDto.getCategory_idx() + "/" + imgDto.getRef_idx());
 
-		int setImgResult = findkidsDao.tSetImg(imgDto);
+//		int setImgResult = findkidsDao.tSetImg(imgDto);
 
 		System.out.println("==== result : " + result);
 

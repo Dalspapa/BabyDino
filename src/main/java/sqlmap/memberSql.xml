@@ -110,7 +110,33 @@
    
    </select>
    
+   <select id="accountInfo" parameterType="Integer" resultType="dino.dto.MemberDto">
    
+   	SELECT 
+   		pwd, addr1, addr2, addr3, tel 
+   	FROM 
+   		d_member 
+   	WHERE idx = #{idx}
    
+   </select>
+   
+<!--    <update id="accountIdUpd" parameterType="dino.dto.MemberDto">
+   
+   		UPDATE
+   			D_MEMBER
+   		SET
+   			ID = #{id}
+   		WHERE
+   			idx = #{idx}
+   </update> -->
    
 </mapper> 
+
+
+
+
+
+
+
+
+

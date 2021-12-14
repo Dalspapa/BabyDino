@@ -234,24 +234,54 @@ public class MemberController {
 		 @RequestMapping(value = "/accountCheck.do", method=RequestMethod.POST)
 		 public ResponseEntity<?> accountCheck(MemberDto mdto) {
 			 
-			 System.out.println("컨트롤러로 넘어온 계정 관리 비번 "+mdto.toString());
-			 
-			 HashMap<String, Object> result = new HashMap<String, Object>();
-			 
-			 String rst = memberService.accountCheck(mdto);
-			 if (StringUtils.isEmpty(rst)) {
-				 result.put("result", mdto.getId());
-			 }
-			 result.put("result", mdto.getId());
-			 
-			 
-			 return ResponseEntity.ok(result);
+			HashMap<String, Object> result = new HashMap<String, Object>();
+			
+			String id = memberService.accountCheck(mdto);
+			
+			result.put("result", id);
+			
+			return ResponseEntity.ok(result);			
 		 }
 		 
+		 //계정관리 회원 정보 
+		 @RequestMapping(value = "/accountInfo.do", method = RequestMethod.POST)
+		 public ResponseEntity<?> accountInfo(String id){
+			 
+			 HashMap<String, Object> result = new HashMap<String, Object>();
+			
+			 MemberDto mdto = memberService.getUserInfo(id);
+			 
+			 if(mdto != null) {
+
+				String pwd = mdto.getPwd();
+				String tel = mdto.getTel();
+				String addr1 = mdto.getAddr1();
+				String addr2 = mdto.getAddr2();
+				String addr3 = mdto.getAddr3();				 
+ 
+				result.put("pwd", pwd);
+				result.put("tel", tel);
+				result.put("addr1", addr1);
+				result.put("addr2", addr2);
+				result.put("addr3", addr3);
+				
+				return ResponseEntity.ok(result);
+			 }			 
+			 return ResponseEntity.ok(null);
+		 }
+		 
+		 //계정관리 아이디 수정
+		 @RequestMapping(value = "/accountIdUpd.do", method=RequestMethod.POST)
+		 public ResponseEntity<?> accountIdUpd(int idx) {
+			 
+			 HashMap<String, Object> result = new HashMap<String, Object>();
+
+			 return ResponseEntity.ok(null);
+		 }
 /////////////////주호 끝
 		 
-}
 
+}
 
 
 

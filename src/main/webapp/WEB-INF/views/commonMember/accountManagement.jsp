@@ -143,7 +143,7 @@ ttl {
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div id="accountCheck">
 	<div>
-		<form name="accountForm">
+		<form name="accountForm" onsubmit="return false;">
 			<fieldset style="width:350px; margin: 0px auto;">
 				<legend>본인확인 비밀번호 확인</legend>
 				<input type="password" class="form-control form-control-sm w-50" name="pwd" id="APWD" placeholder="6자리 이상 입력해주세요." autocomplete="off" />
@@ -153,10 +153,11 @@ ttl {
 		</form>
 	</div>	
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 
 <div class="hideDiv" id="accountCheck2">
 	<section>
+		<form name="accountInfoUpd" onsubmit="return false;">
 		<div class="container">
 			<div class="appbar">
 			<div class="backward">
@@ -166,42 +167,86 @@ ttl {
 				<div class="_36gBs">
 					<div class = "_2nIFL">
 						<div class="_1vbgj">
-							<div class="nATE5">
-								<div class="_1QQ_I">회원 유형</div>
-								<div class="qlKb8">##유형 코드 들어갈 곳</div>
-							</div>
-							<div class="nATE5">
+						
+						
+							<div class="nATE5" id="idDiv1">							
 								<div class="_1QQ_I">사용중인 아이디</div>
-								<div class="qlKb8">##아이디 코드 들어갈 곳</div>
+								<div class="qlKb8">
+									<label id="getId"></label>
+									<button id="idbtn">수정</button>
+								</div>
+							</div>							
+							<div class="nATE5" id="idDiv2">
+								<div class="_1QQ_I">사용중인 아이디</div>
+								<div class="qlKb8">
+									<label id="setId"></label>
+									<button onclick="idUpd();">수정하기</button>
+								</div>
 							</div>
+							
+							
+<!-- 							<div class="nATE5">
+								<div class ="_1QQ_I">사용중인 비밀번호</div>
+								<div class="qlKb8">
+									<label id="getPwd"></label>
+									<button>수정</button>
+								</div>
+							</div>
+							<div class="nATE5 updHide" id="pwdDiv">
+								<div class="_1QQ_I">사용중인 비밀번호</div>
+								<div class="qlKb8">
+									<label id="setPwd"></label>
+									<button>수정하기</button>
+								</div>
+							</div>
+							
+							
+							
 							<div class="nATE5">
-								<div class ="_1QQ_I">가입한 휴대폰 번호</div>
-								<div class="qlKb8">##번호 코드 들어갈 곳</div>
+								<div class="_1QQ_I">핸드폰 번호</div>
+								<div class="qlKb8">
+									<label id="getTel"></label>
+									<button>수정</button>
+								</div>
 							</div>
+							<div class="nATE5 updHide" id="telDiv">
+								<div class="_1QQ_I">핸드폰 번호</div>
+								<div class="qlKb8">
+									<label id="setTel"></label>
+									<button>수정하기</button>
+								</div>
+							</div>
+							
+							
 							<div class="nATE5">
-								<div class ="_1QQ_I">가입한 이메일</div>
-								<div class="qlKb8">##메일 코드 들어갈 곳</div>
+								<div class="_1QQ_I">주소</div>
+								<div class="qlKb8">
+									<label id="getAddr"></label>
+									<button>수정</button>
+								</div>
 							</div>
-						</div>
+							<div class="nATE5 updHide" id="addrDiv">
+								<div class="_1QQ_I">주소</div>
+								<div class="qlKb8">
+									<label id="setAddr"></label>
+									<button>수정하기</button>
+								</div>
+							</div> -->
+							
+							
+							
+						</div>						
 					</div>
-						<div class="_1Iazm"></div>
-					<div class="mintitle">
-						<span><a href="#">내 주소 수정하기</a></span>
-						<i class="far fa-angle-right"></i>
-					</div>
+						<div class="_1Iazm"></div>					
 					<div class="_2MTRN"></div>
 					<div class="mintitle">
-						<span><a href="#">비밀번호 변경</a></span>
-						<i class="far fa-angle-right"></i>
-					</div>
-					<div class="_2MTRN"></div>
-					<div class="mintitle">
-						<span><a href="#">아기공룡 회원 탈퇴하기</a></span>
+						<span><a href="memberOutFoam.do?idx=${sidx}">아기공룡 회원 탈퇴하기</a></span>
 						<i class="far fa-angle-right"></i>
 					</div>
 				</div>
 			</div>
 		</div>
+		</form>
 	</section>
 </div>
 </body>
@@ -212,59 +257,122 @@ ttl {
 	$(document).ready(function() {
 	
 		$('.hideDiv').hide();
+		$('#idDiv2').hide();
 		
+
+		let fmdata2 = new FormData();		
+		fmdata2.set('id', '${sid}');
+		
+		$.ajax({
+			
+			method : 'POST',
+			url : '${pageContext.request.contextPath}/accountInfo.do',
+			data : fmdata2,
+			processData: false,
+			contentType: false,
+			cache: false,
+			success : function(result){
+				
+				if (result != null) {
+					$('#getId').text('${sid}');
+					$('#getPwd').text(result.pwd);
+					$('#getTel').text(result.tel);
+					$('#getAddr').text(result.addr1+' '+result.addr2+' '+result.addr3);
+					console.log('addr==========' + result.addr1+' '+result.addr2+' '+result.addr3);
+				} else {
+					alert("탈퇴한 회원 또는 잘못된 접근입니다.");
+				}
+			},
+			error : function(error){
+				console.log("잘못된 접근 또는 오류가 발생했습니다.");
+			}
+		});
 	});
 	
-	$('#accountTest').click(function(){
+	$('#idbtn').click(function(){	
+		$('#idDiv1').hide();
+		$('#idDiv2').show();
+	});
 	
-	let pwd = $('#APWD').val();
-	if(pwd.trim().length < 6){
-		alert('6자이상 입력해주세요');
+	function idUpd(){
+		
+		let iddata = new FormData();
+		
+		iddata.set("idx", ${sidx});
+		
+		$.ajax({
+		
+			method : 'POST',
+			url : '${pageContext.request.contextPath}/accountIdUpd.do',
+			data : fmdata,
+			processData: false,
+			contentType: false,
+			cache: false,
+			success : function(result){
+				
+				if (result > 0) {					
+					$('#idDiv2').hide();
+					$('#idDiv1').show();
+				} else {
+					alert("수정 중 예기치 못한 오류가 발생했습니다. 잠시후 다시 시도해주세요.");
+				}
+			},
+			error : function(error){
+				console.log("잘못된 접근 또는 오류가 발생했습니다.");
+			}
+		
+		});		
 	}
 	
-
-	console.log('hi');
-	let id = '${sid}';
-	let idx = ${sidx};
-		 
-	let fmdata = new FormData();
 	
-	fmdata.set('pwd', pwd);
-	fmdata.set('idx', idx);
+	function show(){
 	
-	fmdata.forEach(function(value, key) {
-		console.log(key, value);
-	})
-	
-	$.ajax({
-		
-		method : 'POST',
-		url : 'accountCheck.do',
-		data : fmdata,
-		processData: false,
-		contentType: false,
-		success : function(result){
-			
-			if (result == id) {
-				console.log(result);
-				return false;
-				$('.hideDiv').show();
-				$('#accountCheck').hide();
-			} else {
-				console.log(result);
-				alert("틀린 비밀번호 입니다. 다시 시도해주세요.");
-				return false;
-			}
-		},
-		error : function(){
-			alert("잘못된 접근 또는 오류가 발생했습니다.");
+		let pwd = $('#APWD').val();
+		if(pwd.trim().length < 6){
+			alert('6자이상 입력해주세요');
+			return false;
 		}
 		
-	});
-
-});
-
-
+	
+		console.log('hi');
+		let id = '${sid}';
+		let idx = ${sidx};
+			 
+		let fmdata = new FormData();
+		
+		fmdata.set('pwd', pwd);
+		fmdata.set('idx', idx);
+		
+		fmdata.forEach(function(value, key) {
+			console.log(key, value);
+		})
+		
+		$.ajax({
+			
+			method : 'POST',
+			url : '${pageContext.request.contextPath}/accountCheck.do',
+			data : fmdata,
+			processData: false,
+			contentType: false,
+			cache: false,
+			success : function(result){
+				
+				if (result.result == '${sid}') {					
+					console.log(result);
+					console.log('id'+id);
+					$('.hideDiv').show();
+					$('#accountCheck').hide();
+				} else {
+					console.log(result);
+					alert("틀린 비밀번호 입니다. 다시 시도해주세요.");
+				}
+			},
+			error : function(error){
+				console.log("잘못된 접근 또는 오류가 발생했습니다.");
+			}
+		
+		});
+	};
 
 
 </script>

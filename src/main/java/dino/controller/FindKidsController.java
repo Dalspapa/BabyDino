@@ -173,12 +173,6 @@ public class FindKidsController {
 		}
 		System.out.println("인증후 그레이드 6 수정 후========");
 
-		//int setImg = findKidsService.tSetImg(imgDto);
-//		if( setImg != 1 ) {
-//			result.put("fail", false);
-//		} else {
-//			result.put("success", success);
-//		}
 		String id = String.valueOf(request.getSession().getAttribute("saveId"));
 		if(StringUtils.isEmpty(id)) {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");

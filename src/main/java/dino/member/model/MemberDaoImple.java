@@ -37,6 +37,7 @@ public class MemberDaoImple implements MemberDao {
 
 	//login
 	public MemberDto loginCheck(String id) {
+		
 		MemberDto memberDto = sqlMap.selectOne("loginCheck", id);
 
 		//TestCode
@@ -48,6 +49,21 @@ public class MemberDaoImple implements MemberDao {
 			return null;
 		}
 	}
+	
+	//////////////주호
+	//계정 관리 전 본인 확인
+	public String accountCheck(MemberDto mdto) {
+		
+		String id = sqlMap.selectOne("accountCheck", mdto);
+		System.out.println("account chedck::::::::::::"+id);
+		return id;
+	}
+	
+	
+	
+	
+	
+	////////////////// 주호 끝
 
 	public MemberDto getUserInfo(String id) {
 		MemberDto memberDto = sqlMap.selectOne("getUserInfo", id);
@@ -83,12 +99,7 @@ public class MemberDaoImple implements MemberDao {
 		int result = sqlMap.update("memberOut", idx);
 		return result;
 	}
-	
-	//계정 관리 전 본인 확인
-	public String accountCheck(MemberDto mdto) {
-		System.out.println("==========dao id check"+mdto.getId());
-		return sqlMap.selectOne("accountCheck", mdto);
-	}
+
 
 }
 
