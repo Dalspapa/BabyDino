@@ -34,6 +34,8 @@
 		touch-action: none;
 		cursor: url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico") 7 5, url("https://t1.daumcdn.net/mapjsapi/images/2x/cursor/openhand.cur.ico"), default;
 		}
+		.jido {
+		}
 	</style>
 	</head>
 	<body id="page-top">
@@ -138,29 +140,29 @@
 
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
 	                  <span class="nori-box " >
-	                    <img src="./common/img/2.jpg" alt="책읽기">
+	                    <img src="./common/img/img2.jpg" alt="책읽기">
 	                  </span>
 	                </div>
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
 	                  <span class="nori-box " >
-	                    <img src="./common/img/3.jpg" alt="책읽기">
+	                    <img src="./common/img/img3.jpg" alt="책읽기">
 	                  </span>
 	                </div>
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
 	                  <span class="nori-box">
-	                    <img src="./common/img/4.jpg" alt="책읽기">
+	                    <img src="./common/img/img8.jpg" alt="책읽기">
 	                  </span>
 	                </div>
 
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6" >
 
 	                  <span class="nori-box">
-	                    <img src="./common/img/5.jpg" alt="책읽기">
+	                    <img src="./common/img/img12.jpg" alt="책읽기">
 	                  </span>
 	                </div>
 	                <div class="col-xxl-2 col-lg col-sm-6 col-xs-6">
 	                  <span class="nori-box">
-	                    <img src="./common/img/6.jpg" alt="책읽기">
+	                    <img src="./common/img/img6.jpg" alt="책읽기">
 	                  </span>
 	                </div>
 	              </div>
@@ -176,26 +178,25 @@
 	                  <hr class="divider divider-black mt-5 mb-5">
 	                  <h2 class="section-heading text-uppercase">아기공룡이 궁금하신가요?</h2><br>
 	              </div>
-
 	              <div class="row faq-imgs">
 	                <div class="col-lg col-sm-4 col-xs text-center" >
 	                  <span class="faq-box" >
-	                    <img src="./common/img/icons/smile.jpg" alt="아이공룡을 어떻게 믿죠?">
-	                    <h4 class="text-muted">전문 1:1 놀이 돌봄</h4>
-	                  </span>
+	                    <img src="./common/img/icon1.png" alt="아이공룡을 어떻게 믿죠?"><hr>
+	                    <h5>전문 1:1 놀이 돌봄</h5>
+	                  </spn>
 	                </div>
-	                <div class="col-lg col-sm-4 col-xs text-center" >
+	                <div class="col-lg col-sm-4 col-xs text-center" style="MARGIN: -4px;" >
 	                  <span class="faq-box" >
-	                    <img src="./common/img/icons/people.jpg" alt="부모님을 어떻게 믿죠?">
-	                    <h4 class="text-muted">아이의 일상을 기록하는 성장노트</h4>
+	                    <img src="./common/img/icon2.png" alt="부모님을 어떻게 믿죠?"><hr>
+	                    <h5>아이의 일상을 기록하는 성장노트</h5>
 	                  </span>
 	                </div>
 
-	                <div class="col-lg col-sm-4 col-xs text-center" >
+	                <div class="col-lg col-sm-4 col-xs text-center" style="MARGIN-TOP: -17PX;" >
 	                  <span class="faq-box">
-	                    <img src="./common/img/icons/membershipticket.jpg" alt="아기공룡 멤버쉽은 무엇인가요?">
+	                    <img src="./common/img/icon3.png" alt="아기공룡 멤버쉽은 무엇인가요?"><hr>
 	                  </span>
-	                  <h4 class="text-muted">믿을 수 있는 아기공룡 시스템</h4>
+	                 	<h5>믿을 수 있는 아기공룡 시스템</h5>
 	                </div>
 	              </div>
 	              <div class="m-5">
@@ -433,12 +434,14 @@
 	          </div>
 	    </section>
 	  </div>
-	  <!-- 지도. 우리 여기 있어요!! -->
-<!-- 	<div>
+	  
+	<div class = "jido">  
+	   지도. 우리 여기 있어요!! 
 	<section id = "section09" class = "kakaoMap">
 		<div id="map">우리, 여기 있어요!!</div>
 	</section>
-	</div>  -->
+	</div>  
+	
 	  <!-- 챗 Modal -->
 	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">

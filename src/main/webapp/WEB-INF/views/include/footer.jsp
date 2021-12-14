@@ -3,8 +3,16 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
-      
-  <!-- 로그인 Modal -->
+<style>
+.footer-horizon {
+    width: 100%;
+    height: 0.5px;
+    background-color:white;
+    margin: 5px 0px;
+}
+</style>    
+     
+       <!-- 로그인 Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -85,34 +93,36 @@
     </div>
     <div class="footer-address">							  
 		<div>오시는 길</div><br>
-		   <address>
-			 <p>본사</p>
-			 <p>서울특별시 마포구 망원동 <br>이젠 그라운드 E479</p>
-		   </address>
-	</div>
-	<div class="footer-address">
-		<div>아기공룡 고객지원</div><br>
-		   <address>
-				<p>운영시간 | 평일 10:00~19:00</p>
-				<p>카톡 | 카카오톡 친구 아기공룡</p> 
-				<p>전화 | 1577 4040</p>
-				<p>메일 | contact@jaranda.kr</p>
-				<p>블로그 | blog.naver.com/jaranblog</p>			
-		   </address>
-	 </div>
-	 <div class="footer-about">
-        <h5>ABOUT</h5>
-			<p>
-              <strong>NEWSLETTER</strong> 
-            </p>
-            <p>
-              <strong>CONTACTUS</strong> 
-            </p>
-            <p></p>
-            <p>이용약관</p>
-            <p>개인정보취급방침</p>
-      </div>      
-   </div>
+			<div class = "footer-horizon"></div><br>
+		   		<address>
+					<p>본사</p>
+			 		<p>서울특별시 마포구 망원동 <br>이젠 그라운드 E479</p>
+		   		</address>
+		</div>
+		<div class="footer-address">
+			<div><b>아기공룡 고객지원</b></div><br>
+				<div class = "footer-horizon"></div><br>
+			   		<address>
+						<p>운영시간 | 평일 10:00~19:00</p>
+						<p>카톡 | 카카오톡 친구 아기공룡</p> 
+						<p>전화 | 1577 4040</p>
+						<p>메일 | contact@babydino.kr</p>
+						<p>블로그 | blog.naver.com/babydinoblog</p>			
+			   		</address>
+		 		</div>
+		 <div class="footer-about">
+	        <h5>ABOUT</h5>
+				<p>
+	              <strong>NEWSLETTER</strong> 
+	            </p>
+	            <p>
+	              <strong>CONTACTUS</strong> 
+	            </p>
+	            <p></p>
+	            <p>이용약관</p>
+	            <p>개인정보취급방침</p>
+	      </div>      
+	   </div>
 </footer>
  <body onkeydown="javascript:onEnterLogin();">
 

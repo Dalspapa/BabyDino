@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class ReportDto {
 
+	
 	private int idx;
 	private int d_member_attack_idx;
 	private int d_member_shield_idx;

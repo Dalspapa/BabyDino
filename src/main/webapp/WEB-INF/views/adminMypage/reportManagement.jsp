@@ -11,6 +11,16 @@
     text-align: center;
     margin-top: 123px;
     margin-bottom: 50px;
+    font-family: 'S-Air';
+}
+.rptypeinfo {
+	text-align:center;
+	text-color:red;
+	border: 1px solid green;
+    width: 500px;
+    height: 100px;
+    margin: 0px auto;
+    padding: 15px;
 }
 .btn a {
 	text-decoration: none;
@@ -52,6 +62,10 @@ table th,td {
 	<div class = "title">
 		<h2>신고 내역(관리자용)</h2>
 	</div>
+	<div class="rptypeinfo">
+		<b>- 신고 유형 -</b>
+			<p>1. 허위 정보 기재  2. 부적절한 사진 3. 부적절한 내용 <br> 4. 규정 위반 5. 아기공룡에서 활동하기에 적절하지 않음 6. 기타</p>
+	</div><br>
 		<form id="adminMemberOut" action="adminMemberOut.do">
 			<table class="table table-hover">
 			<thead>
@@ -60,9 +74,9 @@ table th,td {
 					<th scope="col">번호</th>
                		<th scope="col">신고유형</th>
 					<th scope="col">신고내용</th>
-					<th scope="col">작성자</th>
+					<th scope="col">신고받은회원</th>
                		<th scope="col">작성날짜</th>
-             		<th scope="col">처리상태</th>
+             		<!--  <th scope="col">처리상태</th>-->
 				</tr>
 			</thead>
 			<tbody>
@@ -80,23 +94,25 @@ table th,td {
 							<c:param name="idx">${dto.idx }</c:param>
 						</c:url>
 					<td><a href="${contentUrl }">${dto.rp_content }</a></td>
-               		<td>${dto.d_member_attack_idx}</td>
+               		<td>${dto.d_member_shield_idx}</td>
                		<td>${dto.rp_writedate }</td>
-               		<td>
+               		<%-- <td>
                			<c:choose>
 							<c:when test="${dto.rp_status == 0 }"> 처리 대기중</c:when>
 							<c:when test="${dto.rp_status == 1 }"> 처리 완료</c:when>
 						</c:choose>
-					</td>
+					</td> --%>
 	             </tr>
              </c:forEach>
 			</tbody>
 		</table>
 		<div class ="rpbtn">
-			<button type="button" class="btn btn-outline-success">경고주기</button>
+			<button type="button" class="btn btn-outline-success" onclick="warning();">경고주기</button>
             <button type="button" class="btn btn-outline-success" onclick="checkForm();">강제탈퇴</button>
         </div>
 		</form>
+		
+		
 		
 	<!-- 페이징 처리 될 부분 -->
             <div class = "paging">
@@ -129,6 +145,11 @@ function checkForm(){
 		return false;
 	}
 	$("#adminMemberOut").submit();
+}
+
+function warning(){
+	alert('경고를 주었습니다.');
+	
 }
 </script>
 </html>
