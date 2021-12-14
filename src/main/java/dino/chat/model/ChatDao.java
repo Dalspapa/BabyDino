@@ -19,6 +19,8 @@ public interface ChatDao {
 
 	public List<ChatMessageVo> getMessages(int roomIdx);
 
+	public int saveChatMessage(ChatMessageDto chatMessageDto);
+
 //	public ChatRoomDto findById(@Param("id") int id);
 //
 //	public void addMessage(Map<String, Object> param);
