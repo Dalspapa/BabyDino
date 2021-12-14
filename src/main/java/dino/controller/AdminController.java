@@ -1,5 +1,6 @@
 package dino.controller;
 
+import java.io.File;
 import java.util.List;
 
 
@@ -192,15 +193,29 @@ public class AdminController {
 		mav.setViewName("adminMypage/adminMsg");
 		return mav;
 	}
-	
+	/////////////////주호
 		//선생님 필수검증(수정예정)
 	@RequestMapping("/teacherCertification.do")
 	public ModelAndView teacherCertification() {
+		
 		List<MemberDto> t_list = adminService.teacherCertification();
+		
 		ModelAndView mav = new ModelAndView();
+		
+		File f = new File("C:/teachercert");
+		File files[] = f.listFiles();
+		mav.addObject("files", files);		
+		
+		
 		mav.addObject("t_list",t_list);
 		mav.setViewName("adminMypage/teacherCertification");
 		return mav;
 	}
+	
+
+	
+	
+	
+	/////////////////주호 끝 
 	
 }

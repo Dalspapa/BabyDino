@@ -17,6 +17,7 @@ import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
 import dino.findkids.model.*;
+import dino.uuid.SetUUID;
 
 @Service
 public class FindKidsServiceImple implements FindKidsService {
@@ -24,7 +25,7 @@ public class FindKidsServiceImple implements FindKidsService {
 	private FindKidsDao findkidsDao;
 
 	//public static final String IMGPATH = "C:\\project_dooli\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BabyDino\\resources";
-	public static final String IMGPATH = "C:\\이주호\\upload\\";
+	public static final String IMGPATH = "C:\\upload\\";
 
 	public FindKidsDao getFindkidsDao() {
 		return findkidsDao;
@@ -71,17 +72,13 @@ public class FindKidsServiceImple implements FindKidsService {
 		imgDto.setD_member_idx(d_member_idx);
 		imgDto.setC_imgpath(c_imgpath);
 
-		System.out.println("이미지 DTO 값 : " + imgDto.getD_member_idx() + "/" + imgDto.getC_imgpath() + "/" + imgDto.getCategory_idx() + "/" + imgDto.getRef_idx());
-
-//		int setImgResult = findkidsDao.tSetImg(imgDto);
-
-		System.out.println("==== result : " + result);
-
 	}
 	
 	// 선생님 필수 정보 입력  //////////////주호
 	public int setTeacherCert(TeacherCertDto tcDto) {
-				
+		
+		
+		
 		copyInto(tcDto.getImgpath());
 		
 		System.out.println("sevice로 넘어온 인증 DTo" + tcDto.toString());
@@ -101,8 +98,10 @@ public class FindKidsServiceImple implements FindKidsService {
 	//img copy method
 	public void copyInto(MultipartFile imgFiles) {
 		try {
+			SetUUID uuid = new SetUUID();
+			String uid = uuid.getUUid();
 			byte[] bytes = imgFiles.getBytes();
-			File out = new File(IMGPATH + imgFiles.getOriginalFilename());
+			File out = new File(IMGPATH + uid +imgFiles.getOriginalFilename());
 			FileOutputStream fos = new FileOutputStream(out);
 			fos.write(bytes);
 			fos.close();

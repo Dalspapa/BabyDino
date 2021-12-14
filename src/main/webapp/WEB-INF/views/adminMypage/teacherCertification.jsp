@@ -43,16 +43,16 @@
 					</tr>
 				</c:if>
 				<c:forEach var ="dto" items = "${t_list}">
-			    <tr>
-			    	<td>${dto.idx}</td>
-			      	<td>${dto.name}</td>
-					<td>${dto.id}</td>
-					<td>${dto.tel}</td>
-					<td>${dto.joinDate}</td>
-					<td>#이미지 들어갈 부분(쿼리 수정해야함!)</td>
-					<td><button type="button" class="btn btn-outline-success">동의여부</button></td>
-					<td><button type="button" class="btn btn-outline-success">인증하기</button></td>
-			    </tr>
+				    <tr>
+				    	<td>${dto.idx}</td>
+				      	<td>${dto.name}</td>
+						<td>${dto.id}</td>
+						<td>${dto.tel}</td>
+						<td>${dto.joinDate}</td>
+						<td>#이미지 들어갈 부분(쿼리 수정해야함!)</td>
+						<td><button type="button" class="btn btn-outline-success">동의여부</button></td>
+						<td><button type="button" class="btn btn-outline-success">인증하기</button></td>
+				    </tr>
 			    </c:forEach>
 			  </tbody>
 			</table>
