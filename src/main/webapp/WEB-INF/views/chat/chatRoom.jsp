@@ -89,7 +89,7 @@
 		}
 		
 		.chat-message {
-		  padding: 60px 20px 115px;
+		  padding: 60px 20px 20px;
 		}
 		
 		.chat {
@@ -210,149 +210,122 @@
 		  text-decoration: none;
 		  outline: 0;
 		}
-	
-	
-	
-		
-.chat-message {
-    position: relative;
-}	
-.messageUl {
-    padding:0;
-}	    
-.message {
-	
-}
-.message span{
-	display: block;
-}
-.message #id {
-    font-weight: bold;
-    font-size: 13px;
-}
-.text {
-	border: 1px solid gray;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px 0;
-}
-.sender-right-name {
-	text-align: right;
-} 
-.receiver-left-name {
-	text-align: left;
-}
- 
-.sender-right-Text {
-    margin-left: auto;
-    width: 30%;
-}
-.receiver-left-Text {
-    margin-right: auto;
-    width: 30%;
-}
-
-.left {
-	left:0;
-}	
-.right {
-	right:0;
-}		
-		
-		
 	</style>
 	
 </head>
 
 <c:set var="sessionIdx" value="${ sessionScope.saveIdx }" />
 
-
 <body>
-	
-	<!-- chat test -->
-	
+
+<!-- 테스트영억 -->
+
+<div class="chat-messages">
+
+</div>
+
+<!-- 테스트영억 끝-->
 	
 	<h1>${ sessionScope.roomIdx }</h1>
 	
-	
+
     <!-- selected chat -->
    	<div class="bg-white ">
        <div class="chat-message">
-           <ul id="messageUl" class="chat">
-      
-              <!-- 내가보낸 메시지 영역 -->
-               <li id="senderMessage" class="message right">
-	               	<span id="name" class="sender-right-name">이은사</span>
-	               	<span id="sendertext" class="text sender-right-Text">테스트 텍스트</span>
-               </li>
+           <ul class="chat">
+           
+               <!-- 기존 채팅 리스트 불러오기 -->
+               <c:forEach var="vo" items="${ messageList }">
+               		
+               	<!-- 필요한 변수들 -->
+               	<c:set var="memberIdx" value="${ vo.d_member_idx }" />
+               	<c:set var="message" value="${ vo.message }" />
+               	<c:set var="name" value="${ vo.name }" />
+               	<c:set var="memberType" value="${ vo.member_type }" />
+               	<c:set var="sendTime" value="${ vo.send_time }" />
+               	
+               	<!-- 내가 보낸메시지 오른쪽 -->
+               	<c:if test="${ sessionIdx == memberIdx }">
+	              <li class="right clearfix">
+               		<span class="chat-img pull-right" id="setPic">
+               		<c:choose>
+						<c:when test="${ memberType == 1 }">
+							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 4 || memberType == 5 || memberType == 6 || memberType == 7 }">
+							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
+							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
+						</c:when>
+					</c:choose>
+               		</span>
+               		
+	               	<div class="chat-body clearfix">
+	               		<div class="header">
+	               			<strong id="setName" class="primary-font">${ name }</strong>
+	               			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ${ sendTime }</small>
+	               		</div>
+	               		<p id="">
+	               			${ message } 
+	               		</p>
+	               	</div>
+                 </li>
+	        	</c:if>
+	        	
+	        	<!-- 상대방 보낸메시지 왼쪽 -->
+	        	<c:if test="${ sessionIdx != memberIdx }">
+	              <li class="left clearfix">
+               		<span class="chat-img pull-left" id="setPic">
+               		<c:choose>
+						<c:when test="${ memberType == 1 }">
+							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 4 || memberType == 5 || memberType == 6 || memberType == 7 }">
+							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+						</c:when>
+						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
+							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
+						</c:when>
+					</c:choose>
+               		</span>
+               	
+	               	<div class="chat-body clearfix">
+	               		<div class="header">
+	               			<strong id="setName" class="primary-font">${ name }</strong>
+	               			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ${ sendTime }</small>
+	               		</div>
+	               		<p id="">
+	               			${ message } 
+	               		</p>
+	               	</div>
+                 </li>
+	        	</c:if>
                
-               <!-- 남이 보낸 메시지 영역 -->
-               <li id="receiverMessage" class="message left">
-	               	<span id="name" class="receiver-left-name">남이름</span>
-	               	<span id="receivertext" class="text receiver-left-Text">안녕하세요 ㅎㅎ</span>
-               </li>
-               
-               
-               <!-- 내가보낸 메시지 영역 -->
-               <li id="senderLi" class="right clearfix">
-				<span class="chat-img pull-right">
-					<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-				</span>
-               	<div class="chat-body clearfix">
-               		<div class="header">
-               			<strong class="primary-font">은사</strong>
-               			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-               		</div>
-               		<p id="senderMessage">
-               			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. 
-               		</p>
-               	</div>
-               </li>
-               
-               <!-- 상대방이 보낸 메시지 영역 -->
-               <li class="left clearfix">
-               	<span class="chat-img pull-left">
-               		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
-               	</span>
-               	<div class="chat-body clearfix">
-               		<div class="header">
-               			<strong class="primary-font">채팅파트너이름</strong>
-               			<small id="sendTime" class="pull-right text-muted"><i class="fa fa-clock-o"></i>보낸시간</small>
-               		</div>
-               		<p id="receiverMessage">
-               			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-               		</p>
-               	</div>
-               </li>
-               
-                
-               
-                          
+               </c:forEach>
+               <!-- 기존 채팅 리스트 불러오기  끝 -->           
            </ul>
            
-      
-	<form name="fm" method="post" onsubmit="return false;">
-		<textarea rows="15" cols="35" name="content1"></textarea><br>
-	<!-- 	입력 : <input type="text" name="" autocomplete="off" onkeyup="if(window.event.keyCode==13){show()}" />
-		<input type="button" value="전송" onclick="show()" /> <br/><br/> -->
-		<input type="button" value="대화참여" onclick="yongConnect()"/>
-		<input type="button" value="대화종료" onclick="yongClose()"/>
-	    
-           
-           
-       
-       <div class="chat-box bg-white">
-       	<div class="input-group">
-       		<input type="text" name="write" class="form-control border no-shadow no-rounded" placeholder="Type your message here" 
-       		autocomplete="off" onkeyup="if(window.event.keyCode==13){show()}">
-       		<span class="input-group-btn">
-       			<button class="btn btn-success no-rounded" type="button" onclick="show()">Send</button>
-       		</span>
-       	</div><!-- /input-group -->	
-       </div> 
-	</form>            
+			<!-- 메시지 보내기 -->	
+			<form name="fm" method="post" onsubmit="return false;">	
+				<div class="chat-box bg-white">
+					<div class="input-group">
+					
+						<input type="text" name="write" class="form-control border no-shadow no-rounded" 
+							placeholder="메시지를 입력해 주세요." autocomplete="off" 
+							onkeyup="if(window.event.keyCode==13){sendMessage()}">
+							
+						<span class="input-group-btn">
+							<button class="btn btn-success no-rounded" type="button" onclick="sendMessage()">Send</button>
+						</span>
+					
+					</div><!-- /input-group -->	
+				</div> 
+			</form>
+			<!-- 메시지 보내기 닫힘-->
+			
+       </div>            
 	</div>
-
 </body>
 
 
@@ -367,66 +340,98 @@
 
 	var ws;
 	
+	//챗룸 입장시 웹소켓 연결
 	$(function() {
 		yongConnect();
 	});
 	
-	
+	//소켓연결
 	function yongConnect() {
 		if(ws == null || ws.readyState === WebSocket.CLOSED) {
 			ws = new WebSocket('ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/dino-ws?roomIdx=${sessionScope.roomIdx}'); //사용자 요청정보. 로컬호스트 대신 아이피주소 사용.
+			//연결되면(또는 상대가 메시지를 보내면) 핸들러에서 메시지 받음.
 			ws.onmessage = function(evt) {
-				document.fm.content.value += evt.data; // 작동함.
+
+				var senderName = '${sessionScope.saveName}님 ';
+
+				var talkHtml = '';
+				talkHtml += '<li class="left clearfix">';
+				talkHtml += 	'<span class="chat-img pull-left">';
+				talkHtml += 	'<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
+				talkHtml += '</span>';
+				talkHtml += '<div class="chat-body clearfix">';
+				talkHtml += 	'<div class="header">';
+				talkHtml += 		'<strong class="primary-font">' + senderName + '</strong>';
+				talkHtml += 		'<small class="pull-right text-muted">';
+				talkHtml += 			'<i class="fa fa-clock-o"></i>';
+				talkHtml += 			sendTime;
+				talkHtml += 		'</small>';
+				talkHtml += 	'</div>';
+				talkHtml += 	'<p>';
+				talkHtml += 			evt.data;
+				talkHtml += 	'</p>'; 
+				talkHtml += '</div>';
+				talkHtml += '</li>';				
+				$('.chat').append(talkHtml);
+				
 			};
 			ws.onopen = onOpen;
 			ws.onclose = onClose;
 		}
 	}
 	
+	//방 입장하면 기존 대화목록 여기서 불러냄.
 	function onOpen(evt) {
-		/* document.fm.content.value = '대화참여함\n'; */
+		//document.fm.content.value = '대화참여함\n';
 	}
 	
+	//대화종료.
 	function onClose(evt) {
-		/* document.fm.content.value = '대화종료함\n'; */
+		//document.fm.content.value = '대화종료함\n'; 
 	}
 	
-	function show() {
+	//메시지 보내기 (TO DO : 샌드메시지 함수 호출할때마다 db에 채팅 메시지 insert)
+	function sendMessage() {
 		
 		if(ws == null || ws.readyState === WebSocket.CLOSED) {
 			return alert("대화방이 닫혀있습니다.");
 		}
 		
-		var senderName = '${sessionScope.saveName}님: ';
+		var senderName = '${sessionScope.saveName}님 ';
 		var msg = document.fm.write.value + '\n';
-		var messageUl = document.getElementById('messageUl');
-		var senderMessage = document.getElementById('senderMessage');
-			senderMessage.innerHTML = msg;
-		/* document.fm.content.value += msg; */ 
 		
-		var chatLi = $('div.chat-message ul#messageUl li').clone();
+		$('.chat').append(
+				
+	           '<li class="right clearfix">' +
+                    '<span class="chat-img pull-right">' + 
+               		'<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">' + 
+               	'</span>' + 
+               	'<div class="chat-body clearfix">' + 
+               		'<div class="header">' + 
+               			'<strong class="primary-font">' + senderName + '</strong>' + 
+               			'<small class="pull-right text-muted">' + 
+               				'<i class="fa fa-clock-o"></i>' + sendTime + 
+               			'</small>' + 
+               		'</div>' + 
+               		'<p>'  
+               			+ msg + 
+               		'</p>' + 
+               	'</div>' + 
+               '</li>' 
+				
+		);
 		
-		var messageBox = messageUl.innerHTML = `
-       	  <li id="senderLi" class="right clearfix">
-			<span class="chat-img pull-right">
-				<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-			</span>
-           	<div class="chat-body clearfix">
-           		<div class="header">
-           			<strong class="primary-font">은사</strong>
-           			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-           		</div>
-           		<p id="senderMessage"></p>
-           	</div>
-           </li>
-		`;
+		// 스크롤바 아래 고정
+        $("input[name=write]")[0].scrollIntoView();
 		
-		ws.send(messageBox);
-		
+		//핸들러로 메시지 보냄.
+		ws.send(msg);
+				
 		document.fm.write.value = '';
 		document.fm.write.focus();
 		
 	}
+	
 	
 	function yongClose() {
 		if(ws != null && ws.readyState === WebSocket.OPEN) {
@@ -434,15 +439,11 @@
 		}
 	}
 	
-</script>
 
-<!-- 보낸 시간 구하기 -->
-<script>
-	
+	/* 보낸 시간 구하기  TO DO : 자바단에서 구해서 보내줘야함.*/ 
 	var currentNow = new Date();
 	var theHours = currentNow.getHours();
 	var theMinutes = currentNow.getMinutes();
-	//보낸시간.
 	var sendTime;
 	
 	if (theHours > 12) {
