@@ -174,7 +174,7 @@
 		    <div><a href="kidsCard.do?idx=${sidx}">아이카드</a></div>
 		    <div><a href="careNoteList.do?idx=${sidx}">돌봄노트</a></div>
 		    <div><a href="reviewMain.do?idx=${sidx}">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
+		    <div><a href="reportList.do?idx=${sidx}">신고내역</a></div>
 		    <div><a href="#">계정관리</a></div>
 		  </div>
 		</div>

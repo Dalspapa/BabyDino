@@ -218,7 +218,6 @@
 	                  <div class="flip-card-front">
 	                    <div class="mb-2">
 	                      <img src="./common/img/faq-img.png" alt="선생님 사진" >
-
 	                    </div>
 	                    <div>
 	                      <h6 class="text-warning">새로운 추천01</h6>
@@ -237,7 +236,6 @@
 	                </div>
 	              <!-- ./ filp01 -->
 	              </div>
-
 	              <!-- filp02 -->
 	              <div class="flip-card col-lg">
 	                <div class="flip-card-inner">
@@ -375,7 +373,6 @@
 	                  <div class="img-sarce">
 	                    <img src="https://cdn.mom-sitter.com/momsitter-app/static/public/index/sitter-guide-1-v2.svg" alt="회원가입하기">
 	                  </div>
-
 	                  <div class="contents">
 	                    <h6 class="guide-title">회원가입하기</h6>
 	                    <p class="guide-content"> 빠르고 간편한 회원가입을 진행해주세요.</p>
@@ -433,12 +430,7 @@
 	          </div>
 	    </section>
 	  </div>
-	  <!-- 지도. 우리 여기 있어요!! -->
-<!-- 	<div>
-	<section id = "section09" class = "kakaoMap">
-		<div id="map">우리, 여기 있어요!!</div>
-	</section>
-	</div>  -->
+
 	  <!-- 챗 Modal -->
 	  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
@@ -489,7 +481,6 @@
 		a.hide();
 		b.show();
 	  }
-
 
 	 /** 카카오 지도 api */
 	/* var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
