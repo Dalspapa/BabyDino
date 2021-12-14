@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +44,6 @@ table .phone{
    <div id="step1">
       <!-- 회원가입 폼 -->
       <section>
-        <!--  <h1>사용하실 아이디와 비밀번호를 입력해주세요.</h1>  -->
 		 <div class="title">회원가입</div>
          <!-- <form name="memberJoinForm" action="joinMember.do" method="post" onsubmit="return checkAll()"> -->
          <form name="memberJoinForm">
@@ -428,6 +426,7 @@ table .phone{
                if(r.result > 0) {
                   alert('회원가입이 완료되었습니다.');
                   location.href= 'main.do';
+                  fnShowLogin();
                } else {
                   alert("회원가입중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.");
                }
@@ -439,6 +438,12 @@ table .phone{
       
    }
    
+	//로그인 모달호출 함수	
+	function fnShowLogin() {
+		 $('#loginModal').modal('show');
+	}
+	
+	
    //아이디 중복 체크
    function idCheck() {
       let userId = $('.input_id').val(); //input 태그의 class 명의 value 값

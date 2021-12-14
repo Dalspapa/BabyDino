@@ -6,13 +6,16 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.chat.model.ChatListVo;
 import dino.chat.model.ChatMessageVo;
 import dino.chat.service.ChatService;
+import dino.dto.ChatMessageDto;
 import dino.dto.ChatRoomDto;
 
 @Controller
@@ -104,15 +107,32 @@ public class ChatController {
 
 	}
 
-
-	//채팅방 입장 테스트
-	@RequestMapping("/goChatRoom.do")
-	public String goChatRoom(@RequestParam("roomIdx") int roomIdx, HttpSession session) {
-
-		session.setAttribute("roomIdx", roomIdx);
-		System.out.println("세션에 방정보 저장됨::" + roomIdx);
-
-		return "/chat/chatRoom";
+	
+	
+	/** 채팅 메시지 DB 저장
+	 * @param chatMessageDto
+	 * @return
+	 */
+	@RequestMapping("/saveChatMessage.do")
+	@ResponseBody
+	public int saveChatMessage(ChatMessageDto chatMessageDto) {
+		
+		int result = chatService.saveChatMessage(chatMessageDto);
+		
+		System.out.println("###INFO::::::DB저장 결과 ####" + result);
+		
+		return result;
 	}
+	
+
+//	//채팅방 입장 테스트
+//	@RequestMapping("/goChatRoom.do")
+//	public String goChatRoom(@RequestParam("roomIdx") int roomIdx, HttpSession session) {
+//
+//		session.setAttribute("roomIdx", roomIdx);
+//		System.out.println("세션에 방정보 저장됨::" + roomIdx);
+//
+//		return "/chat/chatRoom";
+//	}
 
 }

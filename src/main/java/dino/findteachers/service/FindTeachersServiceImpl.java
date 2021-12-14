@@ -36,22 +36,22 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 	}
 
 	public int kSetImg(Common_ImgDto imgDto) {
-		
+
 		int result = findTeachersDao.kSetImg(imgDto);
-		
+
 		System.out.println("findKidsservice setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
-		
+
 		return result;
 	}
 
 	//Test imgpath
-	public List<Common_ImgDto> imgpath(int d_member_idx) {
+	public List<FindTeacherJoinDto> imgpath(int d_member_idx) {
 
-		List<Common_ImgDto> resultImg = findTeachersDao.imgpath(d_member_idx);
+		List<FindTeacherJoinDto> resultImg = findTeachersDao.imgpath(d_member_idx);
 
 		return resultImg;
 	}
-	
+
 	// find teacher card list
 	public List<FindTeacherJoinDto> teacherList() {
 
@@ -87,7 +87,7 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 	// make kid card (테스트)
 	@Transactional
 	public void makeKCard(KidDto dto, List<MultipartFile> imgFiles, String dirPath, Common_ImgDto imgDto, HttpServletRequest request) {
-		
+
 		String c_imgpath = "";
 		if ( imgFiles == null || imgFiles.size() == 0) {
 
@@ -96,18 +96,20 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 		}
 
 		// 파일경로에 파일저장
-		for(int i = 0; i < imgFiles.size(); i++) {
-			System.out.println("== filimgFileName : " + imgFiles.get(i).getOriginalFilename());
-			copyInto(imgFiles.get(i));
-			System.out.println("copyinto 성공 ");
-			c_imgpath += imgFiles.get(i).getOriginalFilename();
+		if(imgFiles != null) {
+			for(int i = 0; i < imgFiles.size(); i++) {
+				System.out.println("== filimgFileName : " + imgFiles.get(i).getOriginalFilename());
+				copyInto(imgFiles.get(i));
+				System.out.println("copyinto 성공 ");
+				c_imgpath += imgFiles.get(i).getOriginalFilename();
+			}
 		}
-		
+
 		int result = findTeachersDao.makeKCard(dto);
 		if(result == 0) {
 			System.out.println("insert 에러남.");
 		}
-		
+
 		// inset된 data idx
 		int ref_idx = dto.getIdx();
 		int category_idx = 1;
@@ -125,12 +127,12 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 
 		int setImgResult = findTeachersDao.kSetImg(imgDto);
 	}
-	
+
 
 	public int makeKCareType(KidDto dto) {
-		
+
 		int result = findTeachersDao.makeKCareType(dto);
-		
+
 		return result;
 	}
 
@@ -146,7 +148,7 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 			e.printStackTrace();
 		}
 	}
-	
+
 
 
 	// Insert reserve Kid Card
@@ -171,8 +173,4 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 		return t_dto;
 	}
 
-	public int makeKCard(KidDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

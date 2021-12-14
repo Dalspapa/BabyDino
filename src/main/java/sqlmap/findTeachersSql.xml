@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper 
+<!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.findTeachers">
 
 	<!-- 선생님 카드 리스트 -->
 	<select id="teacherList" resultType="dino.findteachers.model.FindTeacherJoinDto">
-		  	SELECT 
+		  	SELECT
                  m.idx
                 ,m.name
                 ,(TO_CHAR(SYSDATE ,'yyyy') - TO_CHAR (birth, 'yyyy')) as age
@@ -16,38 +16,38 @@
                 ,t.t_cost
                 ,t.t_introduce
                 ,ci.c_imgpath
-            FROM 
+            FROM
                 d_teachercard t
-            LEFT JOIN 
+            LEFT JOIN
                 d_member m ON m.idx = t.d_member_idx
-            LEFT JOIN 
+            LEFT JOIN
                 d_common_img ci ON ci.d_member_idx = t.idx
             WHERE
                 t.d_member_idx = m.idx
 	</select>
-	
+
 	<!-- 아이카드 선택하기 -->
 	<select id="pickKidsCard" parameterType="Integer" resultType="dino.dto.KidDto">
 	SELECT
 			a.idx,
-			a.k_name, 
-			a.k_gender, 
+			a.k_name,
+			a.k_gender,
 			a.k_birth,
             b.age
-	FROM 
-			d_kidcard a, 
+	FROM
+			d_kidcard a,
             (SELECT
             idx as xidx,
 			(TO_CHAR(SYSDATE ,'yyyy') -
             TO_CHAR (k_birth, 'yyyy')) as age
-            FROM 
+            FROM
                 d_kidcard
-            WHERE 
+            WHERE
                 d_member_idx = #{idx}) b
-    WHERE 
+    WHERE
         a.idx = b.xidx
 	</select>
-	
+
 	<!-- 이미지 인서트 -->
 	<insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
 		INSERT INTO
@@ -60,18 +60,24 @@
 			#{ref_idx}
 		)
 	</insert>
-	
+
 	<!-- 이미지 출력 -->
-	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	<select id="getImg" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto" >
 	    SELECT dk.*
-     		 , dci.c_imgpath
-		FROM d_kidcard dk 
-		LEFT JOIN d_common_img dci ON dk.idx = dci.ref_idx
-		WHERE dk.idx = #{d_member_idx}
-		and dci.category_idx = 1
+     		 	, dci.c_imgpath
+		FROM 
+				d_kidcard dk 
+		LEFT JOIN 
+				d_common_img dci 
+		ON 		
+				dk.idx = dci.ref_idx
+		WHERE 
+				dk.idx = #{d_member_idx}
+		AND 
+				dci.category_idx = 1
 	</select>
-	
-	
+
+
 	<!-- 아이 주소카드 선택하기 -->
 	<select id="pickAddr" parameterType="Integer" resultType="dino.dto.MemberDto">
 	SELECT
@@ -84,13 +90,13 @@
 	WHERE
     	idx = #{idx}
 	</select>
-	
-	<!-- 아이카드 만들기 --> 
+
+	<!-- 아이카드 만들기 -->
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
 	<selectKey resultType="dino.dto.KidDto" keyProperty="d_kidcard_idx" order="BEFORE">
 		select d_kidcard_idx.nextval as d_kidcard_idx from dual
 	</selectKey>
-	INSERT INTO 
+	INSERT INTO
                 d_kidcard
         VALUES(
                 #{d_kidcard_idx},
@@ -103,12 +109,13 @@
                 #{k_tendency},
                	#{teacher_type},
                	#{k_require}
+              )
 	</insert>
-	
+
 	<!-- 돌봄유형 만들기 -->
 	<insert id="makeKCareType" parameterType="dino.dto.KidDto">
-	INSERT INTO 
-		d_kid_caretype 
+	INSERT INTO
+		d_kid_caretype
     VALUES(
 		#{kids_idx},
 		#{care_type},
@@ -118,7 +125,7 @@
 		SYSDATE
     )
 	</insert>
-	
+
 	<!-- 아이 카드로 예약  -->
 	<insert id="k_reserve" parameterType="dino.dto.ReserveDto">
 	INSERT INTO
@@ -136,10 +143,10 @@
 		    null
 	)
 	</insert>
-	
+
 	<!-- 선생님 상세정보 출력 -->
 	<select id="teacherInfo" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto">
-		SELECT 
+		SELECT
 			  t.t_cost
 			, t.job
 			, t.t_introduce
@@ -155,13 +162,17 @@
 		FROM
 			d_teachercard t
 		LEFT JOIN 
-			d_member m ON m.idx = t.d_member_idx
+			d_member m 
+		ON 
+			m.idx = t.d_member_idx
 		LEFT JOIN 
-			d_common_img i on i.ref_idx = t.idx
-		where 
+			d_common_img i 
+		ON 
+			i.ref_idx = t.idx
+		WHERE 
 			t.idx = #{idx}
 	</select>
-	
+
 	<!-- 선생님 상세 정보 리뷰 출력 -->
 	<select id="teacherReviewList" resultType="dino.dto.ReviewDto">
 		SELECT
@@ -171,11 +182,11 @@
 	     	 , star
 	     	 , r_writedate
 	     	 , r_content
-		FROM 
-			d_review 
-		WHERE 
+		FROM
+			d_review
+		WHERE
 			d_member_idx = #{d_member_idx}
 	</select>
-	
-	
+
+
 </mapper>

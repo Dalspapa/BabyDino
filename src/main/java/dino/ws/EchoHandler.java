@@ -46,17 +46,21 @@ public class EchoHandler extends TextWebSocketHandler {
 		}
 
 		//방존재여부 확인
-		Iterator roomIter = roomList.keySet().iterator();
+		Iterator<String> roomIter = roomList.keySet().iterator();
+		
 		while (roomIter.hasNext()) {
 			roomIdx = (String) roomIter.next();
+			
 			if (sessionRoomIdx.equals(roomIdx)) {
 				isExistRoom = true;
 				break;
 			}
 		}
+		
 		if (isExistRoom) { //이미방이 존재하면 방에 입장합니다.
 			System.out.println("### INFO 방번호::" + sessionRoomIdx + "에 "+ sessionInfo.get("saveName") +"님이 입장하였습니다." );
 			sessionList = roomList.get(roomIdx);
+			
 			if (!sessionList.contains(session)) {
 				sessionList.add(session);
 				roomList.put(sessionRoomIdx, sessionList);
@@ -65,13 +69,11 @@ public class EchoHandler extends TextWebSocketHandler {
 			return;
 		}
 
-//		System.out.println("접속자 session ID : " + session.getId());
-//		System.out.println("접속자 session ID : " + roomIdx);
-//		map.put(session.getId(), session);
 		if(!sessionList.contains(session)) {
 			sessionList.add(session);
 			i++;
 		}
+		
 		roomList.put(sessionRoomIdx, sessionList);
 	}
 
@@ -81,8 +83,9 @@ public class EchoHandler extends TextWebSocketHandler {
 		Map<String, Object> sessionInfo = this.getSessionInfo(session);
 		String sessRoomIdx = sessionInfo.get("roomIdx").toString();
 
-		String msg = sessionInfo.get("saveName") + "님 : " + message.getPayload();
-		Iterator roomIdxList = roomList.keySet().iterator(); //이터레이터로 맵의 키값 가져옴.
+//		String msg = sessionInfo.get("saveName") + "님 : " + message.getPayload();
+		String msg = message.getPayload(); //소켓으로 send 받은 메시지 보내기
+		Iterator roomIdxList = roomList.keySet().iterator(); 
 
 		//방별 세션에 메세지 전달처리.
 		while (roomIdxList.hasNext()) { //방 리스트
@@ -92,7 +95,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			if(!StringUtils.isEmpty(roomIdx) && sessRoomIdx.equals(roomIdx)) {
 				sessionList = roomList.get(roomIdx);
 				for (WebSocketSession sess : sessionList) {
-					System.out.println("### INFO 참여명수:"+sessionList.size()+" 방번호:"+roomIdx+"에 보내는 "+sessionInfo.get("saveName")+"님의  메세지:"+msg);
+					System.out.println("### INFO 참여명수:" + sessionList.size() + " 방번호:" + roomIdx + "에 보내는 " + sessionInfo.get("saveName") + "님의  메세지:" + msg);
 					if(!session.equals(sess)) {
 						sess.sendMessage(new TextMessage(msg));
 					}

@@ -16,31 +16,40 @@ a:link, a:visited {
    margin-top: 130px;
    text-align: center;
    font-family: 'S-Air';
-   margin-bottom: 61px;
 }
 .main .title{
-   font-size: 25px;
-   font-weight: 500;
+   font-size: 2.5rem;
+   font-weight: bold;
    margin-bottom: 18px;
 }
 .main .btns{
 	display: flex;
 	justify-content: space-evenly;
-	margin-bottom: 35px;
 }
 .contentbody {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 60px auto;
+	width: 60%;
 }
 .main .t_card{
     width: 500px;
     height: 300px;
     border-radius: 10px;
-    background-color: #ccc;
+    background-color: #f5f5f5;
     display: flex;
     align-items: center;
+}
+.main .t_card:hover {
+	transform:scale(1.05); /* 마우스 오버시 이미지 크기를 1.1 배만큼 확대시킨다. */
+        -o-transform:scale(1.05);
+        -moz-transform:scale(1.05);
+        -webkit-transform:scale(1.05);
+    transition: transform .35s;
+        -o-transition: transform .35s;
+        -moz-transition: transform .35s;
+        -webkit-transition: transform .35s;
 }
 .main .t_card .pic{
     width: 151px;
@@ -52,6 +61,18 @@ a:link, a:visited {
 .intro {
 	width: 349px;
 }
+.notitle {
+	text-align: center;
+	margin: 100px auto;
+}
+.info {
+	margin-left: 60px;
+	width: 400px;
+}
+.nolist {
+	height: 600px;
+	line-height: 600px;
+}
 </style>
 </head>
 <body>
@@ -61,111 +82,86 @@ a:link, a:visited {
          <div class="title">돌봄 현황</div>
          <!-- 현황버튼 -->
          <div class="btns">
-            <div><button type="button" class="btn btn-outline-success" onclick="care_1();">요청현황</button></div>
-            <div><button type="button" class="btn btn-outline-success" onclick="care_2();">요청받은현황</button></div>
-            <div><button type="button" class="btn btn-outline-success" onclick="care_3();">완료현황</button></div>
+            <div><button type="button" class="btn btn-outline-success" onclick="care_1();">돌봄진행중</button></div>
+            <div><button type="button" class="btn btn-outline-success" onclick="care_2();">완료된돌봄</button></div>
 		 </div>
 
-		 <c:if test="${ empty list }">
-				<h2 align="center">요청진행상황이 없습니다.</h2>
-		 </c:if>
+        <!-- 진행중 섹션 -->
+		<div id="section01">
+			<c:if test="${ empty list_ing }">
+				<div class="nolist"><h2 style="line-height: 300px;"> 진행중인 돌봄 사항이 없습니다. </h2></div>
+			</c:if>
+		   	<c:forEach var="l_ing" items="${ list_ing }">
+				<div class="contentbody">
+					<!-- 선생님 카드 -->
+					<c:url var="contentUrl" value="caring.do">
+						<c:param name="idx">${ l_ing.r_idx }</c:param>
+					</c:url>
+					<a href="${ contentUrl }">
+					<div class="t_card">
+						<div class="pic"><img alt="선생님기본사진" src="./common/img/basic/teacher.png" style="width: auto; max-height: 100%;"></div>
+						<div class="intro">${l_ing.t_introduce}</div>
+					</div>
+					</a>
+					<!-- 선생님 정보 -->
+					<div class="info">
+						<div>선생님 이름 : ${l_ing.name}</div>
+						<div>돌봄 가능 유형 : ${l_ing.t_care_type}</div>
+						<div>희망 시급 : ${l_ing.t_cost}원</div>
+						<button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
 
-         <!-- 요청 받은 현황 섹션 -->
-         <c:forEach var="list" items="${ list }">
-	         <div id="section01" class="contentbody">
-	            <!-- 선생님 카드 -->
-	            <c:url var="contentUrl" value="caring.do">
-	            	<c:param name="idx">${ list.r_idx }</c:param>
-	            </c:url>
-	            <a href="${ contentUrl }">
-	            <div class="t_card">
-	               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
-	               <div class="intro">선생님 소개 : ${list.t_introduce}</div>
-	            </div>
-	            </a>
-	            <!-- 선생님 정보 -->
-	            <div class="info">
-	               <div>선생님 이름 : ${list.name}</div>
-	               <div>돌봄 가능 유형 : ${list.t_care_type}</div>
-	               <div>희망 시급 : ${list.t_cost}원</div>
-	               <div>${list.care_time}</div>
-	               <button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
-	            </div>
-	         </div>
-         </c:forEach>
-
-         <!-- 요청한 현황 섹션 -->
-         <c:forEach var="list" items="${ list }">
-	         <div id="section02" class="contentbody">
-	            <!-- 선생님 카드 -->
-	            <div class="t_card">
-	               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
-	               <div class="intro">#선생님 소개 들어가는 부분section02</div>
-	            </div>
-	            <!-- 선생님 정보 -->
-	            <div class="info">
-	               <div>선생님 이름 : ${list.name}</div>
-	               <div>돌봄 가능 유형 : ${list.t_care_type}</div>
-	               <div>희망 시급 : ${list.t_cost}원</div>
-	               <div>${list.care_time}</div>
-	               <button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
-	            </div>
-	         </div>
-         </c:forEach>
-
-		 <!-- 진행 섹션 -->
-		 <c:forEach var="list" items="${ list }">
-	         <div id="section03" class="contentbody">
-	            <!-- 선생님 카드 -->
-	            <c:url var="contentUrl" value="caring.do">
-	            	<c:param name="idx">${ list.r_idx }</c:param>
-	            </c:url>
-	            <a href="${ contentUrl }">
-	            <div class="t_card">
-	               <div class="pic">#선생님 프로필 사진들어가는 부분</div>
-	               <div class="intro">#선생님 소개 들어가는 부분section03</div>
-	            </div>
-	            </a>
-	            <!-- 선생님 정보 -->
-	            <div class="info">
-	               <div>선생님 이름 : ${list.name}</div>
-	               <div>돌봄 가능 유형 : ${list.t_care_type}</div>
-	               <div>희망 시급 : ${list.t_cost}원</div>
-	               <div>${list.care_time}</div>
-	               <button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
-	            </div>
-	         </div>
-         </c:forEach>
-
-      </div>
+        <!-- 완료된 섹션 -->
+		<div id="section002">
+			<c:if test="${ empty list_done }">
+				<div class="nolist"><h2 style="line-height: 300px;"> 완료된 돌봄 사항이 없습니다. </h2></div>
+			</c:if>
+		   	<c:forEach var="l_done" items="${ list_done }">
+				<div class="contentbody">
+					<!-- 선생님 카드 -->
+					<c:url var="contentUrl" value="caring.do">
+						<c:param name="idx">${ l_done.r_idx }</c:param>
+					</c:url>
+					<a href="${ contentUrl }">
+					<div class="t_card">
+						<div class="pic"><img alt="선생님기본사진" src="./common/img/basic/teacher.png" style="width: auto; max-height: 100%;"></div>
+						<div class="intro">선생님 소개 : ${l_done.t_introduce}</div>
+					</div>
+					</a>
+					<!-- 선생님 정보 -->
+					<div class="info">
+						<div>선생님 이름 : ${ l_done.name}</div>
+						<div>돌봄 가능 유형 : ${ l_done.t_care_type}</div>
+						<div>희망 시급 : ${ l_done.t_cost}원</div>
+						<div>${ l_done.care_time}</div>
+						<button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <!-- 돌봄 현황 버튼 js -->
 <script>
 
    let a = $('#section01');
-   let b = $('#section02');
-   let c = $('#section03');
+   let b = $('#section002');
 
    $(document).ready(function() {
       a.show();
       b.hide();
-      c.hide();
    });
    function care_1() {
       a.show();
       b.hide();
-      c.hide();
    }
    function care_2() {
       a.hide();
       b.show();
-      c.hide();
-   }
-   function care_3() {
-      a.hide();
-      b.hide();
-      c.show();
    }
 </script>
 </html>

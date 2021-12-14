@@ -20,9 +20,15 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 
 	//start
 
-	//돌봄 현황 페이지
-	public List<ParentMypageDto> proceedingMain(int idx) {
-		List<ParentMypageDto> list = parentMypageDao.proceedingMain(idx);
+	//진행중 돌봄 목록
+	public List<ParentMypageDto> proceedingMain_ing(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.proceedingMain_ing(idx);
+		return list;
+	}
+
+	//완료된 돌봄 목록
+	public List<ParentMypageDto> proceedingMain_done(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.proceedingMain_done(idx);
 		return list;
 	}
 
@@ -35,6 +41,24 @@ public class ParentMypageServiceImpl implements ParentMypageService {
 	//아이카드 리스트 페이지
 	public List<ParentMypageDto> kidsCardList(int idx) {
 		List<ParentMypageDto> list = parentMypageDao.kidsCardList(idx);
+		return list;
+	}
+
+	//돌봄 노트 리스트 페이지
+	public List<ParentMypageDto> careNoteList(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.careNoteList(idx);
+		return list;
+	}
+
+	//선생님 진행중 돌봄 목록
+	public List<ParentMypageDto> t_proceedingMain_ing(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.t_proceedingMain_ing(idx);
+		return list;
+	}
+
+	//선생님 완료된 돌봄 목록
+	public List<ParentMypageDto> t_proceedingMain_done(int idx) {
+		List<ParentMypageDto> list = parentMypageDao.t_proceedingMain_done(idx);
 		return list;
 	}
 }

@@ -20,6 +20,8 @@ public interface ChatService {
 
 	public List<ChatMessageVo> getMessages(int roomIdx);
 
+	public int saveChatMessage(ChatMessageDto chatMessageDto);
+
 //	public ChatRoomDto findById(int id);
 //
 //	public Map<String, Object> addMessage(Map<String, Object> param);

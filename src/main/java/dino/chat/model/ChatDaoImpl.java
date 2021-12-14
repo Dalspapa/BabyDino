@@ -18,13 +18,6 @@ public class ChatDaoImpl implements ChatDao {
 	}
 
 	
-	
-	
-//	public void add(Map<String, Object> param) {
-//		// TODO Auto-generated method stub
-//
-//	}
-
 	//룸리스트 가져오기
 	public List<ChatListVo> getList(int sessionIdx) {
 		List<ChatListVo> list = sqlMap.selectList("getList", sessionIdx);
@@ -51,25 +44,11 @@ public class ChatDaoImpl implements ChatDao {
 		return messageList;
 	}
 
-	
-//
-//	public ChatRoomDto findById(int id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public void addMessage(Map<String, Object> param) {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	public List<ChatMessageDto> getMessages(int roomId, int from) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
-
-
+	public int saveChatMessage(ChatMessageDto chatMessageDto) {
+		int result = sqlMap.insert("saveChatMessage", chatMessageDto);
+		return result;
+	}
 
 	
 }

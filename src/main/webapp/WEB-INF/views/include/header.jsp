@@ -23,8 +23,8 @@
 <!-- 폰트어썸(아이콘) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<!-- <script src="/BabyDino/common/js/jquery-3.6.0.min.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="${pageContext.request.contextPath}/common/js/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 <!-- 부트스트랩 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -32,7 +32,10 @@
 <!-- <link rel="stylesheet" href="/BabyDino/common/css/bootstrap.min.css"> -->
 <!-- 지원 css수정 -->
 <style>
-<!--.memberImg {
+.btn{
+    margin-bottom:5px;
+}
+.memberImg {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
@@ -70,7 +73,8 @@
 </div>
 <!-- 챗 버튼 -->
 <div id="chat">
-	<a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal">
+	<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
+	<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
 		<span id="caht-cnt">
 			<p>1</p>
 		</span>
@@ -172,9 +176,9 @@
 		  <div class="offcanvas-body">
 		    <div><a href="proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="kidsCard.do?idx=${sidx}">아이카드</a></div>
-		    <div><a href="#">돌봄노트</a></div>
-		    <div><a href="reviewMain.do?m_idx=${sidx}&member_type=${stype}">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
+		    <div><a href="careNoteList.do?idx=${sidx}">돌봄노트</a></div>
+		    <div><a href="reviewMain.do?idx=${sidx}">후기내역</a></div>
+		    <div><a href="reportList.do?idx=${sidx}">신고내역</a></div>
 		    <div><a href="#">계정관리</a></div>
 		  </div>
 		</div>
@@ -186,11 +190,11 @@
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
-		    <div><a href="proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
+		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
 		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>
-		    <div><a href="#">후기내역</a></div>
+		    <div><a href="t_reviewMain.do?idx=${sidx}">후기내역</a></div>
 		    <div><a href="#">신고내역</a></div>
 		    <div><a href="accountManagement.do">계정관리</a></div>
 		  </div>
@@ -211,8 +215,6 @@
 		  </div>
 		</div>
 	</header>
-		
-	<!-- 계정관리 비밀번호 확인 -->
 </head>
 <script>
 
@@ -239,7 +241,7 @@
 	function dinoKids(stype){
 
 		if (stype == 1 || stype == 2 || stype == 3 || stype == 6) {
-			location.href = 'findKids.do';
+			location.href = 'findKidsForm.do';
 
 		} else if (stype == 4) {
 
@@ -265,9 +267,6 @@
 			$('#loginModal').modal('show');
 		}
 	}
-
-
-
 
 </script>
 

@@ -2,6 +2,8 @@ package dino.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.dto.ReviewDto;
+import dino.review.model.ReviewJoinDto;
 import dino.review.service.ReviewService;
 
 @Controller
@@ -18,15 +21,36 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 
+	String goUrl = "";
+
 	/**
-	 * 내가 작성한 리뷰
+	 * 부모님이 작성한 리뷰
+	 * @param idx
 	 * @return
 	 */
 	@RequestMapping(value="/reviewMain.do")
-	public ModelAndView reviewMain(ReviewDto dto) {
-		List<ReviewDto> reviewList= reviewService.reviewList(dto);
+	public ModelAndView reviewMain(@RequestParam("idx")int idx) {
+		List<ReviewJoinDto> myreview= reviewService.reviewList(idx);
+		List<ReviewJoinDto> getreview= reviewService.getReviewList(idx);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("reviewList", reviewList);
+		mav.addObject("myreview", myreview);
+		mav.addObject("getreview", getreview);
+		mav.setViewName("review/reviewMain");
+		return mav;
+	}
+
+	/**
+	 * 선생님이 작성한 리뷰
+	 * @param idx
+	 * @return
+	 */
+	@RequestMapping(value="/t_reviewMain.do")
+	public ModelAndView t_reviewMain(@RequestParam("idx")int idx) {
+		List<ReviewJoinDto> t_myreview= reviewService.t_reviewList(idx);
+		List<ReviewJoinDto> t_getreview= reviewService.t_getReviewList(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("myreview", t_myreview);
+		mav.addObject("getreview", t_getreview);
 		mav.setViewName("review/reviewMain");
 		return mav;
 	}
@@ -46,10 +70,20 @@ public class ReviewController {
 	 * @return
 	 */
 	@RequestMapping(value="/writesubmit.do")
-	public ModelAndView writeReview(ReviewDto dto) {
-		reviewService.writeReview(dto);
+	public ModelAndView writeReview(ReviewDto dto, HttpSession session) {
+		int result = reviewService.writeReview(dto);
+		String msg = result > 0 ?"소중한 후기 감사합니다 !" : "후기 작성에 실패하였습니다. 다시 부탁드립니다.";
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("review/reviewMain");
+		int idx = (Integer) session.getAttribute("saveIdx");
+		int member_type = (Integer) session.getAttribute("saveMemberType");
+
+		if( member_type == 2 || member_type == 8) {
+			mav.addObject("goUrl","reviewMain.do?idx=" + idx);
+		}else {
+			mav.addObject("goUrl","t_reviewMain.do?idx=" + idx);
+		}
+		mav.addObject("msg",msg);
+		mav.setViewName("review/reviewMsg");
 		return mav;
 	}
 }
