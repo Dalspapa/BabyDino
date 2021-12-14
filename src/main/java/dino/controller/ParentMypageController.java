@@ -23,10 +23,12 @@ public class ParentMypageController {
 	 * @return
 	 */
 	@RequestMapping("/proceedingMain.do")
-	public ModelAndView proceedingMain(@RequestParam("idx")int idx) {
-		List<ParentMypageDto> list = parentMypageService.proceedingMain(idx);
+	public ModelAndView proceedingMain_ing(@RequestParam("idx")int idx) {
+		List<ParentMypageDto> list_ing = parentMypageService.proceedingMain_ing(idx);
+		List<ParentMypageDto> list_done = parentMypageService.proceedingMain_done(idx);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list",list);
+		mav.addObject("list_ing",list_ing);
+		mav.addObject("list_done",list_done);
 		mav.setViewName("parentMypage/proceedingMain");
 		return mav;
 	}

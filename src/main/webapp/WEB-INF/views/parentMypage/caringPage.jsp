@@ -6,10 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-}
 /* reset */
 * {
   margin: 0;
@@ -34,8 +30,6 @@ h2 {
   position: absolute;
   left: -9999px;
 }
-
-
 .wrapper {
    width: 70%;
    margin: 80px auto;
@@ -114,6 +108,7 @@ h2 {
 }
 .item1 .childInfo {
   margin-left: 1em;
+  line-height: 12rem;
 }
 .item1 .childImg {
   width: 200px;
@@ -284,7 +279,7 @@ section{
         <div></div>
       </div>
       <div class="item1">
-        <div class="childImg">#아이이미지</div>
+        <div class="childImg"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
         <div class="childInfo">
           ${ dto.k_introduce } /
             <c:if test="${ dto.k_gender==2 }">
@@ -305,14 +300,15 @@ section{
         <li>
           <h3>원하는 시터 나이</h3>
           <div class="contentBox ageWrap">
-            <div class="circle-div">#20대</div>
-            <div class="circle-div">#50대</div>
-            <div class="circle-div">#60대</div>
+            <c:set var="timg" value="${ dto.teacher_type }" />
+			<c:forEach items="${fn:split(timg, ',') }" var="item">
+				<c:if test="${item == '1'}"><div class="circle-div">#20대</div></c:if>
+				<c:if test="${item == '2'}"><div class="circle-div">#30대</div></c:if>
+				<c:if test="${item == '3'}"><div class="circle-div">#40대</div></c:if>
+				<c:if test="${item == '4'}"><div class="circle-div">#50대</div></c:if>
+				<c:if test="${item == '5'}"><div class="circle-div">#60대</div></c:if>
+			</c:forEach>
           </div>
-        </li>
-        <li>
-          <h3>돌봄 지역</h3>
-          <div class="contentBox"><div>${dto.addr1} ${dto.addr2} ${dto.addr3}</div></div>
         </li>
       </ul>
       <ul class="item3">
@@ -330,8 +326,10 @@ section{
           <h3>원하는 활동</h3>
           <div class="contentBox activeList">
             <div>
-              <!--<img src=""/>-->
-              ${dto.k_care_type}
+              <c:set  var="careType" value="${dto.k_care_type}" />
+				<c:forEach items="${fn:split(careType, ',') }" var="item">
+					#${item}&nbsp;&nbsp;
+				</c:forEach>
             </div>
           </div>
         </li>
