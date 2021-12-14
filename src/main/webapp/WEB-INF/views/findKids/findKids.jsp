@@ -5,10 +5,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-<!-- 20211214지원css 수정 -->
+<!-- 지원 css 추가 수정 -->
 <style>
 section{
-    font-family: 'S-Air';
+	font-family: 'S-Air';
+	width: 80%;
 }
 section .row .mtitle{
     font-size: 20px;
@@ -16,14 +17,23 @@ section .row .mtitle{
     margin-top: 10px;
 }
 #cardImg {
-    width: 50px;
-    heitht: 50px;
+	width: 50px;
+	heitht: 50px;
+}
+
+.isTest {
+	background-color:  #68983b;
+}
+section .container{
+    margin: 10% 30%;
+    text-align: center;
 }
 
 .pignose-calendar-unit-disabled a {
-    color: red !important
+	color:#68983b !important;
+    width: 50px;
+    heitht: 50px;
 }
-
 .isTest {
     background-color: red;
 }
@@ -31,9 +41,7 @@ section .row .mtitle{
     margin-top: 107px;
     width: 80%;
 }
-.container .search {
-    margin: 146px auto;
-}
+
 .container .search .btns{
     text-align: center;
 }
@@ -163,8 +171,9 @@ section .row .mtitle{
 					</section>
 					
 					<!-- 요 버튼 누르면 위에 조건들 수행 -->
+					
 					<!-- 검색버튼 좀 더 키워주세요 -->
-					<div>
+					<div class="btns" style="text-align: center;margin-right: 190px;">
 						<button class="btn btn-outline-success" type="reset">RESET</button>
 				 		<button class="btn btn-outline-success" type="button" onclick="fnShowTeacherList()">SEARCH</button>
 				 	</div>

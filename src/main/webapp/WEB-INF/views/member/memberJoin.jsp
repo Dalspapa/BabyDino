@@ -466,7 +466,7 @@ table .phone{
                 if(result == 0){
                    idCheckBtn = true;
                    $("#checkId").html('사용할 수 있는 아이디 입니다.');
-                   $("#checkId").css('color', '#00ff00');
+                   $("#checkId").css('color', '#68983b');
                 }else{
                    $("#checkId").html('사용할 수 없는 아이디 입니다.');
                    $("#checkId").css('color', '#ff0000');
@@ -484,7 +484,7 @@ table .phone{
       var pwd = document.getElementById('pwd');         // 비밀번호 
       var pwdok = document.getElementById('pwdCheck');   // 비밀번호 확인 값
       var msg = document.getElementById('msg');         // 확인 메세지
-      var okColor = "#00ff00";                     // 맞았을 때 출력되는 색깔.
+      var okColor = "#68983b";                     // 맞았을 때 출력되는 색깔.
       var noColor ="#ff0000";                        // 틀렸을 때 출력되는 색깔
       
       if(pwd.value == pwdok.value){                  // pwd 변수의 값과 pwdok 변수의 값과 동일하다.
@@ -548,7 +548,7 @@ table .phone{
                   $("#phone2").attr("disabled",false); 
                   $("#phoneChk2").css("display","inline-block"); 
                   $(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오."); 
-                  $(".successPhoneChk").css("color","green"); 
+                  $(".successPhoneChk").css("color","#68983b"); 
                   $("#phone").attr("readonly",true); 
                   code2 = data; 
                }
@@ -561,7 +561,7 @@ table .phone{
          
          if($("#phone2").val() == code2){ 
             $(".successPhoneChk").text("인증번호가 일치합니다."); 
-            $(".successPhoneChk").css("color","green"); 
+            $(".successPhoneChk").css("color","#68983b"); 
             $("#phoneDoubleChk").val("true"); 
             $("#phone2").attr("disabled",true); 
          

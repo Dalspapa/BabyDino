@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 목록</title>
+<!-- 20211215 지원 css 수정-->
 <style>
 .title {
     color: green;
@@ -36,12 +37,14 @@ table th,td {
     justify-content: flex-end;
     margin-left: 1400px;
     margin-bottom: 21px;
+    margin-top: 55px;
 }
 .paging {
-	margin-top: -39px;
+	margin-top: 43px;
+	margin-bottom: 190px;
 }
 .bodysize {
-	width: 80%
+	width: 80%;
 }
 /*페이징 부분*/
 .paging a{

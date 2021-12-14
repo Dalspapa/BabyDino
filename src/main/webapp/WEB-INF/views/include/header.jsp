@@ -72,7 +72,8 @@
 	<!-- ./ 페이지 상위 버튼 -->
 </div>
 <!-- 챗 버튼 -->
-<div id="chat">
+<!-- 20211215 지원css수정 -->
+<div id="chat" style="padding-top: 14px;">
 	<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
 	<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
 		<span id="caht-cnt">
