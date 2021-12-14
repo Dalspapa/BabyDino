@@ -53,30 +53,19 @@ public class MemberController {
 			String userName = memberDto.getName();
 			int memberType = memberDto.getMember_type();
 
-			//TestCode
-			System.out.println("Controller.java memberType : " + memberType);
-
-			//TestCode
-			System.out.println("Controller.java userName : " + userName);
-
+			if (memberType == 9) {
+				boolean outMember = true;
+				response.put("outMember", outMember);
+				
+				return ResponseEntity.ok(response);
+			}
+			
 			session.setAttribute("saveIdx", memberDto.getIdx());
 			session.setAttribute("saveId", id);
 			session.setAttribute("saveName", userName);
 			session.setAttribute("saveMemberType", memberType);
 
-			if (memberType == 9) {
-				boolean outMember = true;
-				response.put("outMember", outMember);
-				
-				System.out.println("탈퇴한 회원 >>>>>>>>>" + outMember);
-				
-				return ResponseEntity.ok(response);
-			}
-			
 			mav.addObject("msg", userName + "님 환영합니다 !");
-
-			//TestCode
-			System.out.println("Controller.java memberType : " + memberType);
 
 			if (saveId == null) {
 				Cookie ck = new Cookie("saveId", id);
@@ -93,8 +82,6 @@ public class MemberController {
 			mav.addObject("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
 		}
 
-		//TestCode
-		System.out.println("::: 로그인 컨트롤러 수행됨 :::");
 		response.put("success", success);
 		return ResponseEntity.ok(response);
 	}
@@ -109,9 +96,6 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:main.do");
 
-		//TestCode
-		System.out.println("::: 로그아웃 컨트롤러 수행됨 :::");
-
 		return mav;
 	}
 
@@ -123,9 +107,6 @@ public class MemberController {
 	//선생님 또는 부모님 회원가입 페이지 이동
 	@RequestMapping("/memberJoin.do")
 	public String join() {
-
-		//테스트 코드
-		System.out.println("==== 테스트 ====");
 
 		return "member/memberJoin";
 	}
@@ -225,13 +206,13 @@ public class MemberController {
 		//회원탈퇴
 		@RequestMapping("/memberOut.do")
 		public ModelAndView memberOut(@RequestParam("sidx") int idx, HttpSession session) {
+
 			
 			
 			int result = memberService.memberOut(idx);
 			String msg = result > 0? "성공적으로 탈퇴가 되었습니다." : "회원 탈퇴가 이루어지지 않았습니다.";
 			System.out.println("회원탈퇴 결과 : >>>>>>>>>>>>>>>>>>" + msg);
 			session.invalidate();
-			
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("msg",msg);

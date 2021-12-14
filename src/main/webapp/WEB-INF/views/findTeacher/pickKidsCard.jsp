@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +44,7 @@
 					<c:forEach items="${ k_dto }" var="k_dto">
 						<div class="row p-4 kid-card mb-3" onclick="toggleActive(this)"
 							id="${k_dto.idx}"
-							style="width: 50%; border: 1px solid #e5e5e5; border-radius: 8px;">
+							style="width: 50%; border: 1px solid #e5e5e5; border-radius: 8px;">							
 							<div class="col-12 mb-2">
 								<span style="font-weight: bold;">${ k_dto.k_name }</span>
 							</div>
@@ -95,7 +93,7 @@
 							<c:if test="${ empty addrList }">
 								<h2 align="center">등록된 주소가 없습니다!</h2>
 							</c:if>
-							<c:if test="${ !empty addrList }">
+							<c:if test="${ not empty addrList }">
 								<div class="col-12 mb-2">
 									<span style="font-weight: bold;" id="addr1">(${ addrList.addr1 })</span>
 								</div>
@@ -173,10 +171,6 @@
 
 <!-- pignose-calendar -->
 <link rel="stylesheet" href="./common/css/pignose.calendar.min.css">
-
-<script src="./common/js/pignose.calendar.full.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 
 <script>
 
@@ -261,7 +255,7 @@
 		var saveIdx = '${sessionScope.saveIdx}';
 		
 		var formData = new FormData();
-		formData.set('member_p_idx', Number(1));
+		formData.set('member_p_idx', saveIdx);
 		formData.set('kid_idx'     , kidCard);
 		formData.set('start_date'  , start);
 		formData.set('end_date'    , end);
@@ -283,7 +277,7 @@
 			cache: false, 			
 			success : function(e){
 				window.alert="예약등록되었습니다.";
-				location.href="main.do";
+				location.href='findTeacher.do?idx='+ saveIdx;
 				console.log(e);
 			},
 			error : function(e){

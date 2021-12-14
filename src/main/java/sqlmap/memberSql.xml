@@ -31,14 +31,14 @@
             #{id}, 
             #{pwd},
             #{name},
-              #{gender}, <!--gender -->
+            #{gender}, <!--gender -->
             TO_DATE(#{birth}, 'YYYY-MM-DD'), <!-- date type으로 넣어야함 -->
             #{tel},
             #{member_type}, <!-- memberType -->
             sysdate,
-            #{addr1}, <!-- 시  -->
-              #{addr2}, <!-- 도  -->
-              #{addr3},  <!-- 동부터 상세주소 -->
+            #{addr1}, <!-- 우퍈번호 -->
+            #{addr2}, <!-- 지번 -->
+            #{addr3},  <!--상세주소 -->
            null,
            null
         )
@@ -90,6 +90,7 @@
    
       <!-- 회원탈퇴 -->
    <update id="memberOut" parameterType="Integer">
+
    		UPDATE
    			D_MEMBER
    		SET

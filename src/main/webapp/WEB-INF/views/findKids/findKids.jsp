@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+
 <!-- ---------지원css------------- -->
 <style>
 #cardImg {
@@ -24,9 +20,12 @@ section .container{
     text-align: center;
 }
 </style>
+
 </head>
+
 <body>
-<!-- 	<h1>아이찾기 페이지</h1> -->
+
+<!-- <h1>아이찾기 페이지</h1> -->
 	<section>
 		<div class="container">
 			<!-- 필터[START] -->
@@ -50,116 +49,213 @@ section .container{
 								id="flexCheckDefault1" /> <label class="form-check-label"
 								for="flexCheckDefault1">등하원</label>
 						</div>
-						<div class="form-check w-50">
-							<input class="form-check-input" type="checkbox" value="2"
-								id="flexCheckDefault2" /> <label class="form-check-label"
-								for="flexCheckDefault2">놀이</label>
+						<hr>
+						<div class="row d-none" id="selectDateRow">
+							<div class="col-md-6" style="text-align: right;">
+								<h5>시작시간</h5>
+								<select id="start_date" name="start_date" class="form-control" style="width: 20%; float: right;">
+									<c:forEach begin="07" end="22" var="startDate">
+										<option value="${startDate}">${startDate}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="col-md-6" style="text-align: left;">
+								<h5>종료시간</h5>
+								<select id="end_date" name="end_date" class="form-control"  style="width: 20%;">
+									<c:forEach begin="08" end="23" var="endDate">
+										<option value="${endDate}">${endDate}</option>
+									</c:forEach>
+								</select>
+							</div>
 						</div>
-						<div class="form-check w-50">
-							<input class="form-check-input" type="checkbox" value="3"
-								id="flexCheckDefault3" /> <label class="form-check-label"
-								for="flexCheckDefault3">학습</label>
+						<!-- 캘린더 -->
+					</section>
+					
+					<!-- 검색조건  -->
+					<section>
+						<!-- 아이 이름 검색 -->
+						<div class="row">
+							<div>
+								<strong>아이 이름</strong>
+							</div>						
+							<div>
+								<input class="form-control me-2" name="k_name" type="search" placeholder="아이 이름을 입력해 주세요 :)" autocomplete="off" aria-label="Search">
+							</div>
 						</div>
-						<div class="form-check w-50">
-							<input class="form-check-input" type="checkbox" value="4"
-								id="flexCheckDefault4" /> <label class="form-check-label"
-								for="flexCheckDefault4">기타</label>
+						
+						<!-- D_COMMON_OPTION  / C_CATEGORY : 10 val(op) 1,2,3,4 -->
+						<div class="row">
+							<div>
+								<strong>아이 연령대</strong>
+							</div>
+							<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+								<input type="checkbox" class="btn-check" name="age_list" value="1,2" id="btncheck1"> 
+								<label class="btn want-age btn-outline-success check-age" for="btncheck1">영아(1~2세)</label>
+								
+								<input type="checkbox" class="btn-check" name="age_list" value="2,3,4,5,6,7" id="btncheck2">
+								<label class="btn want-age btn-outline-success check-age" for="btncheck2">유아(2~7세)</label>
+								
+								<input type="checkbox" class="btn-check" name="age_list" value="8,9,10,11" id="btncheck3">
+								<label class="btn want-age btn-outline-success check-age" for="btncheck3">초등저학년(8~11세)</label> 
+								
+								<input type="checkbox" class="btn-check" name="age_list" value="12,13" id="btncheck4"> 
+								<label class="btn want-age btn-outline-success check-age" for="btncheck4">초등저학년(11~12세)</label>
+							</div>
 						</div>
-					</div>
-				</div>
-				<!--  날짜 -->
-				<div class="col-6"></div>
+					
+						<div class="row">
+							<div>
+								<strong>아이 성별</strong>
+							</div>
+							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+							  <input type="radio" class="btn-check k_gender" name="k_gender" id="btnradio1" value="1"  autocomplete="off" checked>
+							  <label class="btn btn-outline-primary k_gender" for="btnradio1">여아</label>
+							  <input type="radio" class="btn-check" name="k_gender" id="btnradio2" value="2" autocomplete="off">
+							  <label class="btn btn-outline-primary" for="btnradio2">남아</label>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div>
+								<strong>돌봄 비용</strong>
+							</div>
+							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio3" value="high" autocomplete="off" checked>
+							  <label class="btn btn-outline-primary" for="btnradio3">시급 높은 순</label>
+							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio4" value="row" autocomplete="off">
+							  <label class="btn btn-outline-primary" for="btnradio4">시급 낮은 순</label>
+							</div>
+						</div>
+						
+						<!-- 검색조건  끝-->
+					</section>
+					
+					<!-- 돌봄분야 이미지 추가해야함. -->
+					<section>
+						<div class="row">
+							<div>
+								<strong>원하는 돌봄 분야</strong>
+							</div>
+							<!-- D_COMMON_OPTION  / C_CATEGORY : 5  val(op) 1 ~ 12 -->
+							<c:forEach var="c_list" items="${ c_list }">
+								<div class="col-md-2">
+									<input type="checkbox" class="btn-check" name="k_care_type_list" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
+									<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
+								</div>
+							</c:forEach>
+						</div>
+					</section>
+					
+					<section>
+						<input type="checkbox" class="btn-check" name="orderByNear" id="btn-check-1-outlined" checked autocomplete="off">
+						<label class="btn btn-outline-secondary" for="btn-check-1-outlined" value="${ kidCardList.teacher_addr }">가까운 순</label> 
+						<input type="checkbox" class="btn-check" name="orderByMeet" id="btn-check-2-outlined" checked autocomplete="off">
+						<label class="btn btn-outline-secondary" for="btn-check-2-outlined">만났던 순</label> 
+						<input type="checkbox" class="btn-check" id="btn-check-3-outlined" checked autocomplete="off">
+						
+					</section>
+					
+					<!-- 요 버튼 누르면 위에 조건들 수행 -->
+					<!-- 검색버튼 좀 더 키워주세요 -->
+					<div>
+						<button class="btn btn-outline-success" type="reset">RESET</button>
+				 		<button class="btn btn-outline-success" type="button" onclick="fnShowTeacherList()">SEARCH</button>
+				 	</div>
+		      	</form>
 			</div>
 		</div>
 		<!-- 필터[END] -->
 		<hr />
 		<!-- 하단 정보[START] -->
-		<div class="row" id="flipcard">
-			<c:if test="${empty KidsList }">
-				<h2 align="center">원하는 아이가 없습니다.</h2>
-			</c:if>
-			<c:forEach var="kDto" items="${ KidsList }">
-				<div class="col-4 p-2">
-					<!-- 카드정보[START] -->
-					<!-- filp01 -->
-					<div class="flip-card col-lg">
-							<c:url var = "contentUrl" value="kidsContent.do">
-								<c:param name="idx">${kDto.idx}</c:param>
-							</c:url>
-						<div class="flip-card-inner" onclick="location.href='${ contentUrl }'">
-							<div class="flip-card-front">
-								<div class="mb-2">
-									<img src="/upload/${fn:replace(kDto.c_imgpath, ',', '')}" alt="선생님 사진" ><br>
-									<input type="hidden" name="idx" value="${ kDto.idx }">
-									<h5 id="tendetcy">
-									<c:set  var="careType" value="${kDto.k_care_type}" />
-									<c:forEach items="${fn:split(careType, ',') }" var="item">
-										#${item}&nbsp;&nbsp;
-									</c:forEach>
-									</h5>
-								</div>
-								<div>
-									<h6 class="text-warning" id="title">${kDto.k_name } / ${kDto.age}세 /
-										<c:if test="${kDto.k_gender == 1 }">
-											여아
-										</c:if>
-										<c:if test="${kDto.k_gender == 2 }">
-											남아
-										</c:if>
-									</h6>
-									<h6 id="info">${kDto.addr2}</h6>
-								</div>
-							</div>
-							<div class="flip-card-back ">
-								<h1 id="name">${kDto.k_name}</h1>
-								<p id="tendency">
-									${kDto.k_introduce}
-								</p>
-								<ul>
-									<li id="palyday">이날 만났으면 좋겠어요~</li>
-									<li id="playday">${kDto.start_day}일 ~ ${kDto.end_day}일<br></li>
-									<li id="playtime">${kDto.start_time}시 ~ ${kDto.end_time}시</li>
-									<li id="cost"><fmt:formatNumber value="${kDto.cost}" pattern="#,###" />원  / 협의가능</li>
-								</ul>
-							</div>
-						</div>
-						<!-- ./ filp01 -->
-					</div>
-					<!-- 카드정보[END] -->
-				</div>
-			</c:forEach>
+
+		<div class="row" id="kidsCard">
+
 		</div>
 		<!-- 하단 정보[START] -->
 	</section>
+		
+	<script type="text/javascript">
+	
+		$(function(){
+			
+			var toDay = new Date().toISOString().substring(0,10);
+			//달력
+			$('#calendar').pignoseCalendar({
+				lang : 'ko',
+				minDate : toDay,
+				format : 'YYYY-MM-DD',
+				select: function(r) {
+					var selectDate;
+					
+					if(r[0] == null) {
+						selectDate = null;
+					} else {
+						reserveDate = r[0]._i;
+						selectDate = r[0]._i;
+					}
+					if(selectDate == null) {
+						$("#selectDateRow").addClass('d-none');
+					} else {
+						$("#selectDateRow").removeClass('d-none');
+					}
+				}
+			});
+			
+			fnShowTeacherList();
+		});
+		
+		//데이터 넘기기
+		function fnShowTeacherList() {
+			
+			var params          = $("#searchForm").serializeObject();
+			params.saveIdx      = Number('${sidx}' == '' ? 0 : '${sidx}');
+			params.member_p_idx = Number('${kDto.member_p_idx}' == '' ? 0 : '${kDto.member_p_idx}');
+			params.teacher_addr = Number('${kidCardList.teacher_addr}' == '' ? 0 : '${kidCardList.teacher_addr}'); //null
+			//validation 추가
+	
+			/* return false; */
+			$.ajax({
+				method      : 'POST',
+				url         : '/findKids/list.do',
+				data        : JSON.stringify(params),
+				contentType : "application/json",
+				success     : function(e){
+					$("#kidsCard").html(e);
+				},
+				error       : function(e){
+					console.log(e);
+				}
+			});
+		}
+		
+		function goUrl(){
+			location.href='${contentUrl}';
+		}
+	
+		function changeDiv(val) {
+		   var a = document.getElementById(val);
+	
+		   if(a.classList.contains('isTest')){
+		      a.classList.remove('isTest');
+		    } else {
+		       a.classList.add('isTest');
+		    }
+		}
+	
+		function check() {
+		   var a = document.getElementsByName('cDiv');
+		   var b = [];
+		   for(var i = 0; i < a.length; i++ ) {
+		      if(a[i].classList.contains('isTest')) b.push(a[i].id);
+		   }
+		}		
+		
+	</script>
+
+
+			
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+	
 </body>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<script>
 
-	function goUrl(){
-		location.href='${contentUrl}';
-	}
 
-	function changeDiv(val) {
-	   var a = document.getElementById(val);
-
-	   if(a.classList.contains('isTest')){
-	      a.classList.remove('isTest');
-	    } else {
-	       a.classList.add('isTest');
-	    }
-	}
-
-	function check() {
-	   var a = document.getElementsByName('cDiv');
-	   var b = [];
-	   for(var i = 0; i < a.length; i++ ) {
-
-	      if(a[i].classList.contains('isTest')) b.push(a[i].id);
-	   }
-
-	   console.log("-- selected : ", b);
-	}
-
-</script>
-
-</html>

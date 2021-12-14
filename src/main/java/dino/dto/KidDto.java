@@ -9,8 +9,11 @@ public class KidDto {
 
 	//Kid Card Table
 	private int idx;
+	private int kids_idx;
+	private int d_kidcard_idx;
 	private int d_member_idx;
 	private String k_name;
+	private String care_type;
 	private int k_gender;
 	private String k_tendency;
 	private Date k_birth;
@@ -20,6 +23,51 @@ public class KidDto {
 	private String k_require;
 	private int age;
 	
+	private String regId;
+	private String updId;
+	
+	
+	
+	public int getD_kidcard_idx() {
+		return d_kidcard_idx;
+	}
+
+	public void setD_kidcard_idx(int d_kidcard_idx) {
+		this.d_kidcard_idx = d_kidcard_idx;
+	}
+
+	public int getKids_idx() {
+		return kids_idx;
+	}
+
+	public void setKids_idx(int kids_idx) {
+		this.kids_idx = kids_idx;
+	}
+
+	public String getCare_type() {
+		return care_type;
+	}
+
+	public void setCare_type(String care_type) {
+		this.care_type = care_type;
+	}
+
+	public String getRegId() {
+		return regId;
+	}
+
+	public void setRegId(String regId) {
+		this.regId = regId;
+	}
+
+	public String getUpdId() {
+		return updId;
+	}
+
+	public void setUpdId(String updId) {
+		this.updId = updId;
+	}
+
 	private List<MultipartFile> kImg;
 	
 	public KidDto() {

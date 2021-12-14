@@ -243,13 +243,24 @@ section {
 	<div class="wrapper">
 		<section>
 			<div class="topCont d-flex justify-content-between">
-				<div>#뒤로가기버튼</div>
+				<div><a href="javascript:history.back();"> <-목록으로 </a></div>
 				<div>${ t_dto.name }</div>
-				<div>#좋아요/#신고하기</div>
+				<form name="reportIdx" action="reportWrite.do">
+					<input type="hidden" name="idx" value="${t_dto.teacher_idx }">
+				<div>
+					<button type="submit">
+						&#128680;
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a>
+						#좋아요버튼 / ${t_dto.teacher_idx }
+					</a>
+				</div>
+				</form>
 			</div>
 
 			<div class="item1">
-				<div class="childImg"><!-- ${ t_dto.c_imgpath } --></div>
+				<img src="/upload/${fn:replace(t_dto.c_imgpath, ',', '')}" alt="선생님 사진" width="200px" height="200px"><br>
 				<div class="childInfo">
 					<div>이름: ${ t_dto.name } / 나이: <span id="teacherAge"></span></div>
 					<div>직업: 
@@ -277,13 +288,6 @@ section {
 			</div>
 
 			<ul class="item3">
-				<li>
-					<h3>인증뱃지</h3>
-					<div class="contentBox">
-						<div>${ t_dto.badge }</div>
-					</div>
-				</li>
-
 				<li>
 					<h3>간단 자기 소개</h3>
 					<div class="contentBox ativeList">
@@ -318,13 +322,6 @@ section {
 				</li>
 				
 				<li>
-					<h3>활동 가능 날짜 및 시간</h3>
-					<div class="contentBox">
-						<div>${ t_dto.schedule_day } / ${ t_dto.schedule_time }</div>
-					</div>
-				</li>
-				
-				<li>
 					<h3>가능한 활동</h3>
 					<div class="contentBox">
 						<div>${ t_dto.t_care_type }</div>
@@ -334,7 +331,7 @@ section {
 				<li>
 					<h3>활동 가능지역</h3>
 					<div class="contentBox">
-						<div>${ t_dto.addr1 }</div>
+						<div>${ t_dto.addr2 }</div>
 					</div>
 				</li>
 				
@@ -358,14 +355,16 @@ section {
 				<button type="button" class="btn btn-outline-primary">인터뷰요청</button>
 			</div>
 		</section>
-	</div>
+	</div>	
+</body>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <!-- JQuery 라이브러리 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
-<script>
 
+<script>
 	$(function(){
 		
 		// 현재날짜 구하는거
@@ -397,13 +396,6 @@ section {
 				$("#kidType4").attr("src", "${pageContext.request.contextPath }/common/img/kidType/kidstype4_on.png");
 			}
 		});
-	});
-		
-	
+	});	
 </script>	
-	
-	
-</body>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
-
 </html>

@@ -29,6 +29,12 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		List<FindKidsJoinDto> k_list = sqlMap.selectList("kidsList");
 		return k_list;
 	}
+	
+	//search kids
+	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids) {
+		List<FindKidsJoinDto> k_list = sqlMap.selectList("searchKids", searchKids);
+		return k_list;
+	}
 
 	// set Teacher img
 	public int tSetImg(Common_ImgDto imgDto) {

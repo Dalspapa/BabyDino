@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -264,16 +263,78 @@ section {
 
 </head>
 <body>
+
+	<!-- offcanvas(부모회원) -->
+	<style>
+.memberImg {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: yellow;
+}
+
+.offcanvas-end {
+	width: 300px;
+}
+
+.offcanvas-body {
+	text-align: center;
+}
+
+.offcanvas-body div {
+	margin-top: 25px;
+}
+.memberImg {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: yellow;
+}
+
+.offcanvas-end {
+	width: 300px;
+}
+
+.offcanvas-body {
+	text-align: center;
+}
+
+.offcanvas-body div {
+	margin-top: 25px;
+}
+</style>
+	<!-- /offcanvas -->
+	<div>
+		<c:if test="${empty kidInfoDto}">
+			<h2>등록된 아이가 없거나, 잘못된 접근입니다.</h2>
+		</c:if>
+	</div>
+	
+	
 	<div class="wrapper">
 		<section><br><br><br>
 			<div class="topCont d-flex justify-content-between">
-				<div>#뒤로가기버튼</div>
+				<div><a href="javascript:history.back();">다른 아이 보러가기</a></div>
 				<div>${ kidInfoDto.k_name }</div>
-				<div>#좋아요버튼</div>
+				<form name="reportIdx" action="reportWrite.do">
+					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
+				<div>
+					<a href="javascript:reportIdx.submit();">
+						&#128680;
+					</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a>
+						#좋아요버튼 
+					</a>
+				</div>
+				</form>
 			</div>
+	
 			<div class="item1">
 				<div class="childImg">
-					<img src="/upload/${ kidInfoDto.c_imgpath }" alt="메인 아이 사진" width="200" height="200">
+					<img src="/upload/${fn:replace(kidInfoDto.c_imgpath, ',', '')}" alt="아이 사진" width="200px" height="200px" onerror="this.remove();"><br>
 				</div>
 				<div class="childInfo">
 					<c:if test="${kidInfoDto.k_gender == 1 }">
@@ -285,25 +346,14 @@ section {
 					${kidInfoDto.k_introduce }
 				</div>
 			</div>
-			<ul class="item3">				
+			<ul class="item3">
 				<li>
 					<h3>이런 활동을 하고 싶어요~</h3>
 					<div class="contentBox" id="wnatSam">
-					<c:set  var="kType" value="${kidInfoDto.k_care_type}" />
-						<c:forEach items="${fn:split(kType, ',') }" var="item">
-							<c:if test="${item == '1'}">#등하원&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '2'}">#야외활동&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '3'}">#책읽기&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '4'}">#학습지도&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '5'}">#한글놀이&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '6'}">#영어놀이&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '7'}">#실내놀이&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '8'}">#체육놀이&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '9'}">#미술놀이&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '10'}">#간단청소&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '11'}">#밥챙겨주기&nbsp;&nbsp;&nbsp;</c:if>
-							<c:if test="${item == '12'}">#간단설거지&nbsp;&nbsp;&nbsp;</c:if>							
-						</c:forEach>
+						<c:set  var="careType" value="${kidInfoDto.k_care_type}" />
+							<c:forEach items="${fn:split(careType, ',') }" var="item">
+								#${item}&nbsp;&nbsp;
+							</c:forEach>
 					</div>
 				</li>
 				<li>
@@ -322,30 +372,30 @@ section {
 				<li>
 					<h3>돌봄 지역</h3>
 					<div class="contentBox">
-						<div>${kidInfoDto.addr1}</div>
+						<div>${kidInfoDto.addr2}</div>
 					</div>
 				</li>
 			</ul>
 			<ul class="item3">
 				<li>
-					<h3>아이정보</h3>
+					<h3>우리 아이 성향</h3>
 					<div class="contentBox">
 						<ul class="flex-list">
 							<li>
-							<c:set  var="tenden" value="${kidInfoDto.k_tendency}" />
+							<c:set var="tenden" value="${kidInfoDto.k_tendency}" />
 							<c:forEach items="${fn:split(tenden, ',') }" var="item">
-								<c:if test="${item == '0'}">특이사항이 없어요.<br></c:if>
-								<c:if test="${item == '1'}">처음에는 낯을 가려요.<br></c:if>
-								<c:if test="${item == '2'}">놀이를 먼저 제안하는걸 좋아해요.<br></c:if>
-								<c:if test="${item == '3'}">하고 싶은 놀이와 이야기가 많아요.<br></c:if>
-								<c:if test="${item == '4'}">에너지가 넘치고 활동량이 많아요.<br></c:if>
-								<c:if test="${item == '5'}">승부욕이 강한 편이에요.<br></c:if>
-								<c:if test="${item == '6'}">섬세하고 예민한 편이에요.<br></c:if>
-								<c:if test="${item == '7'}">알러지가 있어요.<br></c:if>
-								<c:if test="${item == '8'}">복용중인 약이 있어요.</c:if>
+								&#9995; ${item} <br>
 							</c:forEach>
 							</li>							
 						</ul>
+					</div>
+				</li>
+				<li>
+					<h3>우리 아이는요!</h3>
+					<div class="contentBox">
+						<div>
+							${kidInfoDto.k_introduce}
+						</div>						
 					</div>
 				</li>
 				<li>

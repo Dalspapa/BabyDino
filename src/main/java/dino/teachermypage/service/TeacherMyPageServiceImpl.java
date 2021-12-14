@@ -1,5 +1,6 @@
 package dino.teachermypage.service;
 
+import dino.dto.MakeTCardDto;
 import dino.teachermypage.model.*;
 
 public class TeacherMyPageServiceImpl implements TeacherMyPageService {
@@ -15,8 +16,20 @@ public class TeacherMyPageServiceImpl implements TeacherMyPageService {
 	}
 
 	//선생님 프로필
-	public TeacherMyPageDto teacherProfile(int idx) {		
+	public TeacherMyPageDto teacherProfile(int idx) {
 		return teacherMypageDao.teacherProfile(idx);
+	}
+	
+	//sam - bank, acnum, t_cost Update
+	public int batUpdate(MakeTCardDto upDto) {
+		System.out.println("service impl------"+upDto);
+		return teacherMypageDao.batUpdate(upDto);
+	}
+	
+	//teacher profile bank, acnum, cost Update
+	public int introUpdate(MakeTCardDto introDto) {
+		System.out.println("intro service impl------"+introDto.getT_introduce()+"//"+introDto.getCareer_experience()+"//"+introDto.getD_member_idx()+"/////"+introDto.getCctvagree());
+		return teacherMypageDao.introUpdate(introDto);
 	}
 	
 	

@@ -1,18 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="./common/img/favicon/favicon.png"
-	type="image/x-icon">
-<link rel="icon" href="./common/img/favicon/favicon.png"
-	type="image/x-icon">
-<!-- css -->
-<link rel="stylesheet" href="./common/css/bootstrap.min.css">
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 </head>
 <style>
 img {
@@ -25,13 +18,16 @@ img {
 }
 </style>
 <body>
+	<br><br><br>
 	<form id="postForm" name="make_t_Card">
-		<h1>아이카드등록</h1>
 		<div class="wrapper">
 			<div class="container">
+				<div><h3>아이카드등록</h3></div>
 				<div id="step1">
 					<div>
-						<div id="image_container"></div>
+						<div id="image_container">
+							<h2>프로필 사진을 올려주세요.(필수사항)</h2>
+						</div>
 						<input type="file" id="k_img1" name="c_imgpath" class="form-control" />
 					</div>
 					<div class="row">
@@ -134,9 +130,7 @@ img {
 		</div>
 	</form>
 </body>
-<!-- J-query -->
-<script src="./common/js/jquery-3.6.0.min.js"></script>
-
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 
 
@@ -193,11 +187,14 @@ img {
 			k_op.push($(this).val());
 		});
 		
+		var saveIdx = '${sessionScope.saveIdx}';
+		var fileLength = $("input[name=c_imgpath]");
+		 
 		// 이미지 제외하고 정보 등록
 		
 		var formData = new FormData();
 		
-		formData.set("d_member_idx", 115)							// 맴버 테이블 회원 인덱스
+		formData.set("d_member_idx", saveIdx)						// 맴버 테이블 회원 인덱스
 		formData.set("k_name", $("#k_name").val())					// 아이 이름
 		formData.set("k_gender", $("#k_gender").val())				// 아이 성별
 		formData.set("k_tendency",k_op) 							// 아이 성향
@@ -206,6 +203,12 @@ img {
 		formData.set("k_care_type", check_type) 					// 원하는 돌봄 분야
 		formData.set("teacher_type", check_age) 					// 원하는 선생님 연령대
 		formData.set("k_require", $("#floatingTextarea2").val())	// 요청 사항
+		
+		for(var i = 0; i < fileLength.length; i++) {
+			  if(fileLength[i].files[0] != undefined) {
+				  formData.set('kImg[' + i + ']', fileLength[i].files[0]);
+			  } 
+		  };
 		
 		formData.forEach(function(value, key){
 			
@@ -224,7 +227,7 @@ img {
 				success: function(r) {
 					console.log("--- r : ", r);
 					window.alert("아이카드 등록 성공하셨습니다.");
-					location.href='pickKidsCard.do';
+					location.href='pickKidsCard.do?idx='+saveIdx;
 				},
 				error: function(e) {
 					console.error(e);
@@ -233,8 +236,8 @@ img {
 			  })
 		  }
 	
-	/* 이미지 미리보기 */
-	function setimage(event) {
+	/* 이미지 미리보기 (대기) */
+	/* function setimage(event) {
 		var reader = new FileReader();
 
 		reader.onload = function(event) {
@@ -245,7 +248,8 @@ img {
 
 		reader.readAsDataURL(event.target.files[0]);
 	}
-
+ */
+ 
 	//다음 스텝 이동
 	function goStep(step) {
 	

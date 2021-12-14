@@ -13,6 +13,9 @@ public interface FindKidsDao {
 
 	//get kids list
 	public List<FindKidsJoinDto> kidsList();
+	
+	//searchKids
+	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids);
 
 	// set Teacher img
 	public int tSetImg (Common_ImgDto imgDto);

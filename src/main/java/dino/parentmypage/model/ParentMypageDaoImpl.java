@@ -17,15 +17,21 @@ public class ParentMypageDaoImpl implements ParentMypageDao {
 
 	//start
 
-	public List<ParentMypageDto> proceedingMain() {
-		List<ParentMypageDto> list = sqlMap.selectList("proceedingMain");
+	public List<ParentMypageDto> proceedingMain(int idx) {
+		List<ParentMypageDto> list = sqlMap.selectList("proceedingMain", idx);
 		return list;
 	}
 
-	//매칭된 돌봄 현황 페이지
-	public KidDto caring(int idx) {
-		KidDto dto = sqlMap.selectOne("caringPage",idx);
+	//돌봄 현황 페이지
+	public ParentMypageDto caring(int idx) {
+		ParentMypageDto dto = sqlMap.selectOne("caringPage",idx);
 		return dto;
+	}
+
+	//아이카드 리스트 페이지
+	public List<ParentMypageDto> kidsCardList(int idx) {
+		List<ParentMypageDto> list = sqlMap.selectList("kidsCard", idx);
+		return list;
 	}
 }
 

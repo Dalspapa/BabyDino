@@ -10,9 +10,10 @@ public class FindTeacherJoinDto {
 	private int t_cost;
 	private int job;
 	private int badge;
+	private int teacher_idx;
 	private String t_introduce;
-	private String schedule_day;		// 샘은 시간안씀
-	private String schedule_time;		// 샘은 시간안씀
+	private String schedule_day; // 샘은 시간안씀
+	private String schedule_time; // 샘은 시간안씀
 	private String kid_type;
 	private String t_care_type;
 	private String career_experience;
@@ -32,16 +33,16 @@ public class FindTeacherJoinDto {
 		super();
 	}
 
-	public FindTeacherJoinDto(int idx, int t_cost, int job, int badge, String t_introduce, String schedule_day,
-			String schedule_time, String kid_type, String t_care_type, String career_experience, int cctvagree,
-			String name, String birth, int gender, String addr1, String addr2, String addr3, String r_content,
-			String c_imgpath, List<ReviewDto> review_list, int age) {
+	public FindTeacherJoinDto(int idx, int t_cost, int job, int badge, int teacher_idx, String t_introduce,
+			String schedule_day, String schedule_time, String kid_type, String t_care_type, String career_experience,
+			int cctvagree, String name, String birth, int age, int gender, String addr1, String addr2, String addr3,
+			String r_content, String c_imgpath, List<ReviewDto> review_list) {
 		super();
 		this.idx = idx;
-		this.age = age;
 		this.t_cost = t_cost;
 		this.job = job;
 		this.badge = badge;
+		this.teacher_idx = teacher_idx;
 		this.t_introduce = t_introduce;
 		this.schedule_day = schedule_day;
 		this.schedule_time = schedule_time;
@@ -51,6 +52,7 @@ public class FindTeacherJoinDto {
 		this.cctvagree = cctvagree;
 		this.name = name;
 		this.birth = birth;
+		this.age = age;
 		this.gender = gender;
 		this.addr1 = addr1;
 		this.addr2 = addr2;
@@ -66,14 +68,6 @@ public class FindTeacherJoinDto {
 
 	public void setIdx(int idx) {
 		this.idx = idx;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public int getT_cost() {
@@ -98,6 +92,14 @@ public class FindTeacherJoinDto {
 
 	public void setBadge(int badge) {
 		this.badge = badge;
+	}
+
+	public int getTeacher_idx() {
+		return teacher_idx;
+	}
+
+	public void setTeacher_idx(int teacher_idx) {
+		this.teacher_idx = teacher_idx;
 	}
 
 	public String getT_introduce() {
@@ -172,6 +174,14 @@ public class FindTeacherJoinDto {
 		this.birth = birth;
 	}
 
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public int getGender() {
 		return gender;
 	}
@@ -228,6 +238,4 @@ public class FindTeacherJoinDto {
 		this.review_list = review_list;
 	}
 
-
 }
-

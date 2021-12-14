@@ -18,14 +18,13 @@ public class ParentMypageController {
 	@Autowired
 	private ParentMypageService parentMypageService;
 
-
 	/**
-	 * 돌봄현황 메인 정보 출력
+	 * 돌봄 현황 페이지
 	 * @return
 	 */
 	@RequestMapping("/proceedingMain.do")
-	public ModelAndView proceedingMain() {
-		List<ParentMypageDto> list = parentMypageService.proceedingMain();
+	public ModelAndView proceedingMain(@RequestParam("idx")int idx) {
+		List<ParentMypageDto> list = parentMypageService.proceedingMain(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
 		mav.setViewName("parentMypage/proceedingMain");
@@ -38,12 +37,23 @@ public class ParentMypageController {
 	 */
 	@RequestMapping("/caring.do")
 	public ModelAndView caring(@RequestParam("idx")int idx) {
-
-		KidDto dto = parentMypageService.caring(idx);
-
+		ParentMypageDto dto = parentMypageService.caring(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto",dto);
 		mav.setViewName("parentMypage/caringPage");
+		return mav;
+	}
+
+	/**
+	 * 아이카드 목록 보기 페이지
+	 * @return
+	 */
+	@RequestMapping("/kidsCard.do")
+	public ModelAndView kidsCardList(@RequestParam("idx")int idx) {
+		List<ParentMypageDto> list = parentMypageService.kidsCardList(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("parentMypage/kidsCard");
 		return mav;
 	}
 }

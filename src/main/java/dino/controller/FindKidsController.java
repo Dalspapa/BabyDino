@@ -13,9 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,14 +46,46 @@ public class FindKidsController {
 	String msg = "";
 	String goUrl = "";
 
-	//findkids page
-	@RequestMapping(value = "/findKids.do")
-	public ModelAndView findKids() {
-
-		List<FindKidsJoinDto> KidsList = findKidsService.kidsList();
+	/**
+	 * 아이찾기화면
+	 * @return
+	 */
+	@RequestMapping("/findKids/form.do")
+	public ModelAndView findKidsForm() {
+		
+		//돌봄분야 리스트 출력
+		List<CommonOpDto> c_list = commonOpService.t_care_opList();
+		System.out.println("돌봄분야 >>>>>>>>>>" + c_list);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("KidsList", KidsList);
+		
+		//은사작업 idx 채워주기
+		
+		mav.addObject("c_list", c_list);
 		mav.setViewName("findKids/findKids");
+		return mav;
+	}
+	
+	/**
+	 * 아이찾기 조회
+	 * @param searchKids
+	 * @return
+	 */
+	@RequestMapping(value = "/findKids/list.do", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getKidsList(@RequestBody FindKidsJoinDto searchKids) {
+		
+		//돌봄분야 리스트 출력
+		List<CommonOpDto> c_list = commonOpService.t_care_opList();
+		
+		//아이검색
+		List<FindKidsJoinDto> KidsList = findKidsService.searchKids(searchKids);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("c_list", c_list);
+		mav.addObject("KidsList", KidsList);
+		mav.setViewName("findKids/findKidsList");
 		return mav;
 	}
 
@@ -215,7 +249,7 @@ public class FindKidsController {
 	 * return: ModelAndView
 	 * since: 2021. 12. 7.
 	 */
-	@RequestMapping(value="/teacher/cert.do")
+	@RequestMapping(value="cert.do", method = RequestMethod.POST)
 	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 

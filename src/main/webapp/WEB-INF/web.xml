@@ -88,7 +88,6 @@
 		<url-pattern>*.woff</url-pattern>
 	</servlet-mapping>
   
-  
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>

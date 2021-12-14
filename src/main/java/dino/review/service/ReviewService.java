@@ -6,7 +6,9 @@ import dino.dto.ReviewDto;
 
 public interface ReviewService {
 
-	public List<ReviewDto> reviewList();
+	//내가 작성한 리뷰
+	public List<ReviewDto> reviewList(ReviewDto dto);
 
+	//리뷰 작성
 	public int writeReview(ReviewDto dto);
 }

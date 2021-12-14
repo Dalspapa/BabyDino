@@ -56,7 +56,7 @@
 	
 	<select id="t_bank_opList" resultType="dino.dto.CommonOpDto">
 		select
-			idx, c_introduce 
+			idx, c_introduce
 		from 
 			d_common_option 
 		where 

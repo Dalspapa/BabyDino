@@ -21,6 +21,13 @@ public interface FindTeachersDao {
 
 	// make kid card
 	public int makeKCard(KidDto dto);
+	
+	/**
+	 * 아이 캐어항목 저장
+	 * @param dto
+	 * @return
+	 */
+	public int makeKCareType(KidDto dto);
 
 	// Insert reserve Kid Card
 	public int reserveCard(ReserveDto reserveCard);
@@ -28,17 +35,13 @@ public interface FindTeachersDao {
 	// pick addr card
 	public MemberDto pickKidsAddrCard(int idx);
 
-	// update addr get
-	public MemberDto addrUpForm(int idx);
-
-	// update addr card
-	public int updateAddr(MemberDto dto);
-	
 	// teacher card content
 	public FindTeacherJoinDto teacherInfo(int idx);
 	public List<ReviewDto> teacherReviewList(int idx);
 	
-	// set kid img public int kSetImg (Common_ImgDto imgDto); 
+	// set kid img 
+	public int kSetImg (Common_ImgDto imgDto); 
 	
-	//get img path public List<Common_ImgDto> imgpath(int d_member_idx);
+	//get img path 
+	public List<Common_ImgDto> imgpath(int d_member_idx);
 }

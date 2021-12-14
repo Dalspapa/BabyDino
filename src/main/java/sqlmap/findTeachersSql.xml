@@ -2,15 +2,16 @@
 <!DOCTYPE mapper 
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="dino.findTeachers">
 
+	<!-- 선생님 카드 리스트 -->
 	<select id="teacherList" resultType="dino.findteachers.model.FindTeacherJoinDto">
-		  SELECT 
-                m.idx
+		  	SELECT 
+                 m.idx
                 ,m.name
                 ,(TO_CHAR(SYSDATE ,'yyyy') - TO_CHAR (birth, 'yyyy')) as age
                 ,m.gender
+                ,t.idx as teacher_idx
                 ,t.t_care_type
                 ,t.t_cost
                 ,t.t_introduce
@@ -25,15 +26,15 @@
                 t.d_member_idx = m.idx
 	</select>
 	
-	<!-- pick kid card -->
-	<select id="pickKidsCard" parameterType="int" resultType="dino.dto.KidDto">
+	<!-- 아이카드 선택하기 -->
+	<select id="pickKidsCard" parameterType="Integer" resultType="dino.dto.KidDto">
 	SELECT
 			a.idx,
 			a.k_name, 
 			a.k_gender, 
 			a.k_birth,
-            b.*
-		FROM 
+            b.age
+	FROM 
 			d_kidcard a, 
             (SELECT
             idx as xidx,
@@ -47,8 +48,32 @@
         a.idx = b.xidx
 	</select>
 	
-	<!-- pick addr card -->
-	<select id="pickAddr" parameterType="int" resultType="dino.dto.MemberDto">
+	<!-- 이미지 인서트 -->
+	<insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
+		INSERT INTO
+			d_common_img
+		VALUES(
+			d_common_img_idx.nextval,
+			#{c_imgpath},
+			#{d_member_idx},
+			1,
+			#{ref_idx}
+		)
+	</insert>
+	
+	<!-- 이미지 출력 -->
+	<select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
+	    SELECT dk.*
+     		 , dci.c_imgpath
+		FROM d_kidcard dk 
+		LEFT JOIN d_common_img dci ON dk.idx = dci.ref_idx
+		WHERE dk.idx = #{d_member_idx}
+		and dci.category_idx = 1
+	</select>
+	
+	
+	<!-- 아이 주소카드 선택하기 -->
+	<select id="pickAddr" parameterType="Integer" resultType="dino.dto.MemberDto">
 	SELECT
     	idx,
     	addr1,
@@ -60,58 +85,47 @@
     	idx = #{idx}
 	</select>
 	
-	<!-- pick addr card 
-	나중에 추가
-	parameterType="int"  -->
-	<select id="getaddr" resultType="dino.dto.MemberDto">
-	SELECT
-    	idx,
-    	addr1,
-    	addr2,
-    	addr3
-	FROM
-    	d_member
-	WHERE
-    	idx = #{idx}
-	</select>
-	
-	
-	<!-- update addr card -->
-	<update id="upAddr" parameterType="dino.dto.MemberDto">
-	UPDATE
-		d_member
-	SET
-		addr1 = #{addr1},
-		addr2 = #{addr2},
-		addr3 = #{addr3}
-	WHERE
-		idx = #{idx}
-	</update>
-	
-	<!-- make kid card --> 
+	<!-- 아이카드 만들기 --> 
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
+	<selectKey resultType="dino.dto.KidDto" keyProperty="d_kidcard_idx" order="BEFORE">
+		select d_kidcard_idx.nextval as d_kidcard_idx from dual
+	</selectKey>
 	INSERT INTO 
                 d_kidcard
         VALUES(
-                d_kidcard_idx.nextval,
-               #{idx},
+                #{d_kidcard_idx},
+               	#{d_member_idx},
                 #{k_name},
-                2,
+                #{k_gender},
                 #{k_birth},
                 #{k_introduce},
                 #{k_care_type},
                 #{k_tendency},
                	#{teacher_type},
                	#{k_require}
-        )
 	</insert>
 	
+	<!-- 돌봄유형 만들기 -->
+	<insert id="makeKCareType" parameterType="dino.dto.KidDto">
+	INSERT INTO 
+		d_kid_caretype 
+    VALUES(
+		#{kids_idx},
+		#{care_type},
+		#{regId},
+		SYSDATE,
+		${updId},
+		SYSDATE
+    )
+	</insert>
+	
+	<!-- 아이 카드로 예약  -->
 	<insert id="k_reserve" parameterType="dino.dto.ReserveDto">
 	INSERT INTO
 	    	 d_reserve
 		VALUES(
 		    D_RESERVE_IDX.nextval,
-		    #{idx},
+		    #{member_p_idx},
 		    #{kid_idx},
 		    to_date(#{start_date}, 'yyyy-mm-dd hh24'),
 		    to_date(#{end_date}, 'yyyy-mm-dd hh24'),
@@ -123,40 +137,12 @@
 	)
 	</insert>
 	
-	<!-- <insert id="kSetImg" parameterType="dino.dto.Common_ImgDto">
-		INSERT INTO
-			d_common_img
-		VALUES(
-			d_common_img_idx.nextval,
-			#{c_imgpath},
-			#{d_member_idx},
-			1,
-			#{ref_idx}
-		)
-	</insert>
-	 -->
-	<!-- <select id="getImg" parameterType="Integer" resultType="dino.dto.Common_ImgDto" >
-	    SELECT 
-	        dk.*, dci.c_imgpath
-	    FROM 
-	        d_kid dk 
-	    LEFT JOIN 
-	        d_common_img dci 
-	    ON 
-	        dk.d_member_idx = dci.d_member_idx
-	    WHERE
-	        dk.d_member_idx = #{d_member_idx}
-	</select>
-	 -->
-	
+	<!-- 선생님 상세정보 출력 -->
 	<select id="teacherInfo" parameterType="Integer" resultType="dino.findteachers.model.FindTeacherJoinDto">
 		SELECT 
-			t.t_cost
+			  t.t_cost
 			, t.job
-			, t.badge
 			, t.t_introduce
-			, t.schedule_day
-			, t.schedule_time
 			, t.kid_type
 			, t.t_care_type
 			, t.career_experience
@@ -176,6 +162,7 @@
 			t.idx = #{idx}
 	</select>
 	
+	<!-- 선생님 상세 정보 리뷰 출력 -->
 	<select id="teacherReviewList" resultType="dino.dto.ReviewDto">
 		SELECT
 			 idx
@@ -187,6 +174,8 @@
 		FROM 
 			d_review 
 		WHERE 
-			d_member_idx = #{idx}
+			d_member_idx = #{d_member_idx}
 	</select>
+	
+	
 </mapper>

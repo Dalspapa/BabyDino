@@ -3,19 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.review">
-	<select id="reviewList" resultType="dino.dto.ReviewDto">
+	<select id="reviewList" parameterType="dino.dto.ReviewDto" resultType="dino.dto.ReviewDto">
 		select
-			*
+		     re.idx as re_idx
+		    ,re.star
+		    ,re.r_content
+		    ,re.r_writedate
+		    ,m.idx as m_idx
+		    ,m.member_type
 		from
-			d_review
+		    d_review re, d_member m
+		where re.d_member_idx = m.idx and m.idx = #{m_idx} and m.member_type = #{member_type}
 	</select>
+
 	<insert id="writeReview" parameterType="dino.dto.ReviewDto">
 		insert into
 			d_review
 		values(
 			d_review_idx.nextval,
-			100,
-			35,
+			#{d_reserve_idx},
+			#{d_member_idx},
 			#{star},
 			sysdate,
 			#{r_content}

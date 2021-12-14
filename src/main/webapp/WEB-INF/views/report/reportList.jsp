@@ -52,7 +52,7 @@ table th,td {
 	<div class = "title">
 		<h2>신고 내역</h2>
 	</div>
-		<form name = "reportList" action = "report.do">
+		<form name = "reportList" action = "reportList.do">
 		<table class="table table-hover">
 			<thead>
 				<tr>
