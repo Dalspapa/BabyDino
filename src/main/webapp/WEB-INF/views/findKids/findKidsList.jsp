@@ -55,12 +55,12 @@
 		</div>
 		<!-- 카드정보[END] -->
 	</div>
-</c:forEach>	
-		
-	
+</c:forEach>
 
 
-			
-	
+
+
+
+
 
 

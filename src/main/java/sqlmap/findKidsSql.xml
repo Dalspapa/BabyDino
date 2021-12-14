@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dino.findKids">
-	
+
 	<!-- 선생님 카드 등록 -->
 	<insert id="t_makeCard" parameterType="dino.dto.MakeTCardDto">
 		<selectKey keyProperty="idx" resultType="Integer" order="BEFORE">
@@ -28,10 +28,10 @@
 			#{career_experience}
 		)
 	</insert>
-	
+
 	<!-- 아이카드 리스트 -->
 	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
-		SELECT            
+		SELECT
 		      r.cost
 		    , r.idx
 		    , r.kid_idx
@@ -48,11 +48,11 @@
 		    , k.k_require
 		    , k.k_introduce
 		    , i.c_imgpath
-		    , k.teacher_type   
+		    , k.teacher_type
 		    , TO_CHAR(start_date, 'yyyy-mm-dd')  AS start_day
 		    , TO_CHAR(end_date, 'yyyy-mm-dd')   AS end_day
 		    , TO_CHAR(start_date, 'hh24')  AS start_time
-		    , TO_CHAR(end_date, 'hh24')   AS end_time    
+		    , TO_CHAR(end_date, 'hh24')   AS end_time
 		    , kids.ADDR1 AS kid_addr
 		    , tm.ADDR1   AS teacher_addr
 		    , tm.idx       AS teacher_idx
@@ -62,26 +62,26 @@
 		       , d_member kids
 		       , d_kidcard k                             --아이카드
 		       , d_common_img i                          --이미지
-		where 1=1  
+		where 1=1
 		  and r.member_p_idx = pm.idx(+)                 -- 학부모 예약은 학부모가 하므로 필수
 		  and r.idx              = kids.idx(+)           -- 아이   예약은 아이가 있어야 하므로 필수
 		  and r.teacher_idx      = tm.idx(+)             -- 선생님
-		  and r.kid_idx          = k.idx(+)              -- 아이카드 
-		  and r.kid_idx          = i.ref_idx(+)          -- 아이이미지  
+		  and r.kid_idx          = k.idx(+)              -- 아이카드
+		  and r.kid_idx          = i.ref_idx(+)          -- 아이이미지
 	</select>
-	
+
 	<!-- 아이찾기 검색-->
 	<select id="searchKids" resultType="dino.findkids.model.FindKidsJoinDto" parameterType="dino.findkids.model.FindKidsJoinDto">
 	<![CDATA[
-	SELECT            
+	SELECT
 	      r.cost
 	    , r.idx
 	    , r.kid_idx
 	    , r.member_p_idx
 	    , r.status
-	    , kids.addr1
-	    , kids.addr2
-	    , kids.addr3
+	    , pm.addr1
+	    , pm.addr2
+	    , pm.addr3
 	    , k.k_name
 	    , k.k_gender
 	    , (to_char(sysdate,'yyyy') - to_char(k.k_birth,'yyyy')) as age
@@ -89,30 +89,28 @@
 	    , k.k_care_type
 	    , k.k_require
 	    , k.k_introduce
-	    , i.c_imgpath
-	    , k.teacher_type   
+	    , NVL(i.c_imgpath,'noimage.png') AS c_imgpath
+	    , k.teacher_type
 	    , TO_CHAR(start_date, 'yyyy-mm-dd')  	AS start_day
 	    , TO_CHAR(end_date, 'yyyy-mm-dd')   	AS end_day
 	    , TO_CHAR(start_date, 'hh24')  			AS start_time
-	    , TO_CHAR(end_date, 'hh24')   			AS end_time    
-	FROM d_reserve r   
+	    , TO_CHAR(end_date, 'hh24')   			AS end_time
+	FROM d_reserve r
 	       , (select * from d_member where member_type in ( 2, 8 ) ) pm            -- (학부모  : member)
 	       , (select * from d_member where member_type in ( 4, 5, 6, 7, 10 ) ) tm  -- (선생님  : member)
-	       , d_member kids
 	       , d_kidcard k                             --아이카드
 	       , d_common_img i                          --이미지
-	where 1=1  
+	where 1=1
 	  and r.member_p_idx     = pm.idx                -- 학부모 예약은 학부모가 하므로 필수
-	  and r.idx              = kids.idx              -- 아이   예약은 아이가 있어야 하므로 필수
 	  and r.teacher_idx      = tm.idx(+)             -- 선생님
-	  and r.kid_idx          = k.idx                 -- 아이카드 
-	  and r.kid_idx          = i.ref_idx(+)          -- 아이이미지  
+	  and r.kid_idx          = k.idx                 -- 아이카드
+	  and r.kid_idx          = i.ref_idx(+)          -- 아이이미지
 	]]>
 	<if test="k_care_type_list != null">
 		and k.k_care_type IN <foreach collection="k_care_type_list" item="item" open="(" close=")" separator=",">#{item}</foreach>
 	</if>
 	</select>
-	
+
 	<!-- 선생님 고유번호 조회 -->
 	<select id="getTIdx" parameterType="Integer" resultType="Integer">
 		select
@@ -122,7 +120,7 @@
 		where
 			rownum = 1 and d_member_idx = #{d_member_idx}
 	</select>
-	
+
 	<!-- 이미지 인서트 -->
 	<insert id="tSetImg" parameterType="dino.dto.Common_ImgDto">
 		INSERT INTO
@@ -135,12 +133,12 @@
 			#{ref_idx}
 		)
 	</insert>
-	
+
 	<!-- 선생님 필수 인증 정보 입력 //////////////주호 -->
 	<insert id="setCert" parameterType="dino.findkids.model.TeacherCertDto">
-	
-		INSERT INTO 
-			d_teachercert 
+
+		INSERT INTO
+			d_teachercert
 		VALUES(
    			 d_teachercert_idx.nextval
     		,#{exemplification}
@@ -148,7 +146,7 @@
     		,#{d_member_idx}
 		)
 <!-- //////////////주호 끝 -->
-	
+
 	</insert>
 
 	<!-- 이미지 출력 -->
@@ -164,7 +162,7 @@
 	    WHERE
 	        dt.d_member_idx = #{d_member_idx}
 	</select>
-	
+
 	<!-- 아이카드 상세정보  -->
 	<select id="kidInfoContent" parameterType="Integer" resultType="dino.findkids.model.FindKidsJoinDto">
 		SELECT  r.cost
@@ -203,21 +201,21 @@
 	        , UPD_ID      = #{updId}
 	    WHERE IDX = #{idx}
 	</update>
-	
+
 	<!-- 선생님 grade 수정 -->
 	<update id="teacherGradeUpd" parameterType="Integer">
 		UPDATE D_MEMBER
 	      SET MEMBER_TYPE = 6
 	        , UPD_DT      = SYSDATE
 	        , UPD_ID      = #{updId}
-	    WHERE IDX = #{idx}	
+	    WHERE IDX = #{idx}
 	</update>
-	
+
 	<!-- 선생님 grade 조회 / 세션 등록 위함 -->
 	<select id="UpdGrade" parameterType="String" resultType="Integer">
-		SELECT 
+		SELECT
 			MEMBER_TYPE
-		FROM 
+		FROM
 			D_MEMBER
 		WHERE ID = #{id}
 	</select>
