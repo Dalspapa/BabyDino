@@ -190,7 +190,7 @@
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
-		    <div><a href="proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
+		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
 		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>

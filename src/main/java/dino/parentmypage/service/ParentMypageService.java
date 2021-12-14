@@ -21,4 +21,10 @@ public interface ParentMypageService {
 
 	//돌봄 노트 리스트 페이지
 	public List<ParentMypageDto> careNoteList(int idx);
+
+	//선생님 진행중 돌봄 목록
+	public List<ParentMypageDto> t_proceedingMain_ing(int idx);
+
+	//선생님 완료된 돌봄 목록
+	public List<ParentMypageDto> t_proceedingMain_done(int idx);
 }
