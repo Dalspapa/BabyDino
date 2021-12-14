@@ -55,6 +55,7 @@
 	        ,k.teacher_type
 	        ,k.k_require
 	        ,r.idx as r_idx
+	        ,r.status
 		from
 	         d_kidcard k, d_reserve r
 		where
