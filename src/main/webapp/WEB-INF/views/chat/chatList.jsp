@@ -1,21 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
     
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>${ sessionScope.saveName }</title>
-	
-	<!-- 채팅ui -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- 부트스트랩 css -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<!-- 부트스트랩 js -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<!-- 제이쿼리 js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	
 	<!-- 챗리스트 -->
 	<style type="text/css">
@@ -224,7 +209,6 @@
 		}
 	</style>
 	
-</head>
 
 <script>
 function listView(userid){
@@ -429,9 +413,6 @@ function listView(userid){
                 </li>  
               
             </ul>
-           
-           
-           
             
 		</div>
 	</div>
@@ -457,7 +438,7 @@ function listView(userid){
         </div>
         <div class="modal-body">
           <div id="chatBox">
-           <%--  <%@ include file="chatRoom.jsp" %> --%>
+<%--             <%@ include file="chatRoom.jsp" %> --%>
           </div>
         </div>
       </div>
@@ -465,5 +446,3 @@ function listView(userid){
   <!-- ./챗룸 Modal -->
   </div>
 
-</body>
-</html>
