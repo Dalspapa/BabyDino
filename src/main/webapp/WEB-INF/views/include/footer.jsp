@@ -10,8 +10,6 @@
     margin: 5px 0px;
 }
 </style>    
-     
-
   <!-- 로그인 Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -125,7 +123,6 @@
 	   </div>
 </footer>
  <body onkeydown="javascript:onEnterLogin();">
-
 </body>
 
   <!-- 헤더이벤트처리 -->

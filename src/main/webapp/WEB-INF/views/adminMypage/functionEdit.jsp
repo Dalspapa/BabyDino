@@ -64,7 +64,7 @@
 		
 		<!-- 취소사유 편집 -->
 		<div id="cancel">
-			<div  class="btns">
+			<div class="btns">
 				<button type="button" class="btn btn-outline-success" id="pCancelBtn">부모님 취소 사유</button>
 				<button type="button" class="btn btn-outline-success" id="tCancelBtn">선생님 취소 사유</button>
 			</div>

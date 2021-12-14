@@ -6,10 +6,16 @@
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
-
-<!-- ---------지원css------------- -->
 <style>
-
+<style>
+section{
+	font-family: 'S-Air';
+}
+section .row .mtitle{
+	font-size: 20px;
+	font-weight: 500;
+	margin-top: 10px;
+}
 #cardImg {
 	width: 50px;
 	heitht: 50px;

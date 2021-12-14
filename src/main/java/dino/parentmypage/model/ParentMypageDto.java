@@ -52,6 +52,9 @@ public class ParentMypageDto {
 	private String care_time;
 	private String k_age;
 
+	private Date c_writedate;
+	private String c_content;
+
 	public ParentMypageDto() {
 		super();
 	}
@@ -104,6 +107,22 @@ public class ParentMypageDto {
 		this.care_time = care_time;
 	}
 
+
+	public Date getC_writedate() {
+		return c_writedate;
+	}
+
+	public void setC_writedate(Date c_writedate) {
+		this.c_writedate = c_writedate;
+	}
+
+	public String getC_content() {
+		return c_content;
+	}
+
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
+	}
 
 	public String getK_age() {
 		return k_age;

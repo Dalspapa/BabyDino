@@ -22,7 +22,6 @@
     font-weight: 500;
     margin-bottom: 12px;
 }
-
 .likebody .btn{
 	margin-left: 700px;
 }

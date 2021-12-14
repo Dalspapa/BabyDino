@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
     
 <!DOCTYPE html>
@@ -236,6 +235,8 @@
            <ul class="chat">
            
 
+               <!-- 기존 채팅 리스트 불러오기 -->
+
                <c:forEach var="vo" items="${ messageList }">
                		
                	<!-- 필요한 변수들 -->
@@ -301,7 +302,8 @@
 	               		</p>
 	               	</div>
                  </li>
-	        	</c:if>      
+
+	        	</c:if>
                </c:forEach>
                <!-- 기존 채팅 리스트 불러오기  끝 -->           
            </ul>
@@ -383,10 +385,15 @@
 	//방 입장하면 기존 대화목록 여기서 불러냄.
 	function onOpen(evt) {
 
+		//document.fm.content.value = '대화참여함\n';
+
 	}
 	
 	//대화종료.
 	function onClose(evt) {
+
+		//document.fm.content.value = '대화종료함\n'; 
+
 	}
 	
 	//메시지 보내기 (TO DO : 샌드메시지 함수 호출할때마다 db에 채팅 메시지 insert)
@@ -396,10 +403,8 @@
 			return alert("대화방이 닫혀있습니다.");
 		}
 
-		
 		var senderName = '${sessionScope.saveName}님 ';
 		var msg = document.fm.write.value + '\n';
-
 		
 		$('.chat').append(
 				

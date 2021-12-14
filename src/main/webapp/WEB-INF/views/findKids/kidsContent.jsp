@@ -263,6 +263,12 @@ section {
 <!-- ---지원css 수정----- -->
 </head>
 <body>
+	<!-- /offcanvas -->
+	<div>
+		<c:if test="${empty kidInfoDto}">
+			<h2>등록된 아이가 없거나, 잘못된 접근입니다.</h2>
+		</c:if>
+	</div>
 
 	<!-- offcanvas(부모회원) -->
 	<style>
@@ -311,14 +317,12 @@ section {
 			<h2>등록된 아이가 없거나, 잘못된 접근입니다.</h2>
 		</c:if>
 	</div>
-	
 	<div class="wrapper">
 		<section><br><br><br>
 			<div class="topCont d-flex justify-content-between">
 				<div><a href="javascript:history.back();">다른 아이 보러가기</a></div>
 				<div>${ kidInfoDto.k_name }</div>
 				<form name="reportIdx" action="reportWrite.do">
-
 					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
 				<div>
 					<a href="javascript:reportIdx.submit();">
