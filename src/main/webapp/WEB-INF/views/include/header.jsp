@@ -32,6 +32,9 @@
 <!-- <link rel="stylesheet" href="/BabyDino/common/css/bootstrap.min.css"> -->
 <!-- 지원 css수정 -->
 <style>
+.btn{
+    margin-bottom:5px;
+}
 .memberImg {
 	width: 60px;
 	height: 60px;
