@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ParentMypageDto {
 
-	//멤버테이블
+	// 멤버테이블
 	private int m_idx;
 	private String id;
 	private String name;
@@ -14,7 +14,7 @@ public class ParentMypageDto {
 	private String addr2;
 	private String addr3;
 
-	//선생님테이블
+	// 선생님테이블
 	private int t_idx;
 	private int d_member_idx;
 	private int job;
@@ -27,8 +27,9 @@ public class ParentMypageDto {
 	private int cctvagree;
 	private String t_sexcrime;
 	private String career_experience;
+	private int teacher_member_idx;
 
-	//아이카드테이블
+	// 아이카드테이블
 	private int k_idx;
 	private String k_name;
 	private int k_gender;
@@ -39,7 +40,7 @@ public class ParentMypageDto {
 	private String teacher_type;
 	private String k_require;
 
-	//예약카드테이블
+	// 예약카드테이블
 	private int r_idx;
 	private int member_p_idx;
 	private Date start_date;
@@ -62,10 +63,10 @@ public class ParentMypageDto {
 	public ParentMypageDto(int m_idx, String id, String name, int gender, int member_type, String addr1, String addr2,
 			String addr3, int t_idx, int d_member_idx, int job, String kid_type, String t_care_type,
 			String schedule_day, String schedule_time, int t_cost, String t_introduce, int cctvagree, String t_sexcrime,
-			String career_experience, int k_idx, String k_name, int k_gender, Date k_birth, String k_introduce,
-			String k_care_type, String k_tendency, String teacher_type, String k_require, int r_idx, int member_p_idx,
-			Date start_date, Date end_date, int r_cost, int status, Date match_date, int cancle_reason,
-			String care_time) {
+			String career_experience, int teacher_member_idx, int k_idx, String k_name, int k_gender, Date k_birth,
+			String k_introduce, String k_care_type, String k_tendency, String teacher_type, String k_require, int r_idx,
+			int member_p_idx, Date start_date, Date end_date, int r_cost, int status, Date match_date,
+			int cancle_reason, String care_time, String k_age, Date c_writedate, String c_content) {
 		super();
 		this.m_idx = m_idx;
 		this.id = id;
@@ -87,6 +88,7 @@ public class ParentMypageDto {
 		this.cctvagree = cctvagree;
 		this.t_sexcrime = t_sexcrime;
 		this.career_experience = career_experience;
+		this.teacher_member_idx = teacher_member_idx;
 		this.k_idx = k_idx;
 		this.k_name = k_name;
 		this.k_gender = k_gender;
@@ -105,31 +107,9 @@ public class ParentMypageDto {
 		this.match_date = match_date;
 		this.cancle_reason = cancle_reason;
 		this.care_time = care_time;
-	}
-
-
-	public Date getC_writedate() {
-		return c_writedate;
-	}
-
-	public void setC_writedate(Date c_writedate) {
-		this.c_writedate = c_writedate;
-	}
-
-	public String getC_content() {
-		return c_content;
-	}
-
-	public void setC_content(String c_content) {
-		this.c_content = c_content;
-	}
-
-	public String getK_age() {
-		return k_age;
-	}
-
-	public void setK_age(String k_age) {
 		this.k_age = k_age;
+		this.c_writedate = c_writedate;
+		this.c_content = c_content;
 	}
 
 	public int getM_idx() {
@@ -292,6 +272,14 @@ public class ParentMypageDto {
 		this.career_experience = career_experience;
 	}
 
+	public int getTeacher_member_idx() {
+		return teacher_member_idx;
+	}
+
+	public void setTeacher_member_idx(int teacher_member_idx) {
+		this.teacher_member_idx = teacher_member_idx;
+	}
+
 	public int getK_idx() {
 		return k_idx;
 	}
@@ -436,5 +424,28 @@ public class ParentMypageDto {
 		this.care_time = care_time;
 	}
 
+	public String getK_age() {
+		return k_age;
+	}
+
+	public void setK_age(String k_age) {
+		this.k_age = k_age;
+	}
+
+	public Date getC_writedate() {
+		return c_writedate;
+	}
+
+	public void setC_writedate(Date c_writedate) {
+		this.c_writedate = c_writedate;
+	}
+
+	public String getC_content() {
+		return c_content;
+	}
+
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
+	}
 
 }
