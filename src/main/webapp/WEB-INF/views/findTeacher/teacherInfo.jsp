@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아  기  공  룡</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <!-- 지원 css수정 및 추가 -->
 <style type="text/css">

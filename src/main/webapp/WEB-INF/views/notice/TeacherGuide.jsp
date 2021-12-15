@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아  기  공  룡</title>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 /*옆에 메뉴바*/

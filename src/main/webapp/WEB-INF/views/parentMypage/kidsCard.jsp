@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>아  기  공  룡</title>
 <style type="text/css">
 * {
   margin: 0;

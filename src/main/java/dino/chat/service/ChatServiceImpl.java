@@ -65,4 +65,14 @@ public class ChatServiceImpl implements ChatService {
 		return result;
 	}
 
+	public int updateReadNum(int roomIdx, int sessionIdx) {
+		
+		Map map = new HashedMap();
+		map.put("roomIdx", roomIdx);
+		map.put("sessionIdx", sessionIdx);
+		
+		int result = chatDao.updateReadNum(map);
+		return result;
+	}
+
 }

@@ -50,5 +50,11 @@ public class ChatDaoImpl implements ChatDao {
 		return result;
 	}
 
+
+	public int updateReadNum(Map map) {
+		int result = sqlMap.update("updateReadNum", map);
+		return result;
+	}
+
 	
 }
