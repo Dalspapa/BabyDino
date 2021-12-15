@@ -43,12 +43,13 @@
 						</td>
 					</tr>
 				</c:if>
-				<c:forEach var ="dto" items = "${t_list}" varStatus="status">
+				<c:forEach var ="dto" items = "${t_list}">
 				<c:url var="downUrl" value="down.do">
 					<c:param name="fname">${dto.exemplification}</c:param>
 				</c:url>
 				    <tr>
-				    	<td>${dto.idx}</td>				    	
+				    	<td>${dto.idx}</td>
+				    	<input type="hidden" id="midx" name="d_member_idx" value="${idx}">
 				      	<td>${dto.name}</td>
 						<td>${dto.id}</td>
 						<td>${dto.tel}</td>
@@ -61,15 +62,13 @@
 							<c:if test="${dto.crimeagree != '동의합니다.'}">
 								조회 비동의
 							</c:if>
-							<input type="hidden" value="${dto.idx}" id="idx_${status.count}"/>
-							<input type="hidden" value="${dto.id}" id="id_${status.count}"/>
 						</td>
-						<td><button type="button" class="btn btn-outline-success" onclick="tCert(${status.count});">인증하기</button></td>
+						<td><button type="button" class="btn btn-outline-success" onclick="tCert();">인증하기</button></td>
 				    </tr>
 			    </c:forEach>
 			  </tbody>
 			</table>
-			</form>
+			</form>			
 				<div>
 					페이징 처리 될 부분
 				</div>
@@ -79,37 +78,24 @@
 </body>
 <script>
 
-	function tCert(index){
+	function tCert(){
 		
-		let d_member_idx = $("#idx_"+index).val();
-		let id = $("#id_"+index).val();
+		let d_member_idx = $('#midx').val();
 		
-		let fdata = new FormData();
+		let fdata = new FormDate();
 		
 		fdata.set('d_member_idx', d_member_idx);
-		fdata.set('id', id);
-		
-		console.log("=======idx"+ d_member_idx);
-		console.log("=======id"+ id);
 		
 		$.ajax({
 			
 			method : 'POST',
 			url : '${pageContext.request.contextPath}/teaCertUpd.do',
-			data : fdata,
+			data : fmdata,
 			processData: false,
 			contentType: false,
 			cache: false,
 			success : function(result){				
-				if (result.result > 0) {
-					console.log('등업완료');					
-					alert('필수인증이 완료되었습니다. \n아이찾기 카테고리에서 선생님 카드 등록을 해주세요!');
-					location.reload();
-				} else {
-					console.log('no'+result.rst);
-					alert('필수 인증 절차 중 오류가 발생했습니다. 잠시 후 재시도 해주세요.');
-					location.reload();
-				}
+				console.log('인증완료');
 			},
 			error : function(error){
 				console.log("잘못된 접근 또는 오류가 발생했습니다.");
