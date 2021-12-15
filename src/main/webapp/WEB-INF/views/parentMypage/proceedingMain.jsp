@@ -143,7 +143,7 @@ a:link, a:visited {
 						<div>돌봄 가능 유형 : ${ l_done.t_care_type}</div>
 						<div>희망 시급 : ${ l_done.t_cost}원</div>
 						<div>${ l_done.care_time}</div>
-						<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">채팅하기</button>
+						<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatList','width=600, height=700'))">채팅하기</button>
 					</div>
 				</div>
 			</c:forEach>
