@@ -98,17 +98,76 @@
 	FROM d_reserve r
 	       , (select * from d_member where member_type in ( 2, 8 ) ) pm            -- (학부모  : member)
 	       , (select * from d_member where member_type in ( 4, 5, 6, 7, 10 ) ) tm  -- (선생님  : member)
-	       , d_kidcard k                             --아이카드
-	       , d_common_img i                          --이미지
+	       , d_kidcard     k                          --아이카드
+	       , d_common_img  i                          --이미지
+	       , d_teachercard tc                         --선생님카드
 	where 1=1
 	  and r.member_p_idx     = pm.idx                -- 학부모 예약은 학부모가 하므로 필수
 	  and r.teacher_idx      = tm.idx(+)             -- 선생님
 	  and r.kid_idx          = k.idx                 -- 아이카드
 	  and r.kid_idx          = i.ref_idx(+)          -- 아이이미지
+	  and r.teacher_idx      = tc.idx(+)             -- 선생님카드
 	]]>
-	<if test="k_care_type_list != null">
-		and k.k_care_type IN <foreach collection="k_care_type_list" item="item" open="(" close=")" separator=",">#{item}</foreach>
+	<if test='orderByNear != null and orderByNear != "" and orderByNear == "on" and idx != null and idx != ""'>
+	  /* 근거리 (학부모 이거나 선생님 접속시) */
+	  and (
+	       r.teacher_idx  = #{idx}
+	       or
+	       r.member_p_idx = #{idx}
+	  )
+	  and (
+           pm.addr1 between pm.addr1-10 and pm.addr1+10  /* 학부모 */
+           or
+           tm.addr1 between tm.addr1-10 and tm.addr1+10  /* 선생님 */
+	      )
 	</if>
+	<if test="reserve_date != null and reserve_date != '' and start_date != null and start_date != '' and end_date != null and end_date !=''">
+	  /* 캐어일자 */
+	<![CDATA[
+	  and r.start_date <= to_date(#{reserve_date}||LPAD(#{end_date},2,0),   'yyyy-mm-ddhh24')
+	  and r.end_date   >= to_date(#{reserve_date}||LPAD(#{start_date},2,0), 'yyyy-mm-ddhh24')
+	]]>
+	</if>
+	<if test="k_care_type_list != null">
+	  /* 캐어타입 */
+	  and exists (
+			       select 1
+			         from d_kid_caretype
+			        where KIDS_IDX = r.kid_idx
+					  and k.k_care_type IN <foreach collection="k_care_type_list" item="item" open="(" close=")" separator=",">#{item}</foreach>
+				 )
+	</if>
+	<if test="age_list != null">
+	  /* 연령 */
+	  and (to_char(sysdate,'yyyy') - to_char(k.k_birth,'yyyy')) IN <foreach collection="age_list" item="item" open="(" close=")" separator=",">#{item}</foreach>
+	</if>
+	<if test="k_name != null and k_name != ''">
+	  /* 이름 */
+	  and k.k_name like '%' || #{k_name} ||'%'
+	</if>
+	<if test="k_gender != null and k_gender != ''">
+	  /* 성별 */
+	  and k.k_gender = #{k_gender}
+	</if>
+	<choose>
+		<when test='teacher_cost != null and teacher_cost != "" and teacher_cost =="high"'>
+		/* 선생님 비용 높은순 */
+		order by tc.t_cost desc
+		</when>
+		<when test='teacher_cost != null and teacher_cost != "" and teacher_cost =="low"'>
+		/* 선생님 비용 낮은순 */
+		order by tc.t_cost
+		</when>
+		<when test='orderByMeet != null and orderByMeet != "" and orderByMeet =="on"'>
+		/* 만났던 최근순 */
+		order by r.match_date desc
+		</when>
+		<otherwise>
+		/* 선택한게 없으면 캐어유형순 */
+		order by k.k_care_type
+		</otherwise>
+	</choose>
+
 	</select>
 
 	<!-- 선생님 고유번호 조회 -->

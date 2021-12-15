@@ -4,9 +4,10 @@ package dino.findkids.model;
 import java.sql.*;
 
 public class FindKidsJoinDto {
-		
+
 	private Integer cost;
-	//idx of reserve Table 
+	private String teacher_cost;
+	//idx of reserve Table
 	private Integer idx;
 	private Integer kid_idx;
 	private Integer member_p_idx;
@@ -33,7 +34,7 @@ public class FindKidsJoinDto {
 	private String end_day;
 	private String start_time;
 	private String end_time;
-	
+
 	private String kidIdx;
 	private String memberPIdx;
 	private String kName;
@@ -51,17 +52,28 @@ public class FindKidsJoinDto {
 	private String kidAddr;
 	private String teacher_addr;
 	private String idx1;
-	
-	
+
+
 	private String[] age_list;
 	private String end_date;
 	private String reserve_date;
 	private String start_date;
 	private String[] teacher_cost_list;
-	
-	
-	
-	
+
+
+	private String orderByMeet;
+	private String orderByNear;
+
+
+
+	public String getTeacher_cost() {
+		return teacher_cost;
+	}
+
+	public void setTeacher_cost(String teacher_cost) {
+		this.teacher_cost = teacher_cost;
+	}
+
 	public Integer getSave_idx() {
 		return save_idx;
 	}
@@ -389,8 +401,8 @@ public class FindKidsJoinDto {
 	public String getK_care_type() {
 		return k_care_type;
 	}
-	
-	
+
+
 
 	public String[] getK_care_type_list() {
 		return k_care_type_list;
@@ -491,5 +503,23 @@ public class FindKidsJoinDto {
 	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
 	}
+
+	public String getOrderByMeet() {
+		return orderByMeet;
+	}
+
+	public void setOrderByMeet(String orderByMeet) {
+		this.orderByMeet = orderByMeet;
+	}
+
+	public String getOrderByNear() {
+		return orderByNear;
+	}
+
+	public void setOrderByNear(String orderByNear) {
+		this.orderByNear = orderByNear;
+	}
+
+
 
 }
