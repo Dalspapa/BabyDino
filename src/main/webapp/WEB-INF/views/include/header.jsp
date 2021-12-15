@@ -62,6 +62,10 @@
 	text-decoration: none!important;
 	color: #68983b;
 }
+.offcanvas-header {
+	justify-content: center!important;
+	margin: 20px auto;
+}
 </style>
 
 <!-- 세션 -->
@@ -131,12 +135,12 @@
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
 	                    <li class="nav-item">
-	                    	<a href="logout.do" class="nav-link">${sid}부모님 환영합니다!</a>
+	                    	<a href="logout.do" class="nav-link">${sname}부모님 환영합니다!</a>
 	                    </li>
                     </c:if>
                      <c:if test="${stype == 4 || stype == 5 || stype ==6}">
 	                    <li class="nav-item">
-	                    	<a href="logout.do" class="nav-link">${sid}선생님 환영합니다!</a>
+	                    	<a href="logout.do" class="nav-link">${sname}선생님 환영합니다!</a>
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 1}">
@@ -171,7 +175,7 @@
 		  <div class="offcanvas-header">
 		 <%--  <c:if test="navImg" value="${getNavImg.c_imgpath}" />
 		  	<div class="memberImg"><img src="/upload/${fn:replace(${navImg,','""')}" alt="navImg"></div> --%>
-		    <h5 id="offcanvasRightLabel">${sid} 부모님</h5>
+		    <h5 id="offcanvasRightLabel">${sname} 부모님</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
@@ -187,7 +191,7 @@
 		<!-- side navbar teacher -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight2">
 		  <div class="offcanvas-header">
-		    <h5 id="offcanvasRightLabel">${sid} 선생님</h5>
+		    <h5 id="offcanvasRightLabel">${sname} 선생님</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
