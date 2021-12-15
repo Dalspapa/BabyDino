@@ -13,7 +13,7 @@
 	</select>
 	
 	<!-- 페이징 처리 -->
-	<select id="totalCnt" resultType="Integer">
+	<select id="totalCnt1" resultType="Integer">
 		select count(*) from d_member
 	</select>
 	

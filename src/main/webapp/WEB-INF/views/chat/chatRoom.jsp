@@ -322,28 +322,8 @@
 				</div>
 			</div>
 		</form>
-		<!-- 메시지 보내기 닫힘-->
-       </div>         
+		<!-- 메시지 보내기 닫힘-->         
 	</div>
-	<!-- 메시지 보내기 -->
-	<div id="messageSend"> 
-		<form name="fm" method="post" onsubmit="return false;">	
-		<div class="chat-box bg-white">
-			<div class="input-group">
-			
-				<input type="text" name="write" class="form-control border no-shadow no-rounded" 
-					placeholder="메시지를 입력해 주세요." autocomplete="off" 
-					onkeyup="if(window.event.keyCode==13){sendMessage()}">
-					
-				<span class="input-group-btn">
-					<button class="btn btn-success no-rounded" type="button" onclick="sendMessage()">Send</button>
-				</span>
-			
-			</div>
-		</div> 
-	</form>
-	</div>
-	<!-- 메시지 보내기 닫힘-->  
 </body>
 
 
@@ -382,9 +362,6 @@
 					typeChar = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
 				}
 
-
-
-				
 				var talkHtml = '';
 				talkHtml += '<li class="left clearfix">';
 				talkHtml += 	'<span class="chat-img pull-left">';
@@ -413,17 +390,12 @@
 
 	//방 입장하면 기존 대화목록 여기서 불러냄.
 	function onOpen(evt) {
-
 	}
 
 	//대화종료.
 	function onClose(evt) {
-
-		//document.fm.content.value = '대화종료함\n';
-
 	}
 
-	//메시지 보내기 (TO DO : 샌드메시지 함수 호출할때마다 db에 채팅 메시지 insert)
 	function sendMessage() {
 
 		if(ws == null || ws.readyState === WebSocket.CLOSED) {
@@ -490,26 +462,19 @@
 
 		);
 
-		// 스크롤바 아래 고정
-        $("input[name=write]")[0].scrollIntoView();
-
 		//핸들러로 메시지 보냄.
 		ws.send(message);
 
 		document.fm.write.value = '';
 		document.fm.write.focus();
 
-
-
 	};
-
 
 	function yongClose() {
 		if(ws != null && ws.readyState === WebSocket.OPEN) {
 			ws.close();
 		}
 	}
-
 
 	//시간구하기
 	function fnGetTime() {
@@ -528,10 +493,5 @@
 		return sendTime;
 	}
 
-
-
-
 </script>
-
-
 </html>
