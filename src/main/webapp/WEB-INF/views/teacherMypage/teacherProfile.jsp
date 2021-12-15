@@ -11,27 +11,34 @@ section{
     margin: 190px auto;
 }
 .t_profile{
-	background-color: #E0F8E6;
-	padding-bottom:10px;
-	margin-bottom: 20px;
+	background-color: #F5FBF1;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    padding: 19px;
+    text-align: center;
+   	border-radius: 28px;
 }
 .t_profile .profil{
 	text-align: center;
-	font-weight: 500px;
-	font-size: 24px;
+    font-weight: 500px;
+    font-size: 24px;
+    font-family: 'S-Air';
+    font-weight: 600;
+    margin-top: 26px;
 }
 .t_profile .pic{
     background-color: yellow;
     width: 123px;
     height: 123px;
     border-radius: 61px;
-    margin-left: 270px;
+    margin-left: 518px;
     margin-top: 64px;
 }
 .t_profile .t_info{
-    margin-left: 600px;
+    margin-left: 785px;
     margin-top: -164px;
-    padding: 13px;
+    padding: 33px;
+    font-size: 18px;
 }
 .t_profile .week{
 	text-align: center;
@@ -62,6 +69,7 @@ section{
 }
 .banks{
 	display: flex;
+	margin-left: 199px;
 }
 </style>
 <body>
@@ -84,7 +92,7 @@ section{
 						<div>
 							희망 시급 : <fmt:formatNumber value="${tDto.t_cost}" pattern="#,###" /> 원
 						</div>
-						<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="bankbtn">수정</button>
+						<button type="button" class="btn btn-outline-success" style="font-size: 15px; margin-top:15px;" id="bankbtn">수정</button>
 					</div>
 					<div id="bankDiv2" class="hideDiv">					
 						<div class="banks">
@@ -104,7 +112,7 @@ section{
 							<label for="t_cost"></label>희망시급 : <input type="number" id="t_cost" style = "width:15%">
 						</div>
 						<div>
-							<button type="button" id="bankupd" class="btn btn-outline-success" style="font-size: 2%">수정하기</button>
+							<button type="button" id="bankupd" class="btn btn-outline-success" style="font-size: 15px; margin-top:15px;">수정하기</button>
 						</div>					
 					</div>					
 				</div>
@@ -125,7 +133,7 @@ section{
 							&#127773;${items}&nbsp;&nbsp;
 						</c:forEach>
 				</div>
-				<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="typebtn">수정</button>
+				<button type="button" class="btn btn-outline-success" style="font-size: 15px; margin-top:15px;" id="typebtn">수정</button>
 			</div>
 			
 			<div class="t_profile hideDiv" id="typeDiv2">
@@ -147,7 +155,7 @@ section{
 						</div>
 					</c:forEach>
 				</div>
-				<button type="button" class="btn btn-outline-success" id="typeUpd">수정하기</button>
+				<button type="button" class="btn btn-outline-success" style="font-size: 15px; margin-top:15px;" id="typeUpd">수정하기</button>
 			</div>
 			
 			
@@ -159,17 +167,17 @@ section{
 						<div>
 							<c:if test="${tDto.cctvagree == 0}">CCTV 녹화 비동의 중</c:if>
 							<c:if test="${tDto.cctvagree == 1}">CCTV 녹화 동의 중</c:if>
-						</div>
+						</div><br>
 						<div class="profil">공룡 선생님 소개</div>
 						<div>
 							${tDto.t_introduce}
-						</div>
+						</div><br>
 						<div class="profil">돌봄 활동 경험 / 이런 활동을 해봤어요!</div>
 						<div class="career">
 							${tDto.career_experience}
-						</div>
+						</div><br>
 						<div>
-							<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="bankbtn2">수정</button>
+							<button type="button" class="btn btn-outline-success" style="font-size: 15px; margin-top:15px;" id="bankbtn2">수정</button>
 						</div>
 					</div>
 					</div>
