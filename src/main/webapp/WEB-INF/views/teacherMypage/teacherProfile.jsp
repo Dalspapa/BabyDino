@@ -158,12 +158,12 @@ section{
 						<div class="profil">CCTV 녹화 동의 여부</div>
 						<div>
 							<c:if test="${tDto.cctvagree == 0}">CCTV 녹화 비동의 중</c:if>
-							<c:if test="${tDto.cctvagree == 1}">CCTV 녹화 동의 중</c:if>						
+							<c:if test="${tDto.cctvagree == 1}">CCTV 녹화 동의 중</c:if>
 						</div>
-						<div class="profil">공룡 선생님 소개</div>					
+						<div class="profil">공룡 선생님 소개</div>
 						<div>
 							${tDto.t_introduce}
-						</div>					
+						</div>
 						<div class="profil">돌봄 활동 경험 / 이런 활동을 해봤어요!</div>
 						<div class="career">
 							${tDto.career_experience}
@@ -181,8 +181,8 @@ section{
 					</div>
 					<div class="profil">공룡 선생님 소개</div>
 					<div><% pageContext.setAttribute("newLineChar", "\n"); %>
-						<textarea rows="10" cols="60" name="t_introduce" id="t_introduce">${fn:replace(tDto.t_introduce,'<br>',newLineChar)}</textarea>						
-					</div>					
+						<textarea rows="10" cols="60" name="t_introduce" id="t_introduce">${fn:replace(tDto.t_introduce,'<br>',newLineChar)}</textarea>
+					</div>
 					<div class="profil">돌봄 활동 경험 / 이런 활동을 해봤어요!</div>
 					<div class="career">
 						<textarea rows="10" cols="60" name="career_experience" id="career_experience">${fn:replace(tDto.career_experience,'<br>',newLineChar)}</textarea>
@@ -203,7 +203,7 @@ section{
 		$('#bankbtn').click(function(){
 			
 			$('#bankDiv1').hide();
-			$('#bankDiv2').show();			
+			$('#bankDiv2').show();
 		});
 		
 		$('#bankupd').click(function(){
