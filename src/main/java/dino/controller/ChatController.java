@@ -51,7 +51,6 @@ public class ChatController {
 
 	//채팅방 입장, 없으면 생성.
 	@RequestMapping(value = "/enterChatRoom.do")
-//	@ResponseBody
 	public ModelAndView enterChatRoom(
 			HttpSession session,
 			@RequestParam("partnerIdx") int partnerIdx) {
