@@ -1,6 +1,8 @@
 package dino.report.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dino.dto.CommonOpDto;
 import dino.dto.ReportDto;
@@ -22,14 +24,28 @@ public class ReportServiceImple implements ReportService {
 		int count = reportDao.reportWrite(reportDto);
 		return count;
 	}
+	
+	/*:::::::동현 작업 시작::::::::::*/
+	public List<ReportDto> reportList(int cp, int ls){
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
 
-	public List<ReportDto> reportList(){
-
-		List<ReportDto> reportlist = reportDao.reportList();
+		List<ReportDto> reportlist = reportDao.reportList(map);
 
 		return reportlist;
 	}
-
+	
+	//페이징 처리
+	public int getTotalCntReport() {
+		int count = reportDao.getTotalCntReport();
+		return count;
+	}
+	/*:::::::동현 작업 끝::::::::::*/
+	
 	public ReportDto reportContent(int idx) {
 		ReportDto dto = reportDao.reportContent(idx);
 		if(dto!=null) {

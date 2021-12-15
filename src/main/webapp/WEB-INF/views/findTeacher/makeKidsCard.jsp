@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp"%>
 </head>
 <style>
 img {
@@ -13,33 +13,40 @@ img {
 	height: 100px;
 }
 
-.container div {	
+.container div {
 	margin-top: 10px;
 }
 </style>
 <body>
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 	<form id="postForm" name="make_t_Card">
 		<div class="wrapper">
 			<div class="container">
-				<div><h3>아이카드등록</h3></div>
+				<div>
+					<h3>아이카드등록</h3>
+				</div>
 				<div id="step1">
 					<div>
 						<div id="image_container">
 							<h2>프로필 사진을 올려주세요.(필수사항)</h2>
 						</div>
-						<input type="file" id="k_img1" name="c_imgpath" class="form-control" />
+						<input type="file" id="k_img1" name="c_imgpath"
+							class="form-control" />
 					</div>
 					<div class="row">
 						<div>아이이름</div>
 						<div class="col-md-2">
-							<input class="form-control" type="text" placeholder="아이이름" id="k_name" name="k_name" aria-label="default input example">
+							<input class="form-control" type="text" placeholder="아이이름"
+								id="k_name" name="k_name" aria-label="default input example">
 						</div>
 					</div>
 					<div class="row">
 						<div>성별</div>
 						<div class="col-md-2">
-							<select class="form-select" name="k_gender" id="k_gender" aria-label="Default select example">
+							<select class="form-select" name="k_gender" id="k_gender"
+								aria-label="Default select example">
 								<option value="0" selected>성별</option>
 								<option value="2">남자아이</option>
 								<option value="1">여자아이</option>
@@ -49,10 +56,12 @@ img {
 					<div>아이 출생년일</div>
 					<div class="row">
 						<div class="col-md-4">
-							<input id="k_birth" type="date" class="form-control" autocomplete="off" name="k_birth" width="100" />
+							<input id="k_birth" type="date" class="form-control"
+								autocomplete="off" name="k_birth" width="100" />
 						</div>
 						<div>
-							<button class="btn btn-outline-primary" type="button" onclick="goStep(2)">다음으로</button>
+							<button class="btn btn-outline-primary" type="button"
+								onclick="goStep(2)">다음으로</button>
 						</div>
 					</div>
 				</div>
@@ -60,21 +69,24 @@ img {
 				<div id="step2" class="d-none">
 					<div>
 						<div>원하는 선생님 연령대</div>
-						<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-							<input type="checkbox" class="btn-check" name="check-age" value="1" id="btncheck1"> 
-							<label class="btn want-age btn-outline-success check-age" for="btncheck1">20대</label>
-							
-							<input type="checkbox" class="btn-check" name="check-age" value="2" id="btncheck2">
-							<label class="btn want-age btn-outline-success check-age" for="btncheck2">30대</label>
-							
-							<input type="checkbox" class="btn-check" name="check-age" value="3" id="btncheck3">
-							<label class="btn want-age btn-outline-success check-age" for="btncheck3">40대</label> 
-							
-							<input type="checkbox" class="btn-check" name="check-age" value="4" id="btncheck4"> 
-							<label class="btn want-age btn-outline-success check-age" for="btncheck4">50대</label>
-							
-							<input type="checkbox" class="btn-check" name="check-age" value="5" id="btncheck5"> 
-							<label class="btn want-age btn-outline-success check-age" for="btncheck5">60대</label>
+						<div class="btn-group" role="group"
+							aria-label="Basic checkbox toggle button group">
+							<input type="checkbox" class="btn-check" name="check-age"
+								value="1" id="btncheck1"> <label
+								class="btn want-age btn-outline-success check-age"
+								for="btncheck1">20대</label> <input type="checkbox"
+								class="btn-check" name="check-age" value="2" id="btncheck2">
+							<label class="btn want-age btn-outline-success check-age"
+								for="btncheck2">30대</label> <input type="checkbox"
+								class="btn-check" name="check-age" value="3" id="btncheck3">
+							<label class="btn want-age btn-outline-success check-age"
+								for="btncheck3">40대</label> <input type="checkbox"
+								class="btn-check" name="check-age" value="4" id="btncheck4">
+							<label class="btn want-age btn-outline-success check-age"
+								for="btncheck4">50대</label> <input type="checkbox"
+								class="btn-check" name="check-age" value="5" id="btncheck5">
+							<label class="btn want-age btn-outline-success check-age"
+								for="btncheck5">60대</label>
 						</div>
 					</div>
 
@@ -82,26 +94,31 @@ img {
 						<div>원하는 돌봄 분야</div>
 						<c:forEach var="c_list" items="${ care_list }">
 							<div class="col-md-2">
-								<input type="checkbox" class="btn-check" name="check-type" id="${ c_list.c_introduce }" value="${ c_list.c_introduce }" autocomplete="off" /> 
-								<label class="btn btn-outline-success check-type" for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
+								<input type="checkbox" class="btn-check" name="check-type"
+									id="${ c_list.c_introduce }" value="${ c_list.c_introduce }"
+									autocomplete="off" /> <label
+									class="btn btn-outline-success check-type"
+									for="${ c_list.c_introduce }">${ c_list.c_introduce }</label>
 							</div>
 						</c:forEach>
 					</div>
-					
+
 					<div>
 						<button class="btn btn-outline-primary" type="button"
 							onclick="goStep(3)">다음으로</button>
 					</div>
 				</div>
-				
+
 				<div id="step3" class="d-none">
 					<div>
 						<p>우리아이성향</p>
 						<c:forEach var="k_opdto" items="${ k_list }">
 							<div>
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" name="k_op" id="${k_opdto.c_introduce}" value="${k_opdto.c_introduce}" /> 
-									<label class="form-check-label" for="${k_opdto.c_introduce}">${k_opdto.c_introduce} </label>
+									<input class="form-check-input" type="checkbox" name="k_op"
+										id="${k_opdto.c_introduce}" value="${k_opdto.c_introduce}" />
+									<label class="form-check-label" for="${k_opdto.c_introduce}">${k_opdto.c_introduce}
+									</label>
 								</div>
 							</div>
 						</c:forEach>
@@ -110,7 +127,9 @@ img {
 					<div>
 						<p>우리아이소개</p>
 						<div class="form-floating">
-							<textarea name="" class="form-control" placeholder="Leave a comment here" id="floatingTextarea1" style="height: 200px"></textarea>
+							<textarea name="" class="form-control"
+								placeholder="Leave a comment here" id="floatingTextarea1"
+								style="height: 200px"></textarea>
 							<label for="floatingTextarea1">선생님에게 우리 아이를 소개해 주세요.</label>
 						</div>
 					</div>
@@ -118,22 +137,23 @@ img {
 					<div>
 						<p>요청사항(선택)</p>
 						<div class="form-floating">
-							<textarea name="k_require" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+							<textarea name="k_require" class="form-control"
+								placeholder="Leave a comment here" id="floatingTextarea2"
+								style="height: 100px"></textarea>
 							<label for="floatingTextarea2">선생님에게 요청사항이 있으시면 적어주세요.</label>
 						</div>
 					</div>
 					<div>
-						<button type="button" onclick="regKidCard()" class="btn btn-outline-success">카드등록</button>
+						<button type="button" onclick="regKidCard()"
+							class="btn btn-outline-success">카드등록</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</form>
 </body>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 <script>
-
-
 	// 아이카드 등록
 	function regKidCard() {
 		
@@ -286,13 +306,14 @@ img {
 		  		$('#k_img1').focus();
 		  		return
 		  	}
+		  	
 		  	if(imgFile != "" && imgFile != null){
 		  		if(!imgFile.match(fileForm)){
 		  			alert('이미지 파일만 등록 가등합니다.');
 		  			return;
 		  		}
+		  	}
 		  	
-			
 			// 아이 이름 유효성 검사
 			if(kName.val().trim().length == 0) {
 				kName.addClass('is-invalid')
@@ -370,7 +391,7 @@ img {
 			document.getElementById('step2').classList.add('d-none');
 			document.getElementById('step3').classList.remove('d-none');
 
+			}
 		}
-	}
 </script>
 </html>
