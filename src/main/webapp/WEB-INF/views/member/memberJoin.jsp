@@ -28,10 +28,9 @@ table .phone{
 }
 /*section2 부분*/
 #step2 {
-	border: 1px solid gray;
-    width: 1350px;
-    height: 678px;
-    margin: 2% auto;
+	width: 1350px;
+    height: 901px;
+    margin: -3% auto;
 	
 }
 .btn2{
@@ -41,7 +40,65 @@ table .phone{
 
 </style>
 <body>
+	<!-- 동현 작업 시작 222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222-->
    <div id="step1">
+      <!-- 약관동의 폼-->
+      <section>
+         <div>
+            <div class="title">아기공룡 서비스 이용 동의</div>
+            <div>
+               <h4>< 아기공룡 서비스 운영정책 ></h4>
+               <p>
+		                  아기공룡은 회원분들이 다양한 정보와 기술로 더 좋은 아이돌보미 또는 일자리(부모)를 찾고 연락하실 수 있도록 정보를
+		                  제공하는 구인구직 플랫폼입니다. <br> 본 서비스에 가입된 회원분들은 (주)아기공룡에 채용되거나 교육된
+		                  인력들이 아니고, 선생님회원과 부모회원 간의 계약을 소개/알선하지 않으므로,<br> 
+		        <span style="color: red;">(주)아기공룡은 선생님회원과 부모회원 간에 발생하는 모든 문제에 대한  책임이 없음을 알려드립니다.</span>
+               </p>
+            </div>
+            <div>
+               <h4>< 아기공룡 회원의 의무 ></h4>
+               <p>
+		                  모든 회원은 자신에게 적합한 선생님 또는 일자리(부모)를 선택하여, 서로 합의한 계약조건 또는 관련 법에 의거하여
+		                  성실하게 활동해야 합니다. <br> 
+		        <span style="color: red;">상호간 합의한 내용을 사전 조율없이 일방적으로 해지 통보할 경우, 서비스 이용약관에 따라 강제 탈퇴조치 될 수 있음을 알려드립니다.</span>
+               </p>
+            </div>
+            <div>
+               <input id="check-all" type="checkbox" class="form-check-input" class="form-check-input" /> <strong>전체동의</strong>
+            </div>
+
+            <div>
+               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+                  <input name="bt1" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
+                  <span> 서비스 운영정책 및 회원의 의무 동의 (필수)</span>
+               </div>
+
+               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+                  <input name="bt2" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
+                  <span> 서비스 이용약관 동의 (필수)</span>
+               </div>
+
+               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+                  <input name="bt3" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
+                  <span> 개인정보 수집 및 이용에 관한 동의 (필수)</span>
+               </div>
+
+               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
+                  <input name="bt4" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
+                  <span> 개인정보 제3자 제공에 관한 동의 (필수)</span>
+               </div>
+            </div>
+         </div>
+      </section>
+      <div class="btn2">
+			<button type="button" class="btn btn-outline-success" onclick="goStep(2)">다음으로</button>
+		</div>
+   </div>
+		
+	
+	<!-- ----------------------------------------------------------------------------------------------------------------------------- -->
+		
+	<div id="step2" class="d-none">
       <!-- 회원가입 폼 -->
       <section>
 		 <div class="title">회원가입</div>
@@ -155,69 +212,12 @@ table .phone{
             <input type="hidden" id="type" name="member_type" value="${param.member_type }" />
             
             <div class="btn">
-               <button type="button" class="btn btn-outline-success" onclick="regMember()">다음으로</button>
+               <button type="button" class="btn btn-outline-success" onclick="regMember()">가입하기</button>
             </div>
          </form>
       </section>
    </div>
-   
-   <!-- ----------------------------------------------------------------------------------------------------------------------------- -->
-   
-   <div id="step2">
-      <!-- 약관동의 폼-->
-      <section>
-         <div>
-            <div class="title">아기공룡 서비스 이용 동의</div>
-            <div>
-               <h4>< 아기공룡 서비스 운영정책 ></h4>
-               <p>
-		                  아기공룡은 회원분들이 다양한 정보와 기술로 더 좋은 아이돌보미 또는 일자리(부모)를 찾고 연락하실 수 있도록 정보를
-		                  제공하는 구인구직 플랫폼입니다. <br> 본 서비스에 가입된 회원분들은 (주)아기공룡에 채용되거나 교육된
-		                  인력들이 아니고, 선생님회원과 부모회원 간의 계약을 소개/알선하지 않으므로,<br> 
-		        <span style="color: red;">(주)아기공룡은 선생님회원과 부모회원 간에 발생하는 모든 문제에 대한  책임이 없음을 알려드립니다.</span>
-               </p>
-            </div>
-            <div>
-               <h4>< 아기공룡 회원의 의무 ></h4>
-               <p>
-		                  모든 회원은 자신에게 적합한 선생님 또는 일자리(부모)를 선택하여, 서로 합의한 계약조건 또는 관련 법에 의거하여
-		                  성실하게 활동해야 합니다. <br> 
-		        <span style="color: red;">상호간 합의한 내용을 사전 조율없이 일방적으로 해지 통보할 경우, 서비스 이용약관에 따라 강제 탈퇴조치 될 수 있음을 알려드립니다.</span>
-               </p>
-            </div>
-            <div>
-               <input id="check-all" type="checkbox" class="form-check-input" class="form-check-input" /> <strong>전체동의</strong>
-            </div>
-
-            <div>
-               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-                  <input name="bt1" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
-                  <span> 서비스 운영정책 및 회원의 의무 동의 (필수)</span>
-               </div>
-
-               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-                  <input name="bt2" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
-                  <span> 서비스 이용약관 동의 (필수)</span>
-               </div>
-
-               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-                  <input name="bt3" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
-                  <span> 개인정보 수집 및 이용에 관한 동의 (필수)</span>
-               </div>
-
-               <div style="cursor: pointer; position: relative; overflow: visible; display: table; height: auto; width: 100%;">
-                  <input name="bt4" class="btn" type="checkbox" value="checkbox" class="form-check-input" /> 
-                  <span> 개인정보 제3자 제공에 관한 동의 (필수)</span>
-               </div>
-            </div>
-
-
-         </div>
-      </section>
-   </div>
-		<div class="btn2">
-			<button type="submit" class="btn btn-outline-success">다음으로</button>
-		</div>
+   	
 		
 <!-- 카카오 주소 API -->
 <script
@@ -579,9 +579,21 @@ table .phone{
          $('.btn').prop('checked', this.checked);
       })
    })
+   
+   //다음 스텝 이동
+   function goStep(step) {
+	
+	   if (step == 2) {
+		   
+		   document.getElementById('step1').classList.add('d-none');
+           document.getElementById('step2').classList.remove('d-none');
+	   }
+}
+   
+   
 </script>		
-		
-		
+	<!-- 동현 작업 끝2222222222222222222222222222222222222222222222222222222222222 -->	
+	
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 

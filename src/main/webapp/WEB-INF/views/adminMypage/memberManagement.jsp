@@ -25,6 +25,13 @@
 .likebody .btn{
 	margin-left: 700px;
 }
+/**동현 페이징부분css*/
+.paging {
+	text-align: center;
+}
+.paging a {
+	color : #68983b;
+}
 </style>
 <!-- -------------지원 css---------------- -->
 </head>
@@ -128,7 +135,15 @@
 					<button type="button" class="btn btn-outline-success">탈퇴처리</button>
 				</div>
 				<div>
-					${pageStr }
+				
+				
+					<!-- 2222동현 작업 시작222 -->
+		<!-- 페이징 처리 될 부분 -->
+            <div class = "paging">
+              	${pageStr }
+            </div>
+         <!-- 2222동현 작업 끝222 -->  
+				
 				</div>
 			</div>
 		</section>

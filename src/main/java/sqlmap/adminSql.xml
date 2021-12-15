@@ -8,12 +8,12 @@
 	<select id="memberManagement" parameterType="Map" resultType="dino.dto.MemberDto">
 	select * from
            (select rownum as rnum,a.* from
-           (select * from d_member order by idx desc)a ) b
+           (select idx, member_type, id, name, gender, joinDate, addr2, tel from d_member order by idx desc)a ) b
            where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
 	<!-- 페이징 처리 -->
-	<select id="totalCnt" resultType="Integer">
+	<select id="totalCnt1" resultType="Integer">
 		select count(*) from d_member
 	</select>
 	
