@@ -72,7 +72,7 @@ section{
 				<div class="profil">프로필</div>
 					<c:set var="proImg" value="${tDto.c_imgpath}" />
 					<div class="pic">
-						<img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px">
+						<img src="/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px">
 					</div>
 				<div class="t_info">
 					<div>${tDto.name} | ${tDto.age} 세</div>
@@ -110,15 +110,47 @@ section{
 				</div>
 			</div>
 			<!-- 선생님 아이연령대, 돌봄 분야 선택 -->
-			<div class="t_profile">
+			<div class="t_profile" id="typeDiv1">
 				<div class="profil">이런 아이들이 좋아요!</div>
 				<div>
 					<c:set var="ktype" value="${tDto.kid_type}" />
 						<c:forEach items="${fn:split(ktype, ',') }" var="item">
-							${item}
+							&#127773;${item}&nbsp;&nbsp;
 						</c:forEach>
 				</div>
+				<div class="profil">이런 활동은 자신있어요!</div>
+				<div>
+					<c:set var="caretype" value="${tDto.t_care_type}" />
+						<c:forEach items="${fn:split(caretype, ',')}" var="items" >
+							&#127773;${items}&nbsp;&nbsp;
+						</c:forEach>
+				</div>
+				<button type="button" class="btn btn-outline-success" style = "font-size: 2%" id="typebtn">수정</button>
 			</div>
+			
+			<div class="t_profile hideDiv" id="typeDiv2">
+				<div class="profil">이런 아이들이 좋아요!</div>
+				<div>
+					<c:forEach var="kt_opdto" items="${klist}">
+						<div>
+							<label><input type="checkbox" id="kidType" class="ktchk" name="kid_type" value="${kt_opdto.c_introduce}"> ${kt_opdto.c_introduce} </label>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="profil">이런 활동은 자신있어요!</div>
+				<div class="row">
+					<c:forEach var="c_opdto" items="${clist}">
+						<div class="col-4 p-2">
+							<div style="height: 30px;">
+								<label><input type="checkbox" id="tCareType" class="tctchk"	name="t_care_type" value="${c_opdto.c_introduce}">${c_opdto.c_introduce} </label>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+				<button type="button" class="btn btn-outline-success" id="typeUpd">수정하기</button>
+			</div>
+			
+			
 			<!-- 선생님 소개글 -->
 			<div class="t_profile introduce">
 				<div>
@@ -126,12 +158,12 @@ section{
 						<div class="profil">CCTV 녹화 동의 여부</div>
 						<div>
 							<c:if test="${tDto.cctvagree == 0}">CCTV 녹화 비동의 중</c:if>
-							<c:if test="${tDto.cctvagree == 1}">CCTV 녹화 동의 중</c:if>						
+							<c:if test="${tDto.cctvagree == 1}">CCTV 녹화 동의 중</c:if>
 						</div>
-						<div class="profil">공룡 선생님 소개</div>					
+						<div class="profil">공룡 선생님 소개</div>
 						<div>
 							${tDto.t_introduce}
-						</div>					
+						</div>
 						<div class="profil">돌봄 활동 경험 / 이런 활동을 해봤어요!</div>
 						<div class="career">
 							${tDto.career_experience}
@@ -149,8 +181,8 @@ section{
 					</div>
 					<div class="profil">공룡 선생님 소개</div>
 					<div><% pageContext.setAttribute("newLineChar", "\n"); %>
-						<textarea rows="10" cols="60" name="t_introduce" id="t_introduce">${fn:replace(tDto.t_introduce,'<br>',newLineChar)}</textarea>						
-					</div>					
+						<textarea rows="10" cols="60" name="t_introduce" id="t_introduce">${fn:replace(tDto.t_introduce,'<br>',newLineChar)}</textarea>
+					</div>
 					<div class="profil">돌봄 활동 경험 / 이런 활동을 해봤어요!</div>
 					<div class="career">
 						<textarea rows="10" cols="60" name="career_experience" id="career_experience">${fn:replace(tDto.career_experience,'<br>',newLineChar)}</textarea>
@@ -171,7 +203,7 @@ section{
 		$('#bankbtn').click(function(){
 			
 			$('#bankDiv1').hide();
-			$('#bankDiv2').show();			
+			$('#bankDiv2').show();
 		});
 		
 		$('#bankupd').click(function(){
@@ -239,6 +271,61 @@ section{
 				type: "POST",
 				enctype: 'multipart/form-data',
 				url: '${pageContext.request.contextPath}/introUpd.do',
+				data: fdata,
+				processData: false,
+				contentType: false,
+				cache: false,
+				success: function(r) {
+					console.log("--- r : ", r);
+					location.href='teacherProfile.do?idx=${sidx}';
+				},
+				error: function(e) {
+					console.error(e);
+				}				
+				
+			});
+			
+		});
+		
+		$('#typebtn').click(function(){
+			$('#typeDiv1').hide();
+			$('#typeDiv2').show();
+		});
+		
+		
+ 		$('#typeUpd').click(function(){
+			
+			let fdata = new FormData();
+			let idx = ${sidx};
+			
+			let kid_type = [];
+			$('input[name=kid_type]:checked').each(function(i){
+				kid_type.push($(this).val());
+			});
+
+			let t_care_type = [];
+			$('input[name=t_care_type]:checked').each(function(i){
+				t_care_type.push($(this).val());
+			});
+			
+			fdata.forEach(function(value, key) {
+				console.log(key, value);
+			});
+			
+			fdata.set('kid_type', kid_type);
+			fdata.set('t_care_type', t_care_type);
+			fdata.set("d_member_idx", idx);
+			
+			document.addEventListener('keydown', function(event) {
+			  if (event.keyCode === 13) {
+			    event.preventDefault();
+			  };
+			}, true);
+
+			$.ajax({
+				type: "POST",
+				enctype: 'multipart/form-data',
+				url: '${pageContext.request.contextPath}/typeUpd.do',
 				data: fdata,
 				processData: false,
 				contentType: false,

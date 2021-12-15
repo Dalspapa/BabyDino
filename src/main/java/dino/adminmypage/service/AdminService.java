@@ -2,10 +2,12 @@ package dino.adminmypage.service;
 
 import java.util.List;
 
+import dino.adminmypage.model.AdminDto;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+import dino.parentmypage.model.*;
 
 public interface AdminService {
 	
@@ -57,6 +59,6 @@ public interface AdminService {
 	//돌봄분야 삭제
 	public int careDel(String op);
 	
-	//선생님 필수 검증(쿼리 수정예정)
-	public List<MemberDto> teacherCertification();
+	//선생님 필수 검증(쿼리 수정 완료 )
+	public List<AdminDto> teacherCertification();
 }

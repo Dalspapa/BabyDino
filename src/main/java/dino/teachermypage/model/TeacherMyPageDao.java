@@ -12,4 +12,12 @@ public interface TeacherMyPageDao {
 
 	//teacher profile bank, acnum, cost Update
 	public int introUpdate(MakeTCardDto introDto);
+	
+	//////////////주호
+	
+	//선생님 프로필 아이유형, 돌봄분야 업데이트
+	public int typeUpd(MakeTCardDto typeDto);
+	
+	
+	//////////////주호 끝
 }

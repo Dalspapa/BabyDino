@@ -113,10 +113,16 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	
-	//선생님 필수 인증(쿼리부분수정예정)
-	public List<MemberDto> teacherCertification() {
-		List<MemberDto> t_list = sqlMap.selectList("teacherCertification");
+	//선생님 필수 인증(쿼리부분수정 완료 )
+	public List<AdminDto> teacherCertification() {
+		List<AdminDto> t_list = sqlMap.selectList("teacherCertification");
 		return t_list;
 	}
 
+	
+	//선생님 등급 수정
+	public int teaCertUpd(int idx) {
+
+		return 0;
+	}
 }

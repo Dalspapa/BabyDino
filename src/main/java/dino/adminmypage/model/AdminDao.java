@@ -7,6 +7,7 @@ import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+import dino.adminmypage.model.*;
 
 public interface AdminDao {
 	
@@ -58,6 +59,9 @@ public interface AdminDao {
 	//돌봄분야 삭제
 	public int careDel(String op);
 	
-	//선생님 필수 인증(쿼리부분수정예정)
-	public List<MemberDto> teacherCertification();
+	//선생님 필수 인증(쿼리부분수정 완료 )
+	public List<AdminDto> teacherCertification();
+	
+	//선생님 등급 수정
+	public int teaCertUpd(int idx);
 }

@@ -1,24 +1,34 @@
 package dino.controller;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dino.adminmypage.model.AdminDto;
 import dino.adminmypage.service.AdminService;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+import dino.parentmypage.model.ParentMypageDto;
 										 
 
 @Controller
 public class AdminController {
 
+	public static final String IMGPATH = "C:\\upload\\";
+	
 	@Autowired
 	private AdminService adminService;
 	
@@ -211,15 +221,48 @@ public class AdminController {
 		mav.setViewName("adminMypage/adminMsg");
 		return mav;
 	}
-	
+	/////////////////주호
 		//선생님 필수검증(수정예정)
 	@RequestMapping("/teacherCertification.do")
 	public ModelAndView teacherCertification() {
-		List<MemberDto> t_list = adminService.teacherCertification();
+		
+		List<AdminDto> t_list = adminService.teacherCertification();
+		
 		ModelAndView mav = new ModelAndView();
+		
+		File f = new File("C:/teachercert");
+		File files[] = f.listFiles();
+		mav.addObject("files", files);		
+		
+		
 		mav.addObject("t_list",t_list);
 		mav.setViewName("adminMypage/teacherCertification");
 		return mav;
 	}
+	
+	@RequestMapping("/down.do")
+	public ModelAndView fileDownload(@RequestParam("fname") String fname) {
+		
+		ModelAndView mav = new ModelAndView();
+		File f = new File(IMGPATH + fname);
+		mav.addObject("downloadFile", f);
+		mav.setViewName("fileDown");
+		return mav;
+	}
+	
+	@RequestMapping("/teaCertUpd.do")
+	public ResponseEntity<?> teaCertUpd(int idx){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		int rst = memberser
+		
+		return ResponseEntity.ok(result);
+	}
+
+	
+	
+	
+	/////////////////주호 끝 
 	
 }

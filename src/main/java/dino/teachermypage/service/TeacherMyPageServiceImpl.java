@@ -32,5 +32,15 @@ public class TeacherMyPageServiceImpl implements TeacherMyPageService {
 		return teacherMypageDao.introUpdate(introDto);
 	}
 	
+	//////////////주호
+		
+	//선생님 프로필 아이유형, 돌봄분야 업데이트
+	public int typeUpd(MakeTCardDto typeDto) {
+		
+		return teacherMypageDao.typeUpd(typeDto);
+	}
+	
+	
+	//////////////주호 끝
 	
 }

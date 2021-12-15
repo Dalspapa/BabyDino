@@ -149,7 +149,7 @@
 	</update>
 		
 	<!-- 선생님 필수 인증 (이미지테이블 조인쿼리로 수정해야함)-->
-	<select id="teacherCertification" resultType="dino.dto.MemberDto">
+	<select id="teacherCertification" resultType="dino.adminmypage.model.AdminDto">
 		SELECT 
 		    m.idx
 		    ,m.name
@@ -163,6 +163,10 @@
 		LEFT JOIN d_teachercert t ON m.idx = t.d_member_idx
 		WHERE m.member_type = 5
 	</select>
+	
+	
+	
+	
 	
 </mapper>
 

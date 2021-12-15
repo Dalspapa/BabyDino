@@ -23,7 +23,7 @@ public class CommonOpServiceImple implements CommonOpService {
 		List<CommonOpDto> list = commonopDao.t_job_opList();
 		return list;
 	}
-
+//
 	public List<CommonOpDto> k_type_opList() {
 
 		List<CommonOpDto> k_list = commonopDao.k_type_opList();
