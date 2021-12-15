@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아  기  공  룡</title>
 <style>
 section {
    	width: 700px;
