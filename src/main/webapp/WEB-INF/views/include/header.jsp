@@ -81,8 +81,7 @@
 <!-- 챗 버튼 -->
 <c:if test="${ sid != null }">
 	<div id="chat" style="padding-top: 14px;">
-		<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
-		<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
+		<a href="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">
 		  <i class="fas fa-comments"></i>
 		</a>
 		<!-- ./ 챗 버튼 -->
