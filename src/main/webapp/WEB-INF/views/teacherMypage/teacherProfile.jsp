@@ -7,8 +7,8 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
 section{
-	width: 80%;
-	margin: 100px;
+    width: 80%;
+    margin: 190px auto;
 }
 .t_profile{
 	background-color: #E0F8E6;
