@@ -2,15 +2,22 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
   <mapper namespace="dino.adminmypage">
-  	<!-- 관리자 회원관리 -->
-	<select id="memberManagement" resultType="dino.dto.MemberDto">
-	SELECT
-		*
-	FROM
-		D_MEMBER 
+  	<!-- 동현작업시작 -->
+    <!-- 관리자 회원관리 -->
+	<select id="memberManagement" parameterType="Map" resultType="dino.dto.MemberDto">
+	select * from
+           (select rownum as rnum,a.* from
+           (select * from d_member order by idx desc)a ) b
+           where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
+	
+	<!-- 페이징 처리 -->
+	<select id="totalCnt" resultType="Integer">
+		select count(*) from d_member
+	</select>
+	
+	<!-- 동현 작업 끝 -->
 	
 	<!-- 선생님 정산 -->
 	<select id="tcost" resultType="dino.dto.ReserveDto">
@@ -115,16 +122,21 @@
 			op = #{op}
 	</delete>
 	
+	<!-- 동현 작업 시작 -->
 	<!-- admin report List -->
 																					 
-	<select id="adminrpList" resultType="dino.dto.ReportDto">
-		SELECT
-			*
-		FROM
-			d_report
-		ORDER BY
-			idx desc
+	<select id="adminrpList" parameterType="Map" resultType="dino.dto.ReportDto">
+		select * from
+           (select rownum as rnum,a.* from
+           (select * from d_report order by idx desc)a ) b
+        where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}	
 	</select>
+	
+	<!-- 페이징 처리 -->
+	<select id="totalCntReport" resultType="Integer">
+		select count(*) from d_report
+	</select>
+	<!-- 동현 작업 끝-->
 	
 	<!-- 회원 강제탈퇴 -->
 	<update id="adminMemberOut" parameterType="Integer">
@@ -137,7 +149,7 @@
 	</update>
 		
 	<!-- 선생님 필수 인증 (이미지테이블 조인쿼리로 수정해야함)-->
-	<select id="teacherCertification" resultType="dino.dto.MemberDto">
+	<select id="teacherCertification" resultType="dino.adminmypage.model.AdminDto">
 		SELECT 
 		    m.idx
 		    ,m.name
@@ -151,6 +163,10 @@
 		LEFT JOIN d_teachercert t ON m.idx = t.d_member_idx
 		WHERE m.member_type = 5
 	</select>
+	
+	
+	
+	
 	
 </mapper>
 

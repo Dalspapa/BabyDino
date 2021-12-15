@@ -55,9 +55,9 @@ a:link, a:visited {
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 	<div class="wrapperk">
-		<form name="writefm" action="/carenote/write.do" method="post">
-		<input type="hidden" name="d_reserve_idx" value="####"/>
-		<div class="title">#아이이름 돌봄노트</div>
+		<form name="writefm" action="submitCareNote.do" method="post">
+		<input type="hidden" name="d_reserve_idx" value="${ param.r_idx }"/>
+		<div class="title">돌봄노트 작성하기</div>
 		<div class="noteWrap">
 			<div>
 				<p>돌봄 내용을 작성해주세요!</p>

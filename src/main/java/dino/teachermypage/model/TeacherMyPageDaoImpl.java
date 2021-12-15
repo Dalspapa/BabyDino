@@ -29,4 +29,15 @@ public class TeacherMyPageDaoImpl implements TeacherMyPageDao {
 		System.out.println("intro dao impl------"+introDto.getT_introduce()+"//"+introDto.getCareer_experience()+"//"+introDto.getD_member_idx()+"/////"+introDto.getCctvagree());
 		return sqlMap.update("introUpd", introDto);
 	}
+	
+	//////////////주호
+		
+	//선생님 프로필 아이유형, 돌봄분야 업데이트
+	public int typeUpd(MakeTCardDto typeDto) {
+		
+		return sqlMap.update("typeUpd", typeDto);
+	}
+	
+	
+	//////////////주호 끝
 }

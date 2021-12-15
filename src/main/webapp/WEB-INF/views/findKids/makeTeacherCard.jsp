@@ -272,7 +272,6 @@
 	  var cctv = $('input[name="cctvagree"]:checked').val();
 	  var formData = new FormData();
 
-
 	  formData.set("d_member_idx", '${sessionScope.saveIdx}');
 	  	  
 	  formData.set("job", $("#job").val())
@@ -296,8 +295,7 @@
 	  };
 
 	  formData.forEach(function(value, key) {
-		  console.log(key, value);
-		  return false;
+		  console.log(key, value);		  
 	  });
 		
 	  $.ajax({

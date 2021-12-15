@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>공 룡 톡 </title>
 	
 	<!-- 채팅ui -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -14,218 +14,225 @@
 	
 	<!-- 챗리스트 -->
 	<style type="text/css">
-		body {
-		  padding-top: 0;
-		  font-size: 12px;
-		  color: #777;
-		  background: #f9f9f9;
-		  font-family: 'Open Sans',sans-serif;
-		  margin-top:20px;
-		}
-		
-		.bg-white {
-		  background-color: #fff;
-		}
-		
-		.friend-list {
-		  list-style: none;
-		margin-left: -40px;
-		}
-		
-		.friend-list li {
-		  border-bottom: 1px solid #eee;
-		}
-		
-		.friend-list li a img {
-		  float: left;
-		  width: 45px;
-		  height: 45px;
-		  margin-right: 10px;
-		}
-		
-		 .friend-list li a {
-		  position: relative;
-		  display: block;
-		  padding: 10px;
-		  transition: all .2s ease;
-		  -webkit-transition: all .2s ease;
-		  -moz-transition: all .2s ease;
-		  -ms-transition: all .2s ease;
-		  -o-transition: all .2s ease;
-		}
-		
-		.friend-list li.active a {
-		  background-color: #f1f5fc;
-		}
-		
-		.friend-list li a .friend-name, 
-		.friend-list li a .friend-name:hover {
-		  color: #777;
-		}
-		
-		.friend-list li a .last-message {
-		  width: 65%;
-		  white-space: nowrap;
-		  text-overflow: ellipsis;
-		  overflow: hidden;
-		}
-		
-		.friend-list li a .time {
-		  position: absolute;
-		  top: 10px;
-		  right: 8px;
-		}
-		
-		small, .small {
-		  font-size: 85%;
-		}
-		
-		.friend-list li a .chat-alert {
-		  position: absolute;
-		  right: 8px;
-		  top: 27px;
-		  font-size: 10px;
-		  padding: 3px 5px;
-		}
-		
-		.chat-message {
-		  padding: 60px 20px 20px;
-		}
-		
-		.chat {
-		    list-style: none;
-		    margin: 0;
-		}
-		
-		.chat-message{
-		    background: #f9f9f9;  
-		}
-		
-		.chat li img {
-		  width: 45px;
-		  height: 45px;
-		  border-radius: 50em;
-		  -moz-border-radius: 50em;
-		  -webkit-border-radius: 50em;
-		}
-		
-		img {
-		  max-width: 100%;
-		}
-		
-		.chat-body {
-		  padding-bottom: 20px;
-		}
-		
-		.chat li.left .chat-body {
-		  margin-left: 70px;
-		  background-color: #fff;
-		}
-		
-		.chat li .chat-body {
-		  position: relative;
-		  font-size: 11px;
-		  padding: 10px;
-		  border: 1px solid #f1f5fc;
-		  box-shadow: 0 1px 1px rgba(0,0,0,.05);
-		  -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-		  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-		}
-		
-		.chat li .chat-body .header {
-		  padding-bottom: 5px;
-		  border-bottom: 1px solid #f1f5fc;
-		}
-		
-		.chat li .chat-body p {
-		  margin: 0;
-		}
-		
-		.chat li.left .chat-body:before {
-		  position: absolute;
-		  top: 10px;
-		  left: -8px;
-		  display: inline-block;
-		  background: #fff;
-		  width: 16px;
-		  height: 16px;
-		  border-top: 1px solid #f1f5fc;
-		  border-left: 1px solid #f1f5fc;
-		  content: '';
-		  transform: rotate(-45deg);
-		  -webkit-transform: rotate(-45deg);
-		  -moz-transform: rotate(-45deg);
-		  -ms-transform: rotate(-45deg);
-		  -o-transform: rotate(-45deg);
-		}
-		
-		.chat li.right .chat-body:before {
-		  position: absolute;
-		  top: 10px;
-		  right: -8px;
-		  display: inline-block;
-		  background: #fff;
-		  width: 16px;
-		  height: 16px;
-		  border-top: 1px solid #f1f5fc;
-		  border-right: 1px solid #f1f5fc;
-		  content: '';
-		  transform: rotate(45deg);
-		  -webkit-transform: rotate(45deg);
-		  -moz-transform: rotate(45deg);
-		  -ms-transform: rotate(45deg);
-		  -o-transform: rotate(45deg);
-		}
-		
-		.chat li {
-		  margin: 15px 0;
-		}
-		
-		.chat li.right .chat-body {
-		  margin-right: 70px;
-		  background-color: #fff;
-		}
-		
-		.chat-box {
-		/*
-		  position: fixed;
-		  bottom: 0;
-		  left: 444px;
-		  right: 0;
-		*/
-		  padding: 15px;
-		  border-top: 1px solid #eee;
-		  transition: all .5s ease;
-		  -webkit-transition: all .5s ease;
-		  -moz-transition: all .5s ease;
-		  -ms-transition: all .5s ease;
-		  -o-transition: all .5s ease;
-		}
-		
-		.primary-font {
-		  color: #3c8dbc;
-		}
-		
-		a:hover, a:active, a:focus {
-		  text-decoration: none;
-		  outline: 0;
-		}
-	</style>
+	body {
+		padding-top: 0;
+		font-size: 12px;
+		color: #777;
+		background: #f9f9f9;
+		font-family: 'Open Sans', sans-serif;
+		margin-top: 20px;
+	}
 	
+	.bg-white {
+		background-color: #fff;
+	}
+	
+	.friend-list {
+		list-style: none;
+		margin-left: -40px;
+	}
+	
+	.friend-list li {
+		border-bottom: 1px solid #eee;
+	}
+	
+	.friend-list li a img {
+		float: left;
+		width: 45px;
+		height: 45px;
+		margin-right: 10px;
+	}
+	
+	.friend-list li a {
+		position: relative;
+		display: block;
+		padding: 10px;
+		transition: all .2s ease;
+		-webkit-transition: all .2s ease;
+		-moz-transition: all .2s ease;
+		-ms-transition: all .2s ease;
+		-o-transition: all .2s ease;
+	}
+	
+	.friend-list li.active a {
+		background-color: #f1f5fc;
+	}
+	
+	.friend-list li a .friend-name, .friend-list li a .friend-name:hover {
+		color: #777;
+	}
+	
+	.friend-list li a .last-message {
+		width: 65%;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	.friend-list li a .time {
+		position: absolute;
+		top: 10px;
+		right: 8px;
+	}
+	
+	small, .small {
+		font-size: 85%;
+	}
+	
+	.friend-list li a .chat-alert {
+		position: absolute;
+		right: 8px;
+		top: 27px;
+		font-size: 10px;
+		padding: 3px 5px;
+	}
+	
+	.chat-message {
+		padding: 60px 20px 20px;
+	}
+	
+	.chat {
+		list-style: none;
+		margin: 0;
+	}
+	
+	.chat-message {
+		background: #f9f9f9;
+	}
+	
+	.chat li img {
+		width: 45px;
+		height: 45px;
+		border-radius: 50em;
+		-moz-border-radius: 50em;
+		-webkit-border-radius: 50em;
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	.chat-body {
+		padding-bottom: 20px;
+	}
+	
+	.chat li.left .chat-body {
+		margin-left: 70px;
+		background-color: #fff;
+	}
+	
+	.chat li .chat-body {
+		position: relative;
+		font-size: 11px;
+		padding: 10px;
+		border: 1px solid #f1f5fc;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+		-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+		-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	}
+	
+	.chat li .chat-body .header {
+		padding-bottom: 5px;
+		border-bottom: 1px solid #f1f5fc;
+	}
+	
+	.chat li .chat-body p {
+		margin: 0;
+	}
+	
+	.chat li.left .chat-body:before {
+		position: absolute;
+		top: 10px;
+		left: -8px;
+		display: inline-block;
+		background: #fff;
+		width: 16px;
+		height: 16px;
+		border-top: 1px solid #f1f5fc;
+		border-left: 1px solid #f1f5fc;
+		content: '';
+		transform: rotate(-45deg);
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+	}
+	
+	.chat li.right .chat-body:before {
+		position: absolute;
+		top: 10px;
+		right: -8px;
+		display: inline-block;
+		background: #fff;
+		width: 16px;
+		height: 16px;
+		border-top: 1px solid #f1f5fc;
+		border-right: 1px solid #f1f5fc;
+		content: '';
+		transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+	}
+	
+	.chat li {
+		margin: 15px 0;
+	}
+	
+	.chat li.right .chat-body {
+		margin-right: 70px;
+		background-color: #fff;
+	}
+	
+	.chat-box {
+		padding: 15px;
+		border-top: 1px solid #eee;
+		transition: all .5s ease;
+		-webkit-transition: all .5s ease;
+		-moz-transition: all .5s ease;
+		-ms-transition: all .5s ease;
+		-o-transition: all .5s ease;
+	}
+	
+	.primary-font {
+		color: #3c8dbc;
+	}
+	
+	a:hover, a:active, a:focus {
+		text-decoration: none;
+		outline: 0;
+	}
+	
+	#chat-scroll {
+		padding-left: 0;
+		margin: 0;
+		list-style-type: none;
+		display: flex;
+		flex-direction: column-reverse;
+		overflow-y: auto;
+		height: 535px;
+		border-top: 2px solid #fff;
+		border-bottom: 2px solid #fff;
+	}
+	
+	#messageSend {
+		margin-top: 23px;
+	}
+	
+	.chatSubject {
+		text-align: center;
+	}
+</style>
 </head>
 
 <body>
-
-	<h1>${ sessionScope.roomIdx }</h1>
-	
+	<h3 class="chatSubject">${ sessionScope.saveName }님의 채팅방</h3>
     <!-- selected chat -->
    	<div class="bg-white ">
-       <div class="chat-message">
-           <ul class="chat">
-           
-
+       <div class="chat-message" id="chat-scroll">
+           <ul class="chat" >
                <!-- 기존 채팅 리스트 불러오기 -->
-
                <c:forEach var="vo" items="${ messageList }">
                		
                	<!-- 필요한 변수들 -->
@@ -297,25 +304,27 @@
                </c:forEach>
                <!-- 기존 채팅 리스트 불러오기  끝 -->           
            </ul>
-       </div>   
-       <!-- 메시지 보내기 -->	
-		<form name="fm" method="post" onsubmit="return false;">	
-			<div class="chat-box bg-white">
-				<div class="input-group">
-				
-					<input type="text" name="write" class="form-control border no-shadow no-rounded" 
-						placeholder="메시지를 입력해 주세요." autocomplete="off" 
-						onkeyup="if(window.event.keyCode==13){sendMessage()}">
-						
-					<span class="input-group-btn">
-						<button class="btn btn-success no-rounded" type="button" onclick="sendMessage()">Send</button>
-					</span>
-				
-				</div>
-			</div> 
-		</form>
-		<!-- 메시지 보내기 닫힘-->         
+       </div>         
 	</div>
+	<!-- 메시지 보내기 -->
+	<div id="messageSend"> 
+		<form name="fm" method="post" onsubmit="return false;">	
+		<div class="chat-box bg-white">
+			<div class="input-group">
+			
+				<input type="text" name="write" class="form-control border no-shadow no-rounded" 
+					placeholder="메시지를 입력해 주세요." autocomplete="off" 
+					onkeyup="if(window.event.keyCode==13){sendMessage()}">
+					
+				<span class="input-group-btn">
+					<button class="btn btn-success no-rounded" type="button" onclick="sendMessage()">Send</button>
+				</span>
+			
+			</div>
+		</div> 
+	</form>
+	</div>
+	<!-- 메시지 보내기 닫힘-->  
 </body>
 
 
@@ -354,8 +363,6 @@
 					typeChar = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
 				}
 				
-				
-				
 				var talkHtml = '';
 				talkHtml += '<li class="left clearfix">';
 				talkHtml += 	'<span class="chat-img pull-left">';
@@ -385,14 +392,10 @@
 	//방 입장하면 기존 대화목록 여기서 불러냄.
 	function onOpen(evt) {
 
-		//document.fm.content.value = '대화참여함\n';
-
 	}
 	
 	//대화종료.
 	function onClose(evt) {
-
-		//document.fm.content.value = '대화종료함\n'; 
 
 	}
 	
@@ -463,16 +466,11 @@
 				
 		);
 		
-		// 스크롤바 아래 고정
-        $("input[name=write]")[0].scrollIntoView();
-		
 		//핸들러로 메시지 보냄.
 		ws.send(message);
 				
 		document.fm.write.value = '';
 		document.fm.write.focus();
-		
-		
 		
 	};
 	
@@ -500,11 +498,6 @@
 		
 		return sendTime;
 	}
-	
-	
-	
-	
+
 </script>
-
-
 </html>

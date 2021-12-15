@@ -21,6 +21,7 @@
 <body>
 			<!-- 선생님회원테이블 -->
 			<div class="teacherTable">
+			<form name="tUpd" onsubmit="return false;">
 			<table class="table table-hover">
 			  <thead>
 			    <tr>
@@ -43,19 +44,31 @@
 					</tr>
 				</c:if>
 				<c:forEach var ="dto" items = "${t_list}">
-			    <tr>
-			    	<td>${dto.idx}</td>
-			      	<td>${dto.name}</td>
-					<td>${dto.id}</td>
-					<td>${dto.tel}</td>
-					<td>${dto.joinDate}</td>
-					<td>#이미지 들어갈 부분(쿼리 수정해야함!)</td>
-					<td><button type="button" class="btn btn-outline-success">동의여부</button></td>
-					<td><button type="button" class="btn btn-outline-success">인증하기</button></td>
-			    </tr>
+				<c:url var="downUrl" value="down.do">
+					<c:param name="fname">${dto.exemplification}</c:param>
+				</c:url>
+				    <tr>
+				    	<td>${dto.idx}</td>
+				    	<input type="hidden" id="midx" name="d_member_idx" value="${idx}">
+				      	<td>${dto.name}</td>
+						<td>${dto.id}</td>
+						<td>${dto.tel}</td>
+						<td>${dto.joinDate}</td>
+						<td><a href="${downUrl}">${dto.exemplification}</a></td>
+						<td>
+							<c:if test="${dto.crimeagree == '동의합니다.'}">
+								조회 동의
+							</c:if>
+							<c:if test="${dto.crimeagree != '동의합니다.'}">
+								조회 비동의
+							</c:if>
+						</td>
+						<td><button type="button" class="btn btn-outline-success" onclick="tCert();">인증하기</button></td>
+				    </tr>
 			    </c:forEach>
 			  </tbody>
 			</table>
+			</form>			
 				<div>
 					페이징 처리 될 부분
 				</div>
@@ -63,4 +76,46 @@
  <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
+<script>
+
+	function tCert(){
+		
+		let d_member_idx = $('#midx').val();
+		
+		let fdata = new FormDate();
+		
+		fdata.set('d_member_idx', d_member_idx);
+		
+		$.ajax({
+			
+			method : 'POST',
+			url : '${pageContext.request.contextPath}/teaCertUpd.do',
+			data : fmdata,
+			processData: false,
+			contentType: false,
+			cache: false,
+			success : function(result){				
+				console.log('인증완료');
+			},
+			error : function(error){
+				console.log("잘못된 접근 또는 오류가 발생했습니다.");
+			}
+			
+		});
+		
+	}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
 </html>

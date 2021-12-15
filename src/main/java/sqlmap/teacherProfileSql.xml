@@ -19,7 +19,6 @@
 			,t.bank
 			,t.acnum
 			,t.cctvagree
-	    	,t.t_sexcrime
 	    	,t.career_experience
 	    	,m.name
 	    	,(to_char(sysdate,'yyyy') - to_char(m.birth,'yyyy')) as age
@@ -63,6 +62,20 @@
 			t_introduce = #{t_introduce}
 			,career_experience = #{career_experience}
 			,cctvagree = #{cctvagree}
+		WHERE 
+			D_MEMBER_IDX = #{d_member_idx}
+	
+	</update>
+	
+	
+	<!--주호~~~~~~ teacher profile k_type, care type Update -->
+	<update id="typeUpd" parameterType="dino.dto.MakeTCardDto">
+	
+		UPDATE 
+			d_teachercard 
+		SET 
+			kid_type = #{kid_type}
+			,t_care_type = #{t_care_type}
 		WHERE 
 			D_MEMBER_IDX = #{d_member_idx}
 	

@@ -31,14 +31,14 @@ public class CareNoteController {
 	 * @param dto
 	 * @return
 	 */
-	@RequestMapping(value="/carenote/write.do", method = RequestMethod.POST)
+	@RequestMapping(value="/submitCareNote.do", method = RequestMethod.POST)
 	public ModelAndView carenoteWrite(CareNoteDto dto) {
 
 		int result=careNoteService.writeCareNote(dto);
 		ModelAndView mav= new ModelAndView();
 
 		mav.addObject("dto", dto);
-		mav.setViewName("redirect:/carenote/list.do");
+		mav.setViewName("main");
 
 		return mav;
 	}

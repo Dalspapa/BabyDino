@@ -17,6 +17,7 @@
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <!-- <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=799ea40d2e8454d64bcb4e4aae11d125"></script> -->
 <script>
@@ -31,7 +32,7 @@
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 	 */
 
-	if(typeof kakao != 'undefined'){
+/* 	if(typeof kakao != 'undefined'){
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 	    mapOption = {
 	        center: new kakao.maps.LatLng(37.51795334189508, 126.89483972060654), // 지도의 중심좌표
@@ -49,10 +50,10 @@
 		var marker = new kakao.maps.Marker({
 		    position: markerPosition
 		});
-	}
+	} */
 
 	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
+	//marker.setMap(map);
 
 	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 	// marker.setMap(null);
