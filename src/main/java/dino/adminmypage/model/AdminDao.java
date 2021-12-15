@@ -63,5 +63,6 @@ public interface AdminDao {
 	public List<AdminDto> teacherCertification();
 	
 	//선생님 등급 수정
-	public int teaCertUpd(int idx);
+	public int teaCertUpd(int idx);	
+	
 }

@@ -46,7 +46,7 @@
 	<select id="caringPage" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
 	         k.idx
-	        ,k.d_member_idx
+	        ,k.d_member_idx 
 	        ,k.k_name
 	        ,k.k_birth
 	        ,k.k_gender
@@ -58,10 +58,13 @@
 	        ,r.idx as r_idx
 	        ,r.status
 	        ,r.cost as r_cost
+            ,t.d_member_idx as teacher_member_idx
 		from
-	         d_kidcard k, d_reserve r
+	         d_kidcard k, d_reserve r, d_teachercard t
 		where
 	        k.idx = r.kid_idx
+        and
+            r.teacher_idx = t.idx
 	    and
 	    	r.idx = #{idx}
 	</select>

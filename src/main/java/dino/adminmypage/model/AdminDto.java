@@ -11,13 +11,14 @@ public class AdminDto {
 	private Date joinDate;
 	private String exemplification;
 	private String crimeagree;
+	private int member_type;
 	
 	public AdminDto() {
 		super();
 	}
 
 	public AdminDto(int idx, String name, String id, String tel, Date joinDate, String exemplification,
-			String crimeagree) {
+			String crimeagree, int member_type) {
 		super();
 		this.idx = idx;
 		this.name = name;
@@ -26,6 +27,7 @@ public class AdminDto {
 		this.joinDate = joinDate;
 		this.exemplification = exemplification;
 		this.crimeagree = crimeagree;
+		this.member_type = member_type;
 	}
 
 	public int getIdx() {
@@ -83,6 +85,15 @@ public class AdminDto {
 	public void setCrimeagree(String crimeagree) {
 		this.crimeagree = crimeagree;
 	}
+
+	public int getMember_type() {
+		return member_type;
+	}
+
+	public void setMember_type(int member_type) {
+		this.member_type = member_type;
+	}
+
 	
 	
 	

@@ -273,7 +273,7 @@ public class FindKidsController {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
 		}
 		teacher.setId(id);
-		int updMType = findKidsService.UpdGrade(teacher.getId());	
+		int updMType = findKidsService.UpdGrade(teacher.getId());
 		request.getSession().setAttribute("saveMemberType", updMType);
 
 		//선생님 필수 인증 정보 입력

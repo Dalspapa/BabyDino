@@ -230,22 +230,28 @@ section{
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+
+  <!-- chat url -->
+	<c:url var="enterChatRoom" value="enterChatRoom.do">
+	    <c:param name="partnerIdx" value="${ dto.teacher_member_idx }"/>
+	</c:url>
+
   <div class="wrapper" style="margin-top:80px;">
     <section class="userInfoWrap">
       <h2>사용자 상태 영역</h2>
       <div class="userLiveWrap">
         <div class="userLive">
           <div>
-            <div class="aa">수락대기</div>
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">신청취소</button>
+            <div class="aa">수락대기</div> 
+            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">신청취소</button>
           </div>
           <div>
             <div class="aa">상담중</div>
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">신청취소</button>
+            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">신청취소</button>
           </div>
           <div>
             <div class="aa">상담완료</div>
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">재상담</button>
+            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">재상담</button>
           </div>
           <div>
             <div class="aa">결제대기</div>
