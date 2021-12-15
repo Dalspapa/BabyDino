@@ -255,7 +255,7 @@ public class AdminController {
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
-		int rst = memberser
+		
 		
 		return ResponseEntity.ok(result);
 	}
