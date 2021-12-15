@@ -193,10 +193,8 @@
 		  <div class="offcanvas-body">
 		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
-		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="t_reviewMain.do?idx=${sidx}">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
 		    <div><a href="accountManagement.do">계정관리</a></div>
 		  </div>
 		</div>

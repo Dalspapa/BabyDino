@@ -55,6 +55,8 @@ table th,td {
 /*페이징 부분*/
 .paging a{
 	color: #68983b;
+	display: flex;
+    justify-content: space-around;
 }
 </style>
 </head>
