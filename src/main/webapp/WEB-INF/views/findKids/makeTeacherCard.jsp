@@ -19,7 +19,7 @@
 #step_2{
 	margin-top: 182px;
     text-align: center;
-    margin: 9% auto;
+    margin: 10% auto;
 }
 #step_2 .check2{
 	margin-bottom: 20px;
@@ -196,7 +196,7 @@
 					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 				' - ' 을 빼고 입력해주세요.
 			</div>
-					
+			<br>	
 			<button type="button" class="btn btn-outline-secondary  prevbtn">이전으로</button>
 			<button type="button" class="btn btn-outline-dark"
 				onclick="javascript:location.href='main.do'">포기하기</button>
