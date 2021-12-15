@@ -1,6 +1,7 @@
 package dino.adminmypage.model;
 
 import java.util.List;
+import java.util.Map;
 
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
@@ -9,14 +10,23 @@ import dino.dto.ReserveDto;
 
 public interface AdminDao {
 	
+	/*222222222동현 작업 시작22222222222*/
 	//신고하기(관리자)
-	public List<ReportDto> reportList();
+	public List<ReportDto> reportList(Map map);
 	
+	public int getTotalCntReport();
+	
+	/*222222222동현 작업 끝22222222222*/
 	//회원강제탈퇴
 	public int adminMemberOut(int idx);
-
+	
+	/**동현 작업 시작:::::::::::::::::::::*/
 	//admin회원 관리
-	public List<MemberDto> memberManagement();
+	public List<MemberDto> memberManagement(Map map);
+	
+	//페이징 처리
+	public int getTotalCnt();
+	/**동현 작업 끝:::::::::::::::::::::*/
 	
 	//선생님 정산
 	public List<ReserveDto> teacherCost();

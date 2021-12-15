@@ -1,6 +1,7 @@
 package dino.report.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -20,12 +21,20 @@ public class ReportDaoImple implements ReportDao {
 		int count = sqlMap.insert("reportInsert", reportDto);
 		return count;
 	}
-
-	public List<ReportDto> reportList() {
-		List<ReportDto> reportlist = sqlMap.selectList("reportList");
+	/*:::::::동현 작업 시작::::::::::*/
+	
+	public List<ReportDto> reportList(Map map) {
+		List<ReportDto> reportlist = sqlMap.selectList("reportList", map);
 		return reportlist;
 	}
 
+	// 페이징 처리
+	public int getTotalCntReport() {
+		int count = sqlMap.selectOne("totalCntReport");
+		return count;
+			}
+	/*:::::::동현 작업 끝::::::::::*/
+	
 	public ReportDto reportContent(int idx) {
 		ReportDto dto = sqlMap.selectOne("reportContent",idx);
 		return dto;

@@ -1,8 +1,7 @@
 package dino.controller;
 
 import java.util.List;
-
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,16 +25,26 @@ public class AdminController {
 	String msg = "";
 	String goUrl = "";
 	
+	/*:::::::동현 작업 시작::::::::::*/
 	@RequestMapping("/reportManagement.do")
-	public ModelAndView reportManagement() {
+	public ModelAndView reportManagement(
+			@RequestParam(value = "cp", defaultValue = "1")int cp) {
+		int listSize = 10;
+		int pageSize = 5;
+		int totalCnt = adminService.getTotalCntReport();
 		
-		List<ReportDto> reportManagement = adminService.reportList();
+		List<ReportDto> reportManagement = adminService.reportList(cp, listSize);
+		String pageStr = pagination.PageModule.makePage("reportManagement.do", totalCnt, listSize, pageSize, cp);
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("pageStr", pageStr);
 		mav.addObject("reportManagement",reportManagement);
 		mav.setViewName("adminMypage/reportManagement");
 		
 		return mav;
 	}
+	
+	/*:::::::동현 작업 끝::::::::::*/
 	
 	//관리자가 강제탈퇴버튼 누르면 연결되는 메서드
 	@RequestMapping("/adminMemberOut.do")
@@ -53,15 +62,25 @@ public class AdminController {
 		return mav;
 	}
 	
+	/*:::::::동현 작업 시작::::::::*/
 	//회원관리로 이동
 	@RequestMapping("/memberManagement.do")
-	public ModelAndView memberManageMent() {
-		List<MemberDto> list = adminService.memberManagement();
+	public ModelAndView memberManageMent(
+			@RequestParam(value = "cp", defaultValue = "1")int cp) {
+		int listSize = 10;
+		int pageSize = 5;
+		int totalCnt = adminService.getTotalCnt();
+		
+		List<MemberDto> list = adminService.memberManagement(cp, listSize);
+		String pageStr = pagination.PageModule.makePage("memberManagement.do", totalCnt, listSize, pageSize, cp);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list",list);
+		mav.addObject("pageStr", pageStr);
+		mav.addObject("list", list);
 		mav.setViewName("adminMypage/memberManagement");
 		return mav;
 	}
+	/*:::::::동현 작업 끝::::::::*/
 	
 	//선생님 정산
 	@RequestMapping("/settlement.do")
