@@ -8,8 +8,7 @@
 <!-- -------------지원 css---------------- -->
 <style>
 .size {
-	width: 1000px;
-	height: 500px;
+	width: 100%;
 	margin-top: 50px;
 	margin-left: 500px;
 	margin-bottom: 200px;
