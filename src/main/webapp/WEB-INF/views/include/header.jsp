@@ -162,7 +162,7 @@
                     
                     <c:if test="${stype == 1}">
 						<li class="nav-item">
-	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3">
+	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight4">
 	                        <i class="fas fa-user"></i>
 	               		  </a>
 						</li>
@@ -174,8 +174,16 @@
 	               		  </a>
 						</li>
                     </c:if>
-                    <!-- teacher navbar -->
-                    <c:if test="${stype == 4 || stype == 5 || stype == 6 || stype == 10}">
+                    <!-- teacher navbar 4, 5, 6 -->
+                    <c:if test="${stype == 4 || stype == 5 || stype == 6}">
+						<li class="nav-item">
+	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3">
+	                        <i class="fas fa-user"></i>
+	               		  </a>
+						</li>
+                    </c:if>
+                    <!-- teacher navbar 10 -->
+                    <c:if test="${stype == 10}">
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">
 	                        <i class="fas fa-user"></i>
@@ -201,12 +209,12 @@
 		    <div><a href="careNoteList.do?idx=${sidx}">돌봄노트</a></div>
 		    <div><a href="reviewMain.do?idx=${sidx}">후기내역</a></div>
 		    <div><a href="reportList.do?idx=${sidx}">신고내역</a></div>
-		    <div><a href="#">계정관리</a></div>
+		    <div><a href="accountManagement.do">계정관리</a></div>
 		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
 		  </div>
 		</div>
 
-		<!-- side navbar teacher -->
+		<!-- side navbar teacher 10 -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight2">
 		  <div class="offcanvas-header">
 		    <h5 id="offcanvasRightLabel">${sname} 선생님</h5>
@@ -215,14 +223,27 @@
 		  <div class="offcanvas-body">
 		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
-		    <div><a href="#">돌봄노트</a></div>
+		    <div><a href="t_reviewMain.do?idx=${sidx}">후기내역</a></div>
+		    <div><a href="accountManagement.do">계정관리</a></div>
+		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
+		  </div>
+		</div>
+		<!-- side navbar teacher 4, 5, 6 -->
+		<div class="offcanvas offcanvas-end" id="offcanvasRight3">
+		  <div class="offcanvas-header">
+		    <h5 id="offcanvasRightLabel">${sname} 선생님</h5>
+		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		  </div>
+		  <div class="offcanvas-body">
+		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
+		    <div><a href="javascript:noCard();">프로필</a></div>
 		    <div><a href="t_reviewMain.do?idx=${sidx}">후기내역</a></div>
 		    <div><a href="accountManagement.do">계정관리</a></div>
 		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
 		  </div>
 		</div>
 		<!-- side navbar admin -->
-		<div class="offcanvas offcanvas-end" id="offcanvasRight3">
+		<div class="offcanvas offcanvas-end" id="offcanvasRight4">
 		  <div class="offcanvas-header">
 		    <h5 id="offcanvasRightLabel">${sid}</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -240,6 +261,10 @@
 </head>
 <script>
 
+
+	function noCard(){
+		alert('선생님 카드 등록 후 이용할 수 있는 서비스입니다.');
+	}
 
 	function dinoCare(stype){
 

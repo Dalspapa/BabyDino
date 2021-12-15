@@ -123,7 +123,7 @@ section .container{
 								<strong>아이 성별</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-							  <input type="radio" class="btn-check k_gender" name="k_gender" id="btnradio1" value="1"  autocomplete="off" checked>
+							  <input type="radio" class="btn-check k_gender" name="k_gender" id="btnradio1" value="1"  autocomplete="off">
 							  <label class="btn btn-outline-primary k_gender" for="btnradio1">여아</label>
 							  <input type="radio" class="btn-check" name="k_gender" id="btnradio2" value="2" autocomplete="off">
 							  <label class="btn btn-outline-primary" for="btnradio2">남아</label>
@@ -135,7 +135,7 @@ section .container{
 								<strong>돌봄 비용</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio3" value="high" autocomplete="off" checked>
+							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio3" value="high" autocomplete="off">
 							  <label class="btn btn-outline-primary" for="btnradio3">시급 높은 순</label>
 							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio4" value="low" autocomplete="off">
 							  <label class="btn btn-outline-primary" for="btnradio4">시급 낮은 순</label>
@@ -162,9 +162,9 @@ section .container{
 					</section>
 
 					<section>
-						<input type="checkbox" class="btn-check" name="orderByNear" id="btn-check-1-outlined" checked autocomplete="off">
+						<input type="checkbox" class="btn-check" name="orderByNear" id="btn-check-1-outlined" autocomplete="off">
 						<label class="btn btn-outline-secondary" for="btn-check-1-outlined" value="${ kidCardList.teacher_addr }">가까운 순</label>
-						<input type="checkbox" class="btn-check" name="orderByMeet" id="btn-check-2-outlined" checked autocomplete="off">
+						<input type="checkbox" class="btn-check" name="orderByMeet" id="btn-check-2-outlined" autocomplete="off">
 						<label class="btn btn-outline-secondary" for="btn-check-2-outlined">만났던 순</label>
 						<input type="checkbox" class="btn-check" id="btn-check-3-outlined" checked autocomplete="off">
 
