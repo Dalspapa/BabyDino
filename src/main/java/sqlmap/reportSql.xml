@@ -3,7 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="dino.report">
-  
   	<!-- report Write -->
 	<insert id="reportInsert" parameterType="dino.dto.ReportDto">
 	insert into
@@ -18,6 +17,7 @@
 		#{rp_content}) 
 	</insert>
 
+	<!-- 동현작업시작 -->
 	<!-- report Content -->
 	<select id="reportContent" parameterType="Integer" resultType="dino.dto.ReportDto">
 		select
@@ -28,16 +28,20 @@
 			idx = #{idx} 
 	</select>
 	
+	<!-- 222222222222222동현작업시작 22222222222222-->
 	<!-- report List -->
 	<select id="reportList" resultType="dino.dto.ReportDto">
-		SELECT
-			*
-		FROM
-			d_report
-		ORDER BY 
-			idx desc
+	select * from
+           (select rownum as rnum,a.* from
+           (select * from d_report order by idx desc)a ) b
+           where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
+	<!-- 페이징 처리 -->
+	<select id="totalCnt" resultType="Integer">
+		select count(*) from d_report
+	</select>
+	<!--2222222222 동현작업끝222222222 -->
 	<!-- report Delete-->
 	<delete id="reportDelete" parameterType="Integer">
 		delete from
