@@ -66,6 +66,9 @@
 	justify-content: center!important;
 	margin: 20px auto;
 }
+.login-nav{
+	margin-top : 30px;
+}
 </style>
 
 <!-- 세션 -->
@@ -129,32 +132,32 @@
                     </c:if>
 
                     <c:if test="${stype == 1}">
-	                    <li class="nav-item">
+	                    <li class="nav-item login-nav">
 	                    	&#128073;관리자 로그인 중
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
-	                    <li class="nav-item">
+	                    <li class="nav-item login-nav">
 	                    	&#128073;${sname} 부모님 로그인 중
 	                    </li>
                     </c:if>
                      <c:if test="${stype == 4}">
-	                    <li class="nav-item">
+	                    <li class="nav-item login-nav">
 	                    	&#128073;${sname} 선생님 로그인 중
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 5}">
-	                    <li class="nav-item">
+	                    <li class="nav-item login-nav">
 	                    	&#128073;${sname} 선생님 로그인 중
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 6}">
-	                    <li class="nav-item">
+	                    <li class="nav-item login-nav">
 	                    	&#128073;${sname} 선생님 로그인 중
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 10}">
-	                    <li class="nav-item">
+	                    <li class="nav-item login-nav">
 	                    	&#128073;${sname} 선생님 로그인 중
 	                    </li>
                     </c:if>
@@ -227,7 +230,8 @@
 		    <div><a href="accountManagement.do">계정관리</a></div>
 		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
 		  </div>
-		</div>
+		 </div>
+<!-- 		</div> -->
 		<!-- side navbar teacher 4, 5, 6 -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight3">
 		  <div class="offcanvas-header">
