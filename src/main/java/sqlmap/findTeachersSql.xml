@@ -15,7 +15,7 @@
                 ,t.t_care_type
                 ,t.t_cost
                 ,t.t_introduce
-                ,ci.c_imgpath
+                ,NVL(ci.c_imgpath, 'noimage.png') AS c_imgpath
             FROM
                 d_teachercard t
             LEFT JOIN
