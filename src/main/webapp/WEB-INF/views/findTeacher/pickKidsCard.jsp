@@ -45,7 +45,7 @@
     /* margin: 1% 31%; */
 }
 .contaniner #step3 .wrapper .row .btns{
-    margin: 1% auto;
+    margin: 1% auto!important;
 }
 .cost {
 	margin-left : 70%;
@@ -187,7 +187,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="btns">
+					<div class="btns" style="margin-bottom: 45px;">
 						<!-- kidList GO -->
 						<button type="button" class="btn btn-outline-primary" style="margin-left: 48%; margin-top: 1%;"
 							onclick="goKidList()">등록하기</button>

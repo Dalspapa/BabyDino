@@ -64,6 +64,12 @@
 }
 </style>
 
+<!-- 세션 -->
+<c:set var="sid" value="${sessionScope.saveId}" />
+<c:set var="sname" value="${sessionScope.saveName}" />
+<c:set var="stype" value="${sessionScope.saveMemberType}" />
+<c:set var="sidx" value="${sessionScope.saveIdx}" />
+
 <!-- 페이지 상위 버튼 -->
 <div id="top-button">
 	<a href="#page-top">
@@ -71,23 +77,20 @@
 	</a>
 	<!-- ./ 페이지 상위 버튼 -->
 </div>
+
 <!-- 챗 버튼 -->
-<div id="chat">
-	<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
-	<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
-		<span id="caht-cnt">
-			<p>1</p>
-		</span>
-	  <i class="fas fa-comments"></i>
-	</a>
-	<!-- ./ 챗 버튼 -->
-</div>
+<c:if test="${ sid != null }">
+	<div id="chat" style="padding-top: 14px;">
+		<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
+		<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
+		  <i class="fas fa-comments"></i>
+		</a>
+		<!-- ./ 챗 버튼 -->
+	</div>
+</c:if>
+
     <!-- header -->
 	<header>
-		<c:set var="sid" value="${sessionScope.saveId}" />
-		<c:set var="sname" value="${sessionScope.saveName}" />
-		<c:set var="stype" value="${sessionScope.saveMemberType}" />
-		<c:set var="sidx" value="${sessionScope.saveIdx}" />
 		<nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
 			<div class="container px-4 px-lg-5">
 				<a id="header-logo" class="navbar-brand" href="main.do"> <!-- href="redirect:/main.do" -->

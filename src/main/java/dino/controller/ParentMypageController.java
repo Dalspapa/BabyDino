@@ -18,6 +18,8 @@ public class ParentMypageController {
 	@Autowired
 	private ParentMypageService parentMypageService;
 
+	String goUrl = "";
+
 	/**
 	 * 부모님 돌봄 현황 페이지
 	 * @return
@@ -99,6 +101,17 @@ public class ParentMypageController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("parentMypage/careNote");
+		return mav;
+	}
+
+	@RequestMapping("/statusUpdate.do")
+	public ModelAndView statusUpdate(@RequestParam("idx")int idx) {
+		int result = parentMypageService.statusUpdate(idx);
+		String msg = result>0?	"결제 되었습니다.": "다시 시도해주세요.";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.addObject("goUrl","caring.do?idx="+idx);
+		mav.setViewName("report/reportMsg");
 		return mav;
 	}
 }

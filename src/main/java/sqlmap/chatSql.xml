@@ -5,46 +5,65 @@
 
 <mapper namespace="dino.chat">
 	<select id="getList" parameterType="Integer" resultType="dino.chat.model.ChatListVo">
-		SELECT * FROM
-	               (WITH MSG_TAB AS
-	                   (SELECT MESSAGE_IDX, RANK, MESSAGE, D_CHATROOM_IDX, READ, SEND_TIME, D_MEMBER_IDX
-	                      FROM
-                              (SELECT IDX AS MESSAGE_IDX
-                                    , ROW_NUMBER() OVER(PARTITION BY D_CHATROOM_IDX ORDER BY D_CHATROOM_IDX DESC) AS RANK
-                                    , MESSAGE
-                                    , D_CHATROOM_IDX
-                                    , READ
-                                    , SEND_TIME
-                                    , D_MEMBER_IDX
-                               FROM D_CHATMESSAGE
-                               WHERE MESSAGE IS NOT NULL
-                               )
-	                     WHERE RANK = 1
-	                     )
-	                SELECT A.IDX AS ROOM_IDX
-	                        , A.SENDER
-	                        , A.RECEIVER
-	                        , B.ID SENDER_ID
-	                        , B.NAME SENDER_NAME
-	                        , B.MEMBER_TYPE AS SENDER_TYPE
-	                        , C.ID RECEIVER_ID
-	                        , C.NAME RECEIVER_NAME
-	                        , C.MEMBER_TYPE AS RECEIVER_TYPE
-	                        , D.MESSAGE
-	                        , D.SEND_TIME
-	                        , D.READ
-	                        , D.D_MEMBER_IDX AS LAST_SENDER
-	                        , D.MESSAGE_IDX
-	                  FROM D_CHATROOM A, D_MEMBER B, D_MEMBER C, MSG_TAB D
-	                 WHERE  A.SENDER  = B.IDX(+)
-	                   AND  A.RECEIVER = C.IDX(+)
-	                   AND  A.IDX = D.D_CHATROOM_IDX(+)
-	                ORDER BY D.MESSAGE_IDX DESC
-	                )
+	
+		SELECT *
+		FROM
+		    (SELECT 
+		        A.*,
+		        B.LAST_MESSAGE,
+		        B.LAST_SEND_TIME,
+		        B.LAST_CM_IDX,
+		        B.LAST_READ,
+		        B.LAST_M_IDX
+		    FROM 
+		        (SELECT 
+		            CL.*, 
+		            MR.NAME AS RECEIVER_NAME, 
+		            MR.MEMBER_TYPE AS RECEIVER_TYPE 
+		        FROM 
+		            (SELECT 
+		                C.*, 
+		                M.NAME AS SENDER_NAME, 
+		                M.MEMBER_TYPE AS SENDER_TYPE
+		            FROM
+		                D_CHATROOM C,
+		                D_MEMBER M
+		            WHERE
+		                C.SENDER = M.IDX(+)) CL, 
+		            D_MEMBER MR
+		        WHERE 
+		            CL.RECEIVER = MR.IDX(+)) A, 
+		            (SELECT 
+		                C_IDX, 
+		                LAST_CM_IDX, 
+		                LAST_MESSAGE, 
+		                LAST_SEND_TIME, 
+		                LAST_READ, 
+		                LAST_M_IDX
+		            FROM
+		                (SELECT
+		                        D_CHATROOM_IDX AS C_IDX,
+		                        LAST_VALUE(IDX)
+		                        OVER(ORDER BY D_CHATROOM_IDX) AS LAST_CM_IDX,
+		                        LAST_VALUE(MESSAGE)
+		                        OVER(ORDER BY D_CHATROOM_IDX) AS LAST_MESSAGE,
+		                        LAST_VALUE(SEND_TIME)
+		                        OVER(ORDER BY D_CHATROOM_IDX) AS LAST_SEND_TIME,
+		                        LAST_VALUE(READ)
+		                        OVER(ORDER BY D_CHATROOM_IDX) AS LAST_READ,
+		                        LAST_VALUE(D_MEMBER_IDX)
+		                        OVER(ORDER BY D_CHATROOM_IDX) AS LAST_M_IDX
+		                FROM 
+		                        D_CHATMESSAGE)
+		                GROUP BY C_IDX, LAST_CM_IDX, LAST_MESSAGE, LAST_SEND_TIME, LAST_READ, LAST_M_IDX) B
+		    WHERE
+		        A.IDX = B.C_IDX
+		    ORDER BY LAST_CM_IDX DESC)
 		WHERE
-	          SENDER = #{sessionIdx}
-		  OR
-	        RECEIVER = #{sessionIdx}
+		    SENDER = #{sessionIdx}
+		OR
+		    RECEIVER = #{sessionIdx}
+    
 	</select>
 
 	<select id="getInfo" parameterType="map" resultType="dino.dto.ChatRoomDto">
@@ -112,5 +131,16 @@
 		    1								/* READ */
 		)
 	</insert>
+	
+	<update id="updateReadNum" parameterType="map">
+		UPDATE 
+		    D_CHATMESSAGE
+		SET 
+		    READ = 0
+		WHERE 
+		    D_CHATROOM_IDX = #{roomIdx}
+		AND
+		    D_MEMBER_IDX != #{sessionIdx}
+	</update>
 
 </mapper>

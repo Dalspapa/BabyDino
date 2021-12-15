@@ -83,8 +83,9 @@ public class EchoHandler extends TextWebSocketHandler {
 		Map<String, Object> sessionInfo = this.getSessionInfo(session);
 		String sessRoomIdx = sessionInfo.get("roomIdx").toString();
 
-//		String msg = sessionInfo.get("saveName") + "님 : " + message.getPayload();
-		String msg = message.getPayload(); //소켓으로 send 받은 메시지 보내기
+		//index[i] = name, type, message
+		String msg = sessionInfo.get("saveName") + "," + sessionInfo.get("saveMemberType") +"," +message.getPayload();
+		
 		Iterator roomIdxList = roomList.keySet().iterator(); 
 
 		//방별 세션에 메세지 전달처리.

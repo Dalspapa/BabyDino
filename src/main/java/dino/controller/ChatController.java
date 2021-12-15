@@ -99,6 +99,10 @@ public class ChatController {
 			//기존대화 내역 불러오기
 			List<ChatMessageVo> messageList = chatService.getMessages(roomIdx);
 			System.out.println("Chat Message List >>>>>>>>>>>>>>>>>>>>>>>>" + messageList);
+			
+			//리드컬럼 업데이트 상대 메시지 읽음 확인처리
+			int updateResult = chatService.updateReadNum(roomIdx, sessionIdx);
+			System.out.println("###INFO::::::업뎃 결과 ####" + updateResult);
 
 			mav.addObject("messageList", messageList);
 			mav.addObject("roomIdx", roomIdx);
@@ -115,14 +119,15 @@ public class ChatController {
 	 */
 	@RequestMapping("/saveChatMessage.do")
 	@ResponseBody
-	public int saveChatMessage(ChatMessageDto chatMessageDto) {
+	public int saveChatMessage(ChatMessageDto chatMessageDto, HttpSession session) {
 		
+		//메시지 테이블 인서트
 		int result = chatService.saveChatMessage(chatMessageDto);
-		
 		System.out.println("###INFO::::::DB저장 결과 ####" + result);
 		
 		return result;
 	}
+	
 	
 
 //	//채팅방 입장 테스트

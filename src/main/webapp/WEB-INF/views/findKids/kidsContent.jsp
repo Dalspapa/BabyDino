@@ -269,49 +269,6 @@ section {
 			<h2>등록된 아이가 없거나, 잘못된 접근입니다.</h2>
 		</c:if>
 	</div>
-
-	<!-- offcanvas(부모회원) -->
-	<style>
-.memberImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	overflow: hidden;
-	background-color: yellow;
-}
-
-.offcanvas-end {
-	width: 300px;
-}
-
-.offcanvas-body {
-	text-align: center;
-}
-
-.offcanvas-body div {
-	margin-top: 25px;
-}
-.memberImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	overflow: hidden;
-	background-color: yellow;
-}
-
-.offcanvas-end {
-	width: 300px;
-}
-
-.offcanvas-body {
-	text-align: center;
-}
-
-.offcanvas-body div {
-	margin-top: 25px;
-}
-</style>
-	<!-- /offcanvas -->
 	<div>
 		<c:if test="${empty kidInfoDto}">
 			<h2>등록된 아이가 없거나, 잘못된 접근입니다.</h2>

@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>아  기  공  룡</title>
+<!-- 20211215 지원css 수정 -->
 <style>
 /*옆에 메뉴바*/
 .question{
-	padding: 9%;
-    width: 35%;
-    padding-left: 5%;
+    padding: 12% 10%;
+    width: 28%;
+    padding-left: 4%;
     text-align: center;
     font-family: 'S-Air';
     font-size: 19px;
@@ -38,7 +39,8 @@
 	padding: 1%;
 }
 .container section {
-	margin-top: -37%;
+	margin-top: -573px;
+    margin-bottom: 77px;
 }
 .list-group-item{
 	padding: 1.5rem 0rem!important;
