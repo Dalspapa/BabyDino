@@ -276,9 +276,3 @@
 
 
 
-k_type_opList
-
-
-t_care_opList
-
-

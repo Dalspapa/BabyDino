@@ -76,7 +76,7 @@ public class FindKidsDaoImpl implements FindKidsDao {
 
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id) {
-		System.out.println("findkid  dao imple"+id);
+		System.out.println("샘등급 조회 진행dao");
 		return sqlMap.selectOne("UpdGrade", id);
 	}
 //////////////주호

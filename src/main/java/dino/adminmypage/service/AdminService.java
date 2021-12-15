@@ -52,4 +52,7 @@ public interface AdminService {
 	
 	//선생님 필수 검증(쿼리 수정 완료 )
 	public List<AdminDto> teacherCertification();
+	
+	//선생님 등급 수정
+	public int teaCertUpd(int idx);
 }

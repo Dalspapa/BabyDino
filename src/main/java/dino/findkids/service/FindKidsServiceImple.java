@@ -171,6 +171,7 @@ public class FindKidsServiceImple implements FindKidsService {
 
 	//수정된 멤버타입 조회
 	public int UpdGrade(String id) {
+		System.out.println("샘등급 조회 진행service"+id);
 		return findkidsDao.UpdGrade(id);
 	}
 	

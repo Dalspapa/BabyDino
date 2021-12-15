@@ -144,6 +144,7 @@
 		    ,m.id
 		    ,m.tel
 		    ,m.joindate
+		    ,m.member_type
 		    ,t.exemplification
 		    ,t.crimeagree
 		FROM 
@@ -152,7 +153,16 @@
 		WHERE m.member_type = 5
 	</select>
 	
+	<update id="teaCertUpd" parameterType="Integer">
 	
+		UPDATE 
+			d_member
+		SET 
+			member_type = 6 
+		WHERE 
+			idx = #{idx}
+				
+	</update>
 	
 	
 	
