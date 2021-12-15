@@ -66,6 +66,9 @@
 	justify-content: center!important;
 	margin: 20px auto;
 }
+.login-nav{
+	margin-top : 30px;
+}
 </style>
 
 <!-- 세션 -->
@@ -129,23 +132,40 @@
                     </c:if>
 
                     <c:if test="${stype == 1}">
-	                    <li class="nav-item">
-	                    	<a href="logout.do" class="nav-link">관리자 로그인 중</a>
+	                    <li class="nav-item login-nav">
+	                    	&#128073;관리자 로그인 중
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
-	                    <li class="nav-item">
-	                    	<a href="logout.do" class="nav-link">${sname}부모님 환영합니다!</a>
+	                    <li class="nav-item login-nav">
+	                    	&#128073;${sname} 부모님 로그인 중
 	                    </li>
                     </c:if>
-                     <c:if test="${stype == 4 || stype == 5 || stype ==6}">
-	                    <li class="nav-item">
-	                    	<a href="logout.do" class="nav-link">${sname}선생님 환영합니다!</a>
+                     <c:if test="${stype == 4}">
+	                    <li class="nav-item login-nav">
+	                    	&#128073;${sname} 선생님 로그인 중
 	                    </li>
                     </c:if>
+                    <c:if test="${stype == 5}">
+	                    <li class="nav-item login-nav">
+	                    	&#128073;${sname} 선생님 로그인 중
+	                    </li>
+                    </c:if>
+                    <c:if test="${stype == 6}">
+	                    <li class="nav-item login-nav">
+	                    	&#128073;${sname} 선생님 로그인 중
+	                    </li>
+                    </c:if>
+                    <c:if test="${stype == 10}">
+	                    <li class="nav-item login-nav">
+	                    	&#128073;${sname} 선생님 로그인 중
+	                    </li>
+                    </c:if>
+
+
                     <c:if test="${stype == 1}">
 						<li class="nav-item">
-	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3">
+	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight4">
 	                        <i class="fas fa-user"></i>
 	               		  </a>
 						</li>
@@ -157,8 +177,16 @@
 	               		  </a>
 						</li>
                     </c:if>
-                    <!-- teacher navbar -->
-                    <c:if test="${stype == 4 || stype == 5 || stype ==6}">
+                    <!-- teacher navbar 4, 5, 6 -->
+                    <c:if test="${stype == 4 || stype == 5 || stype == 6}">
+						<li class="nav-item">
+	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3">
+	                        <i class="fas fa-user"></i>
+	               		  </a>
+						</li>
+                    </c:if>
+                    <!-- teacher navbar 10 -->
+                    <c:if test="${stype == 10}">
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">
 	                        <i class="fas fa-user"></i>
@@ -184,11 +212,12 @@
 		    <div><a href="careNoteList.do?idx=${sidx}">돌봄노트</a></div>
 		    <div><a href="reviewMain.do?idx=${sidx}">후기내역</a></div>
 		    <div><a href="reportList.do?idx=${sidx}">신고내역</a></div>
-		    <div><a href="#">계정관리</a></div>
+		    <div><a href="accountManagement.do">계정관리</a></div>
+		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
 		  </div>
 		</div>
 
-		<!-- side navbar teacher -->
+		<!-- side navbar teacher 10 -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight2">
 		  <div class="offcanvas-header">
 		    <h5 id="offcanvasRightLabel">${sname} 선생님</h5>
@@ -197,13 +226,28 @@
 		  <div class="offcanvas-body">
 		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
-		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="t_reviewMain.do?idx=${sidx}">후기내역</a></div>
 		    <div><a href="accountManagement.do">계정관리</a></div>
+		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
+		  </div>
+		 </div>
+<!-- 		</div> -->
+		<!-- side navbar teacher 4, 5, 6 -->
+		<div class="offcanvas offcanvas-end" id="offcanvasRight3">
+		  <div class="offcanvas-header">
+		    <h5 id="offcanvasRightLabel">${sname} 선생님</h5>
+		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		  </div>
+		  <div class="offcanvas-body">
+		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
+		    <div><a href="javascript:noCard();">프로필</a></div>
+		    <div><a href="t_reviewMain.do?idx=${sidx}">후기내역</a></div>
+		    <div><a href="accountManagement.do">계정관리</a></div>
+		    <div><a href="logout.do" class="nav-link">로그아웃</a></div>
 		  </div>
 		</div>
 		<!-- side navbar admin -->
-		<div class="offcanvas offcanvas-end" id="offcanvasRight3">
+		<div class="offcanvas offcanvas-end" id="offcanvasRight4">
 		  <div class="offcanvas-header">
 		    <h5 id="offcanvasRightLabel">${sid}</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -222,10 +266,14 @@
 <script>
 
 
+	function noCard(){
+		alert('선생님 카드 등록 후 이용할 수 있는 서비스입니다.');
+	}
+
 	function dinoCare(stype){
 
 
-		if (stype == 1 || stype == 4 || stype == 5 || stype == 6) { //2,3 는 아이카드 선택으로 이동
+		if (stype == 1 || stype == 4 || stype == 5 || stype == 6 || stype == 10) { //2,3 는 아이카드 선택으로 이동
 
 			location.href = 'findTeacher.do?idx=${sidx}';
 
@@ -243,12 +291,12 @@
 
 	function dinoKids(stype){
 
-		if (stype == 1 || stype == 2 || stype == 3 || stype == 6) {
+		if (stype == 1 || stype == 2 || stype == 3 || stype == 10) {
 			location.href = 'findKidsForm.do';
 
 		} else if (stype == 4) {
 
-			let t4result = confirm("필수 인증을 마쳐야 공룡선생님이 활동을 할수 있어요~\n필수 인증을 하실건가요?");
+			let t4result = confirm("필수 인증을 하셔야 공룡선생님이 활동을 할수 있어요~\n필수 인증을 하실건가요?");
 			if( t4result == true ){
 				location.href = 'compulsoryCheck.do';
 			} else if( t4result == false ){
@@ -257,11 +305,17 @@
 
 		} else if (stype == 5){
 
-			let t5result = confirm("활동 전 선생님 등록을 해야합니다. \n선생님 등록을 하실건가요?");
-			if( t5result == true ){
+			alert("관리자의 요청을 기다리고 있습니다!\n조금만 더 기다려주세요^^");
+
+			location.href = 'redirect:/main.do';
+
+
+		} else if( stype == 6){
+			let t6result = confirm("공룡 선생님 등록을 하셔야 서비스가 가능합니다.\n공룡 선생님 등록을 하시겠습니까?");
+			if( t6result == true ){
 				location.href = 'makeTeacherCard.do';
-			} else if( t5result == false ){
-				window.alert('활동 전 선생님 등록을 해주세요!');
+			} else if( t6result == false ){
+				window.alert('활동 전 꼭 인증해주세요~');
 			}
 
 		} else if( stype == null){

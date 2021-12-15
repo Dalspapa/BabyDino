@@ -1,5 +1,7 @@
 package dino.teachermypage.model;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dino.dto.MakeTCardDto;
@@ -36,6 +38,12 @@ public class TeacherMyPageDaoImpl implements TeacherMyPageDao {
 	public int typeUpd(MakeTCardDto typeDto) {
 		
 		return sqlMap.update("typeUpd", typeDto);
+	}
+
+	public int statusUpd(Map map) {
+		
+		int result = sqlMap.update("statusUpd", map);
+		return result;
 	}
 	
 	
