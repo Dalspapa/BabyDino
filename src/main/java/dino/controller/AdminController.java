@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.adminmypage.model.AdminDto;
@@ -21,7 +22,7 @@ import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
-import dino.parentmypage.model.ParentMypageDto;
+import dino.findkids.service.*;
 										 
 
 @Controller
@@ -31,6 +32,9 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private FindKidsService findKidsService;
 	
 	String msg = "";
 	String goUrl = "";
@@ -250,13 +254,22 @@ public class AdminController {
 		return mav;
 	}
 	
-	@RequestMapping("/teaCertUpd.do")
-	public ResponseEntity<?> teaCertUpd(int idx){
+	@ResponseBody
+	@RequestMapping(value = "/teaCertUpd.do", method = RequestMethod.POST)
+	public ResponseEntity<?> teaCertUpd(@RequestParam("d_member_idx") int idx,
+			@RequestParam("id") String id, HttpServletRequest request){
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
-		int rst = memberser
+
+		int rst = adminService.teaCertUpd(idx);
+		System.out.println("controller==="+idx);
+		int updType = findKidsService.UpdGrade(id);
+		System.out.println("contrtoller====="+id);
+		request.getSession().setAttribute("saveMemberType", updType);
 		
+		result.put("result", rst);
+
 		return ResponseEntity.ok(result);
 	}
 

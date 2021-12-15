@@ -122,7 +122,7 @@ public class AdminDaoImpl implements AdminDao {
 	
 	//선생님 등급 수정
 	public int teaCertUpd(int idx) {
-
-		return 0;
+		System.out.println("샘등급 수정 진행dao");
+		return sqlMap.update("teaCertUpd", idx);
 	}
 }

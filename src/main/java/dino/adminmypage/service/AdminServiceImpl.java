@@ -132,4 +132,12 @@ public class AdminServiceImpl implements AdminService {
 		List<AdminDto> t_list = adminDao.teacherCertification();
 		return t_list;
 	}
+	
+	//선생님 등급 수정
+	public int teaCertUpd(int idx) {
+		System.out.println("샘등급 수정 진행service"+idx);
+		return adminDao.teaCertUpd(idx);
+	}
+	
+	
 }
