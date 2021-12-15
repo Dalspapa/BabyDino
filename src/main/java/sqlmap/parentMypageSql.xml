@@ -108,6 +108,7 @@
 		        ,k.k_care_type
 		        ,k.k_require
 		        ,r.idx as r_idx
+		        ,r.member_p_idx
 		from
 		       d_reserve r, d_kidcard k, d_teachercard t, d_member m
 		where
@@ -144,6 +145,16 @@
 			status = 5
 		where
 			idx = #{idx}
+	</update>
+	
+	<!-- 예약현황 업뎃 -->
+	<update id="statusUpd" parameterType="map">
+		 UPDATE 
+		 	d_reserve 
+		 SET 
+		 	status = #{status}
+         WHERE 
+         	idx = #{reserveIdx}
 	</update>
 
 </mapper>

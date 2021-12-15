@@ -161,8 +161,8 @@
 	                    	&#128073;${sname} 선생님 로그인 중
 	                    </li>
                     </c:if>
-                    
-                    
+
+
                     <c:if test="${stype == 1}">
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight4">
@@ -306,9 +306,9 @@
 		} else if (stype == 5){
 
 			alert("관리자의 요청을 기다리고 있습니다!\n조금만 더 기다려주세요^^");
-			
+
 			location.href = 'redirect:/main.do';
-		
+
 
 		} else if( stype == 6){
 			let t6result = confirm("공룡 선생님 등록을 하셔야 서비스가 가능합니다.\n공룡 선생님 등록을 하시겠습니까?");
@@ -317,7 +317,7 @@
 			} else if( t6result == false ){
 				window.alert('활동 전 꼭 인증해주세요~');
 			}
-			
+
 		} else if( stype == null){
 
 			window.alert('회원 가입 후 이용할 수 있습니다.');

@@ -92,6 +92,12 @@ a:link, a:visited {
 				<div class="nolist"><h2 style="line-height: 300px;"> 진행중인 돌봄 사항이 없습니다. </h2></div>
 			</c:if>
 		   	<c:forEach var="tl_ing" items="${ t_list_ing }">
+		   	
+			   	<!-- chat url -->
+				<c:url var="enterChatRoom" value="enterChatRoom.do">
+				    <c:param name="partnerIdx" value="${ tl_ing.member_p_idx }"/>
+				</c:url>				
+		   	
 				<div class="contentbody">
 					<!-- 선생님 카드 -->
 					<c:url var="contentUrl" value="t_caring.do">
@@ -108,7 +114,7 @@ a:link, a:visited {
 						<div>아이 이름 : ${tl_ing.k_name}</div>
 						<div>돌봄 유형 : ${tl_ing.k_care_type}</div>
 						<div>요구 사항 : ${tl_ing.k_require}</div>
-						<button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
+						<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatList','width=600, height=700'))">채팅하기</button>
 					</div>
 				</div>
 			</c:forEach>
@@ -136,7 +142,7 @@ a:link, a:visited {
 						<div>아이 이름 : ${ tl_done.k_name}</div>
 						<div>돌봄 유형 : ${ tl_done.k_care_type}</div>
 						<div>요구 사항 : ${tl_done.k_require}</div>
-						<button type="button" class="btn btn-outline-success" onclick="#">채팅하기</button>
+						<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatList','width=600, height=700'))">채팅하기</button>
 					</div>
 				</div>
 			</c:forEach>
