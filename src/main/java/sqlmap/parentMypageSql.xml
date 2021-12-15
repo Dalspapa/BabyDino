@@ -12,6 +12,7 @@
 		    , t.t_cost
 		    , t.t_introduce
 		    , t.career_experience
+		    , t.d_member_idx
 		from
 		    d_member m, d_teachercard t, d_reserve r
 		where
