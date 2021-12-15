@@ -237,15 +237,15 @@ section{
         <div class="userLive">
           <div>
             <div class="aa">수락대기</div>
-            <button type="button" class="btn btn-outline-success">신청취소</button>
+            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">신청취소</button>
           </div>
           <div>
             <div class="aa">상담중</div>
-            <button type="button" class="btn btn-outline-success">신청취소</button>
+            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">신청취소</button>
           </div>
           <div>
             <div class="aa">상담완료</div>
-            <button type="button" class="btn btn-outline-success">재상담</button>
+            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">재상담</button>
           </div>
           <div>
             <div class="aa">결제대기</div>
@@ -257,7 +257,7 @@ section{
           </div>
           <div>
             <div class="aa">돌봄중</div>
-            <button type="button" class="btn btn-outline-success">채팅하기</button>
+            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">채팅하기</button>
           </div>
           <div>
             <div class="aa">돌봄완료</div>
