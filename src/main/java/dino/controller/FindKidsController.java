@@ -179,12 +179,6 @@ public class FindKidsController {
 		}
 		System.out.println("인증후 그레이드 6 수정 후========");
 
-		//int setImg = findKidsService.tSetImg(imgDto);
-//		if( setImg != 1 ) {
-//			result.put("fail", false);
-//		} else {
-//			result.put("success", success);
-//		}
 		String id = String.valueOf(request.getSession().getAttribute("saveId"));
 		if(StringUtils.isEmpty(id)) {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
@@ -257,7 +251,7 @@ public class FindKidsController {
 	 */
 	@RequestMapping(value="cert.do", method = RequestMethod.POST)
 	public ModelAndView teacherCert(MemberDto teacher, HttpServletRequest request, TeacherCertDto tcDto) {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView();		
 
 		//선생님 필수 인증 후 등급 수정
 		String idx = String.valueOf(request.getSession().getAttribute("saveIdx"));
@@ -279,9 +273,7 @@ public class FindKidsController {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
 		}
 		teacher.setId(id);
-		int updMType = findKidsService.UpdGrade(teacher.getId());
-		System.out.println("인증 된 선생님 세션에 그레이드 수정"+updMType);
-		System.out.println("컨트롤러====="+updMType);
+		int updMType = findKidsService.UpdGrade(teacher.getId());	
 		request.getSession().setAttribute("saveMemberType", updMType);
 
 		//선생님 필수 인증 정보 입력
@@ -289,6 +281,8 @@ public class FindKidsController {
 
 		System.out.println("컨트롤러로 넘어온 선생님 인증" + tcDto.toString());
 		System.out.println("컨트롤러로 넘어온 선생님 인증==================="+tcDto.toString());
+		//////////////주호		
+		
 		int certRst = findKidsService.setTeacherCert(tcDto);
 		msg = certRst < 0 ? "인증요청중 오류가 발생했습니다. 잠시후 다시 시도해 주세요.":"선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
 

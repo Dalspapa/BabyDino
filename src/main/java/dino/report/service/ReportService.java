@@ -6,13 +6,17 @@ import dino.dto.CommonOpDto;
 import dino.dto.ReportDto;
 
 public interface ReportService {
-
+	
 	//report Write
 	public int reportWrite(ReportDto reportDto);
-
+	
+	/*:::::::동현 작업 시작::::::::::*/
 	//report List
-	public List<ReportDto> reportList();
-
+	public List<ReportDto> reportList(int cp, int ls);
+	
+	public int getTotalCntReport();
+	/*:::::::동현 작업 끝::::::::::*/
+	
 	//report Content
 	public ReportDto reportContent(int idx);
 

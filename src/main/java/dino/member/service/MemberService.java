@@ -27,6 +27,8 @@ public interface MemberService {
 		//회원 탈퇴
 		public int memberOut(int idx);
 		
+		///// 즈호
 		//계정 관리 전 본인 확인
-		public String accountCheck(MemberDto memberDto);
+		public String accountCheck(MemberDto mdto);		
+	///// 즈호 끝
 }

@@ -35,6 +35,20 @@ public class MemberServiceImple implements MemberService {
 
 		return result;
 	}
+	///////////////////주호
+	//계정 관리 전 본인 확인
+	public String accountCheck(MemberDto mdto) {
+		
+		String result = memberDao.accountCheck(mdto);
+		System.out.println("account service::::::::::::"+result);
+		
+		if (result != null) {			
+			return result;
+		} else {
+			return null;
+		}
+	}
+	//////////////////////주호 끝
 
 	//아이디 중복 체크
 	public int idCheck(String id) {
@@ -66,6 +80,8 @@ public class MemberServiceImple implements MemberService {
 			return false;
 		}
 	}
+	
+
 
 
 	public MemberDto getUserInfo(String id) {
@@ -134,10 +150,7 @@ public class MemberServiceImple implements MemberService {
 		return result;
 	}
 	
-	//계정 관리 전 본인 확인
-	public String accountCheck(MemberDto memberDto) {		
-		return memberDao.accountCheck(memberDto);
-	}
+
 	
 	
 }

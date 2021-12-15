@@ -10,7 +10,7 @@
 			d_carenote
 		values(
 			d_carenote_idx.nextval,
-			999, 									/* #{d_reserve_idx} 들어갈 자리 */
+			#{d_reserve_idx},
 			#{c_content},
 			sysdate
 		)

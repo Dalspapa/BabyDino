@@ -1,41 +1,60 @@
 package dino.controller;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dino.adminmypage.model.AdminDto;
 import dino.adminmypage.service.AdminService;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+import dino.parentmypage.model.ParentMypageDto;
 										 
 
 @Controller
 public class AdminController {
 
+	public static final String IMGPATH = "C:\\upload\\";
+	
 	@Autowired
 	private AdminService adminService;
 	
 	String msg = "";
 	String goUrl = "";
 	
+	/*:::::::동현 작업 시작::::::::::*/
 	@RequestMapping("/reportManagement.do")
-	public ModelAndView reportManagement() {
+	public ModelAndView reportManagement(
+			@RequestParam(value = "cp", defaultValue = "1")int cp) {
+		int listSize = 10;
+		int pageSize = 5;
+		int totalCnt = adminService.getTotalCntReport();
 		
-		List<ReportDto> reportManagement = adminService.reportList();
+		List<ReportDto> reportManagement = adminService.reportList(cp, listSize);
+		String pageStr = pagination.PageModule.makePage("reportManagement.do", totalCnt, listSize, pageSize, cp);
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("pageStr", pageStr);
 		mav.addObject("reportManagement",reportManagement);
 		mav.setViewName("adminMypage/reportManagement");
 		
 		return mav;
 	}
+	
+	/*:::::::동현 작업 끝::::::::::*/
 	
 	//관리자가 강제탈퇴버튼 누르면 연결되는 메서드
 	@RequestMapping("/adminMemberOut.do")
@@ -53,15 +72,25 @@ public class AdminController {
 		return mav;
 	}
 	
+	/*:::::::동현 작업 시작::::::::*/
 	//회원관리로 이동
 	@RequestMapping("/memberManagement.do")
-	public ModelAndView memberManageMent() {
-		List<MemberDto> list = adminService.memberManagement();
+	public ModelAndView memberManageMent(
+			@RequestParam(value = "cp", defaultValue = "1")int cp) {
+		int listSize = 10;
+		int pageSize = 5;
+		int totalCnt = adminService.getTotalCnt();
+		
+		List<MemberDto> list = adminService.memberManagement(cp, listSize);
+		String pageStr = pagination.PageModule.makePage("memberManagement.do", totalCnt, listSize, pageSize, cp);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list",list);
+		mav.addObject("pageStr", pageStr);
+		mav.addObject("list", list);
 		mav.setViewName("adminMypage/memberManagement");
 		return mav;
 	}
+	/*:::::::동현 작업 끝::::::::*/
 	
 	//선생님 정산
 	@RequestMapping("/settlement.do")
@@ -192,15 +221,48 @@ public class AdminController {
 		mav.setViewName("adminMypage/adminMsg");
 		return mav;
 	}
-	
+	/////////////////주호
 		//선생님 필수검증(수정예정)
 	@RequestMapping("/teacherCertification.do")
 	public ModelAndView teacherCertification() {
-		List<MemberDto> t_list = adminService.teacherCertification();
+		
+		List<AdminDto> t_list = adminService.teacherCertification();
+		
 		ModelAndView mav = new ModelAndView();
+		
+		File f = new File("C:/teachercert");
+		File files[] = f.listFiles();
+		mav.addObject("files", files);		
+		
+		
 		mav.addObject("t_list",t_list);
 		mav.setViewName("adminMypage/teacherCertification");
 		return mav;
 	}
+	
+	@RequestMapping("/down.do")
+	public ModelAndView fileDownload(@RequestParam("fname") String fname) {
+		
+		ModelAndView mav = new ModelAndView();
+		File f = new File(IMGPATH + fname);
+		mav.addObject("downloadFile", f);
+		mav.setViewName("fileDown");
+		return mav;
+	}
+	
+	@RequestMapping("/teaCertUpd.do")
+	public ResponseEntity<?> teaCertUpd(int idx){
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		
+		
+		return ResponseEntity.ok(result);
+	}
+
+	
+	
+	
+	/////////////////주호 끝 
 	
 }

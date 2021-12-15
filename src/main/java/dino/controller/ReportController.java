@@ -21,11 +21,19 @@ public class ReportController {
 
 	String goUrl = "";
 
+	/*:::::::동현 작업 시작::::::::::*/
 	@RequestMapping("/reportList.do")
-	public ModelAndView ReportForm() {
-
-		List<ReportDto> reportlist = reportService.reportList();
+	public ModelAndView ReportForm(
+			@RequestParam(value = "cp", defaultValue = "1")int cp) {
+		int listSize = 10;
+		int pageSize = 5;
+		int totalCnt = reportService.getTotalCntReport();
+		
+		List<ReportDto> reportlist = reportService.reportList(cp, listSize);
+		String pageStr = pagination.PageModule.makePage("reportList.do", totalCnt, listSize, pageSize, cp);
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("pageStr", pageStr);
 		//Test Code
 		System.out.println("+====="+reportlist);
 		mav.addObject("reportlist",reportlist);
@@ -33,7 +41,7 @@ public class ReportController {
 
 		return mav;
 	}
-
+	/*:::::::동현 작업 끝::::::::::*/
 	@RequestMapping(value = "/reportWrite.do", method = RequestMethod.GET)
 	public ModelAndView reportWriteForm(@RequestParam(value = "idx",  defaultValue = "0") int idx) {
 				

@@ -1,12 +1,15 @@
 package dino.adminmypage.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import dino.adminmypage.model.AdminDao;
+import dino.adminmypage.model.*;
 import dino.dto.CommonOpDto;
 import dino.dto.MemberDto;
 import dino.dto.ReportDto;
 import dino.dto.ReserveDto;
+
 
 public class AdminServiceImpl implements AdminService {
 
@@ -15,13 +18,26 @@ public class AdminServiceImpl implements AdminService {
 	public AdminDao getAdminDao() {
 		return adminDao;
 	}
-	
-	public List<ReportDto> reportList() {
+	/*222222동현 작업 시작22222222*/
+	public List<ReportDto> reportList(int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
 		
-		List<ReportDto> reportlist = adminDao.reportList();
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
 		
+		List<ReportDto> reportlist = adminDao.reportList(map);
 		return reportlist;
 	}
+	
+	//페이징 처리
+		public int getTotalCntReport() {
+			int count = adminDao.getTotalCntReport();
+			return count;
+		}
+	
+	/*222222동현 작업 끝22222222*/
 	
 	//회원 강제탈퇴 관련 메서드
 	public int adminMemberOut(int idx) {
@@ -33,10 +49,25 @@ public class AdminServiceImpl implements AdminService {
 		this.adminDao = adminDao;
 	}
 
-	public List<MemberDto> memberManagement() {
-		List<MemberDto> list = adminDao.memberManagement();
+	/*:::::::동현 작업 시작::::::::*/
+	public List<MemberDto> memberManagement(int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<MemberDto> list = adminDao.memberManagement(map);
 		return list;
 	}
+	
+	//페이징 처리
+	public int getTotalCnt() {
+		int count = adminDao.getTotalCnt();
+		return count;
+	}
+	/*:::::::동현 작업 끝::::::::*/
 	
 	public List<ReserveDto> teacherCost() {
 		List<ReserveDto> c_list = adminDao.teacherCost();
@@ -96,9 +127,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
-	//선생님 필수 인증(쿼리 수정예정)
-	public List<MemberDto> teacherCertification() {
-		List<MemberDto> t_list = adminDao.teacherCertification();
+	//선생님 필수 인증(쿼리 수정완료 )
+	public List<AdminDto> teacherCertification() {
+		List<AdminDto> t_list = adminDao.teacherCertification();
 		return t_list;
 	}
 }

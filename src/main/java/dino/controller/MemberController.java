@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import dino.dto.MemberDto;
 import dino.member.service.MemberService;
@@ -218,26 +221,67 @@ public class MemberController {
 			mav.setViewName("member/findPwdMsg");
 			return mav;			
 		}
-		
-		//계정관리 전 본인인증
-		@RequestMapping("/accountCheck.do")
-		public String accountCheck(MemberDto memberDto) {
-										
-			String result = memberService.accountCheck(memberDto);
-			if (result == memberDto.getId() || result.equals(memberDto.getId())) {
-				return result;
-			}
+				
+/////////////////주호
+		//계정관리	
+		 @RequestMapping(value = "/accountManagement.do", method=RequestMethod.GET) 
+		 public String accoutManagement() {
+			 return ("commonMember/accountManagement");
+		 }
+		 
+		 //계정관리 비번 확인
+		 @ResponseBody
+		 @RequestMapping(value = "/accountCheck.do", method=RequestMethod.POST)
+		 public ResponseEntity<?> accountCheck(MemberDto mdto) {
+			 
+			HashMap<String, Object> result = new HashMap<String, Object>();
 			
-			return "";
-		}
-		
-		//계정관리
-		@RequestMapping("/accountManagement.do")
-		public String accoutManagement() {
-			return ("commonMember/accountManagement");
-		}
-}
+			String id = memberService.accountCheck(mdto);
+			
+			result.put("result", id);
+			
+			return ResponseEntity.ok(result);			
+		 }
+		 
+		 //계정관리 회원 정보 
+		 @RequestMapping(value = "/accountInfo.do", method = RequestMethod.POST)
+		 public ResponseEntity<?> accountInfo(String id){
+			 
+			 HashMap<String, Object> result = new HashMap<String, Object>();
+			
+			 MemberDto mdto = memberService.getUserInfo(id);
+			 
+			 if(mdto != null) {
 
+				String pwd = mdto.getPwd();
+				String tel = mdto.getTel();
+				String addr1 = mdto.getAddr1();
+				String addr2 = mdto.getAddr2();
+				String addr3 = mdto.getAddr3();				 
+ 
+				result.put("pwd", pwd);
+				result.put("tel", tel);
+				result.put("addr1", addr1);
+				result.put("addr2", addr2);
+				result.put("addr3", addr3);
+				
+				return ResponseEntity.ok(result);
+			 }			 
+			 return ResponseEntity.ok(null);
+		 }
+		 
+		 //계정관리 아이디 수정
+		 @RequestMapping(value = "/accountIdUpd.do", method=RequestMethod.POST)
+		 public ResponseEntity<?> accountIdUpd(int idx) {
+			 
+			 HashMap<String, Object> result = new HashMap<String, Object>();
+
+			 return ResponseEntity.ok(null);
+		 }
+/////////////////주호 끝
+		 
+
+}
 
 
 
