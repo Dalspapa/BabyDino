@@ -72,8 +72,7 @@
 	<!-- ./ 페이지 상위 버튼 -->
 </div>
 <!-- 챗 버튼 -->
-<!-- 20211215 지원css수정 -->
-<div id="chat" style="padding-top: 14px;">
+<div id="chat">
 	<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
 	<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
 		<span id="caht-cnt">
@@ -154,7 +153,7 @@
 						</li>
                     </c:if>
                     <!-- teacher navbar -->
-                    <c:if test="${stype == 4 || stype == 5 || stype == 6 || stype == 10 || stype == 11}">
+                    <c:if test="${stype == 4 || stype == 5 || stype ==6}">
 						<li class="nav-item">
 	                      <a class="nav-link" href="javascript:setNavImg(${sidx});" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">
 	                        <i class="fas fa-user"></i>
@@ -275,9 +274,9 @@
 
 
 
+k_type_opList
 
 
-
-
+t_care_opList
 
 
