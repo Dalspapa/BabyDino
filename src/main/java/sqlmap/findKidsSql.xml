@@ -239,7 +239,7 @@
 		        , k.k_care_type
 		        , k.k_require
 		        , k.k_introduce
-		        , i.c_imgpath
+		        , NVL(i.c_imgpath, 'noimage.png') AS c_imgpath
 		        , k.teacher_type
 		        , r.idx
 	    FROM
