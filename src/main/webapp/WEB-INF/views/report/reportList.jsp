@@ -89,25 +89,11 @@ table th,td {
 		<button type="button" class="btn btn-outline-success" onclick=  "location.href = 'reportWrite.do'">글쓰기</button>
 		</div>
 	<!-- 페이징 처리 될 부분 -->
+    <!--22222222222 동현 작업 시작 2222222222222-->
             <div class = "paging">
-               <nav aria-label="Page navigation example">
-                 <ul class="pagination justify-content-center">
-                   <li class="page-item">
-                     <a class="page-link" href="#" aria-label="Previous">
-                       <span aria-hidden="true">&laquo;</span>
-                     </a>
-                   </li>
-                   <li class="page-item"><a class="page-link" href="#">1</a></li>
-                   <li class="page-item"><a class="page-link" href="#">2</a></li>
-                   <li class="page-item"><a class="page-link" href="#">3</a></li>
-                   <li class="page-item">
-                     <a class="page-link" href="#" aria-label="Next">
-                       <span aria-hidden="true">&raquo;</span>
-                     </a>
-                   </li>
-                 </ul>
-               </nav>
+              ${pageStr }
             </div>
+            <!--22222222222 동현 작업 끝 2222222222222-->
 		</form>
 	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>

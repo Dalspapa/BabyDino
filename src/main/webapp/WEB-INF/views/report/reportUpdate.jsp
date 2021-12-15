@@ -158,47 +158,6 @@ a:hover {
 <body>
 
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
-<!-- offcanvas(부모회원) -->
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">아이콘이미지</button>
-
-<div class="offcanvas offcanvas-end" id="offcanvasRight">
-  <div class="offcanvas-header">
-     <div class="memberImg">#이미지</div>
-    <h5 id="offcanvasRightLabel">#부모님이름 회원님</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div><a href="#">돌봄현황</a></div>
-    <div><a href="#">아이카드</a></div>
-    <div><a href="#">돌봄노트</a></div>
-    <div><a href="#">후기내역</a></div>
-    <div><a href="#">신고내역</a></div>
-    <div><a href="#">계정관리</a></div>
-  </div>
-</div>
-<!-- /offcanvas -->
-
-<!-- offcanvas(선생님회원) -->
-
-<button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2">아이콘이미지</button>
-
-<div class="offcanvas offcanvas-end" id="offcanvasRight2">
-  <div class="offcanvas-header">
-     <div class="memberImg">#이미지</div>
-    <h5 id="offcanvasRightLabel">#선생님이름 회원님</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div><a href="#">돌봄현황</a></div>
-    <div><a href="#">프로필</a></div>
-    <div><a href="#">공룡발자국</a></div>
-    <div><a href="#">돌봄노트</a></div>
-    <div><a href="#">후기내역</a></div>
-    <div><a href="#">신고내역</a></div>
-    <div><a href="#">계정관리</a></div>
-  </div>
-</div>
-<!-- /offcanvas -->
 <section>
 <form name = "reportUpdate" action = "reportUpdate.do" method = "post">
 		<div class="appbar">

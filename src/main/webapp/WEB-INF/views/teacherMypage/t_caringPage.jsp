@@ -225,6 +225,9 @@ section{
   overflow: hidden;
   pointer-events: none;
 }
+.btn-mg {
+	margin: 25px auto;
+}
 </style>
 
 </head>
@@ -352,15 +355,19 @@ section{
 				</c:forEach>
             </div>
           </div>
+          <button type="button" class="btn btn-outline-success btn-mg" onclick="writeCareNote();">돌봄노트 작성</button>
         </li>
       </ul>
     </section>
   </div>
-	<script>
-	function writeReview(){
-		location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
-	}
-	</script>
+<script>
+function writeReview(){
+	location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
+}
+function writeCareNote(){
+	location.href = "writeCareNote.do?r_idx=${dto.r_idx}";
+}
+</script>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

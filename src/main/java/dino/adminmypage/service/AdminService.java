@@ -11,14 +11,23 @@ import dino.parentmypage.model.*;
 
 public interface AdminService {
 	
+	/*:::::::동현 작업 시작::::::::::*/
 	//신고내역
-	public List<ReportDto> reportList();
+	public List<ReportDto> reportList(int cp, int ls);
+	
+	public int getTotalCntReport();
+	/*:::::::동현 작업 끝::::::::::*/
 	
 	//강제탈퇴 시킬 때 해당 회원이 있는지 체크하는 메서드
 	public int adminMemberOut(int idx);
-
+	
+	/*:::::::동현 작업 시작::::::::::*/
 	//admin회원관리
-	public List<MemberDto> memberManagement();
+	public List<MemberDto> memberManagement(int cp, int ls);
+	
+	// 페이징 처리
+	public int getTotalCnt();
+	/*:::::::동현 작업 끝::::::::::*/
 	
 	//선생님 정산
 	public List<ReserveDto> teacherCost();

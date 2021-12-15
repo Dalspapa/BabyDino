@@ -81,7 +81,7 @@
 	     <section id="section04" class="container">
 			<div class="text-center">
 				<hr class="divider divider-black mt-5 mb-5">
-				<h2 class="section-heading text-uppercase" style="font-family: 'S-Air';">아기공룡이 인증하는 후기</h2>
+				<h2 class="section-heading text-uppercase" style="font-family: 'S-Air';">아기공룡이 인증하는 후기</h2><br>
 			</div>
 			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 			  <div class="carousel-indicators">
@@ -118,7 +118,7 @@
 	          <div class="text-center">
 	            <div>
 	              <hr class="divider divider-black mt-5 mb-5">
-	              <h2 class="section-heading text-uppercase">모든 순간이 놀이가 되도록</h2>
+	              <h2 class="section-heading text-uppercase">모든 순간이 놀이가 되도록</h2><br>
 	              <h5 class="">공룡선생님과 놀면서 배우는 다양한 놀이학습</h5>
 	              <div class="tag">
 	                <p>#독서</p>
@@ -216,21 +216,22 @@
 	                <div class="flip-card-inner">
 	                  <div class="flip-card-front">
 	                    <div class="mb-2">
-	                      <img src="./common/img/faq-img.png" alt="선생님 사진" >
+	                      <img src="./common/img/선생님프로필.jpg" alt="선생님 사진" >
 	                    </div>
 	                    <div>
-	                      <h6 class="text-warning">새로운 추천01</h6>
-	                      <h4>선생님 이름</h4>
+	                      <h6 class="text-warning">새로운 추천 01</h6>
+	                      <h4>이은정 선생님</h4>
 	                    </div>
 	                  </div>
 	                  <div class="flip-card-back ">
-	                    <h1>선생님 이름</h1>
-	                    <p>선생님을 설명하는 부분입니다.</p>
+	                    <h1>이은정 선생님</h1><hr>
+	                    <h6 class="text-warning"><b>아이들과 있을 때 가장 행복합니다!</b></h6><br>
 	                    <ul>
-	                      <li>테스트01</li>
-	                      <li>테스트02</li>
-	                      <li>테스트03</li>
+	                      <li>#미술놀이</li>
+	                      <li>#영어놀이</li>
+	                      <li>#밥챙겨주기</li>
 	                    </ul>
+	                    <p style="font-color: red;">희망시급 : 11,000원</p>
 	                  </div>
 	                </div>
 	              <!-- ./ filp01 -->
@@ -240,21 +241,22 @@
 	                <div class="flip-card-inner">
 	                  <div class="flip-card-front">
 	                    <div class="mb-2">
-	                      <img src="./common/img/faq-img.png" alt="선생님 사진" >
+	                      <img src="./common/img/선생님프로필4.jpg" alt="선생님 사진" >
 	                    </div>
 	                    <div>
-	                      <h6 class="text-warning">새로운 추천02</h6>
-	                      <h4>선생님 이름</h4>
+	                      <h6 class="text-warning">새로운 추천 02</h6>
+	                      <h4>전민혁 선생님</h4>
 	                    </div>
 	                  </div>
 	                  <div class="flip-card-back ">
-	                    <h1>선생님 이름</h1>
-	                    <p>선생님을 설명하는 부분입니다.</p>
+	                    <h1>전민혁</h1><hr>
+	                    <h6 class="text-warning"><b>지칠 때까지 놀아줄 수 있습니다!</b></h6><br>
 	                    <ul>
-	                      <li>테스트01</li>
-	                      <li>테스트02</li>
-	                      <li>테스트03</li>
+	                      <li>#야외활동</li>
+	                      <li>#학습지도</li>
+	                      <li>#등하원</li>
 	                    </ul>
+	                    <p style="font-color: red;">희망시급 : 10,000원</p>
 	                  </div>
 	                </div>
 	              <!-- ./ filp02 -->
@@ -265,21 +267,22 @@
 	                <div class="flip-card-inner">
 	                  <div class="flip-card-front">
 	                    <div class="mb-2">
-	                      <img src="./common/img/faq-img.png" alt="선생님 사진" >
+	                      <img src="./common/img/img7.jpg" alt="선생님 사진" >
 	                    </div>
 	                    <div>
-	                      <h6 class="text-warning">새로운 추천03</h6>
-	                      <h4>선생님 이름</h4>
+	                      <h6 class="text-warning">새로운 추천 03</h6>
+	                      <h4>정미란 선생님</h4>
 	                    </div>
 	                  </div>
 	                  <div class="flip-card-back">
-	                    <h1>선생님 이름</h1>
-	                    <p>선생님을 설명하는 부분입니다.</p>
+	                    <h1>정미란 선생님</h1><hr>
+	                    <h6 class="text-warning"><b>내 아이를 돌본다는 마음가짐으로 임하겠습니다.</b></h6><br>
 	                    <ul>
-	                      <li>테스트01</li>
-	                      <li>테스트02</li>
-	                      <li>테스트03</li>
+	                      <li>#책읽기</li>
+	                      <li>#실내놀이</li>
+	                      <li>#학습지도</li>
 	                    </ul>
+	                    <p style="font-color: red;">희망시급 : 13,000원</p>
 	                  </div>
 	                </div>
 	              <!-- ./ filp03 -->

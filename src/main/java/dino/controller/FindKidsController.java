@@ -52,20 +52,20 @@ public class FindKidsController {
 	 */
 	@RequestMapping("/findKidsForm.do")
 	public ModelAndView findKidsForm() {
-		
+
 		//돌봄분야 리스트 출력
 		List<CommonOpDto> c_list = commonOpService.t_care_opList();
 		System.out.println("돌봄분야 >>>>>>>>>>" + c_list);
-		
+
 		ModelAndView mav = new ModelAndView();
-		
+
 		//은사작업 idx 채워주기
-		
+
 		mav.addObject("c_list", c_list);
 		mav.setViewName("findKids/findKids");
 		return mav;
 	}
-	
+
 	/**
 	 * 아이찾기 조회
 	 * @param searchKids
@@ -73,16 +73,22 @@ public class FindKidsController {
 	 */
 	@RequestMapping(value = "/findKidsList.do", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getKidsList(@RequestBody FindKidsJoinDto searchKids) {
-		
+	public ModelAndView getKidsList(@RequestBody FindKidsJoinDto searchKids, HttpServletRequest req) {
+
+
+		String saveIdx = String.valueOf(req.getSession().getAttribute("saveIdx") == null ? "" : req.getSession().getAttribute("saveIdx"));
+		if(!StringUtils.isEmpty(saveIdx)) {
+			searchKids.setIdx(Integer.parseInt(saveIdx));
+		}
+
 		//돌봄분야 리스트 출력
 		List<CommonOpDto> c_list = commonOpService.t_care_opList();
-		
+
 		//아이검색
 		List<FindKidsJoinDto> KidsList = findKidsService.searchKids(searchKids);
-		
+
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("c_list", c_list);
 		mav.addObject("KidsList", KidsList);
 		mav.setViewName("findKids/findKidsList");
@@ -256,10 +262,10 @@ public class FindKidsController {
 
 		teacher.setMember_type(5);
 		int rst = findKidsService.updateTeacherGrade(teacher);
-		
+
 		System.out.println("컨트롤러에 teacher ====="+rst);
 		if(rst <= 0) {
-			
+
 			throw new IllegalStateException("선생님 등급 수정시 오류가 발생하였습니다.");
 		}
 		String id = String.valueOf(request.getSession().getAttribute("saveId"));
@@ -269,15 +275,19 @@ public class FindKidsController {
 		teacher.setId(id);
 		int updMType = findKidsService.UpdGrade(teacher.getId());
 		request.getSession().setAttribute("saveMemberType", updMType);
-		
+
 		//선생님 필수 인증 정보 입력
+		//////////////주호
+
+		System.out.println("컨트롤러로 넘어온 선생님 인증" + tcDto.toString());
+		System.out.println("컨트롤러로 넘어온 선생님 인증==================="+tcDto.toString());
 		//////////////주호		
 		
 		int certRst = findKidsService.setTeacherCert(tcDto);
 		msg = certRst < 0 ? "인증요청중 오류가 발생했습니다. 잠시후 다시 시도해 주세요.":"선생님 인증 요청이 완료되었습니다.\\n아이찾기 카테고리에서 선생님 등록을 해주세요~";
-		
-		///////////////주호 끝		
-		
+
+		///////////////주호 끝
+
 		goUrl = "main.do";
 		mav.addObject("msg", msg);
 		mav.addObject("goUrl", goUrl);

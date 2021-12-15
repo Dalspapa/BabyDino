@@ -26,7 +26,7 @@ a:link, a:visited {
 	border-radius: 10rem;
 	padding: 3rem;
 	line-height: 3rem;
-	margin: 20px auto;
+	margin: 30px auto;
 	box-shadow: 0px 3px 13px -4px #3c3b3b;
 }
 .noteFrame:hover {

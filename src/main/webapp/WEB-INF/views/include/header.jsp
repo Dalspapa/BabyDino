@@ -62,6 +62,10 @@
 	text-decoration: none!important;
 	color: #68983b;
 }
+.offcanvas-header {
+	justify-content: center!important;
+	margin: 20px auto;
+}
 </style>
 
 <!-- 세션 -->
@@ -81,8 +85,7 @@
 <!-- 챗 버튼 -->
 <c:if test="${ sid != null }">
 	<div id="chat" style="padding-top: 14px;">
-		<!-- <a class="nav-link" href="#" data-bs-toggle="modal"	data-bs-target="#chatModal"> -->
-		<a href="javascript:void(window.open('chatList.do', 'chatList','width=500, height=600'))">
+		<a href="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">
 		  <i class="fas fa-comments"></i>
 		</a>
 		<!-- ./ 챗 버튼 -->
@@ -132,12 +135,12 @@
                     </c:if>
                     <c:if test="${stype == 2 || stype == 3}">
 	                    <li class="nav-item">
-	                    	<a href="logout.do" class="nav-link">${sid}부모님 환영합니다!</a>
+	                    	<a href="logout.do" class="nav-link">${sname}부모님 환영합니다!</a>
 	                    </li>
                     </c:if>
                      <c:if test="${stype == 4 || stype == 5 || stype ==6}">
 	                    <li class="nav-item">
-	                    	<a href="logout.do" class="nav-link">${sid}선생님 환영합니다!</a>
+	                    	<a href="logout.do" class="nav-link">${sname}선생님 환영합니다!</a>
 	                    </li>
                     </c:if>
                     <c:if test="${stype == 1}">
@@ -172,7 +175,7 @@
 		  <div class="offcanvas-header">
 		 <%--  <c:if test="navImg" value="${getNavImg.c_imgpath}" />
 		  	<div class="memberImg"><img src="/upload/${fn:replace(${navImg,','""')}" alt="navImg"></div> --%>
-		    <h5 id="offcanvasRightLabel">${sid} 부모님</h5>
+		    <h5 id="offcanvasRightLabel">${sname} 부모님</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
@@ -188,16 +191,14 @@
 		<!-- side navbar teacher -->
 		<div class="offcanvas offcanvas-end" id="offcanvasRight2">
 		  <div class="offcanvas-header">
-		    <h5 id="offcanvasRightLabel">${sid} 선생님</h5>
+		    <h5 id="offcanvasRightLabel">${sname} 선생님</h5>
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
 		    <div><a href="t_proceedingMain.do?idx=${sidx}">돌봄현황</a></div>
 		    <div><a href="teacherProfile.do?idx=${sidx}">프로필</a></div>
-		    <div><a href="#">공룡발자국</a></div>
 		    <div><a href="#">돌봄노트</a></div>
 		    <div><a href="t_reviewMain.do?idx=${sidx}">후기내역</a></div>
-		    <div><a href="#">신고내역</a></div>
 		    <div><a href="accountManagement.do">계정관리</a></div>
 		  </div>
 		</div>
@@ -273,6 +274,3 @@
 </script>
 
 </html>
-
-
-

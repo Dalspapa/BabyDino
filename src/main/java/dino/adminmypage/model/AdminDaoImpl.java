@@ -1,6 +1,7 @@
 package dino.adminmypage.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -13,12 +14,19 @@ public class AdminDaoImpl implements AdminDao {
 	
 	private SqlSessionTemplate sqlMap;
 	
+	/*::::::::::동현 작업 시작:::::::::::*/
 	//신고하기
-	public List<ReportDto> reportList() {
-		List<ReportDto> reportlist = sqlMap.selectList("reportList");
+	public List<ReportDto> reportList(Map map) {
+		List<ReportDto> reportlist = sqlMap.selectList("reportList", map);
 		return reportlist;
 	}
 	
+	// 페이징 처리
+		public int getTotalCntReport() {
+			int count = sqlMap.selectOne("totalCntReport");
+			return count;
+		}
+	/*::::::::::동현 작업 끝:::::::::::*/
 	//회원강제탈퇴
 	public int adminMemberOut(int idx) {
 		int result = sqlMap.update("adminMemberOut", idx);
@@ -29,12 +37,20 @@ public class AdminDaoImpl implements AdminDao {
 		super();
 		this.sqlMap = sqlMap;
 	}
-		
+	
+	/*:::::::동현 작업 시작::::::::*/
 	//admin 회원관리
-	public List<MemberDto> memberManagement() {
-		List<MemberDto> list = sqlMap.selectList("memberManagement");
+	public List<MemberDto> memberManagement(Map map) {
+		List<MemberDto> list = sqlMap.selectList("memberManagement", map);
 		return list;
 	}
+	
+	// 페이징 처리
+	public int getTotalCnt() {
+		int count = sqlMap.selectOne("totalCnt");
+		return count;
+	}
+	/*:::::::동현 작업 끝::::::::*/
 	
 	//선생님 정산
 	public List<ReserveDto> teacherCost() {
@@ -102,6 +118,7 @@ public class AdminDaoImpl implements AdminDao {
 		List<AdminDto> t_list = sqlMap.selectList("teacherCertification");
 		return t_list;
 	}
+
 	
 	//선생님 등급 수정
 	public int teaCertUpd(int idx) {
