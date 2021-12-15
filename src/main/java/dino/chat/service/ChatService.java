@@ -22,6 +22,8 @@ public interface ChatService {
 
 	public int saveChatMessage(ChatMessageDto chatMessageDto);
 
+	public int updateReadNum(int roomIdx, int sessionIdx);
+
 //	public ChatRoomDto findById(int id);
 //
 //	public Map<String, Object> addMessage(Map<String, Object> param);

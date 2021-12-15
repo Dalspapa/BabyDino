@@ -27,4 +27,7 @@ public interface ParentMypageService {
 
 	//선생님 완료된 돌봄 목록
 	public List<ParentMypageDto> t_proceedingMain_done(int idx);
+
+	//결제후 예약테이블 상태 변경
+	public int statusUpdate(int idx);
 }

@@ -229,6 +229,7 @@
                <c:forEach var="vo" items="${ messageList }">
                		
                	<!-- 필요한 변수들 -->
+               	<c:set var="sessionIdx" value="${ sessionScope.saveIdx }" />
                	<c:set var="memberIdx" value="${ vo.d_member_idx }" />
                	<c:set var="message" value="${ vo.message }" />
                	<c:set var="name" value="${ vo.name }" />
@@ -243,12 +244,12 @@
 						<c:when test="${ memberType == 1 }">
 							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
 						</c:when>
-						<c:when test="${ memberType == 4 || memberType == 5 || memberType == 6 || memberType == 7 }">
-							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-						</c:when>
 						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
 							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
 						</c:when>
+						<c:otherwise>
+							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+						</c:otherwise>
 					</c:choose>
                		</span>
                		
@@ -272,12 +273,12 @@
 						<c:when test="${ memberType == 1 }">
 							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
 						</c:when>
-						<c:when test="${ memberType == 4 || memberType == 5 || memberType == 6 || memberType == 7 }">
-							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-						</c:when>
 						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
 							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
 						</c:when>
+						<c:otherwise>
+							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+						</c:otherwise>
 					</c:choose>
                		</span>
                	
@@ -341,23 +342,35 @@
 			//연결되면(또는 상대가 메시지를 보내면) 핸들러에서 메시지 받음.
 			ws.onmessage = function(evt) {
 
-				var senderName = '${sessionScope.saveName}님 ';
+				var str = evt.data;
+				var strArr = str.split(',');
+				
+				var typeChar = ''; 
+				if (strArr[1] == 1) {
+					typeChar = '<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
+				} else if (strArr[1] == 2 || strArr[1] == 3 || strArr[1] == 8) {
+					typeChar = '<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">';
+				} else {
+					typeChar = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
+				}
+				
+				
 				
 				var talkHtml = '';
 				talkHtml += '<li class="left clearfix">';
 				talkHtml += 	'<span class="chat-img pull-left">';
-				talkHtml += 	'<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
+				talkHtml += 	typeChar;
 				talkHtml += '</span>';
 				talkHtml += '<div class="chat-body clearfix">';
 				talkHtml += 	'<div class="header">';
-				talkHtml += 		'<strong class="primary-font">' + senderName + '</strong>';
+				talkHtml += 		'<strong class="primary-font">' + strArr[0] + '</strong>';
 				talkHtml += 		'<small class="pull-right text-muted">';
 				talkHtml += 			'<i class="fa fa-clock-o"></i>';
 				talkHtml += 			fnGetTime();
 				talkHtml += 		'</small>';
 				talkHtml += 	'</div>';
 				talkHtml += 	'<p>';
-				talkHtml += 			evt.data;
+				talkHtml += 			strArr[2];
 				talkHtml += 	'</p>'; 
 				talkHtml += '</div>';
 				talkHtml += '</li>';				
@@ -390,9 +403,11 @@
 			return alert("대화방이 닫혀있습니다.");
 		}
 
-		var senderName = '${sessionScope.saveName}님 ';
+		var senderName = '${sessionScope.saveName}';
 		var d_member_idx = '${ sessionScope.saveIdx }';
 		var d_chatroom_idx = '${sessionScope.roomIdx}';
+		var memberType = '${sessionScope.saveMemberType}'
+		
 		var message = document.fm.write.value + '\n';
 		var send_time = fnGetTime();
 		
@@ -417,11 +432,21 @@
 			
 		});
 		
+		
+		var typeChar = ''; 
+		if (memberType == 1) {
+			typeChar = '<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
+		} else if (memberType == 2 || memberType == 3 || memberType == 8) {
+			typeChar = '<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">';
+		} else {
+			typeChar = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
+		}
+		
 		$('.chat').append(
 				
 	           '<li class="right clearfix">' +
                     '<span class="chat-img pull-right">' + 
-               		'<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">' + 
+                    typeChar + 
                	'</span>' + 
                	'<div class="chat-body clearfix">' + 
                		'<div class="header">' + 

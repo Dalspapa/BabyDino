@@ -4,7 +4,7 @@
 <head>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아  기  공  룡</title>
 <style type="text/css">
 @import
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
