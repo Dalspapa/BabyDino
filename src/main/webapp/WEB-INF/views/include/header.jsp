@@ -88,7 +88,7 @@
 <!-- 챗 버튼 -->
 <c:if test="${ sid != null }">
 	<div id="chat" style="padding-top: 14px;">
-		<a href="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">
+		<a href="javascript:void(window.open('chatList.do', 'chatList','width=600, height=720'))">
 		  <i class="fas fa-comments"></i>
 		</a>
 		<!-- ./ 챗 버튼 -->
@@ -116,9 +116,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="javascript:dinoKids(${stype});">아이찾기</a>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link" href="findTeacher.do">공룡샘 찾기</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a class="nav-link" href="noticeMain.do">궁금해요</a>
 					</li>

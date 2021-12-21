@@ -290,7 +290,7 @@ section{
 		  </div>
 		</div>
         <!-- progress bar -->
-        <div class="progress-center">
+        <%-- <div class="progress-center">
           <div class="progress">
           		<c:if test="${ dto.status == 1 }">
           			<div class="progress-bar bg-success" role="progressbar" style="width: 14%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
@@ -314,8 +314,8 @@ section{
           			<div class="progress-bar bg-success" role="progressbar" style="width: 100%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           </div>
-        </div>
-      </div>
+        </div> 
+      </div>--%>
     </section>
     <section>
       <div class="topCont d-flex justify-content-between">

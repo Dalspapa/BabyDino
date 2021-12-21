@@ -122,15 +122,15 @@ public class MemberServiceImple implements MemberService {
 	//휴대폰 인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
 
-		String api_key = "NCSVVXWXHSO4YCEZ";
-		String api_secret = "ZFJRPVL1GJWKVJCVZMGSEQ6VZQIXXBZB";
+		String api_key = "NCSSEEKZLJYDIQRA";
+		String api_secret = "EGWGM0FRKOE12CGVBDHHYX0G0QGD2QIG";
 
 		Message coolsms = new Message(api_key, api_secret);
 
 		// 4 params(to, from, type, text) are mandatory. must be filled
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("to", userPhoneNumber); // 수신전화번호
-		params.put("from", "010-5067-8626"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+		params.put("from", "010-5167-0325"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
 		params.put("type", "SMS");
 		params.put("text", "[TEST] 인증번호는" + "["+randomNumber+"]" + "입니다."); // 문자 내용 입력
 		params.put("app_version", "test app 1.2"); // application name and version
