@@ -72,6 +72,7 @@ h2 {
 	height: 100px;
 	background-color: #f5f5f5;
 	border-radius: 10px;
+	padding: 10px;
 }
 .d-none {
 	display: none;
