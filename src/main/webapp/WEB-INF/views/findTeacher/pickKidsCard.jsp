@@ -183,7 +183,7 @@
 							맘시터에게 지급할 희망 시급을 적어주세요.</div>
 							<div class="col-md-8">
 								<input id="cost" class="cost" name="cost" type="text"
-									placeholder="희망시급" aria-label="default input example">원
+									placeholder="희망시급" aria-label="default input example" autocomplete="off">원
 							</div>
 						</div>
 					</div>
@@ -318,8 +318,8 @@
 			contentType: false,
 			cache: false,
 			success : function(e){
-				window.alert="예약등록되었습니다.";
-				location.href='findTeacher.do?idx='+ saveIdx;
+				alert('돌봄 신청이 완료되었어요 :) 우리 아이에게 딱 맞는 공룡샘이 곧 연락을 할 거에요 !');
+				location.href='/';
 				console.log(e);
 			},
 			error : function(e){

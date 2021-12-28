@@ -9,7 +9,7 @@
 <style>
 section{
 	font-family: 'S-Air';
-	width: 80%;
+	width: 100%;
 }
 section .row .mtitle{
     font-size: 20px;
@@ -25,7 +25,7 @@ section .row .mtitle{
 	background-color:  #68983b;
 }
 section .container{
-    margin: 10% 30%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -39,7 +39,7 @@ section .container{
 }
 .container .search{
     margin-top: 107px;
-    width: 80%;
+    width: 100%;
 }
 
 .container .search .btns{
@@ -90,7 +90,7 @@ section .container{
 					<section>
 						<!-- 아이 이름 검색 -->
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>아이 이름</strong>
 							</div>
 							<div>
@@ -100,7 +100,7 @@ section .container{
 
 						<!-- D_COMMON_OPTION  / C_CATEGORY : 10 val(op) 1,2,3,4 -->
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>아이 연령대</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
@@ -119,7 +119,7 @@ section .container{
 						</div>
 
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>아이 성별</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -131,7 +131,7 @@ section .container{
 						</div>
 
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>돌봄 비용</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -148,7 +148,7 @@ section .container{
 					<!-- 돌봄분야 이미지 추가해야함. -->
 					<section>
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>원하는 돌봄 분야</strong>
 							</div>
 							<!-- D_COMMON_OPTION  / C_CATEGORY : 5  val(op) 1 ~ 12 -->
@@ -173,7 +173,7 @@ section .container{
 					<!-- 요 버튼 누르면 위에 조건들 수행 -->
 
 					<!-- 검색버튼 좀 더 키워주세요 -->
-					<div class="btns" style="text-align: center;margin-right: 190px;">
+					<div class="btns" style="text-align: center;">
 						<button class="btn btn-outline-success" type="reset">RESET</button>
 				 		<button class="btn btn-outline-success" type="button" onclick="fnShowTeacherList()">SEARCH</button>
 				 	</div>
@@ -184,7 +184,7 @@ section .container{
 		<hr />
 		<!-- 하단 정보[START] -->
 
-		<div class="row" id="kidsCard">
+		<div class="row p-5" id="kidsCard">
 
 		</div>
 		<!-- 하단 정보[START] -->

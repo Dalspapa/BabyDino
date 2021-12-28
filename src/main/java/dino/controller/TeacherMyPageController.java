@@ -1,6 +1,7 @@
 package dino.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -111,18 +112,11 @@ public class TeacherMyPageController {
 	//예약 현황 상태값 업데이트
 	@RequestMapping("/statusUpd.do")
 	@ResponseBody
-	public ModelAndView reserveStatusUpdate(
-				@RequestParam("status") int status, 
-				@RequestParam("reserveIdx") int reserveIdx) {
-		
-		ModelAndView mav = new ModelAndView();
-		
+	public int reserveStatusUpdate(@RequestParam Map<String, Object> params) {
 		//파람값으로 상태 없데이트 각 url마다 2,3...
-		int rst = teacherMypageService.statusUpd(status, reserveIdx);
-		mav.addObject("rst", rst);
-		mav.setViewName("teacherMypage/tMyMsg");
+		int rst = teacherMypageService.statusUpd(params);
 		
-		return mav;
+		return rst;
 	}
 	
 }

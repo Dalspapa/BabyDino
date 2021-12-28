@@ -20,6 +20,7 @@ import dino.dto.ChatRoomDto;
 
 @Controller
 public class ChatController {
+	
 	@Autowired
 	private ChatService chatService;
 
@@ -109,7 +110,6 @@ public class ChatController {
 		}
 
 	}
-
 	
 	
 	/** 채팅 메시지 DB 저장
@@ -127,16 +127,5 @@ public class ChatController {
 		return result;
 	}
 	
-	
-
-//	//채팅방 입장 테스트
-//	@RequestMapping("/goChatRoom.do")
-//	public String goChatRoom(@RequestParam("roomIdx") int roomIdx, HttpSession session) {
-//
-//		session.setAttribute("roomIdx", roomIdx);
-//		System.out.println("세션에 방정보 저장됨::" + roomIdx);
-//
-//		return "/chat/chatRoom";
-//	}
 
 }

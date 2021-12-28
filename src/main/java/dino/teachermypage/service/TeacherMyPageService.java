@@ -1,5 +1,7 @@
 package dino.teachermypage.service;
 
+import java.util.Map;
+
 import dino.dto.MakeTCardDto;
 import dino.teachermypage.model.TeacherMyPageDto;
 
@@ -19,7 +21,7 @@ public interface TeacherMyPageService {
 	//선생님 프로필 아이유형, 돌봄분야 업데이트
 	public int typeUpd(MakeTCardDto typeDto);
 
-	public int statusUpd(int status, int reserveIdx);
+	public int statusUpd(Map<String, Object> params);
 	
 	
 	//////////////주호 끝

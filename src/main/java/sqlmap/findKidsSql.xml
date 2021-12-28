@@ -278,6 +278,16 @@
 			D_MEMBER
 		WHERE ID = #{id}
 	</select>
+	
+	<!-- 예약카드 선생님 매칭 -->
+	<update id="updateReserveCard" parameterType="dino.dto.ReserveDto">
+		UPDATE 
+			D_RESERVE
+		SET
+			MATCH_DATE = SYSDATE,
+			TEACHER_IDX = #{teacher_idx}
+		WHERE IDX = #{idx} 
+	</update>
 
 </mapper>
 

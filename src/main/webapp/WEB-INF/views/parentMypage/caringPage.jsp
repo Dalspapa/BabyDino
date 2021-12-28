@@ -243,31 +243,39 @@ section{
         <div class="userLive">
           <div>
             <div class="aa">수락대기</div> 
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">신청취소</button>
+            <c:if test="${ dto.status == 1 }">
+            	<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">신청취소</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">상담중</div>
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">신청취소</button>
-          </div>
-          <div>
-            <div class="aa">상담완료</div>
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">재상담</button>
+            <c:if test="${ dto.status == 2 }">
+            	<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('${enterChatRoom}', 'chatRoom','width=600, height=700'))">신청취소</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">결제대기</div>
-            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">결제하기</button>
+            <c:if test="${ dto.status == 3 }">
+            	<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">결제하기</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">결제완료</div>
-            <button type="button" class="btn btn-outline-success">결제취소</button>
+            <c:if test="${ dto.status == 4 }">
+            	<button type="button" class="btn btn-outline-success">결제취소</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">돌봄중</div>
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">채팅하기</button>
+            <c:if test="${ dto.status == 5 }">
+            	<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">채팅하기</button>
+            </c:if>	
           </div>
           <div>
             <div class="aa">돌봄완료</div>
-            <button type="button" class="btn btn-outline-success" onclick="writeReview();">후기작성</button>
+            <c:if test="${ dto.status == 5 || dto.status == 6 }">
+            	<button type="button" class="btn btn-outline-success" onclick="writeReview();">후기작성</button>
+            </c:if>
           </div>
         </div>
 
@@ -290,32 +298,29 @@ section{
 		  </div>
 		</div>
         <!-- progress bar -->
-        <%-- <div class="progress-center">
+        <div class="progress-center">
           <div class="progress">
           		<c:if test="${ dto.status == 1 }">
           			<div class="progress-bar bg-success" role="progressbar" style="width: 14%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
 				<c:if test="${ dto.status == 2 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 28%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 31%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 3 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 42%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 48.5%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 4 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 56%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 66%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 5 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 70%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 83%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 6 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 84%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-          		</c:if>
-          		<c:if test="${ dto.status == 7 }">
           			<div class="progress-bar bg-success" role="progressbar" style="width: 100%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           </div>
         </div> 
-      </div>--%>
+      </div>
     </section>
     <section>
       <div class="topCont d-flex justify-content-between">
