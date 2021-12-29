@@ -289,7 +289,7 @@
 
 			location.href = 'findTeacher.do?idx=${sidx}';
 
-		} else if ( stype == 2 || stype == 3 ) {
+		} else if ( stype == 2 || stype == 3 || stype == 8 ) {
 
 			location.href = 'pickKidsCard.do?idx=${sidx}'; //2,3 는 아이카드 선택으로 이동
 

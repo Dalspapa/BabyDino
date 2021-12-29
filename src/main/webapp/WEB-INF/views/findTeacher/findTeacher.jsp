@@ -37,8 +37,8 @@ section .container{
 <body>
 	<!-- <div class="title">선생님찾기 페이지</div>-->
 	<section class="title">
-		<div class="container">
-			<!-- 필터[START] -->
+		<!-- <div class="container">
+			필터[START]
 			<div class="row">
 				<div class="col-6">
 					<div class="row" style="justify-content: space-between;">
@@ -77,11 +77,13 @@ section .container{
 					</div>
 				</div>
 
-				<!--  날짜 -->
+				 날짜
 				<div class="col-6"></div>
 			</div>
-		</div>
+		</div> -->
 		<!-- 필터[END] -->
+		
+		<h2>공룡샘 리스트</h2>
 		<hr />
 
 		<!-- 하단 정보[START] -->

@@ -269,7 +269,7 @@ section{
           <div>
             <div class="aa">돌봄중</div>
             <c:if test="${ dto.status == 5 }">
-            	<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700')">채팅하기</button>
+            	<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">채팅하기</button>
             </c:if>
           </div>
           <div>
