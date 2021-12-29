@@ -111,7 +111,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive" style="font-size: 20px;">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:dinoCare(${stype});">돌봄신청//${stype }</a>
+						<a class="nav-link" href="javascript:dinoCare(${stype});">돌봄신청</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="javascript:dinoKids(${stype});">아이찾기</a>
