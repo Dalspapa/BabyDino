@@ -30,7 +30,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <!-- <link rel="stylesheet" href="/BabyDino/common/css/bootstrap.min.css"> -->
-<!-- 지원 css수정 -->
+
 <style>
 .btn{
     margin-bottom:5px;
@@ -69,6 +69,19 @@
 .login-nav{
 	margin-top : 30px;
 }
+
+/* 채팅 깜빡임 */
+@keyframes blink-effect { 
+	50% { 
+		opacity: 0; 
+	} 
+	
+} 
+
+.iconBlink { 
+	animation: blink-effect 1s step-end infinite; 
+}
+
 </style>
 
 <!-- 세션 -->
@@ -77,21 +90,38 @@
 <c:set var="stype" value="${sessionScope.saveMemberType}" />
 <c:set var="sidx" value="${sessionScope.saveIdx}" />
 
+<!-- 채팅 알림음 -->
+<audio id='audio_play' src='${pageContext.request.contextPath}/common/audio/dinotalk.mp3'></audio>
+<script type="text/javascript"> 
+	function play() { 
+	    var audio = document.getElementById('audio_play'); 
+	    if (audio.paused) { 
+	        audio.play(); 
+	    }else{ 
+	        audio.pause(); 
+	        audio.currentTime = 0 
+	    } 
+	} 
+</script>
+
 <!-- 페이지 상위 버튼 -->
 <div id="top-button">
 	<a href="#page-top">
 		<i class="fas fa-arrow-up"></i>
 	</a>
-	<!-- ./ 페이지 상위 버튼 -->
+<!-- ./ 페이지 상위 버튼 -->
 </div>
 
 <!-- 챗 버튼 -->
 <c:if test="${ sid != null }">
 	<div id="chat" style="padding-top: 14px;">
 		<a href="javascript:void(window.open('chatList.do', 'chatList','width=600, height=720'))">
+		  <span id="caht-cnt">
+        	<p id="p-caht-cnt"><!-- 읽지않은 메시지 --></p>
+          </span>
 		  <i class="fas fa-comments"></i>
 		</a>
-		<!-- ./ 챗 버튼 -->
+	<!-- ./ 챗 버튼 -->
 	</div>
 </c:if>
     <!-- header -->
@@ -337,6 +367,53 @@
 		}
 	}
 
+</script>
+
+<!-- 채팅알림 -->
+<script>
+	
+	var sIdx = '${sidx}';
+	var count = 0;
+	
+	function getReadCnt() {
+		
+		$.ajax({
+			method : 'post',
+			url : '/chatAlarm.do',
+			dataType : 'json',
+			data : {
+				sIdx : sIdx
+			},
+			success : function(readCnt) {
+				$("#p-caht-cnt").html(readCnt);
+				count = readCnt;
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		})
+	}
+		
+	if (sIdx > 0) {
+		$(window).on('load', function() {
+			// 2초에 한번씩 읽지 않은 방 갯수 불러오기(실시간 알림 전용)
+		    setInterval(function() {
+		        // 읽지 않은 방 갯수 불러오기
+		        getReadCnt();
+		        
+		        // 읽지 않은 메세지 총 갯수가 0개가 아니면
+		        if(count != 0) {
+		            // 채팅 icon 깜빡거리기
+		            $('#chat').addClass('iconBlink');
+		            play();
+		        } else {
+		            // 깜빡거림 없애기
+		            $('#chat').removeClass('iconBlink');
+			    }
+			},2000);
+		});
+	}
+	
 </script>
 
 </html>

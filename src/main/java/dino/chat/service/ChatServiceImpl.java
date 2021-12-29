@@ -1,6 +1,5 @@
 package dino.chat.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -73,6 +72,11 @@ public class ChatServiceImpl implements ChatService {
 		
 		int result = chatDao.updateReadNum(map);
 		return result;
+	}
+
+	public int getReadCount(int sIdx) {
+		int readCnt = chatDao.getReadCount(sIdx);
+		return readCnt;
 	}
 
 }

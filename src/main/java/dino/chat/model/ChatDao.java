@@ -9,7 +9,6 @@ import dino.dto.ChatMessageDto;
 import dino.dto.ChatRoomDto;
 
 public interface ChatDao {
-//	public void add(Map<String, Object> param);
 
 	public List<ChatListVo> getList(int sessionIdx);
 
@@ -23,9 +22,6 @@ public interface ChatDao {
 
 	public int updateReadNum(Map map);
 
-//	public ChatRoomDto findById(@Param("id") int id);
-//
-//	public void addMessage(Map<String, Object> param);
-//
-//	public List<ChatMessageDto> getMessages(@Param("roomId") int roomId, @Param("from") int from);
+	public int getReadCount(int sIdx);
+
 }

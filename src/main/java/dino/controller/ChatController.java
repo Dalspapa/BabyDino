@@ -127,5 +127,17 @@ public class ChatController {
 		return result;
 	}
 	
-
+	/** 채팅알람 카운트
+	 * @param session Idx
+	 * @return count
+	 */
+	@RequestMapping("/chatAlarm.do")
+	@ResponseBody
+	public int getReadCount(@RequestParam(value = "sIdx", defaultValue = "0") int sIdx) {
+		
+		int readCnt = chatService.getReadCount(sIdx);
+		System.out.println("###INFO### : 알림카운트 :::::::" + readCnt);
+		
+		return readCnt;
+	}
 }
