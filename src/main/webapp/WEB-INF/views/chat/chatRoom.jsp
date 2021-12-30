@@ -244,7 +244,7 @@
 			<a href="chatList.do" class="backIcon">
 				<i class="fas fa-arrow-circle-left"></i>
 			</a>
-			${ sessionScope.saveName }님의 채팅방
+			${ sessionScope.saveName }님의 채팅방 ${ param.partnerIdx }
 		</p>
 	</span>
     <!-- selected chat -->
@@ -406,7 +406,7 @@
 					talkHtml += 		'</small>';
 					talkHtml += 	'</div>';
 					talkHtml += 	'<a href="proceedingMain.do?idx=${sessionIdx}" target="_blank">';
-					talkHtml += 		'상담이 완료되었습니다. 메시지를 누르면 마이페이지로 이동합니다.';
+					talkHtml += 		'상담이 완료되었습니다. 메시지를 누르면 마이페이지로 이동합니다. 결제를 진행해주세요 :)';
 					talkHtml += 	'</a>';
 					talkHtml += '</div>';
 					talkHtml += '</li>';
@@ -459,6 +459,7 @@
 
 		var senderName = '${sessionScope.saveName}';
 		var d_member_idx = '${ sessionScope.saveIdx }';
+		var partnerIdx = '${param.partnerIdx}';
 		var d_chatroom_idx = '${sessionScope.roomIdx}';
 		var memberType = '${sessionScope.saveMemberType}';
 
@@ -518,8 +519,27 @@
 		);
 		
 		if (message === "상담완료\n" && memberType == 10) {
+			
+			//상태값 업데이트
+		 	$.ajax({
+				method : 'post',
+				url : '/statusUpdForChat.do',
+				dataType : 'json',
+				data : {
+					teacher_idx : d_member_idx,
+					member_p_idx : partnerIdx
+				},
+				success : function(rst) {
+					console.log('업데이트 성공');
+				},
+				error : function() {
+					console.log('실패');
+					alert('다시 시도해주세요 T.T');
+				}
+			}) 
+			
+			//상담완료 입력시 출력될 메시지
 			$('.chat').append(
-	
 			           '<li class="right clearfix">' +
 		                    '<span class="chat-img pull-right">' +
 		                    typeChar +
@@ -532,11 +552,10 @@
 		               			'</small>' +
 		               		'</div>' +
 		               		'<a href="t_proceedingMain.do?idx=${sessionIdx}" target="_blank">'
-		               			+ '메시지를 클릭하면 마이페이지로 이동합니다 :) 상담 완료 버튼을 눌러주세요 !' +
+		               			+ '메시지를 클릭하면 마이페이지로 이동합니다 :) 부모님의 결제를 기다려주세요 !' +
 		               		'</a>' +
 		               	'</div>' +
 		               '</li>'
-	
 				);
 			
 		}

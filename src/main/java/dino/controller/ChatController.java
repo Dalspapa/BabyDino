@@ -1,6 +1,7 @@
 package dino.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +24,7 @@ public class ChatController {
 	
 	@Autowired
 	private ChatService chatService;
-
+	
 	//채팅 리스트 가져오기
 	@RequestMapping("/chatList.do")
 	public ModelAndView showChatList(HttpSession session) {
@@ -139,5 +140,19 @@ public class ChatController {
 		System.out.println("###INFO### : 알림카운트 :::::::" + readCnt);
 		
 		return readCnt;
+	}
+	
+	/** 상담완료시 상태 업데이트
+	 * @param tIdx, pIdx
+	 * @return result
+	 */
+	@RequestMapping("/statusUpdForChat.do")
+	@ResponseBody
+	public int updateStatusForChat(@RequestParam Map<String, Object> params) {
+		
+		int Resert = chatService.updateStatusForChat(params); 
+		System.out.println("###INFO### : 채팅상태변경 결과 :::::::" + Resert);
+		
+		return Resert;
 	}
 }

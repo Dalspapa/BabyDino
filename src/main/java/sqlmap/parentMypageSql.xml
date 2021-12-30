@@ -142,7 +142,7 @@
 		update
 			d_reserve
 		set
-			status = 4
+			status = 5
 		where
 			idx = #{idx}
 	</update>

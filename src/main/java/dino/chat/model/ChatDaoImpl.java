@@ -62,5 +62,11 @@ public class ChatDaoImpl implements ChatDao {
 		return readCnt;
 	}
 
+
+	public int updateStatusForChat(Map<String, Object> params) {
+		int result = sqlMap.update("updateStatusForChat", params);
+		return result;
+	}
+
 	
 }

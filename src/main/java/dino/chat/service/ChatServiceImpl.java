@@ -79,4 +79,9 @@ public class ChatServiceImpl implements ChatService {
 		return readCnt;
 	}
 
+	public int updateStatusForChat(Map<String, Object> params) {
+		int result = chatDao.updateStatusForChat(params);
+		return result;
+	}
+
 }

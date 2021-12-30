@@ -24,4 +24,6 @@ public interface ChatDao {
 
 	public int getReadCount(int sIdx);
 
+	public int updateStatusForChat(Map<String, Object> params);
+
 }

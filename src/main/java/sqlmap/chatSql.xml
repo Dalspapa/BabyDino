@@ -206,5 +206,14 @@
 		WHERE LAST_READ = 1
 		AND LAST_M_IDX != #{sIdx}
 	</select>
+	
+	<update id="updateStatusForChat" parameterType="map">
+		 UPDATE 
+		 	d_reserve 
+		 SET 
+		 	status = 3
+         WHERE teacher_idx = #{teacher_idx}
+         AND member_p_idx = #{member_p_idx}
+	</update>
 
 </mapper>

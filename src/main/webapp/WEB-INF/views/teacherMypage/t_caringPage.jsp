@@ -251,7 +251,7 @@ section{
           <div>
             <div class="aa">상담중</div>
             <c:if test="${ dto.status == 2 }">
-            	<button type="button" class="btn btn-outline-success" onclick="fnUpdateStatus()">상담완료</button>
+            	<button type="button" class="btn btn-outline-success" onclick="fnUpdateStatus()">신청취소</button>
             </c:if>
           </div>
           <div>
