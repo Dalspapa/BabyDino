@@ -20,6 +20,7 @@ import dino.dto.ChatRoomDto;
 
 @Controller
 public class ChatController {
+	
 	@Autowired
 	private ChatService chatService;
 
@@ -51,7 +52,6 @@ public class ChatController {
 
 	//채팅방 입장, 없으면 생성.
 	@RequestMapping(value = "/enterChatRoom.do")
-//	@ResponseBody
 	public ModelAndView enterChatRoom(
 			HttpSession session,
 			@RequestParam("partnerIdx") int partnerIdx) {
@@ -110,7 +110,6 @@ public class ChatController {
 		}
 
 	}
-
 	
 	
 	/** 채팅 메시지 DB 저장
@@ -128,16 +127,17 @@ public class ChatController {
 		return result;
 	}
 	
-	
-
-//	//채팅방 입장 테스트
-//	@RequestMapping("/goChatRoom.do")
-//	public String goChatRoom(@RequestParam("roomIdx") int roomIdx, HttpSession session) {
-//
-//		session.setAttribute("roomIdx", roomIdx);
-//		System.out.println("세션에 방정보 저장됨::" + roomIdx);
-//
-//		return "/chat/chatRoom";
-//	}
-
+	/** 채팅알람 카운트
+	 * @param session Idx
+	 * @return count
+	 */
+	@RequestMapping("/chatAlarm.do")
+	@ResponseBody
+	public int getReadCount(@RequestParam(value = "sIdx", defaultValue = "0") int sIdx) {
+		
+		int readCnt = chatService.getReadCount(sIdx);
+		System.out.println("###INFO### : 알림카운트 :::::::" + readCnt);
+		
+		return readCnt;
+	}
 }

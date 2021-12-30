@@ -40,7 +40,7 @@
 .container .row .col-12 .btns{
 	margin: 2% auto;
 }
-.contaniner #step3 .wrapper .row .text .row{ 
+.contaniner #step3 .wrapper .row .text .row{
     width: 80%;
     /* margin: 1% 31%; */
 }
@@ -77,7 +77,7 @@
 					<c:forEach items="${ k_dto }" var="k_dto">
 						<div class="row p-4 kid-card mb-3" onclick="toggleActive(this)"
 							id="${k_dto.idx}"
-							style="width: 50%; border: 1px solid #e5e5e5; border-radius: 8px;">							
+							style="width: 50%; border: 1px solid #e5e5e5; border-radius: 8px;">
 							<div class="col-12 mb-2">
 								<span style="font-weight: bold;">${ k_dto.k_name }</span>
 							</div>
@@ -149,7 +149,7 @@
 			</div>
 			<!-- 주소정보 선택 [END] -->
 		</div>
-	
+
 		<div id="step3" class="d-none">
 			<div class="wrapper">
 				<div>
@@ -183,7 +183,7 @@
 							맘시터에게 지급할 희망 시급을 적어주세요.</div>
 							<div class="col-md-8">
 								<input id="cost" class="cost" name="cost" type="text"
-									placeholder="희망시급" aria-label="default input example">원
+									placeholder="희망시급" aria-label="default input example" autocomplete="off">원
 							</div>
 						</div>
 					</div>
@@ -239,7 +239,6 @@
 		minDate : moment().format("YYYY-MM-DD"),
 		format : 'YYYY-MM-DD',
 		select: function(r) {
-			console.log('r : ', r);
 			var selectDate;
 			if(r[0] == null) {
 				selectDate = null;
@@ -274,7 +273,7 @@
 		/* if(!COST_VALID) {
 			return false;
 		} */
-		
+
 		var _kidCard = $(".kid-card");
 		var kidCard;
 
@@ -284,6 +283,11 @@
 			}
 		};
 
+		if(!reserveDate){
+			alert("예약날짜를 선택해주세요.");
+			return false;
+		}
+
 		var start = reserveDate + ' ' + $("#start_date").val();
 		if($("#start_date").val().length == 1) start = reserveDate + ' 0' + $("#start_date").val();
 
@@ -291,7 +295,7 @@
 		if($("#end_date").val().length == 1) end = reserveDate + ' 0' + $("#end_date").val();
 
 		var saveIdx = '${sessionScope.saveIdx}';
-		
+
 		var formData = new FormData();
 		formData.set('member_p_idx', saveIdx);
 		formData.set('kid_idx'     , kidCard);
@@ -299,11 +303,11 @@
 		formData.set('end_date'    , end);
 		formData.set('cost'        , $("#cost").val());
 		formData.set('status'      , 1);
-		
+
 		formData.forEach(function(value, key) {
 			console.log(key, value);
-		});		
-		
+		});
+
 		/* return false; */
 		$.ajax({
 			method : 'POST',
@@ -312,10 +316,10 @@
 			enctype: 'multipart/form-data',
 			processData: false,
 			contentType: false,
-			cache: false, 			
+			cache: false,
 			success : function(e){
-				window.alert="예약등록되었습니다.";
-				location.href='findTeacher.do?idx='+ saveIdx;
+				alert('돌봄 신청이 완료되었어요 :) 우리 아이에게 딱 맞는 공룡샘이 곧 연락을 할 거에요 !');
+				location.href='/';
 				console.log(e);
 			},
 			error : function(e){

@@ -1,12 +1,14 @@
 package dino.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dino.commonop.service.CommonOpServiceImple;
@@ -107,6 +109,14 @@ public class TeacherMyPageController {
 		return mav;
 	}
 	
-	////////////////주호 끝
+	//예약 현황 상태값 업데이트
+	@RequestMapping("/statusUpd.do")
+	@ResponseBody
+	public int reserveStatusUpdate(@RequestParam Map<String, Object> params) {
+		//파람값으로 상태 없데이트 각 url마다 2,3...
+		int rst = teacherMypageService.statusUpd(params);
+		
+		return rst;
+	}
 	
 }

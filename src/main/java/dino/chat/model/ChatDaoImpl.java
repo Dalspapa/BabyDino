@@ -56,5 +56,11 @@ public class ChatDaoImpl implements ChatDao {
 		return result;
 	}
 
+
+	public int getReadCount(int sIdx) {
+		int readCnt = sqlMap.selectOne("getReadCount", sIdx);
+		return readCnt;
+	}
+
 	
 }

@@ -5,262 +5,263 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <meta charset="UTF-8">
 <title>아  기  공  룡</title>
+
 <style type="text/css">
-@import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
-
-body {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-/* reset */
-* {
-	margin: 0;
-	padding: 0;
-}
-
-li {
-	list-style: none;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-a:link, a:visited {
-	color: #333;
-	text-decoration: none;
-}
-
-h2 {
-	font-size: 0;
-	line-height: 0;
-	width: 0px;
-	height: 0px;
-	position: absolute;
-	left: -9999px;
-}
-
-.wrapper {
-	width: 80%;
-	margin: 5% auto;
-}
-/* userInfo 사용자 상태영역 */
-.userInfo {
-	display: flex;
-	justify-content: center;
-	padding: 2em 0;
-}
-
-.userInfo .userImg {
-	border: 5px solid rgb(60, 221, 73);
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	text-align: center;
-}
-
-.userInfo .userImg img {
-	width: 100%;
-	vertical-align: middle;
-}
-
-.userInfo .nameText {
-	line-height: 80px;
-	margin-left: 20px;
-}
-
-.userLiveWrap {
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	padding: 2em 0;
-}
-
-.userLive {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 30px;
-}
-
-.userLive>div {
-	width: 14%;
-	margin-right: 10px;
-	text-align: center;
-}
-
-.userLive>div:last-child {
-	margin-right: 0;
-}
-
-.userLive .aa {
-	background-color: rgb(56, 173, 101);
-	padding: 2rem 0;
-	text-align: center;
-	border-radius: 10px;
-	color: #fff;
-}
-
-.aa+button {
-	width: 80%;
-	margin-top: 10px;
-}
-
-.progress {
-	width: 100%;
-}
-
-.progress-center {
-	display: flex;
-	justify-content: center;
-}
-
-.topCont {
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	padding: 1em .5em;
-	font-size: 1.1em;
-}
-
-.item1 {
-	display: flex;
-	justify-content: center;
-	padding: 1.7em 0;
-}
-
-.item1 .childInfo {
-	margin-left: 1em;
-}
-
-.item1 .childImg {
-	width: 200px;
-	height: 200px;
-	background-color: #ccc;
-	border-radius: 50%;
-	overflow: hidden;
-}
-
-.item3 {
-	background-color: #f0f0f0;
-	padding: 20px 10px;
-	margin-bottom: 20px;
-	border-radius: 5px;
-}
-
-.item3 li {
-	margin-bottom: 20px;
-}
-
-.item3 li:last-child {
-	margin-bottom: 0;
-}
-
-.item3 h3 {
-	font-size: 16px;
-	font-weight: 500;
-}
-
-.contentBox {
-	background-color: #fff;
-	border-radius: 5px;
-	padding: 10px;
-	box-sizing: border-box;
-	word-break: keep-all;
-}
-
-.ageWrap {
-	display: flex;
-	justify-content: space-around;
-}
-
-.circle-div {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background-color: #d9fbf7;
-	text-align: center;
-	line-height: 60px;
-	font-size: 14px;
-	color: rgb(50, 179, 136);
-	font-weight: 500;
-}
-
-.flex-list {
-	padding-left: 0px;
-}
-
-.flex-list li {
-	display: flex;
-}
-
-.contentBox .flex-list li {
-	font-size: 14px;
-}
-
-.ativeList {
-	text-align: center;
-	display: flex;
-}
-
-.ativeList>div img {
-	display: block;
-	margin: 0 auto 10px;
-}
-
-.box div {
-	width: 80px;
-	height: 80px;
-	background-color: #caaddb;
-	display: table-cell;
-	vertical-align: middle; /* 수직정렬이 안됨 ㅜㅡㅜ */
-	text-align: center;
-	border-radius: 20px 20px;
-}
-
-section {
-	padding: 10px;
-	margin: 1rem;
-}
-
-@media all and (min-width: 720px) and (max-width: 1280px) {
+	@import
+		url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
+	
 	body {
-		background-color: skyblue;
+		font-family: 'Noto Sans KR', sans-serif;
 	}
-}
-
-@media all and (min-width: 320px) and (max-width: 720px) {
-	body {
-		background-color: #333;
+	/* reset */
+	* {
+		margin: 0;
+		padding: 0;
 	}
-}
-
-.star {
-	position: relative;
-	font-size: 2rem;
-	color: #ddd;
-}
-
-.star input {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	opacity: 0;
-	cursor: pointer;
-}
-
-.star span {
-	width: 0;
-	position: absolute;
-	left: 0;
-	color: red;
-	overflow: hidden;
-	pointer-events: none;
-}
-.wrapper section .btns{
-    margin: auto 45%;
-}
+	
+	li {
+		list-style: none;
+	}
+	
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	
+	a:link, a:visited {
+		color: #333;
+		text-decoration: none;
+	}
+	
+	h2 {
+		font-size: 0;
+		line-height: 0;
+		width: 0px;
+		height: 0px;
+		position: absolute;
+		left: -9999px;
+	}
+	
+	.wrapper {
+		width: 80%;
+		margin: 5% auto;
+	}
+	/* userInfo 사용자 상태영역 */
+	.userInfo {
+		display: flex;
+		justify-content: center;
+		padding: 2em 0;
+	}
+	
+	.userInfo .userImg {
+		border: 5px solid rgb(60, 221, 73);
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		text-align: center;
+	}
+	
+	.userInfo .userImg img {
+		width: 100%;
+		vertical-align: middle;
+	}
+	
+	.userInfo .nameText {
+		line-height: 80px;
+		margin-left: 20px;
+	}
+	
+	.userLiveWrap {
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		padding: 2em 0;
+	}
+	
+	.userLive {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 30px;
+	}
+	
+	.userLive>div {
+		width: 14%;
+		margin-right: 10px;
+		text-align: center;
+	}
+	
+	.userLive>div:last-child {
+		margin-right: 0;
+	}
+	
+	.userLive .aa {
+		background-color: rgb(56, 173, 101);
+		padding: 2rem 0;
+		text-align: center;
+		border-radius: 10px;
+		color: #fff;
+	}
+	
+	.aa+button {
+		width: 80%;
+		margin-top: 10px;
+	}
+	
+	.progress {
+		width: 100%;
+	}
+	
+	.progress-center {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.topCont {
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		padding: 1em .5em;
+		font-size: 1.1em;
+	}
+	
+	.item1 {
+		display: flex;
+		justify-content: center;
+		padding: 1.7em 0;
+	}
+	
+	.item1 .childInfo {
+		margin-left: 1em;
+	}
+	
+	.item1 .childImg {
+		width: 200px;
+		height: 200px;
+		background-color: #ccc;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	
+	.item3 {
+		background-color: #f0f0f0;
+		padding: 20px 10px;
+		margin-bottom: 20px;
+		border-radius: 5px;
+	}
+	
+	.item3 li {
+		margin-bottom: 20px;
+	}
+	
+	.item3 li:last-child {
+		margin-bottom: 0;
+	}
+	
+	.item3 h3 {
+		font-size: 16px;
+		font-weight: 500;
+	}
+	
+	.contentBox {
+		background-color: #fff;
+		border-radius: 5px;
+		padding: 10px;
+		box-sizing: border-box;
+		word-break: keep-all;
+	}
+	
+	.ageWrap {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	.circle-div {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		background-color: #d9fbf7;
+		text-align: center;
+		line-height: 60px;
+		font-size: 14px;
+		color: rgb(50, 179, 136);
+		font-weight: 500;
+	}
+	
+	.flex-list {
+		padding-left: 0px;
+	}
+	
+	.flex-list li {
+		display: flex;
+	}
+	
+	.contentBox .flex-list li {
+		font-size: 14px;
+	}
+	
+	.ativeList {
+		text-align: center;
+		display: flex;
+	}
+	
+	.ativeList>div img {
+		display: block;
+		margin: 0 auto 10px;
+	}
+	
+	.box div {
+		width: 80px;
+		height: 80px;
+		background-color: #caaddb;
+		display: table-cell;
+		vertical-align: middle; /* 수직정렬이 안됨 ㅜㅡㅜ */
+		text-align: center;
+		border-radius: 20px 20px;
+	}
+	
+	section {
+		padding: 10px;
+		margin: 1rem;
+	}
+	
+	@media all and (min-width: 720px) and (max-width: 1280px) {
+		body {
+			background-color: skyblue;
+		}
+	}
+	
+	@media all and (min-width: 320px) and (max-width: 720px) {
+		body {
+			background-color: #333;
+		}
+	}
+	
+	.star {
+		position: relative;
+		font-size: 2rem;
+		color: #ddd;
+	}
+	
+	.star input {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+	
+	.star span {
+		width: 0;
+		position: absolute;
+		left: 0;
+		color: red;
+		overflow: hidden;
+		pointer-events: none;
+	}
+	.wrapper section .btns{
+	    margin: auto 45%;
+	}
 </style>
-<!-- ---지원css 수정----- -->
+
 </head>
 <body>
 	<!-- /offcanvas -->
@@ -281,15 +282,15 @@ section {
 				<div>${ kidInfoDto.k_name }</div>
 				<form name="reportIdx" action="reportWrite.do">
 					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
-				<div>
-					<a href="javascript:reportIdx.submit();">
-						&#128680;
-					</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a>
-						#좋아요버튼 
-					</a>
-				</div>
+					<div>
+						<a href="javascript:reportIdx.submit();">
+							&#128680;
+						</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a>
+							#좋아요버튼 
+						</a>
+					</div>
 				</form>
 			</div>
 	
@@ -369,18 +370,43 @@ section {
 				</li>
 			</ul>
 			<div class="btns">
-			<button type="button" class="btn btn-outline-success">인터뷰 요청</button>
+			<button type="button" class="btn btn-outline-success" onclick="fnDoInterview()">인터뷰 요청</button>
 			</div>
 		</section>
 	</div>	
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<script>
-const drawStar = (target) => {
-    document.querySelector('.star span').style.width = '${target.value * 10}%';
-  }
-  
 
+<script>
+	const drawStar = (target) => {
+	    document.querySelector('.star span').style.width = '${target.value * 10}%';
+	  }
+	
+	var teacher_idx = '${sessionScope.saveIdx}';
+	var idx = '${kidInfoDto.idx}';
+	
+	var jsonParams = {
+			teacher_idx : teacher_idx,
+			idx : idx
+	}
+	
+	function fnDoInterview() {
+		$.ajax({
+			method : 'post',
+			url : '/updateReserveCard.do',
+			data : jsonParams,
+			dataType : 'json',
+			success : function(result) {
+				console.log('1단계 매칭 완료');
+				location.href='t_proceedingMain.do?idx=' + teacher_idx;
+			},
+			error : function() {
+				console.log('매칭실패');
+				alert('다시 시도해주세요 T.T');
+			}
+			
+		})
+	}
 </script>
 </html>
 

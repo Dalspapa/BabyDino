@@ -26,6 +26,7 @@ import dino.dto.CommonOpDto;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
+import dino.dto.ReserveDto;
 import dino.findkids.model.*;
 import dino.findkids.service.FindKidsService;
 
@@ -241,6 +242,22 @@ public class FindKidsController {
 			mav.setViewName("findKids/kidsContent");
 
 		return mav;
+	}
+	
+	/**
+	 * 예약카드 업데이트 (매칭)
+	 * author: 이은사
+	 * since: 2021. 12. 28. 
+	 * @return
+	 */
+	@RequestMapping("/updateReserveCard.do")
+	@ResponseBody
+	public int updateReserveCard(ReserveDto reserveDto) {
+		int result = findKidsService.updateReserveCard(reserveDto);
+		System.out.println("###INFO::::::DB 수정 결과 ####" + result);
+		
+		return result;
+		
 	}
 
 	/**

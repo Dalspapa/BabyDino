@@ -142,5 +142,69 @@
 		AND
 		    D_MEMBER_IDX != #{sessionIdx}
 	</update>
+	
+	<!-- 채팅알람 카운트 -->
+	<select id="getReadCount" parameterType="Integer" resultType="Integer">
+		SELECT COUNT(*) FROM            
+                          (SELECT *
+                          FROM
+                              (SELECT 
+                                  A.*,
+                                  B.LAST_MESSAGE,
+                                  B.LAST_SEND_TIME,
+                                  B.LAST_CM_IDX,
+                                  B.LAST_READ,
+                                  B.LAST_M_IDX
+                              FROM 
+                                  (SELECT 
+                                      CL.*, 
+                                      MR.NAME AS RECEIVER_NAME, 
+                                      MR.MEMBER_TYPE AS RECEIVER_TYPE 
+                                  FROM 
+                                      (SELECT 
+                                          C.*, 
+                                          M.NAME AS SENDER_NAME, 
+                                          M.MEMBER_TYPE AS SENDER_TYPE
+                                      FROM
+                                          D_CHATROOM C,
+                                          D_MEMBER M
+                                      WHERE
+                                          C.SENDER = M.IDX(+)) CL, 
+                                      D_MEMBER MR
+                                  WHERE 
+                                      CL.RECEIVER = MR.IDX(+)) A, 
+                                      (SELECT 
+                                          C_IDX, 
+                                          LAST_CM_IDX, 
+                                          LAST_MESSAGE, 
+                                          LAST_SEND_TIME, 
+                                          LAST_READ, 
+                                          LAST_M_IDX
+                                      FROM
+                                          (SELECT
+                                                  D_CHATROOM_IDX AS C_IDX,
+                                                  LAST_VALUE(IDX)
+                                                  OVER(ORDER BY D_CHATROOM_IDX) AS LAST_CM_IDX,
+                                                  LAST_VALUE(MESSAGE)
+                                                  OVER(ORDER BY D_CHATROOM_IDX) AS LAST_MESSAGE,
+                                                  LAST_VALUE(SEND_TIME)
+                                                  OVER(ORDER BY D_CHATROOM_IDX) AS LAST_SEND_TIME,
+                                                  LAST_VALUE(READ)
+                                                  OVER(ORDER BY D_CHATROOM_IDX) AS LAST_READ,
+                                                  LAST_VALUE(D_MEMBER_IDX)
+                                                  OVER(ORDER BY D_CHATROOM_IDX) AS LAST_M_IDX
+                                          FROM 
+                                                  D_CHATMESSAGE)
+                                          GROUP BY C_IDX, LAST_CM_IDX, LAST_MESSAGE, LAST_SEND_TIME, LAST_READ, LAST_M_IDX) B
+                              WHERE
+                                  A.IDX = B.C_IDX
+                              ORDER BY LAST_CM_IDX DESC)
+                          WHERE
+                              SENDER = #{sIdx}
+                          OR
+                              RECEIVER = #{sIdx})
+		WHERE LAST_READ = 1
+		AND LAST_M_IDX != #{sIdx}
+	</select>
 
 </mapper>

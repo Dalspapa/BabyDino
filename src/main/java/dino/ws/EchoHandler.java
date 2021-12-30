@@ -40,7 +40,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		System.out.println("##################################################################################");
 		String roomIdx = null;
 
-		if(sessionInfo.get("saveName") == null) {
+		if (sessionInfo.get("saveName") == null) {
 			System.out.println("### INFO 로그인상태가 아닙니다.");
 			return;
 		}
@@ -69,7 +69,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			return;
 		}
 
-		if(!sessionList.contains(session)) {
+		if (!sessionList.contains(session)) {
 			sessionList.add(session);
 			i++;
 		}
@@ -83,8 +83,14 @@ public class EchoHandler extends TextWebSocketHandler {
 		Map<String, Object> sessionInfo = this.getSessionInfo(session);
 		String sessRoomIdx = sessionInfo.get("roomIdx").toString();
 
+		//커멘드 메시지 (예약 상태 변경 -> 상담완료)
+		String cmdMsg = message.getPayload();
+		if ("상담완료\n".equals(cmdMsg)) {
+			System.out.println("#########INFO#########상담완료라고 치셨습니다.");
+		}
+		
 		//index[i] = name, type, message
-		String msg = sessionInfo.get("saveName") + "," + sessionInfo.get("saveMemberType") +"," +message.getPayload();
+		String msg = sessionInfo.get("saveName") + "," + sessionInfo.get("saveMemberType") + "," + message.getPayload();
 		
 		Iterator roomIdxList = roomList.keySet().iterator(); 
 
@@ -93,11 +99,11 @@ public class EchoHandler extends TextWebSocketHandler {
 			String roomIdx = (String)roomIdxList.next();
 
 			//내가 진입한 방번호에만 메세지 전달처리.
-			if(!StringUtils.isEmpty(roomIdx) && sessRoomIdx.equals(roomIdx)) {
+			if (!StringUtils.isEmpty(roomIdx) && sessRoomIdx.equals(roomIdx)) {
 				sessionList = roomList.get(roomIdx);
 				for (WebSocketSession sess : sessionList) {
 					System.out.println("### INFO 참여명수:" + sessionList.size() + " 방번호:" + roomIdx + "에 보내는 " + sessionInfo.get("saveName") + "님의  메세지:" + msg);
-					if(!session.equals(sess)) {
+					if (!session.equals(sess)) {
 						sess.sendMessage(new TextMessage(msg));
 					}
 				}
@@ -109,7 +115,7 @@ public class EchoHandler extends TextWebSocketHandler {
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		String roomIdx;
 
-		if(this.getSessionInfo(session) != null && this.getSessionInfo(session).get("roomIdx") != null) {
+		if (this.getSessionInfo(session) != null && this.getSessionInfo(session).get("roomIdx") != null) {
 			roomIdx = this.getSessionInfo(session).get("roomIdx").toString();
 			try {
 				System.out.println("방에서 나갑니다. 방번호:"+roomIdx);

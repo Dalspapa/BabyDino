@@ -9,7 +9,7 @@
 <style>
 section{
 	font-family: 'S-Air';
-	width: 80%;
+	width: 100%;
 }
 section .row .mtitle{
     font-size: 20px;
@@ -25,7 +25,7 @@ section .row .mtitle{
 	background-color:  #68983b;
 }
 section .container{
-    margin: 10% 30%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -39,7 +39,7 @@ section .container{
 }
 .container .search{
     margin-top: 107px;
-    width: 80%;
+    width: 100%;
 }
 
 .container .search .btns{
@@ -90,7 +90,7 @@ section .container{
 					<section>
 						<!-- 아이 이름 검색 -->
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>아이 이름</strong>
 							</div>
 							<div>
@@ -100,7 +100,7 @@ section .container{
 
 						<!-- D_COMMON_OPTION  / C_CATEGORY : 10 val(op) 1,2,3,4 -->
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>아이 연령대</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
@@ -119,11 +119,11 @@ section .container{
 						</div>
 
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>아이 성별</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-							  <input type="radio" class="btn-check k_gender" name="k_gender" id="btnradio1" value="1"  autocomplete="off" checked>
+							  <input type="radio" class="btn-check k_gender" name="k_gender" id="btnradio1" value="1"  autocomplete="off">
 							  <label class="btn btn-outline-primary k_gender" for="btnradio1">여아</label>
 							  <input type="radio" class="btn-check" name="k_gender" id="btnradio2" value="2" autocomplete="off">
 							  <label class="btn btn-outline-primary" for="btnradio2">남아</label>
@@ -131,11 +131,11 @@ section .container{
 						</div>
 
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>돌봄 비용</strong>
 							</div>
 							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio3" value="high" autocomplete="off" checked>
+							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio3" value="high" autocomplete="off">
 							  <label class="btn btn-outline-primary" for="btnradio3">시급 높은 순</label>
 							  <input type="radio" class="btn-check teacherCost" name="teacher_cost" id="btnradio4" value="low" autocomplete="off">
 							  <label class="btn btn-outline-primary" for="btnradio4">시급 낮은 순</label>
@@ -148,7 +148,7 @@ section .container{
 					<!-- 돌봄분야 이미지 추가해야함. -->
 					<section>
 						<div class="row">
-							<div>
+							<div class="p-3">
 								<strong>원하는 돌봄 분야</strong>
 							</div>
 							<!-- D_COMMON_OPTION  / C_CATEGORY : 5  val(op) 1 ~ 12 -->
@@ -162,9 +162,9 @@ section .container{
 					</section>
 
 					<section>
-						<input type="checkbox" class="btn-check" name="orderByNear" id="btn-check-1-outlined" checked autocomplete="off">
+						<input type="checkbox" class="btn-check" name="orderByNear" id="btn-check-1-outlined" autocomplete="off">
 						<label class="btn btn-outline-secondary" for="btn-check-1-outlined" value="${ kidCardList.teacher_addr }">가까운 순</label>
-						<input type="checkbox" class="btn-check" name="orderByMeet" id="btn-check-2-outlined" checked autocomplete="off">
+						<input type="checkbox" class="btn-check" name="orderByMeet" id="btn-check-2-outlined" autocomplete="off">
 						<label class="btn btn-outline-secondary" for="btn-check-2-outlined">만났던 순</label>
 						<input type="checkbox" class="btn-check" id="btn-check-3-outlined" checked autocomplete="off">
 
@@ -173,7 +173,7 @@ section .container{
 					<!-- 요 버튼 누르면 위에 조건들 수행 -->
 
 					<!-- 검색버튼 좀 더 키워주세요 -->
-					<div class="btns" style="text-align: center;margin-right: 190px;">
+					<div class="btns" style="text-align: center;">
 						<button class="btn btn-outline-success" type="reset">RESET</button>
 				 		<button class="btn btn-outline-success" type="button" onclick="fnShowTeacherList()">SEARCH</button>
 				 	</div>
@@ -184,7 +184,7 @@ section .container{
 		<hr />
 		<!-- 하단 정보[START] -->
 
-		<div class="row" id="kidsCard">
+		<div class="row p-5" id="kidsCard">
 
 		</div>
 		<!-- 하단 정보[START] -->

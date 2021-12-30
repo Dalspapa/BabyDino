@@ -16,7 +16,7 @@
 		from
 		    d_member m, d_teachercard t, d_reserve r
 		where
-		    m.idx = t.d_member_idx and t.idx = r.teacher_idx
+		    m.idx = t.d_member_idx and m.idx = r.teacher_idx
 		and
 			r.member_p_idx = #{idx}
 		and
@@ -35,7 +35,7 @@
 		from
 		    d_member m, d_teachercard t, d_reserve r
 		where
-		    m.idx = t.d_member_idx and t.idx = r.teacher_idx
+		    m.idx = t.d_member_idx and m.idx = r.teacher_idx
 		and
 			r.member_p_idx = #{idx}
 		and
@@ -64,7 +64,7 @@
 		where
 	        k.idx = r.kid_idx
         and
-            r.teacher_idx = t.idx
+            r.teacher_idx = t.d_member_idx
 	    and
 	    	r.idx = #{idx}
 	</select>
@@ -108,10 +108,11 @@
 		        ,k.k_care_type
 		        ,k.k_require
 		        ,r.idx as r_idx
+		        ,r.member_p_idx
 		from
 		       d_reserve r, d_kidcard k, d_teachercard t, d_member m
 		where
-		       r.kid_idx = k.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		       r.kid_idx = k.idx and r.teacher_idx = m.idx and t.d_member_idx = m.idx
 		and
 		        t.d_member_idx = #{idx}
 		and
@@ -129,7 +130,7 @@
 		from
 		       d_reserve r, d_kidcard k, d_teachercard t, d_member m
 		where
-		       r.kid_idx = k.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		       r.kid_idx = k.idx and r.teacher_idx = m.idx and t.d_member_idx = m.idx
 		and
 		        t.d_member_idx = #{idx}
 		and
@@ -141,9 +142,19 @@
 		update
 			d_reserve
 		set
-			status = 5
+			status = 4
 		where
 			idx = #{idx}
+	</update>
+	
+	<!-- 예약현황 업뎃 -->
+	<update id="statusUpd" parameterType="map">
+		 UPDATE 
+		 	d_reserve 
+		 SET 
+		 	status = #{status}
+         WHERE 
+         	idx = #{reserveIdx}
 	</update>
 
 </mapper>

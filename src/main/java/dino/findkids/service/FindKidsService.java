@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
+import dino.dto.ReserveDto;
 import dino.findkids.model.*;
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,4 +51,6 @@ public interface FindKidsService {
 	//선생님 필수 정보 입력
 	public int setTeacherCert(TeacherCertDto tcDto);
 //////////////주호 끝
+
+	public int updateReserveCard(ReserveDto reserveDto);
 }

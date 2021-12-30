@@ -47,7 +47,9 @@ public class AdminDaoImpl implements AdminDao {
 	
 	// 페이징 처리
 	public int getTotalCnt() {
+
 		int count = sqlMap.selectOne("memberManagementTotalCnt");
+
 		return count;
 	}
 	/*:::::::동현 작업 끝::::::::*/

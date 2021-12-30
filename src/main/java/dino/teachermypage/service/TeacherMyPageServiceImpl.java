@@ -1,5 +1,10 @@
 package dino.teachermypage.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.collections.map.HashedMap;
+
 import dino.dto.MakeTCardDto;
 import dino.teachermypage.model.*;
 
@@ -39,8 +44,18 @@ public class TeacherMyPageServiceImpl implements TeacherMyPageService {
 		
 		return teacherMypageDao.typeUpd(typeDto);
 	}
-	
-	
+
+
 	//////////////주호 끝
+	
+	
+	//돌봄상태값 업데이트 은사
+	public int statusUpd(Map<String, Object> params) {
+		
+		int result = teacherMypageDao.statusUpd(params);
+		
+		return result;
+	}
+	
 	
 }

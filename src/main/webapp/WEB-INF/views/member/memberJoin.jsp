@@ -135,13 +135,13 @@ table .phone{
                         <tr>
                            <td>
                               <div class="d-flex">
-                                 <input id="phone2" class="form-control form-control-sm w-50" style="margin-right: 4px;" type="text" name="phone2" title="인증번호 입력"/> 
+                                 <input id="phone2" class="form-control form-control-sm w-50" style="margin-right: 4px;" type="text" name="phone2" title="인증번호 입력" autocomplete="off"/> 
                                   <button id="phoneChk2" class="doubleChk btn btn-sm btn-outline-primary d-none" type="button">본인인증</button> 
                                </div>
                               <div class="phone">
                                   <span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>
                                   <input type="hidden" id="phoneDoubleChk"/> 
-                                  <p class="tip"> 최초 가입 시에만 사용하고 있습니다. 따로 저장되지 않습니다.(번호만 입력해주세요.) </p>
+                                  <p class="tip"> </p>
                               </div>
                            </td>
                         </tr>
@@ -152,7 +152,7 @@ table .phone{
             
                   
             <!-- 멤버타입 부모님(2), 선생님(4) -->
-            <input type="hidden" id="type" name="member_type" value="${param.member_type }" />
+            <input type="hidden" id="type" name="member_type" value="${param.member_type }" autocomplete="off" />
             
             <div class="btn">
                <button type="button" class="btn btn-outline-success" onclick="regMember()">다음으로</button>
