@@ -15,7 +15,7 @@
                 ,t.t_care_type
                 ,t.t_cost
                 ,t.t_introduce
-                ,NVL(ci.c_imgpath, 'noimage.png') AS c_imgpath
+                ,ci.c_imgpath
             FROM
                 d_teachercard t
             LEFT JOIN
@@ -96,8 +96,8 @@
 
 	<!-- 아이카드 만들기 -->
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
-	<selectKey resultType="dino.dto.KidDto" keyProperty="d_kidcard_idx" order="BEFORE">
-		select d_kidcard_idx.nextval as d_kidcard_idx from dual
+	<selectKey resultType="dino.dto.KidDto" keyProperty="d_kidcard_idx" order="AFTER">
+		select max(idx) from d_kidcard
 	</selectKey>
 	INSERT INTO
                 d_kidcard
