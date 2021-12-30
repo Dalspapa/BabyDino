@@ -28,7 +28,7 @@
                   aria-describedby="inputGroup-sizing-sm" 
                   name="id" id="ID" 
                   placeholder="아이디를 입력해주세요." 
-                  autocomplete="off" />
+                  autocomplete="off" value="${ cookie.saveId.value }"/>
                </div>
                    <div id="loginPwd" class="input-group input-group-sm mb-3">
                   <input type="password" class="form-control" 
@@ -41,7 +41,7 @@
                   <p id="checkId"></p>
                </span>
                <span class="#">
-                  <label for="idRemember"><input type="checkbox" id="idRemember" name="saveId" value="on" 
+                  <label for="idRemember"><input type="checkbox" id="SAVEID" name="saveId" value="on" 
                   ${empty cookie.saveId.value ? '' : 'checked'} />ID 기억</label>
                </span>
                <span class="login" >
@@ -130,10 +130,12 @@
 
 	var id = $("#ID").val();
 	var pwd = $("#PWD").val();
+	var saveId = $('#SAVEID').val();
 	
 	const formData = new FormData();
 	formData.set('id', id);
 	formData.set('pwd', pwd);
+	formData.set('saveId', saveId);
 	
 	formData.forEach(function(value, key) {
 		console.log(key, value);	 
@@ -144,7 +146,8 @@
 		url : 'login.do',
 		data :  {
 			id : id,
-			pwd: pwd
+			pwd : pwd,
+			saveId : saveId
 		},
 		success : function(r){
 			console.log('------------ r :', r);

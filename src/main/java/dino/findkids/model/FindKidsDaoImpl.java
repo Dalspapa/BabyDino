@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
+import dino.dto.ReserveDto;
 
 
 public class FindKidsDaoImpl implements FindKidsDao {
@@ -24,12 +25,6 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return result;
 	};
 
-	//get kids list
-	public List<FindKidsJoinDto> kidsList() {
-		List<FindKidsJoinDto> k_list = sqlMap.selectList("kidsList");
-		return k_list;
-	}
-	
 	//search kids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids) {
 		List<FindKidsJoinDto> k_list = sqlMap.selectList("searchKids", searchKids);
@@ -85,6 +80,11 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return sqlMap.insert("setCert", tcDto);
 	}
 //////////////주호 끝
+
+	public int updateReserveCard(ReserveDto reserveDto) {
+		int result = sqlMap.update("updateReserveCard", reserveDto);
+		return result;
+	}
 }
 
 

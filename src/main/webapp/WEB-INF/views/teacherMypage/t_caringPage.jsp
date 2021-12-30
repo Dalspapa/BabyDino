@@ -233,38 +233,50 @@ section{
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+
+<!-- js에서 데이터 넘길때 사용. -->
+<c:set var="updStatus" value="${ dto.status + 1 }" />
+
   <div class="wrapper" style="margin-top:80px;">
     <section class="userInfoWrap">
-      <h2>사용자 상태 영역</h2>
+      <h2>사용자 상태 영역 ${ updStatus }</h2> <!-- 업데이트 파람값 확인. 나중에 삭제 -->
       <div class="userLiveWrap">
         <div class="userLive">
           <div>
             <div class="aa">수락대기</div>
-            <button type="button" class="btn btn-outline-success" onclick="location.href='statusUpd.do?status=2&reserveIdx=${dto.r_idx}';">수락</button>
+            <c:if test="${ dto.status == 1 }">
+            	<button type="button" class="btn btn-outline-success" onclick="fnUpdateStatus()">수락</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">상담중</div>
-            <button type="button" class="btn btn-outline-success" onclick="location.href='statusUpd.do?status=3&reserveIdx=${dto.r_idx}';">신청취소</button>
-          </div>
-          <div>
-            <div class="aa">상담완료</div>
-            <button type="button" class="btn btn-outline-success">재상담</button>
+            <c:if test="${ dto.status == 2 }">
+            	<button type="button" class="btn btn-outline-success" onclick="fnUpdateStatus()">상담완료</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">결제대기</div>
-            <button type="button" class="btn btn-outline-success">결제하기</button>
+            <c:if test="${ dto.status == 3 }">
+            	<button type="button" class="btn btn-outline-success">돌봄취소</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">결제완료</div>
-            <button type="button" class="btn btn-outline-success">결제취소</button>
+            <c:if test="${ dto.status == 4 }">
+            	<button type="button" class="btn btn-outline-success">돌봄취소</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">돌봄중</div>
-            <button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700')">채팅하기</button>
+            <c:if test="${ dto.status == 5 }">
+            	<button type="button" class="btn btn-outline-success" onclick="javascript:void(window.open('chatList.do', 'chatList','width=600, height=700'))">채팅하기</button>
+            </c:if>
           </div>
           <div>
             <div class="aa">돌봄완료</div>
-            <button type="button" class="btn btn-outline-success" onclick="writeReview();">후기작성</button>
+            <c:if test="${ dto.status == 5 || dto.status == 6 }">
+            	<button type="button" class="btn btn-outline-success" onclick="writeReview();">후기작성</button>
+            </c:if>
           </div>
         </div>
         <!-- progress bar -->
@@ -274,25 +286,22 @@ section{
           			<div class="progress-bar bg-success" role="progressbar" style="width: 14%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
 				<c:if test="${ dto.status == 2 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 28%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 31%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 3 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 42%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 48.5%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 4 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 56%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 66%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 5 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 70%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          			<div class="progress-bar bg-success" role="progressbar" style="width: 83%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           		<c:if test="${ dto.status == 6 }">
-          			<div class="progress-bar bg-success" role="progressbar" style="width: 84%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-          		</c:if>
-          		<c:if test="${ dto.status == 7 }">
           			<div class="progress-bar bg-success" role="progressbar" style="width: 100%; height: 30px;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           		</c:if>
           </div>
-        </div>
+        </div> 
       </div>
     </section>
     <section>
@@ -360,14 +369,43 @@ section{
       </ul>
     </section>
   </div>
+  
 <script>
-function writeReview(){
-	location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
-}
-function writeCareNote(){
-	location.href = "writeCareNote.do?r_idx=${dto.r_idx}";
-}
+	//예약현황 상태 업데이트
+	function fnUpdateStatus() {
+		var status = '${updStatus}';
+		var reserveIdx = '${dto.r_idx}';
+		
+		$.ajax({
+			method : 'post',
+			url : '/statusUpd.do',
+			dataType : 'json',
+			data : {
+					status : status,
+				reserveIdx : reserveIdx
+			},
+			success : function(rst) {
+				console.log('업데이트 성공');
+				location.href='t_caring.do?idx=${dto.r_idx}';
+			},
+			error : function() {
+				console.log('실패');
+				alert('다시 시도해주세요 T.T');
+			}
+		})
+	}
+	
+	//후기작성
+	function writeReview() {
+		location.href = "writeReviewForm.do?r_idx=${dto.r_idx}";
+	}
+	
+	//돌봄노트 작성
+	function writeCareNote() {
+		location.href = "writeCareNote.do?r_idx=${dto.r_idx}";
+	}
 </script>
+
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

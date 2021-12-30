@@ -11,7 +11,9 @@
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- 부트스트랩 css -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+	<!-- 폰트어썸 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
 	<!-- 챗리스트 -->
 	<style type="text/css">
 	body {
@@ -220,15 +222,31 @@
 		margin-top: 23px;
 	}
 	
-	.chatSubject {
+	.center {
 		text-align: center;
+	}
+	
+	.chatSubject {
+		font-size: x-large;
+	}
+	.backIcon {
+		color: #198754;
+    	text-decoration: none;
 	}
 	</style>
 
 </head>
 
 <body>
-	<h3 class="chatSubject">${ sessionScope.saveName }님의 채팅방</h3>
+	<c:set var="sType" value="${ saveMemberType }" />
+	<span>
+		<p class="chatSubject center">
+			<a href="chatList.do" class="backIcon">
+				<i class="fas fa-arrow-circle-left"></i>
+			</a>
+			${ sessionScope.saveName }님의 채팅방
+		</p>
+	</span>
     <!-- selected chat -->
    	<div class="bg-white ">
        <div class="chat-message" id="chat-scroll">
@@ -322,7 +340,15 @@
 				</div>
 			</div>
 		</form>
-		<!-- 메시지 보내기 닫힘-->         
+		<!-- 메시지 보내기 닫힘-->
+		<div>
+			<a></a>
+		</div>
+		<c:if test="${ sType == 10 }">
+			<div class="center">
+				<strong><i class="far fa-handshake"></i> 상담이 완료되면 "상담완료" 라고 채팅방에 입력해 주세요 :)</strong>
+			</div>
+		</c:if>
 	</div>
 </body>
 
@@ -353,36 +379,65 @@
 				var str = evt.data;
 				var strArr = str.split(',');
 
-				var typeChar = '';
+				var characterType = '';
+				
 				if (strArr[1] == 1) {
-					typeChar = '<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
+					characterType = '<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
 				} else if (strArr[1] == 2 || strArr[1] == 3 || strArr[1] == 8) {
-					typeChar = '<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">';
+					characterType = '<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">';
 				} else {
-					typeChar = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
+					characterType = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
 				}
 
 				var talkHtml = '';
-				talkHtml += '<li class="left clearfix">';
-				talkHtml += 	'<span class="chat-img pull-left">';
-				talkHtml += 	typeChar;
-				talkHtml += '</span>';
-				talkHtml += '<div class="chat-body clearfix">';
-				talkHtml += 	'<div class="header">';
-				talkHtml += 		'<strong class="primary-font">' + strArr[0] + '</strong>';
-				talkHtml += 		'<small class="pull-right text-muted">';
-				talkHtml += 			'<i class="fa fa-clock-o"></i>';
-				talkHtml += 			fnGetTime();
-				talkHtml += 		'</small>';
-				talkHtml += 	'</div>';
-				talkHtml += 	'<p>';
-				talkHtml += 			strArr[2];
-				talkHtml += 	'</p>';
-				talkHtml += '</div>';
-				talkHtml += '</li>';
-				$('.chat').append(talkHtml);
-
+				
+				//선생님이 상담완료라고 입력시 마이페이지 이동 링크 출력.
+				if (strArr[2] === "상담완료\n" && strArr[1] == 10) {
+					talkHtml += '<li class="left clearfix">';
+					talkHtml += 	'<span class="chat-img pull-left">';
+					talkHtml += 	characterType;
+					talkHtml += '</span>';
+					talkHtml += '<div class="chat-body clearfix">';
+					talkHtml += 	'<div class="header">';
+					talkHtml += 		'<strong class="primary-font">' + strArr[0] + '</strong>';
+					talkHtml += 		'<small class="pull-right text-muted">';
+					talkHtml += 			'<i class="fa fa-clock-o"></i>';
+					talkHtml += 			fnGetTime();
+					talkHtml += 		'</small>';
+					talkHtml += 	'</div>';
+					talkHtml += 	'<a href="proceedingMain.do?idx=${sessionIdx}" target="_blank">';
+					talkHtml += 		'상담이 완료되었습니다. 메시지를 누르면 마이페이지로 이동합니다.';
+					talkHtml += 	'</a>';
+					talkHtml += '</div>';
+					talkHtml += '</li>';
+					
+					$('.chat').append(talkHtml);
+					
+				} else {
+					talkHtml += '<li class="left clearfix">';
+					talkHtml += 	'<span class="chat-img pull-left">';
+					talkHtml += 	characterType;
+					talkHtml += '</span>';
+					talkHtml += '<div class="chat-body clearfix">';
+					talkHtml += 	'<div class="header">';
+					talkHtml += 		'<strong class="primary-font">' + strArr[0] + '</strong>';
+					talkHtml += 		'<small class="pull-right text-muted">';
+					talkHtml += 			'<i class="fa fa-clock-o"></i>';
+					talkHtml += 			fnGetTime();
+					talkHtml += 		'</small>';
+					talkHtml += 	'</div>';
+					talkHtml += 	'<p>';
+					talkHtml += 			strArr[2];
+					talkHtml += 	'</p>';
+					talkHtml += '</div>';
+					talkHtml += '</li>';
+					
+					$('.chat').append(talkHtml);					
+				
+				}
+				
 			};
+			
 			ws.onopen = onOpen;
 			ws.onclose = onClose;
 		}
@@ -405,16 +460,16 @@
 		var senderName = '${sessionScope.saveName}';
 		var d_member_idx = '${ sessionScope.saveIdx }';
 		var d_chatroom_idx = '${sessionScope.roomIdx}';
-		var memberType = '${sessionScope.saveMemberType}'
+		var memberType = '${sessionScope.saveMemberType}';
 
 		var message = document.fm.write.value + '\n';
 		var send_time = fnGetTime();
 
 		var jsonParams = {d_member_idx   : d_member_idx,
-						    d_chatroom_idx : d_chatroom_idx,
-						    message        : message,
-						    send_time      : send_time
-						   };
+						  d_chatroom_idx : d_chatroom_idx,
+						  message        : message,
+						  send_time      : send_time
+						 };
 		console.log("### INFO jsonParams : ", jsonParams);
 
 		$.ajax({
@@ -425,9 +480,9 @@
 			success : function (result) {
 				console.log('메시지 저장 성공');
 			},
-			error:function(){
+			error : function() {
 				console.log('메시지 저장 실패' + message);
-        }
+        	}
 
 		});
 
@@ -461,6 +516,30 @@
                '</li>'
 
 		);
+		
+		if (message === "상담완료\n" && memberType == 10) {
+			$('.chat').append(
+	
+			           '<li class="right clearfix">' +
+		                    '<span class="chat-img pull-right">' +
+		                    typeChar +
+		               	'</span>' +
+		               	'<div class="chat-body clearfix">' +
+		               		'<div class="header">' +
+		               			'<strong class="primary-font">' + senderName + '</strong>' +
+		               			'<small class="pull-right text-muted">' +
+		               				'<i class="fa fa-clock-o"></i>' + fnGetTime() +
+		               			'</small>' +
+		               		'</div>' +
+		               		'<a href="t_proceedingMain.do?idx=${sessionIdx}" target="_blank">'
+		               			+ '메시지를 클릭하면 마이페이지로 이동합니다 :) 상담 완료 버튼을 눌러주세요 !' +
+		               		'</a>' +
+		               	'</div>' +
+		               '</li>'
+	
+				);
+			
+		}
 
 		//핸들러로 메시지 보냄.
 		ws.send(message);
@@ -482,9 +561,13 @@
 		var theHours = currentNow.getHours();
 		var theMinutes = currentNow.getMinutes();
 		var sendTime;
+		
+		if (theMinutes.toString().length == 1) {
+			theMinutes = "0" + theMinutes;
+		}
 
 		if (theHours > 12) {
-			theHours = theHours -12
+			theHours = theHours - 12
 			sendTime = " 오후 " + theHours + ":" + theMinutes;
 		} else {
 			sendTime = " 오전 " + theHours + ":" + theMinutes;

@@ -15,7 +15,7 @@
 		from
 		    d_review re, d_reserve r, d_teachercard t, d_member m
 		where
-		    re.d_reserve_idx = r.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		    re.d_reserve_idx = r.idx and r.teacher_idx = m.idx and t.d_member_idx = m.idx
 		and
 		    re.d_member_idx = #{idx}
 		order by
@@ -34,7 +34,7 @@
 		from
 		    d_review re, d_reserve r, d_teachercard t, d_member m
 		where
-		    re.d_reserve_idx = r.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx
+		    re.d_reserve_idx = r.idx and r.teacher_idx = m.idx and t.d_member_idx = m.idx
 		and
 		    re.d_member_idx != #{idx}
         and
@@ -78,17 +78,7 @@
 		and
 		     re.d_member_idx != #{idx}
         and
-             r.teacher_idx
-            	  =
-             (select
-                	tt.idx
-             from
-               	    d_member mm, d_teachercard tt
-             where
-         	        mm.idx = tt.d_member_idx
-             and
-          	        mm.idx = #{idx}
-             )
+             r.teacher_idx = #{idx}
         order by
         	re.r_writedate desc
 	</select>

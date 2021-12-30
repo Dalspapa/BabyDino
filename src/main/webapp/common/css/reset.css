@@ -40,7 +40,7 @@
     #mainNav .nav-link {
       transition: none;
       padding: 2rem 1.5rem;
-      color: black;
+      color: #000;
     }
     #mainNav .nav-link:hover {
       color: #64a19d;
@@ -216,10 +216,11 @@ header {
     color: black;
 }
 #mainNav {
-    /* background-color: fff; */
+	height:80px;
+    background-color: #eee; 
 }
 #mainNav #header-logo {
-    color: black;
+    color: #000;
 }
 #mainNav #header-logo span {
     display: block;
@@ -238,9 +239,12 @@ header {
     outline: none;
 }
 #mainNav .navbar-brand {
-    color: #000;
+    color: #fff;
     font-weight: 700;
     padding: 0.9rem 0;
+}
+#mainNav.navbar-shrink .nav-link {
+  	color: #000;
 }
 #mainNav .navbar-nav .nav-item:hover {
     color: fade(#fff, 80%);
@@ -299,7 +303,7 @@ footer .footer-about h5 {
     margin-bottom: 21%;
 }
 footer .footer-about {
-	margin-left: 6%;
+	/* margin-left: 6%; */
 }
 /*  footer .footer-address h5{
     margin: 0;

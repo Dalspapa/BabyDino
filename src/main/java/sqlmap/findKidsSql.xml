@@ -29,46 +29,7 @@
 		)
 	</insert>
 
-	<!-- 아이카드 리스트 -->
-	<select id="kidsList" resultType="dino.findkids.model.FindKidsJoinDto">
-		SELECT
-		      r.cost
-		    , r.idx
-		    , r.kid_idx
-		    , r.member_p_idx
-		    , r.status
-		    , kids.addr1
-		    , kids.addr2
-		    , kids.addr3
-		    , k.k_name
-		    , k.k_gender
-		    , (to_char(sysdate,'yyyy') - to_char(k.k_birth,'yyyy')) as age
-		    , k.k_tendency
-		    , k.k_care_type
-		    , k.k_require
-		    , k.k_introduce
-		    , i.c_imgpath
-		    , k.teacher_type
-		    , TO_CHAR(start_date, 'yyyy-mm-dd')  AS start_day
-		    , TO_CHAR(end_date, 'yyyy-mm-dd')   AS end_day
-		    , TO_CHAR(start_date, 'hh24')  AS start_time
-		    , TO_CHAR(end_date, 'hh24')   AS end_time
-		    , kids.ADDR1 AS kid_addr
-		    , tm.ADDR1   AS teacher_addr
-		    , tm.idx       AS teacher_idx
-		FROM d_reserve r   --()
-		       , (select * from d_member where member_type in ( 2, 8 ) ) pm            -- (학부모  : member)
-		       , (select * from d_member where member_type in ( 4, 5, 6, 7, 10 ) ) tm  -- (선생님  : member)
-		       , d_member kids
-		       , d_kidcard k                             --아이카드
-		       , d_common_img i                          --이미지
-		where 1=1
-		  and r.member_p_idx = pm.idx(+)                 -- 학부모 예약은 학부모가 하므로 필수
-		  and r.idx              = kids.idx(+)           -- 아이   예약은 아이가 있어야 하므로 필수
-		  and r.teacher_idx      = tm.idx(+)             -- 선생님
-		  and r.kid_idx          = k.idx(+)              -- 아이카드
-		  and r.kid_idx          = i.ref_idx(+)          -- 아이이미지
-	</select>
+
 
 	<!-- 아이찾기 검색-->
 	<select id="searchKids" resultType="dino.findkids.model.FindKidsJoinDto" parameterType="dino.findkids.model.FindKidsJoinDto">
@@ -105,7 +66,7 @@
 	  and r.member_p_idx     = pm.idx                -- 학부모 예약은 학부모가 하므로 필수
 	  and r.teacher_idx      = tm.idx(+)             -- 선생님
 	  and r.kid_idx          = k.idx                 -- 아이카드
-	  and r.kid_idx          = i.ref_idx(+)          -- 아이이미지
+	  and r.kid_idx          = i.ref_idx(+)         	 -- 아이이미지
 	  and r.teacher_idx      = tc.idx(+)             -- 선생님카드
 	]]>
 	<if test='orderByNear != null and orderByNear != "" and orderByNear == "on" and idx != null and idx != ""'>
@@ -152,11 +113,11 @@
 	<choose>
 		<when test='teacher_cost != null and teacher_cost != "" and teacher_cost =="high"'>
 		/* 선생님 비용 높은순 */
-		order by tc.t_cost desc
+		order by cost desc
 		</when>
 		<when test='teacher_cost != null and teacher_cost != "" and teacher_cost =="low"'>
 		/* 선생님 비용 낮은순 */
-		order by tc.t_cost
+		order by cost
 		</when>
 		<when test='orderByMeet != null and orderByMeet != "" and orderByMeet =="on"'>
 		/* 만났던 최근순 */
@@ -278,6 +239,16 @@
 			D_MEMBER
 		WHERE ID = #{id}
 	</select>
+	
+	<!-- 예약카드 선생님 매칭 -->
+	<update id="updateReserveCard" parameterType="dino.dto.ReserveDto">
+		UPDATE 
+			D_RESERVE
+		SET
+			MATCH_DATE = SYSDATE,
+			TEACHER_IDX = #{teacher_idx}
+		WHERE IDX = #{idx} 
+	</update>
 
 </mapper>
 

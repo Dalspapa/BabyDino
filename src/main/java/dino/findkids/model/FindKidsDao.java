@@ -5,14 +5,13 @@ import java.util.List;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
+import dino.dto.ReserveDto;
 
 public interface FindKidsDao {
 
 	//make techer card -> d_teacher Table
 	public int makeTCard (MakeTCardDto dto);
 
-	//get kids list
-	public List<FindKidsJoinDto> kidsList();
 	
 	//searchKids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids);
@@ -43,5 +42,8 @@ public interface FindKidsDao {
 	//선생님 필수 정보 입력
 	public int setTeacherCert(TeacherCertDto tcDto);
 //////////////주호끝
+
+
+	public int updateReserveCard(ReserveDto reserveDto);
 
 }

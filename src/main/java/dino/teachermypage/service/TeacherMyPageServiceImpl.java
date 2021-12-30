@@ -45,18 +45,17 @@ public class TeacherMyPageServiceImpl implements TeacherMyPageService {
 		return teacherMypageDao.typeUpd(typeDto);
 	}
 
-	public int statusUpd(int status, int reserveIdx) {
+
+	//////////////주호 끝
+	
+	
+	//돌봄상태값 업데이트 은사
+	public int statusUpd(Map<String, Object> params) {
 		
-		Map map = new HashedMap();
-		map.put("status", status);
-		map.put("reserveIdx", reserveIdx);
-		
-		int result = teacherMypageDao.statusUpd(map);
+		int result = teacherMypageDao.statusUpd(params);
 		
 		return result;
 	}
 	
-	
-	//////////////주호 끝
 	
 }

@@ -10,8 +10,6 @@ import dino.chat.model.ChatMessageVo;
 
 public interface ChatService {
 
-//	public Map<String, Object> doAdd(Map<String, Object> param);
-
 	public List<ChatListVo> getList(int sessionIdx);
 
 	public ChatRoomDto roomCheck(int sessionIdx, int receiverIdx);
@@ -24,11 +22,7 @@ public interface ChatService {
 
 	public int updateReadNum(int roomIdx, int sessionIdx);
 
-//	public ChatRoomDto findById(int id);
-//
-//	public Map<String, Object> addMessage(Map<String, Object> param);
-//
-//	public List<ChatMessageDto> getMessages(int roomId, int from);
+	public int getReadCount(int sIdx);
 
 }
 

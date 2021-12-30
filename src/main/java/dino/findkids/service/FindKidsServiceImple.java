@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import dino.dto.Common_ImgDto;
 import dino.dto.MakeTCardDto;
 import dino.dto.MemberDto;
+import dino.dto.ReserveDto;
 import dino.findkids.model.*;
 import dino.uuid.SetUUID;
 
@@ -109,11 +110,7 @@ public class FindKidsServiceImple implements FindKidsService {
 		}
 	}
 
-	//get kids list
-	public List<FindKidsJoinDto> getKidsList() {
-		List<FindKidsJoinDto> k_list = findkidsDao.kidsList();
-		return k_list;
-	}
+
 	
 	//searchKids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids) {
@@ -173,6 +170,13 @@ public class FindKidsServiceImple implements FindKidsService {
 	public int UpdGrade(String id) {
 		System.out.println("샘등급 조회 진행service"+id);
 		return findkidsDao.UpdGrade(id);
+	}
+
+	
+	//예약카드에 선생님 정보 추가
+	public int updateReserveCard(ReserveDto reserveDto) {
+		int result = findkidsDao.updateReserveCard(reserveDto);
+		return result;
 	}
 	
 	
