@@ -1,6 +1,8 @@
 package dino.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,12 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 import dino.dto.ReviewDto;
 import dino.review.model.ReviewJoinDto;
 import dino.review.service.ReviewService;
+import dino.teachermypage.service.TeacherMyPageService;
 
 @Controller
 public class ReviewController {
 
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private TeacherMyPageService teacherMypageService;
 
 	String goUrl = "";
 
@@ -73,7 +79,16 @@ public class ReviewController {
 	public ModelAndView writeReview(ReviewDto dto, HttpSession session) {
 		int result = reviewService.writeReview(dto);
 		String msg = result > 0 ?"소중한 후기 감사합니다 !" : "후기 작성에 실패하였습니다. 다시 부탁드립니다.";
+		
 		ModelAndView mav = new ModelAndView();
+		
+		Map params = new HashMap<String, Object>();
+		params.put("status", 7);
+		params.put("reserveIdx", dto.getD_reserve_idx());
+		
+		int updateRst = teacherMypageService.statusUpd(params);
+		mav.addObject("updateRst", updateRst);
+		
 		int idx = (Integer) session.getAttribute("saveIdx");
 		int member_type = (Integer) session.getAttribute("saveMemberType");
 
