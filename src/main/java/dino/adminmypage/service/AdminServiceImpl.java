@@ -138,6 +138,10 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println("샘등급 수정 진행service"+idx);
 		return adminDao.teaCertUpd(idx);
 	}
+	public List<MemberDto> memberManagement(int cp, int ls) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
