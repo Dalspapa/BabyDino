@@ -23,7 +23,7 @@ public interface AdminService {
 	
 	/*:::::::동현 작업 시작::::::::::*/
 	//admin회원관리
-	public List<MemberDto> memberManagement(int cp, int ls);
+	public List<MemberDto> adminMemberManagement(int cp, int ls);
 	
 	// 페이징 처리
 	public int getTotalCnt();

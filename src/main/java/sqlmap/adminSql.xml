@@ -5,15 +5,15 @@
   <mapper namespace="dino.adminmypage">
   	<!-- 동현작업시작 -->
     <!-- 관리자 회원관리 -->
-	<select id="memberManagement" parameterType="Map" resultType="dino.dto.MemberDto">
-	select * from
+	<select id="adminMemberManagement" parameterType="Map" resultType="dino.dto.MemberDto">
+		select * from
            (select rownum as rnum,a.* from
            (select * from d_member order by idx desc)a ) b
-           where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+        where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
 	<!-- 페이징 처리 -->
-	<select id="totalCnt" resultType="Integer">
+	<select id="memberManagementTotalCnt" resultType="Integer">
 		select count(*) from d_member
 	</select>
 	
@@ -148,7 +148,7 @@
    			IDX = #{IDX}
 	</update>
 		
-	<!-- 선생님 필수 인증 (이미지테이블 조인쿼리로 수정해야함)-->
+	<!-- 선생님 필수 인증 -->
 	<select id="teacherCertification" resultType="dino.adminmypage.model.AdminDto">
 		SELECT 
 		    m.idx

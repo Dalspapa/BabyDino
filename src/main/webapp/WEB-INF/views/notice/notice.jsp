@@ -40,7 +40,8 @@
 }
 .container section {
 	margin-top: -573px;
-    margin-bottom: 77px;
+    width: 1400px;
+    height: 500px;
 }
 .list-group-item{
 	padding: 1.5rem 0rem!important;
@@ -62,26 +63,19 @@
 	<div class="container">
 		<section class="notice">
 			<h3>공지사항 페이지</h3>
-				<table border="1">
-					<thead>
-						<tr>
-							<td>NO.</td>
-							<td>${list[0].idx}</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>${list[0].c_introduce}</td>
-						</tr>
-					</thead>
+				<table>
 					<tbody>
+						<c:if test="${empty list}">
 						<tr>
-							<td>NO.</td>
-							<td>${list[1].idx}</td>
+							<td colspan="3" align="center">등록된 공지사항이 없습니다.</td>
 						</tr>
-						<tr>
-							<td></td>
-							<td>${list[1].c_introduce}</td>
-						</tr>
+						</c:if>
+						<c:forEach var="dto" items="${list}">
+							<tr>
+								<td></td>
+								<td>${dto.c_introduce}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 		</section>

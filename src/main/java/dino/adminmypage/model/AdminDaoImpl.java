@@ -40,14 +40,14 @@ public class AdminDaoImpl implements AdminDao {
 	
 	/*:::::::동현 작업 시작::::::::*/
 	//admin 회원관리
-	public List<MemberDto> memberManagement(Map map) {
-		List<MemberDto> list = sqlMap.selectList("memberManagement", map);
+	public List<MemberDto> adminMemberManagement(Map map) {
+		List<MemberDto> list = sqlMap.selectList("adminMemberManagement", map);
 		return list;
 	}
 	
 	// 페이징 처리
 	public int getTotalCnt() {
-		int count = sqlMap.selectOne("totalCnt");
+		int count = sqlMap.selectOne("memberManagementTotalCnt");
 		return count;
 	}
 	/*:::::::동현 작업 끝::::::::*/

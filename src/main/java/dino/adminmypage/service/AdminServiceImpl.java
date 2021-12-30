@@ -50,7 +50,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	/*:::::::동현 작업 시작::::::::*/
-	public List<MemberDto> memberManagement(int cp, int ls) {
+	public List<MemberDto> adminMemberManagement(int cp, int ls) {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		
@@ -58,7 +58,7 @@ public class AdminServiceImpl implements AdminService {
 		map.put("start", start);
 		map.put("end", end);
 		
-		List<MemberDto> list = adminDao.memberManagement(map);
+		List<MemberDto> list = adminDao.adminMemberManagement(map);
 		return list;
 	}
 	

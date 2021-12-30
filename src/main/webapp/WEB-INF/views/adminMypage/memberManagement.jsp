@@ -25,6 +25,11 @@
 .likebody .btn{
 	margin-left: 700px;
 }
+/*페이징 부분*/
+.paging{
+	color: #68983b;
+	text-align: center;
+}
 </style>
 <!-- -------------지원 css---------------- -->
 </head>
@@ -127,7 +132,7 @@
 				<div class="btns">
 					<button type="button" class="btn btn-outline-success">탈퇴처리</button>
 				</div>
-				<div>
+				<div class="paging">
 					${pageStr }
 				</div>
 			</div>

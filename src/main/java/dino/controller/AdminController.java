@@ -79,13 +79,13 @@ public class AdminController {
 	/*:::::::동현 작업 시작::::::::*/
 	//회원관리로 이동
 	@RequestMapping("/memberManagement.do")
-	public ModelAndView memberManageMent(
+	public ModelAndView adminMemberManagement(
 			@RequestParam(value = "cp", defaultValue = "1")int cp) {
 		int listSize = 10;
 		int pageSize = 5;
 		int totalCnt = adminService.getTotalCnt();
 		
-		List<MemberDto> list = adminService.memberManagement(cp, listSize);
+		List<MemberDto> list = adminService.adminMemberManagement(cp, listSize);
 		String pageStr = pagination.PageModule.makePage("memberManagement.do", totalCnt, listSize, pageSize, cp);
 		
 		ModelAndView mav = new ModelAndView();
@@ -277,5 +277,7 @@ public class AdminController {
 	
 	
 	/////////////////주호 끝 
+	
+	
 	
 }

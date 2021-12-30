@@ -23,7 +23,7 @@ public interface AdminDao {
 	
 	/**동현 작업 시작:::::::::::::::::::::*/
 	//admin회원 관리
-	public List<MemberDto> memberManagement(Map map);
+	public List<MemberDto> adminMemberManagement(Map map);
 	
 	//페이징 처리
 	public int getTotalCnt();

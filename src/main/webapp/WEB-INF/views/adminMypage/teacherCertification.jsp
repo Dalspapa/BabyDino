@@ -70,9 +70,6 @@
 			  </tbody>
 			</table>
 			</form>
-				<div>
-					페이징 처리 될 부분
-				</div>
 			</div>
  <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
