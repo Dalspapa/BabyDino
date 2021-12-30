@@ -80,7 +80,7 @@ section{
 				<div class="profil">프로필</div>
 					<c:set var="proImg" value="${tDto.c_imgpath}" />
 					<div class="pic">
-						<img src="/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px">
+						<img src="/upload/${fn:replace(proImg,',','')}" alt="profileImg" width="150px" height="150px">
 					</div>
 				<div class="t_info">
 					<div>${tDto.name} | ${tDto.age} 세</div>

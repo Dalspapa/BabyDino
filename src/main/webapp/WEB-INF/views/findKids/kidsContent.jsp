@@ -287,7 +287,7 @@ section {
 					</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<a>
-						#좋아요버튼 
+						<!-- #좋아요버튼 --> 
 					</a>
 				</div>
 				</form>
