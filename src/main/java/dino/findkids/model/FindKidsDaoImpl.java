@@ -25,12 +25,6 @@ public class FindKidsDaoImpl implements FindKidsDao {
 		return result;
 	};
 
-	//get kids list
-	public List<FindKidsJoinDto> kidsList() {
-		List<FindKidsJoinDto> k_list = sqlMap.selectList("kidsList");
-		return k_list;
-	}
-	
 	//search kids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids) {
 		List<FindKidsJoinDto> k_list = sqlMap.selectList("searchKids", searchKids);

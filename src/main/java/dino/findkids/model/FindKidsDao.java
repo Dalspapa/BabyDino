@@ -12,8 +12,6 @@ public interface FindKidsDao {
 	//make techer card -> d_teacher Table
 	public int makeTCard (MakeTCardDto dto);
 
-	//get kids list
-	public List<FindKidsJoinDto> kidsList();
 	
 	//searchKids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids);

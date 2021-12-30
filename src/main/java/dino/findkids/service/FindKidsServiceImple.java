@@ -110,11 +110,7 @@ public class FindKidsServiceImple implements FindKidsService {
 		}
 	}
 
-	//get kids list
-	public List<FindKidsJoinDto> getKidsList() {
-		List<FindKidsJoinDto> k_list = findkidsDao.kidsList();
-		return k_list;
-	}
+
 	
 	//searchKids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids) {

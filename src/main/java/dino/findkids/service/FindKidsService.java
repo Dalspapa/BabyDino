@@ -19,8 +19,6 @@ public interface FindKidsService {
 	//make techer card -> d_teacher Table
 	public void makeTCard(MakeTCardDto dto, List<MultipartFile> imgFiles, String dirPath, Common_ImgDto imgDto, HttpServletRequest request);
 
-	//get kids list
-	public List<FindKidsJoinDto> getKidsList();
 	
 	//searchKids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids);
