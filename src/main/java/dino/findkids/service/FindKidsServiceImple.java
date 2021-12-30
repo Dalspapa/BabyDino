@@ -59,9 +59,11 @@ public class FindKidsServiceImple implements FindKidsService {
 		if(result == 0) {
 			System.out.println("insert 에러남.");
 		}
+		
 
 		// inset된 data idx
 		int ref_idx = dto.getIdx();
+		System.out.println("=============tcard idx"+ref_idx);
 		int category_idx = 2;
 
 		int d_member_idx = dto.getD_member_idx();
@@ -72,7 +74,12 @@ public class FindKidsServiceImple implements FindKidsService {
 		imgDto.setCategory_idx(category_idx);
 		imgDto.setD_member_idx(d_member_idx);
 		imgDto.setC_imgpath(c_imgpath);
-
+		
+		int imgRst = findkidsDao.tSetImg(imgDto);
+		System.out.println("샘카드 등록 컨트롤러에서 이미지 등록 실행함");
+		if(imgRst == 0) {
+			System.out.println("insert 중 문제 발생함.");
+		}
 	}
 	
 	// 선생님 필수 정보 입력  //////////////주호
@@ -80,10 +87,10 @@ public class FindKidsServiceImple implements FindKidsService {
 		
 		SetUUID uuid = new SetUUID();
 		String uid = uuid.getUUid();
-		
 		copyInto(tcDto.getImgpath());
 		
 		String certimgpath = uid+tcDto.getImgpath().getOriginalFilename();
+		tcDto.setImg_Path(certimgpath);
 		tcDto.setExemplification(certimgpath);
 		String crimeagree = tcDto.getCrimeagree();
 		if(StringUtils.isEmpty(crimeagree)) {
@@ -109,8 +116,6 @@ public class FindKidsServiceImple implements FindKidsService {
 			e.printStackTrace();
 		}
 	}
-
-
 	
 	//searchKids
 	public List<FindKidsJoinDto> searchKids(FindKidsJoinDto searchKids) {

@@ -6,8 +6,8 @@
 
 	<!-- 선생님 카드 등록 -->
 	<insert id="t_makeCard" parameterType="dino.dto.MakeTCardDto">
-		<selectKey keyProperty="idx" resultType="Integer" order="BEFORE">
-			SELECT  d_teacher_idx.NEXTVAL FROM DUAL
+		<selectKey keyProperty="idx" resultType="dino.dto.MakeTCardDto" order="AFTER">
+			SELECT max(idx) from d_teachercard 
 		</selectKey>
 		insert into
 			d_teachercard

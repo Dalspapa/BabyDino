@@ -282,15 +282,15 @@
 				<div>${ kidInfoDto.k_name }</div>
 				<form name="reportIdx" action="reportWrite.do">
 					<input type="hidden" name="idx" value="${kidInfoDto.member_p_idx }">
-					<div>
-						<a href="javascript:reportIdx.submit();">
-							&#128680;
-						</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<a>
-							#좋아요버튼 
-						</a>
-					</div>
+				<div>
+					<a href="javascript:reportIdx.submit();">
+						&#128680;
+					</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a>
+						<!-- #좋아요버튼 --> 
+					</a>
+				</div>
 				</form>
 			</div>
 	

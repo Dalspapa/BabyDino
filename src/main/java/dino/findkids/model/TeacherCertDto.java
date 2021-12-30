@@ -9,20 +9,23 @@ public class TeacherCertDto {
 	private String crimeagree;
 	private int d_member_idx;
 	private MultipartFile imgpath;
+	private String img_Path;
 	
 	public TeacherCertDto() {
 		super();
-	}
-
-	public TeacherCertDto(int idx, String exemplification, String crimeagree, int d_member_idx, String certimgpath,
-			MultipartFile imgpath) {
+	}	
+	
+	public TeacherCertDto(int idx, String exemplification, String crimeagree, int d_member_idx, MultipartFile imgpath,
+			String img_Path) {
 		super();
 		this.idx = idx;
 		this.exemplification = exemplification;
 		this.crimeagree = crimeagree;
 		this.d_member_idx = d_member_idx;
 		this.imgpath = imgpath;
-	}
+		this.img_Path = img_Path;
+	}	
+
 
 	public int getIdx() {
 		return idx;
@@ -63,7 +66,15 @@ public class TeacherCertDto {
 	public void setImgpath(MultipartFile imgpath) {
 		this.imgpath = imgpath;
 	}
-	
+
+	public String getImg_Path() {
+		return img_Path;
+	}
+
+	public void setImg_Path(String img_Path) {
+		this.img_Path = img_Path;
+	}
+
 	@Override
 	public String toString() {
 		String str = "exemplification" + exemplification + "\ncrimeagree" + crimeagree + "\nd_member_idx" + d_member_idx  ;

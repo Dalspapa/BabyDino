@@ -158,12 +158,12 @@ public class FindKidsController {
 			result.put("success", success);
 		};
 
-		int setImg = findKidsService.tSetImg(imgDto);
-		if( setImg != 1 ) {
-			result.put("fail", false);
-		} else {
-			result.put("success", success);
-		}
+//		int setImg = findKidsService.tSetImg(imgDto);
+//		if( setImg != 1 ) {
+//			result.put("fail", false);
+//		} else {
+//			result.put("success", success);
+//		}
 
 		System.out.println("인증후 그레이드 6 수정 전");
 		//검증 후 카드를 만든 선생님 grade update
