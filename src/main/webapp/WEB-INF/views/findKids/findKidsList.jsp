@@ -17,7 +17,7 @@
 			<div class="flip-card-inner" onclick="location.href='${ contentUrl }'">
 				<div class="flip-card-front">
 					<div class="mb-2">
-						<img src="/upload/${fn:replace(kDto.c_imgpath, ',', '')}" alt="선생님 사진" onerror="this.remove();"><br>
+						<img src="/upload/${fn:replace(kDto.c_imgpath, ',', '')}" alt="아이사진" onerror="this.remove();"><br>
 						<input type="hidden" name="idx" value="${ kDto.idx }">
 						<h5 id="tendetcy">
 						<c:set  var="careType" value="${kDto.k_care_type}" />

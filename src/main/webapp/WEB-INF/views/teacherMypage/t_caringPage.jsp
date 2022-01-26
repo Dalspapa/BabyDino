@@ -311,7 +311,7 @@ section{
         <div></div>
       </div>
       <div class="item1">
-        <div class="childImg"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
+        <div class="childImg"><img alt="아이기본사진" src="/upload/${ dto.c_imgpath }" style="width: auto; max-height: 100%;"></div>
         <div class="childInfo">
           ${ dto.k_introduce } /
             <c:if test="${ dto.k_gender==2 }">

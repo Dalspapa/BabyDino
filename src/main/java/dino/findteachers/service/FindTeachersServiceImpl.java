@@ -35,13 +35,15 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 		this.findTeachersDao = findTeachersDao;
 	}
 
+	//이미지셋팅 두번 실행 필요없는 메소드...
 	public int kSetImg(Common_ImgDto imgDto) {
 
-		int result = findTeachersDao.kSetImg(imgDto);
+//		int result = findTeachersDao.kSetImg(imgDto);
 
 		System.out.println("findKidsservice setTimg imgpath"+imgDto.getC_imgpath()+"memberidx"+imgDto.getD_member_idx()+"ref idx"+imgDto.getRef_idx());
 
-		return result;
+//		return result;
+		return 0;
 	}
 
 	//Test imgpath
@@ -76,22 +78,14 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 		return addr_dto;
 	}
 
-//	// make kid card
-//	public int makeKCard(KidDto dto) {
-//
-//		int result = findTeachersDao.makeKCard(dto);
-//
-//		return result;
-//	}
-
-	// make kid card (테스트)
+	// make kid card
 	@Transactional
 	public void makeKCard(KidDto kids, List<MultipartFile> imgFiles, String dirPath, Common_ImgDto imgDto, HttpServletRequest request) {
 
 		String c_imgpath = "";
 		if ( imgFiles == null || imgFiles.size() == 0) {
 
-			c_imgpath = "teacher.png";
+			c_imgpath = "noimage.png";
 			imgDto.setC_imgpath(c_imgpath);
 		}
 
@@ -105,26 +99,26 @@ public class FindTeachersServiceImpl implements FindTeachersService {
 			}
 		}
 
+		//키드카드 인서트
 		int result = findTeachersDao.makeKCard(kids);
 		if(result == 0) {
 			System.out.println("insert 에러남.");
 		}
 
 		// inset된 data idx
-		int ref_idx = kids.getIdx();
-		int category_idx = 1;
-
+		int ref_idx = kids.getD_kidcard_idx();
+		int category_idx = 1; //sql맵에서 이미 지정해서 사실상 필요 x
 		int d_member_idx = kids.getD_member_idx();
-//		String updId = (String)request.getSession().getAttribute("saveId");
 
 		//imgDto.setC_imgpath();
 		imgDto.setRef_idx(ref_idx);
-		imgDto.setCategory_idx(category_idx);
+		imgDto.setCategory_idx(category_idx); //sql맵에서 이미 지정해서 사실상 필요 x
 		imgDto.setD_member_idx(d_member_idx);
-		imgDto.setC_imgpath(c_imgpath);
+		imgDto.setC_imgpath(c_imgpath); 
 
 		System.out.println("이미지 DTO 값 : " + imgDto.getD_member_idx());
 
+		//이미지테이블 인서트
 		int setImgResult = findTeachersDao.kSetImg(imgDto);
 	}
 

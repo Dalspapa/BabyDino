@@ -182,7 +182,7 @@
 							<div style="display: flex; justify-content: center;">
 							맘시터에게 지급할 희망 시급을 적어주세요.</div>
 							<div class="col-md-8">
-								<input id="cost" class="cost" name="cost" type="text"
+								<input id="cost" class="cost" type="text"
 									placeholder="희망시급" aria-label="default input example" autocomplete="off">원
 							</div>
 						</div>

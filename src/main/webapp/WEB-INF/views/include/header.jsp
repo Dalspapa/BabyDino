@@ -97,9 +97,9 @@
 	    var audio = document.getElementById('audio_play'); 
 	    if (audio.paused) { 
 	        audio.play(); 
-	    }else{ 
+	    } else { 
 	        audio.pause(); 
-	        audio.currentTime = 0 
+	        audio.currentTime = 0
 	    } 
 	} 
 </script>
@@ -373,7 +373,7 @@
 <script>
 	
 	/* var sIdx = '${sidx}';
-	var count = 0;
+	var chatCount = 0;
 	
 	function getReadCnt() {
 		
@@ -386,7 +386,7 @@
 			},
 			success : function(readCnt) {
 				$("#p-caht-cnt").html(readCnt);
-				count = readCnt;
+				chatCount = readCnt;
 			},
 			error : function(e) {
 				console.log(e);
@@ -402,7 +402,7 @@
 		        getReadCnt();
 		        
 		        // 읽지 않은 메세지 총 갯수가 0개가 아니면
-		        if(count != 0) {
+		        if(chatCount != 0) {
 		            // 채팅 icon 깜빡거리기
 		            $('#chat').addClass('iconBlink');
 		            play();
@@ -412,7 +412,7 @@
 			    }
 			},2000);
 		});
-	} */
+	}  */
 	
 </script>
 

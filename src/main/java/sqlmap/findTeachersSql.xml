@@ -15,7 +15,7 @@
                 ,t.t_care_type
                 ,t.t_cost
                 ,t.t_introduce
-                ,ci.c_imgpath
+                ,NVL(ci.c_imgpath, 'noimage.png') AS c_imgpath
             FROM
                 d_teachercard t
             LEFT JOIN
@@ -96,13 +96,11 @@
 
 	<!-- 아이카드 만들기 -->
 	<insert id="k_makeCard" parameterType="dino.dto.KidDto">
-	<selectKey resultType="dino.dto.KidDto" keyProperty="d_kidcard_idx" order="AFTER">
-		select max(idx) from d_kidcard
-	</selectKey>
-	INSERT INTO
+
+		INSERT INTO
                 d_kidcard
         VALUES(
-                #{d_kidcard_idx},
+        		d_kidcard_idx.nextval,
                	#{d_member_idx},
                 #{k_name},
                 #{k_gender},
@@ -113,6 +111,11 @@
                	#{teacher_type},
                	#{k_require}
               )
+              
+		<selectKey resultType="Integer" keyProperty="d_kidcard_idx" order="AFTER">
+			select max(idx) from d_kidcard
+		</selectKey>
+		
 	</insert>
 
 	<!-- 돌봄유형 만들기 -->
@@ -131,7 +134,7 @@
 
 	<!-- 아이 카드로 예약  -->
 	<insert id="k_reserve" parameterType="dino.dto.ReserveDto">
-	INSERT INTO
+		INSERT INTO
 	    	 d_reserve
 		VALUES(
 		    D_RESERVE_IDX.nextval,
@@ -179,16 +182,18 @@
 	<!-- 선생님 상세 정보 리뷰 출력 -->
 	<select id="teacherReviewList" resultType="dino.dto.ReviewDto">
 		SELECT
-			 idx
-	     	 , d_reserve_idx
-	     	 , d_member_idx
-	     	 , star
-	     	 , r_writedate
-	     	 , r_content
+			   rv.idx
+	     	 , rv.d_reserve_idx
+	     	 , rv.d_member_idx
+	     	 , rv.star
+	     	 , rv.r_writedate
+	     	 , rv.r_content
 		FROM
-			d_review
+			d_review rv, d_reserve r, d_teachercard t 
 		WHERE
-			d_member_idx = #{d_member_idx}
+            rv.d_reserve_idx = r.idx AND r.teacher_idx = t.d_member_idx
+        AND 
+			t.idx = #{d_member_idx}
 	</select>
 
 

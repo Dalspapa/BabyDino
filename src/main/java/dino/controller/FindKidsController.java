@@ -60,8 +60,6 @@ public class FindKidsController {
 
 		ModelAndView mav = new ModelAndView();
 
-		//은사작업 idx 채워주기
-
 		mav.addObject("c_list", c_list);
 		mav.setViewName("findKids/findKids");
 		return mav;
@@ -76,28 +74,24 @@ public class FindKidsController {
 	@ResponseBody
 	public ModelAndView getKidsList(@RequestBody FindKidsJoinDto searchKids, HttpServletRequest req) {
 
-
 		String saveIdx = String.valueOf(req.getSession().getAttribute("saveIdx") == null ? "" : req.getSession().getAttribute("saveIdx"));
 		if(!StringUtils.isEmpty(saveIdx)) {
 			searchKids.setIdx(Integer.parseInt(saveIdx));
 		}
-
-		//돌봄분야 리스트 출력
-		List<CommonOpDto> c_list = commonOpService.t_care_opList();
-
+		
 		//아이검색
 		List<FindKidsJoinDto> KidsList = findKidsService.searchKids(searchKids);
 
 		ModelAndView mav = new ModelAndView();
 
-		mav.addObject("c_list", c_list);
 		mav.addObject("KidsList", KidsList);
 		mav.setViewName("findKids/findKidsList");
+		
 		return mav;
 	}
 
 
-	// Test get imgpath
+	// Test get imgpath  은사 : 사용하는 곳 없는듯?
 	@RequestMapping("/getImg.do")
 	public ModelAndView getImg(int d_member_idx) {
 

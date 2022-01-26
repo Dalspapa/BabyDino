@@ -252,7 +252,7 @@ function listView(userid) {
                 		</div>
                 		<div class="last-message text-muted">궁금한게 있다면 저를 불러주세요 :)</div>
                 		<small class="time text-muted">오전 9시 ~ 오후 6시</small>
-                		<small class="chat-alert text-muted">online <i class="fa fa-check" style="color: #80E12A "></i></small>
+                		<small class="chat-alert text-muted" id="connectionStatus"></small>
                 	</a>
                 </li>
                 
@@ -334,8 +334,6 @@ function listView(userid) {
 	</div>
 </div>
 
-
-<!-- 채팅방 누르면 챗룸으로 이동 -->
   <!-- 챗룸 버튼 -->
   <div id="chatRoom ">
     <a class="nav-link clearfix" href="#" data-bs-toggle="modal" data-bs-target="#chatModal">
@@ -361,5 +359,31 @@ function listView(userid) {
     </div>
   <!-- ./챗룸 Modal -->
   </div>
+
+<!-- 제이쿼리 js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+<script type="text/javascript">
+	var theHours = fnGetTime();
+	
+	if (theHours >= 9 && theHours <= 18) {
+		$('#connectionStatus').append(
+			'online' + ' <i class="fa fa-check" style="color: #80E12A ">' + '</i>'		
+		);
+	} else {
+		$('#connectionStatus').append(
+				'offline' + ' <i class="fa fa-check" style="color: grey ">' + '</i>'		
+		);
+	}
+
+	function fnGetTime() {
+		var currentNow = new Date();
+		var theHours = currentNow.getHours();
+	
+		return theHours;
+	}
+</script>  
+  
+</body>  
 </html>
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>부모님-돌봄현황</title>
+<title>선생님-돌봄현황</title>
 <style>
 a:link, a:visited {
   color: #333;
@@ -104,10 +104,10 @@ a:link, a:visited {
 						<c:param name="idx">${ tl_ing.r_idx }</c:param>
 					</c:url>
 					<a href="${ contentUrl }">
-					<div class="t_card">
-						<div class="pic"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
-						<div class="intro">${tl_ing.k_introduce}</div>
-					</div>
+						<div class="t_card">
+							<div class="pic"><img alt="아이기본사진" src="/upload/${ tl_ing.c_imgpath }" style="width: auto; max-height: 100%;"></div>
+							<div class="intro">${tl_ing.k_introduce}</div>
+						</div>
 					</a>
 					<!-- 선생님 정보 -->
 					<div class="info">
@@ -126,6 +126,12 @@ a:link, a:visited {
 				<div class="nolist"><h2 style="line-height: 300px;"> 완료된 돌봄 사항이 없습니다. </h2></div>
 			</c:if>
 		   	<c:forEach var="tl_done" items="${ t_list_done }">
+		   	
+				<!-- chat url -->
+				<c:url var="enterChatRoom" value="enterChatRoom.do">
+				    <c:param name="partnerIdx" value="${ tl_done.member_p_idx }"/>
+				</c:url>
+		   	
 				<div class="contentbody">
 					<!-- 선생님 카드 -->
 					<c:url var="contentUrl" value="t_caring.do">
@@ -133,7 +139,7 @@ a:link, a:visited {
 					</c:url>
 					<a href="${ contentUrl }">
 					<div class="t_card">
-						<div class="pic"><img alt="아이기본사진" src="./common/img/basic/basicboy.png" style="width: auto; max-height: 100%;"></div>
+						<div class="pic"><img alt="아이기본사진" src="/upload/${ tl_done.c_imgpath }" style="width: auto; max-height: 100%;"></div>
 						<div class="intro">${tl_done.k_introduce}</div>
 					</div>
 					</a>

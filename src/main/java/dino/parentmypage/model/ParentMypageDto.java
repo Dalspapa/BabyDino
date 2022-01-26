@@ -55,6 +55,9 @@ public class ParentMypageDto {
 
 	private Date c_writedate;
 	private String c_content;
+	
+	// img 테이블
+	private String c_imgpath;
 
 	public ParentMypageDto() {
 		super();
@@ -66,7 +69,7 @@ public class ParentMypageDto {
 			String career_experience, int teacher_member_idx, int k_idx, String k_name, int k_gender, Date k_birth,
 			String k_introduce, String k_care_type, String k_tendency, String teacher_type, String k_require, int r_idx,
 			int member_p_idx, Date start_date, Date end_date, int r_cost, int status, Date match_date,
-			int cancle_reason, String care_time, String k_age, Date c_writedate, String c_content) {
+			int cancle_reason, String care_time, String k_age, Date c_writedate, String c_content, String c_imgpath) {
 		super();
 		this.m_idx = m_idx;
 		this.id = id;
@@ -110,6 +113,7 @@ public class ParentMypageDto {
 		this.k_age = k_age;
 		this.c_writedate = c_writedate;
 		this.c_content = c_content;
+		this.c_imgpath = c_imgpath;
 	}
 
 	public int getM_idx() {
@@ -448,4 +452,13 @@ public class ParentMypageDto {
 		this.c_content = c_content;
 	}
 
+	public String getC_imgpath() {
+		return c_imgpath;
+	}
+
+	public void setC_imgpath(String c_imgpath) {
+		this.c_imgpath = c_imgpath;
+	}
+
+	
 }

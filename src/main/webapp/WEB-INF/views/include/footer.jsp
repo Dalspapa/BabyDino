@@ -3,6 +3,11 @@
 <html>
 <meta charset="UTF-8">
 <style>
+/* footer.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+} */
 .footer-horizon {
     width: 100%;
     height: 0.5px;

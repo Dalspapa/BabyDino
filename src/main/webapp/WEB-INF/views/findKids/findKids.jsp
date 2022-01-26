@@ -163,11 +163,9 @@ section .container{
 
 					<section>
 						<input type="checkbox" class="btn-check" name="orderByNear" id="btn-check-1-outlined" autocomplete="off">
-						<label class="btn btn-outline-secondary" for="btn-check-1-outlined" value="${ kidCardList.teacher_addr }">가까운 순</label>
+						<label class="btn btn-outline-secondary" for="btn-check-1-outlined" value="${ sessionScope.saveAddrNum }">가까운</label>
 						<input type="checkbox" class="btn-check" name="orderByMeet" id="btn-check-2-outlined" autocomplete="off">
-						<label class="btn btn-outline-secondary" for="btn-check-2-outlined">만났던 순</label>
-						<input type="checkbox" class="btn-check" id="btn-check-3-outlined" checked autocomplete="off">
-
+						<label class="btn btn-outline-secondary" for="btn-check-2-outlined">만났던</label>
 					</section>
 
 					<!-- 요 버튼 누르면 위에 조건들 수행 -->
@@ -182,8 +180,8 @@ section .container{
 		</div>
 		<!-- 필터[END] -->
 		<hr />
+		
 		<!-- 하단 정보[START] -->
-
 		<div class="row p-5" id="kidsCard">
 
 		</div>
@@ -200,7 +198,7 @@ section .container{
 
 	<script type="text/javascript">
 
-		$(function(){
+		$(function() {
 
 			var toDay = new Date().toISOString().substring(0,10);
 			//달력
@@ -227,7 +225,7 @@ section .container{
 			var params          = $("#searchForm").serializeObject();
 			params.saveIdx      = Number('${sidx}' == '' ? 0 : '${sidx}');
 			params.member_p_idx = Number('${kDto.member_p_idx}' == '' ? 0 : '${kDto.member_p_idx}');
-			params.teacher_addr = Number('${kidCardList.teacher_addr}' == '' ? 0 : '${kidCardList.teacher_addr}'); //null
+			params.teacher_addr = Number('${sessionScope.saveAddrNum}' == '' ? 0 : '${sessionScope.saveAddrNum}'); //null처리
 
 			//캐어타입
 			if( typeof params.k_care_type_list == 'string' ){

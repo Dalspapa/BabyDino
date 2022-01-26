@@ -89,6 +89,7 @@ public class FindTeacherController {
 
 	List<MultipartFile> imgFiles = new ArrayList<MultipartFile>();
 	imgFiles = dto.getK_img();
+	System.out.println(":::::::::::업로드한 파일이름::::::::::::::::::::" + imgFiles);
 
 	if (imgDto.getC_imgpath() == null || imgDto.getC_imgpath().equals("")) {
 		imgDto.setC_imgpath("icons_main.png"); 
@@ -103,6 +104,7 @@ public class FindTeacherController {
 			throw new IllegalStateException("로그인 상태가 아닙니다.");
 		}
 		dto.setIdx(Integer.parseInt(saveIdx));
+//		dto.setD_member_idx(Integer.parseInt(saveIdx));
 
 		teachersService.makeKCard(dto, imgFiles, dirPath, imgDto, request);
 		result.put("fail", false);
@@ -115,31 +117,8 @@ public class FindTeacherController {
 
 	};
 
-		int setImg = teachersService.kSetImg(imgDto);
-		if(setImg != 1) {
-			result.put("fail", false);
-		  } else {
-			  result.put("success", success);
-		  }
 		return ResponseEntity.ok(result);
 	}
-
-//	// 찐또메이크 아이카드 등록
-//	@RequestMapping("/makeKidsCard.do")
-//	public ModelAndView makeKidCard(KidDto dto) {
-//
-//		System.out.println("====아이카드 추가 등록 컨트롤러 진입=====" + dto);
-//
-//		int result = teachersService.makeKCard(dto);
-//
-//		String msg = result > 0 ? "아이카드가 정상적으로 등록되었습니다!" : "아이카드 등록에 실패하셨습니다.";
-//
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("msg", msg);
-//		mav.setViewName("findTeacher/teachersMsg");
-//
-//		return mav;
-//	}
 
 	//나의 아이카드 리스트 출력 메소드
 	@RequestMapping("/pickKidsCard.do")
@@ -182,30 +161,6 @@ public class FindTeacherController {
 
 		return mav;
 	}
-
-
-
-//	// 찐또메이크 아이카드 등록
-//	@RequestMapping("/makeKidsCard.do")
-//	public ModelAndView makeKidCard(KidDto dto, HttpSession session) {
-//
-//		System.out.println("====아이카드 추가 등록 컨트롤러 진입=====" + dto);
-//
-//		int result = teachersService.makeKCard(dto);
-//		
-//		String[] careTypeList = dto.getK_care_type().split(",");
-//		
-//		for (String careType : careTypeList) {
-//			dto.setKids_idx(dto.getD_kidcard_idx());
-//			dto.setCare_type(careType);
-//			dto.setRegId((String)session.getAttribute("saveId"));
-//			dto.setUpdId((String)session.getAttribute("saveId"));
-//			
-//			teachersService.makeKCareType(dto);
-//		}
-//		return null;
-//	}
-
 
 	// 아이카드 등록 메서드
 	@RequestMapping("/reserveCard.do")

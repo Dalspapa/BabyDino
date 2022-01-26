@@ -63,7 +63,7 @@ public class FindKidsServiceImple implements FindKidsService {
 
 		// inset된 data idx
 		int ref_idx = dto.getIdx();
-		System.out.println("=============tcard idx"+ref_idx);
+		System.out.println("=============tcard idx" + ref_idx);
 		int category_idx = 2;
 
 		int d_member_idx = dto.getD_member_idx();
@@ -89,7 +89,8 @@ public class FindKidsServiceImple implements FindKidsService {
 		String uid = uuid.getUUid();
 		copyInto(tcDto.getImgpath());
 		
-		String certimgpath = uid+tcDto.getImgpath().getOriginalFilename();
+//		String certimgpath = uid + tcDto.getImgpath().getOriginalFilename(); 중복예외처리
+		String certimgpath = tcDto.getImgpath().getOriginalFilename();
 		tcDto.setImg_Path(certimgpath);
 		tcDto.setExemplification(certimgpath);
 		String crimeagree = tcDto.getCrimeagree();
@@ -108,7 +109,8 @@ public class FindKidsServiceImple implements FindKidsService {
 			SetUUID uuid = new SetUUID();
 			String uid = uuid.getUUid();
 			byte[] bytes = imgFiles.getBytes();
-			File out = new File(IMGPATH + uid +imgFiles.getOriginalFilename());
+//			File out = new File(IMGPATH + uid +imgFiles.getOriginalFilename());
+			File out = new File(IMGPATH + imgFiles.getOriginalFilename());
 			FileOutputStream fos = new FileOutputStream(out);
 			fos.write(bytes);
 			fos.close();

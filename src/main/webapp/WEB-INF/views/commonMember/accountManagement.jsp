@@ -185,7 +185,7 @@ ttl {
 							</div>
 							
 							
-<!-- 							<div class="nATE5">
+							<div class="nATE5">
 								<div class ="_1QQ_I">사용중인 비밀번호</div>
 								<div class="qlKb8">
 									<label id="getPwd"></label>
@@ -231,7 +231,7 @@ ttl {
 									<label id="setAddr"></label>
 									<button>수정하기</button>
 								</div>
-							</div> -->
+							</div>
 							
 							
 							
@@ -240,7 +240,7 @@ ttl {
 						<div class="_1Iazm"></div>					
 					<div class="_2MTRN"></div>
 					<div class="mintitle">
-						<span><a href="memberOutFoam.do?idx=${sidx}">아기공룡 회원 탈퇴하기</a></span>
+						<span><a href="memberOutForm.do?idx=${sidx}">아기공룡 회원 탈퇴하기</a></span>
 						<i class="far fa-angle-right"></i>
 					</div>
 				</div>
@@ -297,14 +297,14 @@ ttl {
 	function idUpd(){
 		
 		let iddata = new FormData();
-		
-		iddata.set("idx", ${sidx});
+
+		iddata.set("idx", '${sidx}');
 		
 		$.ajax({
 		
 			method : 'POST',
 			url : '${pageContext.request.contextPath}/accountIdUpd.do',
-			data : fmdata,
+			data : iddata,
 			processData: false,
 			contentType: false,
 			cache: false,
@@ -336,7 +336,7 @@ ttl {
 	
 		console.log('hi');
 		let id = '${sid}';
-		let idx = ${sidx};
+		let idx = '${sidx}';
 			 
 		let fmdata = new FormData();
 		

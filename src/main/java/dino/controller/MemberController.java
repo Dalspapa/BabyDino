@@ -29,12 +29,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-//	//Move LoginPage
-//	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-//	public String goLoginPage() {
-//		return "member/login";
-//	}
-
 	//Do Login
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public ResponseEntity<?> loginSubmit(@RequestParam("id") String id,
@@ -55,6 +49,7 @@ public class MemberController {
 			MemberDto memberDto = memberService.getUserInfo(id);
 			String userName = memberDto.getName();
 			int memberType = memberDto.getMember_type();
+			String addr1 = memberDto.getAddr1();
 
 			if (memberType == 9) {
 				boolean outMember = true;
@@ -67,6 +62,9 @@ public class MemberController {
 			session.setAttribute("saveId", id);
 			session.setAttribute("saveName", userName);
 			session.setAttribute("saveMemberType", memberType);
+			//가까운 검색에 필요한 주소정보
+			session.setAttribute("saveAddrNum", addr1);
+			System.out.println("###INFO ::::: 세션 저장 우편번호" + addr1);
 
 			mav.addObject("msg", userName + "님 환영합니다 !");
 
@@ -200,7 +198,7 @@ public class MemberController {
 	}
 	
 	//회원탈퇴
-		@RequestMapping("/memberOutFoam.do")
+		@RequestMapping("/memberOutForm.do")
 		public String memberOutFoam() {
 			return ("member/memberOut");
 			
@@ -222,7 +220,6 @@ public class MemberController {
 			return mav;			
 		}
 				
-/////////////////주호
 		//계정관리	
 		 @RequestMapping(value = "/accountManagement.do", method=RequestMethod.GET) 
 		 public String accoutManagement() {
@@ -278,8 +275,6 @@ public class MemberController {
 
 			 return ResponseEntity.ok(null);
 		 }
-/////////////////주호 끝
-		 
 
 }
 

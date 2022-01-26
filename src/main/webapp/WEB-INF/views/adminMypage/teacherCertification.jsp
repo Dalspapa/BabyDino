@@ -71,7 +71,7 @@
 			</table>
 			</form>
 				<div>
-					페이징 처리 될 부분
+					<!-- 페이징 처리 될 부분 -->
 				</div>
 			</div>
  <!-- footer -->
@@ -81,7 +81,7 @@
 
 	function tCert(index){
 		
-		let d_member_idx = $("#idx_"+index).val();
+		let d_member_idx = $("#idx_" + index).val();
 		let id = $("#id_"+index).val();
 		
 		let fdata = new FormData();
@@ -103,7 +103,8 @@
 			success : function(result){				
 				if (result.result > 0) {
 					console.log('등업완료');					
-					alert('필수인증이 완료되었습니다. \n아이찾기 카테고리에서 선생님 카드 등록을 해주세요!');
+					alert('필수인증이 완료되었습니다. \n채팅으로 알려주세요 :)');
+					window.open('enterChatRoom.do?partnerIdx=' + d_member_idx, 'chatRoom','width=600, height=700')
 					location.reload();
 				} else {
 					console.log('no'+result.rst);
