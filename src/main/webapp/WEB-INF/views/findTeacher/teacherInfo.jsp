@@ -391,13 +391,13 @@ section .btns{
 		
 		// 배열을 for문으로 돌면서 조건문 수행
 		typeArr.forEach(function(type) {
-			if(type == 1) {
+			if(type == "영아(1~2세)") {
 				$("#kidType1").attr("src", "${pageContext.request.contextPath }/common/img/kidType/kidstype1_on.png");
-			} else if (type == 2) {
+			} else if (type == "유아(2~7세)") {
 				$("#kidType2").attr("src", "${pageContext.request.contextPath }/common/img/kidType/kidstype2_on.png");
-			} else if (type == 3) {
+			} else if (type == "초등 저학년(8~11세)") {
 				$("#kidType3").attr("src", "${pageContext.request.contextPath }/common/img/kidType/kidstype3_on.png");
-			} else if (type == 4) {
+			} else if (type == "초등 고학년(12~13세)") {
 				$("#kidType4").attr("src", "${pageContext.request.contextPath }/common/img/kidType/kidstype4_on.png");
 			}
 		});

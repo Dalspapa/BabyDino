@@ -21,7 +21,7 @@
             LEFT JOIN
                 d_member m ON m.idx = t.d_member_idx
             LEFT JOIN
-                d_common_img ci ON ci.d_member_idx = t.idx
+                d_common_img ci ON ci.ref_idx = t.idx
             WHERE
                 t.d_member_idx = m.idx
 	</select>

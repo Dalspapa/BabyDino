@@ -23,6 +23,8 @@ public class MakeTCardDto {
 	private int cctvagree;
 	private String t_sexcrime;
 	private String career_experience;
+	
+	private List<MultipartFile> tImg;
 
 	public int getMemberIdx() {
 		return memberIdx;
@@ -39,8 +41,6 @@ public class MakeTCardDto {
 	public void settImg(List<MultipartFile> tImg) {
 		this.tImg = tImg;
 	}
-
-	private List<MultipartFile> tImg;
 	
 	//기본생성자
 	public MakeTCardDto() {
