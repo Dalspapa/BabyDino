@@ -133,6 +133,10 @@ h2 {
 	padding: 1.7em 0;
 }
 
+.item1 img {
+	border-radius: 50%;
+}
+
 .item1 .childInfo {
 	margin-left: 1em;
 }
@@ -257,9 +261,6 @@ section .btns{
 						&#128680;
 					</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a>
-						#좋아요버튼 / ${t_dto.teacher_idx }
-					</a>
 				</div>
 				</form>
 			</div>

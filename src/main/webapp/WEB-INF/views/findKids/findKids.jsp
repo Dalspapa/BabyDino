@@ -45,6 +45,8 @@ section .container{
 .container .search .btns{
     text-align: center;
 }
+
+
 </style>
 </head>
 <body>

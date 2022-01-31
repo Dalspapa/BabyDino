@@ -175,6 +175,7 @@ hr.divider-light {
     width: 100px;
     height: 100px;
     margin: 15px;
+    border-radius: 50%;
 }
 
 .flip-card-back {

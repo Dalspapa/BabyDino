@@ -24,6 +24,7 @@
                 d_common_img ci ON ci.ref_idx = t.idx
             WHERE
                 t.d_member_idx = m.idx
+            ORDER BY teacher_idx DESC
 	</select>
 
 	<!-- 아이카드 선택하기 -->

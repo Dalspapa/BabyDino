@@ -34,6 +34,11 @@ section{
     margin-left: 518px;
     margin-top: 64px;
 }
+
+.pic img{
+	border-radius: 50%;
+}
+
 .t_profile .t_info{
     margin-left: 785px;
     margin-top: -164px;
