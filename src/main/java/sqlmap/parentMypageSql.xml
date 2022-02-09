@@ -87,14 +87,14 @@
 	<!-- 부모님 돌봄카드목록 페이지 -->
 	<select id="careNoteList" parameterType="Integer" resultType="dino.parentmypage.model.ParentMypageDto">
 		select
-		     m.name
+             m.name
 		    ,k.k_name
 		    ,c.c_writedate
 		    ,c.c_content
 		from
 		    d_carenote c, d_reserve r, d_teachercard t, d_member m, d_kidcard k
 		where
-		    c.d_reserve_idx = r.idx and r.teacher_idx = t.idx and t.d_member_idx = m.idx and r.kid_idx = k.idx
+		    c.d_reserve_idx = r.idx and r.teacher_idx = t.d_member_idx and t.d_member_idx = m.idx and r.kid_idx = k.idx
 		and
 		    r.member_p_idx = #{idx}
 	</select>

@@ -244,7 +244,7 @@
 			<a href="chatList.do" class="backIcon">
 				<i class="fas fa-arrow-circle-left"></i>
 			</a>
-			${ sessionScope.saveName }님의 채팅방 ${ param.partnerIdx }
+			${ sessionScope.saveName }님의 채팅방 
 		</p>
 	</span>
     <!-- selected chat -->

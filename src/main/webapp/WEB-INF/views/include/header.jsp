@@ -372,7 +372,7 @@
 <!-- 채팅알림 -->
 <script>
 	
-	/* var sIdx = '${sidx}';
+	var sIdx = '${sidx}';
 	var chatCount = 0;
 	
 	function getReadCnt() {
@@ -412,7 +412,7 @@
 			    }
 			},2000);
 		});
-	}  */
+	}  
 	
 </script>
 
