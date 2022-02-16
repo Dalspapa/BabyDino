@@ -53,9 +53,7 @@ public class ChatController {
 
 	//채팅방 입장, 없으면 생성.
 	@RequestMapping(value = "/enterChatRoom.do")
-	public ModelAndView enterChatRoom(
-			HttpSession session,
-			@RequestParam("partnerIdx") int partnerIdx) {
+	public ModelAndView enterChatRoom(HttpSession session, @RequestParam("partnerIdx") int partnerIdx) {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("chat/chatRoom");

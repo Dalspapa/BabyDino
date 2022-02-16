@@ -6,6 +6,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>아  기  공  룡</title>
+	
+	<!-- 파비콘 -->
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/common/img/favicon/favicon.png" type="image/x-icon">
+	<link rel="icon" href="${pageContext.request.contextPath}/common/img/favicon/favicon.png" type="image/x-icon">
 
 	<!-- 채팅ui -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -254,7 +258,7 @@
                <!-- 기존 채팅 리스트 불러오기 -->
                <c:forEach var="vo" items="${ messageList }">
 
-               	<!-- 필요한 변수들 -->
+                <!-- 필요한 변수들 -->
                	<c:set var="sessionIdx" value="${ sessionScope.saveIdx }" />
                	<c:set var="memberIdx" value="${ vo.d_member_idx }" />
                	<c:set var="message" value="${ vo.message }" />
@@ -268,13 +272,13 @@
                		<span class="chat-img pull-right" id="setPic">
                		<c:choose>
 						<c:when test="${ memberType == 1 }">
-							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+							 <img src="${pageContext.request.contextPath}/common/img/chat/user_1.jpg" alt="관리자 아바타">
 						</c:when>
 						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
-							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
+							<img src="${pageContext.request.contextPath}/common/img/chat/user_6.jpg" alt="부모님 아바타">
 						</c:when>
 						<c:otherwise>
-							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+							 <img src="${pageContext.request.contextPath}/common/img/chat/user_2.jpg" alt="선생님 아바타">
 						</c:otherwise>
 					</c:choose>
                		</span>
@@ -297,13 +301,13 @@
                		<span class="chat-img pull-left" id="setPic">
                		<c:choose>
 						<c:when test="${ memberType == 1 }">
-							 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+							 <img src="${pageContext.request.contextPath}/common/img/chat/user_1.jpg" alt="관리자 아바타">
 						</c:when>
 						<c:when test="${ memberType == 2 || memberType == 3 || memberType == 8 }">
-							<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">
+							<img src="${pageContext.request.contextPath}/common/img/chat/user_6.jpg" alt="부모님 아바타">
 						</c:when>
 						<c:otherwise>
-							 <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+							 <img src="${pageContext.request.contextPath}/common/img/chat/user_2.jpg" alt="선생님 아바타">
 						</c:otherwise>
 					</c:choose>
                		</span>
@@ -362,44 +366,45 @@
 <!-- 채팅 테스트 -->
 <script type="text/javascript">
 
-	var ws;
-
+	let ws;
+	
 	//챗룸 입장시 웹소켓 연결
 	$(function() {
-		yongConnect();
+		wsConnect();
 	});
 
 	//소켓연결
-	function yongConnect() {
-		if(ws == null || ws.readyState === WebSocket.CLOSED) {
-			ws = new WebSocket('ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/dino-ws?roomIdx=${sessionScope.roomIdx}'); //사용자 요청정보. 로컬호스트 대신 아이피주소 사용.
-			//연결되면(또는 상대가 메시지를 보내면) 핸들러에서 메시지 받음.
+	function wsConnect() {
+		if (ws == null || ws.readyState === WebSocket.CLOSED) { //소켓에 연결되어 있지 않았을 때 웹소켓 객체 초기화.
+			ws = new WebSocket('ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/dino-ws?roomIdx=${sessionScope.roomIdx}');
+			
+			//웹소켓에 연결된 상대가 메시지를 보내면 핸들러로부터 메시지 받음.
 			ws.onmessage = function(evt) {
 
-				var str = evt.data;
-				var strArr = str.split(',');
+				let data = evt.data;
+				let dataArr = data.split(',');
 
-				var characterType = '';
+				let characterType = '';
+				let talkHtml = '';
 				
-				if (strArr[1] == 1) {
-					characterType = '<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
-				} else if (strArr[1] == 2 || strArr[1] == 3 || strArr[1] == 8) {
-					characterType = '<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">';
+				//멤버 타입별 캐릭터설정
+				if (dataArr[1] == 1) {
+					characterType = '<img src="${pageContext.request.contextPath}/common/img/chat/user_1.jpg" alt="관리자 아바타">';
+				} else if (dataArr[1] == 2 || dataArr[1] == 3 || dataArr[1] == 8) {
+					characterType = '<img src="${pageContext.request.contextPath}/common/img/chat/user_6.jpg" alt="부모님 아바타">';
 				} else {
-					characterType = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
+					characterType = '<img src="${pageContext.request.contextPath}/common/img/chat/user_2.jpg" alt="선생님 아바타">';
 				}
 
-				var talkHtml = '';
-				
 				//선생님이 상담완료라고 입력시 마이페이지 이동 링크 출력.
-				if (strArr[2] === "상담완료\n" && strArr[1] == 10) {
+				if (dataArr[2] === "상담완료\n" && dataArr[1] == 10) {
 					talkHtml += '<li class="left clearfix">';
 					talkHtml += 	'<span class="chat-img pull-left">';
 					talkHtml += 	characterType;
 					talkHtml += '</span>';
 					talkHtml += '<div class="chat-body clearfix">';
 					talkHtml += 	'<div class="header">';
-					talkHtml += 		'<strong class="primary-font">' + strArr[0] + '</strong>';
+					talkHtml += 		'<strong class="primary-font">' + dataArr[0] + '</strong>';
 					talkHtml += 		'<small class="pull-right text-muted">';
 					talkHtml += 			'<i class="fa fa-clock-o"></i>';
 					talkHtml += 			fnGetTime();
@@ -420,14 +425,14 @@
 					talkHtml += '</span>';
 					talkHtml += '<div class="chat-body clearfix">';
 					talkHtml += 	'<div class="header">';
-					talkHtml += 		'<strong class="primary-font">' + strArr[0] + '</strong>';
+					talkHtml += 		'<strong class="primary-font">' + dataArr[0] + '</strong>';
 					talkHtml += 		'<small class="pull-right text-muted">';
 					talkHtml += 			'<i class="fa fa-clock-o"></i>';
 					talkHtml += 			fnGetTime();
 					talkHtml += 		'</small>';
 					talkHtml += 	'</div>';
 					talkHtml += 	'<p>';
-					talkHtml += 			strArr[2];
+					talkHtml += 			dataArr[2];
 					talkHtml += 	'</p>';
 					talkHtml += '</div>';
 					talkHtml += '</li>';
@@ -443,30 +448,34 @@
 		}
 	}
 
-	//방 입장하면 기존 대화목록 여기서 불러냄.
+	//ChatRoom In
 	function onOpen(evt) {
+		/*추후 필요시 소켓 연결시 이벤트처리 가능*/
 	}
 
-	//대화종료.
+	//ChatRoom Out
 	function onClose(evt) {
+		/*추후 필요시 소켓 종료시 이벤트처리 가능*/
 	}
-
+	
+	//메시지 보내기
 	function sendMessage() {
 
 		if(ws == null || ws.readyState === WebSocket.CLOSED) {
 			return alert("대화방이 닫혀있습니다.");
 		}
+		
+		//메시지 DB저장
+		let senderName = '${sessionScope.saveName}';
+		let d_member_idx = '${ sessionScope.saveIdx }';
+		let partnerIdx = '${param.partnerIdx}';
+		let d_chatroom_idx = '${sessionScope.roomIdx}';
+		let memberType = '${sessionScope.saveMemberType}';
 
-		var senderName = '${sessionScope.saveName}';
-		var d_member_idx = '${ sessionScope.saveIdx }';
-		var partnerIdx = '${param.partnerIdx}';
-		var d_chatroom_idx = '${sessionScope.roomIdx}';
-		var memberType = '${sessionScope.saveMemberType}';
+		let message = document.fm.write.value + '\n';
+		let send_time = fnGetTime();
 
-		var message = document.fm.write.value + '\n';
-		var send_time = fnGetTime();
-
-		var jsonParams = {d_member_idx   : d_member_idx,
+		let jsonParams = {d_member_idx   : d_member_idx,
 						  d_chatroom_idx : d_chatroom_idx,
 						  message        : message,
 						  send_time      : send_time
@@ -487,21 +496,21 @@
 
 		});
 
-
-		var typeChar = '';
+		//멤버 타입별 캐릭터설정
 		if (memberType == 1) {
-			typeChar = '<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">';
+			characterType = '<img src="${pageContext.request.contextPath}/common/img/chat/user_1.jpg" alt="관리자 아바타">';
 		} else if (memberType == 2 || memberType == 3 || memberType == 8) {
-			typeChar = '<img src="https://bootdey.com/img/Content/user_6.jpg" alt="">';
+			characterType = '<img src="${pageContext.request.contextPath}/common/img/chat/user_6.jpg" alt="부모님 아바타">';
 		} else {
-			typeChar = '<img src="https://bootdey.com/img/Content/user_2.jpg" alt="">';
+			characterType = '<img src="${pageContext.request.contextPath}/common/img/chat/user_2.jpg" alt="선생님 아바타">';
 		}
 
+		//메시지 입력시 출력될 동적 html
 		$('.chat').append(
 
 	           '<li class="right clearfix">' +
                     '<span class="chat-img pull-right">' +
-                    typeChar +
+                    characterType +
                	'</span>' +
                	'<div class="chat-body clearfix">' +
                		'<div class="header">' +
@@ -542,7 +551,7 @@
 			$('.chat').append(
 			           '<li class="right clearfix">' +
 		                    '<span class="chat-img pull-right">' +
-		                    typeChar +
+		                    characterType +
 		               	'</span>' +
 		               	'<div class="chat-body clearfix">' +
 		               		'<div class="header">' +
@@ -560,26 +569,27 @@
 			
 		}
 
-		//핸들러로 메시지 보냄.
-		ws.send(message);
+		ws.send(message); //핸들러로 메시지 전송.
 
+		//채팅 입력 창 초기화
 		document.fm.write.value = '';
 		document.fm.write.focus();
 
 	};
 
-	function yongClose() {
+	//소켓 연결 종료
+	function wsClose() {
 		if(ws != null && ws.readyState === WebSocket.OPEN) {
 			ws.close();
 		}
 	}
 
-	//시간구하기
+	//현재시간구하기
 	function fnGetTime() {
-		var currentNow = new Date();
-		var theHours = currentNow.getHours();
-		var theMinutes = currentNow.getMinutes();
-		var sendTime;
+		let currentNow = new Date();
+		let theHours = currentNow.getHours();
+		let theMinutes = currentNow.getMinutes();
+		let sendTime;
 		
 		if (theMinutes.toString().length == 1) {
 			theMinutes = "0" + theMinutes;
